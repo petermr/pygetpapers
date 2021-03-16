@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+pipreqs.egg-info/PKG-INFO
+pipreqs.egg-info/SOURCES.txt
+pipreqs.egg-info/dependency_links.txt
+pipreqs.egg-info/entry_points.txt
+pipreqs.egg-info/not-zip-safe
+pipreqs.egg-info/requires.txt
+pipreqs.egg-info/top_level.txt
+pygetpapers/__init__.py
+pygetpapers/pygetpapers.py
