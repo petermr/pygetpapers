@@ -8,7 +8,7 @@ a Python version of getpapers
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community has a need for a Python version and Ayush Garg has written a partial implementation from scratch, with some enhancements . (2021-03) `pygetpapers` does most of what `getpapers` does.
 
 # alphatest 2021-03
-The openVirus community is asked to test the current version. Reports should be clear enough that a newcomer to `pygetpapers` can understand the purpose and operation without having to ask (`getpapers` had relativekly little documentation`). Please create wikipages for each topic and report on the following:
+The openVirus community is asked to test the current version. Reports should be clear enough that a newcomer to `pygetpapers` can understand the purpose and operation without having to ask (`getpapers` had relatively little documentation`). Please create wikipages for each topic and report on the following:
 
 ## Documentation
 ### WHAT is the purpose of pygetpapers?
