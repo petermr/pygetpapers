@@ -12,7 +12,7 @@ requirements = ['requests', 'pandas_read_xml', 'pandas',
                 'lxml', 'chromedriver_autoinstaller', 'xmltodict', 'selenium']
 
 setup(
-    name='pipreqs',
+    name='pygetpapers',
     version='0.0.1',
     description='Automated Download of Research Papers from EuropePMC repository',
     long_description=readme,
