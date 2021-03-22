@@ -472,7 +472,7 @@ class pygetpapers:
         logging.info(f'Total number of hits for the query are {totalhits}')
 
     def handlecli(self):
-        version = "0.0.2"
+        version = "0.0.2.1"
         import argparse
         import os
         import logging
