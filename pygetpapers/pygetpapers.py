@@ -366,16 +366,18 @@ class pygetpapers:
             supplementaryfilesurl = os.path.join(
                 str(os.getcwd()), pmcid, "supplementaryfiles.zip")
             if references:
-                getreferences = self.getreferences(pmcid, references)
+                getreferences = self.getreferences(
+                    final_xml_dict[paper]["full"]["id"], references)
                 self.writexml(directory_url, referenceurl, getreferences)
                 logging.info(f"Made references for {pmcid}")
             if citations:
-                getcitations = self.getcitations(pmcid, references)
+                getcitations = self.getcitations(
+                    final_xml_dict[paper]["full"]["id"], citations)
                 self.writexml(directory_url, citationurl, getcitations)
                 logging.info(f"Made Citations for {pmcid}")
             if supplementaryFiles:
                 self.getsupplementaryfiles(
-                    pmcid, directory_url, supplementaryfilesurl)
+                    final_xml_dict[paper]["full"]["id"], directory_url, supplementaryfilesurl)
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             if final_xml_dict[paper]["downloaded"] == False:
@@ -476,34 +478,25 @@ class pygetpapers:
         parser = argparse.ArgumentParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help")
         parser.add_argument("-v", "--version",
-                            default=False, action="store_true", help="Prints the the current version of Pygetpapers")
+                            default=False, action="store_true", help="output the version number")
         parser.add_argument("-q", "--query",
                             type=str, default=False, help="query string transmitted to repository API. Eg. 'Artificial Intelligence' or 'Plant Parts'. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. ")
-        parser.add_argument("-k", "--limit", default=100,
-                            type=int, help="maximum number of hits (default: 100)")
+
         parser.add_argument("-o", "--output",
                             type=str, help="output directory (Default: current working directory)", default=os.getcwd())
-        parser.add_argument("-y", "--onlyquery", action='store_true',
-                            help="Saves json file containing the result of the query in storage. The json file can be given to --restart to download the papers later.")
-        parser.add_argument('-r', "--restart", default=False,
-                            type=str, help="Reads the picke and makes the xml files. Takes the path to the json as the input")
-        parser.add_argument("-f", "--logfile", default=False,
-                            type=str, help="save log to specified file in output directory as well as printing to terminal")
-        parser.add_argument("-p", "--pdf", default=False, action='store_true',
-                            help="Download fulltext PDFs if available. Works only with --api method.")
         parser.add_argument("-x", "--xml", default=False, action='store_true',
                             help="download fulltext XMLs if available")
-        parser.add_argument("-n", "--noexecute", default=False, action='store_true',
-                            help="report how many results match the query, but don't actually download anything")
-        parser.add_argument("--references",
-                            type=str, default=False, help="Gets references for papers in forms of xml and saves them to disk. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+        parser.add_argument("-p", "--pdf", default=False, action='store_true',
+                            help="download fulltext PDFs if available")
         parser.add_argument("-s", "--supp", default=False, action='store_true',
                             help="download supplementary files if available	")
-        parser.add_argument("--citations",
-                            type=str, default=False, help="Gets citations for papers in forms of xml and saves them to disk. Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+        parser.add_argument("--references",
+                            type=str, default=False, help="Download references if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+        parser.add_argument("-n", "--noexecute", default=False, action='store_true',
+                            help="report how many results match the query, but don't actually download anything")
 
-        parser.add_argument("-c", "--makecsv", default=False, action='store_true',
-                            help="Stores the per-document metadata as csv. Works only with --api method.")
+        parser.add_argument("--citations", type=str, default=False,
+                            help="Download citations if available. Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
         parser.add_argument(
             "-l", '--loglevel',
             default="info",
@@ -511,9 +504,22 @@ class pygetpapers:
                     "Provide logging level. "
                     "Example --log warning <<info,warning,debug,error,critical>>', default='info'"),
         )
+        parser.add_argument("-f", "--logfile", default=False,
+                            type=str, help="save log to specified file in output directory as well as printing to terminal")
+        parser.add_argument("-k", "--limit", default=100,
+                            type=int, help="maximum number of hits (default: 100)")
+
+        parser.add_argument('-r', "--restart", default=False,
+                            type=str, help="Reads the json and makes the xml files. Takes the path to the json as the input")
+
         parser.add_argument("-u", "--update", default=False,
                             type=str,
                             help="Updates the corpus by downloading new papers. Requires -k or --limit (If not provided, default will be used) and -q or --query (must be provided) to be given. Takes the path to the json as the input.")
+        parser.add_argument("--onlyquery", action='store_true',
+                            help="Saves json file containing the result of the query in storage. The json file can be given to --restart to download the papers later.")
+        parser.add_argument("-c", "--makecsv", default=False, action='store_true',
+                            help="Stores the per-document metadata as csv. Works only with --api method.")
+
         '''
         group = parser.add_mutually_exclusive_group()
         group.add_argument('--api', action='store_true',

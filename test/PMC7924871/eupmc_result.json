@@ -1,0 +1,394 @@
+{
+  "id": [
+    "33669930"
+  ],
+  "source": [
+    "MED"
+  ],
+  "pmid": [
+    "33669930"
+  ],
+  "pmcid": [
+    "PMC7924871"
+  ],
+  "fullTextIdList": [
+    {
+      "fullTextId": [
+        "PMC7924871"
+      ]
+    }
+  ],
+  "doi": [
+    "10.3390/ijerph18042086"
+  ],
+  "title": [
+    "Efficacy of Artificial-Intelligence-Driven Differential-Diagnosis List on the Diagnostic Accuracy of Physicians: An Open-Label Randomized Controlled Study."
+  ],
+  "authorString": [
+    "Harada Y, Katsukura S, Kawamura R, Shimizu T."
+  ],
+  "authorList": [
+    {
+      "author": [
+        {
+          "fullName": [
+            "Harada Y"
+          ],
+          "firstName": [
+            "Yukinori"
+          ],
+          "lastName": [
+            "Harada"
+          ],
+          "initials": [
+            "Y"
+          ],
+          "authorId": [
+            {
+              "_": "0000-0001-6042-7397",
+              "$": {
+                "type": "ORCID"
+              }
+            }
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Department of General Internal Medicine, Nagano Chuo Hospital, Nagano 380-0814, Japan."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Katsukura S"
+          ],
+          "firstName": [
+            "Shinichi"
+          ],
+          "lastName": [
+            "Katsukura"
+          ],
+          "initials": [
+            "S"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Kawamura R"
+          ],
+          "firstName": [
+            "Ren"
+          ],
+          "lastName": [
+            "Kawamura"
+          ],
+          "initials": [
+            "R"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Shimizu T"
+          ],
+          "firstName": [
+            "Taro"
+          ],
+          "lastName": [
+            "Shimizu"
+          ],
+          "initials": [
+            "T"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "authorIdList": [
+    {
+      "authorId": [
+        {
+          "_": "0000-0001-6042-7397",
+          "$": {
+            "type": "ORCID"
+          }
+        }
+      ]
+    }
+  ],
+  "dataLinksTagsList": [
+    {
+      "dataLinkstag": [
+        "supporting_data",
+        "altmetrics"
+      ]
+    }
+  ],
+  "journalInfo": [
+    {
+      "issue": [
+        "4"
+      ],
+      "volume": [
+        "18"
+      ],
+      "journalIssueId": [
+        "3108107"
+      ],
+      "dateOfPublication": [
+        "2021 Feb"
+      ],
+      "monthOfPublication": [
+        "2"
+      ],
+      "yearOfPublication": [
+        "2021"
+      ],
+      "printPublicationDate": [
+        "2021-02-01"
+      ],
+      "journal": [
+        {
+          "title": [
+            "International journal of environmental research and public health"
+          ],
+          "ISOAbbreviation": [
+            "Int J Environ Res Public Health"
+          ],
+          "medlineAbbreviation": [
+            "Int J Environ Res Public Health"
+          ],
+          "NLMid": [
+            "101238455"
+          ],
+          "ISSN": [
+            "1661-7827"
+          ],
+          "ESSN": [
+            "1660-4601"
+          ]
+        }
+      ]
+    }
+  ],
+  "pubYear": [
+    "2021"
+  ],
+  "abstractText": [
+    "<h4>Background</h4>The efficacy of artificial intelligence (AI)-driven automated medical-history-taking systems with AI-driven differential-diagnosis lists on physicians' diagnostic accuracy was shown. However, considering the negative effects of AI-driven differential-diagnosis lists such as omission (physicians reject a correct diagnosis suggested by AI) and commission (physicians accept an incorrect diagnosis suggested by AI) errors, the efficacy of AI-driven automated medical-history-taking systems without AI-driven differential-diagnosis lists on physicians' diagnostic accuracy should be evaluated.<h4>Objective</h4>The present study was conducted to evaluate the efficacy of AI-driven automated medical-history-taking systems with or without AI-driven differential-diagnosis lists on physicians' diagnostic accuracy.<h4>Methods</h4>This randomized controlled study was conducted in January 2021 and included 22 physicians working at a university hospital. Participants were required to read 16 clinical vignettes in which the AI-driven medical history of real patients generated up to three differential diagnoses per case. Participants were divided into two groups: with and without an AI-driven differential-diagnosis list.<h4>Results</h4>There was no significant difference in diagnostic accuracy between the two groups (57.4% vs. 56.3%, respectively; <i>p</i> = 0.91). Vignettes that included a correct diagnosis in the AI-generated list showed the greatest positive effect on physicians' diagnostic accuracy (adjusted odds ratio 7.68; 95% CI 4.68-12.58; <i>p</i> < 0.001). In the group with AI-driven differential-diagnosis lists, 15.9% of diagnoses were omission errors and 14.8% were commission errors.<h4>Conclusions</h4>Physicians' diagnostic accuracy using AI-driven automated medical history did not differ between the groups with and without AI-driven differential-diagnosis lists."
+  ],
+  "affiliation": [
+    "Department of General Internal Medicine, Nagano Chuo Hospital, Nagano 380-0814, Japan."
+  ],
+  "publicationStatus": [
+    "epublish"
+  ],
+  "language": [
+    "eng"
+  ],
+  "pubModel": [
+    "Electronic"
+  ],
+  "pubTypeList": [
+    {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    }
+  ],
+  "keywordList": [
+    {
+      "keyword": [
+        "Artificial intelligence",
+        "Diagnostic Accuracy",
+        "Commission Errors",
+        "Omission Errors",
+        "Automated Medical-History-Taking System",
+        "Differential-Diagnosis List"
+      ]
+    }
+  ],
+  "subsetList": [
+    {
+      "subset": [
+        {
+          "code": [
+            "IM"
+          ],
+          "name": [
+            "Index Medicus"
+          ]
+        }
+      ]
+    }
+  ],
+  "fullTextUrlList": [
+    {
+      "fullTextUrl": [
+        {
+          "availability": [
+            "Subscription required"
+          ],
+          "availabilityCode": [
+            "S"
+          ],
+          "documentStyle": [
+            "doi"
+          ],
+          "site": [
+            "DOI"
+          ],
+          "url": [
+            "https://doi.org/10.3390/ijerph18042086"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7924871"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7924871?pdf=render"
+          ]
+        }
+      ]
+    }
+  ],
+  "isOpenAccess": [
+    "Y"
+  ],
+  "inEPMC": [
+    "Y"
+  ],
+  "inPMC": [
+    "N"
+  ],
+  "hasPDF": [
+    "Y"
+  ],
+  "hasBook": [
+    "N"
+  ],
+  "hasSuppl": [
+    "Y"
+  ],
+  "citedByCount": [
+    "0"
+  ],
+  "hasData": [
+    "Y"
+  ],
+  "hasReferences": [
+    "Y"
+  ],
+  "hasTextMinedTerms": [
+    "Y"
+  ],
+  "hasDbCrossReferences": [
+    "N"
+  ],
+  "hasLabsLinks": [
+    "Y"
+  ],
+  "license": [
+    "cc by"
+  ],
+  "authMan": [
+    "N"
+  ],
+  "epmcAuthMan": [
+    "N"
+  ],
+  "nihAuthMan": [
+    "N"
+  ],
+  "hasTMAccessionNumbers": [
+    "N"
+  ],
+  "dateOfCreation": [
+    "2021-03-06"
+  ],
+  "firstIndexDate": [
+    "2021-03-06"
+  ],
+  "fullTextReceivedDate": [
+    "2021-03-04"
+  ],
+  "dateOfRevision": [
+    "2021-03-09"
+  ],
+  "electronicPublicationDate": [
+    "2021-02-21"
+  ],
+  "firstPublicationDate": [
+    "2021-02-21"
+  ]
+}

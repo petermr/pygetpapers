@@ -1,0 +1,4494 @@
+[
+  {
+    "id": [
+      "33615983"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33615983"
+    ],
+    "pmcid": [
+      "PMC7901693"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7901693"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1080/0886022x.2021.1890880"
+    ],
+    "title": [
+      "Correction."
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "43"
+        ],
+        "journalIssueId": [
+          "3069032"
+        ],
+        "dateOfPublication": [
+          "2021 Dec"
+        ],
+        "monthOfPublication": [
+          "12"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-12-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Renal failure"
+            ],
+            "ISOAbbreviation": [
+              "Ren Fail"
+            ],
+            "medlineAbbreviation": [
+              "Ren Fail"
+            ],
+            "NLMid": [
+              "8701128"
+            ],
+            "ISSN": [
+              "0886-022X"
+            ],
+            "ESSN": [
+              "1525-6049"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "381"
+    ],
+    "publicationStatus": [
+      "ppublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Print"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "Published Erratum",
+          "correction"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1080/0886022X.2021.1890880"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7901693"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7901693?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "commentCorrectionList": [
+      {
+        "commentCorrection": [
+          {
+            "id": [
+              "33441045"
+            ],
+            "source": [
+              "MED"
+            ],
+            "reference": [
+              "Ren Fail. 2021 Dec;43(1):159-167"
+            ],
+            "type": [
+              "Erratum for"
+            ],
+            "orderIn": [
+              "1"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "N"
+    ],
+    "hasTextMinedTerms": [
+      "N"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-02-22"
+    ],
+    "firstIndexDate": [
+      "2021-02-23"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-06"
+    ],
+    "dateOfRevision": [
+      "2021-03-05"
+    ],
+    "firstPublicationDate": [
+      "2021-12-01"
+    ]
+  },
+  {
+    "id": [
+      "33372840"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33372840"
+    ],
+    "pmcid": [
+      "PMC7781616"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7781616"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1080/21505594.2020.1867455"
+    ],
+    "title": [
+      "Luteolin decreases the pathogenicity of <i>Aeromonas hydrophila</i> via inhibiting the activity of aerolysin."
+    ],
+    "authorString": [
+      "Dong J, Zhang L, Liu Y, Xu N, Zhou S, Yang Y, Yang Q, Ai X."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Dong J"
+            ],
+            "firstName": [
+              "Jing"
+            ],
+            "lastName": [
+              "Dong"
+            ],
+            "initials": [
+              "J"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Zhang L"
+            ],
+            "firstName": [
+              "Lushan"
+            ],
+            "lastName": [
+              "Zhang"
+            ],
+            "initials": [
+              "L"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Liu Y"
+            ],
+            "firstName": [
+              "Yongtao"
+            ],
+            "lastName": [
+              "Liu"
+            ],
+            "initials": [
+              "Y"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Xu N"
+            ],
+            "firstName": [
+              "Ning"
+            ],
+            "lastName": [
+              "Xu"
+            ],
+            "initials": [
+              "N"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Zhou S"
+            ],
+            "firstName": [
+              "Shun"
+            ],
+            "lastName": [
+              "Zhou"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Yang Y"
+            ],
+            "firstName": [
+              "Yibin"
+            ],
+            "lastName": [
+              "Yang"
+            ],
+            "initials": [
+              "Y"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Yang Q"
+            ],
+            "firstName": [
+              "Qiuhong"
+            ],
+            "lastName": [
+              "Yang"
+            ],
+            "initials": [
+              "Q"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Ai X"
+            ],
+            "firstName": [
+              "Xiaohui"
+            ],
+            "lastName": [
+              "Ai"
+            ],
+            "initials": [
+              "X"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Control of Quality and Safety for Aquatic Products, Ministry of Agriculture and Rural Affairs , Beijing, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dataLinksTagsList": [
+      {
+        "dataLinkstag": [
+          "supporting_data"
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "12"
+        ],
+        "journalIssueId": [
+          "3080655"
+        ],
+        "dateOfPublication": [
+          "2021 Dec"
+        ],
+        "monthOfPublication": [
+          "12"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-12-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Virulence"
+            ],
+            "ISOAbbreviation": [
+              "Virulence"
+            ],
+            "medlineAbbreviation": [
+              "Virulence"
+            ],
+            "NLMid": [
+              "101531386"
+            ],
+            "ISSN": [
+              "2150-5594"
+            ],
+            "ESSN": [
+              "2150-5608"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "165-176"
+    ],
+    "abstractText": [
+      "<i>Aeromonas hydrophila</i> (<i>A. hydrophila</i>) can cause a number of diseases in both human and animals. <i>A. hydrophila-</i>related infections in aquaculture cause severe economic losses every year throughout the world. The emergence of antibiotic resistance that is due to the abuse of antibiotics has limited the application of antibiotics. Thus, novel approaches are needed to combat with treatment failure of antibiotics caused by resistant bacterial strains. Aerolysin plays a critical role in the pathogenesis of <i>A. hydrophila</i> and has been considered as a novel target for developing drugs based on anti-virulence strategies. Here, we reported that luteolin, a natural product with no anti-<i>A. hydrophila</i> activity, could reduce aerolysin-induced hemolysis by inhibiting aerolysin activity. The binding mode was simulated by molecular docking and dynamics simulation. Then the main binding sites were confirmed by fluorescence quenching assays. We found that luteolin could hindered the formation of functional heptamer of aerolysin according to the results of the oligomerization assay. Moreover, luteolin could protect A549 cells from aerolysin mediated cell death and increase the survival rate of <i>A. hydrophila</i>-infected channel catfish. These findings suggest a novel approach to developing drugs fighting against <i>A. hydrophila</i>, and luteolin can be a promising drug candidate for treatment of <i>A. hydrophila</i>-associated infections."
+    ],
+    "affiliation": [
+      "Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences , Wuhan, China."
+    ],
+    "publicationStatus": [
+      "ppublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Print"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Aeromonas hydrophila",
+          "Molecular dynamics",
+          "Luteolin",
+          "Aerolysin",
+          "Anti-virulence"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1080/21505594.2020.1867455"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7781616"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7781616?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "Y"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "Y"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "Y"
+    ],
+    "license": [
+      "cc by-nc"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "Y"
+    ],
+    "tmAccessionTypeList": [
+      {
+        "accessionType": [
+          "pdb"
+        ]
+      }
+    ],
+    "dateOfCreation": [
+      "2020-12-29"
+    ],
+    "firstIndexDate": [
+      "2020-12-30"
+    ],
+    "fullTextReceivedDate": [
+      "2021-01-15"
+    ],
+    "dateOfRevision": [
+      "2021-01-14"
+    ],
+    "firstPublicationDate": [
+      "2021-12-01"
+    ]
+  },
+  {
+    "id": [
+      "33441045"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33441045"
+    ],
+    "pmcid": [
+      "PMC7808740"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7808740"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1080/0886022x.2020.1866009"
+    ],
+    "title": [
+      "Risk factors and outcomes of cardiovascular disease readmission within the first year after dialysis in peritoneal dialysis patients."
+    ],
+    "authorString": [
+      "Li J, Huang N, Zhong Z, Joe P, Wang D, Ai Z, Wu L, Jiang L, Huang F."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Li J"
+            ],
+            "firstName": [
+              "Jianbo"
+            ],
+            "lastName": [
+              "Li"
+            ],
+            "initials": [
+              "J"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Huang N"
+            ],
+            "firstName": [
+              "Naya"
+            ],
+            "lastName": [
+              "Huang"
+            ],
+            "initials": [
+              "N"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Zhong Z"
+            ],
+            "firstName": [
+              "Zhong"
+            ],
+            "lastName": [
+              "Zhong"
+            ],
+            "initials": [
+              "Z"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Joe P"
+            ],
+            "firstName": [
+              "Pema"
+            ],
+            "lastName": [
+              "Joe"
+            ],
+            "initials": [
+              "P"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Medicine, Linzhi People's Hospital, Linzhi, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Wang D"
+            ],
+            "firstName": [
+              "Dan"
+            ],
+            "lastName": [
+              "Wang"
+            ],
+            "initials": [
+              "D"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Ai Z"
+            ],
+            "firstName": [
+              "Zhen"
+            ],
+            "lastName": [
+              "Ai"
+            ],
+            "initials": [
+              "Z"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Wu L"
+            ],
+            "firstName": [
+              "Lisha"
+            ],
+            "lastName": [
+              "Wu"
+            ],
+            "initials": [
+              "L"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Medicine, Linzhi People's Hospital, Linzhi, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Jiang L"
+            ],
+            "firstName": [
+              "Lanping"
+            ],
+            "lastName": [
+              "Jiang"
+            ],
+            "initials": [
+              "L"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Huang F"
+            ],
+            "firstName": [
+              "Fengxian"
+            ],
+            "lastName": [
+              "Huang"
+            ],
+            "initials": [
+              "F"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Key Laboratory of Nephrology, National Health Commission and Guangdong Province, Guangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "43"
+        ],
+        "journalIssueId": [
+          "3069032"
+        ],
+        "dateOfPublication": [
+          "2021 Dec"
+        ],
+        "monthOfPublication": [
+          "12"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-12-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Renal failure"
+            ],
+            "ISOAbbreviation": [
+              "Ren Fail"
+            ],
+            "medlineAbbreviation": [
+              "Ren Fail"
+            ],
+            "NLMid": [
+              "8701128"
+            ],
+            "ISSN": [
+              "0886-022X"
+            ],
+            "ESSN": [
+              "1525-6049"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "159-167"
+    ],
+    "abstractText": [
+      "<h4>Background</h4>In the first year of dialysis, patients are vulnerable to cardiovascular disease (CVD) hospitalization, but knowledge regarding the risk factors and long-term outcomes of cardiovascular readmission within the first year after dialysis in incident continuous ambulatory peritoneal dialysis (CAPD) patients is limited.<h4>Methods</h4>This retrospective cohort study was conducted in incident CAPD patients. The demographic characteristics, laboratory parameters, and CVD readmission were collected and analyzed. The primary outcome was all-cause mortality, and the secondary outcomes included CVD mortality, infection-related mortality and technique failure. A logistic regression was used to identify the risk factors associated with CVD readmission within the first year after dialysis. Cox proportional hazards models were used to evaluate the association between CVD readmission and the outcomes.<h4>Results</h4>In total, 1589 peritoneal dialysis (PD) patients were included in this study, of whom 120 (7.6%) patients had at least one episode of CVD readmission within the first year after dialysis initiation. Advanced age, CVD history, and a lower level of serum albumin were independently associated with CVD readmission. CVD readmission within the first year after dialysis was significantly associated with all-cause (HR 2.66, 95%CI 1.91-3.70, <i>p</i> < 0.001) and CVD (HR 3.42, 95%CI 2.20-5.31, <i>p</i> < 0.001) mortality, but not infection-related mortality or technique failure, after adjusting for confounders.<h4>Conclusions</h4>Our findings suggest that an advanced age, a history of CVD, and a lower level of serum albumin were independently associated with CVD readmission. Moreover, CVD readmission was associated with all-cause and cardiovascular mortality in incident CAPD patients."
+    ],
+    "affiliation": [
+      "Department of Nephrology, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, China."
+    ],
+    "publicationStatus": [
+      "ppublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Print"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Peritoneal dialysis",
+          "risk factors",
+          "Outcomes",
+          "Cardiovascular Disease Readmission"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1080/0886022X.2020.1866009"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7808740"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7808740?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "commentCorrectionList": [
+      {
+        "commentCorrection": [
+          {
+            "id": [
+              "33615983"
+            ],
+            "source": [
+              "MED"
+            ],
+            "reference": [
+              "Ren Fail. 2021 Dec;43(1):381"
+            ],
+            "type": [
+              "Erratum in"
+            ],
+            "orderIn": [
+              "1"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-01-14"
+    ],
+    "firstIndexDate": [
+      "2021-01-16"
+    ],
+    "fullTextReceivedDate": [
+      "2021-01-25"
+    ],
+    "dateOfRevision": [
+      "2021-02-22"
+    ],
+    "firstPublicationDate": [
+      "2021-12-01"
+    ]
+  },
+  {
+    "id": [
+      "33731170"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33731170"
+    ],
+    "pmcid": [
+      "PMC7971952"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7971952"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1186/s13000-021-01085-4"
+    ],
+    "title": [
+      "Artificial intelligence (AI) in medicine, current applications and future role with special emphasis on its potential and promise in pathology: present and future impact, obstacles including costs and acceptance among pathologists, practical and philosophical considerations. A comprehensive review."
+    ],
+    "authorString": [
+      "Ahmad Z, Rahim S, Zubair M, Abdul-Ghafar J."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Ahmad Z"
+            ],
+            "firstName": [
+              "Zubair"
+            ],
+            "lastName": [
+              "Ahmad"
+            ],
+            "initials": [
+              "Z"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Pathology and Laboratory Medicine, Aga Khan University Hospital, Karachi, Pakistan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Rahim S"
+            ],
+            "firstName": [
+              "Shabina"
+            ],
+            "lastName": [
+              "Rahim"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Pathology and Laboratory Medicine, Aga Khan University Hospital, Karachi, Pakistan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Zubair M"
+            ],
+            "firstName": [
+              "Maha"
+            ],
+            "lastName": [
+              "Zubair"
+            ],
+            "initials": [
+              "M"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Pathology and Laboratory Medicine, Aga Khan University Hospital, Karachi, Pakistan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Abdul-Ghafar J"
+            ],
+            "firstName": [
+              "Jamshid"
+            ],
+            "lastName": [
+              "Abdul-Ghafar"
+            ],
+            "initials": [
+              "J"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-6575-8870",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Pathology and Clinical Laboratory, French Medical Institute for Mothers and Children (FMIC), Kabul, Afghanistan. jamshid.jalal@fmic.org.af."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "authorIdList": [
+      {
+        "authorId": [
+          {
+            "_": "0000-0002-6575-8870",
+            "$": {
+              "type": "ORCID"
+            }
+          }
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "16"
+        ],
+        "journalIssueId": [
+          "3131695"
+        ],
+        "dateOfPublication": [
+          "2021 Mar"
+        ],
+        "monthOfPublication": [
+          "3"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-03-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Diagnostic pathology"
+            ],
+            "ISOAbbreviation": [
+              "Diagn Pathol"
+            ],
+            "medlineAbbreviation": [
+              "Diagn Pathol"
+            ],
+            "NLMid": [
+              "101251558"
+            ],
+            "ISSN": [
+              "1746-1596"
+            ],
+            "ESSN": [
+              "1746-1596"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "24"
+    ],
+    "abstractText": [
+      "<h4>Background</h4>The role of Artificial intelligence (AI) which is defined as the ability of computers to perform tasks that normally require human intelligence is constantly expanding. Medicine was slow to embrace AI. However, the role of AI in medicine is rapidly expanding and promises to revolutionize patient care in the coming years. In addition, it has the ability to democratize high level medical care and make it accessible to all parts of the world.<h4>Main text</h4>Among specialties of medicine, some like radiology were relatively quick to adopt AI whereas others especially pathology (and surgical pathology in particular) are only just beginning to utilize AI. AI promises to play a major role in accurate diagnosis, prognosis and treatment of cancers. In this paper, the general principles of AI are defined first followed by a detailed discussion of its current role in medicine. In the second half of this comprehensive review, the current and future role of AI in surgical pathology is discussed in detail including an account of the practical difficulties involved and the fear of pathologists of being replaced by computer algorithms. A number of recent studies which demonstrate the usefulness of AI in the practice of surgical pathology are highlighted.<h4>Conclusion</h4>AI has the potential to transform the practice of surgical pathology by ensuring rapid and accurate results and enabling pathologists to focus on higher level diagnostic and consultative tasks such as integrating molecular, morphologic and clinical information to make accurate diagnosis in difficult cases, determine prognosis objectively and in this way contribute to personalized care."
+    ],
+    "affiliation": [
+      "Department of Pathology and Laboratory Medicine, Aga Khan University Hospital, Karachi, Pakistan."
+    ],
+    "publicationStatus": [
+      "epublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Electronic"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "review-article",
+          "Review",
+          "Journal Article"
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Pathology",
+          "Medicine"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1186/s13000-021-01085-4"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7971952"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7971952?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-03-18"
+    ],
+    "firstIndexDate": [
+      "2021-03-19"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-22"
+    ],
+    "dateOfRevision": [
+      "2021-03-21"
+    ],
+    "electronicPublicationDate": [
+      "2021-03-17"
+    ],
+    "firstPublicationDate": [
+      "2021-03-17"
+    ]
+  },
+  {
+    "id": [
+      "33629545"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33629545"
+    ],
+    "pmcid": [
+      "PMC7909857"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7909857"
+        ]
+      }
+    ],
+    "doi": [
+      "10.3348/kjr.2021.0048"
+    ],
+    "title": [
+      "Key Principles of Clinical Validation, Device Approval, and Insurance Coverage Decisions of Artificial Intelligence."
+    ],
+    "authorString": [
+      "Park SH, Choi J, Byeon JS."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Park SH"
+            ],
+            "firstName": [
+              "Seong Ho"
+            ],
+            "lastName": [
+              "Park"
+            ],
+            "initials": [
+              "SH"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-1257-8315",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Radiology and Research Institute of Radiology, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Korea. seongho@amc.seoul.kr."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Choi J"
+            ],
+            "firstName": [
+              "Jaesoon"
+            ],
+            "lastName": [
+              "Choi"
+            ],
+            "initials": [
+              "J"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-6817-618X",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Biomedical Engineering, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Korea."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Byeon JS"
+            ],
+            "firstName": [
+              "Jeong Sik"
+            ],
+            "lastName": [
+              "Byeon"
+            ],
+            "initials": [
+              "JS"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-9793-6379",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Gastroenterology, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Korea."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "authorIdList": [
+      {
+        "authorId": [
+          {
+            "_": "0000-0002-1257-8315",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-6817-618X",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-9793-6379",
+            "$": {
+              "type": "ORCID"
+            }
+          }
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "3"
+        ],
+        "volume": [
+          "22"
+        ],
+        "journalIssueId": [
+          "3118653"
+        ],
+        "dateOfPublication": [
+          "2021 Mar"
+        ],
+        "monthOfPublication": [
+          "3"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-03-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Korean journal of radiology"
+            ],
+            "ISOAbbreviation": [
+              "Korean J Radiol"
+            ],
+            "medlineAbbreviation": [
+              "Korean J Radiol"
+            ],
+            "NLMid": [
+              "100956096"
+            ],
+            "ISSN": [
+              "1229-6929"
+            ],
+            "ESSN": [
+              "2005-8330"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "442-453"
+    ],
+    "abstractText": [
+      "Artificial intelligence (AI) will likely affect various fields of medicine. This article aims to explain the fundamental principles of clinical validation, device approval, and insurance coverage decisions of AI algorithms for medical diagnosis and prediction. Discrimination accuracy of AI algorithms is often evaluated with the Dice similarity coefficient, sensitivity, specificity, and traditional or free-response receiver operating characteristic curves. Calibration accuracy should also be assessed, especially for algorithms that provide probabilities to users. As current AI algorithms have limited generalizability to real-world practice, clinical validation of AI should put it to proper external testing and assisting roles. External testing could adopt diagnostic case-control or diagnostic cohort designs. A diagnostic case-control study evaluates the technical validity/accuracy of AI while the latter tests the clinical validity/accuracy of AI in samples representing target patients in real-world clinical scenarios. Ultimate clinical validation of AI requires evaluations of its impact on patient outcomes, referred to as clinical utility, and for which randomized clinical trials are ideal. Device approval of AI is typically granted with proof of technical validity/accuracy and thus does not intend to directly indicate if AI is beneficial for patient care or if it improves patient outcomes. Neither can it categorically address the issue of limited generalizability of AI. After achieving device approval, it is up to medical professionals to determine if the approved AI algorithms are beneficial for real-world patient care. Insurance coverage decisions generally require a demonstration of clinical utility that the use of AI has improved patient outcomes."
+    ],
+    "affiliation": [
+      "Department of Radiology and Research Institute of Radiology, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Korea. seongho@amc.seoul.kr."
+    ],
+    "publicationStatus": [
+      "ppublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Print"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "Research Support, Non-U.S. Gov't",
+          "review-article",
+          "Review",
+          "Journal Article"
+        ]
+      }
+    ],
+    "grantsList": [
+      {
+        "grant": [
+          {
+            "grantId": [
+              "HI17C2410"
+            ],
+            "agency": [
+              "Korea Health Industry Development Institute"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          }
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Insurance Coverage",
+          "Software Validation",
+          "Device Approval"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.3348/kjr.2021.0048"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7909857"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7909857?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "license": [
+      "cc by-nc"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-02-25"
+    ],
+    "firstIndexDate": [
+      "2021-02-26"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-05"
+    ],
+    "dateOfRevision": [
+      "2021-03-05"
+    ],
+    "firstPublicationDate": [
+      "2021-03-01"
+    ]
+  },
+  {
+    "id": [
+      "33676570"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33676570"
+    ],
+    "pmcid": [
+      "PMC7936489"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7936489"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1186/s13567-021-00902-4"
+    ],
+    "title": [
+      "Research perspectives on animal health in the era of artificial intelligence."
+    ],
+    "authorString": [
+      "Ezanno P, Picault S, Beaunée G, Bailly X, Muñoz F, Duboz R, Monod H, Guégan JF."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Ezanno P"
+            ],
+            "firstName": [
+              "Pauline"
+            ],
+            "lastName": [
+              "Ezanno"
+            ],
+            "initials": [
+              "P"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-0034-8950",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "INRAE, Oniris, BIOEPAR, Nantes, France. pauline.ezanno@inrae.fr."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Picault S"
+            ],
+            "firstName": [
+              "Sébastien"
+            ],
+            "lastName": [
+              "Picault"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "INRAE, Oniris, BIOEPAR, Nantes, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Beaunée G"
+            ],
+            "firstName": [
+              "Gaël"
+            ],
+            "lastName": [
+              "Beaunée"
+            ],
+            "initials": [
+              "G"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "INRAE, Oniris, BIOEPAR, Nantes, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Bailly X"
+            ],
+            "firstName": [
+              "Xavier"
+            ],
+            "lastName": [
+              "Bailly"
+            ],
+            "initials": [
+              "X"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "INRAE, EpiA, Theix, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Muñoz F"
+            ],
+            "firstName": [
+              "Facundo"
+            ],
+            "lastName": [
+              "Muñoz"
+            ],
+            "initials": [
+              "F"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "ASTRE, Univ Montpellier, CIRAD, INRAE, Montpellier, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Duboz R"
+            ],
+            "firstName": [
+              "Raphaël"
+            ],
+            "lastName": [
+              "Duboz"
+            ],
+            "initials": [
+              "R"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "ASTRE, Univ Montpellier, CIRAD, INRAE, Montpellier, France."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Sorbonne Université, IRD, UMMISCO, Bondy, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Monod H"
+            ],
+            "firstName": [
+              "Hervé"
+            ],
+            "lastName": [
+              "Monod"
+            ],
+            "initials": [
+              "H"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Université Paris-Saclay, INRAE, Jouy-en-Josas, MaIAGE, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Guégan JF"
+            ],
+            "firstName": [
+              "Jean-François"
+            ],
+            "lastName": [
+              "Guégan"
+            ],
+            "initials": [
+              "JF"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "ASTRE, Univ Montpellier, CIRAD, INRAE, Montpellier, France."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "MIVEGEC, IRD, CNRS, Univ Montpellier, Montpellier, France."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Comité National Français Sur Les Changements Globaux, Paris, France."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "authorIdList": [
+      {
+        "authorId": [
+          {
+            "_": "0000-0002-0034-8950",
+            "$": {
+              "type": "ORCID"
+            }
+          }
+        ]
+      }
+    ],
+    "dataLinksTagsList": [
+      {
+        "dataLinkstag": [
+          "supporting_data",
+          "altmetrics"
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "52"
+        ],
+        "journalIssueId": [
+          "3124378"
+        ],
+        "dateOfPublication": [
+          "2021 Mar"
+        ],
+        "monthOfPublication": [
+          "3"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-03-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Veterinary research"
+            ],
+            "ISOAbbreviation": [
+              "Vet Res"
+            ],
+            "medlineAbbreviation": [
+              "Vet Res"
+            ],
+            "NLMid": [
+              "9309551"
+            ],
+            "ISSN": [
+              "0928-4249"
+            ],
+            "ESSN": [
+              "1297-9716"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "40"
+    ],
+    "abstractText": [
+      "Leveraging artificial intelligence (AI) approaches in animal health (AH) makes it possible to address highly complex issues such as those encountered in quantitative and predictive epidemiology, animal/human precision-based medicine, or to study host × pathogen interactions. AI may contribute (i) to diagnosis and disease case detection, (ii) to more reliable predictions and reduced errors, (iii) to representing more realistically complex biological systems and rendering computing codes more readable to non-computer scientists, (iv) to speeding-up decisions and improving accuracy in risk analyses, and (v) to better targeted interventions and anticipated negative effects. In turn, challenges in AH may stimulate AI research due to specificity of AH systems, data, constraints, and analytical objectives. Based on a literature review of scientific papers at the interface between AI and AH covering the period 2009-2019, and interviews with French researchers positioned at this interface, the present study explains the main AH areas where various AI approaches are currently mobilised, how it may contribute to renew AH research issues and remove methodological or conceptual barriers. After presenting the possible obstacles and levers, we propose several recommendations to better grasp the challenge represented by the AH/AI interface. With the development of several recent concepts promoting a global and multisectoral perspective in the field of health, AI should contribute to defract the different disciplines in AH towards more transversal and integrative research."
+    ],
+    "affiliation": [
+      "INRAE, Oniris, BIOEPAR, Nantes, France. pauline.ezanno@inrae.fr."
+    ],
+    "publicationStatus": [
+      "epublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Electronic"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "review-article",
+          "Review",
+          "Journal Article"
+        ]
+      }
+    ],
+    "grantsList": [
+      {
+        "grant": [
+          {
+            "grantId": [
+              "ANR-10-LABX-25-01"
+            ],
+            "agency": [
+              "LABEX CEBA"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "ANR-16-CE32-0007"
+            ],
+            "agency": [
+              "Agence Nationale de la Recherche"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "H2020-SC1-BHC-2018-2019, Grant 874850"
+            ],
+            "agency": [
+              "Horizon 2020 Framework Programme"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "NSF#1911457"
+            ],
+            "agency": [
+              "National Science Foundation"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          }
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Livestock",
+          "Data",
+          "Modelling",
+          "Animal Disease",
+          "Decision Support Tool"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1186/s13567-021-00902-4"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7936489"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7936489?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "Y"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "Y"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "Y"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-03-07"
+    ],
+    "firstIndexDate": [
+      "2021-03-09"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-12"
+    ],
+    "dateOfRevision": [
+      "2021-03-12"
+    ],
+    "electronicPublicationDate": [
+      "2021-03-06"
+    ],
+    "firstPublicationDate": [
+      "2021-03-06"
+    ]
+  },
+  {
+    "id": [
+      "33669930"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33669930"
+    ],
+    "pmcid": [
+      "PMC7924871"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7924871"
+        ]
+      }
+    ],
+    "doi": [
+      "10.3390/ijerph18042086"
+    ],
+    "title": [
+      "Efficacy of Artificial-Intelligence-Driven Differential-Diagnosis List on the Diagnostic Accuracy of Physicians: An Open-Label Randomized Controlled Study."
+    ],
+    "authorString": [
+      "Harada Y, Katsukura S, Kawamura R, Shimizu T."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Harada Y"
+            ],
+            "firstName": [
+              "Yukinori"
+            ],
+            "lastName": [
+              "Harada"
+            ],
+            "initials": [
+              "Y"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0001-6042-7397",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of General Internal Medicine, Nagano Chuo Hospital, Nagano 380-0814, Japan."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Katsukura S"
+            ],
+            "firstName": [
+              "Shinichi"
+            ],
+            "lastName": [
+              "Katsukura"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Kawamura R"
+            ],
+            "firstName": [
+              "Ren"
+            ],
+            "lastName": [
+              "Kawamura"
+            ],
+            "initials": [
+              "R"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Shimizu T"
+            ],
+            "firstName": [
+              "Taro"
+            ],
+            "lastName": [
+              "Shimizu"
+            ],
+            "initials": [
+              "T"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Diagnostic and Generalist Medicine, Dokkyo Medical University, Tochigi 321-0293, Japan."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "authorIdList": [
+      {
+        "authorId": [
+          {
+            "_": "0000-0001-6042-7397",
+            "$": {
+              "type": "ORCID"
+            }
+          }
+        ]
+      }
+    ],
+    "dataLinksTagsList": [
+      {
+        "dataLinkstag": [
+          "supporting_data",
+          "altmetrics"
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "4"
+        ],
+        "volume": [
+          "18"
+        ],
+        "journalIssueId": [
+          "3108107"
+        ],
+        "dateOfPublication": [
+          "2021 Feb"
+        ],
+        "monthOfPublication": [
+          "2"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-02-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "International journal of environmental research and public health"
+            ],
+            "ISOAbbreviation": [
+              "Int J Environ Res Public Health"
+            ],
+            "medlineAbbreviation": [
+              "Int J Environ Res Public Health"
+            ],
+            "NLMid": [
+              "101238455"
+            ],
+            "ISSN": [
+              "1661-7827"
+            ],
+            "ESSN": [
+              "1660-4601"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "abstractText": [
+      "<h4>Background</h4>The efficacy of artificial intelligence (AI)-driven automated medical-history-taking systems with AI-driven differential-diagnosis lists on physicians' diagnostic accuracy was shown. However, considering the negative effects of AI-driven differential-diagnosis lists such as omission (physicians reject a correct diagnosis suggested by AI) and commission (physicians accept an incorrect diagnosis suggested by AI) errors, the efficacy of AI-driven automated medical-history-taking systems without AI-driven differential-diagnosis lists on physicians' diagnostic accuracy should be evaluated.<h4>Objective</h4>The present study was conducted to evaluate the efficacy of AI-driven automated medical-history-taking systems with or without AI-driven differential-diagnosis lists on physicians' diagnostic accuracy.<h4>Methods</h4>This randomized controlled study was conducted in January 2021 and included 22 physicians working at a university hospital. Participants were required to read 16 clinical vignettes in which the AI-driven medical history of real patients generated up to three differential diagnoses per case. Participants were divided into two groups: with and without an AI-driven differential-diagnosis list.<h4>Results</h4>There was no significant difference in diagnostic accuracy between the two groups (57.4% vs. 56.3%, respectively; <i>p</i> = 0.91). Vignettes that included a correct diagnosis in the AI-generated list showed the greatest positive effect on physicians' diagnostic accuracy (adjusted odds ratio 7.68; 95% CI 4.68-12.58; <i>p</i> < 0.001). In the group with AI-driven differential-diagnosis lists, 15.9% of diagnoses were omission errors and 14.8% were commission errors.<h4>Conclusions</h4>Physicians' diagnostic accuracy using AI-driven automated medical history did not differ between the groups with and without AI-driven differential-diagnosis lists."
+    ],
+    "affiliation": [
+      "Department of General Internal Medicine, Nagano Chuo Hospital, Nagano 380-0814, Japan."
+    ],
+    "publicationStatus": [
+      "epublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Electronic"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Diagnostic Accuracy",
+          "Commission Errors",
+          "Omission Errors",
+          "Automated Medical-History-Taking System",
+          "Differential-Diagnosis List"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.3390/ijerph18042086"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7924871"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7924871?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "Y"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "Y"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "Y"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-03-06"
+    ],
+    "firstIndexDate": [
+      "2021-03-06"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-04"
+    ],
+    "dateOfRevision": [
+      "2021-03-09"
+    ],
+    "electronicPublicationDate": [
+      "2021-02-21"
+    ],
+    "firstPublicationDate": [
+      "2021-02-21"
+    ]
+  },
+  {
+    "id": [
+      "PMC7972922"
+    ],
+    "source": [
+      "PMC"
+    ],
+    "pmcid": [
+      "PMC7972922"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7972922"
+        ]
+      }
+    ],
+    "title": [
+      "Understanding Team Collaboration in Artificial Intelligence from the Perspective of Geographic Distance"
+    ],
+    "authorString": [
+      "Toeppe K, Yan H, Chu S, Tang X, Li X, Ding Y, Ma F."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Toeppe K"
+            ],
+            "firstName": [
+              "Katharina"
+            ],
+            "lastName": [
+              "Toeppe"
+            ],
+            "initials": [
+              "K"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "8 Berlin, Germany"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Yan H"
+            ],
+            "firstName": [
+              "Hui"
+            ],
+            "lastName": [
+              "Yan"
+            ],
+            "initials": [
+              "H"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "9 Beijing, China"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Chu S"
+            ],
+            "firstName": [
+              "Samuel Kai Wah"
+            ],
+            "lastName": [
+              "Chu"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "10 Hong Kong, Hong Kong"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Tang X"
+            ],
+            "firstName": [
+              "Xuli"
+            ],
+            "lastName": [
+              "Tang"
+            ],
+            "initials": [
+              "X"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "11 Wuhan, China"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Li X"
+            ],
+            "firstName": [
+              "Xin"
+            ],
+            "lastName": [
+              "Li"
+            ],
+            "initials": [
+              "X"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "11 Wuhan, China"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Ding Y"
+            ],
+            "firstName": [
+              "Ying"
+            ],
+            "lastName": [
+              "Ding"
+            ],
+            "initials": [
+              "Y"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "12 TX, USA"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Ma F"
+            ],
+            "firstName": [
+              "Feicheng"
+            ],
+            "lastName": [
+              "Ma"
+            ],
+            "initials": [
+              "F"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "11 Wuhan, China"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "volume": [
+          "12645"
+        ],
+        "journalIssueId": [
+          "3136235"
+        ],
+        "dateOfPublication": [
+          "2021 Feb"
+        ],
+        "monthOfPublication": [
+          "2"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-02-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Diversity, Divergence, Dialogue16th International Conference, iConference 2021, Beijing, China, March 17–31, 2021, Proceedings, Part I"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "14-23"
+    ],
+    "abstractText": [
+      "This paper analyzes team collaboration in the field of Artificial Intelligence (AI) from the perspective of geographic distance. We obtained 1,584,175 AI related publications during 1950–2019 from the Microsoft Academic Graph. Three latitude-and-longitude-based indicators were employed to quantify the geographic distance of collaborations in AI over time at domestic and international levels. The results show team collaborations in AI has been more popular in the field over time with around 42,000 (38.4%) multiple-affiliation AI publications in 2019. The changes in geographic distances of team collaborations indicate the increase of breadth and density for both domestic and international collaborations in AI over time. In addition, the United States produced the largest number of single-country and internationally collaborated AI publications, and China has played an important role in international collaborations in AI after 2010."
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Undetermined"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "chapter-article"
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Team Collaboration",
+          "Geographic Distance"
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "PubMedCentral"
+            ],
+            "url": [
+              "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972922/?tool=EBI"
+            ]
+          },
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "PubMedCentral"
+            ],
+            "url": [
+              "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972922/pdf/?tool=EBI"
+            ]
+          },
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7972922"
+            ]
+          },
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7972922?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "Y"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "N"
+    ],
+    "hasTextMinedTerms": [
+      "N"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-03-22"
+    ],
+    "firstIndexDate": [
+      "2021-03-22"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-22"
+    ],
+    "dateOfRevision": [
+      "2021-03-22"
+    ],
+    "electronicPublicationDate": [
+      "2021-02-17"
+    ],
+    "firstPublicationDate": [
+      "2021-02-17"
+    ]
+  },
+  {
+    "id": [
+      "33731096"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33731096"
+    ],
+    "pmcid": [
+      "PMC7966905"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7966905"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1186/s12913-021-06248-z"
+    ],
+    "title": [
+      "Artificial intelligence-assisted reduction in patients' waiting time for outpatient process: a retrospective cohort study."
+    ],
+    "authorString": [
+      "Li X, Tian D, Li W, Dong B, Wang H, Yuan J, Li B, Shi L, Lin X, Zhao L, Liu S."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Li X"
+            ],
+            "firstName": [
+              "Xiaoqing"
+            ],
+            "lastName": [
+              "Li"
+            ],
+            "initials": [
+              "X"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Tian D"
+            ],
+            "firstName": [
+              "Dan"
+            ],
+            "lastName": [
+              "Tian"
+            ],
+            "initials": [
+              "D"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Li W"
+            ],
+            "firstName": [
+              "Weihua"
+            ],
+            "lastName": [
+              "Li"
+            ],
+            "initials": [
+              "W"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Dong B"
+            ],
+            "firstName": [
+              "Bin"
+            ],
+            "lastName": [
+              "Dong"
+            ],
+            "initials": [
+              "B"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Wang H"
+            ],
+            "firstName": [
+              "Hansong"
+            ],
+            "lastName": [
+              "Wang"
+            ],
+            "initials": [
+              "H"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Yuan J"
+            ],
+            "firstName": [
+              "Jiajun"
+            ],
+            "lastName": [
+              "Yuan"
+            ],
+            "initials": [
+              "J"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Li B"
+            ],
+            "firstName": [
+              "Biru"
+            ],
+            "lastName": [
+              "Li"
+            ],
+            "initials": [
+              "B"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Department of Pediatric Internal Medicine, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, Shanghai, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Shi L"
+            ],
+            "firstName": [
+              "Lei"
+            ],
+            "lastName": [
+              "Shi"
+            ],
+            "initials": [
+              "L"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Hangzhou YI TU Healthcare Technology CO. Ltd, Hangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Lin X"
+            ],
+            "firstName": [
+              "Xulin"
+            ],
+            "lastName": [
+              "Lin"
+            ],
+            "initials": [
+              "X"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Hangzhou YI TU Healthcare Technology CO. Ltd, Hangzhou, China."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Zhao L"
+            ],
+            "firstName": [
+              "Liebin"
+            ],
+            "lastName": [
+              "Zhao"
+            ],
+            "initials": [
+              "L"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China. zhaoliebin@scmc.com.cn."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China. zhaoliebin@scmc.com.cn."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China. zhaoliebin@scmc.com.cn."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China. zhaoliebin@scmc.com.cn."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China. zhaoliebin@scmc.com.cn."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China. zhaoliebin@scmc.com.cn."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Liu S"
+            ],
+            "firstName": [
+              "Shijian"
+            ],
+            "lastName": [
+              "Liu"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China. liushijian@scmc.com.cn."
+                    ]
+                  },
+                  {
+                    "affiliation": [
+                      "Child Health Advocacy Institute, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China. liushijian@scmc.com.cn."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "21"
+        ],
+        "journalIssueId": [
+          "3122093"
+        ],
+        "dateOfPublication": [
+          "2021 Mar"
+        ],
+        "monthOfPublication": [
+          "3"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-03-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "BMC health services research"
+            ],
+            "ISOAbbreviation": [
+              "BMC Health Serv Res"
+            ],
+            "medlineAbbreviation": [
+              "BMC Health Serv Res"
+            ],
+            "NLMid": [
+              "101088677"
+            ],
+            "ISSN": [
+              "1472-6963"
+            ],
+            "ESSN": [
+              "1472-6963"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "237"
+    ],
+    "abstractText": [
+      "<h4>Background</h4>Many studies suggest that patient satisfaction is significantly negatively correlated with the waiting time. A well-designed healthcare system should not keep patients waiting too long for an appointment and consultation. However, in China, patients spend notable time waiting, and the actual time spent on diagnosis and treatment in the consulting room is comparatively less.<h4>Methods</h4>We developed an artificial intelligence (AI)-assisted module and name it XIAO YI. It could help outpatients automatically order imaging examinations or laboratory tests based on their chief complaints. Thus, outpatients could get examined or tested before they went to see the doctor. People who saw the doctor in the traditional way were allocated to the conventional group, and those who used XIAO YI were assigned to the AI-assisted group. We conducted a retrospective cohort study from August 1, 2019 to January 31, 2020. Propensity score matching was used to balance the confounding factor between the two groups. And waiting time was defined as the time from registration to preparation for laboratory tests or imaging examinations. The total cost included the registration fee, test fee, examination fee, and drug fee. We used Wilcoxon rank-sum test to compare the differences in time and cost. The statistical significance level was set at 0.05 for two sides.<h4>Results</h4>Twelve thousand and three hundred forty-two visits were recruited, consisting of 6171 visits in the conventional group and 6171 visits in the AI-assisted group. The median waiting time was 0.38 (interquartile range: 0.20, 1.33) hours for the AI-assisted group compared with 1.97 (0.76, 3.48) hours for the conventional group (p < 0.05). The total cost was 335.97 (interquartile range: 244.80, 437.60) CNY (Chinese Yuan) for the AI-assisted group and 364.58 (249.70, 497.76) CNY for the conventional group (p < 0.05).<h4>Conclusions</h4>Using XIAO YI can significantly reduce the waiting time of patients, and thus, improve the outpatient service process of hospitals."
+    ],
+    "affiliation": [
+      "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China."
+    ],
+    "publicationStatus": [
+      "epublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Electronic"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      }
+    ],
+    "grantsList": [
+      {
+        "grant": [
+          {
+            "grantId": [
+              "No. TMSK-2020-124"
+            ],
+            "agency": [
+              "Chinese Translational Medicine Basic Instructure Project"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "No. 19441904400"
+            ],
+            "agency": [
+              "Science and Technology Innovation-Biomedical Supporting Program of Shanghai Science and Technology Committee"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "No. 201840324"
+            ],
+            "agency": [
+              "Shanghai Municipal Commission of Health and Family Planning"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "No. SHDC12020605"
+            ],
+            "agency": [
+              "Construction of Alliance Based on Artificial Intelligence for Pediatric Common Diseases"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "No. YG2017ZD15"
+            ],
+            "agency": [
+              "Medical and Engineering Cooperation Project of Shanghai Jiao Tong University"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          },
+          {
+            "grantId": [
+              "No. 81872637"
+            ],
+            "agency": [
+              "National Science Foundation of China"
+            ],
+            "orderIn": [
+              "0"
+            ]
+          }
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Outpatient",
+          "Medical System",
+          "Waiting Time"
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1186/s12913-021-06248-z"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7966905"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7966905?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "N"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-03-18"
+    ],
+    "firstIndexDate": [
+      "2021-03-19"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-22"
+    ],
+    "dateOfRevision": [
+      "2021-03-21"
+    ],
+    "electronicPublicationDate": [
+      "2021-03-17"
+    ],
+    "firstPublicationDate": [
+      "2021-03-17"
+    ]
+  },
+  {
+    "id": [
+      "PMC7972920"
+    ],
+    "source": [
+      "PMC"
+    ],
+    "pmcid": [
+      "PMC7972920"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7972920"
+        ]
+      }
+    ],
+    "title": [
+      "People’s Perceptions of AI Utilization in the Context of COVID-19"
+    ],
+    "authorString": [
+      "Toeppe K, Yan H, Chu S, Markazi D, Walters K."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Toeppe K"
+            ],
+            "firstName": [
+              "Katharina"
+            ],
+            "lastName": [
+              "Toeppe"
+            ],
+            "initials": [
+              "K"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "8 Berlin, Germany"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Yan H"
+            ],
+            "firstName": [
+              "Hui"
+            ],
+            "lastName": [
+              "Yan"
+            ],
+            "initials": [
+              "H"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "9 Beijing, China"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Chu S"
+            ],
+            "firstName": [
+              "Samuel Kai Wah"
+            ],
+            "lastName": [
+              "Chu"
+            ],
+            "initials": [
+              "S"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "10 Hong Kong, Hong Kong"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Markazi D"
+            ],
+            "firstName": [
+              "Daniela M."
+            ],
+            "lastName": [
+              "Markazi"
+            ],
+            "initials": [
+              "D"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Champaign, IL 61820 USA"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Walters K"
+            ],
+            "firstName": [
+              "Kristin"
+            ],
+            "lastName": [
+              "Walters"
+            ],
+            "initials": [
+              "K"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Champaign, IL 61820 USA"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "volume": [
+          "12645"
+        ],
+        "journalIssueId": [
+          "3136235"
+        ],
+        "dateOfPublication": [
+          "2021 Feb"
+        ],
+        "monthOfPublication": [
+          "2"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-02-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Diversity, Divergence, Dialogue16th International Conference, iConference 2021, Beijing, China, March 17–31, 2021, Proceedings, Part I"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "39-46"
+    ],
+    "abstractText": [
+      "Taking into consideration the scarcity of interview-based research in Artificial Intelligence (AI) literature, we conducted 15 semi-structured interviews regarding our participants’ experiences with AI, where we observed a number of notable themes. In this paper, we focused on participants’ thoughts and opinions of AI use during the novel coronavirus (COVID-19) pandemic, a global crisis. Although there have been studies relating AI to COVID-19, there is insufficient in-depth understanding concerning the way people feel about AI utilization in the context of COVID-19. While there was mostly positive feedback that AI could help in the COVID-19 calamity, such as COVID-19 testing and monitoring vital signs, two out of 15 participants expressed doubt that AI could be successfully implemented in healthcare, and four out of 15 participants mentioned potential issues with this AI application. We are among the first researchers exploring people’s opinions on AI usage in the context of COVID-19, so this paper provides a foundation for future work."
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Undetermined"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "chapter-article"
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Artificial intelligence",
+          "Coronavirus",
+          "Public Perception"
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "PubMedCentral"
+            ],
+            "url": [
+              "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972920/?tool=EBI"
+            ]
+          },
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "PubMedCentral"
+            ],
+            "url": [
+              "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972920/pdf/?tool=EBI"
+            ]
+          },
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7972920"
+            ]
+          },
+          {
+            "availability": [
+              "Free"
+            ],
+            "availabilityCode": [
+              "F"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7972920?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "Y"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "N"
+    ],
+    "hasTextMinedTerms": [
+      "N"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "N"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCreation": [
+      "2021-03-22"
+    ],
+    "firstIndexDate": [
+      "2021-03-22"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-22"
+    ],
+    "dateOfRevision": [
+      "2021-03-22"
+    ],
+    "electronicPublicationDate": [
+      "2021-02-17"
+    ],
+    "firstPublicationDate": [
+      "2021-02-17"
+    ]
+  }
+]

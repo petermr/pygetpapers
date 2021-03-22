@@ -1,0 +1,1616 @@
+[
+  {
+    "id": [
+      "33660566"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33660566"
+    ],
+    "pmcid": [
+      "PMC7939569"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7939569"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1080/21505594.2021.1871823"
+    ],
+    "title": [
+      "Host Defence RNases as Antiviral Agents against Enveloped Single Stranded RNA Viruses."
+    ],
+    "authorString": [
+      "Li J, Boix E."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Li J"
+            ],
+            "firstName": [
+              "Jiarui"
+            ],
+            "lastName": [
+              "Li"
+            ],
+            "initials": [
+              "J"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Dpt. Of Biochemistry and Molecular Biology, Faculty of Biosciences, Universitat Autònoma De Barcelona, Spain."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Boix E"
+            ],
+            "firstName": [
+              "Ester"
+            ],
+            "lastName": [
+              "Boix"
+            ],
+            "initials": [
+              "E"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0003-1790-2142",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Dpt. Of Biochemistry and Molecular Biology, Faculty of Biosciences, Universitat Autònoma De Barcelona, Spain."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "authorIdList": [
+      {
+        "authorId": [
+          {
+            "_": "0000-0003-1790-2142",
+            "$": {
+              "type": "ORCID"
+            }
+          }
+        ]
+      }
+    ],
+    "dataLinksTagsList": [
+      {
+        "dataLinkstag": [
+          "altmetrics"
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "12"
+        ],
+        "journalIssueId": [
+          "3080655"
+        ],
+        "dateOfPublication": [
+          "2021 Dec"
+        ],
+        "monthOfPublication": [
+          "12"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-12-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Virulence"
+            ],
+            "ISOAbbreviation": [
+              "Virulence"
+            ],
+            "medlineAbbreviation": [
+              "Virulence"
+            ],
+            "NLMid": [
+              "101531386"
+            ],
+            "ISSN": [
+              "2150-5594"
+            ],
+            "ESSN": [
+              "2150-5608"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "444-469"
+    ],
+    "abstractText": [
+      "Owing to the recent outbreak of Coronavirus Disease of 2019 (COVID-19), it is urgent to develop effective and safe drugs to treat the present pandemic and prevent other viral infections that might come in the future. Proteins from our own innate immune system can serve as ideal sources of novel drug candidates thanks to their safety and immune regulation versatility. Some host defense RNases equipped with antiviral activity have been reported over time. Here, we try to summarize the currently available information on human RNases that can target viral pathogens, with special focus on enveloped single-stranded RNA (ssRNA) viruses. Overall, host RNases can fight viruses by a combined multifaceted strategy, including the enzymatic target of the viral genome, recognition of virus unique patterns, immune modulation, control of stress granule formation, and induction of autophagy/apoptosis pathways. The review also includes a detailed description of representative enveloped ssRNA viruses and their strategies to interact with the host and evade immune recognition. For comparative purposes, we also provide an exhaustive revision of the currently approved or experimental antiviral drugs. Finally, we sum up the current perspectives of drug development to achieve successful eradication of viral infections."
+    ],
+    "affiliation": [
+      "Dpt. Of Biochemistry and Molecular Biology, Faculty of Biosciences, Universitat Autònoma De Barcelona, Spain."
+    ],
+    "publicationStatus": [
+      "ppublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Print"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "Research Support, Non-U.S. Gov't",
+          "review-article",
+          "Review",
+          "Journal Article"
+        ]
+      }
+    ],
+    "meshHeadingList": [
+      {
+        "meshHeading": [
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Eosinophils"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "ME"
+                    ],
+                    "qualifierName": [
+                      "metabolism"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Humans"
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Endoribonucleases"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "ME"
+                    ],
+                    "qualifierName": [
+                      "metabolism"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Ribonuclease, Pancreatic"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "ME"
+                    ],
+                    "qualifierName": [
+                      "metabolism"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "RNA, Viral"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "ME"
+                    ],
+                    "qualifierName": [
+                      "metabolism"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Virus Replication"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "PH"
+                    ],
+                    "qualifierName": [
+                      "physiology"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Pathogen-Associated Molecular Pattern Molecules"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "ME"
+                    ],
+                    "qualifierName": [
+                      "metabolism"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "COVID-19"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "DT"
+                    ],
+                    "qualifierName": [
+                      "drug therapy"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "SARS-CoV-2"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "DE"
+                    ],
+                    "qualifierName": [
+                      "drug effects"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  },
+                  {
+                    "abbreviation": [
+                      "IM"
+                    ],
+                    "qualifierName": [
+                      "immunology"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Antiviral drugs",
+          "innate immunity",
+          "Rnases",
+          "Enveloped Single-stranded Rna Viruses",
+          "Virus-host Interplay"
+        ]
+      }
+    ],
+    "chemicalList": [
+      {
+        "chemical": [
+          {
+            "name": [
+              "RNA, Viral"
+            ],
+            "registryNumber": [
+              "0"
+            ]
+          },
+          {
+            "name": [
+              "Ribonuclease, Pancreatic"
+            ],
+            "registryNumber": [
+              "EC 3.1.27.5"
+            ]
+          },
+          {
+            "name": [
+              "Endoribonucleases"
+            ],
+            "registryNumber": [
+              "EC 3.1.-"
+            ]
+          },
+          {
+            "name": [
+              "2-5A-dependent ribonuclease"
+            ],
+            "registryNumber": [
+              "EC 3.1.26.-"
+            ]
+          },
+          {
+            "name": [
+              "Pathogen-Associated Molecular Pattern Molecules"
+            ],
+            "registryNumber": [
+              "0"
+            ]
+          }
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1080/21505594.2021.1871823"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7939569"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7939569?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "N"
+    ],
+    "citedByCount": [
+      "0"
+    ],
+    "hasData": [
+      "N"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "Y"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCompletion": [
+      "2021-03-16"
+    ],
+    "dateOfCreation": [
+      "2021-03-04"
+    ],
+    "firstIndexDate": [
+      "2021-03-05"
+    ],
+    "fullTextReceivedDate": [
+      "2021-03-20"
+    ],
+    "dateOfRevision": [
+      "2021-03-19"
+    ],
+    "firstPublicationDate": [
+      "2021-12-01"
+    ]
+  },
+  {
+    "id": [
+      "33356979"
+    ],
+    "source": [
+      "MED"
+    ],
+    "pmid": [
+      "33356979"
+    ],
+    "pmcid": [
+      "PMC7832544"
+    ],
+    "fullTextIdList": [
+      {
+        "fullTextId": [
+          "PMC7832544"
+        ]
+      }
+    ],
+    "doi": [
+      "10.1080/22221751.2020.1868951"
+    ],
+    "title": [
+      "Susceptibility of rabbits to SARS-CoV-2."
+    ],
+    "authorString": [
+      "Mykytyn AZ, Lamers MM, Okba NMA, Breugem TI, Schipper D, van den Doel PB, van Run P, van Amerongen G, de Waal L, Koopmans MPG, Stittelaar KJ, van den Brand JMA, Haagmans BL."
+    ],
+    "authorList": [
+      {
+        "author": [
+          {
+            "fullName": [
+              "Mykytyn AZ"
+            ],
+            "firstName": [
+              "Anna Z"
+            ],
+            "lastName": [
+              "Mykytyn"
+            ],
+            "initials": [
+              "AZ"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0001-7188-6871",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Lamers MM"
+            ],
+            "firstName": [
+              "Mart M"
+            ],
+            "lastName": [
+              "Lamers"
+            ],
+            "initials": [
+              "MM"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-1431-4022",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Okba NMA"
+            ],
+            "firstName": [
+              "Nisreen M A"
+            ],
+            "lastName": [
+              "Okba"
+            ],
+            "initials": [
+              "NMA"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-2394-1079",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Breugem TI"
+            ],
+            "firstName": [
+              "Tim I"
+            ],
+            "lastName": [
+              "Breugem"
+            ],
+            "initials": [
+              "TI"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-5558-7043",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Schipper D"
+            ],
+            "firstName": [
+              "Debby"
+            ],
+            "lastName": [
+              "Schipper"
+            ],
+            "initials": [
+              "D"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0001-6449-4765",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "van den Doel PB"
+            ],
+            "firstName": [
+              "Petra B"
+            ],
+            "lastName": [
+              "van den Doel"
+            ],
+            "initials": [
+              "PB"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-5735-5537",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "van Run P"
+            ],
+            "firstName": [
+              "Peter"
+            ],
+            "lastName": [
+              "van Run"
+            ],
+            "initials": [
+              "P"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0001-6963-4165",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "van Amerongen G"
+            ],
+            "firstName": [
+              "Geert"
+            ],
+            "lastName": [
+              "van Amerongen"
+            ],
+            "initials": [
+              "G"
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroclinics Biosciences B.V., Viroclinics Xplore, Schaijk, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "de Waal L"
+            ],
+            "firstName": [
+              "Leon"
+            ],
+            "lastName": [
+              "de Waal"
+            ],
+            "initials": [
+              "L"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-7596-7270",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroclinics Biosciences B.V., Viroclinics Xplore, Schaijk, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Koopmans MPG"
+            ],
+            "firstName": [
+              "Marion P G"
+            ],
+            "lastName": [
+              "Koopmans"
+            ],
+            "initials": [
+              "MPG"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-5204-2312",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Stittelaar KJ"
+            ],
+            "firstName": [
+              "Koert J"
+            ],
+            "lastName": [
+              "Stittelaar"
+            ],
+            "initials": [
+              "KJ"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0002-0607-3214",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroclinics Biosciences B.V., Viroclinics Xplore, Schaijk, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "van den Brand JMA"
+            ],
+            "firstName": [
+              "Judith M A"
+            ],
+            "lastName": [
+              "van den Brand"
+            ],
+            "initials": [
+              "JMA"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0001-8420-5406",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Division of Infectious Diseases and Immunology, Department of Biomolecular Health Sciences, Faculty of Veterinary Medicine, Utrecht University, Utrecht, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fullName": [
+              "Haagmans BL"
+            ],
+            "firstName": [
+              "Bart L"
+            ],
+            "lastName": [
+              "Haagmans"
+            ],
+            "initials": [
+              "BL"
+            ],
+            "authorId": [
+              {
+                "_": "0000-0001-6221-2015",
+                "$": {
+                  "type": "ORCID"
+                }
+              }
+            ],
+            "authorAffiliationDetailsList": [
+              {
+                "authorAffiliation": [
+                  {
+                    "affiliation": [
+                      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "authorIdList": [
+      {
+        "authorId": [
+          {
+            "_": "0000-0001-6221-2015",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0001-6449-4765",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0001-6963-4165",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0001-7188-6871",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0001-8420-5406",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-0607-3214",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-1431-4022",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-2394-1079",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-5204-2312",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-5558-7043",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-5735-5537",
+            "$": {
+              "type": "ORCID"
+            }
+          },
+          {
+            "_": "0000-0002-7596-7270",
+            "$": {
+              "type": "ORCID"
+            }
+          }
+        ]
+      }
+    ],
+    "dataLinksTagsList": [
+      {
+        "dataLinkstag": [
+          "supporting_data",
+          "altmetrics"
+        ]
+      }
+    ],
+    "journalInfo": [
+      {
+        "issue": [
+          "1"
+        ],
+        "volume": [
+          "10"
+        ],
+        "journalIssueId": [
+          "3092862"
+        ],
+        "dateOfPublication": [
+          "2021 Dec"
+        ],
+        "monthOfPublication": [
+          "12"
+        ],
+        "yearOfPublication": [
+          "2021"
+        ],
+        "printPublicationDate": [
+          "2021-12-01"
+        ],
+        "journal": [
+          {
+            "title": [
+              "Emerging microbes & infections"
+            ],
+            "ISOAbbreviation": [
+              "Emerg Microbes Infect"
+            ],
+            "medlineAbbreviation": [
+              "Emerg Microbes Infect"
+            ],
+            "NLMid": [
+              "101594885"
+            ],
+            "ISSN": [
+              "2222-1751"
+            ],
+            "ESSN": [
+              "2222-1751"
+            ]
+          }
+        ]
+      }
+    ],
+    "pubYear": [
+      "2021"
+    ],
+    "pageInfo": [
+      "1-7"
+    ],
+    "abstractText": [
+      "Transmission of severe acute respiratory coronavirus-2 (SARS-CoV-2) between livestock and humans is a potential public health concern. We demonstrate the susceptibility of rabbits to SARS-CoV-2, which excrete infectious virus from the nose and throat upon experimental inoculation. Therefore, investigations on the presence of SARS-CoV-2 in farmed rabbits should be considered."
+    ],
+    "affiliation": [
+      "Viroscience department, Erasmus Medical Center, Rotterdam, the Netherlands."
+    ],
+    "publicationStatus": [
+      "ppublish"
+    ],
+    "language": [
+      "eng"
+    ],
+    "pubModel": [
+      "Print"
+    ],
+    "pubTypeList": [
+      {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      }
+    ],
+    "meshHeadingList": [
+      {
+        "meshHeading": [
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Animals"
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Rabbits"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "VI"
+                    ],
+                    "qualifierName": [
+                      "virology"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Humans"
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Disease Susceptibility"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "VE"
+                    ],
+                    "qualifierName": [
+                      "veterinary"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Virus Shedding"
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Female"
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "HEK293 Cells"
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "COVID-19"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "ET"
+                    ],
+                    "qualifierName": [
+                      "etiology"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  },
+                  {
+                    "abbreviation": [
+                      "TM"
+                    ],
+                    "qualifierName": [
+                      "transmission"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  },
+                  {
+                    "abbreviation": [
+                      "VE"
+                    ],
+                    "qualifierName": [
+                      "veterinary"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "Angiotensin-Converting Enzyme 2"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "PH"
+                    ],
+                    "qualifierName": [
+                      "physiology"
+                    ],
+                    "majorTopic_YN": [
+                      "N"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "majorTopic_YN": [
+              "N"
+            ],
+            "descriptorName": [
+              "SARS-CoV-2"
+            ],
+            "meshQualifierList": [
+              {
+                "meshQualifier": [
+                  {
+                    "abbreviation": [
+                      "IP"
+                    ],
+                    "qualifierName": [
+                      "isolation & purification"
+                    ],
+                    "majorTopic_YN": [
+                      "Y"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keywordList": [
+      {
+        "keyword": [
+          "Rabbit",
+          "Transmission",
+          "Susceptibility",
+          "Coronavirus",
+          "Covid-19",
+          "Sars-cov-2"
+        ]
+      }
+    ],
+    "chemicalList": [
+      {
+        "chemical": [
+          {
+            "name": [
+              "Angiotensin-Converting Enzyme 2"
+            ],
+            "registryNumber": [
+              "EC 3.4.17.23"
+            ]
+          }
+        ]
+      }
+    ],
+    "subsetList": [
+      {
+        "subset": [
+          {
+            "code": [
+              "IM"
+            ],
+            "name": [
+              "Index Medicus"
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTextUrlList": [
+      {
+        "fullTextUrl": [
+          {
+            "availability": [
+              "Subscription required"
+            ],
+            "availabilityCode": [
+              "S"
+            ],
+            "documentStyle": [
+              "doi"
+            ],
+            "site": [
+              "DOI"
+            ],
+            "url": [
+              "https://doi.org/10.1080/22221751.2020.1868951"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "html"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7832544"
+            ]
+          },
+          {
+            "availability": [
+              "Open access"
+            ],
+            "availabilityCode": [
+              "OA"
+            ],
+            "documentStyle": [
+              "pdf"
+            ],
+            "site": [
+              "Europe_PMC"
+            ],
+            "url": [
+              "https://europepmc.org/articles/PMC7832544?pdf=render"
+            ]
+          }
+        ]
+      }
+    ],
+    "commentCorrectionList": [
+      {
+        "commentCorrection": [
+          {
+            "id": [
+              "PPR206942"
+            ],
+            "source": [
+              "PPR"
+            ],
+            "type": [
+              "Preprint in"
+            ],
+            "note": [
+              "Link created based on a title-first author match"
+            ],
+            "orderIn": [
+              "10002"
+            ]
+          }
+        ]
+      }
+    ],
+    "isOpenAccess": [
+      "Y"
+    ],
+    "inEPMC": [
+      "Y"
+    ],
+    "inPMC": [
+      "N"
+    ],
+    "hasPDF": [
+      "Y"
+    ],
+    "hasBook": [
+      "N"
+    ],
+    "hasSuppl": [
+      "Y"
+    ],
+    "citedByCount": [
+      "4"
+    ],
+    "hasData": [
+      "Y"
+    ],
+    "hasReferences": [
+      "Y"
+    ],
+    "hasTextMinedTerms": [
+      "Y"
+    ],
+    "hasDbCrossReferences": [
+      "N"
+    ],
+    "hasLabsLinks": [
+      "Y"
+    ],
+    "license": [
+      "cc by"
+    ],
+    "authMan": [
+      "N"
+    ],
+    "epmcAuthMan": [
+      "N"
+    ],
+    "nihAuthMan": [
+      "N"
+    ],
+    "hasTMAccessionNumbers": [
+      "N"
+    ],
+    "dateOfCompletion": [
+      "2021-01-26"
+    ],
+    "dateOfCreation": [
+      "2020-12-28"
+    ],
+    "firstIndexDate": [
+      "2020-12-29"
+    ],
+    "fullTextReceivedDate": [
+      "2021-02-05"
+    ],
+    "dateOfRevision": [
+      "2021-02-03"
+    ],
+    "firstPublicationDate": [
+      "2021-12-01"
+    ]
+  }
+]

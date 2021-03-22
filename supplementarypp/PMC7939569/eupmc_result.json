@@ -1,0 +1,613 @@
+{
+  "id": [
+    "33660566"
+  ],
+  "source": [
+    "MED"
+  ],
+  "pmid": [
+    "33660566"
+  ],
+  "pmcid": [
+    "PMC7939569"
+  ],
+  "fullTextIdList": [
+    {
+      "fullTextId": [
+        "PMC7939569"
+      ]
+    }
+  ],
+  "doi": [
+    "10.1080/21505594.2021.1871823"
+  ],
+  "title": [
+    "Host Defence RNases as Antiviral Agents against Enveloped Single Stranded RNA Viruses."
+  ],
+  "authorString": [
+    "Li J, Boix E."
+  ],
+  "authorList": [
+    {
+      "author": [
+        {
+          "fullName": [
+            "Li J"
+          ],
+          "firstName": [
+            "Jiarui"
+          ],
+          "lastName": [
+            "Li"
+          ],
+          "initials": [
+            "J"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Dpt. Of Biochemistry and Molecular Biology, Faculty of Biosciences, Universitat Autònoma De Barcelona, Spain."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Boix E"
+          ],
+          "firstName": [
+            "Ester"
+          ],
+          "lastName": [
+            "Boix"
+          ],
+          "initials": [
+            "E"
+          ],
+          "authorId": [
+            {
+              "_": "0000-0003-1790-2142",
+              "$": {
+                "type": "ORCID"
+              }
+            }
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Dpt. Of Biochemistry and Molecular Biology, Faculty of Biosciences, Universitat Autònoma De Barcelona, Spain."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "authorIdList": [
+    {
+      "authorId": [
+        {
+          "_": "0000-0003-1790-2142",
+          "$": {
+            "type": "ORCID"
+          }
+        }
+      ]
+    }
+  ],
+  "dataLinksTagsList": [
+    {
+      "dataLinkstag": [
+        "altmetrics"
+      ]
+    }
+  ],
+  "journalInfo": [
+    {
+      "issue": [
+        "1"
+      ],
+      "volume": [
+        "12"
+      ],
+      "journalIssueId": [
+        "3080655"
+      ],
+      "dateOfPublication": [
+        "2021 Dec"
+      ],
+      "monthOfPublication": [
+        "12"
+      ],
+      "yearOfPublication": [
+        "2021"
+      ],
+      "printPublicationDate": [
+        "2021-12-01"
+      ],
+      "journal": [
+        {
+          "title": [
+            "Virulence"
+          ],
+          "ISOAbbreviation": [
+            "Virulence"
+          ],
+          "medlineAbbreviation": [
+            "Virulence"
+          ],
+          "NLMid": [
+            "101531386"
+          ],
+          "ISSN": [
+            "2150-5594"
+          ],
+          "ESSN": [
+            "2150-5608"
+          ]
+        }
+      ]
+    }
+  ],
+  "pubYear": [
+    "2021"
+  ],
+  "pageInfo": [
+    "444-469"
+  ],
+  "abstractText": [
+    "Owing to the recent outbreak of Coronavirus Disease of 2019 (COVID-19), it is urgent to develop effective and safe drugs to treat the present pandemic and prevent other viral infections that might come in the future. Proteins from our own innate immune system can serve as ideal sources of novel drug candidates thanks to their safety and immune regulation versatility. Some host defense RNases equipped with antiviral activity have been reported over time. Here, we try to summarize the currently available information on human RNases that can target viral pathogens, with special focus on enveloped single-stranded RNA (ssRNA) viruses. Overall, host RNases can fight viruses by a combined multifaceted strategy, including the enzymatic target of the viral genome, recognition of virus unique patterns, immune modulation, control of stress granule formation, and induction of autophagy/apoptosis pathways. The review also includes a detailed description of representative enveloped ssRNA viruses and their strategies to interact with the host and evade immune recognition. For comparative purposes, we also provide an exhaustive revision of the currently approved or experimental antiviral drugs. Finally, we sum up the current perspectives of drug development to achieve successful eradication of viral infections."
+  ],
+  "affiliation": [
+    "Dpt. Of Biochemistry and Molecular Biology, Faculty of Biosciences, Universitat Autònoma De Barcelona, Spain."
+  ],
+  "publicationStatus": [
+    "ppublish"
+  ],
+  "language": [
+    "eng"
+  ],
+  "pubModel": [
+    "Print"
+  ],
+  "pubTypeList": [
+    {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "review-article",
+        "Review",
+        "Journal Article"
+      ]
+    }
+  ],
+  "meshHeadingList": [
+    {
+      "meshHeading": [
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "Eosinophils"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "ME"
+                  ],
+                  "qualifierName": [
+                    "metabolism"
+                  ],
+                  "majorTopic_YN": [
+                    "N"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "Humans"
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "Endoribonucleases"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "ME"
+                  ],
+                  "qualifierName": [
+                    "metabolism"
+                  ],
+                  "majorTopic_YN": [
+                    "Y"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "Ribonuclease, Pancreatic"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "ME"
+                  ],
+                  "qualifierName": [
+                    "metabolism"
+                  ],
+                  "majorTopic_YN": [
+                    "Y"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "RNA, Viral"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "ME"
+                  ],
+                  "qualifierName": [
+                    "metabolism"
+                  ],
+                  "majorTopic_YN": [
+                    "Y"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "Virus Replication"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "PH"
+                  ],
+                  "qualifierName": [
+                    "physiology"
+                  ],
+                  "majorTopic_YN": [
+                    "Y"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "Pathogen-Associated Molecular Pattern Molecules"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "ME"
+                  ],
+                  "qualifierName": [
+                    "metabolism"
+                  ],
+                  "majorTopic_YN": [
+                    "N"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "COVID-19"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "DT"
+                  ],
+                  "qualifierName": [
+                    "drug therapy"
+                  ],
+                  "majorTopic_YN": [
+                    "Y"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "majorTopic_YN": [
+            "N"
+          ],
+          "descriptorName": [
+            "SARS-CoV-2"
+          ],
+          "meshQualifierList": [
+            {
+              "meshQualifier": [
+                {
+                  "abbreviation": [
+                    "DE"
+                  ],
+                  "qualifierName": [
+                    "drug effects"
+                  ],
+                  "majorTopic_YN": [
+                    "N"
+                  ]
+                },
+                {
+                  "abbreviation": [
+                    "IM"
+                  ],
+                  "qualifierName": [
+                    "immunology"
+                  ],
+                  "majorTopic_YN": [
+                    "N"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "keywordList": [
+    {
+      "keyword": [
+        "Antiviral drugs",
+        "innate immunity",
+        "Rnases",
+        "Enveloped Single-stranded Rna Viruses",
+        "Virus-host Interplay"
+      ]
+    }
+  ],
+  "chemicalList": [
+    {
+      "chemical": [
+        {
+          "name": [
+            "RNA, Viral"
+          ],
+          "registryNumber": [
+            "0"
+          ]
+        },
+        {
+          "name": [
+            "Ribonuclease, Pancreatic"
+          ],
+          "registryNumber": [
+            "EC 3.1.27.5"
+          ]
+        },
+        {
+          "name": [
+            "Endoribonucleases"
+          ],
+          "registryNumber": [
+            "EC 3.1.-"
+          ]
+        },
+        {
+          "name": [
+            "2-5A-dependent ribonuclease"
+          ],
+          "registryNumber": [
+            "EC 3.1.26.-"
+          ]
+        },
+        {
+          "name": [
+            "Pathogen-Associated Molecular Pattern Molecules"
+          ],
+          "registryNumber": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ],
+  "subsetList": [
+    {
+      "subset": [
+        {
+          "code": [
+            "IM"
+          ],
+          "name": [
+            "Index Medicus"
+          ]
+        }
+      ]
+    }
+  ],
+  "fullTextUrlList": [
+    {
+      "fullTextUrl": [
+        {
+          "availability": [
+            "Subscription required"
+          ],
+          "availabilityCode": [
+            "S"
+          ],
+          "documentStyle": [
+            "doi"
+          ],
+          "site": [
+            "DOI"
+          ],
+          "url": [
+            "https://doi.org/10.1080/21505594.2021.1871823"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7939569"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7939569?pdf=render"
+          ]
+        }
+      ]
+    }
+  ],
+  "isOpenAccess": [
+    "Y"
+  ],
+  "inEPMC": [
+    "Y"
+  ],
+  "inPMC": [
+    "N"
+  ],
+  "hasPDF": [
+    "Y"
+  ],
+  "hasBook": [
+    "N"
+  ],
+  "hasSuppl": [
+    "N"
+  ],
+  "citedByCount": [
+    "0"
+  ],
+  "hasData": [
+    "N"
+  ],
+  "hasReferences": [
+    "Y"
+  ],
+  "hasTextMinedTerms": [
+    "Y"
+  ],
+  "hasDbCrossReferences": [
+    "N"
+  ],
+  "hasLabsLinks": [
+    "Y"
+  ],
+  "license": [
+    "cc by"
+  ],
+  "authMan": [
+    "N"
+  ],
+  "epmcAuthMan": [
+    "N"
+  ],
+  "nihAuthMan": [
+    "N"
+  ],
+  "hasTMAccessionNumbers": [
+    "N"
+  ],
+  "dateOfCompletion": [
+    "2021-03-16"
+  ],
+  "dateOfCreation": [
+    "2021-03-04"
+  ],
+  "firstIndexDate": [
+    "2021-03-05"
+  ],
+  "fullTextReceivedDate": [
+    "2021-03-20"
+  ],
+  "dateOfRevision": [
+    "2021-03-19"
+  ],
+  "firstPublicationDate": [
+    "2021-12-01"
+  ]
+}

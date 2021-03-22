@@ -1,0 +1,405 @@
+{
+  "id": [
+    "PMC7972922"
+  ],
+  "source": [
+    "PMC"
+  ],
+  "pmcid": [
+    "PMC7972922"
+  ],
+  "fullTextIdList": [
+    {
+      "fullTextId": [
+        "PMC7972922"
+      ]
+    }
+  ],
+  "title": [
+    "Understanding Team Collaboration in Artificial Intelligence from the Perspective of Geographic Distance"
+  ],
+  "authorString": [
+    "Toeppe K, Yan H, Chu S, Tang X, Li X, Ding Y, Ma F."
+  ],
+  "authorList": [
+    {
+      "author": [
+        {
+          "fullName": [
+            "Toeppe K"
+          ],
+          "firstName": [
+            "Katharina"
+          ],
+          "lastName": [
+            "Toeppe"
+          ],
+          "initials": [
+            "K"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "8 Berlin, Germany"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Yan H"
+          ],
+          "firstName": [
+            "Hui"
+          ],
+          "lastName": [
+            "Yan"
+          ],
+          "initials": [
+            "H"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "9 Beijing, China"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Chu S"
+          ],
+          "firstName": [
+            "Samuel Kai Wah"
+          ],
+          "lastName": [
+            "Chu"
+          ],
+          "initials": [
+            "S"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "10 Hong Kong, Hong Kong"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Tang X"
+          ],
+          "firstName": [
+            "Xuli"
+          ],
+          "lastName": [
+            "Tang"
+          ],
+          "initials": [
+            "X"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "11 Wuhan, China"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Li X"
+          ],
+          "firstName": [
+            "Xin"
+          ],
+          "lastName": [
+            "Li"
+          ],
+          "initials": [
+            "X"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "11 Wuhan, China"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Ding Y"
+          ],
+          "firstName": [
+            "Ying"
+          ],
+          "lastName": [
+            "Ding"
+          ],
+          "initials": [
+            "Y"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "12 TX, USA"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Ma F"
+          ],
+          "firstName": [
+            "Feicheng"
+          ],
+          "lastName": [
+            "Ma"
+          ],
+          "initials": [
+            "F"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "11 Wuhan, China"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journalInfo": [
+    {
+      "volume": [
+        "12645"
+      ],
+      "journalIssueId": [
+        "3136235"
+      ],
+      "dateOfPublication": [
+        "2021 Feb"
+      ],
+      "monthOfPublication": [
+        "2"
+      ],
+      "yearOfPublication": [
+        "2021"
+      ],
+      "printPublicationDate": [
+        "2021-02-01"
+      ],
+      "journal": [
+        {
+          "title": [
+            "Diversity, Divergence, Dialogue16th International Conference, iConference 2021, Beijing, China, March 17–31, 2021, Proceedings, Part I"
+          ]
+        }
+      ]
+    }
+  ],
+  "pubYear": [
+    "2021"
+  ],
+  "pageInfo": [
+    "14-23"
+  ],
+  "abstractText": [
+    "This paper analyzes team collaboration in the field of Artificial Intelligence (AI) from the perspective of geographic distance. We obtained 1,584,175 AI related publications during 1950–2019 from the Microsoft Academic Graph. Three latitude-and-longitude-based indicators were employed to quantify the geographic distance of collaborations in AI over time at domestic and international levels. The results show team collaborations in AI has been more popular in the field over time with around 42,000 (38.4%) multiple-affiliation AI publications in 2019. The changes in geographic distances of team collaborations indicate the increase of breadth and density for both domestic and international collaborations in AI over time. In addition, the United States produced the largest number of single-country and internationally collaborated AI publications, and China has played an important role in international collaborations in AI after 2010."
+  ],
+  "language": [
+    "eng"
+  ],
+  "pubModel": [
+    "Undetermined"
+  ],
+  "pubTypeList": [
+    {
+      "pubType": [
+        "chapter-article"
+      ]
+    }
+  ],
+  "keywordList": [
+    {
+      "keyword": [
+        "Artificial intelligence",
+        "Team Collaboration",
+        "Geographic Distance"
+      ]
+    }
+  ],
+  "fullTextUrlList": [
+    {
+      "fullTextUrl": [
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "PubMedCentral"
+          ],
+          "url": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972922/?tool=EBI"
+          ]
+        },
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "PubMedCentral"
+          ],
+          "url": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972922/pdf/?tool=EBI"
+          ]
+        },
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7972922"
+          ]
+        },
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7972922?pdf=render"
+          ]
+        }
+      ]
+    }
+  ],
+  "isOpenAccess": [
+    "Y"
+  ],
+  "inEPMC": [
+    "Y"
+  ],
+  "inPMC": [
+    "Y"
+  ],
+  "hasPDF": [
+    "Y"
+  ],
+  "hasBook": [
+    "N"
+  ],
+  "hasSuppl": [
+    "N"
+  ],
+  "citedByCount": [
+    "0"
+  ],
+  "hasData": [
+    "N"
+  ],
+  "hasReferences": [
+    "N"
+  ],
+  "hasTextMinedTerms": [
+    "N"
+  ],
+  "hasDbCrossReferences": [
+    "N"
+  ],
+  "hasLabsLinks": [
+    "N"
+  ],
+  "authMan": [
+    "N"
+  ],
+  "epmcAuthMan": [
+    "N"
+  ],
+  "nihAuthMan": [
+    "N"
+  ],
+  "hasTMAccessionNumbers": [
+    "N"
+  ],
+  "dateOfCreation": [
+    "2021-03-22"
+  ],
+  "firstIndexDate": [
+    "2021-03-22"
+  ],
+  "fullTextReceivedDate": [
+    "2021-03-22"
+  ],
+  "dateOfRevision": [
+    "2021-03-22"
+  ],
+  "electronicPublicationDate": [
+    "2021-02-17"
+  ],
+  "firstPublicationDate": [
+    "2021-02-17"
+  ]
+}
