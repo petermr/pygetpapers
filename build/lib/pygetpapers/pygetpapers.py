@@ -376,9 +376,9 @@ class pygetpapers:
                 self.writexml(directory_url, citationurl, getcitations)
                 logging.info(f"Made Citations for {pmcid}")
             if supplementaryFiles:
-                print(final_xml_dict[paper]["full"]["id"])
                 self.getsupplementaryfiles(
                     final_xml_dict[paper]["full"]["id"], directory_url, supplementaryfilesurl)
+                logging.info(f"Made Supplementary files for {pmcid}")
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             if final_xml_dict[paper]["downloaded"] == False:
@@ -426,10 +426,10 @@ class pygetpapers:
             object = json.load(f)
         return object
 
-    def apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
+    def apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False, synonym=True):
         import os
         import logging
-        query_result = self.europepmc(query, size)
+        query_result = self.europepmc(query, size, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv)
 
         if not(onlymakejson):
@@ -438,7 +438,7 @@ class pygetpapers:
             self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml,
                               references=references, citations=citations, supplementaryFiles=supplementaryFiles)
 
-    def scrapingpaperdownload(self, query, size, onlyresearcharticles=False, onlypreprints=False, onlyreviews=False, onlymakejson=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
+    def scrapingpaperdownload(self, query, size, onlyresearcharticles=False, onlypreprints=False, onlyreviews=False, onlymakejson=False, makexml=False, references=False, citations=False, supplementaryFiles=False, synonym=True):
         query_result = self.webscrapepmc(
             query, size, onlyresearcharticles=onlyresearcharticles, onlypreprints=onlypreprints, onlyreviews=onlyreviews)
 
@@ -446,10 +446,11 @@ class pygetpapers:
             self.makexmlfiles(query_result, makexml=makexml,
                               references=references, citations=citations, supplementaryFiles=supplementaryFiles)
 
-    def updatecorpus(self, query, original_json, size, onlymakejson=False, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
+    def updatecorpus(self, query, original_json, size, onlymakejson=False, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False, synonym=True):
         import os
         import logging
-        query_result = self.europepmc(query, size, update=original_json)
+        query_result = self.europepmc(
+            query, size, update=original_json, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv,
                      update=original_json)
         if not(onlymakejson):
@@ -458,13 +459,13 @@ class pygetpapers:
             self.makexmlfiles(read_json, getpdf=getpdf,
                               makecsv=makecsv, makexml=makexml, references=references, citations=citations, supplementaryFiles=supplementaryFiles)
 
-    def noexecute(self, query, size):
+    def noexecute(self, query, size, synonym=True):
         import logging
         import xmltodict
         import requests
         import time
         builtqueryparams = self.buildquery(
-            '*', 25, query, synonym=True)
+            '*', 25, query, synonym=synonym)
         result = self.postquery(
             builtqueryparams['headers'], builtqueryparams['payload'])
         totalhits = result['responseWrapper']['hitCount']
@@ -520,7 +521,8 @@ class pygetpapers:
                             help="Saves json file containing the result of the query in storage. The json file can be given to --restart to download the papers later.")
         parser.add_argument("-c", "--makecsv", default=False, action='store_true',
                             help="Stores the per-document metadata as csv. Works only with --api method.")
-
+        parser.add_argument("--synonym", default=False, action='store_true',
+                            help="Results contain synonyms as well.")
         '''
         group = parser.add_mutually_exclusive_group()
         group.add_argument('--api', action='store_true',
@@ -576,7 +578,7 @@ class pygetpapers:
             sys.exit(1)
 
         if args.noexecute:
-            self.noexecute(args.query, 100)
+            self.noexecute(args.query, 100, synonym=args.synonym)
         elif args.version:
             logging.info(version)
         elif args.restart:
@@ -590,11 +592,11 @@ class pygetpapers:
             read_json = self.readjsondata(args.update)
             os.chdir(os.path.dirname(args.update))
             self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
-                              makecsv=args.makecsv, makexml=args.xml, references=args.references, citations=args.citations, supplementaryFiles=args.supp)
+                              makecsv=args.makecsv, makexml=args.xml, references=args.references, citations=args.citations, supplementaryFiles=args.supp, synonym=args.synonym)
         else:
             if args.query:
                 self.apipaperdownload(args.query, args.limit,
-                                      onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml, references=args.references, citations=args.citations, supplementaryFiles=args.supp)
+                                      onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml, references=args.references, citations=args.citations, supplementaryFiles=args.supp, synonym=args.synonym)
         # Have to check with EuropePMC's policy about webscraping
 
         '''
