@@ -1,0 +1,355 @@
+{
+  "id": [
+    "PMC7972920"
+  ],
+  "source": [
+    "PMC"
+  ],
+  "pmcid": [
+    "PMC7972920"
+  ],
+  "fullTextIdList": [
+    {
+      "fullTextId": [
+        "PMC7972920"
+      ]
+    }
+  ],
+  "title": [
+    "People’s Perceptions of AI Utilization in the Context of COVID-19"
+  ],
+  "authorString": [
+    "Toeppe K, Yan H, Chu S, Markazi D, Walters K."
+  ],
+  "authorList": [
+    {
+      "author": [
+        {
+          "fullName": [
+            "Toeppe K"
+          ],
+          "firstName": [
+            "Katharina"
+          ],
+          "lastName": [
+            "Toeppe"
+          ],
+          "initials": [
+            "K"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "8 Berlin, Germany"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Yan H"
+          ],
+          "firstName": [
+            "Hui"
+          ],
+          "lastName": [
+            "Yan"
+          ],
+          "initials": [
+            "H"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "9 Beijing, China"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Chu S"
+          ],
+          "firstName": [
+            "Samuel Kai Wah"
+          ],
+          "lastName": [
+            "Chu"
+          ],
+          "initials": [
+            "S"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "10 Hong Kong, Hong Kong"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Markazi D"
+          ],
+          "firstName": [
+            "Daniela M."
+          ],
+          "lastName": [
+            "Markazi"
+          ],
+          "initials": [
+            "D"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Champaign, IL 61820 USA"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Walters K"
+          ],
+          "firstName": [
+            "Kristin"
+          ],
+          "lastName": [
+            "Walters"
+          ],
+          "initials": [
+            "K"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Champaign, IL 61820 USA"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journalInfo": [
+    {
+      "volume": [
+        "12645"
+      ],
+      "journalIssueId": [
+        "3136235"
+      ],
+      "dateOfPublication": [
+        "2021 Feb"
+      ],
+      "monthOfPublication": [
+        "2"
+      ],
+      "yearOfPublication": [
+        "2021"
+      ],
+      "printPublicationDate": [
+        "2021-02-01"
+      ],
+      "journal": [
+        {
+          "title": [
+            "Diversity, Divergence, Dialogue16th International Conference, iConference 2021, Beijing, China, March 17–31, 2021, Proceedings, Part I"
+          ]
+        }
+      ]
+    }
+  ],
+  "pubYear": [
+    "2021"
+  ],
+  "pageInfo": [
+    "39-46"
+  ],
+  "abstractText": [
+    "Taking into consideration the scarcity of interview-based research in Artificial Intelligence (AI) literature, we conducted 15 semi-structured interviews regarding our participants’ experiences with AI, where we observed a number of notable themes. In this paper, we focused on participants’ thoughts and opinions of AI use during the novel coronavirus (COVID-19) pandemic, a global crisis. Although there have been studies relating AI to COVID-19, there is insufficient in-depth understanding concerning the way people feel about AI utilization in the context of COVID-19. While there was mostly positive feedback that AI could help in the COVID-19 calamity, such as COVID-19 testing and monitoring vital signs, two out of 15 participants expressed doubt that AI could be successfully implemented in healthcare, and four out of 15 participants mentioned potential issues with this AI application. We are among the first researchers exploring people’s opinions on AI usage in the context of COVID-19, so this paper provides a foundation for future work."
+  ],
+  "language": [
+    "eng"
+  ],
+  "pubModel": [
+    "Undetermined"
+  ],
+  "pubTypeList": [
+    {
+      "pubType": [
+        "chapter-article"
+      ]
+    }
+  ],
+  "keywordList": [
+    {
+      "keyword": [
+        "Artificial intelligence",
+        "Coronavirus",
+        "Public Perception"
+      ]
+    }
+  ],
+  "fullTextUrlList": [
+    {
+      "fullTextUrl": [
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "PubMedCentral"
+          ],
+          "url": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972920/?tool=EBI"
+          ]
+        },
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "PubMedCentral"
+          ],
+          "url": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7972920/pdf/?tool=EBI"
+          ]
+        },
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7972920"
+          ]
+        },
+        {
+          "availability": [
+            "Free"
+          ],
+          "availabilityCode": [
+            "F"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7972920?pdf=render"
+          ]
+        }
+      ]
+    }
+  ],
+  "isOpenAccess": [
+    "Y"
+  ],
+  "inEPMC": [
+    "Y"
+  ],
+  "inPMC": [
+    "Y"
+  ],
+  "hasPDF": [
+    "Y"
+  ],
+  "hasBook": [
+    "N"
+  ],
+  "hasSuppl": [
+    "N"
+  ],
+  "citedByCount": [
+    "0"
+  ],
+  "hasData": [
+    "N"
+  ],
+  "hasReferences": [
+    "N"
+  ],
+  "hasTextMinedTerms": [
+    "N"
+  ],
+  "hasDbCrossReferences": [
+    "N"
+  ],
+  "hasLabsLinks": [
+    "N"
+  ],
+  "authMan": [
+    "N"
+  ],
+  "epmcAuthMan": [
+    "N"
+  ],
+  "nihAuthMan": [
+    "N"
+  ],
+  "hasTMAccessionNumbers": [
+    "N"
+  ],
+  "dateOfCreation": [
+    "2021-03-22"
+  ],
+  "firstIndexDate": [
+    "2021-03-22"
+  ],
+  "fullTextReceivedDate": [
+    "2021-03-22"
+  ],
+  "dateOfRevision": [
+    "2021-03-22"
+  ],
+  "electronicPublicationDate": [
+    "2021-02-17"
+  ],
+  "firstPublicationDate": [
+    "2021-02-17"
+  ]
+}

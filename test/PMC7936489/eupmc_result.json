@@ -1,0 +1,558 @@
+{
+  "id": [
+    "33676570"
+  ],
+  "source": [
+    "MED"
+  ],
+  "pmid": [
+    "33676570"
+  ],
+  "pmcid": [
+    "PMC7936489"
+  ],
+  "fullTextIdList": [
+    {
+      "fullTextId": [
+        "PMC7936489"
+      ]
+    }
+  ],
+  "doi": [
+    "10.1186/s13567-021-00902-4"
+  ],
+  "title": [
+    "Research perspectives on animal health in the era of artificial intelligence."
+  ],
+  "authorString": [
+    "Ezanno P, Picault S, Beaunée G, Bailly X, Muñoz F, Duboz R, Monod H, Guégan JF."
+  ],
+  "authorList": [
+    {
+      "author": [
+        {
+          "fullName": [
+            "Ezanno P"
+          ],
+          "firstName": [
+            "Pauline"
+          ],
+          "lastName": [
+            "Ezanno"
+          ],
+          "initials": [
+            "P"
+          ],
+          "authorId": [
+            {
+              "_": "0000-0002-0034-8950",
+              "$": {
+                "type": "ORCID"
+              }
+            }
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "INRAE, Oniris, BIOEPAR, Nantes, France. pauline.ezanno@inrae.fr."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Picault S"
+          ],
+          "firstName": [
+            "Sébastien"
+          ],
+          "lastName": [
+            "Picault"
+          ],
+          "initials": [
+            "S"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "INRAE, Oniris, BIOEPAR, Nantes, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Beaunée G"
+          ],
+          "firstName": [
+            "Gaël"
+          ],
+          "lastName": [
+            "Beaunée"
+          ],
+          "initials": [
+            "G"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "INRAE, Oniris, BIOEPAR, Nantes, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Bailly X"
+          ],
+          "firstName": [
+            "Xavier"
+          ],
+          "lastName": [
+            "Bailly"
+          ],
+          "initials": [
+            "X"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "INRAE, EpiA, Theix, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Muñoz F"
+          ],
+          "firstName": [
+            "Facundo"
+          ],
+          "lastName": [
+            "Muñoz"
+          ],
+          "initials": [
+            "F"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "ASTRE, Univ Montpellier, CIRAD, INRAE, Montpellier, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Duboz R"
+          ],
+          "firstName": [
+            "Raphaël"
+          ],
+          "lastName": [
+            "Duboz"
+          ],
+          "initials": [
+            "R"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "ASTRE, Univ Montpellier, CIRAD, INRAE, Montpellier, France."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Sorbonne Université, IRD, UMMISCO, Bondy, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Monod H"
+          ],
+          "firstName": [
+            "Hervé"
+          ],
+          "lastName": [
+            "Monod"
+          ],
+          "initials": [
+            "H"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Université Paris-Saclay, INRAE, Jouy-en-Josas, MaIAGE, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Guégan JF"
+          ],
+          "firstName": [
+            "Jean-François"
+          ],
+          "lastName": [
+            "Guégan"
+          ],
+          "initials": [
+            "JF"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "ASTRE, Univ Montpellier, CIRAD, INRAE, Montpellier, France."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "MIVEGEC, IRD, CNRS, Univ Montpellier, Montpellier, France."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Comité National Français Sur Les Changements Globaux, Paris, France."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "authorIdList": [
+    {
+      "authorId": [
+        {
+          "_": "0000-0002-0034-8950",
+          "$": {
+            "type": "ORCID"
+          }
+        }
+      ]
+    }
+  ],
+  "dataLinksTagsList": [
+    {
+      "dataLinkstag": [
+        "supporting_data",
+        "altmetrics"
+      ]
+    }
+  ],
+  "journalInfo": [
+    {
+      "issue": [
+        "1"
+      ],
+      "volume": [
+        "52"
+      ],
+      "journalIssueId": [
+        "3124378"
+      ],
+      "dateOfPublication": [
+        "2021 Mar"
+      ],
+      "monthOfPublication": [
+        "3"
+      ],
+      "yearOfPublication": [
+        "2021"
+      ],
+      "printPublicationDate": [
+        "2021-03-01"
+      ],
+      "journal": [
+        {
+          "title": [
+            "Veterinary research"
+          ],
+          "ISOAbbreviation": [
+            "Vet Res"
+          ],
+          "medlineAbbreviation": [
+            "Vet Res"
+          ],
+          "NLMid": [
+            "9309551"
+          ],
+          "ISSN": [
+            "0928-4249"
+          ],
+          "ESSN": [
+            "1297-9716"
+          ]
+        }
+      ]
+    }
+  ],
+  "pubYear": [
+    "2021"
+  ],
+  "pageInfo": [
+    "40"
+  ],
+  "abstractText": [
+    "Leveraging artificial intelligence (AI) approaches in animal health (AH) makes it possible to address highly complex issues such as those encountered in quantitative and predictive epidemiology, animal/human precision-based medicine, or to study host × pathogen interactions. AI may contribute (i) to diagnosis and disease case detection, (ii) to more reliable predictions and reduced errors, (iii) to representing more realistically complex biological systems and rendering computing codes more readable to non-computer scientists, (iv) to speeding-up decisions and improving accuracy in risk analyses, and (v) to better targeted interventions and anticipated negative effects. In turn, challenges in AH may stimulate AI research due to specificity of AH systems, data, constraints, and analytical objectives. Based on a literature review of scientific papers at the interface between AI and AH covering the period 2009-2019, and interviews with French researchers positioned at this interface, the present study explains the main AH areas where various AI approaches are currently mobilised, how it may contribute to renew AH research issues and remove methodological or conceptual barriers. After presenting the possible obstacles and levers, we propose several recommendations to better grasp the challenge represented by the AH/AI interface. With the development of several recent concepts promoting a global and multisectoral perspective in the field of health, AI should contribute to defract the different disciplines in AH towards more transversal and integrative research."
+  ],
+  "affiliation": [
+    "INRAE, Oniris, BIOEPAR, Nantes, France. pauline.ezanno@inrae.fr."
+  ],
+  "publicationStatus": [
+    "epublish"
+  ],
+  "language": [
+    "eng"
+  ],
+  "pubModel": [
+    "Electronic"
+  ],
+  "pubTypeList": [
+    {
+      "pubType": [
+        "review-article",
+        "Review",
+        "Journal Article"
+      ]
+    }
+  ],
+  "grantsList": [
+    {
+      "grant": [
+        {
+          "grantId": [
+            "ANR-10-LABX-25-01"
+          ],
+          "agency": [
+            "LABEX CEBA"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "ANR-16-CE32-0007"
+          ],
+          "agency": [
+            "Agence Nationale de la Recherche"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "H2020-SC1-BHC-2018-2019, Grant 874850"
+          ],
+          "agency": [
+            "Horizon 2020 Framework Programme"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "NSF#1911457"
+          ],
+          "agency": [
+            "National Science Foundation"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ],
+  "keywordList": [
+    {
+      "keyword": [
+        "Artificial intelligence",
+        "Livestock",
+        "Data",
+        "Modelling",
+        "Animal Disease",
+        "Decision Support Tool"
+      ]
+    }
+  ],
+  "subsetList": [
+    {
+      "subset": [
+        {
+          "code": [
+            "IM"
+          ],
+          "name": [
+            "Index Medicus"
+          ]
+        }
+      ]
+    }
+  ],
+  "fullTextUrlList": [
+    {
+      "fullTextUrl": [
+        {
+          "availability": [
+            "Subscription required"
+          ],
+          "availabilityCode": [
+            "S"
+          ],
+          "documentStyle": [
+            "doi"
+          ],
+          "site": [
+            "DOI"
+          ],
+          "url": [
+            "https://doi.org/10.1186/s13567-021-00902-4"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7936489"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7936489?pdf=render"
+          ]
+        }
+      ]
+    }
+  ],
+  "isOpenAccess": [
+    "Y"
+  ],
+  "inEPMC": [
+    "Y"
+  ],
+  "inPMC": [
+    "N"
+  ],
+  "hasPDF": [
+    "Y"
+  ],
+  "hasBook": [
+    "N"
+  ],
+  "hasSuppl": [
+    "Y"
+  ],
+  "citedByCount": [
+    "0"
+  ],
+  "hasData": [
+    "Y"
+  ],
+  "hasReferences": [
+    "Y"
+  ],
+  "hasTextMinedTerms": [
+    "Y"
+  ],
+  "hasDbCrossReferences": [
+    "N"
+  ],
+  "hasLabsLinks": [
+    "Y"
+  ],
+  "license": [
+    "cc by"
+  ],
+  "authMan": [
+    "N"
+  ],
+  "epmcAuthMan": [
+    "N"
+  ],
+  "nihAuthMan": [
+    "N"
+  ],
+  "hasTMAccessionNumbers": [
+    "N"
+  ],
+  "dateOfCreation": [
+    "2021-03-07"
+  ],
+  "firstIndexDate": [
+    "2021-03-09"
+  ],
+  "fullTextReceivedDate": [
+    "2021-03-12"
+  ],
+  "dateOfRevision": [
+    "2021-03-12"
+  ],
+  "electronicPublicationDate": [
+    "2021-03-06"
+  ],
+  "firstPublicationDate": [
+    "2021-03-06"
+  ]
+}

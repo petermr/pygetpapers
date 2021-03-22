@@ -1,0 +1,689 @@
+{
+  "id": [
+    "33731096"
+  ],
+  "source": [
+    "MED"
+  ],
+  "pmid": [
+    "33731096"
+  ],
+  "pmcid": [
+    "PMC7966905"
+  ],
+  "fullTextIdList": [
+    {
+      "fullTextId": [
+        "PMC7966905"
+      ]
+    }
+  ],
+  "doi": [
+    "10.1186/s12913-021-06248-z"
+  ],
+  "title": [
+    "Artificial intelligence-assisted reduction in patients' waiting time for outpatient process: a retrospective cohort study."
+  ],
+  "authorString": [
+    "Li X, Tian D, Li W, Dong B, Wang H, Yuan J, Li B, Shi L, Lin X, Zhao L, Liu S."
+  ],
+  "authorList": [
+    {
+      "author": [
+        {
+          "fullName": [
+            "Li X"
+          ],
+          "firstName": [
+            "Xiaoqing"
+          ],
+          "lastName": [
+            "Li"
+          ],
+          "initials": [
+            "X"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Tian D"
+          ],
+          "firstName": [
+            "Dan"
+          ],
+          "lastName": [
+            "Tian"
+          ],
+          "initials": [
+            "D"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Li W"
+          ],
+          "firstName": [
+            "Weihua"
+          ],
+          "lastName": [
+            "Li"
+          ],
+          "initials": [
+            "W"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Dong B"
+          ],
+          "firstName": [
+            "Bin"
+          ],
+          "lastName": [
+            "Dong"
+          ],
+          "initials": [
+            "B"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Wang H"
+          ],
+          "firstName": [
+            "Hansong"
+          ],
+          "lastName": [
+            "Wang"
+          ],
+          "initials": [
+            "H"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Yuan J"
+          ],
+          "firstName": [
+            "Jiajun"
+          ],
+          "lastName": [
+            "Yuan"
+          ],
+          "initials": [
+            "J"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Li B"
+          ],
+          "firstName": [
+            "Biru"
+          ],
+          "lastName": [
+            "Li"
+          ],
+          "initials": [
+            "B"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Department of Pediatric Internal Medicine, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, Shanghai, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Shi L"
+          ],
+          "firstName": [
+            "Lei"
+          ],
+          "lastName": [
+            "Shi"
+          ],
+          "initials": [
+            "L"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Hangzhou YI TU Healthcare Technology CO. Ltd, Hangzhou, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Lin X"
+          ],
+          "firstName": [
+            "Xulin"
+          ],
+          "lastName": [
+            "Lin"
+          ],
+          "initials": [
+            "X"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "Hangzhou YI TU Healthcare Technology CO. Ltd, Hangzhou, China."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Zhao L"
+          ],
+          "firstName": [
+            "Liebin"
+          ],
+          "lastName": [
+            "Zhao"
+          ],
+          "initials": [
+            "L"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China. zhaoliebin@scmc.com.cn."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China. zhaoliebin@scmc.com.cn."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Division of Hospital Management, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China. zhaoliebin@scmc.com.cn."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Pediatric AI clinical Application and Research Center, Shanghai Children's Medical Center, Shanghai, China. zhaoliebin@scmc.com.cn."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Shanghai Engineering Research Center of Intelligence Pediatrics (SERCIP), Shanghai, China. zhaoliebin@scmc.com.cn."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, China Hospital Development Institute of Shanghai Jiao Tong University, Shanghai, China. zhaoliebin@scmc.com.cn."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fullName": [
+            "Liu S"
+          ],
+          "firstName": [
+            "Shijian"
+          ],
+          "lastName": [
+            "Liu"
+          ],
+          "initials": [
+            "S"
+          ],
+          "authorAffiliationDetailsList": [
+            {
+              "authorAffiliation": [
+                {
+                  "affiliation": [
+                    "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China. liushijian@scmc.com.cn."
+                  ]
+                },
+                {
+                  "affiliation": [
+                    "Child Health Advocacy Institute, Shanghai Children's Medical Center, Shanghai Jiao Tong University School of Medicine, 1678 Dongfang Road, Shanghai, 200127, China. liushijian@scmc.com.cn."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journalInfo": [
+    {
+      "issue": [
+        "1"
+      ],
+      "volume": [
+        "21"
+      ],
+      "journalIssueId": [
+        "3122093"
+      ],
+      "dateOfPublication": [
+        "2021 Mar"
+      ],
+      "monthOfPublication": [
+        "3"
+      ],
+      "yearOfPublication": [
+        "2021"
+      ],
+      "printPublicationDate": [
+        "2021-03-01"
+      ],
+      "journal": [
+        {
+          "title": [
+            "BMC health services research"
+          ],
+          "ISOAbbreviation": [
+            "BMC Health Serv Res"
+          ],
+          "medlineAbbreviation": [
+            "BMC Health Serv Res"
+          ],
+          "NLMid": [
+            "101088677"
+          ],
+          "ISSN": [
+            "1472-6963"
+          ],
+          "ESSN": [
+            "1472-6963"
+          ]
+        }
+      ]
+    }
+  ],
+  "pubYear": [
+    "2021"
+  ],
+  "pageInfo": [
+    "237"
+  ],
+  "abstractText": [
+    "<h4>Background</h4>Many studies suggest that patient satisfaction is significantly negatively correlated with the waiting time. A well-designed healthcare system should not keep patients waiting too long for an appointment and consultation. However, in China, patients spend notable time waiting, and the actual time spent on diagnosis and treatment in the consulting room is comparatively less.<h4>Methods</h4>We developed an artificial intelligence (AI)-assisted module and name it XIAO YI. It could help outpatients automatically order imaging examinations or laboratory tests based on their chief complaints. Thus, outpatients could get examined or tested before they went to see the doctor. People who saw the doctor in the traditional way were allocated to the conventional group, and those who used XIAO YI were assigned to the AI-assisted group. We conducted a retrospective cohort study from August 1, 2019 to January 31, 2020. Propensity score matching was used to balance the confounding factor between the two groups. And waiting time was defined as the time from registration to preparation for laboratory tests or imaging examinations. The total cost included the registration fee, test fee, examination fee, and drug fee. We used Wilcoxon rank-sum test to compare the differences in time and cost. The statistical significance level was set at 0.05 for two sides.<h4>Results</h4>Twelve thousand and three hundred forty-two visits were recruited, consisting of 6171 visits in the conventional group and 6171 visits in the AI-assisted group. The median waiting time was 0.38 (interquartile range: 0.20, 1.33) hours for the AI-assisted group compared with 1.97 (0.76, 3.48) hours for the conventional group (p < 0.05). The total cost was 335.97 (interquartile range: 244.80, 437.60) CNY (Chinese Yuan) for the AI-assisted group and 364.58 (249.70, 497.76) CNY for the conventional group (p < 0.05).<h4>Conclusions</h4>Using XIAO YI can significantly reduce the waiting time of patients, and thus, improve the outpatient service process of hospitals."
+  ],
+  "affiliation": [
+    "School of Public Health, Shanghai Jiao Tong University School of Medicine, Shanghai, China."
+  ],
+  "publicationStatus": [
+    "epublish"
+  ],
+  "language": [
+    "eng"
+  ],
+  "pubModel": [
+    "Electronic"
+  ],
+  "pubTypeList": [
+    {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    }
+  ],
+  "grantsList": [
+    {
+      "grant": [
+        {
+          "grantId": [
+            "No. TMSK-2020-124"
+          ],
+          "agency": [
+            "Chinese Translational Medicine Basic Instructure Project"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "No. 19441904400"
+          ],
+          "agency": [
+            "Science and Technology Innovation-Biomedical Supporting Program of Shanghai Science and Technology Committee"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "No. 201840324"
+          ],
+          "agency": [
+            "Shanghai Municipal Commission of Health and Family Planning"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "No. SHDC12020605"
+          ],
+          "agency": [
+            "Construction of Alliance Based on Artificial Intelligence for Pediatric Common Diseases"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "No. YG2017ZD15"
+          ],
+          "agency": [
+            "Medical and Engineering Cooperation Project of Shanghai Jiao Tong University"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        },
+        {
+          "grantId": [
+            "No. 81872637"
+          ],
+          "agency": [
+            "National Science Foundation of China"
+          ],
+          "orderIn": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ],
+  "keywordList": [
+    {
+      "keyword": [
+        "Artificial intelligence",
+        "Outpatient",
+        "Medical System",
+        "Waiting Time"
+      ]
+    }
+  ],
+  "subsetList": [
+    {
+      "subset": [
+        {
+          "code": [
+            "IM"
+          ],
+          "name": [
+            "Index Medicus"
+          ]
+        }
+      ]
+    }
+  ],
+  "fullTextUrlList": [
+    {
+      "fullTextUrl": [
+        {
+          "availability": [
+            "Subscription required"
+          ],
+          "availabilityCode": [
+            "S"
+          ],
+          "documentStyle": [
+            "doi"
+          ],
+          "site": [
+            "DOI"
+          ],
+          "url": [
+            "https://doi.org/10.1186/s12913-021-06248-z"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "html"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7966905"
+          ]
+        },
+        {
+          "availability": [
+            "Open access"
+          ],
+          "availabilityCode": [
+            "OA"
+          ],
+          "documentStyle": [
+            "pdf"
+          ],
+          "site": [
+            "Europe_PMC"
+          ],
+          "url": [
+            "https://europepmc.org/articles/PMC7966905?pdf=render"
+          ]
+        }
+      ]
+    }
+  ],
+  "isOpenAccess": [
+    "Y"
+  ],
+  "inEPMC": [
+    "Y"
+  ],
+  "inPMC": [
+    "N"
+  ],
+  "hasPDF": [
+    "Y"
+  ],
+  "hasBook": [
+    "N"
+  ],
+  "hasSuppl": [
+    "N"
+  ],
+  "citedByCount": [
+    "0"
+  ],
+  "hasData": [
+    "N"
+  ],
+  "hasReferences": [
+    "Y"
+  ],
+  "hasTextMinedTerms": [
+    "N"
+  ],
+  "hasDbCrossReferences": [
+    "N"
+  ],
+  "hasLabsLinks": [
+    "N"
+  ],
+  "license": [
+    "cc by"
+  ],
+  "authMan": [
+    "N"
+  ],
+  "epmcAuthMan": [
+    "N"
+  ],
+  "nihAuthMan": [
+    "N"
+  ],
+  "hasTMAccessionNumbers": [
+    "N"
+  ],
+  "dateOfCreation": [
+    "2021-03-18"
+  ],
+  "firstIndexDate": [
+    "2021-03-19"
+  ],
+  "fullTextReceivedDate": [
+    "2021-03-22"
+  ],
+  "dateOfRevision": [
+    "2021-03-21"
+  ],
+  "electronicPublicationDate": [
+    "2021-03-17"
+  ],
+  "firstPublicationDate": [
+    "2021-03-17"
+  ]
+}
