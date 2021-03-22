@@ -9,13 +9,13 @@ class pygetpapers:
 
         import requests
         import time
-        logging.info("*/RESTful request for fulltext.xml (D)*/")
+        logging.debug("*/RESTful request for fulltext.xml (D)*/")
         start = time.time()
         r = requests.post(
             'https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST', data=payload, headers=headers)
         stop = time.time()
-        logging.info("*/Got the Query Result */")
-        logging.info(f"Time elapsed: {stop-start}")
+        logging.debug("*/Got the Query Result */")
+        logging.debug(f"Time elapsed: {stop-start}")
         return xmltodict.parse(r.content)
 
     def buildquery(self, cursormark, pageSize, query, synonym=True,):
@@ -23,7 +23,7 @@ class pygetpapers:
         headers = {'Content-type': 'application/x-www-form-urlencoded'}
         payload = {'query': query, 'format': format, 'resultType': 'core',
                    'cursorMark': cursormark, 'pageSize': pageSize, 'synonym': synonym, 'format': 'xml', 'sort_PMCID': 'y'}
-        logging.info("*/submitting RESTful query (I)*/")
+        logging.debug("*/submitting RESTful query (I)*/")
         return {'headers': headers, 'payload': payload}
 
     def webscrapepmc(self, query, pmccount, onlyresearcharticles=False, onlypreprints=False, onlyreviews=False):
@@ -97,11 +97,11 @@ class pygetpapers:
             time.sleep(2)
 
         directory_url = os.path.join(
-            str(os.getcwd()), 'papers')
+            str(os.getcwd()))
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
-        self.writepickle(os.path.join(
-            str(os.getcwd()), 'papers', 'europe_pmc.pickle'),  dict(pmcdict))
+        self.makejson(os.path.join(
+            str(os.getcwd()), 'eupmc_results.json'),  dict(pmcdict))
         return dict(pmcdict)
 
     def europepmc(self, query, size, synonym=True, externalfile=True, fulltext=True, **kwargs):
@@ -117,8 +117,6 @@ class pygetpapers:
         nextCursorMark = ['*', ]
         morepapers = True
         number_of_papers_there = 0
-        # change synonym to no otherwise yes is the default
-        # The code regarding the size of the query currently only works till 100 terms. This is on purpose and I will add Function to access next cursormark which is basically next page of the resultant of the query once I have enough permision and knowledge
 
         while number_of_papers_there <= size and morepapers == True:
             queryparams = self.buildquery(
@@ -128,6 +126,8 @@ class pygetpapers:
             if "nextCursorMark" in builtquery["responseWrapper"]:
                 nextCursorMark.append(
                     builtquery["responseWrapper"]["nextCursorMark"])
+                totalhits = builtquery["responseWrapper"]["hitCount"]
+                logging.info(f"Total Hits are {totalhits}")
                 output_dict = json.loads(json.dumps(builtquery))
                 try:
                     for paper in output_dict["responseWrapper"]["resultList"]["result"]:
@@ -157,13 +157,12 @@ class pygetpapers:
         return content
 
     # this is the function that will the the result from search and will download and save the files.
-    def makecsv(self, searchvariable, makecsv=False, makejson=False):
+    def makecsv(self, searchvariable, makecsv=False, update=False):
         import pandas_read_xml as pdx
         import xmltodict
         import pandas as pd
         import lxml.etree
         import json
-        import pickle
         import os
         import logging
         resultant_dict = {}
@@ -174,7 +173,7 @@ class pygetpapers:
 
                 if "pmcid" in paper:
                     paper_number += 1
-                    logging.info(
+                    logging.debug(
                         f"Reading Query Result for paper {paper_number}")
                     pdfurl = []
                     htmlurl = []
@@ -223,48 +222,86 @@ class pygetpapers:
                     except:
                         logging.warning(
                             f"Title not found for paper {paper_number}")
-
-                    logging.info(
-                        'Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats')
-
-        pickleurl = os.path.join(
-            str(os.getcwd()), 'papers', 'europe_pmc.pickle')
+                    paperpmcid = paper["pmcid"]
+                    logging.debug(
+                        f'Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}')
+        if update:
+            resultant_dict.update(update)
         directory_url = os.path.join(
-            str(os.getcwd()), 'papers')
-
+            str(os.getcwd()))
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
-        self.writepickle(pickleurl, resultant_dict)
+        self.makejson(os.path.join(
+            str(os.getcwd()), 'eupmc_results.json'), resultant_dict)
         resultant_dict_for_csv = resultant_dict
         for paper in resultant_dict_for_csv:
             resultant_dict_for_csv[paper].pop("downloaded")
+            resultant_dict_for_csv[paper].pop("pdfdownloaded")
+            resultant_dict_for_csv[paper].pop("jsondownloaded")
+            resultant_dict_for_csv[paper].pop("csvmade")
+
         df = pd.DataFrame.from_dict(resultant_dict_for_csv,)
         df_transposed = df.T
         if makecsv:
-            df_transposed.to_csv(os.path.join(
-                str(os.getcwd()), 'papers', 'europe_pmc.csv'))
-        if makejson:
-            self.makejson(os.path.join(
-                str(os.getcwd()), 'papers', 'europe_pmc.json'), searchvariable)
+            if os.path.exists(os.path.join(
+                    str(os.getcwd()), 'europe_pmc.csv')):
+                df_transposed.to_csv(os.path.join(
+                    str(os.getcwd()), 'europe_pmc.csv'), mode='a', header=False)
+            else:
+                df_transposed.to_csv(os.path.join(
+                    str(os.getcwd()), 'europe_pmc.csv'))
+
         return searchvariable
 
     def getxml(self, pmcid):
         import requests
         import logging
-        logging.info("*/Making the Request to get full text xml*/")
-
         r = requests.get(
             f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML")
-        logging.info("*/Done*/")
-
         return r.content
 
-    def getsupplementaryfiles(self, pmcid):
+    def getsupplementaryfiles(self, pmcid, directory_url, destination_url):
+        import requests
+        import os
+        import logging
+        r = requests.get(
+            f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles", stream=True)
+        if not os.path.isdir(directory_url):
+            os.makedirs(directory_url)
+        with open(destination_url, 'wb') as fd:
+            for chunk in r.iter_content(chunk_size=128):
+                fd.write(chunk)
+        logging.debug(f"Wrote supplementary files for {pmcid}")
+
+    def getreferences(self, pmcid, source):
+        import requests
+        import logging
+        r = requests.get(
+            f"https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&pageSize=1000&format=xml")
+        return r.content
+
+    def getcitations(self, pmcid, source):
+        import requests
+        import logging
+        r = requests.get(
+            f"https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&pageSize=1000&format=xml")
+        return r.content
+
+    '''
+    def getdatabaselinks(self, pmcid):
         import requests
         import logging
         r = requests.get(
             f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles")
         return r
+
+    def getdatalinks(self, pmcid):
+        import requests
+        import logging
+        r = requests.get(
+            f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles")
+        return r
+    '''
 
     def writexml(self, directory_url, destination_url, content):
         import os
@@ -275,63 +312,82 @@ class pygetpapers:
             f.write(content)
 
     def writepdf(self, url, destination):
+        import os
+
         import requests
         import logging
         with open(destination, "wb") as file:
             response = requests.get(url)
             file.write(response.content)
 
-    def writepickle(self, destination, content):
-        import pickle
-        import os
-        import logging
-        with open(destination, 'wb') as f:
-            pickle.dump(content, f, pickle.HIGHEST_PROTOCOL)
-
     def makejson(self, path, final_xml_dict):
         import json
+        import os
+
         import logging
-        with open(path, 'w') as fp:
+
+        append_write = 'w'
+        with open(path, append_write) as fp:
             json.dump(final_xml_dict, fp)
 
-    def makexmlfiles(self, final_xml_dict, getpdf=False, makejson=False, makecsv=False):
+    def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
         import logging
         import requests
         import logging
         import lxml.etree
         import lxml
-        import pickle
         import pandas as pd
         import os
         import time
-        logging.info("*/saving xml to per-document directories (CTrees) (D)*/")
-        loggingurl = os.path.join(
-            str(os.getcwd()), 'papers', '*', 'fulltext.xml')
-        logging.info(
-            f"Saving XML files to {loggingurl}")
+        if makexml:
+            logging.debug(
+                "*/saving xml to per-document directories (CTrees) (D)*/")
+            loggingurl = os.path.join(
+                str(os.getcwd()), '*', 'fulltext.xml')
+            logging.info(
+                f"Saving XML files to {loggingurl}")
+            logging.debug("*/Making the Request to get full text xml*/")
+
         for paper_number, paper in enumerate(final_xml_dict):
             start = time.time()
             paper_number += 1
             pmcid = paper
             tree = self.getxml(pmcid)
-            destination_url = os.path.join(str(os.getcwd()),
-                                           'papers', pmcid, "fulltext.xml")
-            directory_url = os.path.join(str(os.getcwd()), 'papers', pmcid)
-            pickle_url = os.path.join(
-                str(os.getcwd()), 'papers', pmcid, f"{pmcid}.pickle")
+            destination_url = os.path.join(
+                str(os.getcwd()), pmcid, "fulltext.xml")
+            directory_url = os.path.join(str(os.getcwd()), pmcid)
+
             jsonurl = os.path.join(
-                str(os.getcwd()), 'papers', pmcid, f"{pmcid}.json")
+                str(os.getcwd()), pmcid, "eupmc_result.json")
+            referenceurl = os.path.join(
+                str(os.getcwd()), pmcid, "references.xml")
+            citationurl = os.path.join(
+                str(os.getcwd()), pmcid, "citation.xml")
+            supplementaryfilesurl = os.path.join(
+                str(os.getcwd()), pmcid, "supplementaryfiles.zip")
+            if references:
+                getreferences = self.getreferences(pmcid, references)
+                self.writexml(directory_url, referenceurl, getreferences)
+                logging.info(f"Made references for {pmcid}")
+            if citations:
+                getcitations = self.getcitations(pmcid, references)
+                self.writexml(directory_url, citationurl, getcitations)
+                logging.info(f"Made Citations for {pmcid}")
+            if supplementaryFiles:
+                self.getsupplementaryfiles(
+                    pmcid, directory_url, supplementaryfilesurl)
+            if not os.path.isdir(directory_url):
+                os.makedirs(directory_url)
             if final_xml_dict[paper]["downloaded"] == False:
-                self.writexml(directory_url, destination_url, tree)
-                logging.info(
-                    f"*/Wrote {pmcid}/")
-                final_xml_dict[paper]["downloaded"] = True
-                if makejson:
-                    self.makejson(os.path.join(
-                        str(os.getcwd()), 'papers', 'europe_pmc.json'), final_xml_dict)
+                if makexml:
+                    self.writexml(directory_url, destination_url, tree)
+                    logging.info(
+                        f"*/Wrote xml for {pmcid}/")
+                    final_xml_dict[paper]["downloaded"] = True
+
             if final_xml_dict[paper]["pdfdownloaded"] == False:
                 pdf_destination = os.path.join(
-                    str(os.getcwd()), 'papers', pmcid, f"{pmcid}.pdf")
+                    str(os.getcwd()), pmcid, "fulltext.pdf")
                 if getpdf:
                     if "pdflinks" in final_xml_dict[paper]:
                         if len(final_xml_dict[paper]["pdflinks"]) > 0:
@@ -339,83 +395,113 @@ class pygetpapers:
                                 final_xml_dict[paper]["pdflinks"], pdf_destination)
                             final_xml_dict[paper]["pdfdownloaded"] = True
                             logging.info(
-                                f"Wrote the pdf file for {paper_number} at {pdf_destination}")
+                                f"Wrote the pdf file for {pmcid}")
+            dict_to_write = dict(final_xml_dict[paper])
+            dict_to_write.pop('pdfdownloaded')
+            dict_to_write.pop('jsondownloaded')
+            dict_to_write.pop('csvmade')
             if final_xml_dict[paper]["jsondownloaded"] == False:
-                if makejson:
-                    self.makejson(jsonurl, final_xml_dict[paper])
-                    final_xml_dict[paper]["jsondownloaded"] = True
+                self.makejson(jsonurl, dict_to_write)
+                final_xml_dict[paper]["jsondownloaded"] = True
             if final_xml_dict[paper]["csvmade"] == False:
                 if makecsv:
-                    df = pd.Series(final_xml_dict[paper]).to_frame(
+                    df = pd.Series(dict_to_write).to_frame(
                         'Info_By_EuropePMC_Api')
                     df.to_csv(os.path.join(
-                        str(os.getcwd()), 'papers', pmcid, f"{pmcid}.csv"))
+                        str(os.getcwd()), pmcid, "fulltext.csv"))
                     final_xml_dict[paper]["csvmade"] = True
-            self.writepickle(pickle_url, final_xml_dict[paper])
-            self.writepickle(os.path.join(
-                str(os.getcwd()), 'papers', 'europe_pmc.pickle'), final_xml_dict)
+            self.makejson(os.path.join(
+                str(os.getcwd()), 'eupmc_results.json'), final_xml_dict)
             stop = time.time()
-            logging.info(f"Time elapsed: {stop-start}")
-            logging.info(f"*/Updating the pickle*/\n")
+            logging.debug(f"Time elapsed: {stop-start}")
+            logging.debug(f"*/Updating the json*/\n")
 
-    def readpickleddata(self, path):
-        import pandas as pd
+    def readjsondata(self, path):
+        import json
         import logging
-        object = pd.read_pickle(f'{path}')
+        with open(path) as f:
+            object = json.load(f)
         return object
 
-    def apipaperdownload(self, query, size, onlymakepickle=False, getpdf=False, makejson=False, makecsv=False):
+    def apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
         import os
         import logging
         query_result = self.europepmc(query, size)
-        self.makecsv(query_result, makecsv=makecsv, makejson=makejson)
+        self.makecsv(query_result, makecsv=makecsv)
 
-        if not(onlymakepickle):
-            read_pickled = self.readpickleddata(os.path.join(
-                str(os.getcwd()), 'papers', 'europe_pmc.pickle'))
-            self.makexmlfiles(read_pickled, getpdf=getpdf,
-                              makejson=makejson, makecsv=makecsv)
+        if not(onlymakejson):
+            read_json = self.readjsondata(os.path.join(
+                str(os.getcwd()), 'eupmc_results.json'))
+            self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml,
+                              references=references, citations=citations, supplementaryFiles=supplementaryFiles)
 
-    def scrapingpaperdownload(self, query, size, onlyresearcharticles=False, onlypreprints=False, onlyreviews=False, onlymakepickle=False):
+    def scrapingpaperdownload(self, query, size, onlyresearcharticles=False, onlypreprints=False, onlyreviews=False, onlymakejson=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
         query_result = self.webscrapepmc(
             query, size, onlyresearcharticles=onlyresearcharticles, onlypreprints=onlypreprints, onlyreviews=onlyreviews)
 
-        if not(onlymakepickle):
-            self.makexmlfiles(query_result)
+        if not(onlymakejson):
+            self.makexmlfiles(query_result, makexml=makexml,
+                              references=references, citations=citations, supplementaryFiles=supplementaryFiles)
 
-    def updatecorpus(self, query, original_pickle, size, onlymakepickle=False, getpdf=False, makejson=False, makecsv=False):
+    def updatecorpus(self, query, original_json, size, onlymakejson=False, getpdf=False, makecsv=False, makexml=False, references=False, citations=False, supplementaryFiles=False):
         import os
         import logging
-        query_result = self.europepmc(query, size, update=original_pickle)
-        self.makecsv(query_result, makecsv=makecsv, makejson=makejson)
-        if not(onlymakepickle):
-            read_pickled = self.readpickleddata(os.path.join(
-                str(os.getcwd()), 'papers', 'europe_pmc.pickle'))
-            self.makexmlfiles(read_pickled, getpdf=getpdf,
-                              makejson=makejson, makecsv=makecsv)
+        query_result = self.europepmc(query, size, update=original_json)
+        self.makecsv(query_result, makecsv=makecsv,
+                     update=original_json)
+        if not(onlymakejson):
+            read_json = self.readjsondata(os.path.join(
+                str(os.getcwd()), 'eupmc_results.json'))
+            self.makexmlfiles(read_json, getpdf=getpdf,
+                              makecsv=makecsv, makexml=makexml, references=references, citations=citations, supplementaryFiles=supplementaryFiles)
+
+    def noexecute(self, query, size):
+        import logging
+        import xmltodict
+        import requests
+        import time
+        builtqueryparams = self.buildquery(
+            '*', 25, query, synonym=True)
+        result = self.postquery(
+            builtqueryparams['headers'], builtqueryparams['payload'])
+        totalhits = result['responseWrapper']['hitCount']
+        logging.info(f'Total number of hits for the query are {totalhits}')
 
     def handlecli(self):
+        version = "0.0.2"
         import argparse
         import os
         import logging
+        import sys
         parser = argparse.ArgumentParser(
-            description="Welcome to Pygetpapers. -h or --help for help")
+            description=f"Welcome to Pygetpapers version {version}. -h or --help for help")
+        parser.add_argument("-v", "--version",
+                            default=False, action="store_true", help="Prints the the current version of Pygetpapers")
         parser.add_argument("-q", "--query",
-                            type=str, help="query string transmitted to repository API. Eg. 'Artificial Intelligence' or 'Plant Parts'. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. ")
+                            type=str, default=False, help="query string transmitted to repository API. Eg. 'Artificial Intelligence' or 'Plant Parts'. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. ")
         parser.add_argument("-k", "--limit", default=100,
                             type=int, help="maximum number of hits (default: 100)")
         parser.add_argument("-o", "--output",
                             type=str, help="output directory (Default: current working directory)", default=os.getcwd())
-        parser.add_argument("-v", "--onlyquery", action='store_true',
-                            help="Saves pickle file containing the result of the query in storage. The pickle file can be given to --frompickle to download the papers later.")
-        parser.add_argument("--frompickle", default=False,
-                            type=str, help="Reads the picke and makes the xml files. Takes the path to the pickle as the input")
+        parser.add_argument("-y", "--onlyquery", action='store_true',
+                            help="Saves json file containing the result of the query in storage. The json file can be given to --restart to download the papers later.")
+        parser.add_argument('-r', "--restart", default=False,
+                            type=str, help="Reads the picke and makes the xml files. Takes the path to the json as the input")
         parser.add_argument("-f", "--logfile", default=False,
                             type=str, help="save log to specified file in output directory as well as printing to terminal")
         parser.add_argument("-p", "--pdf", default=False, action='store_true',
                             help="Download fulltext PDFs if available. Works only with --api method.")
-        parser.add_argument("-j", "--makejson", default=False, action='store_true',
-                            help="Stores the per-document metadata as json. Works only with --api method.")
+        parser.add_argument("-x", "--xml", default=False, action='store_true',
+                            help="download fulltext XMLs if available")
+        parser.add_argument("-n", "--noexecute", default=False, action='store_true',
+                            help="report how many results match the query, but don't actually download anything")
+        parser.add_argument("--references",
+                            type=str, default=False, help="Gets references for papers in forms of xml and saves them to disk. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+        parser.add_argument("-s", "--supp", default=False, action='store_true',
+                            help="download supplementary files if available	")
+        parser.add_argument("--citations",
+                            type=str, default=False, help="Gets citations for papers in forms of xml and saves them to disk. Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+
         parser.add_argument("-c", "--makecsv", default=False, action='store_true',
                             help="Stores the per-document metadata as csv. Works only with --api method.")
         parser.add_argument(
@@ -427,7 +513,7 @@ class pygetpapers:
         )
         parser.add_argument("-u", "--update", default=False,
                             type=str,
-                            help="Updates the corpus by downloading new papers. Requires -k or --limit (If not provided, default will be used) and -q or --query (must be provided) to be given. Takes the path to the pickle as the input.")
+                            help="Updates the corpus by downloading new papers. Requires -k or --limit (If not provided, default will be used) and -q or --query (must be provided) to be given. Takes the path to the json as the input.")
         '''
         group = parser.add_mutually_exclusive_group()
         group.add_argument('--api', action='store_true',
@@ -443,7 +529,11 @@ class pygetpapers:
         cogroup.add_argument(
             '--onlyreviews', action='store_true', help="Get only review papers  (Only works with --webscraping)")
         '''
+        if len(sys.argv) == 1:
+            parser.print_help(sys.stderr)
+            sys.exit()
         args = parser.parse_args()
+
         if os.path.exists(args.output):
             os.chdir(args.output)
         else:
@@ -474,28 +564,36 @@ class pygetpapers:
             logging.basicConfig(
                 level=level, format='%(levelname)s: %(message)s')
 
-        if args.frompickle:
+        if not args.query:
+            logging.warning('Please specify a query')
+            sys.exit(1)
+
+        if args.noexecute:
+            self.noexecute(args.query, 100)
+        elif args.version:
+            logging.info(version)
+        elif args.restart:
             import os
             import logging
-            read_pickled = self.readpickleddata(args.frompickle)
-            os.chdir(os.path.dirname(os.path.dirname(args.frompickle)))
-            self.makexmlfiles(read_pickled, getpdf=args.pdf,
-                              makejson=args.makejson, makecsv=args.makecsv)
+            read_json = self.readjsondata(args.restart)
+            os.chdir(os.path.dirname(os.path.dirname(args.restart)))
+            self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml,
+                              references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         elif args.update:
-            read_pickled = self.readpickleddata(args.update)
-            os.chdir(os.path.dirname(os.path.dirname(args.update)))
-            self.updatecorpus(args.query, read_pickled, args.limit, getpdf=args.pdf,
-                              makejson=args.makejson, makecsv=args.makecsv)
-
+            read_json = self.readjsondata(args.update)
+            os.chdir(os.path.dirname(args.update))
+            self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
+                              makecsv=args.makecsv, makexml=args.xml, references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         else:
-            self.apipaperdownload(args.query, args.limit,
-                                  onlymakepickle=args.onlyquery, getpdf=args.pdf, makejson=args.makejson, makecsv=args.makecsv)
+            if args.query:
+                self.apipaperdownload(args.query, args.limit,
+                                      onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml, references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         # Have to check with EuropePMC's policy about webscraping
 
         '''
         elif args.webscraping:
             self.scrapingpaperdownload(args.query, args.limit, onlyresearcharticles=args.onlyresearcharticles,
-                                       onlypreprints=args.onlypreprints, onlyreviews=args.onlyreviews, onlymakepickle=args.onlyquery)
+                                       onlypreprints=args.onlypreprints, onlyreviews=args.onlyreviews, onlymakejson=args.onlyquery)
         '''
 
 
