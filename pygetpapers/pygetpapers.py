@@ -6,7 +6,6 @@ class pygetpapers:
     def postquery(self, headers, payload):
         import xmltodict
         import logging
-
         import requests
         import time
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
