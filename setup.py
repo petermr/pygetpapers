@@ -13,7 +13,7 @@ requirements = ['requests', 'pandas_read_xml', 'pandas',
 
 setup(
     name='pygetpapers',
-    version='0.0.2.1',
+    version='0.0.3',
     description='Automated Download of Research Papers from EuropePMC repository',
     long_description=readme,
     author='Ayush Garg',
