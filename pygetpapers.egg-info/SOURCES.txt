@@ -4,6 +4,7 @@ README.rst
 setup.cfg
 setup.py
 pygetpapers/__init__.py
+pygetpapers/download_tools.py
 pygetpapers/pygetpapers.py
 pygetpapers.egg-info/PKG-INFO
 pygetpapers.egg-info/SOURCES.txt
