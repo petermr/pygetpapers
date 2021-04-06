@@ -233,7 +233,7 @@ class pygetpapers(download_tools):
                 f&#34;journalInfo not found for paper {paper_number}&#34;)
         try:
             dict_for_paper[self.AUTHORINFO
-            ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
+                           ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
         except:
             logging.warning(
                 f&#34;Author list not found for paper {paper_number}&#34;)
@@ -639,7 +639,7 @@ class pygetpapers(download_tools):
             sys.exit(1)
 
         if args.noexecute:
-            self.noexecute(args.query, 100, synonym=args.synonym)
+            self.noexecute(args.query, synonym=args.synonym)
         elif args.version:
             logging.info(version)
         elif args.restart:
@@ -946,7 +946,7 @@ if __name__ == &#34;__main__&#34;:
                 f&#34;journalInfo not found for paper {paper_number}&#34;)
         try:
             dict_for_paper[self.AUTHORINFO
-            ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
+                           ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
         except:
             logging.warning(
                 f&#34;Author list not found for paper {paper_number}&#34;)
@@ -1352,7 +1352,7 @@ if __name__ == &#34;__main__&#34;:
             sys.exit(1)
 
         if args.noexecute:
-            self.noexecute(args.query, 100, synonym=args.synonym)
+            self.noexecute(args.query, synonym=args.synonym)
         elif args.version:
             logging.info(version)
         elif args.restart:
@@ -1430,7 +1430,7 @@ if __name__ == &#34;__main__&#34;:
             f&#34;journalInfo not found for paper {paper_number}&#34;)
     try:
         dict_for_paper[self.AUTHORINFO
-        ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
+                       ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
     except:
         logging.warning(
             f&#34;Author list not found for paper {paper_number}&#34;)
@@ -1824,7 +1824,7 @@ if __name__ == &#34;__main__&#34;:
         sys.exit(1)
 
     if args.noexecute:
-        self.noexecute(args.query, 100, synonym=args.synonym)
+        self.noexecute(args.query, synonym=args.synonym)
     elif args.version:
         logging.info(version)
     elif args.restart:

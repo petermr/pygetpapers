@@ -205,7 +205,7 @@ class pygetpapers(download_tools):
                 f"journalInfo not found for paper {paper_number}")
         try:
             dict_for_paper[self.AUTHORINFO
-            ] = paper["authorList"]["author"][0]['fullName']
+                           ] = paper["authorList"]["author"][0]['fullName']
         except:
             logging.warning(
                 f"Author list not found for paper {paper_number}")
@@ -611,7 +611,7 @@ class pygetpapers(download_tools):
             sys.exit(1)
 
         if args.noexecute:
-            self.noexecute(args.query, 100, synonym=args.synonym)
+            self.noexecute(args.query, synonym=args.synonym)
         elif args.version:
             logging.info(version)
         elif args.restart:
