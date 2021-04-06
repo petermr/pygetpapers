@@ -89,7 +89,7 @@
         :param df_transposed: dataframe to write
         &#39;&#39;&#39;
         import os
-        path=os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
+        path = os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
         if os.path.exists(path):
             df_transposed.to_csv(path, mode=&#39;a&#39;, header=False)
         else:
@@ -177,38 +177,6 @@
         condition_to_download_json = paperdict[&#34;jsondownloaded&#34;] == False
         condition_to_download_csv = paperdict[&#34;csvmade&#34;] == False
         return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
-
-    def make_citations(self, source, citationurl, directory_url, paperid):
-        &#39;&#39;&#39;
-        Downloads the citations for the paper with pmcid (paperid) to citation url
-
-        :param source: source to get the citations from
-
-        :param citationurl: path to write the citations to
-
-        :param directory_url: directory containing citationurl
-
-        :param paperid: pmc id of the paper
-        &#39;&#39;&#39;
-        getcitations = self.getcitations(
-            paperid, source)
-        self.writexml(directory_url, citationurl, getcitations)
-
-    def make_references(self, directory_url, paperid, source, referenceurl):
-        &#39;&#39;&#39;
-        Downloads the references for the paper with pmcid (paperid) to reference url
-
-        :param directory_url: directory containing referenceurl
-
-        :param paperid:  pmc id of the paper
-
-        :param source: source to get the citations from
-
-        :param referenceurl: path to write the references to
-        &#39;&#39;&#39;
-        getreferences = self.getreferences(
-            paperid, source)
-        self.writexml(directory_url, referenceurl, getreferences)
 
     def readjsondata(self, path):
         &#39;&#39;&#39;
@@ -319,7 +287,7 @@
         :param df_transposed: dataframe to write
         &#39;&#39;&#39;
         import os
-        path=os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
+        path = os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
         if os.path.exists(path):
             df_transposed.to_csv(path, mode=&#39;a&#39;, header=False)
         else:
@@ -407,38 +375,6 @@
         condition_to_download_json = paperdict[&#34;jsondownloaded&#34;] == False
         condition_to_download_csv = paperdict[&#34;csvmade&#34;] == False
         return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
-
-    def make_citations(self, source, citationurl, directory_url, paperid):
-        &#39;&#39;&#39;
-        Downloads the citations for the paper with pmcid (paperid) to citation url
-
-        :param source: source to get the citations from
-
-        :param citationurl: path to write the citations to
-
-        :param directory_url: directory containing citationurl
-
-        :param paperid: pmc id of the paper
-        &#39;&#39;&#39;
-        getcitations = self.getcitations(
-            paperid, source)
-        self.writexml(directory_url, citationurl, getcitations)
-
-    def make_references(self, directory_url, paperid, source, referenceurl):
-        &#39;&#39;&#39;
-        Downloads the references for the paper with pmcid (paperid) to reference url
-
-        :param directory_url: directory containing referenceurl
-
-        :param paperid:  pmc id of the paper
-
-        :param source: source to get the citations from
-
-        :param referenceurl: path to write the references to
-        &#39;&#39;&#39;
-        getreferences = self.getreferences(
-            paperid, source)
-        self.writexml(directory_url, referenceurl, getreferences)
 
     def readjsondata(self, path):
         &#39;&#39;&#39;
@@ -598,36 +534,6 @@
     logging.debug(&#34;*/Making the Request to get full text xml*/&#34;)</code></pre>
 </details>
 </dd>
-<dt id="pygetpapers.download_tools.download_tools.make_citations"><code class="name flex">
-<span>def <span class="ident">make_citations</span></span>(<span>self, source, citationurl, directory_url, paperid)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Downloads the citations for the paper with pmcid (paperid) to citation url</p>
-<p>:param source: source to get the citations from</p>
-<p>:param citationurl: path to write the citations to</p>
-<p>:param directory_url: directory containing citationurl</p>
-<p>:param paperid: pmc id of the paper</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def make_citations(self, source, citationurl, directory_url, paperid):
-    &#39;&#39;&#39;
-    Downloads the citations for the paper with pmcid (paperid) to citation url
-
-    :param source: source to get the citations from
-
-    :param citationurl: path to write the citations to
-
-    :param directory_url: directory containing citationurl
-
-    :param paperid: pmc id of the paper
-    &#39;&#39;&#39;
-    getcitations = self.getcitations(
-        paperid, source)
-    self.writexml(directory_url, citationurl, getcitations)</code></pre>
-</details>
-</dd>
 <dt id="pygetpapers.download_tools.download_tools.make_dict_for_csv"><code class="name flex">
 <span>def <span class="ident">make_dict_for_csv</span></span>(<span>self, resultant_dict)</span>
 </code></dt>
@@ -655,37 +561,6 @@
         paper_dict.pop(&#34;jsondownloaded&#34;)
         paper_dict.pop(&#34;csvmade&#34;)
     return resultant_dict_for_csv</code></pre>
-</details>
-</dd>
-<dt id="pygetpapers.download_tools.download_tools.make_references"><code class="name flex">
-<span>def <span class="ident">make_references</span></span>(<span>self, directory_url, paperid, source, referenceurl)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Downloads the references for the paper with pmcid (paperid) to reference url</p>
-<p>:param directory_url: directory containing referenceurl</p>
-<p>:param paperid:
-pmc id of the paper</p>
-<p>:param source: source to get the citations from</p>
-<p>:param referenceurl: path to write the references to</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def make_references(self, directory_url, paperid, source, referenceurl):
-    &#39;&#39;&#39;
-    Downloads the references for the paper with pmcid (paperid) to reference url
-
-    :param directory_url: directory containing referenceurl
-
-    :param paperid:  pmc id of the paper
-
-    :param source: source to get the citations from
-
-    :param referenceurl: path to write the references to
-    &#39;&#39;&#39;
-    getreferences = self.getreferences(
-        paperid, source)
-    self.writexml(directory_url, referenceurl, getreferences)</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.download_tools.download_tools.makejson"><code class="name flex">
@@ -789,7 +664,7 @@ pmc id of the paper</p>
     :param df_transposed: dataframe to write
     &#39;&#39;&#39;
     import os
-    path=os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
+    path = os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
     if os.path.exists(path):
         df_transposed.to_csv(path, mode=&#39;a&#39;, header=False)
     else:
@@ -876,9 +751,7 @@ pmc id of the paper</p>
 <li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.conditions_to_download" href="#pygetpapers.download_tools.download_tools.conditions_to_download">conditions_to_download</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.log_making_xml" href="#pygetpapers.download_tools.download_tools.log_making_xml">log_making_xml</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_citations" href="#pygetpapers.download_tools.download_tools.make_citations">make_citations</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.make_dict_for_csv" href="#pygetpapers.download_tools.download_tools.make_dict_for_csv">make_dict_for_csv</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_references" href="#pygetpapers.download_tools.download_tools.make_references">make_references</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.makejson" href="#pygetpapers.download_tools.download_tools.makejson">makejson</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.postquery" href="#pygetpapers.download_tools.download_tools.postquery">postquery</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.readjsondata" href="#pygetpapers.download_tools.download_tools.readjsondata">readjsondata</a></code></li>

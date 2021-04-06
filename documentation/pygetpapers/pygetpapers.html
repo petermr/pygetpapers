@@ -222,6 +222,17 @@ class pygetpapers(download_tools):
             logging.warning(
                 f&#34;html url not found for paper {paper_number}&#34;)
         try:
+            dict_for_paper[&#34;abstract&#34;] = paper[&#34;abstractText&#34;]
+        except:
+            logging.warning(
+                f&#34;Abstract not found for paper {paper_number}&#34;)
+
+        try:
+            dict_for_paper[&#34;Keywords&#34;] = paper[&#34;keywordList&#34;][&#34;keyword&#34;]
+        except:
+            logging.warning(
+                f&#34;Keywords not found for paper {paper_number}&#34;)
+        try:
             dict_for_paper[self.PDFLINKS] = pdfurl[0]
         except:
             logging.warning(
@@ -294,6 +305,22 @@ class pygetpapers(download_tools):
             f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&amp;pageSize=1000&amp;format=xml&#34;)
         return r.content
 
+    def make_references(self, directory_url, paperid, source, referenceurl):
+        &#39;&#39;&#39;
+        Downloads the references for the paper with pmcid (paperid) to reference url
+
+        :param directory_url: directory containing referenceurl
+
+        :param paperid:  pmc id of the paper
+
+        :param source: source to get the citations from
+
+        :param referenceurl: path to write the references to
+        &#39;&#39;&#39;
+        getreferences = self.getreferences(
+            paperid, source)
+        self.writexml(directory_url, referenceurl, getreferences)
+
     def getcitations(self, pmcid, source):
         &#34;&#34;&#34;
         Gets citations for the paper of pmcid
@@ -325,6 +352,22 @@ class pygetpapers(download_tools):
             os.makedirs(directory_url)
         with open(destination_url, &#39;wb&#39;) as f:
             f.write(content)
+
+    def make_citations(self, source, citationurl, directory_url, paperid):
+        &#39;&#39;&#39;
+        Downloads the citations for the paper with pmcid (paperid) to citation url
+
+        :param source: source to get the citations from
+
+        :param citationurl: path to write the citations to
+
+        :param directory_url: directory containing citationurl
+
+        :param paperid: pmc id of the paper
+        &#39;&#39;&#39;
+        getcitations = self.getcitations(
+            paperid, source)
+        self.writexml(directory_url, citationurl, getcitations)
 
     def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makexml=False, references=False,
                      citations=False, supplementaryFiles=False):
@@ -362,12 +405,12 @@ class pygetpapers(download_tools):
             paperdict = final_xml_dict[paper]
             paperid = paperdict[&#34;full&#34;][&#34;id&#34;]
             if references:
-                super().make_references(directory_url, paperid,
-                                        references, referenceurl)
+                self.make_references(directory_url, paperid,
+                                     references, referenceurl)
                 logging.info(f&#34;Made references for {pmcid}&#34;)
             if citations:
-                super().make_citations(citations, citationurl,
-                                       directory_url, paperid)
+                self.make_citations(citations, citationurl,
+                                    directory_url, paperid)
                 logging.info(f&#34;Made Citations for {pmcid}&#34;)
             if supplementaryFiles:
                 self.getsupplementaryfiles(
@@ -935,6 +978,17 @@ if __name__ == &#34;__main__&#34;:
             logging.warning(
                 f&#34;html url not found for paper {paper_number}&#34;)
         try:
+            dict_for_paper[&#34;abstract&#34;] = paper[&#34;abstractText&#34;]
+        except:
+            logging.warning(
+                f&#34;Abstract not found for paper {paper_number}&#34;)
+
+        try:
+            dict_for_paper[&#34;Keywords&#34;] = paper[&#34;keywordList&#34;][&#34;keyword&#34;]
+        except:
+            logging.warning(
+                f&#34;Keywords not found for paper {paper_number}&#34;)
+        try:
             dict_for_paper[self.PDFLINKS] = pdfurl[0]
         except:
             logging.warning(
@@ -1007,6 +1061,22 @@ if __name__ == &#34;__main__&#34;:
             f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&amp;pageSize=1000&amp;format=xml&#34;)
         return r.content
 
+    def make_references(self, directory_url, paperid, source, referenceurl):
+        &#39;&#39;&#39;
+        Downloads the references for the paper with pmcid (paperid) to reference url
+
+        :param directory_url: directory containing referenceurl
+
+        :param paperid:  pmc id of the paper
+
+        :param source: source to get the citations from
+
+        :param referenceurl: path to write the references to
+        &#39;&#39;&#39;
+        getreferences = self.getreferences(
+            paperid, source)
+        self.writexml(directory_url, referenceurl, getreferences)
+
     def getcitations(self, pmcid, source):
         &#34;&#34;&#34;
         Gets citations for the paper of pmcid
@@ -1038,6 +1108,22 @@ if __name__ == &#34;__main__&#34;:
             os.makedirs(directory_url)
         with open(destination_url, &#39;wb&#39;) as f:
             f.write(content)
+
+    def make_citations(self, source, citationurl, directory_url, paperid):
+        &#39;&#39;&#39;
+        Downloads the citations for the paper with pmcid (paperid) to citation url
+
+        :param source: source to get the citations from
+
+        :param citationurl: path to write the citations to
+
+        :param directory_url: directory containing citationurl
+
+        :param paperid: pmc id of the paper
+        &#39;&#39;&#39;
+        getcitations = self.getcitations(
+            paperid, source)
+        self.writexml(directory_url, citationurl, getcitations)
 
     def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makexml=False, references=False,
                      citations=False, supplementaryFiles=False):
@@ -1075,12 +1161,12 @@ if __name__ == &#34;__main__&#34;:
             paperdict = final_xml_dict[paper]
             paperid = paperdict[&#34;full&#34;][&#34;id&#34;]
             if references:
-                super().make_references(directory_url, paperid,
-                                        references, referenceurl)
+                self.make_references(directory_url, paperid,
+                                     references, referenceurl)
                 logging.info(f&#34;Made references for {pmcid}&#34;)
             if citations:
-                super().make_citations(citations, citationurl,
-                                       directory_url, paperid)
+                self.make_citations(citations, citationurl,
+                                    directory_url, paperid)
                 logging.info(f&#34;Made Citations for {pmcid}&#34;)
             if supplementaryFiles:
                 self.getsupplementaryfiles(
@@ -1418,6 +1504,17 @@ if __name__ == &#34;__main__&#34;:
     except:
         logging.warning(
             f&#34;html url not found for paper {paper_number}&#34;)
+    try:
+        dict_for_paper[&#34;abstract&#34;] = paper[&#34;abstractText&#34;]
+    except:
+        logging.warning(
+            f&#34;Abstract not found for paper {paper_number}&#34;)
+
+    try:
+        dict_for_paper[&#34;Keywords&#34;] = paper[&#34;keywordList&#34;][&#34;keyword&#34;]
+    except:
+        logging.warning(
+            f&#34;Keywords not found for paper {paper_number}&#34;)
     try:
         dict_for_paper[self.PDFLINKS] = pdfurl[0]
     except:
@@ -1848,6 +1945,36 @@ if __name__ == &#34;__main__&#34;:
                                   supplementaryFiles=args.supp, synonym=args.synonym)</code></pre>
 </details>
 </dd>
+<dt id="pygetpapers.pygetpapers.pygetpapers.make_citations"><code class="name flex">
+<span>def <span class="ident">make_citations</span></span>(<span>self, source, citationurl, directory_url, paperid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Downloads the citations for the paper with pmcid (paperid) to citation url</p>
+<p>:param source: source to get the citations from</p>
+<p>:param citationurl: path to write the citations to</p>
+<p>:param directory_url: directory containing citationurl</p>
+<p>:param paperid: pmc id of the paper</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_citations(self, source, citationurl, directory_url, paperid):
+    &#39;&#39;&#39;
+    Downloads the citations for the paper with pmcid (paperid) to citation url
+
+    :param source: source to get the citations from
+
+    :param citationurl: path to write the citations to
+
+    :param directory_url: directory containing citationurl
+
+    :param paperid: pmc id of the paper
+    &#39;&#39;&#39;
+    getcitations = self.getcitations(
+        paperid, source)
+    self.writexml(directory_url, citationurl, getcitations)</code></pre>
+</details>
+</dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.make_csv"><code class="name flex">
 <span>def <span class="ident">make_csv</span></span>(<span>self, dict_to_write, pmcid)</span>
 </code></dt>
@@ -1901,6 +2028,37 @@ if __name__ == &#34;__main__&#34;:
     resultant_dict[pmcid][&#34;jsondownloaded&#34;] = False
     resultant_dict[pmcid][&#34;csvmade&#34;] = False
     return resultant_dict</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.pygetpapers.pygetpapers.make_references"><code class="name flex">
+<span>def <span class="ident">make_references</span></span>(<span>self, directory_url, paperid, source, referenceurl)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Downloads the references for the paper with pmcid (paperid) to reference url</p>
+<p>:param directory_url: directory containing referenceurl</p>
+<p>:param paperid:
+pmc id of the paper</p>
+<p>:param source: source to get the citations from</p>
+<p>:param referenceurl: path to write the references to</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_references(self, directory_url, paperid, source, referenceurl):
+    &#39;&#39;&#39;
+    Downloads the references for the paper with pmcid (paperid) to reference url
+
+    :param directory_url: directory containing referenceurl
+
+    :param paperid:  pmc id of the paper
+
+    :param source: source to get the citations from
+
+    :param referenceurl: path to write the references to
+    &#39;&#39;&#39;
+    getreferences = self.getreferences(
+        paperid, source)
+    self.writexml(directory_url, referenceurl, getreferences)</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.makecsv"><code class="name flex">
@@ -2012,12 +2170,12 @@ if __name__ == &#34;__main__&#34;:
         paperdict = final_xml_dict[paper]
         paperid = paperdict[&#34;full&#34;][&#34;id&#34;]
         if references:
-            super().make_references(directory_url, paperid,
-                                    references, referenceurl)
+            self.make_references(directory_url, paperid,
+                                 references, referenceurl)
             logging.info(f&#34;Made references for {pmcid}&#34;)
         if citations:
-            super().make_citations(citations, citationurl,
-                                   directory_url, paperid)
+            self.make_citations(citations, citationurl,
+                                directory_url, paperid)
             logging.info(f&#34;Made Citations for {pmcid}&#34;)
         if supplementaryFiles:
             self.getsupplementaryfiles(
@@ -2200,9 +2358,7 @@ Query to download papers for</p>
 <li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="download_tools.html#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.conditions_to_download" href="download_tools.html#pygetpapers.download_tools.download_tools.conditions_to_download">conditions_to_download</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.log_making_xml" href="download_tools.html#pygetpapers.download_tools.download_tools.log_making_xml">log_making_xml</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_citations" href="download_tools.html#pygetpapers.download_tools.download_tools.make_citations">make_citations</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.make_dict_for_csv" href="download_tools.html#pygetpapers.download_tools.download_tools.make_dict_for_csv">make_dict_for_csv</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_references" href="download_tools.html#pygetpapers.download_tools.download_tools.make_references">make_references</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.makejson" href="download_tools.html#pygetpapers.download_tools.download_tools.makejson">makejson</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.postquery" href="download_tools.html#pygetpapers.download_tools.download_tools.postquery">postquery</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.readjsondata" href="download_tools.html#pygetpapers.download_tools.download_tools.readjsondata">readjsondata</a></code></li>
@@ -2247,8 +2403,10 @@ Query to download papers for</p>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles" href="#pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles">getsupplementaryfiles</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.getxml" href="#pygetpapers.pygetpapers.pygetpapers.getxml">getxml</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.handlecli" href="#pygetpapers.pygetpapers.pygetpapers.handlecli">handlecli</a></code></li>
+<li><code><a title="pygetpapers.pygetpapers.pygetpapers.make_citations" href="#pygetpapers.pygetpapers.pygetpapers.make_citations">make_citations</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.make_csv" href="#pygetpapers.pygetpapers.pygetpapers.make_csv">make_csv</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.make_initial_columns_for_paper_dict" href="#pygetpapers.pygetpapers.pygetpapers.make_initial_columns_for_paper_dict">make_initial_columns_for_paper_dict</a></code></li>
+<li><code><a title="pygetpapers.pygetpapers.pygetpapers.make_references" href="#pygetpapers.pygetpapers.pygetpapers.make_references">make_references</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.makecsv" href="#pygetpapers.pygetpapers.pygetpapers.makecsv">makecsv</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.makexmlfiles" href="#pygetpapers.pygetpapers.pygetpapers.makexmlfiles">makexmlfiles</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.noexecute" href="#pygetpapers.pygetpapers.pygetpapers.noexecute">noexecute</a></code></li>
