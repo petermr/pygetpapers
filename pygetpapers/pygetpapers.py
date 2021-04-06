@@ -194,6 +194,17 @@ class pygetpapers(download_tools):
             logging.warning(
                 f"html url not found for paper {paper_number}")
         try:
+            dict_for_paper["abstract"] = paper["abstractText"]
+        except:
+            logging.warning(
+                f"Abstract not found for paper {paper_number}")
+
+        try:
+            dict_for_paper["Keywords"] = paper["keywordList"]["keyword"]
+        except:
+            logging.warning(
+                f"Keywords not found for paper {paper_number}")
+        try:
             dict_for_paper[self.PDFLINKS] = pdfurl[0]
         except:
             logging.warning(
@@ -266,6 +277,22 @@ class pygetpapers(download_tools):
             f"https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&pageSize=1000&format=xml")
         return r.content
 
+    def make_references(self, directory_url, paperid, source, referenceurl):
+        '''
+        Downloads the references for the paper with pmcid (paperid) to reference url
+
+        :param directory_url: directory containing referenceurl
+
+        :param paperid:  pmc id of the paper
+
+        :param source: source to get the citations from
+
+        :param referenceurl: path to write the references to
+        '''
+        getreferences = self.getreferences(
+            paperid, source)
+        self.writexml(directory_url, referenceurl, getreferences)
+
     def getcitations(self, pmcid, source):
         """
         Gets citations for the paper of pmcid
@@ -297,6 +324,22 @@ class pygetpapers(download_tools):
             os.makedirs(directory_url)
         with open(destination_url, 'wb') as f:
             f.write(content)
+
+    def make_citations(self, source, citationurl, directory_url, paperid):
+        '''
+        Downloads the citations for the paper with pmcid (paperid) to citation url
+
+        :param source: source to get the citations from
+
+        :param citationurl: path to write the citations to
+
+        :param directory_url: directory containing citationurl
+
+        :param paperid: pmc id of the paper
+        '''
+        getcitations = self.getcitations(
+            paperid, source)
+        self.writexml(directory_url, citationurl, getcitations)
 
     def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makexml=False, references=False,
                      citations=False, supplementaryFiles=False):
@@ -334,12 +377,12 @@ class pygetpapers(download_tools):
             paperdict = final_xml_dict[paper]
             paperid = paperdict["full"]["id"]
             if references:
-                super().make_references(directory_url, paperid,
-                                        references, referenceurl)
+                self.make_references(directory_url, paperid,
+                                     references, referenceurl)
                 logging.info(f"Made references for {pmcid}")
             if citations:
-                super().make_citations(citations, citationurl,
-                                       directory_url, paperid)
+                self.make_citations(citations, citationurl,
+                                    directory_url, paperid)
                 logging.info(f"Made Citations for {pmcid}")
             if supplementaryFiles:
                 self.getsupplementaryfiles(

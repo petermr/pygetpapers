@@ -61,7 +61,7 @@ class download_tools:
         :param df_transposed: dataframe to write
         '''
         import os
-        path=os.path.join(str(os.getcwd()), 'europe_pmc.csv')
+        path = os.path.join(str(os.getcwd()), 'europe_pmc.csv')
         if os.path.exists(path):
             df_transposed.to_csv(path, mode='a', header=False)
         else:
@@ -149,38 +149,6 @@ class download_tools:
         condition_to_download_json = paperdict["jsondownloaded"] == False
         condition_to_download_csv = paperdict["csvmade"] == False
         return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
-
-    def make_citations(self, source, citationurl, directory_url, paperid):
-        '''
-        Downloads the citations for the paper with pmcid (paperid) to citation url
-
-        :param source: source to get the citations from
-
-        :param citationurl: path to write the citations to
-
-        :param directory_url: directory containing citationurl
-
-        :param paperid: pmc id of the paper
-        '''
-        getcitations = self.getcitations(
-            paperid, source)
-        self.writexml(directory_url, citationurl, getcitations)
-
-    def make_references(self, directory_url, paperid, source, referenceurl):
-        '''
-        Downloads the references for the paper with pmcid (paperid) to reference url
-
-        :param directory_url: directory containing referenceurl
-
-        :param paperid:  pmc id of the paper
-
-        :param source: source to get the citations from
-
-        :param referenceurl: path to write the references to
-        '''
-        getreferences = self.getreferences(
-            paperid, source)
-        self.writexml(directory_url, referenceurl, getreferences)
 
     def readjsondata(self, path):
         '''
