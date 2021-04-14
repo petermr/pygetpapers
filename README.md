@@ -1,7 +1,7 @@
 # pygetpapers
 a Python version of getpapers 
 
-[![Inline docs](http://inch-ci.org/github/petermr/pygetpapers.svg?branch=master)](http://inch-ci.org/github/petermr/pygetpapers)
+
 [![Build Status](https://travis-ci.org/petermr/pygetpapers.png?branch=master)](https://travis-ci.org/petermr/pygetpapers)
 ## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/petermr/pygetpapers/issues)
 [![HitCount](http://hits.dwyl.com/petermr/pygetpapers.svg)](http://hits.dwyl.com/petermr/pygetpapers)
