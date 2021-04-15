@@ -101,23 +101,23 @@ Sample queries:
 
 1. The following query downloads 100 full text xmls, pdfs and supplementary files along with the csv and json(default) for the topic "lantana" and saves them in a directory called "test".
 
-`pygetpapers -q "lantana" -k 100 -o "test" --supp -c -p -x`
+   `pygetpapers -q "lantana" -k 100 -o "test" --supp -c -p -x`
 
 2. The following query just prints out the number of hits for the topic `lantana`
 
-`pygetpapers -n -q "lantana"`
+   `pygetpapers -n -q "lantana"`
 
 3. The following query just creates the csv output for metadata of 100 papers on the topic `lantana` in an output directory called "test"
 
-`pygetpapers --onlyquery -q "lantana" -k 100 -o "test" -c`
+   `pygetpapers --onlyquery -q "lantana" -k 100 -o "test" -c`
 
 4. If the user wants to update an existing corpus in the directory test2 which has eupmc_resuts.json with 100 papers of query `lantana` along with their xmls and pdfs, the following query can be used:
 
-`pygetpapers --update "D:\main_projects\test2\test\eupmc_results.json" -q "lantana" -k 100 -x -p`
+   `pygetpapers --update "D:\main_projects\test2\test\eupmc_results.json" -q "lantana" -k 100 -x -p`
 
 5. If user wants to download pdfs for a corpus in the directory test2 which has eupmc_resuts.json which originally only had xmls, or the query broke in between and they want to restart the download of pdfs and xmls, they can use the following query
 
-`pygetpapers --restart "D:\main_projects\test2\test\eupmc_results.json" -o "test" -x -p -q "lantana"`
+   `pygetpapers --restart "D:\main_projects\test2\test\eupmc_results.json" -o "test" -x -p -q "lantana"`
 
 ### Contribution
 
