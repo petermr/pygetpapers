@@ -2,13 +2,6 @@
 
 a Python version of getpapers
 
-
-[![Build Status](https://travis-ci.org/petermr/pygetpapers.png?branch=master)](https://travis-ci.org/petermr/pygetpapers)
-## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/petermr/pygetpapers/issues)
-[![HitCount](http://hits.dwyl.com/petermr/pygetpapers.svg)](http://hits.dwyl.com/petermr/pygetpapers)
-
-
-
 ## summary
 
 `(py)getpapers` issues a search query to a chosen repository via its RESTful API (or by scraping), analyses the hits and systematically downloads the articles without further interaction.
