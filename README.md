@@ -95,7 +95,7 @@ This is the help message:
 
     ```
 
-Queries are build using `-q` flag. The query format can be found at https://github.com/petermr/pygetpapers/wiki/query-format
+Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf
 
 Sample queries:
 
