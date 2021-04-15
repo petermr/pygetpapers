@@ -575,7 +575,7 @@ class pygetpapers(download_tools):
                             default=False, action="store_true", help="output the version number")
         parser.add_argument("-q", "--query",
                             type=str, default=False,
-                            help="query string transmitted to repository API. Eg. 'Artificial Intelligence' or 'Plant Parts'. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. ")
+                            help="query string transmitted to repository API. Eg. \"Artificial Intelligence\" or \"Plant Parts\". To escape special characters within the quotes, use backslash. Incase of nested quotes, ensure that the initial quotes are double and the qutoes inside are single. For eg: `'(LICENSE:\"cc by\" OR LICENSE:\"cc-by\") AND METHODS:\"transcriptome assembly\"' ` is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') AND METHODS:'transcriptome assembly'\"` ")
 
         parser.add_argument("-o", "--output",
                             type=str, help="output directory (Default: current working directory)", default=os.getcwd())
@@ -661,7 +661,7 @@ class pygetpapers(download_tools):
             import os
             import logging
             read_json = super().readjsondata(args.restart)
-            os.chdir(os.path.dirname(os.path.dirname(args.restart)))
+            os.chdir(os.path.dirname(args.restart))
             self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml,
                               references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         elif args.update:
