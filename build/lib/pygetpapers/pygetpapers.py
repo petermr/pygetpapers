@@ -105,7 +105,7 @@ class pygetpapers(download_tools):
 
         :param searchvariable(dict): Python dictionary which contains all the research papers (given by europepmc())
 
-        :param makecsv(bool): Weather to make csv files
+        :param makecsv(bool): whether to make csv files
 
         :param update(dict): if provided, will add the research papers to the searchvariable dict
 
@@ -348,17 +348,17 @@ class pygetpapers(download_tools):
 
         :param final_xml_dict: Python dictionary containg all the papers
 
-        :param getpdf(bool): Weather to make pdfs
+        :param getpdf(bool): whether to make pdfs
 
-        :param makecsv(bool): Weather to make csv for the metadata
+        :param makecsv(bool): whether to make csv for the metadata
 
-        :param makexml(bool): Weather to make xml file for the paper
+        :param makexml(bool): whether to make xml file for the paper
 
-        :param references(bool): Weather to download references
+        :param references(bool): whether to download references
 
-        :param citations(bool): Weather to download citations
+        :param citations(bool): whether to download citations
 
-        :param supplementaryFiles(bool): Weather to download supplementary files
+        :param supplementaryFiles(bool): whether to download supplementary files
 
         """
         import logging
@@ -478,21 +478,21 @@ class pygetpapers(download_tools):
 
         :param size: Number of papers to be downloaded
 
-        :param *onlymakejson(bool): Weather to only write the json files
+        :param *onlymakejson(bool): whether to only write the json files
 
-        :param *getpdf(bool): Weather to make pdf files
+        :param *getpdf(bool): whether to make pdf files
 
-        :param *makecsv(bool): Weather to make csv files
+        :param *makecsv(bool): whether to make csv files
 
-        :param *makexml(bool):Weather to make xml files
+        :param *makexml(bool):whether to make xml files
 
         :param *references: Source to get the references from
 
         :param *citations: Source to get the citations from
 
-        :param *supplementaryFiles(bool): Weather to write supplementary files
+        :param *supplementaryFiles(bool): whether to write supplementary files
 
-        :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+        :param *synonym(bool): whether to also get files with query as the synonym of the given query
         """
         import os
         query_result = self.europepmc(query, size, synonym=synonym)
@@ -515,21 +515,21 @@ class pygetpapers(download_tools):
 
         :param size(int): Number of new papers to download
 
-        :param *onlymakejson(bool): Weather to only write json files
+        :param *onlymakejson(bool): whether to only write json files
 
-        :param *getpdf(bool): Weather to make pdf files
+        :param *getpdf(bool): whether to make pdf files
 
-        :param *makecsv(bool): Weather to make csv files
+        :param *makecsv(bool): whether to make csv files
 
-        :param *makexml(bool): Weather to make xml files
+        :param *makexml(bool): whether to make xml files
 
         :param *references: Source to get the references from
 
         :param *citations: Source to get the citations from
 
-        :param *supplementaryFiles(bool): Weather to write supplementary files
+        :param *supplementaryFiles(bool): whether to write supplementary files
 
-        :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+        :param *synonym(bool): whether to also get files with query as the synonym of the given query
 
         """
         import os
