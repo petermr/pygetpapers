@@ -1,0 +1,4 @@
+- Contanct Rick
+- Set up readthedocs
+- Set up on pypi
+- Make variables out of function

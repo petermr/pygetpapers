@@ -27,6 +27,7 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from .download_tools import download_tools
+from .europe_pmc import europe_pmc
 
 
 class pygetpapers(download_tools):
@@ -47,76 +48,14 @@ class pygetpapers(download_tools):
         self.PMCID = &#34;pmcid&#34;
         self.RESPONSE_WRAPPER = &#34;responseWrapper&#34;
         self.CURSOR_MARK = &#34;nextCursorMark&#34;
+        self.europe_pmc = europe_pmc()
         self.directory_url = os.path.join(
             str(os.getcwd()))
-
-    def europepmc(self, query, size, synonym=True, **kwargs):
-        &#34;&#34;&#34;
-        Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
-
-        :param query: the query passed on to payload
-
-        :param size: total number of papers
-
-        :param synonym: whether synonym should be or not
-
-        :param kwargs: ensures that the output dict doesnt contain papers already there in update
-
-        :return: Python dictionary containing the research papers.
-        &#34;&#34;&#34;
-
-        import logging
-        import json
-        size = int(size)
-        content = [[]]
-        nextCursorMark = [&#39;*&#39;, ]
-        morepapers = True
-        number_of_papers_there = 0
-
-        while number_of_papers_there &lt;= size and morepapers is True:
-            queryparams = self.buildquery(
-                nextCursorMark[-1], 1000, query, synonym=synonym)
-            builtquery = super().postquery(
-                queryparams[&#39;headers&#39;], queryparams[&#39;payload&#39;])
-            if &#34;nextCursorMark&#34; in builtquery[&#34;responseWrapper&#34;]:
-                nextCursorMark.append(
-                    builtquery[&#34;responseWrapper&#34;][&#34;nextCursorMark&#34;])
-                totalhits = builtquery[&#34;responseWrapper&#34;][&#34;hitCount&#34;]
-                logging.info(f&#34;Total Hits are {totalhits}&#34;)
-                output_dict = json.loads(json.dumps(builtquery))
-                try:
-                    for paper in output_dict[&#34;responseWrapper&#34;][&#34;resultList&#34;][&#34;result&#34;]:
-
-                        if &#34;update&#34; in kwargs:
-                            if &#34;pmcid&#34; in paper and paper[&#34;pmcid&#34;] not in kwargs[&#34;update&#34;]:
-                                if number_of_papers_there &lt;= size:
-                                    content[0].append(paper)
-                                    number_of_papers_there += 1
-                        else:
-                            if &#34;pmcid&#34; in paper:
-                                if number_of_papers_there &lt;= size:
-                                    content[0].append(paper)
-
-                                    number_of_papers_there += 1
-
-                except:
-                    morepapers = False
-                    logging.warning(&#34;Could not find more papers&#34;)
-                    break
-
-            else:
-                morepapers = False
-                logging.warning(&#34;Could not find more papers&#34;)
-        if number_of_papers_there &gt; size:
-            content[0] = content[0][0:size]
-        return content
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
         &#34;&#34;&#34;
         :param pmcid: pmcid of the paper for which fields will be created
-
         :param resultant_dict: dict in which the fields will be created
-
         :return: dict with the initial fields created for pmcid
         &#34;&#34;&#34;
         resultant_dict[pmcid] = {}
@@ -125,15 +64,15 @@ class pygetpapers(download_tools):
         resultant_dict[pmcid][&#34;jsondownloaded&#34;] = False
         resultant_dict[pmcid][&#34;csvmade&#34;] = False
         return resultant_dict
-
     # this is the function that will the the result from search and will download and save the files.
+
     def makecsv(self, searchvariable, makecsv=False, update=False):
         &#34;&#34;&#34;
         Writes the json and *csv for searchvaraible dict
 
-        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europepmc())
+        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
 
-        :param makecsv(bool): Weather to make csv files
+        :param makecsv(bool): whether to make csv files
 
         :param update(dict): if provided, will add the research papers to the searchvariable dict
 
@@ -376,17 +315,17 @@ class pygetpapers(download_tools):
 
         :param final_xml_dict: Python dictionary containg all the papers
 
-        :param getpdf(bool): Weather to make pdfs
+        :param getpdf(bool): whether to make pdfs
 
-        :param makecsv(bool): Weather to make csv for the metadata
+        :param makecsv(bool): whether to make csv for the metadata
 
-        :param makexml(bool): Weather to make xml file for the paper
+        :param makexml(bool): whether to make xml file for the paper
 
-        :param references(bool): Weather to download references
+        :param references(bool): whether to download references
 
-        :param citations(bool): Weather to download citations
+        :param citations(bool): whether to download citations
 
-        :param supplementaryFiles(bool): Weather to download supplementary files
+        :param supplementaryFiles(bool): whether to download supplementary files
 
         &#34;&#34;&#34;
         import logging
@@ -506,24 +445,24 @@ class pygetpapers(download_tools):
 
         :param size: Number of papers to be downloaded
 
-        :param *onlymakejson(bool): Weather to only write the json files
+        :param *onlymakejson(bool): whether to only write the json files
 
-        :param *getpdf(bool): Weather to make pdf files
+        :param *getpdf(bool): whether to make pdf files
 
-        :param *makecsv(bool): Weather to make csv files
+        :param *makecsv(bool): whether to make csv files
 
-        :param *makexml(bool):Weather to make xml files
+        :param *makexml(bool):whether to make xml files
 
         :param *references: Source to get the references from
 
         :param *citations: Source to get the citations from
 
-        :param *supplementaryFiles(bool): Weather to write supplementary files
+        :param *supplementaryFiles(bool): whether to write supplementary files
 
-        :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+        :param *synonym(bool): whether to also get files with query as the synonym of the given query
         &#34;&#34;&#34;
         import os
-        query_result = self.europepmc(query, size, synonym=synonym)
+        query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv)
 
         if not (onlymakejson):
@@ -543,25 +482,25 @@ class pygetpapers(download_tools):
 
         :param size(int): Number of new papers to download
 
-        :param *onlymakejson(bool): Weather to only write json files
+        :param *onlymakejson(bool): whether to only write json files
 
-        :param *getpdf(bool): Weather to make pdf files
+        :param *getpdf(bool): whether to make pdf files
 
-        :param *makecsv(bool): Weather to make csv files
+        :param *makecsv(bool): whether to make csv files
 
-        :param *makexml(bool): Weather to make xml files
+        :param *makexml(bool): whether to make xml files
 
         :param *references: Source to get the references from
 
         :param *citations: Source to get the citations from
 
-        :param *supplementaryFiles(bool): Weather to write supplementary files
+        :param *supplementaryFiles(bool): whether to write supplementary files
 
-        :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+        :param *synonym(bool): whether to also get files with query as the synonym of the given query
 
         &#34;&#34;&#34;
         import os
-        query_result = self.europepmc(
+        query_result = self.europe_pmc.europepmc(
             query, size, update=original_json, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv,
                      update=original_json)
@@ -583,8 +522,10 @@ class pygetpapers(download_tools):
         import logging
         builtqueryparams = super().buildquery(
             &#39;*&#39;, 25, query, synonym=synonym)
+        HEADERS = &#39;headers&#39;
+        PAYLOAD = &#39;payload&#39;
         result = super().postquery(
-            builtqueryparams[&#39;headers&#39;], builtqueryparams[&#39;payload&#39;])
+            builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
         totalhits = result[&#39;responseWrapper&#39;][&#39;hitCount&#39;]
         logging.info(f&#39;Total number of hits for the query are {totalhits}&#39;)
 
@@ -592,21 +533,23 @@ class pygetpapers(download_tools):
         &#34;&#34;&#34;
         Handles the command line interface using argparse
         &#34;&#34;&#34;
-        version = &#34;0.0.3.1&#34;
+        version = &#34;0.0.3.2&#34;
         import argparse
         import os
         import logging
         import sys
+        from time import gmtime, strftime
+        default_path = strftime(&#34;%Y_%m_%d_%H_%M_%S&#34;, gmtime())
         parser = argparse.ArgumentParser(
             description=f&#34;Welcome to Pygetpapers version {version}. -h or --help for help&#34;)
         parser.add_argument(&#34;-v&#34;, &#34;--version&#34;,
                             default=False, action=&#34;store_true&#34;, help=&#34;output the version number&#34;)
         parser.add_argument(&#34;-q&#34;, &#34;--query&#34;,
                             type=str, default=False,
-                            help=&#34;query string transmitted to repository API. Eg. &#39;Artificial Intelligence&#39; or &#39;Plant Parts&#39;. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. &#34;)
+                            help=&#34;query string transmitted to repository API. Eg. \&#34;Artificial Intelligence\&#34; or \&#34;Plant Parts\&#34;. To escape special characters within the quotes, use backslash. Incase of nested quotes, ensure that the initial quotes are double and the qutoes inside are single. For eg: `&#39;(LICENSE:\&#34;cc by\&#34; OR LICENSE:\&#34;cc-by\&#34;) AND METHODS:\&#34;transcriptome assembly\&#34;&#39; ` is wrong. We should instead use `\&#34;(LICENSE:&#39;cc by&#39; OR LICENSE:&#39;cc-by&#39;) AND METHODS:&#39;transcriptome assembly&#39;\&#34;` &#34;)
 
         parser.add_argument(&#34;-o&#34;, &#34;--output&#34;,
-                            type=str, help=&#34;output directory (Default: current working directory)&#34;, default=os.getcwd())
+                            type=str, help=&#34;output directory (Default: Folder inside current working directory named )&#34;, default=os.path.join(os.getcwd(), default_path))
         parser.add_argument(&#34;-x&#34;, &#34;--xml&#34;, default=False, action=&#39;store_true&#39;,
                             help=&#34;download fulltext XMLs if available&#34;)
         parser.add_argument(&#34;-p&#34;, &#34;--pdf&#34;, default=False, action=&#39;store_true&#39;,
@@ -689,7 +632,7 @@ class pygetpapers(download_tools):
             import os
             import logging
             read_json = super().readjsondata(args.restart)
-            os.chdir(os.path.dirname(os.path.dirname(args.restart)))
+            os.chdir(os.path.dirname(args.restart))
             self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml,
                               references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         elif args.update:
@@ -803,76 +746,14 @@ if __name__ == &#34;__main__&#34;:
         self.PMCID = &#34;pmcid&#34;
         self.RESPONSE_WRAPPER = &#34;responseWrapper&#34;
         self.CURSOR_MARK = &#34;nextCursorMark&#34;
+        self.europe_pmc = europe_pmc()
         self.directory_url = os.path.join(
             str(os.getcwd()))
-
-    def europepmc(self, query, size, synonym=True, **kwargs):
-        &#34;&#34;&#34;
-        Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
-
-        :param query: the query passed on to payload
-
-        :param size: total number of papers
-
-        :param synonym: whether synonym should be or not
-
-        :param kwargs: ensures that the output dict doesnt contain papers already there in update
-
-        :return: Python dictionary containing the research papers.
-        &#34;&#34;&#34;
-
-        import logging
-        import json
-        size = int(size)
-        content = [[]]
-        nextCursorMark = [&#39;*&#39;, ]
-        morepapers = True
-        number_of_papers_there = 0
-
-        while number_of_papers_there &lt;= size and morepapers is True:
-            queryparams = self.buildquery(
-                nextCursorMark[-1], 1000, query, synonym=synonym)
-            builtquery = super().postquery(
-                queryparams[&#39;headers&#39;], queryparams[&#39;payload&#39;])
-            if &#34;nextCursorMark&#34; in builtquery[&#34;responseWrapper&#34;]:
-                nextCursorMark.append(
-                    builtquery[&#34;responseWrapper&#34;][&#34;nextCursorMark&#34;])
-                totalhits = builtquery[&#34;responseWrapper&#34;][&#34;hitCount&#34;]
-                logging.info(f&#34;Total Hits are {totalhits}&#34;)
-                output_dict = json.loads(json.dumps(builtquery))
-                try:
-                    for paper in output_dict[&#34;responseWrapper&#34;][&#34;resultList&#34;][&#34;result&#34;]:
-
-                        if &#34;update&#34; in kwargs:
-                            if &#34;pmcid&#34; in paper and paper[&#34;pmcid&#34;] not in kwargs[&#34;update&#34;]:
-                                if number_of_papers_there &lt;= size:
-                                    content[0].append(paper)
-                                    number_of_papers_there += 1
-                        else:
-                            if &#34;pmcid&#34; in paper:
-                                if number_of_papers_there &lt;= size:
-                                    content[0].append(paper)
-
-                                    number_of_papers_there += 1
-
-                except:
-                    morepapers = False
-                    logging.warning(&#34;Could not find more papers&#34;)
-                    break
-
-            else:
-                morepapers = False
-                logging.warning(&#34;Could not find more papers&#34;)
-        if number_of_papers_there &gt; size:
-            content[0] = content[0][0:size]
-        return content
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
         &#34;&#34;&#34;
         :param pmcid: pmcid of the paper for which fields will be created
-
         :param resultant_dict: dict in which the fields will be created
-
         :return: dict with the initial fields created for pmcid
         &#34;&#34;&#34;
         resultant_dict[pmcid] = {}
@@ -881,15 +762,15 @@ if __name__ == &#34;__main__&#34;:
         resultant_dict[pmcid][&#34;jsondownloaded&#34;] = False
         resultant_dict[pmcid][&#34;csvmade&#34;] = False
         return resultant_dict
-
     # this is the function that will the the result from search and will download and save the files.
+
     def makecsv(self, searchvariable, makecsv=False, update=False):
         &#34;&#34;&#34;
         Writes the json and *csv for searchvaraible dict
 
-        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europepmc())
+        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
 
-        :param makecsv(bool): Weather to make csv files
+        :param makecsv(bool): whether to make csv files
 
         :param update(dict): if provided, will add the research papers to the searchvariable dict
 
@@ -1132,17 +1013,17 @@ if __name__ == &#34;__main__&#34;:
 
         :param final_xml_dict: Python dictionary containg all the papers
 
-        :param getpdf(bool): Weather to make pdfs
+        :param getpdf(bool): whether to make pdfs
 
-        :param makecsv(bool): Weather to make csv for the metadata
+        :param makecsv(bool): whether to make csv for the metadata
 
-        :param makexml(bool): Weather to make xml file for the paper
+        :param makexml(bool): whether to make xml file for the paper
 
-        :param references(bool): Weather to download references
+        :param references(bool): whether to download references
 
-        :param citations(bool): Weather to download citations
+        :param citations(bool): whether to download citations
 
-        :param supplementaryFiles(bool): Weather to download supplementary files
+        :param supplementaryFiles(bool): whether to download supplementary files
 
         &#34;&#34;&#34;
         import logging
@@ -1262,24 +1143,24 @@ if __name__ == &#34;__main__&#34;:
 
         :param size: Number of papers to be downloaded
 
-        :param *onlymakejson(bool): Weather to only write the json files
+        :param *onlymakejson(bool): whether to only write the json files
 
-        :param *getpdf(bool): Weather to make pdf files
+        :param *getpdf(bool): whether to make pdf files
 
-        :param *makecsv(bool): Weather to make csv files
+        :param *makecsv(bool): whether to make csv files
 
-        :param *makexml(bool):Weather to make xml files
+        :param *makexml(bool):whether to make xml files
 
         :param *references: Source to get the references from
 
         :param *citations: Source to get the citations from
 
-        :param *supplementaryFiles(bool): Weather to write supplementary files
+        :param *supplementaryFiles(bool): whether to write supplementary files
 
-        :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+        :param *synonym(bool): whether to also get files with query as the synonym of the given query
         &#34;&#34;&#34;
         import os
-        query_result = self.europepmc(query, size, synonym=synonym)
+        query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv)
 
         if not (onlymakejson):
@@ -1299,25 +1180,25 @@ if __name__ == &#34;__main__&#34;:
 
         :param size(int): Number of new papers to download
 
-        :param *onlymakejson(bool): Weather to only write json files
+        :param *onlymakejson(bool): whether to only write json files
 
-        :param *getpdf(bool): Weather to make pdf files
+        :param *getpdf(bool): whether to make pdf files
 
-        :param *makecsv(bool): Weather to make csv files
+        :param *makecsv(bool): whether to make csv files
 
-        :param *makexml(bool): Weather to make xml files
+        :param *makexml(bool): whether to make xml files
 
         :param *references: Source to get the references from
 
         :param *citations: Source to get the citations from
 
-        :param *supplementaryFiles(bool): Weather to write supplementary files
+        :param *supplementaryFiles(bool): whether to write supplementary files
 
-        :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+        :param *synonym(bool): whether to also get files with query as the synonym of the given query
 
         &#34;&#34;&#34;
         import os
-        query_result = self.europepmc(
+        query_result = self.europe_pmc.europepmc(
             query, size, update=original_json, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv,
                      update=original_json)
@@ -1339,8 +1220,10 @@ if __name__ == &#34;__main__&#34;:
         import logging
         builtqueryparams = super().buildquery(
             &#39;*&#39;, 25, query, synonym=synonym)
+        HEADERS = &#39;headers&#39;
+        PAYLOAD = &#39;payload&#39;
         result = super().postquery(
-            builtqueryparams[&#39;headers&#39;], builtqueryparams[&#39;payload&#39;])
+            builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
         totalhits = result[&#39;responseWrapper&#39;][&#39;hitCount&#39;]
         logging.info(f&#39;Total number of hits for the query are {totalhits}&#39;)
 
@@ -1348,21 +1231,23 @@ if __name__ == &#34;__main__&#34;:
         &#34;&#34;&#34;
         Handles the command line interface using argparse
         &#34;&#34;&#34;
-        version = &#34;0.0.3.1&#34;
+        version = &#34;0.0.3.2&#34;
         import argparse
         import os
         import logging
         import sys
+        from time import gmtime, strftime
+        default_path = strftime(&#34;%Y_%m_%d_%H_%M_%S&#34;, gmtime())
         parser = argparse.ArgumentParser(
             description=f&#34;Welcome to Pygetpapers version {version}. -h or --help for help&#34;)
         parser.add_argument(&#34;-v&#34;, &#34;--version&#34;,
                             default=False, action=&#34;store_true&#34;, help=&#34;output the version number&#34;)
         parser.add_argument(&#34;-q&#34;, &#34;--query&#34;,
                             type=str, default=False,
-                            help=&#34;query string transmitted to repository API. Eg. &#39;Artificial Intelligence&#39; or &#39;Plant Parts&#39;. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. &#34;)
+                            help=&#34;query string transmitted to repository API. Eg. \&#34;Artificial Intelligence\&#34; or \&#34;Plant Parts\&#34;. To escape special characters within the quotes, use backslash. Incase of nested quotes, ensure that the initial quotes are double and the qutoes inside are single. For eg: `&#39;(LICENSE:\&#34;cc by\&#34; OR LICENSE:\&#34;cc-by\&#34;) AND METHODS:\&#34;transcriptome assembly\&#34;&#39; ` is wrong. We should instead use `\&#34;(LICENSE:&#39;cc by&#39; OR LICENSE:&#39;cc-by&#39;) AND METHODS:&#39;transcriptome assembly&#39;\&#34;` &#34;)
 
         parser.add_argument(&#34;-o&#34;, &#34;--output&#34;,
-                            type=str, help=&#34;output directory (Default: current working directory)&#34;, default=os.getcwd())
+                            type=str, help=&#34;output directory (Default: Folder inside current working directory named )&#34;, default=os.path.join(os.getcwd(), default_path))
         parser.add_argument(&#34;-x&#34;, &#34;--xml&#34;, default=False, action=&#39;store_true&#39;,
                             help=&#34;download fulltext XMLs if available&#34;)
         parser.add_argument(&#34;-p&#34;, &#34;--pdf&#34;, default=False, action=&#39;store_true&#39;,
@@ -1445,7 +1330,7 @@ if __name__ == &#34;__main__&#34;:
             import os
             import logging
             read_json = super().readjsondata(args.restart)
-            os.chdir(os.path.dirname(os.path.dirname(args.restart)))
+            os.chdir(os.path.dirname(args.restart))
             self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml,
                               references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         elif args.update:
@@ -1545,14 +1430,14 @@ if __name__ == &#34;__main__&#34;:
 <div class="desc"><p>Downloads and writes papers along with the metadata for the given query</p>
 <p>:param query: Query to download papers for</p>
 <p>:param size: Number of papers to be downloaded</p>
-<p>:param *onlymakejson(bool): Weather to only write the json files</p>
-<p>:param *getpdf(bool): Weather to make pdf files</p>
-<p>:param *makecsv(bool): Weather to make csv files</p>
-<p>:param *makexml(bool):Weather to make xml files</p>
+<p>:param *onlymakejson(bool): whether to only write the json files</p>
+<p>:param *getpdf(bool): whether to make pdf files</p>
+<p>:param *makecsv(bool): whether to make csv files</p>
+<p>:param *makexml(bool):whether to make xml files</p>
 <p>:param *references: Source to get the references from</p>
 <p>:param *citations: Source to get the citations from</p>
-<p>:param *supplementaryFiles(bool): Weather to write supplementary files</p>
-<p>:param *synonym(bool): Weather to also get files with query as the synonym of the given query</p></div>
+<p>:param *supplementaryFiles(bool): whether to write supplementary files</p>
+<p>:param *synonym(bool): whether to also get files with query as the synonym of the given query</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1566,24 +1451,24 @@ if __name__ == &#34;__main__&#34;:
 
     :param size: Number of papers to be downloaded
 
-    :param *onlymakejson(bool): Weather to only write the json files
+    :param *onlymakejson(bool): whether to only write the json files
 
-    :param *getpdf(bool): Weather to make pdf files
+    :param *getpdf(bool): whether to make pdf files
 
-    :param *makecsv(bool): Weather to make csv files
+    :param *makecsv(bool): whether to make csv files
 
-    :param *makexml(bool):Weather to make xml files
+    :param *makexml(bool):whether to make xml files
 
     :param *references: Source to get the references from
 
     :param *citations: Source to get the citations from
 
-    :param *supplementaryFiles(bool): Weather to write supplementary files
+    :param *supplementaryFiles(bool): whether to write supplementary files
 
-    :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+    :param *synonym(bool): whether to also get files with query as the synonym of the given query
     &#34;&#34;&#34;
     import os
-    query_result = self.europepmc(query, size, synonym=synonym)
+    query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
     self.makecsv(query_result, makecsv=makecsv)
 
     if not (onlymakejson):
@@ -1591,82 +1476,6 @@ if __name__ == &#34;__main__&#34;:
             str(os.getcwd()), &#39;eupmc_results.json&#39;))
         self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml,
                           references=references, citations=citations, supplementaryFiles=supplementaryFiles)</code></pre>
-</details>
-</dd>
-<dt id="pygetpapers.pygetpapers.pygetpapers.europepmc"><code class="name flex">
-<span>def <span class="ident">europepmc</span></span>(<span>self, query, size, synonym=True, **kwargs)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Makes the query to europepmc rest api then returns a python dictionary containing the research papers.</p>
-<p>:param query: the query passed on to payload</p>
-<p>:param size: total number of papers</p>
-<p>:param synonym: whether synonym should be or not</p>
-<p>:param kwargs: ensures that the output dict doesnt contain papers already there in update</p>
-<p>:return: Python dictionary containing the research papers.</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def europepmc(self, query, size, synonym=True, **kwargs):
-    &#34;&#34;&#34;
-    Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
-
-    :param query: the query passed on to payload
-
-    :param size: total number of papers
-
-    :param synonym: whether synonym should be or not
-
-    :param kwargs: ensures that the output dict doesnt contain papers already there in update
-
-    :return: Python dictionary containing the research papers.
-    &#34;&#34;&#34;
-
-    import logging
-    import json
-    size = int(size)
-    content = [[]]
-    nextCursorMark = [&#39;*&#39;, ]
-    morepapers = True
-    number_of_papers_there = 0
-
-    while number_of_papers_there &lt;= size and morepapers is True:
-        queryparams = self.buildquery(
-            nextCursorMark[-1], 1000, query, synonym=synonym)
-        builtquery = super().postquery(
-            queryparams[&#39;headers&#39;], queryparams[&#39;payload&#39;])
-        if &#34;nextCursorMark&#34; in builtquery[&#34;responseWrapper&#34;]:
-            nextCursorMark.append(
-                builtquery[&#34;responseWrapper&#34;][&#34;nextCursorMark&#34;])
-            totalhits = builtquery[&#34;responseWrapper&#34;][&#34;hitCount&#34;]
-            logging.info(f&#34;Total Hits are {totalhits}&#34;)
-            output_dict = json.loads(json.dumps(builtquery))
-            try:
-                for paper in output_dict[&#34;responseWrapper&#34;][&#34;resultList&#34;][&#34;result&#34;]:
-
-                    if &#34;update&#34; in kwargs:
-                        if &#34;pmcid&#34; in paper and paper[&#34;pmcid&#34;] not in kwargs[&#34;update&#34;]:
-                            if number_of_papers_there &lt;= size:
-                                content[0].append(paper)
-                                number_of_papers_there += 1
-                    else:
-                        if &#34;pmcid&#34; in paper:
-                            if number_of_papers_there &lt;= size:
-                                content[0].append(paper)
-
-                                number_of_papers_there += 1
-
-            except:
-                morepapers = False
-                logging.warning(&#34;Could not find more papers&#34;)
-                break
-
-        else:
-            morepapers = False
-            logging.warning(&#34;Could not find more papers&#34;)
-    if number_of_papers_there &gt; size:
-        content[0] = content[0][0:size]
-    return content</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to"><code class="name flex">
@@ -1831,21 +1640,23 @@ if __name__ == &#34;__main__&#34;:
     &#34;&#34;&#34;
     Handles the command line interface using argparse
     &#34;&#34;&#34;
-    version = &#34;0.0.3.1&#34;
+    version = &#34;0.0.3.2&#34;
     import argparse
     import os
     import logging
     import sys
+    from time import gmtime, strftime
+    default_path = strftime(&#34;%Y_%m_%d_%H_%M_%S&#34;, gmtime())
     parser = argparse.ArgumentParser(
         description=f&#34;Welcome to Pygetpapers version {version}. -h or --help for help&#34;)
     parser.add_argument(&#34;-v&#34;, &#34;--version&#34;,
                         default=False, action=&#34;store_true&#34;, help=&#34;output the version number&#34;)
     parser.add_argument(&#34;-q&#34;, &#34;--query&#34;,
                         type=str, default=False,
-                        help=&#34;query string transmitted to repository API. Eg. &#39;Artificial Intelligence&#39; or &#39;Plant Parts&#39;. To escape special characters within the quotes, use backslash. The query to be quoted in either single or double quotes. &#34;)
+                        help=&#34;query string transmitted to repository API. Eg. \&#34;Artificial Intelligence\&#34; or \&#34;Plant Parts\&#34;. To escape special characters within the quotes, use backslash. Incase of nested quotes, ensure that the initial quotes are double and the qutoes inside are single. For eg: `&#39;(LICENSE:\&#34;cc by\&#34; OR LICENSE:\&#34;cc-by\&#34;) AND METHODS:\&#34;transcriptome assembly\&#34;&#39; ` is wrong. We should instead use `\&#34;(LICENSE:&#39;cc by&#39; OR LICENSE:&#39;cc-by&#39;) AND METHODS:&#39;transcriptome assembly&#39;\&#34;` &#34;)
 
     parser.add_argument(&#34;-o&#34;, &#34;--output&#34;,
-                        type=str, help=&#34;output directory (Default: current working directory)&#34;, default=os.getcwd())
+                        type=str, help=&#34;output directory (Default: Folder inside current working directory named )&#34;, default=os.path.join(os.getcwd(), default_path))
     parser.add_argument(&#34;-x&#34;, &#34;--xml&#34;, default=False, action=&#39;store_true&#39;,
                         help=&#34;download fulltext XMLs if available&#34;)
     parser.add_argument(&#34;-p&#34;, &#34;--pdf&#34;, default=False, action=&#39;store_true&#39;,
@@ -1928,7 +1739,7 @@ if __name__ == &#34;__main__&#34;:
         import os
         import logging
         read_json = super().readjsondata(args.restart)
-        os.chdir(os.path.dirname(os.path.dirname(args.restart)))
+        os.chdir(os.path.dirname(args.restart))
         self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makexml=args.xml,
                           references=args.references, citations=args.citations, supplementaryFiles=args.supp)
     elif args.update:
@@ -2007,9 +1818,9 @@ if __name__ == &#34;__main__&#34;:
 <span>def <span class="ident">make_initial_columns_for_paper_dict</span></span>(<span>self, pmcid, resultant_dict)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>:param pmcid: pmcid of the paper for which fields will be created</p>
-<p>:param resultant_dict: dict in which the fields will be created</p>
-<p>:return: dict with the initial fields created for pmcid</p></div>
+<div class="desc"><p>:param pmcid: pmcid of the paper for which fields will be created
+:param resultant_dict: dict in which the fields will be created
+:return: dict with the initial fields created for pmcid</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2017,9 +1828,7 @@ if __name__ == &#34;__main__&#34;:
 <pre><code class="python">def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
     &#34;&#34;&#34;
     :param pmcid: pmcid of the paper for which fields will be created
-
     :param resultant_dict: dict in which the fields will be created
-
     :return: dict with the initial fields created for pmcid
     &#34;&#34;&#34;
     resultant_dict[pmcid] = {}
@@ -2066,8 +1875,8 @@ pmc id of the paper</p>
 </code></dt>
 <dd>
 <div class="desc"><p>Writes the json and *csv for searchvaraible dict</p>
-<p>:param searchvariable(dict): Python dictionary which contains all the research papers (given by europepmc())</p>
-<p>:param makecsv(bool): Weather to make csv files</p>
+<p>:param searchvariable(dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))</p>
+<p>:param makecsv(bool): whether to make csv files</p>
 <p>:param update(dict): if provided, will add the research papers to the searchvariable dict</p>
 <p>:return: searchvariable</p></div>
 <details class="source">
@@ -2078,9 +1887,9 @@ pmc id of the paper</p>
     &#34;&#34;&#34;
     Writes the json and *csv for searchvaraible dict
 
-    :param searchvariable(dict): Python dictionary which contains all the research papers (given by europepmc())
+    :param searchvariable(dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
 
-    :param makecsv(bool): Weather to make csv files
+    :param makecsv(bool): whether to make csv files
 
     :param update(dict): if provided, will add the research papers to the searchvariable dict
 
@@ -2124,12 +1933,12 @@ pmc id of the paper</p>
 <dd>
 <div class="desc"><p>Writes the <em>pdf,</em>csv,<em>xml,</em>references,<em>citations,</em>supplementaryFiles for the individual papers</p>
 <p>:param final_xml_dict: Python dictionary containg all the papers</p>
-<p>:param getpdf(bool): Weather to make pdfs</p>
-<p>:param makecsv(bool): Weather to make csv for the metadata</p>
-<p>:param makexml(bool): Weather to make xml file for the paper</p>
-<p>:param references(bool): Weather to download references</p>
-<p>:param citations(bool): Weather to download citations</p>
-<p>:param supplementaryFiles(bool): Weather to download supplementary files</p></div>
+<p>:param getpdf(bool): whether to make pdfs</p>
+<p>:param makecsv(bool): whether to make csv for the metadata</p>
+<p>:param makexml(bool): whether to make xml file for the paper</p>
+<p>:param references(bool): whether to download references</p>
+<p>:param citations(bool): whether to download citations</p>
+<p>:param supplementaryFiles(bool): whether to download supplementary files</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2141,17 +1950,17 @@ pmc id of the paper</p>
 
     :param final_xml_dict: Python dictionary containg all the papers
 
-    :param getpdf(bool): Weather to make pdfs
+    :param getpdf(bool): whether to make pdfs
 
-    :param makecsv(bool): Weather to make csv for the metadata
+    :param makecsv(bool): whether to make csv for the metadata
 
-    :param makexml(bool): Weather to make xml file for the paper
+    :param makexml(bool): whether to make xml file for the paper
 
-    :param references(bool): Weather to download references
+    :param references(bool): whether to download references
 
-    :param citations(bool): Weather to download citations
+    :param citations(bool): whether to download citations
 
-    :param supplementaryFiles(bool): Weather to download supplementary files
+    :param supplementaryFiles(bool): whether to download supplementary files
 
     &#34;&#34;&#34;
     import logging
@@ -2237,8 +2046,10 @@ pmc id of the paper</p>
     import logging
     builtqueryparams = super().buildquery(
         &#39;*&#39;, 25, query, synonym=synonym)
+    HEADERS = &#39;headers&#39;
+    PAYLOAD = &#39;payload&#39;
     result = super().postquery(
-        builtqueryparams[&#39;headers&#39;], builtqueryparams[&#39;payload&#39;])
+        builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
     totalhits = result[&#39;responseWrapper&#39;][&#39;hitCount&#39;]
     logging.info(f&#39;Total number of hits for the query are {totalhits}&#39;)</code></pre>
 </details>
@@ -2252,14 +2063,14 @@ pmc id of the paper</p>
 Query to download papers for</p>
 <p>:param original_json: Json of the original corpus in the form of python dictionary</p>
 <p>:param size(int): Number of new papers to download</p>
-<p>:param *onlymakejson(bool): Weather to only write json files</p>
-<p>:param *getpdf(bool): Weather to make pdf files</p>
-<p>:param *makecsv(bool): Weather to make csv files</p>
-<p>:param *makexml(bool): Weather to make xml files</p>
+<p>:param *onlymakejson(bool): whether to only write json files</p>
+<p>:param *getpdf(bool): whether to make pdf files</p>
+<p>:param *makecsv(bool): whether to make csv files</p>
+<p>:param *makexml(bool): whether to make xml files</p>
 <p>:param *references: Source to get the references from</p>
 <p>:param *citations: Source to get the citations from</p>
-<p>:param *supplementaryFiles(bool): Weather to write supplementary files</p>
-<p>:param *synonym(bool): Weather to also get files with query as the synonym of the given query</p></div>
+<p>:param *supplementaryFiles(bool): whether to write supplementary files</p>
+<p>:param *synonym(bool): whether to also get files with query as the synonym of the given query</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2275,25 +2086,25 @@ Query to download papers for</p>
 
     :param size(int): Number of new papers to download
 
-    :param *onlymakejson(bool): Weather to only write json files
+    :param *onlymakejson(bool): whether to only write json files
 
-    :param *getpdf(bool): Weather to make pdf files
+    :param *getpdf(bool): whether to make pdf files
 
-    :param *makecsv(bool): Weather to make csv files
+    :param *makecsv(bool): whether to make csv files
 
-    :param *makexml(bool): Weather to make xml files
+    :param *makexml(bool): whether to make xml files
 
     :param *references: Source to get the references from
 
     :param *citations: Source to get the citations from
 
-    :param *supplementaryFiles(bool): Weather to write supplementary files
+    :param *supplementaryFiles(bool): whether to write supplementary files
 
-    :param *synonym(bool): Weather to also get files with query as the synonym of the given query
+    :param *synonym(bool): whether to also get files with query as the synonym of the given query
 
     &#34;&#34;&#34;
     import os
-    query_result = self.europepmc(
+    query_result = self.europe_pmc.europepmc(
         query, size, update=original_json, synonym=synonym)
     self.makecsv(query_result, makecsv=makecsv,
                  update=original_json)
@@ -2396,7 +2207,6 @@ Query to download papers for</p>
 <ul class="">
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict" href="#pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict">add_fields_to_resultant_dict</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.apipaperdownload" href="#pygetpapers.pygetpapers.pygetpapers.apipaperdownload">apipaperdownload</a></code></li>
-<li><code><a title="pygetpapers.pygetpapers.pygetpapers.europepmc" href="#pygetpapers.pygetpapers.pygetpapers.europepmc">europepmc</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to" href="#pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to">get_urls_to_write_to</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.getcitations" href="#pygetpapers.pygetpapers.pygetpapers.getcitations">getcitations</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.getreferences" href="#pygetpapers.pygetpapers.pygetpapers.getreferences">getreferences</a></code></li>
