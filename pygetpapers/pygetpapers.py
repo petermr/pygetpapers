@@ -1,5 +1,5 @@
-from .download_tools import download_tools
-from .europe_pmc import europe_pmc
+from pygetpapers.download_tools import download_tools
+from pygetpapers.europe_pmc import europe_pmc
 
 
 class pygetpapers(download_tools):

@@ -1,4 +1,4 @@
-from .download_tools import download_tools
+from pygetpapers.download_tools import download_tools
 import pygetpapers
 
 
