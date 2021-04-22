@@ -56,7 +56,7 @@ This is the help message:
                             The query to be quoted in either single or double
                             quotes.
     -o OUTPUT, --output OUTPUT
-                            output directory (Default: current working directory)
+                            output directory (Default: Folder inside current working directory named )
     -x, --xml             download fulltext XMLs if available
     -p, --pdf             download fulltext PDFs if available
     -s, --supp            download supplementary files if available

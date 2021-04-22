@@ -66,6 +66,7 @@
         content[0] = content[0][0:size]
     return content
 
+
 def handle_update_and_addition_of_paper_to_dict(self, content, kwargs, number_of_papers_there, paper, size):
     if &#34;update&#34; in kwargs:
         if &#34;pmcid&#34; in paper and paper[&#34;pmcid&#34;] not in kwargs[&#34;update&#34;]:
@@ -77,7 +78,109 @@ def handle_update_and_addition_of_paper_to_dict(self, content, kwargs, number_of
             if number_of_papers_there &lt;= size:
                 content[0].append(paper)
                 number_of_papers_there += 1
-    return number_of_papers_there</code></pre>
+    return number_of_papers_there
+
+    def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makexml=False, references=False,
+                     citations=False, supplementaryFiles=False):
+        &#34;&#34;&#34;
+        Writes the *pdf,*csv,*xml,*references,*citations,*supplementaryFiles for the individual papers
+
+        :param final_xml_dict: Python dictionary containg all the papers
+
+        :param getpdf(bool): whether to make pdfs
+
+        :param makecsv(bool): whether to make csv for the metadata
+
+        :param makexml(bool): whether to make xml file for the paper
+
+        :param references(bool): whether to download references
+
+        :param citations(bool): whether to download citations
+
+        :param supplementaryFiles(bool): whether to download supplementary files
+
+        &#34;&#34;&#34;
+        import logging
+        import os
+        import time
+        import multiprocessing
+        number_of_processes = len(final_xml_dict)
+        process_xml = multiprocessing.Pool(processes=number_of_processes)
+        process_references = multiprocessing.Pool(
+            processes=number_of_processes)
+        process_citations = multiprocessing.Pool(processes=number_of_processes)
+        processes_supp = multiprocessing.Pool(processes=number_of_processes)
+        process_pdfs = multiprocessing.Pool(processes=number_of_processes)
+        process_csv = multiprocessing.Pool(processes=number_of_processes)
+        if makexml:
+            super().log_making_xml()
+        paper_number = 0
+        for paper in final_xml_dict:
+            start = time.time()
+            paper_number += 1
+            pmcid = paper
+            tree = self.getxml(pmcid)
+            citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl = self.get_urls_to_write_to(
+                pmcid)
+            paperdict = final_xml_dict[paper]
+            paperid = paperdict[&#34;full&#34;][&#34;id&#34;]
+            if references:
+                process_references.apply_async(self.make_references, (directory_url, paperid,
+                                                                      references, referenceurl))
+                logging.info(f&#34;Made references for {pmcid}&#34;)
+            if citations:
+                process_citations.apply_async(self.make_citations, (citations, citationurl,
+                                                                    directory_url, paperid))
+                logging.info(f&#34;Made Citations for {pmcid}&#34;)
+            if supplementaryFiles:
+                processes_supp.apply_async(
+                    self.getsupplementaryfiles, (paperid, directory_url, supplementaryfilesurl))
+                logging.info(f&#34;Made Supplementary files for {pmcid}&#34;)
+            if not os.path.isdir(directory_url):
+                os.makedirs(directory_url)
+            condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf = super().conditions_to_download(
+                paperdict)
+            if condition_to_down:
+                if makexml:
+                    process_xml.apply_async(
+                        super().writexml, (directory_url, destination_url, tree))
+                    logging.info(f&#34;*/Wrote xml for {pmcid}/&#34;)
+                    paperdict[&#34;downloaded&#34;] = True
+            if condition_to_download_pdf:
+                if getpdf:
+                    pdf_destination = os.path.join(
+                        str(os.getcwd()), pmcid, &#34;fulltext.pdf&#34;)
+                    if &#34;pdflinks&#34; in paperdict:
+                        if len(paperdict[&#34;pdflinks&#34;]) &gt; 0:
+                            process_pdfs.apply_async(
+                                super().writepdf, (paperdict[&#34;pdflinks&#34;], pdf_destination))
+                            paperdict[&#34;pdfdownloaded&#34;] = True
+                            logging.info(f&#34;Wrote the pdf file for {pmcid}&#34;)
+            dict_to_write = super().clean_dict_for_csv(paperdict)
+            if condition_to_download_json:
+                super().makejson(jsonurl, dict_to_write)
+                paperdict[&#34;jsondownloaded&#34;] = True
+            if condition_to_download_csv:
+                if makecsv:
+                    self.make_csv(dict_to_write, pmcid)
+                    paperdict[&#34;csvmade&#34;] = True
+            super().makejson(os.path.join(
+                str(os.getcwd()), &#39;eupmc_results.json&#39;), final_xml_dict)
+            stop = time.time()
+            logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
+            logging.debug(f&#34;*/Updating the json*/\n&#34;)
+        process_xml.close()
+        process_xml.join()
+        process_references.close()
+        process_references.join()
+        process_citations.close()
+        process_citations.join()
+        processes_supp.close()
+        processes_supp.join()
+        process_pdfs.close()
+        process_pdfs.join()
+        process_csv.close()
+        process_csv.join()</code></pre>
 </details>
 </section>
 <section>
@@ -157,7 +260,109 @@ def handle_update_and_addition_of_paper_to_dict(self, content, kwargs, number_of
             if number_of_papers_there &lt;= size:
                 content[0].append(paper)
                 number_of_papers_there += 1
-    return number_of_papers_there</code></pre>
+    return number_of_papers_there
+
+    def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makexml=False, references=False,
+                     citations=False, supplementaryFiles=False):
+        &#34;&#34;&#34;
+        Writes the *pdf,*csv,*xml,*references,*citations,*supplementaryFiles for the individual papers
+
+        :param final_xml_dict: Python dictionary containg all the papers
+
+        :param getpdf(bool): whether to make pdfs
+
+        :param makecsv(bool): whether to make csv for the metadata
+
+        :param makexml(bool): whether to make xml file for the paper
+
+        :param references(bool): whether to download references
+
+        :param citations(bool): whether to download citations
+
+        :param supplementaryFiles(bool): whether to download supplementary files
+
+        &#34;&#34;&#34;
+        import logging
+        import os
+        import time
+        import multiprocessing
+        number_of_processes = len(final_xml_dict)
+        process_xml = multiprocessing.Pool(processes=number_of_processes)
+        process_references = multiprocessing.Pool(
+            processes=number_of_processes)
+        process_citations = multiprocessing.Pool(processes=number_of_processes)
+        processes_supp = multiprocessing.Pool(processes=number_of_processes)
+        process_pdfs = multiprocessing.Pool(processes=number_of_processes)
+        process_csv = multiprocessing.Pool(processes=number_of_processes)
+        if makexml:
+            super().log_making_xml()
+        paper_number = 0
+        for paper in final_xml_dict:
+            start = time.time()
+            paper_number += 1
+            pmcid = paper
+            tree = self.getxml(pmcid)
+            citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl = self.get_urls_to_write_to(
+                pmcid)
+            paperdict = final_xml_dict[paper]
+            paperid = paperdict[&#34;full&#34;][&#34;id&#34;]
+            if references:
+                process_references.apply_async(self.make_references, (directory_url, paperid,
+                                                                      references, referenceurl))
+                logging.info(f&#34;Made references for {pmcid}&#34;)
+            if citations:
+                process_citations.apply_async(self.make_citations, (citations, citationurl,
+                                                                    directory_url, paperid))
+                logging.info(f&#34;Made Citations for {pmcid}&#34;)
+            if supplementaryFiles:
+                processes_supp.apply_async(
+                    self.getsupplementaryfiles, (paperid, directory_url, supplementaryfilesurl))
+                logging.info(f&#34;Made Supplementary files for {pmcid}&#34;)
+            if not os.path.isdir(directory_url):
+                os.makedirs(directory_url)
+            condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf = super().conditions_to_download(
+                paperdict)
+            if condition_to_down:
+                if makexml:
+                    process_xml.apply_async(
+                        super().writexml, (directory_url, destination_url, tree))
+                    logging.info(f&#34;*/Wrote xml for {pmcid}/&#34;)
+                    paperdict[&#34;downloaded&#34;] = True
+            if condition_to_download_pdf:
+                if getpdf:
+                    pdf_destination = os.path.join(
+                        str(os.getcwd()), pmcid, &#34;fulltext.pdf&#34;)
+                    if &#34;pdflinks&#34; in paperdict:
+                        if len(paperdict[&#34;pdflinks&#34;]) &gt; 0:
+                            process_pdfs.apply_async(
+                                super().writepdf, (paperdict[&#34;pdflinks&#34;], pdf_destination))
+                            paperdict[&#34;pdfdownloaded&#34;] = True
+                            logging.info(f&#34;Wrote the pdf file for {pmcid}&#34;)
+            dict_to_write = super().clean_dict_for_csv(paperdict)
+            if condition_to_download_json:
+                super().makejson(jsonurl, dict_to_write)
+                paperdict[&#34;jsondownloaded&#34;] = True
+            if condition_to_download_csv:
+                if makecsv:
+                    self.make_csv(dict_to_write, pmcid)
+                    paperdict[&#34;csvmade&#34;] = True
+            super().makejson(os.path.join(
+                str(os.getcwd()), &#39;eupmc_results.json&#39;), final_xml_dict)
+            stop = time.time()
+            logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
+            logging.debug(f&#34;*/Updating the json*/\n&#34;)
+        process_xml.close()
+        process_xml.join()
+        process_references.close()
+        process_references.join()
+        process_citations.close()
+        process_citations.join()
+        processes_supp.close()
+        processes_supp.join()
+        process_pdfs.close()
+        process_pdfs.join()
+        process_csv.close()
+        process_csv.join()</code></pre>
 </details>
 </dd>
 </dl>

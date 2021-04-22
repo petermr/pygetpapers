@@ -1,4 +1,5 @@
 from .download_tools import download_tools
+from .europe_pmc import europe_pmc
 
 
 class pygetpapers(download_tools):
@@ -19,76 +20,14 @@ class pygetpapers(download_tools):
         self.PMCID = "pmcid"
         self.RESPONSE_WRAPPER = "responseWrapper"
         self.CURSOR_MARK = "nextCursorMark"
+        self.europe_pmc = europe_pmc()
         self.directory_url = os.path.join(
             str(os.getcwd()))
-
-    def europepmc(self, query, size, synonym=True, **kwargs):
-        """
-        Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
-
-        :param query: the query passed on to payload
-
-        :param size: total number of papers
-
-        :param synonym: whether synonym should be or not
-
-        :param kwargs: ensures that the output dict doesnt contain papers already there in update
-
-        :return: Python dictionary containing the research papers.
-        """
-
-        import logging
-        import json
-        size = int(size)
-        content = [[]]
-        nextCursorMark = ['*', ]
-        morepapers = True
-        number_of_papers_there = 0
-
-        while number_of_papers_there <= size and morepapers is True:
-            queryparams = self.buildquery(
-                nextCursorMark[-1], 1000, query, synonym=synonym)
-            builtquery = super().postquery(
-                queryparams['headers'], queryparams['payload'])
-            if "nextCursorMark" in builtquery["responseWrapper"]:
-                nextCursorMark.append(
-                    builtquery["responseWrapper"]["nextCursorMark"])
-                totalhits = builtquery["responseWrapper"]["hitCount"]
-                logging.info(f"Total Hits are {totalhits}")
-                output_dict = json.loads(json.dumps(builtquery))
-                try:
-                    for paper in output_dict["responseWrapper"]["resultList"]["result"]:
-
-                        if "update" in kwargs:
-                            if "pmcid" in paper and paper["pmcid"] not in kwargs["update"]:
-                                if number_of_papers_there <= size:
-                                    content[0].append(paper)
-                                    number_of_papers_there += 1
-                        else:
-                            if "pmcid" in paper:
-                                if number_of_papers_there <= size:
-                                    content[0].append(paper)
-
-                                    number_of_papers_there += 1
-
-                except:
-                    morepapers = False
-                    logging.warning("Could not find more papers")
-                    break
-
-            else:
-                morepapers = False
-                logging.warning("Could not find more papers")
-        if number_of_papers_there > size:
-            content[0] = content[0][0:size]
-        return content
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
         """
         :param pmcid: pmcid of the paper for which fields will be created
-
         :param resultant_dict: dict in which the fields will be created
-
         :return: dict with the initial fields created for pmcid
         """
         resultant_dict[pmcid] = {}
@@ -97,13 +36,13 @@ class pygetpapers(download_tools):
         resultant_dict[pmcid]["jsondownloaded"] = False
         resultant_dict[pmcid]["csvmade"] = False
         return resultant_dict
-
     # this is the function that will the the result from search and will download and save the files.
+
     def makecsv(self, searchvariable, makecsv=False, update=False):
         """
         Writes the json and *csv for searchvaraible dict
 
-        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europepmc())
+        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
 
         :param makecsv(bool): whether to make csv files
 
@@ -495,7 +434,7 @@ class pygetpapers(download_tools):
         :param *synonym(bool): whether to also get files with query as the synonym of the given query
         """
         import os
-        query_result = self.europepmc(query, size, synonym=synonym)
+        query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv)
 
         if not (onlymakejson):
@@ -533,7 +472,7 @@ class pygetpapers(download_tools):
 
         """
         import os
-        query_result = self.europepmc(
+        query_result = self.europe_pmc.europepmc(
             query, size, update=original_json, synonym=synonym)
         self.makecsv(query_result, makecsv=makecsv,
                      update=original_json)
@@ -555,8 +494,10 @@ class pygetpapers(download_tools):
         import logging
         builtqueryparams = super().buildquery(
             '*', 25, query, synonym=synonym)
+        HEADERS = 'headers'
+        PAYLOAD = 'payload'
         result = super().postquery(
-            builtqueryparams['headers'], builtqueryparams['payload'])
+            builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
         totalhits = result['responseWrapper']['hitCount']
         logging.info(f'Total number of hits for the query are {totalhits}')
 
@@ -564,11 +505,13 @@ class pygetpapers(download_tools):
         """
         Handles the command line interface using argparse
         """
-        version = "0.0.3.1"
+        version = "0.0.3.2"
         import argparse
         import os
         import logging
         import sys
+        from time import gmtime, strftime
+        default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
         parser = argparse.ArgumentParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help")
         parser.add_argument("-v", "--version",
@@ -578,7 +521,7 @@ class pygetpapers(download_tools):
                             help="query string transmitted to repository API. Eg. \"Artificial Intelligence\" or \"Plant Parts\". To escape special characters within the quotes, use backslash. Incase of nested quotes, ensure that the initial quotes are double and the qutoes inside are single. For eg: `'(LICENSE:\"cc by\" OR LICENSE:\"cc-by\") AND METHODS:\"transcriptome assembly\"' ` is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') AND METHODS:'transcriptome assembly'\"` ")
 
         parser.add_argument("-o", "--output",
-                            type=str, help="output directory (Default: current working directory)", default=os.getcwd())
+                            type=str, help="output directory (Default: Folder inside current working directory named )", default=os.path.join(os.getcwd(), default_path))
         parser.add_argument("-x", "--xml", default=False, action='store_true',
                             help="download fulltext XMLs if available")
         parser.add_argument("-p", "--pdf", default=False, action='store_true',
