@@ -148,7 +148,46 @@ class download_tools:
         condition_to_download_pdf = paperdict["pdfdownloaded"] == False
         condition_to_download_json = paperdict["jsondownloaded"] == False
         condition_to_download_csv = paperdict["csvmade"] == False
-        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
+        condition_to_html = paperdict["htmlmade"] == False
+        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html
+
+    def make_clickable(self, link):
+        '''
+        Returns a <a> Html String
+        :param link: link for href
+        '''
+        return f'<a target="_blank" href="{link}">{link}</a>'
+
+    def make_html_from_dataframe(self, dataframe, url):
+        '''
+        Writes html from pandas dataframe
+
+        :param dataframe: Dataframe to make html from
+        :param url: URL to write html to
+        '''
+        import pandas as pd
+        dataframe = dataframe.T
+        dataframe = dataframe.drop(columns=['full'])
+        dataframe['htmllinks'] = dataframe['htmllinks'].apply(
+            lambda x: self.make_clickable(x))
+        dataframe['pdflinks'] = dataframe['pdflinks'].apply(
+            lambda x: self.make_clickable(x))
+        dataframe = dataframe.T
+        html = dataframe.to_html(escape=False)
+        with open(url, 'w', encoding='utf-8') as f:
+            f.write(html)
+
+    def make_html_from_dict(self, dict_to_write_html_from, url):
+        '''
+        Writes html from python dictionary
+
+        :param dict_to_write_html_from: dict to make html from
+        :param url: URL to write html to
+        '''
+        import pandas as pd
+        df = pd.Series(dict_to_write_html_from).to_frame(
+            dict_to_write_html_from['full']['pmcid'])
+        self.make_html_from_dataframe(df, url)
 
     def readjsondata(self, path):
         '''
