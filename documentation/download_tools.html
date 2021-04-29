@@ -195,15 +195,35 @@
         &#39;&#39;&#39;
         import pandas as pd
         dataframe = dataframe.T
-        dataframe = dataframe.drop(columns=[&#39;full&#39;])
-        dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
-            lambda x: self.make_clickable(x))
-        dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
-            lambda x: self.make_clickable(x))
-        dataframe = dataframe.T
+        dataframe = dataframe.drop(columns=[&#39;full&#39;, &#39;htmlmade&#39;])
+        if &#34;htmllinks&#34; in dataframe:
+            try:
+                dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
+                    lambda x: self.make_clickable(x))
+            except:
+                pass
+        if &#34;pdflinks&#34; in dataframe:
+            try:
+                dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
+                    lambda x: self.make_clickable(x))
+            except:
+                pass
+        base_html = &#34;&#34;&#34;
+        &lt;!doctype html&gt;
+        &lt;html&gt;&lt;head&gt;
+        &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+        &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
+        &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
+        &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
+        &lt;/head&gt;&lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
+            &#34;pageLength&#34;: 20
+        });});&lt;/script&gt;
+        &lt;/body&gt;&lt;/html&gt;
+        &#34;&#34;&#34;
         html = dataframe.to_html(escape=False)
+        html_with_pagination = base_html % html
         with open(url, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
-            f.write(html)
+            f.write(html_with_pagination)
 
     def make_html_from_dict(self, dict_to_write_html_from, url):
         &#39;&#39;&#39;
@@ -432,15 +452,35 @@
         &#39;&#39;&#39;
         import pandas as pd
         dataframe = dataframe.T
-        dataframe = dataframe.drop(columns=[&#39;full&#39;])
-        dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
-            lambda x: self.make_clickable(x))
-        dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
-            lambda x: self.make_clickable(x))
-        dataframe = dataframe.T
+        dataframe = dataframe.drop(columns=[&#39;full&#39;, &#39;htmlmade&#39;])
+        if &#34;htmllinks&#34; in dataframe:
+            try:
+                dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
+                    lambda x: self.make_clickable(x))
+            except:
+                pass
+        if &#34;pdflinks&#34; in dataframe:
+            try:
+                dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
+                    lambda x: self.make_clickable(x))
+            except:
+                pass
+        base_html = &#34;&#34;&#34;
+        &lt;!doctype html&gt;
+        &lt;html&gt;&lt;head&gt;
+        &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+        &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
+        &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
+        &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
+        &lt;/head&gt;&lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
+            &#34;pageLength&#34;: 20
+        });});&lt;/script&gt;
+        &lt;/body&gt;&lt;/html&gt;
+        &#34;&#34;&#34;
         html = dataframe.to_html(escape=False)
+        html_with_pagination = base_html % html
         with open(url, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
-            f.write(html)
+            f.write(html_with_pagination)
 
     def make_html_from_dict(self, dict_to_write_html_from, url):
         &#39;&#39;&#39;
@@ -680,15 +720,35 @@
     &#39;&#39;&#39;
     import pandas as pd
     dataframe = dataframe.T
-    dataframe = dataframe.drop(columns=[&#39;full&#39;])
-    dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
-        lambda x: self.make_clickable(x))
-    dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
-        lambda x: self.make_clickable(x))
-    dataframe = dataframe.T
+    dataframe = dataframe.drop(columns=[&#39;full&#39;, &#39;htmlmade&#39;])
+    if &#34;htmllinks&#34; in dataframe:
+        try:
+            dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
+                lambda x: self.make_clickable(x))
+        except:
+            pass
+    if &#34;pdflinks&#34; in dataframe:
+        try:
+            dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
+                lambda x: self.make_clickable(x))
+        except:
+            pass
+    base_html = &#34;&#34;&#34;
+    &lt;!doctype html&gt;
+    &lt;html&gt;&lt;head&gt;
+    &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+    &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
+    &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
+    &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
+    &lt;/head&gt;&lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
+        &#34;pageLength&#34;: 20
+    });});&lt;/script&gt;
+    &lt;/body&gt;&lt;/html&gt;
+    &#34;&#34;&#34;
     html = dataframe.to_html(escape=False)
+    html_with_pagination = base_html % html
     with open(url, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
-        f.write(html)</code></pre>
+        f.write(html_with_pagination)</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.download_tools.download_tools.make_html_from_dict"><code class="name flex">

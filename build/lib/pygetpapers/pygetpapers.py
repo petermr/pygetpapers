@@ -516,7 +516,7 @@ class pygetpapers(download_tools):
         """
         Handles the command line interface using argparse
         """
-        version = "0.0.3.2"
+        version = "0.0.3.3"
         import argparse
         import os
         import logging

@@ -167,7 +167,7 @@ class download_tools:
         '''
         import pandas as pd
         dataframe = dataframe.T
-        dataframe = dataframe.drop(columns=['full'])
+        dataframe = dataframe.drop(columns=['full', 'htmlmade'])
         if "htmllinks" in dataframe:
             try:
                 dataframe['htmllinks'] = dataframe['htmllinks'].apply(
@@ -180,10 +180,22 @@ class download_tools:
                     lambda x: self.make_clickable(x))
             except:
                 pass
-        dataframe = dataframe.T
+        base_html = """
+        <!doctype html>
+        <html><head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        </head><body>%s<script type="text/javascript">$(document).ready(function(){$('table').DataTable({
+            "pageLength": 20
+        });});</script>
+        </body></html>
+        """
         html = dataframe.to_html(escape=False)
+        html_with_pagination = base_html % html
         with open(url, 'w', encoding='utf-8') as f:
-            f.write(html)
+            f.write(html_with_pagination)
 
     def make_html_from_dict(self, dict_to_write_html_from, url):
         '''
