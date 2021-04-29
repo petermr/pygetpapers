@@ -176,7 +176,46 @@
         condition_to_download_pdf = paperdict[&#34;pdfdownloaded&#34;] == False
         condition_to_download_json = paperdict[&#34;jsondownloaded&#34;] == False
         condition_to_download_csv = paperdict[&#34;csvmade&#34;] == False
-        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
+        condition_to_html = paperdict[&#34;htmlmade&#34;] == False
+        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html
+
+    def make_clickable(self, link):
+        &#39;&#39;&#39;
+        Returns a &lt;a&gt; Html String
+        :param link: link for href
+        &#39;&#39;&#39;
+        return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;
+
+    def make_html_from_dataframe(self, dataframe, url):
+        &#39;&#39;&#39;
+        Writes html from pandas dataframe
+
+        :param dataframe: Dataframe to make html from
+        :param url: URL to write html to
+        &#39;&#39;&#39;
+        import pandas as pd
+        dataframe = dataframe.T
+        dataframe = dataframe.drop(columns=[&#39;full&#39;])
+        dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
+            lambda x: self.make_clickable(x))
+        dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
+            lambda x: self.make_clickable(x))
+        dataframe = dataframe.T
+        html = dataframe.to_html(escape=False)
+        with open(url, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
+            f.write(html)
+
+    def make_html_from_dict(self, dict_to_write_html_from, url):
+        &#39;&#39;&#39;
+        Writes html from python dictionary
+
+        :param dict_to_write_html_from: dict to make html from
+        :param url: URL to write html to
+        &#39;&#39;&#39;
+        import pandas as pd
+        df = pd.Series(dict_to_write_html_from).to_frame(
+            dict_to_write_html_from[&#39;full&#39;][&#39;pmcid&#39;])
+        self.make_html_from_dataframe(df, url)
 
     def readjsondata(self, path):
         &#39;&#39;&#39;
@@ -374,7 +413,46 @@
         condition_to_download_pdf = paperdict[&#34;pdfdownloaded&#34;] == False
         condition_to_download_json = paperdict[&#34;jsondownloaded&#34;] == False
         condition_to_download_csv = paperdict[&#34;csvmade&#34;] == False
-        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
+        condition_to_html = paperdict[&#34;htmlmade&#34;] == False
+        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html
+
+    def make_clickable(self, link):
+        &#39;&#39;&#39;
+        Returns a &lt;a&gt; Html String
+        :param link: link for href
+        &#39;&#39;&#39;
+        return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;
+
+    def make_html_from_dataframe(self, dataframe, url):
+        &#39;&#39;&#39;
+        Writes html from pandas dataframe
+
+        :param dataframe: Dataframe to make html from
+        :param url: URL to write html to
+        &#39;&#39;&#39;
+        import pandas as pd
+        dataframe = dataframe.T
+        dataframe = dataframe.drop(columns=[&#39;full&#39;])
+        dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
+            lambda x: self.make_clickable(x))
+        dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
+            lambda x: self.make_clickable(x))
+        dataframe = dataframe.T
+        html = dataframe.to_html(escape=False)
+        with open(url, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
+            f.write(html)
+
+    def make_html_from_dict(self, dict_to_write_html_from, url):
+        &#39;&#39;&#39;
+        Writes html from python dictionary
+
+        :param dict_to_write_html_from: dict to make html from
+        :param url: URL to write html to
+        &#39;&#39;&#39;
+        import pandas as pd
+        df = pd.Series(dict_to_write_html_from).to_frame(
+            dict_to_write_html_from[&#39;full&#39;][&#39;pmcid&#39;])
+        self.make_html_from_dataframe(df, url)
 
     def readjsondata(self, path):
         &#39;&#39;&#39;
@@ -507,7 +585,8 @@
     condition_to_download_pdf = paperdict[&#34;pdfdownloaded&#34;] == False
     condition_to_download_json = paperdict[&#34;jsondownloaded&#34;] == False
     condition_to_download_csv = paperdict[&#34;csvmade&#34;] == False
-    return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf</code></pre>
+    condition_to_html = paperdict[&#34;htmlmade&#34;] == False
+    return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.download_tools.download_tools.log_making_xml"><code class="name flex">
@@ -532,6 +611,24 @@
     logging.info(
         f&#34;Saving XML files to {loggingurl}&#34;)
     logging.debug(&#34;*/Making the Request to get full text xml*/&#34;)</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.download_tools.download_tools.make_clickable"><code class="name flex">
+<span>def <span class="ident">make_clickable</span></span>(<span>self, link)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a <a> Html String
+:param link: link for href</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_clickable(self, link):
+    &#39;&#39;&#39;
+    Returns a &lt;a&gt; Html String
+    :param link: link for href
+    &#39;&#39;&#39;
+    return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.download_tools.download_tools.make_dict_for_csv"><code class="name flex">
@@ -561,6 +658,61 @@
         paper_dict.pop(&#34;jsondownloaded&#34;)
         paper_dict.pop(&#34;csvmade&#34;)
     return resultant_dict_for_csv</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.download_tools.download_tools.make_html_from_dataframe"><code class="name flex">
+<span>def <span class="ident">make_html_from_dataframe</span></span>(<span>self, dataframe, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Writes html from pandas dataframe</p>
+<p>:param dataframe: Dataframe to make html from
+:param url: URL to write html to</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_html_from_dataframe(self, dataframe, url):
+    &#39;&#39;&#39;
+    Writes html from pandas dataframe
+
+    :param dataframe: Dataframe to make html from
+    :param url: URL to write html to
+    &#39;&#39;&#39;
+    import pandas as pd
+    dataframe = dataframe.T
+    dataframe = dataframe.drop(columns=[&#39;full&#39;])
+    dataframe[&#39;htmllinks&#39;] = dataframe[&#39;htmllinks&#39;].apply(
+        lambda x: self.make_clickable(x))
+    dataframe[&#39;pdflinks&#39;] = dataframe[&#39;pdflinks&#39;].apply(
+        lambda x: self.make_clickable(x))
+    dataframe = dataframe.T
+    html = dataframe.to_html(escape=False)
+    with open(url, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
+        f.write(html)</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.download_tools.download_tools.make_html_from_dict"><code class="name flex">
+<span>def <span class="ident">make_html_from_dict</span></span>(<span>self, dict_to_write_html_from, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Writes html from python dictionary</p>
+<p>:param dict_to_write_html_from: dict to make html from
+:param url: URL to write html to</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_html_from_dict(self, dict_to_write_html_from, url):
+    &#39;&#39;&#39;
+    Writes html from python dictionary
+
+    :param dict_to_write_html_from: dict to make html from
+    :param url: URL to write html to
+    &#39;&#39;&#39;
+    import pandas as pd
+    df = pd.Series(dict_to_write_html_from).to_frame(
+        dict_to_write_html_from[&#39;full&#39;][&#39;pmcid&#39;])
+    self.make_html_from_dataframe(df, url)</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.download_tools.download_tools.makejson"><code class="name flex">
@@ -751,7 +903,10 @@
 <li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.conditions_to_download" href="#pygetpapers.download_tools.download_tools.conditions_to_download">conditions_to_download</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.log_making_xml" href="#pygetpapers.download_tools.download_tools.log_making_xml">log_making_xml</a></code></li>
+<li><code><a title="pygetpapers.download_tools.download_tools.make_clickable" href="#pygetpapers.download_tools.download_tools.make_clickable">make_clickable</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.make_dict_for_csv" href="#pygetpapers.download_tools.download_tools.make_dict_for_csv">make_dict_for_csv</a></code></li>
+<li><code><a title="pygetpapers.download_tools.download_tools.make_html_from_dataframe" href="#pygetpapers.download_tools.download_tools.make_html_from_dataframe">make_html_from_dataframe</a></code></li>
+<li><code><a title="pygetpapers.download_tools.download_tools.make_html_from_dict" href="#pygetpapers.download_tools.download_tools.make_html_from_dict">make_html_from_dict</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.makejson" href="#pygetpapers.download_tools.download_tools.makejson">makejson</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.postquery" href="#pygetpapers.download_tools.download_tools.postquery">postquery</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.readjsondata" href="#pygetpapers.download_tools.download_tools.readjsondata">readjsondata</a></code></li>
