@@ -159,8 +159,11 @@ class pygetpapers(download_tools):
             logging.warning(
                 f"journalInfo not found for paper {paper_number}")
         try:
+            author_list = []
+            for author in paper["authorList"]["author"]:
+                author_list.append(author['fullName'])
             dict_for_paper[self.AUTHORINFO
-                           ] = paper["authorList"]["author"][0]['fullName']
+                           ] = author_list
         except:
             logging.warning(
                 f"Author list not found for paper {paper_number}")

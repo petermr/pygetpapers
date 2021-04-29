@@ -158,6 +158,13 @@ class download_tools:
         '''
         return f'<a target="_blank" href="{link}">{link}</a>'
 
+    def add_scrollbar(self, text):
+        '''
+        Makes div scrollable
+        :param text: text to wrap
+        '''
+        return f'<div id="table">{text}</div>'
+
     def make_html_from_dataframe(self, dataframe, url):
         '''
         Writes html from pandas dataframe
@@ -180,17 +187,28 @@ class download_tools:
                     lambda x: self.make_clickable(x))
             except:
                 pass
+        dataframe['abstract'] = dataframe['abstract'].apply(
+            lambda x: self.add_scrollbar(x))
         base_html = """
         <!doctype html>
-        <html><head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-        </head><body>%s<script type="text/javascript">$(document).ready(function(){$('table').DataTable({
+        <html>
+            <head>
+                <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+                <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+                <style>
+                #table {
+                    height: 250px;
+                    overflow-y:scroll;
+                }
+                </style>
+            </head>
+            <body>%s<script type="text/javascript">$(document).ready(function(){$('table').DataTable({
             "pageLength": 20
-        });});</script>
-        </body></html>
+            });});</script>
+            </body>
+        </html>
         """
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html

@@ -186,6 +186,13 @@
         &#39;&#39;&#39;
         return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;
 
+    def add_scrollbar(self, text):
+        &#39;&#39;&#39;
+        Makes div scrollable
+        :param text: text to wrap
+        &#39;&#39;&#39;
+        return f&#39;&lt;div id=&#34;table&#34;&gt;{text}&lt;/div&gt;&#39;
+
     def make_html_from_dataframe(self, dataframe, url):
         &#39;&#39;&#39;
         Writes html from pandas dataframe
@@ -208,17 +215,28 @@
                     lambda x: self.make_clickable(x))
             except:
                 pass
+        dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
+            lambda x: self.add_scrollbar(x))
         base_html = &#34;&#34;&#34;
         &lt;!doctype html&gt;
-        &lt;html&gt;&lt;head&gt;
-        &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
-        &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
-        &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
-        &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
-        &lt;/head&gt;&lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+                &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
+                &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
+                &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
+                &lt;style&gt;
+                #table {
+                    height: 250px;
+                    overflow-y:scroll;
+                }
+                &lt;/style&gt;
+            &lt;/head&gt;
+            &lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
             &#34;pageLength&#34;: 20
-        });});&lt;/script&gt;
-        &lt;/body&gt;&lt;/html&gt;
+            });});&lt;/script&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
         &#34;&#34;&#34;
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html
@@ -443,6 +461,13 @@
         &#39;&#39;&#39;
         return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;
 
+    def add_scrollbar(self, text):
+        &#39;&#39;&#39;
+        Makes div scrollable
+        :param text: text to wrap
+        &#39;&#39;&#39;
+        return f&#39;&lt;div id=&#34;table&#34;&gt;{text}&lt;/div&gt;&#39;
+
     def make_html_from_dataframe(self, dataframe, url):
         &#39;&#39;&#39;
         Writes html from pandas dataframe
@@ -465,17 +490,28 @@
                     lambda x: self.make_clickable(x))
             except:
                 pass
+        dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
+            lambda x: self.add_scrollbar(x))
         base_html = &#34;&#34;&#34;
         &lt;!doctype html&gt;
-        &lt;html&gt;&lt;head&gt;
-        &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
-        &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
-        &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
-        &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
-        &lt;/head&gt;&lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+                &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
+                &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
+                &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
+                &lt;style&gt;
+                #table {
+                    height: 250px;
+                    overflow-y:scroll;
+                }
+                &lt;/style&gt;
+            &lt;/head&gt;
+            &lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
             &#34;pageLength&#34;: 20
-        });});&lt;/script&gt;
-        &lt;/body&gt;&lt;/html&gt;
+            });});&lt;/script&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
         &#34;&#34;&#34;
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html
@@ -527,6 +563,24 @@
 </ul>
 <h3>Methods</h3>
 <dl>
+<dt id="pygetpapers.download_tools.download_tools.add_scrollbar"><code class="name flex">
+<span>def <span class="ident">add_scrollbar</span></span>(<span>self, text)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Makes div scrollable
+:param text: text to wrap</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_scrollbar(self, text):
+    &#39;&#39;&#39;
+    Makes div scrollable
+    :param text: text to wrap
+    &#39;&#39;&#39;
+    return f&#39;&lt;div id=&#34;table&#34;&gt;{text}&lt;/div&gt;&#39;</code></pre>
+</details>
+</dd>
 <dt id="pygetpapers.download_tools.download_tools.buildquery"><code class="name flex">
 <span>def <span class="ident">buildquery</span></span>(<span>self, cursormark, pageSize, query, synonym=True)</span>
 </code></dt>
@@ -733,17 +787,28 @@
                 lambda x: self.make_clickable(x))
         except:
             pass
+    dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
+        lambda x: self.add_scrollbar(x))
     base_html = &#34;&#34;&#34;
     &lt;!doctype html&gt;
-    &lt;html&gt;&lt;head&gt;
-    &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
-    &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
-    &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
-    &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
-    &lt;/head&gt;&lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+            &lt;script type=&#34;text/javascript&#34; src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js&#34;&gt;&lt;/script&gt;
+            &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css&#34;&gt;
+            &lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js&#34;&gt;&lt;/script&gt;
+            &lt;style&gt;
+            #table {
+                height: 250px;
+                overflow-y:scroll;
+            }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;%s&lt;script type=&#34;text/javascript&#34;&gt;$(document).ready(function(){$(&#39;table&#39;).DataTable({
         &#34;pageLength&#34;: 20
-    });});&lt;/script&gt;
-    &lt;/body&gt;&lt;/html&gt;
+        });});&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
     &#34;&#34;&#34;
     html = dataframe.to_html(escape=False)
     html_with_pagination = base_html % html
@@ -958,6 +1023,7 @@
 <li>
 <h4><code><a title="pygetpapers.download_tools.download_tools" href="#pygetpapers.download_tools.download_tools">download_tools</a></code></h4>
 <ul class="">
+<li><code><a title="pygetpapers.download_tools.download_tools.add_scrollbar" href="#pygetpapers.download_tools.download_tools.add_scrollbar">add_scrollbar</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.buildquery" href="#pygetpapers.download_tools.download_tools.buildquery">buildquery</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.check_or_make_directory" href="#pygetpapers.download_tools.download_tools.check_or_make_directory">check_or_make_directory</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>

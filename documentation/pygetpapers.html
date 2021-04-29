@@ -187,8 +187,11 @@ class pygetpapers(download_tools):
             logging.warning(
                 f&#34;journalInfo not found for paper {paper_number}&#34;)
         try:
+            author_list = []
+            for author in paper[&#34;authorList&#34;][&#34;author&#34;]:
+                author_list.append(author[&#39;fullName&#39;])
             dict_for_paper[self.AUTHORINFO
-                           ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
+                           ] = author_list
         except:
             logging.warning(
                 f&#34;Author list not found for paper {paper_number}&#34;)
@@ -544,7 +547,7 @@ class pygetpapers(download_tools):
         &#34;&#34;&#34;
         Handles the command line interface using argparse
         &#34;&#34;&#34;
-        version = &#34;0.0.3.2&#34;
+        version = &#34;0.0.3.3&#34;
         import argparse
         import os
         import logging
@@ -898,8 +901,11 @@ if __name__ == &#34;__main__&#34;:
             logging.warning(
                 f&#34;journalInfo not found for paper {paper_number}&#34;)
         try:
+            author_list = []
+            for author in paper[&#34;authorList&#34;][&#34;author&#34;]:
+                author_list.append(author[&#39;fullName&#39;])
             dict_for_paper[self.AUTHORINFO
-                           ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
+                           ] = author_list
         except:
             logging.warning(
                 f&#34;Author list not found for paper {paper_number}&#34;)
@@ -1255,7 +1261,7 @@ if __name__ == &#34;__main__&#34;:
         &#34;&#34;&#34;
         Handles the command line interface using argparse
         &#34;&#34;&#34;
-        version = &#34;0.0.3.2&#34;
+        version = &#34;0.0.3.3&#34;
         import argparse
         import os
         import logging
@@ -1437,8 +1443,11 @@ if __name__ == &#34;__main__&#34;:
         logging.warning(
             f&#34;journalInfo not found for paper {paper_number}&#34;)
     try:
+        author_list = []
+        for author in paper[&#34;authorList&#34;][&#34;author&#34;]:
+            author_list.append(author[&#39;fullName&#39;])
         dict_for_paper[self.AUTHORINFO
-                       ] = paper[&#34;authorList&#34;][&#34;author&#34;][0][&#39;fullName&#39;]
+                       ] = author_list
     except:
         logging.warning(
             f&#34;Author list not found for paper {paper_number}&#34;)
@@ -1667,7 +1676,7 @@ if __name__ == &#34;__main__&#34;:
     &#34;&#34;&#34;
     Handles the command line interface using argparse
     &#34;&#34;&#34;
-    version = &#34;0.0.3.2&#34;
+    version = &#34;0.0.3.3&#34;
     import argparse
     import os
     import logging
@@ -2203,6 +2212,7 @@ Query to download papers for</p>
 <ul class="hlist">
 <li><code><b><a title="pygetpapers.download_tools.download_tools" href="download_tools.html#pygetpapers.download_tools.download_tools">download_tools</a></b></code>:
 <ul class="hlist">
+<li><code><a title="pygetpapers.download_tools.download_tools.add_scrollbar" href="download_tools.html#pygetpapers.download_tools.download_tools.add_scrollbar">add_scrollbar</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.buildquery" href="download_tools.html#pygetpapers.download_tools.download_tools.buildquery">buildquery</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.check_or_make_directory" href="download_tools.html#pygetpapers.download_tools.download_tools.check_or_make_directory">check_or_make_directory</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="download_tools.html#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>
