@@ -168,10 +168,18 @@ class download_tools:
         import pandas as pd
         dataframe = dataframe.T
         dataframe = dataframe.drop(columns=['full'])
-        dataframe['htmllinks'] = dataframe['htmllinks'].apply(
-            lambda x: self.make_clickable(x))
-        dataframe['pdflinks'] = dataframe['pdflinks'].apply(
-            lambda x: self.make_clickable(x))
+        if "htmllinks" in dataframe:
+            try:
+                dataframe['htmllinks'] = dataframe['htmllinks'].apply(
+                    lambda x: self.make_clickable(x))
+            except:
+                pass
+        if "pdflinks" in dataframe:
+            try:
+                dataframe['pdflinks'] = dataframe['pdflinks'].apply(
+                    lambda x: self.make_clickable(x))
+            except:
+                pass
         dataframe = dataframe.T
         html = dataframe.to_html(escape=False)
         with open(url, 'w', encoding='utf-8') as f:
