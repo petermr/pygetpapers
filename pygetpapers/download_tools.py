@@ -156,7 +156,7 @@ class download_tools:
         Returns a <a> Html String
         :param link: link for href
         '''
-        return f'<a target="_blank" href="{link}">{link}</a>'
+        return f'<a target="_blank" href="{link}">Link</a>'
 
     def add_scrollbar(self, text):
         '''
