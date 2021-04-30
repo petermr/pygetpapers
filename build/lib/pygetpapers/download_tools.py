@@ -173,6 +173,7 @@ class download_tools:
         :param url: URL to write html to
         '''
         import pandas as pd
+        import logging
         dataframe = dataframe.T
         dataframe = dataframe.drop(columns=['full', 'htmlmade'])
         if "htmllinks" in dataframe:
@@ -187,8 +188,11 @@ class download_tools:
                     lambda x: self.make_clickable(x))
             except:
                 pass
-        dataframe['abstract'] = dataframe['abstract'].apply(
-            lambda x: self.add_scrollbar(x))
+        try:
+            dataframe['abstract'] = dataframe['abstract'].apply(
+                lambda x: self.add_scrollbar(x))
+        except:
+            logging.warning("abstract empty")
         base_html = """
         <!doctype html>
         <html>
