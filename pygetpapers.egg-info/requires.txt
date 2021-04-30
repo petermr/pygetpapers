@@ -1,7 +1,4 @@
 requests
-pandas_read_xml
 pandas
 lxml
-chromedriver_autoinstaller
 xmltodict
-selenium

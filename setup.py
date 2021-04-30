@@ -8,8 +8,8 @@ except ImportError:
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
-requirements = ['requests', 'pandas_read_xml', 'pandas',
-                'lxml', 'chromedriver_autoinstaller', 'xmltodict', 'selenium']
+requirements = ['requests', 'pandas',
+                'lxml', 'xmltodict']
 
 setup(
     name='pygetpapers',
