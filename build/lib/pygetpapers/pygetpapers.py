@@ -56,35 +56,39 @@ class pygetpapers(download_tools):
         import os
         import logging
         resultant_dict = {}
-        for paper_number, papers in enumerate(searchvariable):
-            output_dict = json.loads(json.dumps(papers))
-            for paper in output_dict:
-                if self.PMCID in paper:
-                    paper_number += 1
-                    htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
-                        paper, paper_number, resultant_dict)
-                    self.add_fields_to_resultant_dict(
-                        htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
-                    logging.debug(
-                        f'Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}')
-        if update:
-            resultant_dict.update(update)
-        directory_url = os.path.join(
-            str(os.getcwd()))
-        jsonurl = os.path.join(
-            str(os.getcwd()), 'eupmc_results.json')
-        htmlurl = os.path.join(
-            str(os.getcwd()), 'eupmc_results.html')
-        super().check_or_make_directory(directory_url)
-        self.makejson(jsonurl, resultant_dict)
-        resultant_dict_for_csv = super().make_dict_for_csv(resultant_dict)
-        df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
-        df_transposed = df.T
-        if makecsv:
-            super().write_or_append_to_csv(df_transposed)
-        if makehtml:
-            super().make_html_from_dataframe(df, htmlurl)
-        return searchvariable
+        if searchvariable:
+            for paper_number, papers in enumerate(searchvariable):
+                output_dict = json.loads(json.dumps(papers))
+                for paper in output_dict:
+                    if self.PMCID in paper:
+                        paper_number += 1
+                        htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
+                            paper, paper_number, resultant_dict)
+                        self.add_fields_to_resultant_dict(
+                            htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
+                        logging.debug(
+                            f'Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}')
+            if update:
+                resultant_dict.update(update)
+            directory_url = os.path.join(
+                str(os.getcwd()))
+            jsonurl = os.path.join(
+                str(os.getcwd()), 'eupmc_results.json')
+            htmlurl = os.path.join(
+                str(os.getcwd()), 'eupmc_results.html')
+            super().check_or_make_directory(directory_url)
+            self.makejson(jsonurl, resultant_dict)
+            resultant_dict_for_csv = super().make_dict_for_csv(resultant_dict)
+            df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
+            df_transposed = df.T
+            if makecsv:
+                super().write_or_append_to_csv(df_transposed)
+            if makehtml:
+                super().make_html_from_dataframe(df, htmlurl)
+            return searchvariable
+        else:
+            logging.warning("API gave empty result")
+            return False
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
         """
@@ -449,9 +453,10 @@ class pygetpapers(download_tools):
         """
         import os
         query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
-        self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml)
+        is_search_successful = self.makecsv(
+            query_result, makecsv=makecsv, makehtml=makehtml)
 
-        if not (onlymakejson):
+        if not (onlymakejson) and is_search_successful is not False:
             read_json = super().readjsondata(os.path.join(
                 str(os.getcwd()), 'eupmc_results.json'))
             self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml, makehtml=makehtml,
@@ -488,9 +493,9 @@ class pygetpapers(download_tools):
         import os
         query_result = self.europe_pmc.europepmc(
             query, size, update=original_json, synonym=synonym)
-        self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
-                     update=original_json)
-        if not onlymakejson:
+        is_search_successful = self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
+                                            update=original_json)
+        if not (onlymakejson) and is_search_successful is not False:
             read_json = super().readjsondata(os.path.join(
                 str(os.getcwd()), 'eupmc_results.json'))
             self.makexmlfiles(read_json, getpdf=getpdf,
