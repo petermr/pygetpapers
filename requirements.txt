@@ -1,0 +1,4 @@
+lxml==4.6.2
+requests==2.20.0
+pandas==0.25.3
+xmltodict==0.12.0
