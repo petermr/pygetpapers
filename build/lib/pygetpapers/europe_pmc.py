@@ -23,45 +23,101 @@ class europe_pmc:
         import json
         import logging
         size = int(size)
+        content, counter, maximum_hits_per_page, morepapers, nextCursorMark, number_of_papers_there = self.create_parameters_for_paper_download()
+        while number_of_papers_there <= size and morepapers is True:
+            counter += 1
+            builtquery = self.build_and_send_query(maximum_hits_per_page, nextCursorMark, query, synonym)
+            totalhits = builtquery["responseWrapper"]["hitCount"]
+            if counter == 1:
+                logging.info(f"Total Hits are {totalhits}")
+            output_dict = json.loads(json.dumps(builtquery))
+            try:
+                number_of_papers_there = self.create_final_paper_list(content, kwargs, number_of_papers_there,
+                                                                      output_dict, size)
+            except:
+                morepapers = False
+                logging.warning("Could not find more papers")
+                break
+            morepapers = self.add_cursor_mark_if_exists(builtquery, morepapers, nextCursorMark)
+        if len(content[0]) > size:
+            content[0] = content[0][0:size]
+        return content
+
+    def create_final_paper_list(self, content, kwargs, number_of_papers_there, output_dict, size):
+        """
+        Checks the number of results and then adds them to the list containing all the papers called content
+
+        :param content: list containing all the papers
+
+        :param kwargs: kwargs of the main function containing whether to update or add papers
+
+        :param number_of_papers_there: total number of papers found till now
+
+        :param output_dict: output directory
+
+        :param size: required number of papers
+
+        :return:
+        """
+        check_if_only_result = type(output_dict["responseWrapper"]["resultList"]["result"]) == dict
+        if check_if_only_result:
+            paper = output_dict["responseWrapper"]["resultList"]["result"]
+            number_of_papers_there = self.append_paper_to_list(content, kwargs, number_of_papers_there, paper,
+                                                               size)
+        else:
+            for paper in output_dict["responseWrapper"]["resultList"]["result"]:
+                number_of_papers_there = self.append_paper_to_list(content, kwargs, number_of_papers_there, paper,
+                                                                   size)
+        return number_of_papers_there
+
+    def add_cursor_mark_if_exists(self, builtquery, morepapers, nextCursorMark):
+        """
+        Adds the cursor mark if it exists in the api result
+
+        :param builtquery: api result dictionary
+
+        :param morepapers: weather to download more papers
+
+        :param nextCursorMark: list containing all cursor marks
+
+        :return:
+        """
+        if "nextCursorMark" in builtquery["responseWrapper"]:
+            nextCursorMark.append(
+                builtquery["responseWrapper"]["nextCursorMark"])
+        else:
+            morepapers = False
+            logging.warning("Could not find more papers")
+        return morepapers
+
+    def build_and_send_query(self, maximum_hits_per_page, nextCursorMark, query, synonym):
+        queryparams = self.download_tools.buildquery(
+            nextCursorMark[-1], maximum_hits_per_page, query, synonym=synonym)
+        builtquery = self.download_tools.postquery(
+            queryparams['headers'], queryparams['payload'])
+        return builtquery
+
+    def create_parameters_for_paper_download(self):
         content = [[]]
         nextCursorMark = ['*', ]
         morepapers = True
         number_of_papers_there = 0
         maximum_hits_per_page = 1000
-        while number_of_papers_there <= size and morepapers is True:
-            queryparams = self.download_tools.buildquery(
-                nextCursorMark[-1], maximum_hits_per_page, query, synonym=synonym)
-            builtquery = self.download_tools.postquery(
-                queryparams['headers'], queryparams['payload'])
-            if "nextCursorMark" in builtquery["responseWrapper"]:
-                nextCursorMark.append(
-                    builtquery["responseWrapper"]["nextCursorMark"])
-                totalhits = builtquery["responseWrapper"]["hitCount"]
-                logging.info(f"Total Hits are {totalhits}")
-                output_dict = json.loads(json.dumps(builtquery))
-                try:
-                    for paper in output_dict["responseWrapper"]["resultList"]["result"]:
+        counter = 0
+        return content, counter, maximum_hits_per_page, morepapers, nextCursorMark, number_of_papers_there
 
-                        if "update" in kwargs:
-                            if "pmcid" in paper and paper["pmcid"] not in kwargs["update"]:
-                                if number_of_papers_there <= size:
-                                    content[0].append(paper)
-                                    number_of_papers_there += 1
-                        else:
-                            if "pmcid" in paper:
-                                if number_of_papers_there <= size:
-                                    content[0].append(paper)
-
-                                    number_of_papers_there += 1
-
-                except:
-                    morepapers = False
-                    logging.warning("Could not find more papers")
-                    break
-
+    def append_paper_to_list(self, content, kwargs, number_of_papers_there, paper, size):
+        import logging
+        if "update" in kwargs:
+            if "pmcid" in paper and paper["pmcid"] not in kwargs["update"]:
+                if number_of_papers_there <= size:
+                    content[0].append(paper)
+                    number_of_papers_there += 1
+        else:
+            if "pmcid" in paper:
+                if number_of_papers_there <= size:
+                    content[0].append(paper)
+                    number_of_papers_there += 1
             else:
-                morepapers = False
-                logging.warning("Could not find more papers")
-        if number_of_papers_there > size:
-            content[0] = content[0][0:size]
-            return content
+                logging.warning("pmcid field not found so paper was ignored")
+        return number_of_papers_there
