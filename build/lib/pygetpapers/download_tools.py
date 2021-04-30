@@ -156,7 +156,10 @@ class download_tools:
         Returns a <a> Html String
         :param link: link for href
         '''
-        return f'<a target="_blank" href="{link}">Link</a>'
+        if str(link) == "nan":
+            return "Not Found"
+        else:
+            return f'<a target="_blank" href="{link}">Link</a>'
 
     def add_scrollbar(self, text):
         '''

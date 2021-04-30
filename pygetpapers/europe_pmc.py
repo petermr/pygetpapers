@@ -26,7 +26,8 @@ class europe_pmc:
         content, counter, maximum_hits_per_page, morepapers, nextCursorMark, number_of_papers_there = self.create_parameters_for_paper_download()
         while number_of_papers_there <= size and morepapers is True:
             counter += 1
-            builtquery = self.build_and_send_query(maximum_hits_per_page, nextCursorMark, query, synonym)
+            builtquery = self.build_and_send_query(
+                maximum_hits_per_page, nextCursorMark, query, synonym)
             totalhits = builtquery["responseWrapper"]["hitCount"]
             if counter == 1:
                 logging.info(f"Total Hits are {totalhits}")
@@ -38,7 +39,8 @@ class europe_pmc:
                 morepapers = False
                 logging.warning("Could not find more papers")
                 break
-            morepapers = self.add_cursor_mark_if_exists(builtquery, morepapers, nextCursorMark)
+            morepapers = self.add_cursor_mark_if_exists(
+                builtquery, morepapers, nextCursorMark)
         if len(content[0]) > size:
             content[0] = content[0][0:size]
         return content
@@ -59,7 +61,8 @@ class europe_pmc:
 
         :return:
         """
-        check_if_only_result = type(output_dict["responseWrapper"]["resultList"]["result"]) == dict
+        check_if_only_result = type(
+            output_dict["responseWrapper"]["resultList"]["result"]) == dict
         if check_if_only_result:
             paper = output_dict["responseWrapper"]["resultList"]["result"]
             number_of_papers_there = self.append_paper_to_list(content, kwargs, number_of_papers_there, paper,
@@ -82,6 +85,8 @@ class europe_pmc:
 
         :return:
         """
+        import logging
+
         if "nextCursorMark" in builtquery["responseWrapper"]:
             nextCursorMark.append(
                 builtquery["responseWrapper"]["nextCursorMark"])
@@ -119,5 +124,5 @@ class europe_pmc:
                     content[0].append(paper)
                     number_of_papers_there += 1
             else:
-                logging.warning("pmcid field not found so paper was ignored")
+                pass
         return number_of_papers_there
