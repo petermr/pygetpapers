@@ -92,7 +92,80 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 - Type the command `pygetpapers` to run the help.
 
-![help](https://user-images.githubusercontent.com/70321942/116694877-70c8b380-a9dd-11eb-9dfa-48cf8632bee5.PNG)
+```
+usage: pygetpapers [-h] [--config CONFIG] [-v] [-q QUERY] [-o OUTPUT]
+                   [--save_query] [-x] [-p] [-s] [--references REFERENCES]
+                   [-n] [--citations CITATIONS] [-l LOGLEVEL] [-f LOGFILE]
+                   [-k LIMIT] [-r RESTART] [-u UPDATE] [--onlyquery] [-c]
+                   [--makehtml] [--synonym] [--startdate STARTDATE]
+                   [--enddate ENDDATE]
+
+Welcome to Pygetpapers version 0.0.4. -h or --help for help
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --config CONFIG       config file path to read query for pygetpapers
+  -v, --version         output the version number
+  -q QUERY, --query QUERY
+                        query string transmitted to repository API. Eg.
+                        "Artificial Intelligence" or "Plant Parts". To escape
+                        special characters within the quotes, use backslash.
+                        Incase of nested quotes, ensure that the initial
+                        quotes are double and the qutoes inside are single.
+                        For eg: `'(LICENSE:"cc by" OR LICENSE:"cc-by") AND
+                        METHODS:"transcriptome assembly"' ` is wrong. We
+                        should instead use `"(LICENSE:'cc by' OR LICENSE:'cc-
+                        by') AND METHODS:'transcriptome assembly'"`
+  -o OUTPUT, --output OUTPUT
+                        output directory (Default: Folder inside current
+                        working directory named )
+  --save_query          saved the passed query in a config file
+  -x, --xml             download fulltext XMLs if available
+  -p, --pdf             download fulltext PDFs if available
+  -s, --supp            download supplementary files if available
+  --references REFERENCES
+                        Download references if available. Requires source for
+                        references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
+  -n, --noexecute       report how many results match the query, but don't
+                        actually download anything
+  --citations CITATIONS
+                        Download citations if available. Requires source for
+                        citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
+  -l LOGLEVEL, --loglevel LOGLEVEL
+                        Provide logging level. Example --log warning
+                        <<info,warning,debug,error,critical>>, default='info'
+  -f LOGFILE, --logfile LOGFILE
+                        save log to specified file in output directory as well
+                        as printing to terminal
+  -k LIMIT, --limit LIMIT
+                        maximum number of hits (default: 100)
+  -r RESTART, --restart RESTART
+                        Reads the json and makes the xml files. Takes the path
+                        to the json as the input
+  -u UPDATE, --update UPDATE
+                        Updates the corpus by downloading new papers. Takes
+                        the path of metadata json file of the orignal corpus
+                        as the input. Requires -k or --limit (If not provided,
+                        default will be used) and -q or --query (must be
+                        provided) to be given. Takes the path to the json as
+                        the input.
+  --onlyquery           Saves json file containing the result of the query in
+                        storage. The json file can be given to --restart to
+                        download the papers later.
+  -c, --makecsv         Stores the per-document metadata as csv.
+  --makehtml            Stores the per-document metadata as html.
+  --synonym             Results contain synonyms as well.
+  --startdate STARTDATE
+                        Gives papers starting from given date. Format: YYYY-
+                        MM-DD
+  --enddate ENDDATE     Gives papers till given date. Format: YYYY-MM-DD
+
+Args that start with '--' (eg. -v) can also be set in a config file (specified
+via --config). Config file syntax allows: key=value, flag=true, stuff=[a,b,c]
+(for details, see syntax at https://goo.gl/R74nmi). If an arg is specified in
+more than one place, then commandline values override config file values which
+override defaults.
+```
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
