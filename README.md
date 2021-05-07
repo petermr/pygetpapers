@@ -58,6 +58,10 @@ The metadata for papers can be saved in many formats including json, csv, html. 
 The additional files for papers can also be downloaded. References and citations for papers are given in xml format. 
 Log files can be saved in txt format.
 
+# Archietecture
+
+![archietecture](https://user-images.githubusercontent.com/62711517/11780196-dc89be00-af93-11eb-95cf-21d5d77953e5.png)
+
 # Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
