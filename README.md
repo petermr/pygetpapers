@@ -5,25 +5,26 @@
 
 <p>Table of Contents</p>
 
-- [What is pygetpapers](#what-is-pygetpapers)
-- [History](#history)
-- [Formats supported by pygetpapers](#formats-supported-by-pygetpapers)
-- [Installation](#installation)
-  - [Way one (recommended):](#way-one-recommended)
-  - [Way two:](#way-two)
-- [Usage](#usage)
-- [Sample queries:](#sample-queries)
-- [About the author and community](#about-the-author-and-community)
-- [Contributions](#contributions)
-- [Feature Requests](#feature-requests)
-- [Legal Implications](#legal-implications)
-  - [pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.](#pygetpapers-users-should-be-careful-to-understand-the-law-as-it-applies-to-their-content-mining-as-they-assume-full-responsibility-for-their-actions-when-using-the-software)
-  - [Countries with copyright exceptions for content mining:](#countries-with-copyright-exceptions-for-content-mining)
-  - [Countries with proposed copyright exceptions:](#countries-with-proposed-copyright-exceptions)
-  - [Countries with permissive interpretations of 'fair use' that might allow content mining:](#countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining)
-  - [General summaries and guides:](#general-summaries-and-guides)
+- [1. What is pygetpapers](#1-what-is-pygetpapers)
+- [2. History](#2-history)
+- [3. Formats supported by pygetpapers](#3-formats-supported-by-pygetpapers)
+- [4. Archietecture](#4-archietecture)
+- [5. Installation](#5-installation)
+  - [5.1. Way one (recommended):](#51-way-one-recommended)
+  - [5.2. Way two:](#52-way-two)
+- [6. Usage](#6-usage)
+- [7. Sample queries:](#7-sample-queries)
+- [8. About the author and community](#8-about-the-author-and-community)
+- [9. Contributions](#9-contributions)
+- [10. Feature Requests](#10-feature-requests)
+- [11. Legal Implications](#11-legal-implications)
+  - [11.1. pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.](#111-pygetpapers-users-should-be-careful-to-understand-the-law-as-it-applies-to-their-content-mining-as-they-assume-full-responsibility-for-their-actions-when-using-the-software)
+  - [11.2. Countries with copyright exceptions for content mining:](#112-countries-with-copyright-exceptions-for-content-mining)
+  - [11.3. Countries with proposed copyright exceptions:](#113-countries-with-proposed-copyright-exceptions)
+  - [11.4. Countries with permissive interpretations of 'fair use' that might allow content mining:](#114-countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining)
+  - [11.5. General summaries and guides:](#115-general-summaries-and-guides)
 
-# What is pygetpapers
+# 1. What is pygetpapers
 
 
 - pygetpapers is a tool to assit text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
@@ -47,24 +48,24 @@
   <img src="https://github-readme-stats.vercel.app/api/pin/?username=petermr&repo=pygetpapers">
 </p>
 
-# History
+# 2. History
 
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community has a need for a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
 
-# Formats supported by pygetpapers
+# 3. Formats supported by pygetpapers
 
 pygetpapers gives fulltexts in xml and pdf format. 
 The metadata for papers can be saved in many formats including json, csv, html. Queries can be saved in form of a ini configuration file. 
 The additional files for papers can also be downloaded. References and citations for papers are given in xml format. 
 Log files can be saved in txt format.
 
-# Archietecture
+# 4. Archietecture
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/petermr/pygetpapers/main/archietecture.png" >
 </p>
 
-# Installation
+# 5. Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
@@ -72,7 +73,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## Way one (recommended):
+## 5.1. Way one (recommended):
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -84,7 +85,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## Way two:
+## 5.2. Way two:
 
 - Manually clone the repository and run `python setup.py install` from inside the repository directory
 
@@ -94,7 +95,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-# Usage
+# 6. Usage
 
 - Type the command `pygetpapers` to run the help.
 
@@ -175,7 +176,7 @@ override defaults.
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
-# Sample queries:
+# 7. Sample queries:
 
 1. The following query downloads 100 full text xmls, pdfs and supplementary files along with the csv and json(default) for the topic "lantana" and saves them in a directory called "test".
 
@@ -238,7 +239,7 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 12. if user wants to start query from configuration file
     `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
 
-# About the author and community
+# 8. About the author and community
 
 `pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
 
@@ -246,35 +247,35 @@ Testers from OpenVirus have given a lot of useful feedback to Ayush without whic
 
 The community has taken time to ensure that everyone can contribute to this project. So, YOU, the developer, reader and researcher can also contribute by testing, developing and sharing.
 
-# Contributions
+# 9. Contributions
 
 Contributions are welcome through issues as well as pull requests. For direct contributions you can mail the author at ayush@science.org.in.
 
-# Feature Requests
+# 10. Feature Requests
 
 To request features, please put them in issues
 
-# Legal Implications
+# 11. Legal Implications
 
-## pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
+## 11.1. pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
 
-## Countries with copyright exceptions for content mining:
+## 11.2. Countries with copyright exceptions for content mining:
 
 - UK
 - Japan
 
-## Countries with proposed copyright exceptions:
+## 11.3. Countries with proposed copyright exceptions:
 
 - Ireland
 - EU
 
-## Countries with permissive interpretations of 'fair use' that might allow content mining:
+## 11.4. Countries with permissive interpretations of 'fair use' that might allow content mining:
 
 - Israel
 - USA
 - Canada
 
-## General summaries and guides:
+## 11.5. General summaries and guides:
 
 - _"The legal framework of text and data mining (TDM)"_, carried out for the European Commission in March 2014 ([PDF](http://ec.europa.eu/internal_market/copyright/docs/studies/1403_study2_en.pdf))
 - _"Standardisation in the area of innovation and technological development, notably in the field of Text and Data Mining"_, carried out for the European Commission in 2014 ([PDF](http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf))
