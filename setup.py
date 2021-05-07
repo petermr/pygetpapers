@@ -12,6 +12,7 @@ with open(os.path.join(os.path.dirname(__file__), "pygetpapers", "config.ini")) 
 config = configparser.RawConfigParser(allow_no_value=True)
 config.read_string(config_file)
 version = config.get("pygetpapers", "version")
+
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 requirements = ['requests', 'pandas',
@@ -19,7 +20,7 @@ requirements = ['requests', 'pandas',
 
 setup(
     name='pygetpapers',
-    version=version,
+    version=f"{version}",
     description='Automated Download of Research Papers from EuropePMC repository',
     long_description=readme,
     author='Ayush Garg',
