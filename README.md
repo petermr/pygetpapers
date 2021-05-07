@@ -3,7 +3,27 @@
   <h2 align="center">Research Papers right from python</h2>
 </p>
 
-## What is pygetpapers
+<p>Table of Contents</p>
+
+- [What is pygetpapers](#what-is-pygetpapers)
+  - [GitHub](#github)
+- [History](#history)
+- [Installation](#installation)
+  - [Way one (recommended):](#way-one-recommended)
+  - [Way two:](#way-two)
+- [Usage](#usage)
+- [Sample queries:](#sample-queries)
+- [About the author and community](#about-the-author-and-community)
+- [Contributions](#contributions)
+- [Feature Requests](#feature-requests)
+- [Legal Implications](#legal-implications)
+  - [pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.](#pygetpapers-users-should-be-careful-to-understand-the-law-as-it-applies-to-their-content-mining-as-they-assume-full-responsibility-for-their-actions-when-using-the-software)
+  - [Countries with copyright exceptions for content mining:](#countries-with-copyright-exceptions-for-content-mining)
+  - [Countries with proposed copyright exceptions:](#countries-with-proposed-copyright-exceptions)
+  - [Countries with permissive interpretations of 'fair use' that might allow content mining:](#countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining)
+  - [General summaries and guides:](#general-summaries-and-guides)
+
+# What is pygetpapers
 
 - pygetpapers is a tool to assit text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
 
@@ -26,11 +46,11 @@
   <img src="https://github-readme-stats.vercel.app/api/pin/?username=petermr&repo=pygetpapers">
 </p>
 
-## History
+# History
 
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community has a need for a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
 
-## Installation
+# Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
@@ -38,7 +58,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-### Way one (recommended):
+## Way one (recommended):
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -50,7 +70,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-### Way two:
+## Way two:
 
 - Manually clone the repository and run `python setup.py install` from inside the repository directory
 
@@ -60,7 +80,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## Usage
+# Usage
 
 - Type the command `pygetpapers` to run the help.
 
@@ -68,7 +88,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
-## Sample queries:
+# Sample queries:
 
 1. The following query downloads 100 full text xmls, pdfs and supplementary files along with the csv and json(default) for the topic "lantana" and saves them in a directory called "test".
 
@@ -131,7 +151,7 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 12. if user wants to start query from configuration file
     `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
 
-## About the author and community
+# About the author and community
 
 `pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
 
@@ -139,15 +159,17 @@ Testers from OpenVirus have given a lot of useful feedback to Ayush without whic
 
 The community has taken time to ensure that everyone can contribute to this project. So, YOU, the developer, reader and researcher can also contribute by testing, developing and sharing.
 
-## Contributions
+# Contributions
 
 Contributions are welcome through issues as well as pull requests. For direct contributions you can mail the author at ayush@science.org.in.
 
-## Feature Requests
+# Feature Requests
 
 To request features, please put them in issues
 
-# pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
+# Legal Implications
+
+## pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
 
 ## Countries with copyright exceptions for content mining:
 
