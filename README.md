@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/62711517/117456872-421d8080-af7b-11eb-8b0a-6ac4bc0adc91.png" alt="pygetpapers">
+  <img src="https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png" alt="pygetpapers">
   <h2 align="center">Research Papers right from python</h2>
 </p>
 ## What is pygetpapers
