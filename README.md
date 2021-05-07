@@ -13,14 +13,14 @@
 ## GitHub
 
 <p align="center">
-<a href="https://github.com/petermr/pygetpapers"><img src="https://img.shields.io/github/issues-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img" width="180px"></a>
-<a href="https://github.com/petermr/pygetpapers"><img src="https://img.shields.io/github/issues-closed-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img"  width="200px"></a>
-<a href="https://github.com/petermr/pygetpapers"><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img"width="200px"></a>
-<a href="https://github.com/petermr/pygetpapers"><img src="https://img.shields.io/github/stars/petermr/pygetpapers.svg?style=social&label=Star&maxAge=2592000" alt="img"width="140x"></a>
+<a href="https://github.com/petermr/pygetpapers/issues"><img src="https://img.shields.io/github/issues-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img" width="180px"></a>
+<a href="https://github.com/petermr/pygetpapers/issues?q=is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img"  width="200px"></a>
+<a href="https://github.com/petermr/pygetpapers/commits/main"><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img"width="200px"></a>
+<a href="https://github.com/petermr/pygetpapers/stargazers"><img src="https://img.shields.io/github/stars/petermr/pygetpapers.svg?style=social&label=Star&maxAge=2592000" alt="img"width="140x"></a>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=petermr&repo=pygetpapers&show_icons=true&theme=radical">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=petermr&repo=pygetpapers">
 </p>
 
 ## Installation
