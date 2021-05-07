@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png" alt="pygetpapers" height="50%">
+  <img src="https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png" alt="pygetpapers" height="50%" width="50%">
   <h2 align="center">Research Papers right from python</h2>
 </p>
 
