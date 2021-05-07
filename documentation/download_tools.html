@@ -27,8 +27,19 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class download_tools:
-    def __init__(self):
-        pass
+    def __init__(self, api):
+        import configparser
+        import os
+        with open(os.path.join(os.path.dirname(__file__),&#34;config.ini&#34;)) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
+
+        self.posturl = config.get(api, &#34;posturl&#34;)
+        self.citationurl = config.get(api, &#34;citationurl&#34;)
+        self.referencesurl = config.get(api, &#34;referencesurl&#34;)
+        self.xmlurl = config.get(api, &#34;xmlurl&#34;)
+
 
     def postquery(self, headers, payload):
         &#34;&#34;&#34;
@@ -46,7 +57,7 @@
         logging.debug(&#34;*/RESTful request for fulltext.xml (D)*/&#34;)
         start = time.time()
         r = requests.post(
-            &#39;https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST&#39;, data=payload, headers=headers)
+            self.posturl, data=payload, headers=headers)
         stop = time.time()
         logging.debug(&#34;*/Got the Query Result */&#34;)
         logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
@@ -184,7 +195,41 @@
         Returns a &lt;a&gt; Html String
         :param link: link for href
         &#39;&#39;&#39;
-        return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;
+        if str(link) == &#34;nan&#34;:
+            return &#34;Not Found&#34;
+        else:
+            return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;Link&lt;/a&gt;&#39;
+
+    def getcitations(self, pmcid, source):
+        &#34;&#34;&#34;
+        Gets citations for the paper of pmcid
+
+        :param pmcid: pmcid to get the citations
+
+        :param source: source to get the citations from
+
+        :return: citations xml
+
+        &#34;&#34;&#34;
+        import requests
+        r = requests.get((self.citationurl).format(source=source, pmcid=pmcid))
+        return r.content
+
+    def getreferences(self, pmcid, source):
+        &#34;&#34;&#34;
+        Gets references for the paper of pmcid
+
+        :param pmcid: pmcid to get the references
+
+        :param source: source to get the references from
+
+        :return: references xml
+
+        &#34;&#34;&#34;
+        import requests
+        r = requests.get(
+            (self.referencesurl).format(source=source, pmcid=pmcid))
+        return r.content
 
     def add_scrollbar(self, text):
         &#39;&#39;&#39;
@@ -201,6 +246,7 @@
         :param url: URL to write html to
         &#39;&#39;&#39;
         import pandas as pd
+        import logging
         dataframe = dataframe.T
         dataframe = dataframe.drop(columns=[&#39;full&#39;, &#39;htmlmade&#39;])
         if &#34;htmllinks&#34; in dataframe:
@@ -215,8 +261,11 @@
                     lambda x: self.make_clickable(x))
             except:
                 pass
-        dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
-            lambda x: self.add_scrollbar(x))
+        try:
+            dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
+                lambda x: self.add_scrollbar(x))
+        except:
+            logging.warning(&#34;abstract empty&#34;)
         base_html = &#34;&#34;&#34;
         &lt;!doctype html&gt;
         &lt;html&gt;
@@ -280,7 +329,20 @@
             str(os.getcwd()), &#39;*&#39;, &#39;fulltext.xml&#39;)
         logging.info(
             f&#34;Saving XML files to {loggingurl}&#34;)
-        logging.debug(&#34;*/Making the Request to get full text xml*/&#34;)</code></pre>
+        logging.debug(&#34;*/Making the Request to get full text xml*/&#34;)
+
+    def getxml(self, pmcid):
+        &#34;&#34;&#34;
+        Makes a query for the pmcid xml to eupmc rest.
+
+        :param pmcid: pmcid of the paper to query for
+
+        :return: query result
+        &#34;&#34;&#34;
+        import requests
+        r = requests.get(
+            (self.xmlurl).format(pmcid=pmcid))
+        return r.content</code></pre>
 </details>
 </section>
 <section>
@@ -294,6 +356,7 @@
 <dl>
 <dt id="pygetpapers.download_tools.download_tools"><code class="flex name class">
 <span>class <span class="ident">download_tools</span></span>
+<span>(</span><span>api)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -302,8 +365,19 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class download_tools:
-    def __init__(self):
-        pass
+    def __init__(self, api):
+        import configparser
+        import os
+        with open(os.path.join(os.path.dirname(__file__),&#34;config.ini&#34;)) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
+
+        self.posturl = config.get(api, &#34;posturl&#34;)
+        self.citationurl = config.get(api, &#34;citationurl&#34;)
+        self.referencesurl = config.get(api, &#34;referencesurl&#34;)
+        self.xmlurl = config.get(api, &#34;xmlurl&#34;)
+
 
     def postquery(self, headers, payload):
         &#34;&#34;&#34;
@@ -321,7 +395,7 @@
         logging.debug(&#34;*/RESTful request for fulltext.xml (D)*/&#34;)
         start = time.time()
         r = requests.post(
-            &#39;https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST&#39;, data=payload, headers=headers)
+            self.posturl, data=payload, headers=headers)
         stop = time.time()
         logging.debug(&#34;*/Got the Query Result */&#34;)
         logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
@@ -459,7 +533,41 @@
         Returns a &lt;a&gt; Html String
         :param link: link for href
         &#39;&#39;&#39;
-        return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;
+        if str(link) == &#34;nan&#34;:
+            return &#34;Not Found&#34;
+        else:
+            return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;Link&lt;/a&gt;&#39;
+
+    def getcitations(self, pmcid, source):
+        &#34;&#34;&#34;
+        Gets citations for the paper of pmcid
+
+        :param pmcid: pmcid to get the citations
+
+        :param source: source to get the citations from
+
+        :return: citations xml
+
+        &#34;&#34;&#34;
+        import requests
+        r = requests.get((self.citationurl).format(source=source, pmcid=pmcid))
+        return r.content
+
+    def getreferences(self, pmcid, source):
+        &#34;&#34;&#34;
+        Gets references for the paper of pmcid
+
+        :param pmcid: pmcid to get the references
+
+        :param source: source to get the references from
+
+        :return: references xml
+
+        &#34;&#34;&#34;
+        import requests
+        r = requests.get(
+            (self.referencesurl).format(source=source, pmcid=pmcid))
+        return r.content
 
     def add_scrollbar(self, text):
         &#39;&#39;&#39;
@@ -476,6 +584,7 @@
         :param url: URL to write html to
         &#39;&#39;&#39;
         import pandas as pd
+        import logging
         dataframe = dataframe.T
         dataframe = dataframe.drop(columns=[&#39;full&#39;, &#39;htmlmade&#39;])
         if &#34;htmllinks&#34; in dataframe:
@@ -490,8 +599,11 @@
                     lambda x: self.make_clickable(x))
             except:
                 pass
-        dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
-            lambda x: self.add_scrollbar(x))
+        try:
+            dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
+                lambda x: self.add_scrollbar(x))
+        except:
+            logging.warning(&#34;abstract empty&#34;)
         base_html = &#34;&#34;&#34;
         &lt;!doctype html&gt;
         &lt;html&gt;
@@ -555,12 +667,21 @@
             str(os.getcwd()), &#39;*&#39;, &#39;fulltext.xml&#39;)
         logging.info(
             f&#34;Saving XML files to {loggingurl}&#34;)
-        logging.debug(&#34;*/Making the Request to get full text xml*/&#34;)</code></pre>
+        logging.debug(&#34;*/Making the Request to get full text xml*/&#34;)
+
+    def getxml(self, pmcid):
+        &#34;&#34;&#34;
+        Makes a query for the pmcid xml to eupmc rest.
+
+        :param pmcid: pmcid of the paper to query for
+
+        :return: query result
+        &#34;&#34;&#34;
+        import requests
+        r = requests.get(
+            (self.xmlurl).format(pmcid=pmcid))
+        return r.content</code></pre>
 </details>
-<h3>Subclasses</h3>
-<ul class="hlist">
-<li><a title="pygetpapers.pygetpapers.pygetpapers" href="pygetpapers.html#pygetpapers.pygetpapers.pygetpapers">pygetpapers</a></li>
-</ul>
 <h3>Methods</h3>
 <dl>
 <dt id="pygetpapers.download_tools.download_tools.add_scrollbar"><code class="name flex">
@@ -683,6 +804,88 @@
     return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html</code></pre>
 </details>
 </dd>
+<dt id="pygetpapers.download_tools.download_tools.getcitations"><code class="name flex">
+<span>def <span class="ident">getcitations</span></span>(<span>self, pmcid, source)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets citations for the paper of pmcid</p>
+<p>:param pmcid: pmcid to get the citations</p>
+<p>:param source: source to get the citations from</p>
+<p>:return: citations xml</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getcitations(self, pmcid, source):
+    &#34;&#34;&#34;
+    Gets citations for the paper of pmcid
+
+    :param pmcid: pmcid to get the citations
+
+    :param source: source to get the citations from
+
+    :return: citations xml
+
+    &#34;&#34;&#34;
+    import requests
+    r = requests.get((self.citationurl).format(source=source, pmcid=pmcid))
+    return r.content</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.download_tools.download_tools.getreferences"><code class="name flex">
+<span>def <span class="ident">getreferences</span></span>(<span>self, pmcid, source)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets references for the paper of pmcid</p>
+<p>:param pmcid: pmcid to get the references</p>
+<p>:param source: source to get the references from</p>
+<p>:return: references xml</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getreferences(self, pmcid, source):
+    &#34;&#34;&#34;
+    Gets references for the paper of pmcid
+
+    :param pmcid: pmcid to get the references
+
+    :param source: source to get the references from
+
+    :return: references xml
+
+    &#34;&#34;&#34;
+    import requests
+    r = requests.get(
+        (self.referencesurl).format(source=source, pmcid=pmcid))
+    return r.content</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.download_tools.download_tools.getxml"><code class="name flex">
+<span>def <span class="ident">getxml</span></span>(<span>self, pmcid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Makes a query for the pmcid xml to eupmc rest.</p>
+<p>:param pmcid: pmcid of the paper to query for</p>
+<p>:return: query result</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getxml(self, pmcid):
+    &#34;&#34;&#34;
+    Makes a query for the pmcid xml to eupmc rest.
+
+    :param pmcid: pmcid of the paper to query for
+
+    :return: query result
+    &#34;&#34;&#34;
+    import requests
+    r = requests.get(
+        (self.xmlurl).format(pmcid=pmcid))
+    return r.content</code></pre>
+</details>
+</dd>
 <dt id="pygetpapers.download_tools.download_tools.log_making_xml"><code class="name flex">
 <span>def <span class="ident">log_making_xml</span></span>(<span>self)</span>
 </code></dt>
@@ -722,7 +925,10 @@
     Returns a &lt;a&gt; Html String
     :param link: link for href
     &#39;&#39;&#39;
-    return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;{link}&lt;/a&gt;&#39;</code></pre>
+    if str(link) == &#34;nan&#34;:
+        return &#34;Not Found&#34;
+    else:
+        return f&#39;&lt;a target=&#34;_blank&#34; href=&#34;{link}&#34;&gt;Link&lt;/a&gt;&#39;</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.download_tools.download_tools.make_dict_for_csv"><code class="name flex">
@@ -773,6 +979,7 @@
     :param url: URL to write html to
     &#39;&#39;&#39;
     import pandas as pd
+    import logging
     dataframe = dataframe.T
     dataframe = dataframe.drop(columns=[&#39;full&#39;, &#39;htmlmade&#39;])
     if &#34;htmllinks&#34; in dataframe:
@@ -787,8 +994,11 @@
                 lambda x: self.make_clickable(x))
         except:
             pass
-    dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
-        lambda x: self.add_scrollbar(x))
+    try:
+        dataframe[&#39;abstract&#39;] = dataframe[&#39;abstract&#39;].apply(
+            lambda x: self.add_scrollbar(x))
+    except:
+        logging.warning(&#34;abstract empty&#34;)
     base_html = &#34;&#34;&#34;
     &lt;!doctype html&gt;
     &lt;html&gt;
@@ -892,7 +1102,7 @@
     logging.debug(&#34;*/RESTful request for fulltext.xml (D)*/&#34;)
     start = time.time()
     r = requests.post(
-        &#39;https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST&#39;, data=payload, headers=headers)
+        self.posturl, data=payload, headers=headers)
     stop = time.time()
     logging.debug(&#34;*/Got the Query Result */&#34;)
     logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
@@ -1028,6 +1238,9 @@
 <li><code><a title="pygetpapers.download_tools.download_tools.check_or_make_directory" href="#pygetpapers.download_tools.download_tools.check_or_make_directory">check_or_make_directory</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.conditions_to_download" href="#pygetpapers.download_tools.download_tools.conditions_to_download">conditions_to_download</a></code></li>
+<li><code><a title="pygetpapers.download_tools.download_tools.getcitations" href="#pygetpapers.download_tools.download_tools.getcitations">getcitations</a></code></li>
+<li><code><a title="pygetpapers.download_tools.download_tools.getreferences" href="#pygetpapers.download_tools.download_tools.getreferences">getreferences</a></code></li>
+<li><code><a title="pygetpapers.download_tools.download_tools.getxml" href="#pygetpapers.download_tools.download_tools.getxml">getxml</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.log_making_xml" href="#pygetpapers.download_tools.download_tools.log_making_xml">log_making_xml</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.make_clickable" href="#pygetpapers.download_tools.download_tools.make_clickable">make_clickable</a></code></li>
 <li><code><a title="pygetpapers.download_tools.download_tools.make_dict_for_csv" href="#pygetpapers.download_tools.download_tools.make_dict_for_csv">make_dict_for_csv</a></code></li>

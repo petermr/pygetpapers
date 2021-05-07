@@ -30,13 +30,19 @@
 from pygetpapers.europe_pmc import europe_pmc
 
 
-class pygetpapers(download_tools):
+class pygetpapers():
 
     def __init__(self):
         &#34;&#34;&#34;
         This function makes all the constants
         &#34;&#34;&#34;
         import os
+        import configparser
+        with open(os.path.join(os.path.dirname(__file__),&#34;config.ini&#34;)) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
+        self.version=config.get(&#34;pygetpapers&#34;,&#34;version&#34;)
         self.LOGGING_URL = os.path.join(str(os.getcwd()), &#39;*&#39;, &#39;fulltext.xml&#39;)
         self.EUPMCJSON = os.path.join(str(os.getcwd()), &#39;eupmc_results.json&#39;)
         self.EUPMCCSVURL = os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
@@ -51,6 +57,7 @@ class pygetpapers(download_tools):
         self.europe_pmc = europe_pmc()
         self.directory_url = os.path.join(
             str(os.getcwd()))
+        self.download_tools = download_tools(&#34;europepmc&#34;)
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
         &#34;&#34;&#34;
@@ -84,35 +91,39 @@ class pygetpapers(download_tools):
         import os
         import logging
         resultant_dict = {}
-        for paper_number, papers in enumerate(searchvariable):
-            output_dict = json.loads(json.dumps(papers))
-            for paper in output_dict:
-                if self.PMCID in paper:
-                    paper_number += 1
-                    htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
-                        paper, paper_number, resultant_dict)
-                    self.add_fields_to_resultant_dict(
-                        htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
-                    logging.debug(
-                        f&#39;Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}&#39;)
-        if update:
-            resultant_dict.update(update)
-        directory_url = os.path.join(
-            str(os.getcwd()))
-        jsonurl = os.path.join(
-            str(os.getcwd()), &#39;eupmc_results.json&#39;)
-        htmlurl = os.path.join(
-            str(os.getcwd()), &#39;eupmc_results.html&#39;)
-        super().check_or_make_directory(directory_url)
-        self.makejson(jsonurl, resultant_dict)
-        resultant_dict_for_csv = super().make_dict_for_csv(resultant_dict)
-        df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
-        df_transposed = df.T
-        if makecsv:
-            super().write_or_append_to_csv(df_transposed)
-        if makehtml:
-            super().make_html_from_dataframe(df, htmlurl)
-        return searchvariable
+        if searchvariable:
+            for paper_number, papers in enumerate(searchvariable):
+                output_dict = json.loads(json.dumps(papers))
+                for paper in output_dict:
+                    if self.PMCID in paper:
+                        paper_number += 1
+                        htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
+                            paper, paper_number, resultant_dict)
+                        self.add_fields_to_resultant_dict(
+                            htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
+                        logging.debug(
+                            f&#39;Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}&#39;)
+            if update:
+                resultant_dict.update(update)
+            directory_url = os.path.join(
+                str(os.getcwd()))
+            jsonurl = os.path.join(
+                str(os.getcwd()), &#39;eupmc_results.json&#39;)
+            htmlurl = os.path.join(
+                str(os.getcwd()), &#39;eupmc_results.html&#39;)
+            self.download_tools.check_or_make_directory(directory_url)
+            self.download_tools.makejson(jsonurl, resultant_dict)
+            resultant_dict_for_csv = self.download_tools.make_dict_for_csv(resultant_dict)
+            df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
+            df_transposed = df.T
+            if makecsv:
+                self.download_tools.write_or_append_to_csv(df_transposed)
+            if makehtml:
+                self.download_tools.make_html_from_dataframe(df, htmlurl)
+            return searchvariable
+        else:
+            logging.warning(&#34;API gave empty result&#34;)
+            return False
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
         &#34;&#34;&#34;
@@ -201,19 +212,6 @@ class pygetpapers(download_tools):
             logging.warning(
                 f&#34;Title not found for paper {paper_number}&#34;)
 
-    def getxml(self, pmcid):
-        &#34;&#34;&#34;
-        Makes a query for the pmcid xml to eupmc rest.
-
-        :param pmcid: pmcid of the paper to query for
-
-        :return: query result
-        &#34;&#34;&#34;
-        import requests
-        r = requests.get(
-            f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML&#34;)
-        return r.content
-
     def getsupplementaryfiles(self, pmcid, directory_url, destination_url):
         &#34;&#34;&#34;
         Downloads the supplemetary marks for the paper having pmcid
@@ -236,22 +234,6 @@ class pygetpapers(download_tools):
                 fd.write(chunk)
         logging.debug(f&#34;Wrote supplementary files for {pmcid}&#34;)
 
-    def getreferences(self, pmcid, source):
-        &#34;&#34;&#34;
-        Gets references for the paper of pmcid
-
-        :param pmcid: pmcid to get the references
-
-        :param source: source to get the references from
-
-        :return: references xml
-
-        &#34;&#34;&#34;
-        import requests
-        r = requests.get(
-            f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&amp;pageSize=1000&amp;format=xml&#34;)
-        return r.content
-
     def make_references(self, directory_url, paperid, source, referenceurl):
         &#39;&#39;&#39;
         Downloads the references for the paper with pmcid (paperid) to reference url
@@ -264,25 +246,9 @@ class pygetpapers(download_tools):
 
         :param referenceurl: path to write the references to
         &#39;&#39;&#39;
-        getreferences = self.getreferences(
+        getreferences = self.download_tools.getreferences(
             paperid, source)
         self.writexml(directory_url, referenceurl, getreferences)
-
-    def getcitations(self, pmcid, source):
-        &#34;&#34;&#34;
-        Gets citations for the paper of pmcid
-
-        :param pmcid: pmcid to get the citations
-
-        :param source: source to get the citations from
-
-        :return: citations xml
-
-        &#34;&#34;&#34;
-        import requests
-        r = requests.get(
-            f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&amp;pageSize=1000&amp;format=xml&#34;)
-        return r.content
 
     def writexml(self, directory_url, destination_url, content):
         &#34;&#34;&#34;
@@ -312,7 +278,7 @@ class pygetpapers(download_tools):
 
         :param paperid: pmc id of the paper
         &#39;&#39;&#39;
-        getcitations = self.getcitations(
+        getcitations = self.download_tools.getcitations(
             paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
@@ -340,13 +306,13 @@ class pygetpapers(download_tools):
         import os
         import time
         if makexml:
-            super().log_making_xml()
+            self.download_tools.log_making_xml()
         paper_number = 0
         for paper in final_xml_dict:
             start = time.time()
             paper_number += 1
             pmcid = paper
-            tree = self.getxml(pmcid)
+            tree = self.download_tools.getxml(pmcid)
             citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl = self.get_urls_to_write_to(
                 pmcid)
             paperdict = final_xml_dict[paper]
@@ -365,11 +331,11 @@ class pygetpapers(download_tools):
                 logging.info(f&#34;Made Supplementary files for {pmcid}&#34;)
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
-            condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = super().conditions_to_download(
+            condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(
                 paperdict)
             if condition_to_down:
                 if makexml:
-                    super().writexml(directory_url, destination_url, tree)
+                    self.download_tools.writexml(directory_url, destination_url, tree)
                     logging.info(f&#34;*/Wrote xml for {pmcid}/&#34;)
                     paperdict[&#34;downloaded&#34;] = True
             if condition_to_download_pdf:
@@ -378,13 +344,13 @@ class pygetpapers(download_tools):
                         str(os.getcwd()), pmcid, &#34;fulltext.pdf&#34;)
                     if &#34;pdflinks&#34; in paperdict:
                         if len(paperdict[&#34;pdflinks&#34;]) &gt; 0:
-                            super().writepdf(
+                            self.download_tools.writepdf(
                                 paperdict[&#34;pdflinks&#34;], pdf_destination)
                             paperdict[&#34;pdfdownloaded&#34;] = True
                             logging.info(f&#34;Wrote the pdf file for {pmcid}&#34;)
-            dict_to_write = super().clean_dict_for_csv(paperdict)
+            dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
             if condition_to_download_json:
-                super().makejson(jsonurl, dict_to_write)
+                self.download_tools.makejson(jsonurl, dict_to_write)
                 paperdict[&#34;jsondownloaded&#34;] = True
             if condition_to_download_csv:
                 if makecsv:
@@ -392,10 +358,10 @@ class pygetpapers(download_tools):
                     paperdict[&#34;csvmade&#34;] = True
             if condition_to_html:
                 if makehtml:
-                    super().make_html_from_dict(dict_to_write, htmlurl)
+                    self.download_tools.make_html_from_dict(dict_to_write, htmlurl)
                     logging.info(f&#34;Wrote the html file for {pmcid}&#34;)
                     paperdict[&#34;htmlmade&#34;] = True
-            super().makejson(os.path.join(
+            self.download_tools.makejson(os.path.join(
                 str(os.getcwd()), &#39;eupmc_results.json&#39;), final_xml_dict)
             stop = time.time()
             logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
@@ -477,10 +443,11 @@ class pygetpapers(download_tools):
         &#34;&#34;&#34;
         import os
         query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
-        self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml)
+        is_search_successful = self.makecsv(
+            query_result, makecsv=makecsv, makehtml=makehtml)
 
-        if not (onlymakejson):
-            read_json = super().readjsondata(os.path.join(
+        if not (onlymakejson) and is_search_successful is not False:
+            read_json = self.download_tools.readjsondata(os.path.join(
                 str(os.getcwd()), &#39;eupmc_results.json&#39;))
             self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml, makehtml=makehtml,
                               references=references, citations=citations, supplementaryFiles=supplementaryFiles)
@@ -516,10 +483,10 @@ class pygetpapers(download_tools):
         import os
         query_result = self.europe_pmc.europepmc(
             query, size, update=original_json, synonym=synonym)
-        self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
-                     update=original_json)
-        if not onlymakejson:
-            read_json = super().readjsondata(os.path.join(
+        is_search_successful = self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
+                                            update=original_json)
+        if not (onlymakejson) and is_search_successful is not False:
+            read_json = self.download_tools.readjsondata(os.path.join(
                 str(os.getcwd()), &#39;eupmc_results.json&#39;))
             self.makexmlfiles(read_json, getpdf=getpdf,
                               makecsv=makecsv, makexml=makexml, makehtml=makehtml, references=references, citations=citations,
@@ -534,28 +501,46 @@ class pygetpapers(download_tools):
         :param synonym:
         &#34;&#34;&#34;
         import logging
-        builtqueryparams = super().buildquery(
+        builtqueryparams = self.download_tools.buildquery(
             &#39;*&#39;, 25, query, synonym=synonym)
         HEADERS = &#39;headers&#39;
         PAYLOAD = &#39;payload&#39;
-        result = super().postquery(
+        result = self.download_tools.postquery(
             builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
         totalhits = result[&#39;responseWrapper&#39;][&#39;hitCount&#39;]
         logging.info(f&#39;Total number of hits for the query are {totalhits}&#39;)
+
+    def handle_write_configuration_file(self,args):
+        import configparser
+        parser = configparser.ConfigParser()
+
+        parsed_args = vars(args)
+
+        parser.add_section(&#39;SAVED&#39;)
+        for key in parsed_args.keys():
+            parser.set(&#39;SAVED&#39;, key, str(parsed_args[key]))
+
+        with open(&#39;saved_config.ini&#39;, &#39;w&#39;) as f:
+            parser.write(f)
+
 
     def handlecli(self):
         &#34;&#34;&#34;
         Handles the command line interface using argparse
         &#34;&#34;&#34;
-        version = &#34;0.0.3.3&#34;
+        version = self.version
         import argparse
         import os
+        import configargparse
         import logging
         import sys
         from time import gmtime, strftime
         default_path = strftime(&#34;%Y_%m_%d_%H_%M_%S&#34;, gmtime())
-        parser = argparse.ArgumentParser(
+        parser = configargparse.ArgParser(
+            config_file_parser_class=configargparse.ConfigparserConfigFileParser,
             description=f&#34;Welcome to Pygetpapers version {version}. -h or --help for help&#34;)
+        parser.add_argument(&#39;--config&#39;, is_config_file=True, help=&#39;config file path to read query for pygetpapers&#39;)
+
         parser.add_argument(&#34;-v&#34;, &#34;--version&#34;,
                             default=False, action=&#34;store_true&#34;, help=&#34;output the version number&#34;)
         parser.add_argument(&#34;-q&#34;, &#34;--query&#34;,
@@ -564,6 +549,8 @@ class pygetpapers(download_tools):
 
         parser.add_argument(&#34;-o&#34;, &#34;--output&#34;,
                             type=str, help=&#34;output directory (Default: Folder inside current working directory named )&#34;, default=os.path.join(os.getcwd(), default_path))
+        parser.add_argument(&#34;--save_query&#34;, default=False, action=&#39;store_true&#39;,
+                            help=&#34;saved the passed query in a config file&#34;)
         parser.add_argument(&#34;-x&#34;, &#34;--xml&#34;, default=False, action=&#39;store_true&#39;,
                             help=&#34;download fulltext XMLs if available&#34;)
         parser.add_argument(&#34;-p&#34;, &#34;--pdf&#34;, default=False, action=&#39;store_true&#39;,
@@ -601,16 +588,26 @@ class pygetpapers(download_tools):
                             help=&#34;Stores the per-document metadata as html.&#34;)
         parser.add_argument(&#34;--synonym&#34;, default=False, action=&#39;store_true&#39;,
                             help=&#34;Results contain synonyms as well.&#34;)
+        parser.add_argument(&#34;--startdate&#34;, default=False,
+                            type=str,
+                            help=&#34;Gives papers starting from given date. Format: YYYY-MM-DD&#34;)
+        parser.add_argument(&#34;--enddate&#34;, default=False,
+                            type=str,
+                            help=&#34;Gives papers till given date. Format: YYYY-MM-DD&#34;)
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
         args = parser.parse_args()
-
+        for arg in vars(args):
+            if vars(args)[arg]==&#34;False&#34;:
+                vars(args)[arg]=False
         if os.path.exists(args.output):
             os.chdir(args.output)
-        else:
+        elif not args.noexecute and not args.update and not args.restart:
             os.makedirs(args.output)
             os.chdir(args.output)
+        if args.save_query:
+            self.handle_write_configuration_file(args)
         levels = {
             &#39;critical&#39;: logging.CRITICAL,
             &#39;error&#39;: logging.ERROR,
@@ -620,6 +617,7 @@ class pygetpapers(download_tools):
             &#39;debug&#39;: logging.DEBUG
         }
         level = levels.get(args.loglevel.lower())
+
         if args.logfile:
             logging.basicConfig(filename=args.logfile,
                                 level=level, filemode=&#39;w&#39;)
@@ -636,23 +634,31 @@ class pygetpapers(download_tools):
             logging.basicConfig(
                 level=level, format=&#39;%(levelname)s: %(message)s&#39;)
 
+        if args.restart:
+            import os
+            import logging
+            read_json = self.download_tools.readjsondata(args.restart)
+            os.chdir(os.path.dirname(args.restart))
+            self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
+                              references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         if not args.query:
             logging.warning(&#39;Please specify a query&#39;)
             sys.exit(1)
+
+        if args.startdate and not args.enddate:
+            args.enddate = strftime(&#34;%Y-%d-%m&#34;, gmtime())
+
+        if args.startdate and args.enddate:
+            args.query = f&#39;({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])&#39;
+        elif args.enddate:
+            args.query = f&#39;({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])&#39;
 
         if args.noexecute:
             self.noexecute(args.query, synonym=args.synonym)
         elif args.version:
             logging.info(version)
-        elif args.restart:
-            import os
-            import logging
-            read_json = super().readjsondata(args.restart)
-            os.chdir(os.path.dirname(args.restart))
-            self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
-                              references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         elif args.update:
-            read_json = super().readjsondata(args.update)
+            read_json = self.download_tools.readjsondata(args.update)
             os.chdir(os.path.dirname(args.update))
             self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
                               makecsv=args.makecsv, makexml=args.xml, references=args.references, makehtml=args.makehtml,
@@ -744,13 +750,19 @@ if __name__ == &#34;__main__&#34;:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class pygetpapers(download_tools):
+<pre><code class="python">class pygetpapers():
 
     def __init__(self):
         &#34;&#34;&#34;
         This function makes all the constants
         &#34;&#34;&#34;
         import os
+        import configparser
+        with open(os.path.join(os.path.dirname(__file__),&#34;config.ini&#34;)) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
+        self.version=config.get(&#34;pygetpapers&#34;,&#34;version&#34;)
         self.LOGGING_URL = os.path.join(str(os.getcwd()), &#39;*&#39;, &#39;fulltext.xml&#39;)
         self.EUPMCJSON = os.path.join(str(os.getcwd()), &#39;eupmc_results.json&#39;)
         self.EUPMCCSVURL = os.path.join(str(os.getcwd()), &#39;europe_pmc.csv&#39;)
@@ -765,6 +777,7 @@ if __name__ == &#34;__main__&#34;:
         self.europe_pmc = europe_pmc()
         self.directory_url = os.path.join(
             str(os.getcwd()))
+        self.download_tools = download_tools(&#34;europepmc&#34;)
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
         &#34;&#34;&#34;
@@ -798,35 +811,39 @@ if __name__ == &#34;__main__&#34;:
         import os
         import logging
         resultant_dict = {}
-        for paper_number, papers in enumerate(searchvariable):
-            output_dict = json.loads(json.dumps(papers))
-            for paper in output_dict:
-                if self.PMCID in paper:
-                    paper_number += 1
-                    htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
-                        paper, paper_number, resultant_dict)
-                    self.add_fields_to_resultant_dict(
-                        htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
-                    logging.debug(
-                        f&#39;Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}&#39;)
-        if update:
-            resultant_dict.update(update)
-        directory_url = os.path.join(
-            str(os.getcwd()))
-        jsonurl = os.path.join(
-            str(os.getcwd()), &#39;eupmc_results.json&#39;)
-        htmlurl = os.path.join(
-            str(os.getcwd()), &#39;eupmc_results.html&#39;)
-        super().check_or_make_directory(directory_url)
-        self.makejson(jsonurl, resultant_dict)
-        resultant_dict_for_csv = super().make_dict_for_csv(resultant_dict)
-        df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
-        df_transposed = df.T
-        if makecsv:
-            super().write_or_append_to_csv(df_transposed)
-        if makehtml:
-            super().make_html_from_dataframe(df, htmlurl)
-        return searchvariable
+        if searchvariable:
+            for paper_number, papers in enumerate(searchvariable):
+                output_dict = json.loads(json.dumps(papers))
+                for paper in output_dict:
+                    if self.PMCID in paper:
+                        paper_number += 1
+                        htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
+                            paper, paper_number, resultant_dict)
+                        self.add_fields_to_resultant_dict(
+                            htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
+                        logging.debug(
+                            f&#39;Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}&#39;)
+            if update:
+                resultant_dict.update(update)
+            directory_url = os.path.join(
+                str(os.getcwd()))
+            jsonurl = os.path.join(
+                str(os.getcwd()), &#39;eupmc_results.json&#39;)
+            htmlurl = os.path.join(
+                str(os.getcwd()), &#39;eupmc_results.html&#39;)
+            self.download_tools.check_or_make_directory(directory_url)
+            self.download_tools.makejson(jsonurl, resultant_dict)
+            resultant_dict_for_csv = self.download_tools.make_dict_for_csv(resultant_dict)
+            df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
+            df_transposed = df.T
+            if makecsv:
+                self.download_tools.write_or_append_to_csv(df_transposed)
+            if makehtml:
+                self.download_tools.make_html_from_dataframe(df, htmlurl)
+            return searchvariable
+        else:
+            logging.warning(&#34;API gave empty result&#34;)
+            return False
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
         &#34;&#34;&#34;
@@ -915,19 +932,6 @@ if __name__ == &#34;__main__&#34;:
             logging.warning(
                 f&#34;Title not found for paper {paper_number}&#34;)
 
-    def getxml(self, pmcid):
-        &#34;&#34;&#34;
-        Makes a query for the pmcid xml to eupmc rest.
-
-        :param pmcid: pmcid of the paper to query for
-
-        :return: query result
-        &#34;&#34;&#34;
-        import requests
-        r = requests.get(
-            f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML&#34;)
-        return r.content
-
     def getsupplementaryfiles(self, pmcid, directory_url, destination_url):
         &#34;&#34;&#34;
         Downloads the supplemetary marks for the paper having pmcid
@@ -950,22 +954,6 @@ if __name__ == &#34;__main__&#34;:
                 fd.write(chunk)
         logging.debug(f&#34;Wrote supplementary files for {pmcid}&#34;)
 
-    def getreferences(self, pmcid, source):
-        &#34;&#34;&#34;
-        Gets references for the paper of pmcid
-
-        :param pmcid: pmcid to get the references
-
-        :param source: source to get the references from
-
-        :return: references xml
-
-        &#34;&#34;&#34;
-        import requests
-        r = requests.get(
-            f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&amp;pageSize=1000&amp;format=xml&#34;)
-        return r.content
-
     def make_references(self, directory_url, paperid, source, referenceurl):
         &#39;&#39;&#39;
         Downloads the references for the paper with pmcid (paperid) to reference url
@@ -978,25 +966,9 @@ if __name__ == &#34;__main__&#34;:
 
         :param referenceurl: path to write the references to
         &#39;&#39;&#39;
-        getreferences = self.getreferences(
+        getreferences = self.download_tools.getreferences(
             paperid, source)
         self.writexml(directory_url, referenceurl, getreferences)
-
-    def getcitations(self, pmcid, source):
-        &#34;&#34;&#34;
-        Gets citations for the paper of pmcid
-
-        :param pmcid: pmcid to get the citations
-
-        :param source: source to get the citations from
-
-        :return: citations xml
-
-        &#34;&#34;&#34;
-        import requests
-        r = requests.get(
-            f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&amp;pageSize=1000&amp;format=xml&#34;)
-        return r.content
 
     def writexml(self, directory_url, destination_url, content):
         &#34;&#34;&#34;
@@ -1026,7 +998,7 @@ if __name__ == &#34;__main__&#34;:
 
         :param paperid: pmc id of the paper
         &#39;&#39;&#39;
-        getcitations = self.getcitations(
+        getcitations = self.download_tools.getcitations(
             paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
@@ -1054,13 +1026,13 @@ if __name__ == &#34;__main__&#34;:
         import os
         import time
         if makexml:
-            super().log_making_xml()
+            self.download_tools.log_making_xml()
         paper_number = 0
         for paper in final_xml_dict:
             start = time.time()
             paper_number += 1
             pmcid = paper
-            tree = self.getxml(pmcid)
+            tree = self.download_tools.getxml(pmcid)
             citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl = self.get_urls_to_write_to(
                 pmcid)
             paperdict = final_xml_dict[paper]
@@ -1079,11 +1051,11 @@ if __name__ == &#34;__main__&#34;:
                 logging.info(f&#34;Made Supplementary files for {pmcid}&#34;)
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
-            condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = super().conditions_to_download(
+            condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(
                 paperdict)
             if condition_to_down:
                 if makexml:
-                    super().writexml(directory_url, destination_url, tree)
+                    self.download_tools.writexml(directory_url, destination_url, tree)
                     logging.info(f&#34;*/Wrote xml for {pmcid}/&#34;)
                     paperdict[&#34;downloaded&#34;] = True
             if condition_to_download_pdf:
@@ -1092,13 +1064,13 @@ if __name__ == &#34;__main__&#34;:
                         str(os.getcwd()), pmcid, &#34;fulltext.pdf&#34;)
                     if &#34;pdflinks&#34; in paperdict:
                         if len(paperdict[&#34;pdflinks&#34;]) &gt; 0:
-                            super().writepdf(
+                            self.download_tools.writepdf(
                                 paperdict[&#34;pdflinks&#34;], pdf_destination)
                             paperdict[&#34;pdfdownloaded&#34;] = True
                             logging.info(f&#34;Wrote the pdf file for {pmcid}&#34;)
-            dict_to_write = super().clean_dict_for_csv(paperdict)
+            dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
             if condition_to_download_json:
-                super().makejson(jsonurl, dict_to_write)
+                self.download_tools.makejson(jsonurl, dict_to_write)
                 paperdict[&#34;jsondownloaded&#34;] = True
             if condition_to_download_csv:
                 if makecsv:
@@ -1106,10 +1078,10 @@ if __name__ == &#34;__main__&#34;:
                     paperdict[&#34;csvmade&#34;] = True
             if condition_to_html:
                 if makehtml:
-                    super().make_html_from_dict(dict_to_write, htmlurl)
+                    self.download_tools.make_html_from_dict(dict_to_write, htmlurl)
                     logging.info(f&#34;Wrote the html file for {pmcid}&#34;)
                     paperdict[&#34;htmlmade&#34;] = True
-            super().makejson(os.path.join(
+            self.download_tools.makejson(os.path.join(
                 str(os.getcwd()), &#39;eupmc_results.json&#39;), final_xml_dict)
             stop = time.time()
             logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
@@ -1191,10 +1163,11 @@ if __name__ == &#34;__main__&#34;:
         &#34;&#34;&#34;
         import os
         query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
-        self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml)
+        is_search_successful = self.makecsv(
+            query_result, makecsv=makecsv, makehtml=makehtml)
 
-        if not (onlymakejson):
-            read_json = super().readjsondata(os.path.join(
+        if not (onlymakejson) and is_search_successful is not False:
+            read_json = self.download_tools.readjsondata(os.path.join(
                 str(os.getcwd()), &#39;eupmc_results.json&#39;))
             self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml, makehtml=makehtml,
                               references=references, citations=citations, supplementaryFiles=supplementaryFiles)
@@ -1230,10 +1203,10 @@ if __name__ == &#34;__main__&#34;:
         import os
         query_result = self.europe_pmc.europepmc(
             query, size, update=original_json, synonym=synonym)
-        self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
-                     update=original_json)
-        if not onlymakejson:
-            read_json = super().readjsondata(os.path.join(
+        is_search_successful = self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
+                                            update=original_json)
+        if not (onlymakejson) and is_search_successful is not False:
+            read_json = self.download_tools.readjsondata(os.path.join(
                 str(os.getcwd()), &#39;eupmc_results.json&#39;))
             self.makexmlfiles(read_json, getpdf=getpdf,
                               makecsv=makecsv, makexml=makexml, makehtml=makehtml, references=references, citations=citations,
@@ -1248,28 +1221,46 @@ if __name__ == &#34;__main__&#34;:
         :param synonym:
         &#34;&#34;&#34;
         import logging
-        builtqueryparams = super().buildquery(
+        builtqueryparams = self.download_tools.buildquery(
             &#39;*&#39;, 25, query, synonym=synonym)
         HEADERS = &#39;headers&#39;
         PAYLOAD = &#39;payload&#39;
-        result = super().postquery(
+        result = self.download_tools.postquery(
             builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
         totalhits = result[&#39;responseWrapper&#39;][&#39;hitCount&#39;]
         logging.info(f&#39;Total number of hits for the query are {totalhits}&#39;)
+
+    def handle_write_configuration_file(self,args):
+        import configparser
+        parser = configparser.ConfigParser()
+
+        parsed_args = vars(args)
+
+        parser.add_section(&#39;SAVED&#39;)
+        for key in parsed_args.keys():
+            parser.set(&#39;SAVED&#39;, key, str(parsed_args[key]))
+
+        with open(&#39;saved_config.ini&#39;, &#39;w&#39;) as f:
+            parser.write(f)
+
 
     def handlecli(self):
         &#34;&#34;&#34;
         Handles the command line interface using argparse
         &#34;&#34;&#34;
-        version = &#34;0.0.3.3&#34;
+        version = self.version
         import argparse
         import os
+        import configargparse
         import logging
         import sys
         from time import gmtime, strftime
         default_path = strftime(&#34;%Y_%m_%d_%H_%M_%S&#34;, gmtime())
-        parser = argparse.ArgumentParser(
+        parser = configargparse.ArgParser(
+            config_file_parser_class=configargparse.ConfigparserConfigFileParser,
             description=f&#34;Welcome to Pygetpapers version {version}. -h or --help for help&#34;)
+        parser.add_argument(&#39;--config&#39;, is_config_file=True, help=&#39;config file path to read query for pygetpapers&#39;)
+
         parser.add_argument(&#34;-v&#34;, &#34;--version&#34;,
                             default=False, action=&#34;store_true&#34;, help=&#34;output the version number&#34;)
         parser.add_argument(&#34;-q&#34;, &#34;--query&#34;,
@@ -1278,6 +1269,8 @@ if __name__ == &#34;__main__&#34;:
 
         parser.add_argument(&#34;-o&#34;, &#34;--output&#34;,
                             type=str, help=&#34;output directory (Default: Folder inside current working directory named )&#34;, default=os.path.join(os.getcwd(), default_path))
+        parser.add_argument(&#34;--save_query&#34;, default=False, action=&#39;store_true&#39;,
+                            help=&#34;saved the passed query in a config file&#34;)
         parser.add_argument(&#34;-x&#34;, &#34;--xml&#34;, default=False, action=&#39;store_true&#39;,
                             help=&#34;download fulltext XMLs if available&#34;)
         parser.add_argument(&#34;-p&#34;, &#34;--pdf&#34;, default=False, action=&#39;store_true&#39;,
@@ -1315,16 +1308,26 @@ if __name__ == &#34;__main__&#34;:
                             help=&#34;Stores the per-document metadata as html.&#34;)
         parser.add_argument(&#34;--synonym&#34;, default=False, action=&#39;store_true&#39;,
                             help=&#34;Results contain synonyms as well.&#34;)
+        parser.add_argument(&#34;--startdate&#34;, default=False,
+                            type=str,
+                            help=&#34;Gives papers starting from given date. Format: YYYY-MM-DD&#34;)
+        parser.add_argument(&#34;--enddate&#34;, default=False,
+                            type=str,
+                            help=&#34;Gives papers till given date. Format: YYYY-MM-DD&#34;)
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
         args = parser.parse_args()
-
+        for arg in vars(args):
+            if vars(args)[arg]==&#34;False&#34;:
+                vars(args)[arg]=False
         if os.path.exists(args.output):
             os.chdir(args.output)
-        else:
+        elif not args.noexecute and not args.update and not args.restart:
             os.makedirs(args.output)
             os.chdir(args.output)
+        if args.save_query:
+            self.handle_write_configuration_file(args)
         levels = {
             &#39;critical&#39;: logging.CRITICAL,
             &#39;error&#39;: logging.ERROR,
@@ -1334,6 +1337,7 @@ if __name__ == &#34;__main__&#34;:
             &#39;debug&#39;: logging.DEBUG
         }
         level = levels.get(args.loglevel.lower())
+
         if args.logfile:
             logging.basicConfig(filename=args.logfile,
                                 level=level, filemode=&#39;w&#39;)
@@ -1350,23 +1354,31 @@ if __name__ == &#34;__main__&#34;:
             logging.basicConfig(
                 level=level, format=&#39;%(levelname)s: %(message)s&#39;)
 
+        if args.restart:
+            import os
+            import logging
+            read_json = self.download_tools.readjsondata(args.restart)
+            os.chdir(os.path.dirname(args.restart))
+            self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
+                              references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         if not args.query:
             logging.warning(&#39;Please specify a query&#39;)
             sys.exit(1)
+
+        if args.startdate and not args.enddate:
+            args.enddate = strftime(&#34;%Y-%d-%m&#34;, gmtime())
+
+        if args.startdate and args.enddate:
+            args.query = f&#39;({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])&#39;
+        elif args.enddate:
+            args.query = f&#39;({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])&#39;
 
         if args.noexecute:
             self.noexecute(args.query, synonym=args.synonym)
         elif args.version:
             logging.info(version)
-        elif args.restart:
-            import os
-            import logging
-            read_json = super().readjsondata(args.restart)
-            os.chdir(os.path.dirname(args.restart))
-            self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
-                              references=args.references, citations=args.citations, supplementaryFiles=args.supp)
         elif args.update:
-            read_json = super().readjsondata(args.update)
+            read_json = self.download_tools.readjsondata(args.update)
             os.chdir(os.path.dirname(args.update))
             self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
                               makecsv=args.makecsv, makexml=args.xml, references=args.references, makehtml=args.makehtml,
@@ -1378,10 +1390,6 @@ if __name__ == &#34;__main__&#34;:
                                       makexml=args.xml, references=args.references, citations=args.citations,
                                       supplementaryFiles=args.supp, synonym=args.synonym)</code></pre>
 </details>
-<h3>Ancestors</h3>
-<ul class="hlist">
-<li><a title="pygetpapers.download_tools.download_tools" href="download_tools.html#pygetpapers.download_tools.download_tools">download_tools</a></li>
-</ul>
 <h3>Methods</h3>
 <dl>
 <dt id="pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict"><code class="name flex">
@@ -1504,13 +1512,37 @@ if __name__ == &#34;__main__&#34;:
     &#34;&#34;&#34;
     import os
     query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
-    self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml)
+    is_search_successful = self.makecsv(
+        query_result, makecsv=makecsv, makehtml=makehtml)
 
-    if not (onlymakejson):
-        read_json = super().readjsondata(os.path.join(
+    if not (onlymakejson) and is_search_successful is not False:
+        read_json = self.download_tools.readjsondata(os.path.join(
             str(os.getcwd()), &#39;eupmc_results.json&#39;))
         self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml, makehtml=makehtml,
                           references=references, citations=citations, supplementaryFiles=supplementaryFiles)</code></pre>
+</details>
+</dd>
+<dt id="pygetpapers.pygetpapers.pygetpapers.conditions_to_download"><code class="name flex">
+<span>def <span class="ident">conditions_to_download</span></span>(<span>self, paperdict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Writes the conditions to download pdf, json and csv</p>
+<p>:param paperdict: dictionary to write rules for</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def conditions_to_download(self, paperdict):
+    &#34;&#34;&#34;
+    Writes the conditions to download pdf, json and csv
+
+    :param paperdict: dictionary to write rules for
+    &#34;&#34;&#34;
+    condition_to_down = paperdict[&#34;downloaded&#34;] is False
+    condition_to_download_pdf = paperdict[&#34;pdfdownloaded&#34;] is False
+    condition_to_download_json = paperdict[&#34;jsondownloaded&#34;] is False
+    condition_to_download_csv = paperdict[&#34;csvmade&#34;] is False
+    return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to"><code class="name flex">
@@ -1543,64 +1575,6 @@ if __name__ == &#34;__main__&#34;:
         str(os.getcwd()), pmcid, &#34;supplementaryfiles.zip&#34;)
     htmlurl = os.path.join(str(os.getcwd()), pmcid, &#34;eupmc_result.html&#34;)
     return citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl</code></pre>
-</details>
-</dd>
-<dt id="pygetpapers.pygetpapers.pygetpapers.getcitations"><code class="name flex">
-<span>def <span class="ident">getcitations</span></span>(<span>self, pmcid, source)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Gets citations for the paper of pmcid</p>
-<p>:param pmcid: pmcid to get the citations</p>
-<p>:param source: source to get the citations from</p>
-<p>:return: citations xml</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def getcitations(self, pmcid, source):
-    &#34;&#34;&#34;
-    Gets citations for the paper of pmcid
-
-    :param pmcid: pmcid to get the citations
-
-    :param source: source to get the citations from
-
-    :return: citations xml
-
-    &#34;&#34;&#34;
-    import requests
-    r = requests.get(
-        f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&amp;pageSize=1000&amp;format=xml&#34;)
-    return r.content</code></pre>
-</details>
-</dd>
-<dt id="pygetpapers.pygetpapers.pygetpapers.getreferences"><code class="name flex">
-<span>def <span class="ident">getreferences</span></span>(<span>self, pmcid, source)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Gets references for the paper of pmcid</p>
-<p>:param pmcid: pmcid to get the references</p>
-<p>:param source: source to get the references from</p>
-<p>:return: references xml</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def getreferences(self, pmcid, source):
-    &#34;&#34;&#34;
-    Gets references for the paper of pmcid
-
-    :param pmcid: pmcid to get the references
-
-    :param source: source to get the references from
-
-    :return: references xml
-
-    &#34;&#34;&#34;
-    import requests
-    r = requests.get(
-        f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&amp;pageSize=1000&amp;format=xml&#34;)
-    return r.content</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles"><code class="name flex">
@@ -1638,29 +1612,27 @@ if __name__ == &#34;__main__&#34;:
     logging.debug(f&#34;Wrote supplementary files for {pmcid}&#34;)</code></pre>
 </details>
 </dd>
-<dt id="pygetpapers.pygetpapers.pygetpapers.getxml"><code class="name flex">
-<span>def <span class="ident">getxml</span></span>(<span>self, pmcid)</span>
+<dt id="pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file"><code class="name flex">
+<span>def <span class="ident">handle_write_configuration_file</span></span>(<span>self, args)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Makes a query for the pmcid xml to eupmc rest.</p>
-<p>:param pmcid: pmcid of the paper to query for</p>
-<p>:return: query result</p></div>
+<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def getxml(self, pmcid):
-    &#34;&#34;&#34;
-    Makes a query for the pmcid xml to eupmc rest.
+<pre><code class="python">def handle_write_configuration_file(self,args):
+    import configparser
+    parser = configparser.ConfigParser()
 
-    :param pmcid: pmcid of the paper to query for
+    parsed_args = vars(args)
 
-    :return: query result
-    &#34;&#34;&#34;
-    import requests
-    r = requests.get(
-        f&#34;https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML&#34;)
-    return r.content</code></pre>
+    parser.add_section(&#39;SAVED&#39;)
+    for key in parsed_args.keys():
+        parser.set(&#39;SAVED&#39;, key, str(parsed_args[key]))
+
+    with open(&#39;saved_config.ini&#39;, &#39;w&#39;) as f:
+        parser.write(f)</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.handlecli"><code class="name flex">
@@ -1676,15 +1648,19 @@ if __name__ == &#34;__main__&#34;:
     &#34;&#34;&#34;
     Handles the command line interface using argparse
     &#34;&#34;&#34;
-    version = &#34;0.0.3.3&#34;
+    version = self.version
     import argparse
     import os
+    import configargparse
     import logging
     import sys
     from time import gmtime, strftime
     default_path = strftime(&#34;%Y_%m_%d_%H_%M_%S&#34;, gmtime())
-    parser = argparse.ArgumentParser(
+    parser = configargparse.ArgParser(
+        config_file_parser_class=configargparse.ConfigparserConfigFileParser,
         description=f&#34;Welcome to Pygetpapers version {version}. -h or --help for help&#34;)
+    parser.add_argument(&#39;--config&#39;, is_config_file=True, help=&#39;config file path to read query for pygetpapers&#39;)
+
     parser.add_argument(&#34;-v&#34;, &#34;--version&#34;,
                         default=False, action=&#34;store_true&#34;, help=&#34;output the version number&#34;)
     parser.add_argument(&#34;-q&#34;, &#34;--query&#34;,
@@ -1693,6 +1669,8 @@ if __name__ == &#34;__main__&#34;:
 
     parser.add_argument(&#34;-o&#34;, &#34;--output&#34;,
                         type=str, help=&#34;output directory (Default: Folder inside current working directory named )&#34;, default=os.path.join(os.getcwd(), default_path))
+    parser.add_argument(&#34;--save_query&#34;, default=False, action=&#39;store_true&#39;,
+                        help=&#34;saved the passed query in a config file&#34;)
     parser.add_argument(&#34;-x&#34;, &#34;--xml&#34;, default=False, action=&#39;store_true&#39;,
                         help=&#34;download fulltext XMLs if available&#34;)
     parser.add_argument(&#34;-p&#34;, &#34;--pdf&#34;, default=False, action=&#39;store_true&#39;,
@@ -1730,16 +1708,26 @@ if __name__ == &#34;__main__&#34;:
                         help=&#34;Stores the per-document metadata as html.&#34;)
     parser.add_argument(&#34;--synonym&#34;, default=False, action=&#39;store_true&#39;,
                         help=&#34;Results contain synonyms as well.&#34;)
+    parser.add_argument(&#34;--startdate&#34;, default=False,
+                        type=str,
+                        help=&#34;Gives papers starting from given date. Format: YYYY-MM-DD&#34;)
+    parser.add_argument(&#34;--enddate&#34;, default=False,
+                        type=str,
+                        help=&#34;Gives papers till given date. Format: YYYY-MM-DD&#34;)
     if len(sys.argv) == 1:
         parser.print_help(sys.stderr)
         sys.exit()
     args = parser.parse_args()
-
+    for arg in vars(args):
+        if vars(args)[arg]==&#34;False&#34;:
+            vars(args)[arg]=False
     if os.path.exists(args.output):
         os.chdir(args.output)
-    else:
+    elif not args.noexecute and not args.update and not args.restart:
         os.makedirs(args.output)
         os.chdir(args.output)
+    if args.save_query:
+        self.handle_write_configuration_file(args)
     levels = {
         &#39;critical&#39;: logging.CRITICAL,
         &#39;error&#39;: logging.ERROR,
@@ -1749,6 +1737,7 @@ if __name__ == &#34;__main__&#34;:
         &#39;debug&#39;: logging.DEBUG
     }
     level = levels.get(args.loglevel.lower())
+
     if args.logfile:
         logging.basicConfig(filename=args.logfile,
                             level=level, filemode=&#39;w&#39;)
@@ -1765,23 +1754,31 @@ if __name__ == &#34;__main__&#34;:
         logging.basicConfig(
             level=level, format=&#39;%(levelname)s: %(message)s&#39;)
 
+    if args.restart:
+        import os
+        import logging
+        read_json = self.download_tools.readjsondata(args.restart)
+        os.chdir(os.path.dirname(args.restart))
+        self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
+                          references=args.references, citations=args.citations, supplementaryFiles=args.supp)
     if not args.query:
         logging.warning(&#39;Please specify a query&#39;)
         sys.exit(1)
+
+    if args.startdate and not args.enddate:
+        args.enddate = strftime(&#34;%Y-%d-%m&#34;, gmtime())
+
+    if args.startdate and args.enddate:
+        args.query = f&#39;({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])&#39;
+    elif args.enddate:
+        args.query = f&#39;({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])&#39;
 
     if args.noexecute:
         self.noexecute(args.query, synonym=args.synonym)
     elif args.version:
         logging.info(version)
-    elif args.restart:
-        import os
-        import logging
-        read_json = super().readjsondata(args.restart)
-        os.chdir(os.path.dirname(args.restart))
-        self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
-                          references=args.references, citations=args.citations, supplementaryFiles=args.supp)
     elif args.update:
-        read_json = super().readjsondata(args.update)
+        read_json = self.download_tools.readjsondata(args.update)
         os.chdir(os.path.dirname(args.update))
         self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
                           makecsv=args.makecsv, makexml=args.xml, references=args.references, makehtml=args.makehtml,
@@ -1819,7 +1816,7 @@ if __name__ == &#34;__main__&#34;:
 
     :param paperid: pmc id of the paper
     &#39;&#39;&#39;
-    getcitations = self.getcitations(
+    getcitations = self.download_tools.getcitations(
         paperid, source)
     self.writexml(directory_url, citationurl, getcitations)</code></pre>
 </details>
@@ -1904,7 +1901,7 @@ pmc id of the paper</p>
 
     :param referenceurl: path to write the references to
     &#39;&#39;&#39;
-    getreferences = self.getreferences(
+    getreferences = self.download_tools.getreferences(
         paperid, source)
     self.writexml(directory_url, referenceurl, getreferences)</code></pre>
 </details>
@@ -1939,35 +1936,39 @@ pmc id of the paper</p>
     import os
     import logging
     resultant_dict = {}
-    for paper_number, papers in enumerate(searchvariable):
-        output_dict = json.loads(json.dumps(papers))
-        for paper in output_dict:
-            if self.PMCID in paper:
-                paper_number += 1
-                htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
-                    paper, paper_number, resultant_dict)
-                self.add_fields_to_resultant_dict(
-                    htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
-                logging.debug(
-                    f&#39;Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}&#39;)
-    if update:
-        resultant_dict.update(update)
-    directory_url = os.path.join(
-        str(os.getcwd()))
-    jsonurl = os.path.join(
-        str(os.getcwd()), &#39;eupmc_results.json&#39;)
-    htmlurl = os.path.join(
-        str(os.getcwd()), &#39;eupmc_results.html&#39;)
-    super().check_or_make_directory(directory_url)
-    self.makejson(jsonurl, resultant_dict)
-    resultant_dict_for_csv = super().make_dict_for_csv(resultant_dict)
-    df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
-    df_transposed = df.T
-    if makecsv:
-        super().write_or_append_to_csv(df_transposed)
-    if makehtml:
-        super().make_html_from_dataframe(df, htmlurl)
-    return searchvariable</code></pre>
+    if searchvariable:
+        for paper_number, papers in enumerate(searchvariable):
+            output_dict = json.loads(json.dumps(papers))
+            for paper in output_dict:
+                if self.PMCID in paper:
+                    paper_number += 1
+                    htmlurl, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
+                        paper, paper_number, resultant_dict)
+                    self.add_fields_to_resultant_dict(
+                        htmlurl, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
+                    logging.debug(
+                        f&#39;Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper {paperpmcid}&#39;)
+        if update:
+            resultant_dict.update(update)
+        directory_url = os.path.join(
+            str(os.getcwd()))
+        jsonurl = os.path.join(
+            str(os.getcwd()), &#39;eupmc_results.json&#39;)
+        htmlurl = os.path.join(
+            str(os.getcwd()), &#39;eupmc_results.html&#39;)
+        self.download_tools.check_or_make_directory(directory_url)
+        self.download_tools.makejson(jsonurl, resultant_dict)
+        resultant_dict_for_csv = self.download_tools.make_dict_for_csv(resultant_dict)
+        df = pd.DataFrame.from_dict(resultant_dict_for_csv, )
+        df_transposed = df.T
+        if makecsv:
+            self.download_tools.write_or_append_to_csv(df_transposed)
+        if makehtml:
+            self.download_tools.make_html_from_dataframe(df, htmlurl)
+        return searchvariable
+    else:
+        logging.warning(&#34;API gave empty result&#34;)
+        return False</code></pre>
 </details>
 </dd>
 <dt id="pygetpapers.pygetpapers.pygetpapers.makexmlfiles"><code class="name flex">
@@ -2010,13 +2011,13 @@ pmc id of the paper</p>
     import os
     import time
     if makexml:
-        super().log_making_xml()
+        self.download_tools.log_making_xml()
     paper_number = 0
     for paper in final_xml_dict:
         start = time.time()
         paper_number += 1
         pmcid = paper
-        tree = self.getxml(pmcid)
+        tree = self.download_tools.getxml(pmcid)
         citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl = self.get_urls_to_write_to(
             pmcid)
         paperdict = final_xml_dict[paper]
@@ -2035,11 +2036,11 @@ pmc id of the paper</p>
             logging.info(f&#34;Made Supplementary files for {pmcid}&#34;)
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
-        condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = super().conditions_to_download(
+        condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(
             paperdict)
         if condition_to_down:
             if makexml:
-                super().writexml(directory_url, destination_url, tree)
+                self.download_tools.writexml(directory_url, destination_url, tree)
                 logging.info(f&#34;*/Wrote xml for {pmcid}/&#34;)
                 paperdict[&#34;downloaded&#34;] = True
         if condition_to_download_pdf:
@@ -2048,13 +2049,13 @@ pmc id of the paper</p>
                     str(os.getcwd()), pmcid, &#34;fulltext.pdf&#34;)
                 if &#34;pdflinks&#34; in paperdict:
                     if len(paperdict[&#34;pdflinks&#34;]) &gt; 0:
-                        super().writepdf(
+                        self.download_tools.writepdf(
                             paperdict[&#34;pdflinks&#34;], pdf_destination)
                         paperdict[&#34;pdfdownloaded&#34;] = True
                         logging.info(f&#34;Wrote the pdf file for {pmcid}&#34;)
-        dict_to_write = super().clean_dict_for_csv(paperdict)
+        dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
         if condition_to_download_json:
-            super().makejson(jsonurl, dict_to_write)
+            self.download_tools.makejson(jsonurl, dict_to_write)
             paperdict[&#34;jsondownloaded&#34;] = True
         if condition_to_download_csv:
             if makecsv:
@@ -2062,10 +2063,10 @@ pmc id of the paper</p>
                 paperdict[&#34;csvmade&#34;] = True
         if condition_to_html:
             if makehtml:
-                super().make_html_from_dict(dict_to_write, htmlurl)
+                self.download_tools.make_html_from_dict(dict_to_write, htmlurl)
                 logging.info(f&#34;Wrote the html file for {pmcid}&#34;)
                 paperdict[&#34;htmlmade&#34;] = True
-        super().makejson(os.path.join(
+        self.download_tools.makejson(os.path.join(
             str(os.getcwd()), &#39;eupmc_results.json&#39;), final_xml_dict)
         stop = time.time()
         logging.debug(f&#34;Time elapsed: {stop - start}&#34;)
@@ -2092,11 +2093,11 @@ pmc id of the paper</p>
     :param synonym:
     &#34;&#34;&#34;
     import logging
-    builtqueryparams = super().buildquery(
+    builtqueryparams = self.download_tools.buildquery(
         &#39;*&#39;, 25, query, synonym=synonym)
     HEADERS = &#39;headers&#39;
     PAYLOAD = &#39;payload&#39;
-    result = super().postquery(
+    result = self.download_tools.postquery(
         builtqueryparams[HEADERS], builtqueryparams[PAYLOAD])
     totalhits = result[&#39;responseWrapper&#39;][&#39;hitCount&#39;]
     logging.info(f&#39;Total number of hits for the query are {totalhits}&#39;)</code></pre>
@@ -2154,10 +2155,10 @@ Query to download papers for</p>
     import os
     query_result = self.europe_pmc.europepmc(
         query, size, update=original_json, synonym=synonym)
-    self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
-                 update=original_json)
-    if not onlymakejson:
-        read_json = super().readjsondata(os.path.join(
+    is_search_successful = self.makecsv(query_result, makecsv=makecsv, makehtml=makehtml,
+                                        update=original_json)
+    if not (onlymakejson) and is_search_successful is not False:
+        read_json = self.download_tools.readjsondata(os.path.join(
             str(os.getcwd()), &#39;eupmc_results.json&#39;))
         self.makexmlfiles(read_json, getpdf=getpdf,
                           makecsv=makecsv, makexml=makexml, makehtml=makehtml, references=references, citations=citations,
@@ -2207,30 +2208,36 @@ Query to download papers for</p>
     return htmlurl, paperpmcid, pdfurl, resultant_dict</code></pre>
 </details>
 </dd>
+<dt id="pygetpapers.pygetpapers.pygetpapers.writexml"><code class="name flex">
+<span>def <span class="ident">writexml</span></span>(<span>self, directory_url, destination_url, content)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>writes xml to the destination</p>
+<p>:param directory_url: directory containg destination</p>
+<p>:param destination_url: path to write the xml to</p>
+<p>:param content: xml content</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writexml(self, directory_url, destination_url, content):
+    &#34;&#34;&#34;
+    writes xml to the destination
+
+    :param directory_url: directory containg destination
+
+    :param destination_url: path to write the xml to
+
+    :param content: xml content
+    &#34;&#34;&#34;
+    import os
+    if not os.path.isdir(directory_url):
+        os.makedirs(directory_url)
+    with open(destination_url, &#39;wb&#39;) as f:
+        f.write(content)</code></pre>
+</details>
+</dd>
 </dl>
-<h3>Inherited members</h3>
-<ul class="hlist">
-<li><code><b><a title="pygetpapers.download_tools.download_tools" href="download_tools.html#pygetpapers.download_tools.download_tools">download_tools</a></b></code>:
-<ul class="hlist">
-<li><code><a title="pygetpapers.download_tools.download_tools.add_scrollbar" href="download_tools.html#pygetpapers.download_tools.download_tools.add_scrollbar">add_scrollbar</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.buildquery" href="download_tools.html#pygetpapers.download_tools.download_tools.buildquery">buildquery</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.check_or_make_directory" href="download_tools.html#pygetpapers.download_tools.download_tools.check_or_make_directory">check_or_make_directory</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.clean_dict_for_csv" href="download_tools.html#pygetpapers.download_tools.download_tools.clean_dict_for_csv">clean_dict_for_csv</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.conditions_to_download" href="download_tools.html#pygetpapers.download_tools.download_tools.conditions_to_download">conditions_to_download</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.log_making_xml" href="download_tools.html#pygetpapers.download_tools.download_tools.log_making_xml">log_making_xml</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_clickable" href="download_tools.html#pygetpapers.download_tools.download_tools.make_clickable">make_clickable</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_dict_for_csv" href="download_tools.html#pygetpapers.download_tools.download_tools.make_dict_for_csv">make_dict_for_csv</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_html_from_dataframe" href="download_tools.html#pygetpapers.download_tools.download_tools.make_html_from_dataframe">make_html_from_dataframe</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.make_html_from_dict" href="download_tools.html#pygetpapers.download_tools.download_tools.make_html_from_dict">make_html_from_dict</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.makejson" href="download_tools.html#pygetpapers.download_tools.download_tools.makejson">makejson</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.postquery" href="download_tools.html#pygetpapers.download_tools.download_tools.postquery">postquery</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.readjsondata" href="download_tools.html#pygetpapers.download_tools.download_tools.readjsondata">readjsondata</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.write_or_append_to_csv" href="download_tools.html#pygetpapers.download_tools.download_tools.write_or_append_to_csv">write_or_append_to_csv</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.writepdf" href="download_tools.html#pygetpapers.download_tools.download_tools.writepdf">writepdf</a></code></li>
-<li><code><a title="pygetpapers.download_tools.download_tools.writexml" href="download_tools.html#pygetpapers.download_tools.download_tools.writexml">writexml</a></code></li>
-</ul>
-</li>
-</ul>
 </dd>
 </dl>
 </section>
@@ -2259,11 +2266,10 @@ Query to download papers for</p>
 <ul class="">
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict" href="#pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict">add_fields_to_resultant_dict</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.apipaperdownload" href="#pygetpapers.pygetpapers.pygetpapers.apipaperdownload">apipaperdownload</a></code></li>
+<li><code><a title="pygetpapers.pygetpapers.pygetpapers.conditions_to_download" href="#pygetpapers.pygetpapers.pygetpapers.conditions_to_download">conditions_to_download</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to" href="#pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to">get_urls_to_write_to</a></code></li>
-<li><code><a title="pygetpapers.pygetpapers.pygetpapers.getcitations" href="#pygetpapers.pygetpapers.pygetpapers.getcitations">getcitations</a></code></li>
-<li><code><a title="pygetpapers.pygetpapers.pygetpapers.getreferences" href="#pygetpapers.pygetpapers.pygetpapers.getreferences">getreferences</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles" href="#pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles">getsupplementaryfiles</a></code></li>
-<li><code><a title="pygetpapers.pygetpapers.pygetpapers.getxml" href="#pygetpapers.pygetpapers.pygetpapers.getxml">getxml</a></code></li>
+<li><code><a title="pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file" href="#pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file">handle_write_configuration_file</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.handlecli" href="#pygetpapers.pygetpapers.pygetpapers.handlecli">handlecli</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.make_citations" href="#pygetpapers.pygetpapers.pygetpapers.make_citations">make_citations</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.make_csv" href="#pygetpapers.pygetpapers.pygetpapers.make_csv">make_csv</a></code></li>
@@ -2274,6 +2280,7 @@ Query to download papers for</p>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.noexecute" href="#pygetpapers.pygetpapers.pygetpapers.noexecute">noexecute</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.updatecorpus" href="#pygetpapers.pygetpapers.pygetpapers.updatecorpus">updatecorpus</a></code></li>
 <li><code><a title="pygetpapers.pygetpapers.pygetpapers.write_meta_data_for_paper" href="#pygetpapers.pygetpapers.pygetpapers.write_meta_data_for_paper">write_meta_data_for_paper</a></code></li>
+<li><code><a title="pygetpapers.pygetpapers.pygetpapers.writexml" href="#pygetpapers.pygetpapers.pygetpapers.writexml">writexml</a></code></li>
 </ul>
 </li>
 </ul>

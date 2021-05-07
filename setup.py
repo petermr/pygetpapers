@@ -5,15 +5,21 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-
+import configparser
+import os
+with open(os.path.join(os.path.dirname(__file__), "pygetpapers", "config.ini")) as f:
+    config_file = f.read()
+config = configparser.RawConfigParser(allow_no_value=True)
+config.read_string(config_file)
+version = config.get("pygetpapers", "version")
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 requirements = ['requests', 'pandas',
-                'lxml', 'xmltodict']
+                'lxml', 'xmltodict', 'configargparse']
 
 setup(
     name='pygetpapers',
-    version='0.0.3.3',
+    version=version,
     description='Automated Download of Research Papers from EuropePMC repository',
     long_description=readme,
     author='Ayush Garg',

@@ -1,6 +1,17 @@
 class download_tools:
-    def __init__(self):
-        pass
+    def __init__(self, api):
+        import configparser
+        import os
+        with open(os.path.join(os.path.dirname(__file__),"config.ini")) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
+
+        self.posturl = config.get(api, "posturl")
+        self.citationurl = config.get(api, "citationurl")
+        self.referencesurl = config.get(api, "referencesurl")
+        self.xmlurl = config.get(api, "xmlurl")
+
 
     def postquery(self, headers, payload):
         """
@@ -18,7 +29,7 @@ class download_tools:
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
         start = time.time()
         r = requests.post(
-            'https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST', data=payload, headers=headers)
+            self.posturl, data=payload, headers=headers)
         stop = time.time()
         logging.debug("*/Got the Query Result */")
         logging.debug(f"Time elapsed: {stop - start}")
@@ -161,6 +172,37 @@ class download_tools:
         else:
             return f'<a target="_blank" href="{link}">Link</a>'
 
+    def getcitations(self, pmcid, source):
+        """
+        Gets citations for the paper of pmcid
+
+        :param pmcid: pmcid to get the citations
+
+        :param source: source to get the citations from
+
+        :return: citations xml
+
+        """
+        import requests
+        r = requests.get((self.citationurl).format(source=source, pmcid=pmcid))
+        return r.content
+
+    def getreferences(self, pmcid, source):
+        """
+        Gets references for the paper of pmcid
+
+        :param pmcid: pmcid to get the references
+
+        :param source: source to get the references from
+
+        :return: references xml
+
+        """
+        import requests
+        r = requests.get(
+            (self.referencesurl).format(source=source, pmcid=pmcid))
+        return r.content
+
     def add_scrollbar(self, text):
         '''
         Makes div scrollable
@@ -260,3 +302,16 @@ class download_tools:
         logging.info(
             f"Saving XML files to {loggingurl}")
         logging.debug("*/Making the Request to get full text xml*/")
+
+    def getxml(self, pmcid):
+        """
+        Makes a query for the pmcid xml to eupmc rest.
+
+        :param pmcid: pmcid of the paper to query for
+
+        :return: query result
+        """
+        import requests
+        r = requests.get(
+            (self.xmlurl).format(pmcid=pmcid))
+        return r.content
