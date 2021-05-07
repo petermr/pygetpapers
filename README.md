@@ -6,7 +6,6 @@
 <p>Table of Contents</p>
 
 - [What is pygetpapers](#what-is-pygetpapers)
-  - [GitHub](#github)
 - [History](#history)
 - [Formats supported by pygetpapers](#formats-supported-by-pygetpapers)
 - [Installation](#installation)
@@ -26,6 +25,7 @@
 
 # What is pygetpapers
 
+
 - pygetpapers is a tool to assit text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
 
 - It comes with the packages `pygetpapers` and `downloadtools` which provide various fuctions to download, process and save research papers and their metadata.
@@ -34,13 +34,13 @@
 
 - `pygetpapers` has a modular design which makes maintainance easy and simple. This also allows adding support for more repositories simple.
 
-## GitHub
-
-<p align="center">
-<a href="https://github.com/petermr/pygetpapers/issues"><img src="https://img.shields.io/github/issues-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img" width="180px"></a>
-<a href="https://github.com/petermr/pygetpapers/issues?q=is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img"  width="200px"></a>
-<a href="https://github.com/petermr/pygetpapers/commits/main"><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img"width="200px"></a>
-<a href="https://github.com/petermr/pygetpapers/stargazers"><img src="https://img.shields.io/github/stars/petermr/pygetpapers.svg?style=social&label=Star&maxAge=2592000" alt="img"width="140x"></a>
+<br>
+<p>
+<a href="https://github.com/petermr/pygetpapers/actions"><img src="https://github.com/petermr/pygetpapers/actions/workflows/python-package.yml/badge.svg" alt="img" width="180px" height="25px"></a>
+<a href="https://github.com/petermr/pygetpapers/issues"><img src="https://img.shields.io/github/issues-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img" width="180px" height="30px"></a>
+<a href="https://github.com/petermr/pygetpapers/issues?q=is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img"  width="180px" height="30px"></a>
+<a href="https://github.com/petermr/pygetpapers/commits/main"><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img"width="180px" height="30px"></a>
+<a href="https://github.com/petermr/pygetpapers/stargazers"><img src="https://img.shields.io/github/stars/petermr/pygetpapers.svg?style=social&label=Star&maxAge=2592000" alt="img"width="120px" height="30px"></a>
 </p>
 
 <p align="center">
