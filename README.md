@@ -1,6 +1,6 @@
 # pygetpapers
 
-### What is pygetpapers
+## What is pygetpapers
 
 - pygetpapers is a tool to assit text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
 
@@ -10,13 +10,28 @@
 
 - `pygetpapers` has a modular design which makes maintainance easy and simple. This also allows adding support for more repositories simple.
 
-### Installation
+## GitHub
+
+<p align="center">
+<a href=""><img src="https://img.shields.io/github/issues-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img" width="180px"></a>
+<a href=""><img src="https://img.shields.io/github/issues-closed-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img"  width="200px"></a>
+<a href=""><img src="https://img.shields.io/github/commit-activity/m/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img"  width="260px"></a>
+<a href=""><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img"width="200px"></a>
+<a href=""><img src="http://ForTheBadge.com/images/badges/makes-people-smile.svg" alt="img"width="190px"></a>
+<a href=""><img src="https://img.shields.io/github/stars/petermr/pygetpapers.svg?style=social&label=Star&maxAge=2592000" alt="img"width="140x"></a>
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=petermr&repo=pygetpapers&show_icons=true&theme=radical">
+</p>
+
+## Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
 Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing pip.
 
-## Way one (recommended): Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+### Way one (recommended): Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 Enter the command: `pip install git+git://github.com/petermr/pygetpapers`
 
@@ -24,7 +39,7 @@ Ensure pygetpapers has been installed by reopening terminal and typing the comma
 
 You should see a help message come up.
 
-## Way two:
+### Way two:
 
 Manually clone the repository and run `python setup.py install` from inside the repository directory
 
@@ -32,7 +47,7 @@ Ensure pygetpapers has been installed by reopening terminal and typing the comma
 
 You should see a help message come up.
 
-### Usage
+## Usage
 
 - Type the command `pygetpapers` to run the help.
 
@@ -40,7 +55,7 @@ You should see a help message come up.
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
-### Sample queries:
+## Sample queries:
 
 1. The following query downloads 100 full text xmls, pdfs and supplementary files along with the csv and json(default) for the topic "lantana" and saves them in a directory called "test".
 
@@ -97,10 +112,16 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 10. if user wants to save the query to use it later
     `pygetpapers -q "lantana" --save_query`
 
-### Contribution
+11. if user wants to get papers within a date range
+    `pygetpapers -q "lantana" --startdate "2020-01-02" --enddate "2021-09-09"`
+
+12. if user wants to start query from configuration file
+    `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
+
+## Contribution
 
 Contributions are welcome through issues as well as pull requests. For direct contributions you can mail the authon Ayush Garg at ayush@science.org.in
 
-### Feature Requests
+## Feature Requests
 
 To request features, please put them in issues
