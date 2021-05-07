@@ -23,27 +23,39 @@
   <img src="https://github-readme-stats.vercel.app/api/pin/?username=petermr&repo=pygetpapers">
 </p>
 
+## History
+
+`getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community has a need for a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
+
 ## Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
 Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing pip.
 
-### Way one (recommended): Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+<hr>
 
-Enter the command: `pip install git+git://github.com/petermr/pygetpapers`
+### Way one (recommended):
 
-Ensure pygetpapers has been installed by reopening terminal and typing the command `pygetpapers`
+- Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-You should see a help message come up.
+- Enter the command: `pip install git+git://github.com/petermr/pygetpapers`
+
+- Ensure pygetpapers has been installed by reopening terminal and typing the command `pygetpapers`
+
+- You should see a help message come up.
+
+<hr>
 
 ### Way two:
 
-Manually clone the repository and run `python setup.py install` from inside the repository directory
+- Manually clone the repository and run `python setup.py install` from inside the repository directory
 
-Ensure pygetpapers has been installed by reopening terminal and typing the command `pygetpapers`
+- Ensure pygetpapers has been installed by reopening terminal and typing the command `pygetpapers`
 
-You should see a help message come up.
+- You should see a help message come up.
+
+<hr>
 
 ## Usage
 
@@ -116,9 +128,17 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 12. if user wants to start query from configuration file
     `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
 
-## Contribution
+## About the author and community
 
-Contributions are welcome through issues as well as pull requests. For direct contributions you can mail the authon Ayush Garg at ayush@science.org.in
+`pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
+
+Testers from OpenVirus have given a lot of useful feedback to Ayush without which this project would not have been possible.
+
+The community has taken time to ensure that everyone can contribute to this project. So, YOU, the developer, reader and researcher can also contribute by testing, developing and sharing.
+
+## Contributions
+
+Contributions are welcome through issues as well as pull requests. For direct contributions you can mail the author at ayush@science.org.in.
 
 ## Feature Requests
 
