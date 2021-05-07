@@ -1,7 +1,8 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png" alt="pygetpapers">
+  <img src="https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png" alt="pygetpapers" height="50%">
   <h2 align="center">Research Papers right from python</h2>
 </p>
+
 ## What is pygetpapers
 
 - pygetpapers is a tool to assit text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
