@@ -8,6 +8,7 @@
 - [What is pygetpapers](#what-is-pygetpapers)
   - [GitHub](#github)
 - [History](#history)
+- [Formats supported by pygetpapers](#formats-supported-by-pygetpapers)
 - [Installation](#installation)
   - [Way one (recommended):](#way-one-recommended)
   - [Way two:](#way-two)
@@ -49,6 +50,13 @@
 # History
 
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community has a need for a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
+
+# Formats supported by pygetpapers
+
+pygetpapers gives fulltexts in xml and pdf format. 
+The metadata for papers can be saved in many formats including json, csv, html. Queries can be saved in form of a ini configuration file. 
+The additional files for papers can also be downloaded. References and citations for papers are given in xml format. 
+Log files can be saved in txt format.
 
 # Installation
 

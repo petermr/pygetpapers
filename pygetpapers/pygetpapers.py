@@ -511,7 +511,6 @@ class pygetpapers():
         from time import gmtime, strftime
         default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
         parser = configargparse.ArgParser(
-            config_file_parser_class=configargparse.ConfigparserConfigFileParser,
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help")
         parser.add_argument('--config', is_config_file=True,
                             help='config file path to read query for pygetpapers')
