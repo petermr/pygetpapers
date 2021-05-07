@@ -60,7 +60,6 @@ Log files can be saved in txt format.
 
 # Archietecture
 
-![archietecture](https://user-images.githubusercontent.com/62711517/11780196-dc89be00-af93-11eb-95cf-21d5d77953e5.png)
 
 # Installation
 
