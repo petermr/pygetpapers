@@ -1,4 +1,5 @@
 # pygetpapers
+![New Project (7)](https://user-images.githubusercontent.com/62711517/117456570-efdc5f80-af7a-11eb-9c5b-58409483902e.png)
 
 ## What is pygetpapers
 
