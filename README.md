@@ -123,3 +123,26 @@ Contributions are welcome through issues as well as pull requests. For direct co
 ## Feature Requests
 
 To request features, please put them in issues
+
+# pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
+
+## Countries with copyright exceptions for content mining:
+
+- UK
+- Japan
+
+## Countries with proposed copyright exceptions:
+
+- Ireland
+- EU
+
+## Countries with permissive interpretations of 'fair use' that might allow content mining:
+
+- Israel
+- USA
+- Canada
+
+## General summaries and guides:
+
+- _"The legal framework of text and data mining (TDM)"_, carried out for the European Commission in March 2014 ([PDF](http://ec.europa.eu/internal_market/copyright/docs/studies/1403_study2_en.pdf))
+- _"Standardisation in the area of innovation and technological development, notably in the field of Text and Data Mining"_, carried out for the European Commission in 2014 ([PDF](http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf))
