@@ -60,6 +60,9 @@ Log files can be saved in txt format.
 
 # Archietecture
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/petermr/pygetpapers/main/archietecture.png" >
+</p>
 
 # Installation
 
