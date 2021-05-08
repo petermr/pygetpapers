@@ -48,6 +48,10 @@
   <img src="https://github-readme-stats.vercel.app/api/pin/?username=petermr&repo=pygetpapers">
 </p>
 
+<p>
+The developer documentation has been setup at <a href="https://pygetpapers.readthedocs.io/en/latest/#">readthedocs</a>
+</p>
+
 # 2. History
 
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community requires a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
