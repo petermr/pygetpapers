@@ -231,30 +231,19 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>query</strong> – Query to download papers for</p></li>
 <li><p><strong>size</strong> – Number of papers to be downloaded</p></li>
-<li><p><strong>*onlymakejson</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to only write the json files</p>
-</p></li>
-<li><p><strong>*getpdf</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to make pdf files</p>
-</p></li>
-<li><p><strong>*makecsv</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to make csv files</p>
-</p></li>
+<li><p><strong>onlymakejson</strong> – (Default value = False)</p></li>
+<li><p><strong>getpdf</strong> – (Default value = False)</p></li>
+<li><p><strong>makecsv</strong> – (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
+<li><p><strong>makexml</strong> – (Default value = False)</p></li>
+<li><p><strong>references</strong> – (Default value = False)</p></li>
+<li><p><strong>citations</strong> – (Default value = False)</p></li>
+<li><p><strong>supplementaryFiles</strong> – (Default value = False)</p></li>
+<li><p><strong>synonym</strong> – (Default value = True)</p></li>
 </ul>
 </dd>
 </dl>
-<p>:param <a href="#id7"><span class="problematic" id="id8">*</span></a>makexml(bool):whether to make xml files</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>*references</strong> – <p>Source to get the references from</p>
-</p></li>
-<li><p><strong>*citations</strong> – <p>Source to get the citations from</p>
-</p></li>
-<li><p><strong>*supplementaryFiles</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to write supplementary files</p>
-</p></li>
-<li><p><strong>*synonym</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to also get files with query as the synonym of the given query</p>
-</p></li>
-</ul>
-</dd>
-</dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -266,6 +255,7 @@
 <dd class="field-odd"><p><strong>paperdict</strong> – dictionary to write rules for</p>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -294,12 +284,19 @@
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file">
 <code class="sig-name descname"><span class="pre">handle_write_configuration_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="pygetpapers.pygetpapers.pygetpapers.handlecli">
@@ -321,6 +318,7 @@
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -335,6 +333,7 @@
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -367,18 +366,20 @@
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pygetpapers.pygetpapers.pygetpapers.makecsv">
 <code class="sig-name descname"><span class="pre">makecsv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">searchvariable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makecsv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makehtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.makecsv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes the json and <a href="#id17"><span class="problematic" id="id18">*</span></a>csv for searchvaraible dict</p>
+<dd><p>Writes the json and csv for searchvaraible dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>searchvariable</strong><strong>(</strong><strong>dict</strong><strong>)</strong> – Python dictionary which contains all the research papers (given by europe_pmc.europepmc))</p></li>
-<li><p><strong>makecsv</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to make csv files</p></li>
-<li><p><strong>update</strong><strong>(</strong><strong>dict</strong><strong>)</strong> – if provided, will add the research papers to the searchvariable dict</p></li>
+<li><p><strong>searchvariable</strong> – dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))</p></li>
+<li><p><strong>makecsv</strong> – bool): whether to make csv files (Default value = False)</p></li>
+<li><p><strong>update</strong> – dict): if provided, will add the research papers to the searchvariable dict (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -390,20 +391,22 @@
 <dl class="py method">
 <dt id="pygetpapers.pygetpapers.pygetpapers.makexmlfiles">
 <code class="sig-name descname"><span class="pre">makexmlfiles</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_xml_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getpdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makecsv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makehtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makexml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supplementaryFiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.makexmlfiles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes the <a href="#id19"><span class="problematic" id="id20">*</span></a>pdf,*csv,*xml,*references,*citations,*supplementaryFiles for the individual papers</p>
+<dd><p>Writes the pdf,csv,xml,references,citations,supplementaryFiles for the individual papers</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>final_xml_dict</strong> – Python dictionary containg all the papers</p></li>
-<li><p><strong>getpdf</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to make pdfs</p></li>
-<li><p><strong>makecsv</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to make csv for the metadata</p></li>
-<li><p><strong>makexml</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to make xml file for the paper</p></li>
-<li><p><strong>references</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to download references</p></li>
-<li><p><strong>citations</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to download citations</p></li>
-<li><p><strong>supplementaryFiles</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – whether to download supplementary files</p></li>
+<li><p><strong>getpdf</strong> – bool): whether to make pdfs (Default value = False)</p></li>
+<li><p><strong>makecsv</strong> – bool): whether to make csv for the metadata (Default value = False)</p></li>
+<li><p><strong>makexml</strong> – bool): whether to make xml file for the paper (Default value = False)</p></li>
+<li><p><strong>references</strong> – bool): whether to download references (Default value = False)</p></li>
+<li><p><strong>citations</strong> – bool): whether to download citations (Default value = False)</p></li>
+<li><p><strong>supplementaryFiles</strong> – bool): whether to download supplementary files (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -413,11 +416,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> – </p></li>
-<li><p><strong>synonym</strong> – </p></li>
+<li><p><strong>query</strong> – param synonym:</p></li>
+<li><p><strong>synonym</strong> – (Default value = True)</p></li>
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -427,28 +431,22 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong><strong>(</strong><strong>str</strong><strong>)</strong> – Query to download papers for</p></li>
+<li><p><strong>query</strong> – str):  Query to download papers for</p></li>
 <li><p><strong>original_json</strong> – Json of the original corpus in the form of python dictionary</p></li>
-<li><p><strong>size</strong><strong>(</strong><strong>int</strong><strong>)</strong> – Number of new papers to download</p></li>
-<li><p><strong>*onlymakejson</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to only write json files</p>
-</p></li>
-<li><p><strong>*getpdf</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to make pdf files</p>
-</p></li>
-<li><p><strong>*makecsv</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to make csv files</p>
-</p></li>
-<li><p><strong>*makexml</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to make xml files</p>
-</p></li>
-<li><p><strong>*references</strong> – <p>Source to get the references from</p>
-</p></li>
-<li><p><strong>*citations</strong> – <p>Source to get the citations from</p>
-</p></li>
-<li><p><strong>*supplementaryFiles</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to write supplementary files</p>
-</p></li>
-<li><p><strong>*synonym</strong><strong>(</strong><strong>bool</strong><strong>)</strong> – <p>whether to also get files with query as the synonym of the given query</p>
-</p></li>
+<li><p><strong>size</strong> – int): Number of new papers to download</p></li>
+<li><p><strong>onlymakejson</strong> – (Default value = False)</p></li>
+<li><p><strong>getpdf</strong> – (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
+<li><p><strong>makecsv</strong> – (Default value = False)</p></li>
+<li><p><strong>makexml</strong> – (Default value = False)</p></li>
+<li><p><strong>references</strong> – (Default value = False)</p></li>
+<li><p><strong>citations</strong> – (Default value = False)</p></li>
+<li><p><strong>supplementaryFiles</strong> – (Default value = False)</p></li>
+<li><p><strong>synonym</strong> – (Default value = True)</p></li>
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 <dl class="py method">
@@ -464,7 +462,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(htmlurl, paperpmcid, pdfurl, resultant_dict)</p>
+<dd class="field-even"><p>htmlurl, paperpmcid, pdfurl, resultant_dict)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -482,6 +480,7 @@
 </ul>
 </dd>
 </dl>
+<p>Returns:</p>
 </dd></dl>
 
 </dd></dl>

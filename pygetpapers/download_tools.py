@@ -1,10 +1,9 @@
 class download_tools:
-    """ """
     def __init__(self, api):
         import configparser
         import os
-        with open(os.path.join(os.path.dirname(__file__),"config.ini")) as f:
-            config_file = f.read()
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
+          config_file = f.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
 
@@ -12,7 +11,6 @@ class download_tools:
         self.citationurl = config.get(api, "citationurl")
         self.referencesurl = config.get(api, "referencesurl")
         self.xmlurl = config.get(api, "xmlurl")
-
 
     def postquery(self, headers, payload):
         """
@@ -212,7 +210,8 @@ class download_tools:
 
         """
         import requests
-        r = requests.get((self.citationurl).format(source=source, pmcid=pmcid))
+        r = requests.get((self.citationurl).format(
+            source=source, pmcid=pmcid))
         return r.content
 
     def getreferences(self, pmcid, source):
@@ -274,26 +273,26 @@ class download_tools:
         except:
             logging.warning("abstract empty")
         base_html = """
-        <!doctype html>
-        <html>
-            <head>
-                <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-                <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-                <style>
-                #table {
-                    height: 250px;
-                    overflow-y:scroll;
-                }
-                </style>
-            </head>
-            <body>%s<script type="text/javascript">$(document).ready(function(){$('table').DataTable({
-            "pageLength": 20
-            });});</script>
-            </body>
-        </html>
-        """
+    <!doctype html>
+    <html>
+      <head>
+          <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+          <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+          <style>
+          # table {
+              height: 250px;
+              overflow-y:scroll;
+          }
+          </style>
+      </head>
+      <body>%s<script type="text/javascript">$(document).ready(function(){$('table').DataTable({
+      "pageLength": 20
+      });});</script>
+      </body>
+    </html>
+    """
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html
         with open(url, 'w', encoding='utf-8') as f:

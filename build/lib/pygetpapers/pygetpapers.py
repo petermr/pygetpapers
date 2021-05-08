@@ -33,9 +33,14 @@ class pygetpapers():
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
         """
-        :param pmcid: pmcid of the paper for which fields will be created
-        :param resultant_dict: dict in which the fields will be created
-        :return: dict with the initial fields created for pmcid
+
+        Args:
+          pmcid: pmcid of the paper for which fields will be created
+          resultant_dict: dict in which the fields will be created
+
+        Returns:
+          dict with the initial fields created for pmcid
+
         """
         resultant_dict[pmcid] = {}
         resultant_dict[pmcid]["downloaded"] = False
@@ -47,16 +52,17 @@ class pygetpapers():
     # this is the function that will the the result from search and will download and save the files.
 
     def makecsv(self, searchvariable, makecsv=False, makehtml=False, update=False):
-        """
-        Writes the json and *csv for searchvaraible dict
+        """Writes the json and csv for searchvaraible dict
 
-        :param searchvariable(dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
+        Args:
+          searchvariable: dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
+          makecsv: bool): whether to make csv files (Default value = False)
+          update: dict): if provided, will add the research papers to the searchvariable dict (Default value = False)
+          makehtml:  (Default value = False)
 
-        :param makecsv(bool): whether to make csv files
+        Returns:
+          searchvariable
 
-        :param update(dict): if provided, will add the research papers to the searchvariable dict
-
-        :return: searchvariable
         """
         import pandas as pd
         import json
@@ -99,16 +105,16 @@ class pygetpapers():
             return False
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
-        """
-        Adds pdf and html url as well as makes the paper key in resultant_dict
+        """Adds pdf and html url as well as makes the paper key in resultant_dict
 
-        :param paper: python dictionary for the paper
+        Args:
+          paper: python dictionary for the paper
+          paper_number: paper number to log
+          resultant_dict: dictionary to add paper as well as pdf,html url to
 
-        :param paper_number: paper number to log
+        Returns:
+          htmlurl, paperpmcid, pdfurl, resultant_dict)
 
-        :param resultant_dict: dictionary to add paper as well as pdf,html url to
-
-        :return: (htmlurl, paperpmcid, pdfurl, resultant_dict)
         """
         import logging
         logging.debug(
@@ -128,20 +134,18 @@ class pygetpapers():
         return htmlurl, paperpmcid, pdfurl, resultant_dict
 
     def add_fields_to_resultant_dict(self, htmlurl, paper, paper_number, pdfurl, dict_for_paper):
-        """
-        Writes urls to dictionary
+        """Writes urls to dictionary
 
-        :param htmlurl: list containing html urls for the paper
+        Args:
+          htmlurl: list containing html urls for the paper
+          paper: python dictionary of the paper
+          paper_number: paper number to log
+          pdfurl: list containing pdf urls for the paper
+          dict_for_paper: python dictionary to write the urls to
 
-        :param paper: python dictionary of the paper
+        Returns:
+          dict_for_paper
 
-        :param paper_number: paper number to log
-
-        :param pdfurl: list containing pdf urls for the paper
-
-        :param dict_for_paper: python dictionary to write the urls to
-
-        :return: dict_for_paper
         """
         import logging
         try:
@@ -186,14 +190,15 @@ class pygetpapers():
                 f"Title not found for paper {paper_number}")
 
     def getsupplementaryfiles(self, pmcid, directory_url, destination_url):
-        """
-        Downloads the supplemetary marks for the paper having pmcid
+        """Downloads the supplemetary marks for the paper having pmcid
 
-        :param pmcid: pmcid to get the supplementary files
+        Args:
+          pmcid: pmcid to get the supplementary files
+          directory_url: directory containg destination
+          destination_url: path to write the supplementary files to
 
-        :param directory_url: directory containg destination
+        Returns:
 
-        :param destination_url: path to write the supplementary files to
         """
         import requests
         import os
@@ -208,30 +213,31 @@ class pygetpapers():
         logging.debug(f"Wrote supplementary files for {pmcid}")
 
     def make_references(self, directory_url, paperid, source, referenceurl):
-        '''
-        Downloads the references for the paper with pmcid (paperid) to reference url
+        """Downloads the references for the paper with pmcid (paperid) to reference url
 
-        :param directory_url: directory containing referenceurl
+        Args:
+          directory_url: directory containing referenceurl
+          paperid: pmc id of the paper
+          source: source to get the citations from
+          referenceurl: path to write the references to
 
-        :param paperid:  pmc id of the paper
+        Returns:
 
-        :param source: source to get the citations from
-
-        :param referenceurl: path to write the references to
-        '''
+        """
         getreferences = self.download_tools.getreferences(
             paperid, source)
         self.writexml(directory_url, referenceurl, getreferences)
 
     def writexml(self, directory_url, destination_url, content):
-        """
-        writes xml to the destination
+        """writes xml to the destination
 
-        :param directory_url: directory containg destination
+        Args:
+          directory_url: directory containg destination
+          destination_url: path to write the xml to
+          content: xml content
 
-        :param destination_url: path to write the xml to
+        Returns:
 
-        :param content: xml content
         """
         import os
         if not os.path.isdir(directory_url):
@@ -240,39 +246,36 @@ class pygetpapers():
             f.write(content)
 
     def make_citations(self, source, citationurl, directory_url, paperid):
-        '''
-        Downloads the citations for the paper with pmcid (paperid) to citation url
+        """Downloads the citations for the paper with pmcid (paperid) to citation url
 
-        :param source: source to get the citations from
+        Args:
+          source: source to get the citations from
+          citationurl: path to write the citations to
+          directory_url: directory containing citationurl
+          paperid: pmc id of the paper
 
-        :param citationurl: path to write the citations to
+        Returns:
 
-        :param directory_url: directory containing citationurl
-
-        :param paperid: pmc id of the paper
-        '''
+        """
         getcitations = self.download_tools.getcitations(
             paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
     def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makehtml=False, makexml=False, references=False,
                      citations=False, supplementaryFiles=False):
-        """
-        Writes the *pdf,*csv,*xml,*references,*citations,*supplementaryFiles for the individual papers
+        """Writes the pdf,csv,xml,references,citations,supplementaryFiles for the individual papers
 
-        :param final_xml_dict: Python dictionary containg all the papers
+        Args:
+          final_xml_dict: Python dictionary containg all the papers
+          getpdf: bool): whether to make pdfs (Default value = False)
+          makecsv: bool): whether to make csv for the metadata (Default value = False)
+          makexml: bool): whether to make xml file for the paper (Default value = False)
+          references: bool): whether to download references (Default value = False)
+          citations: bool): whether to download citations (Default value = False)
+          supplementaryFiles: bool): whether to download supplementary files (Default value = False)
+          makehtml:  (Default value = False)
 
-        :param getpdf(bool): whether to make pdfs
-
-        :param makecsv(bool): whether to make csv for the metadata
-
-        :param makexml(bool): whether to make xml file for the paper
-
-        :param references(bool): whether to download references
-
-        :param citations(bool): whether to download citations
-
-        :param supplementaryFiles(bool): whether to download supplementary files
+        Returns:
 
         """
         import logging
@@ -343,12 +346,13 @@ class pygetpapers():
             logging.debug(f"*/Updating the json*/\n")
 
     def make_csv(self, dict_to_write, pmcid):
-        """
-        Makes csv file for the dict_to_write (python dictionary for the fulltext).
+        """Makes csv file for the dict_to_write (python dictionary for the fulltext).
 
-        :param dict_to_write: Python dictionary to write the csv from
+        Args:
+          dict_to_write: Python dictionary to write the csv from
+          pmcid: pmcid of the paper
 
-        :param pmcid: pmcid of the paper
+        Returns:
 
         """
         import pandas as pd
@@ -359,10 +363,13 @@ class pygetpapers():
             str(os.getcwd()), pmcid, "fulltext.csv"))
 
     def conditions_to_download(self, paperdict):
-        """
-        Writes the conditions to download pdf, json and csv
+        """Writes the conditions to download pdf, json and csv
 
-        :param paperdict: dictionary to write rules for
+        Args:
+          paperdict: dictionary to write rules for
+
+        Returns:
+
         """
         condition_to_down = paperdict["downloaded"] is False
         condition_to_download_pdf = paperdict["pdfdownloaded"] is False
@@ -372,9 +379,13 @@ class pygetpapers():
 
     def get_urls_to_write_to(self, pmcid):
         """
-        :param pmcid: pmcid to write the urls for
 
-        :return: tuple containing urls where files for the fulltext will be written
+        Args:
+          pmcid: pmcid to write the urls for
+
+        Returns:
+          tuple containing urls where files for the fulltext will be written
+
         """
         import os
         destination_url = os.path.join(
@@ -393,28 +404,23 @@ class pygetpapers():
 
     def apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makehtml=False, makexml=False,
                          references=False, citations=False, supplementaryFiles=False, synonym=True):
-        """
-        Downloads and writes papers along with the metadata for the given query
+        """Downloads and writes papers along with the metadata for the given query
 
-        :param query: Query to download papers for
+        Args:
+          query: Query to download papers for
+          size: Number of papers to be downloaded
+          onlymakejson:  (Default value = False)
+          getpdf:  (Default value = False)
+          makecsv:  (Default value = False)
+          makehtml:  (Default value = False)
+          makexml:  (Default value = False)
+          references:  (Default value = False)
+          citations:  (Default value = False)
+          supplementaryFiles:  (Default value = False)
+          synonym:  (Default value = True)
 
-        :param size: Number of papers to be downloaded
+        Returns:
 
-        :param *onlymakejson(bool): whether to only write the json files
-
-        :param *getpdf(bool): whether to make pdf files
-
-        :param *makecsv(bool): whether to make csv files
-
-        :param *makexml(bool):whether to make xml files
-
-        :param *references: Source to get the references from
-
-        :param *citations: Source to get the citations from
-
-        :param *supplementaryFiles(bool): whether to write supplementary files
-
-        :param *synonym(bool): whether to also get files with query as the synonym of the given query
         """
         import os
         query_result = self.europe_pmc.europepmc(query, size, synonym=synonym)
@@ -429,30 +435,23 @@ class pygetpapers():
 
     def updatecorpus(self, query, original_json, size, onlymakejson=False, getpdf=False, makehtml=False, makecsv=False, makexml=False,
                      references=False, citations=False, supplementaryFiles=False, synonym=True):
-        """
-        Updates the corpus with new papers
+        """Updates the corpus with new papers
 
-        :param query(str):  Query to download papers for
+        Args:
+          query: str):  Query to download papers for
+          original_json: Json of the original corpus in the form of python dictionary
+          size: int): Number of new papers to download
+          onlymakejson:  (Default value = False)
+          getpdf:  (Default value = False)
+          makehtml:  (Default value = False)
+          makecsv:  (Default value = False)
+          makexml:  (Default value = False)
+          references:  (Default value = False)
+          citations:  (Default value = False)
+          supplementaryFiles:  (Default value = False)
+          synonym:  (Default value = True)
 
-        :param original_json: Json of the original corpus in the form of python dictionary
-
-        :param size(int): Number of new papers to download
-
-        :param *onlymakejson(bool): whether to only write json files
-
-        :param *getpdf(bool): whether to make pdf files
-
-        :param *makecsv(bool): whether to make csv files
-
-        :param *makexml(bool): whether to make xml files
-
-        :param *references: Source to get the references from
-
-        :param *citations: Source to get the citations from
-
-        :param *supplementaryFiles(bool): whether to write supplementary files
-
-        :param *synonym(bool): whether to also get files with query as the synonym of the given query
+        Returns:
 
         """
         import os
@@ -468,12 +467,14 @@ class pygetpapers():
                               supplementaryFiles=supplementaryFiles)
 
     def noexecute(self, query, synonym=True):
-        """
-        Tells how many hits found for the query
+        """Tells how many hits found for the query
 
-        :param query:
+        Args:
+          query: param synonym:
+          synonym:  (Default value = True)
 
-        :param synonym:
+        Returns:
+
         """
         import logging
         builtqueryparams = self.download_tools.buildquery(
@@ -486,6 +487,14 @@ class pygetpapers():
         logging.info(f'Total number of hits for the query are {totalhits}')
 
     def handle_write_configuration_file(self, args):
+        """
+
+        Args:
+          args: 
+
+        Returns:
+
+        """
         import configparser
         parser = configparser.ConfigParser()
 
@@ -499,9 +508,7 @@ class pygetpapers():
             parser.write(f)
 
     def handlecli(self):
-        """
-        Handles the command line interface using argparse
-        """
+        """Handles the command line interface using argparse"""
         version = self.version
         import argparse
         import os
@@ -646,9 +653,7 @@ class pygetpapers():
 
 
 def demo():
-    """
-    Shows demo to use the library to download papers
-    """
+    """Shows demo to use the library to download papers"""
     callgetpapers = pygetpapers()
     query = "artificial intelligence"
     numberofpapers = 210
@@ -656,9 +661,7 @@ def demo():
 
 
 def main():
-    """
-    Runs the CLI
-    """
+    """Runs the CLI"""
     callpygetpapers = pygetpapers()
     callpygetpapers.handlecli()
 
