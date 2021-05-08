@@ -3,7 +3,7 @@ import pygetpapers
 
 
 class europe_pmc:
-    """ """
+
     def __init__(self):
         self.download_tools = download_tools("europepmc")
 

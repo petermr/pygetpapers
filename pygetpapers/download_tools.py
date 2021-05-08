@@ -1,5 +1,4 @@
 class download_tools:
-    """ """
     def __init__(self, api):
         import configparser
         import os
