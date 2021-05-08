@@ -3,21 +3,19 @@ import pygetpapers
 
 
 class europe_pmc:
+    """ """
     def __init__(self):
         self.download_tools = download_tools("europepmc")
 
     def europepmc(self, query, size, synonym=True, **kwargs):
         """Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
 
-        Args:
-          query: the query passed on to payload
-          size: total number of papers
-          synonym: whether synonym should be or not (Default value = True)
-          kwargs: ensures that the output dict doesnt contain papers already there in update
-          **kwargs: 
-
-        Returns:
-          Python dictionary containing the research papers.
+        :param query: the query passed on to payload
+        :param size: total number of papers
+        :param synonym: whether synonym should be or not (Default value = True)
+        :param kwargs: ensures that the output dict doesnt contain papers already there in update
+        :param **kwargs: 
+        :returns: Python dictionary containing the research papers.
 
         """
         import json
@@ -48,14 +46,11 @@ class europe_pmc:
     def create_final_paper_list(self, content, kwargs, number_of_papers_there, output_dict, size):
         """Checks the number of results and then adds them to the list containing all the papers called content
 
-        Args:
-          content: list containing all the papers
-          kwargs: kwargs of the main function containing whether to update or add papers
-          number_of_papers_there: total number of papers found till now
-          output_dict: output directory
-          size: required number of papers
-
-        Returns:
+        :param content: list containing all the papers
+        :param kwargs: kwargs of the main function containing whether to update or add papers
+        :param number_of_papers_there: total number of papers found till now
+        :param output_dict: output directory
+        :param size: required number of papers
 
         """
         check_if_only_result = type(
@@ -73,12 +68,9 @@ class europe_pmc:
     def add_cursor_mark_if_exists(self, builtquery, morepapers, nextCursorMark):
         """Adds the cursor mark if it exists in the api result
 
-        Args:
-          builtquery: api result dictionary
-          morepapers: weather to download more papers
-          nextCursorMark: list containing all cursor marks
-
-        Returns:
+        :param builtquery: api result dictionary
+        :param morepapers: weather to download more papers
+        :param nextCursorMark: list containing all cursor marks
 
         """
         import logging
@@ -94,13 +86,10 @@ class europe_pmc:
     def build_and_send_query(self, maximum_hits_per_page, nextCursorMark, query, synonym):
         """
 
-        Args:
-          maximum_hits_per_page: 
-          nextCursorMark: 
-          query: 
-          synonym: 
-
-        Returns:
+        :param maximum_hits_per_page: 
+        :param nextCursorMark: 
+        :param query: 
+        :param synonym: 
 
         """
         queryparams = self.download_tools.buildquery(
@@ -122,14 +111,11 @@ class europe_pmc:
     def append_paper_to_list(self, content, kwargs, number_of_papers_there, paper, size):
         """
 
-        Args:
-          content: 
-          kwargs: 
-          number_of_papers_there: 
-          paper: 
-          size: 
-
-        Returns:
+        :param content: 
+        :param kwargs: 
+        :param number_of_papers_there: 
+        :param paper: 
+        :param size: 
 
         """
         import logging
