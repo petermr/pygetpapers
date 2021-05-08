@@ -27,7 +27,7 @@
 # 1. What is pygetpapers
 
 
-- pygetpapers is a tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
+- pygetpapers is a tool to assit text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
 
 - It comes with the packages `pygetpapers` and `downloadtools` which provide various fuctions to download, process and save research papers and their metadata.
 
@@ -196,19 +196,27 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 
    ![3](https://user-images.githubusercontent.com/70321942/116697221-8c818900-a9e0-11eb-8a29-5414314b415d.PNG)
 
-
-
 4. If the user wants to update an existing corpus in the directory test which has eupmc_resuts.json with 100 papers of query `lantana` along with their xmls and pdfs, the following query can be used:
 
    `pygetpapers --update "C:\Users\DELL\test\eupmc_results.json" -q "lantana" -k 10 -x -p`
 
-5. If user wants to download pdfs for a corpus in the directory test which has eupmc_resuts.json which originally only had xmls, or the query broke in between and they want to restart the download of pdfs and xmls, they can use the following query
+5. If user wants to download pdfs for a corpus in the directory test2 which has eupmc_resuts.json which originally only had xmls, or the query broke in between and they want to restart the download of pdfs and xmls, they can use the following query
 
    `pygetpapers --restart "C:\Users\DELL\test\eupmc_results.json" -o "test" -x -p -q "lantana"`
 
    ![5](https://user-images.githubusercontent.com/70321942/116698739-58a76300-a9e2-11eb-8b56-1fd177bf9b1c.PNG)
 
-6. If user wants references then following query download references.xml file if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
+6. If the user wants to update an existing corpus in the directory test which has eupmc_resuts.json with 100 papers of query `lantana` along with their xmls and pdfs, the following query can be used:
+
+   `pygetpapers --update "C:\Users\DELL\test\eupmc_results.json" -q "lantana" -k 10 -x -p`
+
+7. If user wants to download pdfs for a corpus in the directory test which has eupmc_resuts.json which originally only had xmls, or the query broke in between and they want to restart the download of pdfs and xmls, they can use the following query
+
+   `pygetpapers --restart "C:\Users\DELL\test\eupmc_results.json" -o "test" -x -p -q "lantana"`
+
+   ![5](https://user-images.githubusercontent.com/70321942/116698739-58a76300-a9e2-11eb-8b56-1fd177bf9b1c.PNG)
+
+8. If user wants references then following query download references.xml file if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
 
    `pygetpapers -q "lantana" -k 10 -o "test" -c -x --references PMC`
 
@@ -216,19 +224,19 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 
    ![rr](https://user-images.githubusercontent.com/70321942/116774866-1848f300-aa7d-11eb-907c-259e2047de69.PNG)
 
-7. if user wants synonym then `--synonym` provides results which contain synonyms as well
+9. if user wants synonym then `--synonym` provides results which contain synonyms as well
 
    `pygetpapers --onlyquery -q "lantana" -k 10 -o "test" -c --synonym`
 
    ![s](https://user-images.githubusercontent.com/70321942/116773871-116ab200-aa76-11eb-962a-8cdd6366cc17.PNG)
 
-8. if user wants to save the query to use it later
+10. if user wants to save the query to use it later
     `pygetpapers -q "lantana" --save_query`
 
-9. if user wants to get papers within a date range
+11. if user wants to get papers within a date range
     `pygetpapers -q "lantana" --startdate "2020-01-02" --enddate "2021-09-09"`
 
-10. if user wants to start query from configuration file
+12. if user wants to start query from configuration file
     `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
 
 # 8. About the author and community
@@ -259,7 +267,7 @@ To request features, please put them in issues
 ## 11.3. Countries with proposed copyright exceptions:
 
 - Ireland
-- EU countries 
+- EU
 
 ## 11.4. Countries with permissive interpretations of 'fair use' that might allow content mining:
 
