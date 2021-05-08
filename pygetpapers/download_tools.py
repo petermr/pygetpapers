@@ -1,4 +1,5 @@
 class download_tools:
+    """ """
     def __init__(self, api):
         import configparser
         import os
@@ -15,12 +16,9 @@ class download_tools:
     def postquery(self, headers, payload):
         """
 
-        Args:
-          headers: headers that will be sent to eupmc rest api
-          payload: payload that will be sent to eupmc rest api
-
-        Returns:
-          Python dictionary containting the output got from eupmc rest api
+        :param headers: headers that will be sent to eupmc rest api
+        :param payload: payload that will be sent to eupmc rest api
+        :returns: Python dictionary containting the output got from eupmc rest api
 
         """
 
@@ -40,10 +38,7 @@ class download_tools:
     def check_or_make_directory(self, directory_url):
         """Checks if the directory exists. If not, makes the directory
 
-        Args:
-          directory_url: directory url to check
-
-        Returns:
+        :param directory_url: directory url to check
 
         """
         import os
@@ -53,14 +48,12 @@ class download_tools:
     def buildquery(self, cursormark, pageSize, query, synonym=True,):
         """
 
-        Args:
-          cursormark: the cursonmark for the rest api page. The first cursormark of query result is '*'
-          pageSize: the size of each page in the output.
-          query: the query passed on to payload
-          synonym: whether synonym should be or not (Default value = True)
-
-        Returns:
-          Python dictionary containting headers and payload in the format: {'headers': headers, 'payload': payload}
+        :param cursormark: the cursonmark for the rest api page. The first cursormark of query result is '*'
+        :param pageSize: the size of each page in the output.
+        :param query: the query passed on to payload
+        :param synonym: whether synonym should be or not (Default value = True)
+        :returns: {'headers': headers, 'payload': payload}
+        :rtype: Python dictionary containting headers and payload in the format
 
         """
 
@@ -74,10 +67,7 @@ class download_tools:
     def write_or_append_to_csv(self, df_transposed):
         """Writes the csv file or appends to an existing one
 
-        Args:
-          df_transposed: dataframe to write
-
-        Returns:
+        :param df_transposed: dataframe to write
 
         """
         import os
@@ -90,12 +80,9 @@ class download_tools:
     def writexml(self, directory_url, destination_url, content):
         """writes xml to the destination
 
-        Args:
-          directory_url: directory containg destination
-          destination_url: path to write the xml to
-          content: xml content
-
-        Returns:
+        :param directory_url: directory containg destination
+        :param destination_url: path to write the xml to
+        :param content: xml content
 
         """
         import os
@@ -107,11 +94,8 @@ class download_tools:
     def make_dict_for_csv(self, resultant_dict):
         """removes the fields downloaded, pdfdownloaded,csvmade for the resultant_dict to be written to a csv
 
-        Args:
-          resultant_dict: dictionary to remove the fields
-
-        Returns:
-          resultant_dict_for_csv
+        :param resultant_dict: dictionary to remove the fields
+        :returns: resultant_dict_for_csv
 
         """
         resultant_dict_for_csv = resultant_dict
@@ -126,11 +110,8 @@ class download_tools:
     def writepdf(self, url, destination):
         """Writes pdf from url to destination
 
-        Args:
-          url: Url to get pdf from
-          destination: destination to write pdf to
-
-        Returns:
+        :param url: Url to get pdf from
+        :param destination: destination to write pdf to
 
         """
         import requests
@@ -141,11 +122,8 @@ class download_tools:
     def makejson(self, path, final_xml_dict):
         """Writes json of final_xml_dict to path
 
-        Args:
-          path: path to write json to
-          final_xml_dict: python dictionary to make the json from
-
-        Returns:
+        :param path: path to write json to
+        :param final_xml_dict: python dictionary to make the json from
 
         """
         import json
@@ -156,10 +134,7 @@ class download_tools:
     def clean_dict_for_csv(self, paperdict):
         """Removes the fields pdfdownloaded , jsondownloaded , csvmade from dictionary of paper
 
-        Args:
-          paperdict: dictionary to remove fields from
-
-        Returns:
+        :param paperdict: dictionary to remove fields from
 
         """
         dict_to_write = dict(paperdict)
@@ -171,10 +146,7 @@ class download_tools:
     def conditions_to_download(self, paperdict):
         """Writes the conditions to download pdf, json and csv
 
-        Args:
-          paperdict: dictionary to write rules for
-
-        Returns:
+        :param paperdict: dictionary to write rules for
 
         """
         condition_to_down = paperdict["downloaded"] == False
@@ -187,10 +159,7 @@ class download_tools:
     def make_clickable(self, link):
         """Returns a <a> Html String
 
-        Args:
-          link: link for href
-
-        Returns:
+        :param link: link for href
 
         """
         if str(link) == "nan":
@@ -201,12 +170,9 @@ class download_tools:
     def getcitations(self, pmcid, source):
         """Gets citations for the paper of pmcid
 
-        Args:
-          pmcid: pmcid to get the citations
-          source: source to get the citations from
-
-        Returns:
-          citations xml
+        :param pmcid: pmcid to get the citations
+        :param source: source to get the citations from
+        :returns: citations xml
 
         """
         import requests
@@ -217,12 +183,9 @@ class download_tools:
     def getreferences(self, pmcid, source):
         """Gets references for the paper of pmcid
 
-        Args:
-          pmcid: pmcid to get the references
-          source: source to get the references from
-
-        Returns:
-          references xml
+        :param pmcid: pmcid to get the references
+        :param source: source to get the references from
+        :returns: references xml
 
         """
         import requests
@@ -233,10 +196,7 @@ class download_tools:
     def add_scrollbar(self, text):
         """Makes div scrollable
 
-        Args:
-          text: text to wrap
-
-        Returns:
+        :param text: text to wrap
 
         """
         return f'<div id="table">{text}</div>'
@@ -244,11 +204,8 @@ class download_tools:
     def make_html_from_dataframe(self, dataframe, url):
         """Writes html from pandas dataframe
 
-        Args:
-          dataframe: Dataframe to make html from
-          url: URL to write html to
-
-        Returns:
+        :param dataframe: Dataframe to make html from
+        :param url: URL to write html to
 
         """
         import pandas as pd
@@ -301,11 +258,8 @@ class download_tools:
     def make_html_from_dict(self, dict_to_write_html_from, url):
         """Writes html from python dictionary
 
-        Args:
-          dict_to_write_html_from: dict to make html from
-          url: URL to write html to
-
-        Returns:
+        :param dict_to_write_html_from: dict to make html from
+        :param url: URL to write html to
 
         """
         import pandas as pd
@@ -316,11 +270,8 @@ class download_tools:
     def readjsondata(self, path):
         """Reads json from path and returns python dictionary
 
-        Args:
-          path: path to read the json from
-
-        Returns:
-          python dictionary for the json
+        :param path: path to read the json from
+        :returns: python dictionary for the json
 
         """
         import json
@@ -343,11 +294,8 @@ class download_tools:
     def getxml(self, pmcid):
         """Makes a query for the pmcid xml to eupmc rest.
 
-        Args:
-          pmcid: pmcid of the paper to query for
-
-        Returns:
-          query result
+        :param pmcid: pmcid of the paper to query for
+        :returns: query result
 
         """
         import requests
