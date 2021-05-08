@@ -3,22 +3,23 @@ import pygetpapers
 
 
 class europe_pmc:
+    """ """
     def __init__(self):
         self.download_tools = download_tools("europepmc")
 
     def europepmc(self, query, size, synonym=True, **kwargs):
-        """
-            Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
+        """Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
 
-            :param query: the query passed on to payload
+        Args:
+          query: the query passed on to payload
+          size: total number of papers
+          synonym: whether synonym should be or not (Default value = True)
+          kwargs: ensures that the output dict doesnt contain papers already there in update
+          **kwargs: 
 
-            :param size: total number of papers
+        Returns:
+          Python dictionary containing the research papers.
 
-            :param synonym: whether synonym should be or not
-
-            :param kwargs: ensures that the output dict doesnt contain papers already there in update
-
-            :return: Python dictionary containing the research papers.
         """
         import json
         import logging
@@ -46,20 +47,17 @@ class europe_pmc:
         return content
 
     def create_final_paper_list(self, content, kwargs, number_of_papers_there, output_dict, size):
-        """
-        Checks the number of results and then adds them to the list containing all the papers called content
+        """Checks the number of results and then adds them to the list containing all the papers called content
 
-        :param content: list containing all the papers
+        Args:
+          content: list containing all the papers
+          kwargs: kwargs of the main function containing whether to update or add papers
+          number_of_papers_there: total number of papers found till now
+          output_dict: output directory
+          size: required number of papers
 
-        :param kwargs: kwargs of the main function containing whether to update or add papers
+        Returns:
 
-        :param number_of_papers_there: total number of papers found till now
-
-        :param output_dict: output directory
-
-        :param size: required number of papers
-
-        :return:
         """
         check_if_only_result = type(
             output_dict["responseWrapper"]["resultList"]["result"]) == dict
@@ -74,16 +72,15 @@ class europe_pmc:
         return number_of_papers_there
 
     def add_cursor_mark_if_exists(self, builtquery, morepapers, nextCursorMark):
-        """
-        Adds the cursor mark if it exists in the api result
+        """Adds the cursor mark if it exists in the api result
 
-        :param builtquery: api result dictionary
+        Args:
+          builtquery: api result dictionary
+          morepapers: weather to download more papers
+          nextCursorMark: list containing all cursor marks
 
-        :param morepapers: weather to download more papers
+        Returns:
 
-        :param nextCursorMark: list containing all cursor marks
-
-        :return:
         """
         import logging
 
@@ -96,6 +93,17 @@ class europe_pmc:
         return morepapers
 
     def build_and_send_query(self, maximum_hits_per_page, nextCursorMark, query, synonym):
+        """
+
+        Args:
+          maximum_hits_per_page: 
+          nextCursorMark: 
+          query: 
+          synonym: 
+
+        Returns:
+
+        """
         queryparams = self.download_tools.buildquery(
             nextCursorMark[-1], maximum_hits_per_page, query, synonym=synonym)
         builtquery = self.download_tools.postquery(
@@ -103,6 +111,7 @@ class europe_pmc:
         return builtquery
 
     def create_parameters_for_paper_download(self):
+        """ """
         content = [[]]
         nextCursorMark = ['*', ]
         morepapers = True
@@ -112,6 +121,18 @@ class europe_pmc:
         return content, counter, maximum_hits_per_page, morepapers, nextCursorMark, number_of_papers_there
 
     def append_paper_to_list(self, content, kwargs, number_of_papers_there, paper, size):
+        """
+
+        Args:
+          content: 
+          kwargs: 
+          number_of_papers_there: 
+          paper: 
+          size: 
+
+        Returns:
+
+        """
         import logging
         if "update" in kwargs:
             if "pmcid" in paper and paper["pmcid"] not in kwargs["update"]:
