@@ -43,7 +43,7 @@
 <a href="https://github.com/petermr/pygetpapers/commits/main"><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img" width="180px" height="30px"></a>
 <a href="https://github.com/petermr/pygetpapers/stargazers"><img src="https://img.shields.io/github/stars/petermr/pygetpapers.svg?style=social&label=Star&maxAge=2592000" alt="img" width="120px" height="30px"></a>
 <a href='https://pygetpapers.readthedocs.io/en/latest/?badge=latest'>
-    <img src='https://readthedocs.org/projects/pygetpapers/badge/?version=latest' alt='Documentation Status' width="180px" height="30px" />
+    <img src='https://readthedocs.org/projects/pygetpapers/badge/?version=latest' alt='Documentation Status' width="180px" height="25px" />
 </a>
 </p>
 
