@@ -8,13 +8,13 @@
 - [1. What is pygetpapers](#1-what-is-pygetpapers)
 - [2. History](#2-history)
 - [3. Formats supported by pygetpapers](#3-formats-supported-by-pygetpapers)
-- [4. Archietecture](#4-archietecture)
-- [5. Installation](#5-installation)
-  - [5.1. Way one (recommended):](#51-way-one-recommended)
-  - [5.2. Way two:](#52-way-two)
-- [6. Usage](#6-usage)
-- [7. Sample queries:](#7-sample-queries)
-- [8. About the author and community](#8-about-the-author-and-community)
+- [4. Architecture](#4-architecture)
+- [5. About the author and community](#5-about-the-author-and-community)
+- [6. Installation](#6-installation)
+  - [6.1. Way one (recommended):](#61-way-one-recommended)
+  - [6.2. Way two:](#62-way-two)
+- [7. Usage](#7-usage)
+- [8. Sample queries:](#8-sample-queries)
 - [9. Contributions](#9-contributions)
 - [10. Feature Requests](#10-feature-requests)
 - [11. Legal Implications](#11-legal-implications)
@@ -27,13 +27,13 @@
 # 1. What is pygetpapers
 
 
-- pygetpapers is a tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits and systematically downloads the articles without further interaction.
+- pygetpapers is a tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits, and systematically downloads the articles without further interaction.
 
-- It comes with the packages `pygetpapers` and `downloadtools` which provide various fuctions to download, process and save research papers and their metadata.
+- It comes with the packages `pygetpapers` and `downloadtools` which provide various functions to download, process and save research papers and their metadata.
 
-- The main medium of its interaction with users is through a command line interface.
+- The main medium of its interaction with users is through a command-line interface.
 
-- `pygetpapers` has a modular design which makes maintainance easy and simple. This also allows adding support for more repositories simple.
+- `pygetpapers` has a modular design which makes maintenance easy and simple. This also allows adding support for more repositories simple.
 
 <br>
 <p>
@@ -50,22 +50,30 @@
 
 # 2. History
 
-`getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community has a need for a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
+`getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community requires a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
 
 # 3. Formats supported by pygetpapers
 
 pygetpapers gives fulltexts in xml and pdf format. 
-The metadata for papers can be saved in many formats including json, csv, html. Queries can be saved in form of a ini configuration file. 
-The additional files for papers can also be downloaded. References and citations for papers are given in xml format. 
+The metadata for papers can be saved in many formats including JSON, CSV, HTML. Queries can be saved in form of an ini configuration file. 
+The additional files for papers can also be downloaded. References and citations for papers are given in XML format. 
 Log files can be saved in txt format.
 
-# 4. Archietecture
+# 4. Architecture
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/petermr/pygetpapers/main/archietecture.png" >
 </p>
 
-# 5. Installation
+# 5. About the author and community
+
+`pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
+
+Testers from OpenVirus have given a lot of useful feedback to Ayush without which this project would not have been possible.
+
+The community has taken time to ensure that everyone can contribute to this project. So, YOU, the developer, reader and researcher can also contribute by testing, developing, and sharing.
+
+# 6. Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
@@ -73,29 +81,29 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 5.1. Way one (recommended):
+## 6.1. Way one (recommended):
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 - Enter the command: `pip install git+git://github.com/petermr/pygetpapers`
 
-- Ensure pygetpapers has been installed by reopening terminal and typing the command `pygetpapers`
+- Ensure pygetpapers has been installed by reopening the terminal and typing the command `pygetpapers`
 
 - You should see a help message come up.
 
 <hr>
 
-## 5.2. Way two:
+## 6.2. Way two:
 
 - Manually clone the repository and run `python setup.py install` from inside the repository directory
 
-- Ensure pygetpapers has been installed by reopening terminal and typing the command `pygetpapers`
+- Ensure pygetpapers has been installed by reopening the terminal and typing the command `pygetpapers`
 
 - You should see a help message come up.
 
 <hr>
 
-# 6. Usage
+# 7. Usage
 
 - Type the command `pygetpapers` to run the help.
 
@@ -170,15 +178,15 @@ optional arguments:
 Args that start with '--' (eg. -v) can also be set in a config file (specified
 via --config). Config file syntax allows: key=value, flag=true, stuff=[a,b,c]
 (for details, see syntax at https://goo.gl/R74nmi). If an arg is specified in
-more than one place, then commandline values override config file values which
+more than one place, then command line values override config file values which
 override defaults.
 ```
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
-# 7. Sample queries:
+# 8. Sample queries:
 
-1. The following query downloads 100 full text xmls, pdfs and supplementary files along with the csv and json(default) for the topic "lantana" and saves them in a directory called "test".
+1. The following query downloads 100 full-text XML, pdfs, and supplementary files along with the CSV and JSON(default) for the topic "lantana" and saves them in a directory called "test".
 
    `pygetpapers -q "lantana" -k 100 -o "test" --supp -c -p -x`
 
@@ -190,7 +198,7 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 
    ![n](https://user-images.githubusercontent.com/70321942/116695234-ef255580-a9dd-11eb-96d1-a01841a5af21.PNG)
 
-3. The following query just creates the csv output for metadata of 100 papers on the topic `lantana` in an output directory called "test"
+3. The following query just creates the CSV output for metadata of 100 papers on the topic `lantana` in an output directory called "test"
 
    `pygetpapers --onlyquery -q "lantana" -k 100 -o "test" -c`
 
@@ -198,17 +206,17 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 
 
 
-4. If the user wants to update an existing corpus in the directory test which has eupmc_resuts.json with 100 papers of query `lantana` along with their xmls and pdfs, the following query can be used:
+4. If the user wants to update an existing corpus in the directory test which has eupmc_resuts.json with 100 papers of query `lantana` along with their XML files and pdfs, the following query can be used:
 
-   `pygetpapers --update "C:\Users\DELL\test\eupmc_results.json" -q "lantana" -k 10 -x -p`
+   `pygetpapers --update "C:\Users\DELL\test\eupmc_results.JSON" -q "lantana" -k 10 -x -p`
 
-5. If user wants to download pdfs for a corpus in the directory test which has eupmc_resuts.json which originally only had xmls, or the query broke in between and they want to restart the download of pdfs and xmls, they can use the following query
+5. If the user wants to download pdfs for a corpus in the directory test which has eupmc_resuts.json which originally only had XML files, or the query broke in between and they want to restart the download of pdfs and XML, they can use the following query
 
    `pygetpapers --restart "C:\Users\DELL\test\eupmc_results.json" -o "test" -x -p -q "lantana"`
 
    ![5](https://user-images.githubusercontent.com/70321942/116698739-58a76300-a9e2-11eb-8b56-1fd177bf9b1c.PNG)
 
-6. If user wants references then following query download references.xml file if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
+6. If the user wants references then the following query download references.xml file if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
 
    `pygetpapers -q "lantana" -k 10 -o "test" -c -x --references PMC`
 
@@ -216,32 +224,25 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 
    ![rr](https://user-images.githubusercontent.com/70321942/116774866-1848f300-aa7d-11eb-907c-259e2047de69.PNG)
 
-7. if user wants synonym then `--synonym` provides results which contain synonyms as well
+7. if the user wants a synonym then `--synonym` provides results that contain synonyms as well
 
    `pygetpapers --onlyquery -q "lantana" -k 10 -o "test" -c --synonym`
 
    ![s](https://user-images.githubusercontent.com/70321942/116773871-116ab200-aa76-11eb-962a-8cdd6366cc17.PNG)
 
-8. if user wants to save the query to use it later
+8. if the user wants to save the query to use it later
     `pygetpapers -q "lantana" --save_query`
 
 9. if user wants to get papers within a date range
     `pygetpapers -q "lantana" --startdate "2020-01-02" --enddate "2021-09-09"`
 
-10. if user wants to start query from configuration file
+10. if the user wants to start query from a configuration file
     `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
 
-# 8. About the author and community
-
-`pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
-
-Testers from OpenVirus have given a lot of useful feedback to Ayush without which this project would not have been possible.
-
-The community has taken time to ensure that everyone can contribute to this project. So, YOU, the developer, reader and researcher can also contribute by testing, developing and sharing.
 
 # 9. Contributions
 
-Contributions are welcome through issues as well as pull requests. For direct contributions you can mail the author at ayush@science.org.in.
+Contributions are welcome through issues as well as pull requests. For direct contributions, you can mail the author at ayush@science.org.in.
 
 # 10. Feature Requests
 
