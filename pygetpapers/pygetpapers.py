@@ -5,10 +5,12 @@ from pygetpapers.europe_pmc import europe_pmc
 class pygetpapers():
 
     def __init__(self):
-    """This function makes all the constants"""
-     import os
-      import configparser
-       with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
+        """
+        This function makes all the constants
+        """
+        import os
+        import configparser
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
             config_file = f.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
