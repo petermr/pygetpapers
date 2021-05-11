@@ -88,7 +88,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 6.1. Way one (recommended):
+## 6.1. Method one (recommended):
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -100,7 +100,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 6.2. Way two:
+## 6.2. Method two:
 
 - Manually clone the repository and run `python setup.py install` from inside the repository directory
 
