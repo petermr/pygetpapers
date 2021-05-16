@@ -88,7 +88,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 6.1. Way one (recommended):
+## 6.1. Method one (recommended):
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -100,7 +100,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 6.2. Way two:
+## 6.2. Method two:
 
 - Manually clone the repository and run `python setup.py install` from inside the repository directory
 
@@ -250,6 +250,10 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 # 9. Contributions
 
 Contributions are welcome through issues as well as pull requests. For direct contributions, you can mail the author at ayush@science.org.in.
+
+To discuss problems or feature requests, file an issue. For bugs, please include as much information as possible, including operating system, python version, and version of all dependencies.
+
+To contribute, make a pull request. Contributions should include tests for any new features/bug fixes and follow best practices including PEP8, etc.
 
 # 10. Feature Requests
 
