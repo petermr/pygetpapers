@@ -1,3 +1,4 @@
+from logging import fatal
 from pygetpapers.download_tools import download_tools
 from pygetpapers.europe_pmc import europe_pmc
 
@@ -190,10 +191,18 @@ class pygetpapers():
             f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles", stream=True)
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
-        with open(destination_url, 'wb') as fd:
-            for chunk in r.iter_content(chunk_size=128):
-                fd.write(chunk)
-        logging.debug(f"Wrote supplementary files for {pmcid}")
+        file_exits = False
+        for chunk in r.iter_content(chunk_size=128):
+            if len(chunk) > 0:
+                file_exits=True
+                break
+        if file_exits:
+            with open(destination_url, 'wb') as fd:
+                for chunk in r.iter_content(chunk_size = 128):
+                    fd.write(chunk)
+                logging.info(f"Wrote supplementary files for {pmcid}")
+        else:
+            logging.warning(f"supplementary files not found for {pmcid}")
 
     def make_references(self, directory_url, paperid, source, referenceurl):
         """Downloads the references for the paper with pmcid (paperid) to reference url
@@ -204,7 +213,7 @@ class pygetpapers():
         :param referenceurl: path to write the references to
 
         """
-        getreferences = self.download_tools.getreferences(
+        getreferences=self.download_tools.getreferences(
             paperid, source)
         self.writexml(directory_url, referenceurl, getreferences)
 
@@ -231,12 +240,12 @@ class pygetpapers():
         :param paperid: pmc id of the paper
 
         """
-        getcitations = self.download_tools.getcitations(
+        getcitations=self.download_tools.getcitations(
             paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
-    def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makehtml=False, makexml=False, references=False,
-                     citations=False, supplementaryFiles=False):
+    def makexmlfiles(self, final_xml_dict, getpdf = False, makecsv = False, makehtml = False, makexml = False, references = False,
+                     citations = False, supplementaryFiles = False):
         """Writes the pdf,csv,xml,references,citations,supplementaryFiles for the individual papers
 
         :param final_xml_dict: Python dictionary containg all the papers
@@ -254,13 +263,13 @@ class pygetpapers():
         import time
         if makexml:
             self.download_tools.log_making_xml()
-        paper_number = 0
+        paper_number=0
         for paper in final_xml_dict:
-            start = time.time()
+            start=time.time()
             paper_number += 1
-            pmcid = paper
-            tree = self.download_tools.getxml(pmcid)
-            citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl = self.get_urls_to_write_to(
+            pmcid=paper
+            tree=self.download_tools.getxml(pmcid)
+            citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl=self.get_urls_to_write_to(
                 pmcid)
             paperdict = final_xml_dict[paper]
             paperid = paperdict["full"]["id"]
@@ -275,7 +284,6 @@ class pygetpapers():
             if supplementaryFiles:
                 self.getsupplementaryfiles(
                     paperid, directory_url, supplementaryfilesurl)
-                logging.info(f"Made Supplementary files for {pmcid}")
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(
