@@ -3,7 +3,6 @@ import pygetpapers
 
 
 class europe_pmc:
-    """ """
 
     def __init__(self):
         self.download_tools = download_tools("europepmc")
@@ -87,9 +86,9 @@ class europe_pmc:
     def build_and_send_query(self, maximum_hits_per_page, nextCursorMark, query, synonym):
         """
 
-        :param maximum_hits_per_page: param nextCursorMark:
-        :param query: param synonym:
+        :param maximum_hits_per_page: 
         :param nextCursorMark: 
+        :param query: 
         :param synonym: 
 
         """
@@ -112,11 +111,11 @@ class europe_pmc:
     def append_paper_to_list(self, content, kwargs, number_of_papers_there, paper, size):
         """
 
-        :param content: param kwargs:
-        :param number_of_papers_there: param paper:
-        :param size: 
+        :param content: 
         :param kwargs: 
+        :param number_of_papers_there: 
         :param paper: 
+        :param size: 
 
         """
         import logging
