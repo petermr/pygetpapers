@@ -53,7 +53,7 @@ class pygetpapers():
         :param searchvariable: dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
         :param makecsv: bool): whether to make csv files (Default value = False)
         :param update: dict): if provided, will add the research papers to the searchvariable dict (Default value = False)
-        :param makehtml: (Default value = False)
+        :param makehtml: Default value = False)
         :returns: searchvariable
 
         """
@@ -176,34 +176,6 @@ class pygetpapers():
             logging.warning(
                 f"Title not found for paper {paper_number}")
 
-    def getsupplementaryfiles(self, pmcid, directory_url, destination_url):
-        """Downloads the supplemetary marks for the paper having pmcid
-
-        :param pmcid: pmcid to get the supplementary files
-        :param directory_url: directory containg destination
-        :param destination_url: path to write the supplementary files to
-
-        """
-        import requests
-        import os
-        import logging
-        r = requests.get(
-            f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles", stream=True)
-        if not os.path.isdir(directory_url):
-            os.makedirs(directory_url)
-        file_exits = False
-        for chunk in r.iter_content(chunk_size=128):
-            if len(chunk) > 0:
-                file_exits=True
-                break
-        if file_exits:
-            with open(destination_url, 'wb') as fd:
-                for chunk in r.iter_content(chunk_size = 128):
-                    fd.write(chunk)
-                logging.info(f"Wrote supplementary files for {pmcid}")
-        else:
-            logging.warning(f"supplementary files not found for {pmcid}")
-
     def make_references(self, directory_url, paperid, source, referenceurl):
         """Downloads the references for the paper with pmcid (paperid) to reference url
 
@@ -213,7 +185,7 @@ class pygetpapers():
         :param referenceurl: path to write the references to
 
         """
-        getreferences=self.download_tools.getreferences(
+        getreferences = self.download_tools.getreferences(
             paperid, source)
         self.writexml(directory_url, referenceurl, getreferences)
 
@@ -240,12 +212,12 @@ class pygetpapers():
         :param paperid: pmc id of the paper
 
         """
-        getcitations=self.download_tools.getcitations(
+        getcitations = self.download_tools.getcitations(
             paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
-    def makexmlfiles(self, final_xml_dict, getpdf = False, makecsv = False, makehtml = False, makexml = False, references = False,
-                     citations = False, supplementaryFiles = False):
+    def makexmlfiles(self, final_xml_dict, getpdf=False, makecsv=False, makehtml=False, makexml=False, references=False,
+                     citations=False, supplementaryFiles=False, zipFiles=False):
         """Writes the pdf,csv,xml,references,citations,supplementaryFiles for the individual papers
 
         :param final_xml_dict: Python dictionary containg all the papers
@@ -255,7 +227,8 @@ class pygetpapers():
         :param references: bool): whether to download references (Default value = False)
         :param citations: bool): whether to download citations (Default value = False)
         :param supplementaryFiles: bool): whether to download supplementary files (Default value = False)
-        :param makehtml: (Default value = False)
+        :param makehtml: Default value = False)
+        :param zipFiles: Default value =False)
 
         """
         import logging
@@ -263,13 +236,13 @@ class pygetpapers():
         import time
         if makexml:
             self.download_tools.log_making_xml()
-        paper_number=0
+        paper_number = 0
         for paper in final_xml_dict:
-            start=time.time()
+            start = time.time()
             paper_number += 1
-            pmcid=paper
-            tree=self.download_tools.getxml(pmcid)
-            citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl=self.get_urls_to_write_to(
+            pmcid = paper
+            tree = self.download_tools.getxml(pmcid)
+            zipurl, citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl = self.get_urls_to_write_to(
                 pmcid)
             paperdict = final_xml_dict[paper]
             paperid = paperdict["full"]["id"]
@@ -282,8 +255,11 @@ class pygetpapers():
                                     directory_url, paperid)
                 logging.info(f"Made Citations for {pmcid}")
             if supplementaryFiles:
-                self.getsupplementaryfiles(
+                self.download_tools.getsupplementaryfiles(
                     paperid, directory_url, supplementaryfilesurl)
+            if zipFiles:
+                self.download_tools.getFtpFilesfromEndpoint(
+                    paperid, directory_url, zipurl)
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(
@@ -369,24 +345,27 @@ class pygetpapers():
             str(os.getcwd()), pmcid, "citation.xml")
         supplementaryfilesurl = os.path.join(
             str(os.getcwd()), pmcid, "supplementaryfiles.zip")
+        zipurl = os.path.join(
+            str(os.getcwd()), pmcid, "ftpFiles.zip")
         htmlurl = os.path.join(str(os.getcwd()), pmcid, "eupmc_result.html")
-        return citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl
+        return citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl, zipurl
 
     def apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makehtml=False, makexml=False,
-                         references=False, citations=False, supplementaryFiles=False, synonym=True):
+                         references=False, citations=False, supplementaryFiles=False, synonym=True, zipFiles=False):
         """Downloads and writes papers along with the metadata for the given query
 
         :param query: Query to download papers for
         :param size: Number of papers to be downloaded
-        :param onlymakejson: (Default value = False)
-        :param getpdf: (Default value = False)
-        :param makecsv: (Default value = False)
-        :param makehtml: (Default value = False)
-        :param makexml: (Default value = False)
-        :param references: (Default value = False)
-        :param citations: (Default value = False)
-        :param supplementaryFiles: (Default value = False)
-        :param synonym: (Default value = True)
+        :param onlymakejson: Default value = False)
+        :param getpdf: Default value = False)
+        :param makecsv: Default value = False)
+        :param makehtml: Default value = False)
+        :param makexml: Default value = False)
+        :param references: Default value = False)
+        :param citations: Default value = False)
+        :param supplementaryFiles: Default value = False)
+        :param synonym: Default value = True)
+        :param zipFiles:  (Default value = False)
 
         """
         import os
@@ -398,24 +377,25 @@ class pygetpapers():
             read_json = self.download_tools.readjsondata(os.path.join(
                 str(os.getcwd()), 'eupmc_results.json'))
             self.makexmlfiles(read_json, getpdf=getpdf, makecsv=makecsv, makexml=makexml, makehtml=makehtml,
-                              references=references, citations=citations, supplementaryFiles=supplementaryFiles)
+                              references=references, citations=citations, supplementaryFiles=supplementaryFiles, zipFiles=zipFiles)
 
     def updatecorpus(self, query, original_json, size, onlymakejson=False, getpdf=False, makehtml=False, makecsv=False, makexml=False,
-                     references=False, citations=False, supplementaryFiles=False, synonym=True):
+                     references=False, citations=False, supplementaryFiles=False, synonym=True, zipFiles=False):
         """Updates the corpus with new papers
 
         :param query: str):  Query to download papers for
         :param original_json: Json of the original corpus in the form of python dictionary
         :param size: int): Number of new papers to download
-        :param onlymakejson: (Default value = False)
-        :param getpdf: (Default value = False)
-        :param makehtml: (Default value = False)
-        :param makecsv: (Default value = False)
-        :param makexml: (Default value = False)
-        :param references: (Default value = False)
-        :param citations: (Default value = False)
-        :param supplementaryFiles: (Default value = False)
-        :param synonym: (Default value = True)
+        :param onlymakejson: Default value = False)
+        :param getpdf: Default value = False)
+        :param makehtml: Default value = False)
+        :param makecsv: Default value = False)
+        :param makexml: Default value = False)
+        :param references: Default value = False)
+        :param citations: Default value = False)
+        :param supplementaryFiles: Default value = False)
+        :param synonym: Default value = True)
+        :param zipFiles:  (Default value = False)
 
         """
         import os
@@ -428,13 +408,13 @@ class pygetpapers():
                 str(os.getcwd()), 'eupmc_results.json'))
             self.makexmlfiles(read_json, getpdf=getpdf,
                               makecsv=makecsv, makexml=makexml, makehtml=makehtml, references=references, citations=citations,
-                              supplementaryFiles=supplementaryFiles)
+                              supplementaryFiles=supplementaryFiles, zipFiles=zipFiles)
 
     def noexecute(self, query, synonym=True):
         """Tells how many hits found for the query
 
         :param query: param synonym:
-        :param synonym: (Default value = True)
+        :param synonym: Default value = True)
 
         """
         import logging
@@ -496,6 +476,8 @@ class pygetpapers():
                             help="download fulltext PDFs if available")
         parser.add_argument("-s", "--supp", default=False, action='store_true',
                             help="download supplementary files if available	")
+        parser.add_argument("--zip", default=False, action='store_true',
+                            help="download zip files from ftp endpoint if available	")
         parser.add_argument("--references",
                             type=str, default=False,
                             help="Download references if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
@@ -533,6 +515,7 @@ class pygetpapers():
         parser.add_argument("--enddate", default=False,
                             type=str,
                             help="Gives papers till given date. Format: YYYY-MM-DD")
+
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
@@ -579,7 +562,7 @@ class pygetpapers():
             read_json = self.download_tools.readjsondata(args.restart)
             os.chdir(os.path.dirname(args.restart))
             self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
-                              references=args.references, citations=args.citations, supplementaryFiles=args.supp)
+                              references=args.references, citations=args.citations, supplementaryFiles=args.supp, zipFiles=args.zip)
         if not args.query and not args.restart:
             logging.warning('Please specify a query')
             sys.exit(1)
@@ -601,13 +584,13 @@ class pygetpapers():
             os.chdir(os.path.dirname(args.update))
             self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
                               makecsv=args.makecsv, makexml=args.xml, references=args.references, makehtml=args.makehtml,
-                              citations=args.citations, supplementaryFiles=args.supp, synonym=args.synonym)
+                              citations=args.citations, supplementaryFiles=args.supp, synonym=args.synonym, zipFiles=args.zip)
         else:
             if args.query:
                 self.apipaperdownload(args.query, args.limit,
                                       onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml,
                                       makexml=args.xml, references=args.references, citations=args.citations,
-                                      supplementaryFiles=args.supp, synonym=args.synonym)
+                                      supplementaryFiles=args.supp, synonym=args.synonym, zipFiles=args.zip)
 
 
 def demo():
