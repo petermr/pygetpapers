@@ -1,6 +1,4 @@
 class download_tools:
-    """ """
-
     def __init__(self, api):
         import configparser
         import os
@@ -13,8 +11,8 @@ class download_tools:
         self.citationurl = config.get(api, "citationurl")
         self.referencesurl = config.get(api, "referencesurl")
         self.xmlurl = config.get(api, "xmlurl")
-        self.suppurl = config.get(api, "suppurl")
         self.zipurl = config.get(api, "zipurl")
+        self.suppurl = config.get(api, "suppurl")
 
     def postquery(self, headers, payload):
         """
@@ -55,7 +53,7 @@ class download_tools:
         :param pageSize: the size of each page in the output.
         :param query: the query passed on to payload
         :param synonym: whether synonym should be or not (Default value = True)
-        :returns: headers': headers, 'payload': payload}
+        :returns: {'headers': headers, 'payload': payload}
         :rtype: Python dictionary containting headers and payload in the format
 
         """
@@ -306,21 +304,28 @@ class download_tools:
             (self.xmlurl).format(pmcid=pmcid))
         return r.content
 
-    def getZipfiles(self, pmcid, directory_url, destination_url, path):
-        """Downloads the zip files from path for the paper having pmcid
+    def getsupplementaryfiles(self, pmcid, directory_url, destination_url, fromFtpEndpoint=False):
+        """Downloads the supplemetary marks for the paper having pmcid
 
         :param pmcid: pmcid to get the supplementary files
         :param directory_url: directory containg destination
         :param destination_url: path to write the supplementary files to
-        :param path: path to download zips from
 
         """
         import requests
         import os
         import logging
-        wrotefile = False
-        r = requests.get(
-            path, stream=True)
+        import zipfile
+        import io
+
+        log_key = "supplementary"
+        if fromFtpEndpoint:
+            key = "PMCxxxx" + pmcid[-3:]
+            path = self.zipurl.format(key=key, pmcid=pmcid)
+            log_key = "zip"
+        else:
+            path = self.suppurl.format(pmcid=pmcid)
+        r = requests.get(path)
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
         file_exits = False
@@ -329,45 +334,9 @@ class download_tools:
                 file_exits = True
                 break
         if file_exits:
-            with open(destination_url, 'wb') as fd:
-                for chunk in r.iter_content(chunk_size=128):
-                    fd.write(chunk)
-                wrotefile = True
-        return wrotefile
-
-    def getsupplementaryfiles(self, pmcid, directory_url, destination_url):
-        """Downloads the supplemetary files for the paper having pmcid
-
-        :param pmcid: pmcid to get the supplementary files
-        :param directory_url: directory containg destination
-        :param destination_url: path to write the supplementary files to
-
-        """
-        import logging
-        path = self.suppurl.format(pmcid=pmcid)
-        did_download = self.getZipfiles(
-            pmcid, directory_url, destination_url, path)
-
-        if did_download:
-            logging.debug(f"Wrote supplementary files for {pmcid}")
+            z = zipfile.ZipFile(io.BytesIO(r.content))
+            self.check_or_make_directory(destination_url)
+            z.extractall(destination_url)
+            logging.info(f"Wrote {log_key} files for {pmcid}")
         else:
-            logging.warning(f"supplementary files not found for {pmcid}")
-
-    def getFtpFilesfromEndpoint(self, pmcid, directory_url, destination_url):
-        """Downloads the zip file for the paper having pmcid
-
-        :param pmcid: pmcid to get the zip files
-        :param directory_url: directory containg destination
-        :param destination_url: path to write the zip files to
-
-        """
-        import logging
-        key = "PMCxxxx" + pmcid[-3:]
-        path = self.zipurl.format(pmcid=pmcid, key=key)
-        did_download = self.getZipfiles(
-            pmcid, directory_url, destination_url, path)
-
-        if did_download:
-            logging.debug(f"Wrote zip files for {pmcid}")
-        else:
-            logging.warning(f"zip files not found for {pmcid}")
+            logging.warning(f"{log_key} files not found for {pmcid}")

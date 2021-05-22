@@ -53,7 +53,7 @@ class pygetpapers():
         :param searchvariable: dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
         :param makecsv: bool): whether to make csv files (Default value = False)
         :param update: dict): if provided, will add the research papers to the searchvariable dict (Default value = False)
-        :param makehtml: Default value = False)
+        :param makehtml: (Default value = False)
         :returns: searchvariable
 
         """
@@ -227,8 +227,7 @@ class pygetpapers():
         :param references: bool): whether to download references (Default value = False)
         :param citations: bool): whether to download citations (Default value = False)
         :param supplementaryFiles: bool): whether to download supplementary files (Default value = False)
-        :param makehtml: Default value = False)
-        :param zipFiles: Default value =False)
+        :param makehtml: (Default value = False)
 
         """
         import logging
@@ -242,7 +241,7 @@ class pygetpapers():
             paper_number += 1
             pmcid = paper
             tree = self.download_tools.getxml(pmcid)
-            zipurl, citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl = self.get_urls_to_write_to(
+            citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl, zipurl = self.get_urls_to_write_to(
                 pmcid)
             paperdict = final_xml_dict[paper]
             paperid = paperdict["full"]["id"]
@@ -256,10 +255,10 @@ class pygetpapers():
                 logging.info(f"Made Citations for {pmcid}")
             if supplementaryFiles:
                 self.download_tools.getsupplementaryfiles(
-                    paperid, directory_url, supplementaryfilesurl)
+                    pmcid, directory_url, supplementaryfilesurl)
             if zipFiles:
-                self.download_tools.getFtpFilesfromEndpoint(
-                    paperid, directory_url, zipurl)
+                self.download_tools.getsupplementaryfiles(
+                    pmcid, directory_url, zipurl, fromFtpEndpoint=True)
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(
@@ -344,9 +343,9 @@ class pygetpapers():
         citationurl = os.path.join(
             str(os.getcwd()), pmcid, "citation.xml")
         supplementaryfilesurl = os.path.join(
-            str(os.getcwd()), pmcid, "supplementaryfiles.zip")
+            str(os.getcwd()), pmcid, "supplementaryfiles")
         zipurl = os.path.join(
-            str(os.getcwd()), pmcid, "ftpFiles.zip")
+            str(os.getcwd()), pmcid, "ftpfiles")
         htmlurl = os.path.join(str(os.getcwd()), pmcid, "eupmc_result.html")
         return citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl, zipurl
 
@@ -356,16 +355,15 @@ class pygetpapers():
 
         :param query: Query to download papers for
         :param size: Number of papers to be downloaded
-        :param onlymakejson: Default value = False)
-        :param getpdf: Default value = False)
-        :param makecsv: Default value = False)
-        :param makehtml: Default value = False)
-        :param makexml: Default value = False)
-        :param references: Default value = False)
-        :param citations: Default value = False)
-        :param supplementaryFiles: Default value = False)
-        :param synonym: Default value = True)
-        :param zipFiles:  (Default value = False)
+        :param onlymakejson: (Default value = False)
+        :param getpdf: (Default value = False)
+        :param makecsv: (Default value = False)
+        :param makehtml: (Default value = False)
+        :param makexml: (Default value = False)
+        :param references: (Default value = False)
+        :param citations: (Default value = False)
+        :param supplementaryFiles: (Default value = False)
+        :param synonym: (Default value = True)
 
         """
         import os
@@ -386,16 +384,15 @@ class pygetpapers():
         :param query: str):  Query to download papers for
         :param original_json: Json of the original corpus in the form of python dictionary
         :param size: int): Number of new papers to download
-        :param onlymakejson: Default value = False)
-        :param getpdf: Default value = False)
-        :param makehtml: Default value = False)
-        :param makecsv: Default value = False)
-        :param makexml: Default value = False)
-        :param references: Default value = False)
-        :param citations: Default value = False)
-        :param supplementaryFiles: Default value = False)
-        :param synonym: Default value = True)
-        :param zipFiles:  (Default value = False)
+        :param onlymakejson: (Default value = False)
+        :param getpdf: (Default value = False)
+        :param makehtml: (Default value = False)
+        :param makecsv: (Default value = False)
+        :param makexml: (Default value = False)
+        :param references: (Default value = False)
+        :param citations: (Default value = False)
+        :param supplementaryFiles: (Default value = False)
+        :param synonym: (Default value = True)
 
         """
         import os
@@ -414,7 +411,7 @@ class pygetpapers():
         """Tells how many hits found for the query
 
         :param query: param synonym:
-        :param synonym: Default value = True)
+        :param synonym: (Default value = True)
 
         """
         import logging
@@ -476,8 +473,8 @@ class pygetpapers():
                             help="download fulltext PDFs if available")
         parser.add_argument("-s", "--supp", default=False, action='store_true',
                             help="download supplementary files if available	")
-        parser.add_argument("--zip", default=False, action='store_true',
-                            help="download zip files from ftp endpoint if available	")
+        parser.add_argument("-z", "--zip", default=False, action='store_true',
+                            help="download files from ftp endpoint if available	")
         parser.add_argument("--references",
                             type=str, default=False,
                             help="Download references if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
@@ -515,7 +512,6 @@ class pygetpapers():
         parser.add_argument("--enddate", default=False,
                             type=str,
                             help="Gives papers till given date. Format: YYYY-MM-DD")
-
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
@@ -590,7 +586,7 @@ class pygetpapers():
                 self.apipaperdownload(args.query, args.limit,
                                       onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml,
                                       makexml=args.xml, references=args.references, citations=args.citations,
-                                      supplementaryFiles=args.supp, synonym=args.synonym, zipFiles=args.zip)
+                                      supplementaryFiles=args.supp, zipFiles=args.zip, synonym=args.synonym)
 
 
 def demo():
