@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>europe_pmc module &mdash; pygetpapers 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="download_tools module" href="download_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pygetpapers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">pygetpapers user documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#history">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#formats-supported-by-pygetpapers">Formats supported by pygetpapers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#about-the-author-and-community">About the author and community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#way-one-recommended">Way one (recommended):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#way-two">Way two:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#sample-queries">Sample queries:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#contributions">Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature-requests">Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#legal-implications">Legal Implications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#countries-with-copyright-exceptions-for-content-mining">Countries with copyright exceptions for content mining:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#countries-with-proposed-copyright-exceptions">Countries with proposed copyright exceptions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining">Countries with permissive interpretations of ‘fair use’ that might allow content mining:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#general-summaries-and-guides">General summaries and guides:</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#contents">Contents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pygetpapers.html">pygetpapers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_tools.html">download_tools module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">europe_pmc module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pygetpapers.html">pygetpapers module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download_tools.html">download_tools module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">europe_pmc module</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pygetpapers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>europe_pmc module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/europe_pmc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pygetpapers.europe_pmc">
+<span id="europe-pmc-module"></span><h1>europe_pmc module<a class="headerlink" href="#module-pygetpapers.europe_pmc" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="pygetpapers.europe_pmc.europe_pmc">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygetpapers.europe_pmc.</span></code><code class="sig-name descname"><span class="pre">europe_pmc</span></code><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="pygetpapers.europe_pmc.europe_pmc.add_cursor_mark_if_exists">
+<code class="sig-name descname"><span class="pre">add_cursor_mark_if_exists</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">builtquery</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">morepapers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nextCursorMark</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc.add_cursor_mark_if_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the cursor mark if it exists in the api result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>builtquery</strong> – api result dictionary</p></li>
+<li><p><strong>morepapers</strong> – weather to download more papers</p></li>
+<li><p><strong>nextCursorMark</strong> – list containing all cursor marks</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.europe_pmc.europe_pmc.append_paper_to_list">
+<code class="sig-name descname"><span class="pre">append_paper_to_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_papers_there</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc.append_paper_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> – </p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+<li><p><strong>number_of_papers_there</strong> – </p></li>
+<li><p><strong>paper</strong> – </p></li>
+<li><p><strong>size</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.europe_pmc.europe_pmc.build_and_send_query">
+<code class="sig-name descname"><span class="pre">build_and_send_query</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maximum_hits_per_page</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nextCursorMark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc.build_and_send_query" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maximum_hits_per_page</strong> – </p></li>
+<li><p><strong>nextCursorMark</strong> – </p></li>
+<li><p><strong>query</strong> – </p></li>
+<li><p><strong>synonym</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.europe_pmc.europe_pmc.create_final_paper_list">
+<code class="sig-name descname"><span class="pre">create_final_paper_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_papers_there</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc.create_final_paper_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the number of results and then adds them to the list containing all the papers called content</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> – list containing all the papers</p></li>
+<li><p><strong>kwargs</strong> – kwargs of the main function containing whether to update or add papers</p></li>
+<li><p><strong>number_of_papers_there</strong> – total number of papers found till now</p></li>
+<li><p><strong>output_dict</strong> – output directory</p></li>
+<li><p><strong>size</strong> – required number of papers</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.europe_pmc.europe_pmc.create_parameters_for_paper_download">
+<code class="sig-name descname"><span class="pre">create_parameters_for_paper_download</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc.create_parameters_for_paper_download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.europe_pmc.europe_pmc.europepmc">
+<code class="sig-name descname"><span class="pre">europepmc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.europe_pmc.europe_pmc.europepmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes the query to europepmc rest api then returns a python dictionary containing the research papers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – the query passed on to payload</p></li>
+<li><p><strong>size</strong> – total number of papers</p></li>
+<li><p><strong>synonym</strong> – whether synonym should be or not (Default value = True)</p></li>
+<li><p><strong>kwargs</strong> – ensures that the output dict doesnt contain papers already there in update</p></li>
+<li><p><strong>**kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Python dictionary containing the research papers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="download_tools.html" class="btn btn-neutral float-left" title="download_tools module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ayush Garg.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

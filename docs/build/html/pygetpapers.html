@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pygetpapers module &mdash; pygetpapers 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="download_tools module" href="download_tools.html" />
+    <link rel="prev" title="pygetpapers user documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pygetpapers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">pygetpapers user documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#history">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#formats-supported-by-pygetpapers">Formats supported by pygetpapers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#about-the-author-and-community">About the author and community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#way-one-recommended">Way one (recommended):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#way-two">Way two:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#sample-queries">Sample queries:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#contributions">Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature-requests">Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#legal-implications">Legal Implications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#countries-with-copyright-exceptions-for-content-mining">Countries with copyright exceptions for content mining:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#countries-with-proposed-copyright-exceptions">Countries with proposed copyright exceptions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining">Countries with permissive interpretations of ‘fair use’ that might allow content mining:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#general-summaries-and-guides">General summaries and guides:</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#contents">Contents</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">pygetpapers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download_tools.html">download_tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="europe_pmc.html">europe_pmc module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pygetpapers module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download_tools.html">download_tools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="europe_pmc.html">europe_pmc module</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pygetpapers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>pygetpapers module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pygetpapers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pygetpapers.pygetpapers">
+<span id="pygetpapers-module"></span><h1>pygetpapers module<a class="headerlink" href="#module-pygetpapers.pygetpapers" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="pygetpapers.pygetpapers.demo">
+<code class="sig-prename descclassname"><span class="pre">pygetpapers.pygetpapers.</span></code><code class="sig-name descname"><span class="pre">demo</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.demo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows demo to use the library to download papers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygetpapers.pygetpapers.main">
+<code class="sig-prename descclassname"><span class="pre">pygetpapers.pygetpapers.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the CLI</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pygetpapers.pygetpapers.pygetpapers">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygetpapers.pygetpapers.</span></code><code class="sig-name descname"><span class="pre">pygetpapers</span></code><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict">
+<code class="sig-name descname"><span class="pre">add_fields_to_resultant_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">htmlurl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paper_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdfurl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_for_paper</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.add_fields_to_resultant_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes urls to dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>htmlurl</strong> – list containing html urls for the paper</p></li>
+<li><p><strong>paper</strong> – python dictionary of the paper</p></li>
+<li><p><strong>paper_number</strong> – paper number to log</p></li>
+<li><p><strong>pdfurl</strong> – list containing pdf urls for the paper</p></li>
+<li><p><strong>dict_for_paper</strong> – python dictionary to write the urls to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict_for_paper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.apipaperdownload">
+<code class="sig-name descname"><span class="pre">apipaperdownload</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onlymakejson</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getpdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makecsv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makehtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makexml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supplementaryFiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.apipaperdownload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads and writes papers along with the metadata for the given query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – Query to download papers for</p></li>
+<li><p><strong>size</strong> – Number of papers to be downloaded</p></li>
+<li><p><strong>onlymakejson</strong> – (Default value = False)</p></li>
+<li><p><strong>getpdf</strong> – (Default value = False)</p></li>
+<li><p><strong>makecsv</strong> – (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
+<li><p><strong>makexml</strong> – (Default value = False)</p></li>
+<li><p><strong>references</strong> – (Default value = False)</p></li>
+<li><p><strong>citations</strong> – (Default value = False)</p></li>
+<li><p><strong>supplementaryFiles</strong> – (Default value = False)</p></li>
+<li><p><strong>synonym</strong> – (Default value = True)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.conditions_to_download">
+<code class="sig-name descname"><span class="pre">conditions_to_download</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paperdict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.conditions_to_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the conditions to download pdf, json and csv</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>paperdict</strong> – dictionary to write rules for</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to">
+<code class="sig-name descname"><span class="pre">get_urls_to_write_to</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pmcid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.get_urls_to_write_to" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pmcid</strong> – pmcid to write the urls for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple containing urls where files for the fulltext will be written</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles">
+<code class="sig-name descname"><span class="pre">getsupplementaryfiles</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pmcid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.getsupplementaryfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the supplemetary marks for the paper having pmcid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pmcid</strong> – pmcid to get the supplementary files</p></li>
+<li><p><strong>directory_url</strong> – directory containg destination</p></li>
+<li><p><strong>destination_url</strong> – path to write the supplementary files to</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file">
+<code class="sig-name descname"><span class="pre">handle_write_configuration_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.handle_write_configuration_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.handlecli">
+<code class="sig-name descname"><span class="pre">handlecli</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.handlecli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the command line interface using argparse</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.make_citations">
+<code class="sig-name descname"><span class="pre">make_citations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citationurl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paperid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.make_citations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the citations for the paper with pmcid (paperid) to citation url</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> – source to get the citations from</p></li>
+<li><p><strong>citationurl</strong> – path to write the citations to</p></li>
+<li><p><strong>directory_url</strong> – directory containing citationurl</p></li>
+<li><p><strong>paperid</strong> – pmc id of the paper</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.make_csv">
+<code class="sig-name descname"><span class="pre">make_csv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_to_write</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmcid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.make_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes csv file for the dict_to_write (python dictionary for the fulltext).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_to_write</strong> – Python dictionary to write the csv from</p></li>
+<li><p><strong>pmcid</strong> – pmcid of the paper</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.make_initial_columns_for_paper_dict">
+<code class="sig-name descname"><span class="pre">make_initial_columns_for_paper_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pmcid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resultant_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.make_initial_columns_for_paper_dict" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pmcid</strong> – pmcid of the paper for which fields will be created</p></li>
+<li><p><strong>resultant_dict</strong> – dict in which the fields will be created</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict with the initial fields created for pmcid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.make_references">
+<code class="sig-name descname"><span class="pre">make_references</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paperid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">referenceurl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.make_references" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the references for the paper with pmcid (paperid) to reference url</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory_url</strong> – directory containing referenceurl</p></li>
+<li><p><strong>paperid</strong> – pmc id of the paper</p></li>
+<li><p><strong>source</strong> – source to get the citations from</p></li>
+<li><p><strong>referenceurl</strong> – path to write the references to</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.makecsv">
+<code class="sig-name descname"><span class="pre">makecsv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">searchvariable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makecsv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makehtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.makecsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the json and csv for searchvaraible dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>searchvariable</strong> – dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))</p></li>
+<li><p><strong>makecsv</strong> – bool): whether to make csv files (Default value = False)</p></li>
+<li><p><strong>update</strong> – dict): if provided, will add the research papers to the searchvariable dict (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>searchvariable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.makexmlfiles">
+<code class="sig-name descname"><span class="pre">makexmlfiles</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_xml_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getpdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makecsv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makehtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makexml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supplementaryFiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.makexmlfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the pdf,csv,xml,references,citations,supplementaryFiles for the individual papers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>final_xml_dict</strong> – Python dictionary containg all the papers</p></li>
+<li><p><strong>getpdf</strong> – bool): whether to make pdfs (Default value = False)</p></li>
+<li><p><strong>makecsv</strong> – bool): whether to make csv for the metadata (Default value = False)</p></li>
+<li><p><strong>makexml</strong> – bool): whether to make xml file for the paper (Default value = False)</p></li>
+<li><p><strong>references</strong> – bool): whether to download references (Default value = False)</p></li>
+<li><p><strong>citations</strong> – bool): whether to download citations (Default value = False)</p></li>
+<li><p><strong>supplementaryFiles</strong> – bool): whether to download supplementary files (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.noexecute">
+<code class="sig-name descname"><span class="pre">noexecute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.noexecute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells how many hits found for the query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – param synonym:</p></li>
+<li><p><strong>synonym</strong> – (Default value = True)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.updatecorpus">
+<code class="sig-name descname"><span class="pre">updatecorpus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_json</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onlymakejson</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getpdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makehtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makecsv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makexml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supplementaryFiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.updatecorpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the corpus with new papers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – str):  Query to download papers for</p></li>
+<li><p><strong>original_json</strong> – Json of the original corpus in the form of python dictionary</p></li>
+<li><p><strong>size</strong> – int): Number of new papers to download</p></li>
+<li><p><strong>onlymakejson</strong> – (Default value = False)</p></li>
+<li><p><strong>getpdf</strong> – (Default value = False)</p></li>
+<li><p><strong>makehtml</strong> – (Default value = False)</p></li>
+<li><p><strong>makecsv</strong> – (Default value = False)</p></li>
+<li><p><strong>makexml</strong> – (Default value = False)</p></li>
+<li><p><strong>references</strong> – (Default value = False)</p></li>
+<li><p><strong>citations</strong> – (Default value = False)</p></li>
+<li><p><strong>supplementaryFiles</strong> – (Default value = False)</p></li>
+<li><p><strong>synonym</strong> – (Default value = True)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.write_meta_data_for_paper">
+<code class="sig-name descname"><span class="pre">write_meta_data_for_paper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paper_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resultant_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.write_meta_data_for_paper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds pdf and html url as well as makes the paper key in resultant_dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>paper</strong> – python dictionary for the paper</p></li>
+<li><p><strong>paper_number</strong> – paper number to log</p></li>
+<li><p><strong>resultant_dict</strong> – dictionary to add paper as well as pdf,html url to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>htmlurl, paperpmcid, pdfurl, resultant_dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pygetpapers.pygetpapers.pygetpapers.writexml">
+<code class="sig-name descname"><span class="pre">writexml</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygetpapers.pygetpapers.pygetpapers.writexml" title="Permalink to this definition">¶</a></dt>
+<dd><p>writes xml to the destination</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory_url</strong> – directory containg destination</p></li>
+<li><p><strong>destination_url</strong> – path to write the xml to</p></li>
+<li><p><strong>content</strong> – xml content</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="download_tools.html" class="btn btn-neutral float-right" title="download_tools module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="pygetpapers user documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ayush Garg.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
