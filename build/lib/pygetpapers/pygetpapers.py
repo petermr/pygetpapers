@@ -53,7 +53,7 @@ class pygetpapers():
         :param searchvariable: dict): Python dictionary which contains all the research papers (given by europe_pmc.europepmc))
         :param makecsv: bool): whether to make csv files (Default value = False)
         :param update: dict): if provided, will add the research papers to the searchvariable dict (Default value = False)
-        :param makehtml: (Default value = False)
+        :param makehtml: Default value = False)
         :returns: searchvariable
 
         """
@@ -227,7 +227,8 @@ class pygetpapers():
         :param references: bool): whether to download references (Default value = False)
         :param citations: bool): whether to download citations (Default value = False)
         :param supplementaryFiles: bool): whether to download supplementary files (Default value = False)
-        :param makehtml: (Default value = False)
+        :param makehtml: Default value = False)
+        :param zipFiles:  (Default value = False)
 
         """
         import logging
@@ -355,15 +356,16 @@ class pygetpapers():
 
         :param query: Query to download papers for
         :param size: Number of papers to be downloaded
-        :param onlymakejson: (Default value = False)
-        :param getpdf: (Default value = False)
-        :param makecsv: (Default value = False)
-        :param makehtml: (Default value = False)
-        :param makexml: (Default value = False)
-        :param references: (Default value = False)
-        :param citations: (Default value = False)
-        :param supplementaryFiles: (Default value = False)
-        :param synonym: (Default value = True)
+        :param onlymakejson: Default value = False)
+        :param getpdf: Default value = False)
+        :param makecsv: Default value = False)
+        :param makehtml: Default value = False)
+        :param makexml: Default value = False)
+        :param references: Default value = False)
+        :param citations: Default value = False)
+        :param supplementaryFiles: Default value = False)
+        :param synonym: Default value = True)
+        :param zipFiles:  (Default value = False)
 
         """
         import os
@@ -384,15 +386,16 @@ class pygetpapers():
         :param query: str):  Query to download papers for
         :param original_json: Json of the original corpus in the form of python dictionary
         :param size: int): Number of new papers to download
-        :param onlymakejson: (Default value = False)
-        :param getpdf: (Default value = False)
-        :param makehtml: (Default value = False)
-        :param makecsv: (Default value = False)
-        :param makexml: (Default value = False)
-        :param references: (Default value = False)
-        :param citations: (Default value = False)
-        :param supplementaryFiles: (Default value = False)
-        :param synonym: (Default value = True)
+        :param onlymakejson: Default value = False)
+        :param getpdf: Default value = False)
+        :param makehtml: Default value = False)
+        :param makecsv: Default value = False)
+        :param makexml: Default value = False)
+        :param references: Default value = False)
+        :param citations: Default value = False)
+        :param supplementaryFiles: Default value = False)
+        :param synonym: Default value = True)
+        :param zipFiles:  (Default value = False)
 
         """
         import os
@@ -411,7 +414,7 @@ class pygetpapers():
         """Tells how many hits found for the query
 
         :param query: param synonym:
-        :param synonym: (Default value = True)
+        :param synonym: Default value = True)
 
         """
         import logging

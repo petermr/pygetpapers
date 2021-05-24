@@ -1,4 +1,6 @@
 class download_tools:
+    """ """
+
     def __init__(self, api):
         import configparser
         import os
@@ -53,7 +55,7 @@ class download_tools:
         :param pageSize: the size of each page in the output.
         :param query: the query passed on to payload
         :param synonym: whether synonym should be or not (Default value = True)
-        :returns: {'headers': headers, 'payload': payload}
+        :returns: headers': headers, 'payload': payload}
         :rtype: Python dictionary containting headers and payload in the format
 
         """
@@ -310,6 +312,7 @@ class download_tools:
         :param pmcid: pmcid to get the supplementary files
         :param directory_url: directory containg destination
         :param destination_url: path to write the supplementary files to
+        :param fromFtpEndpoint:  (Default value = False)
 
         """
         import requests
@@ -334,9 +337,26 @@ class download_tools:
                 file_exits = True
                 break
         if file_exits:
+            self.extract_zip_files(r, destination_url, log_key, pmcid)
+        else:
+            logging.warning(f"{log_key} files not found for {pmcid}")
+
+    def extract_zip_files(self, r, destination_url, log_key, pmcid):
+        """
+
+        :param r: 
+        :param destination_url: 
+        :param log_key: 
+        :param pmcid: 
+
+        """
+        import logging
+        import zipfile
+        import io
+        try:
             z = zipfile.ZipFile(io.BytesIO(r.content))
             self.check_or_make_directory(destination_url)
             z.extractall(destination_url)
             logging.info(f"Wrote {log_key} files for {pmcid}")
-        else:
+        except:
             logging.warning(f"{log_key} files not found for {pmcid}")
