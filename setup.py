@@ -16,7 +16,7 @@ version = config.get("pygetpapers", "version")
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 requirements = ['requests', 'pandas',
-                'lxml', 'xmltodict', 'configargparse']
+                'lxml', 'xmltodict', 'configargparse','habanero']
 
 setup(
     name='pygetpapers',

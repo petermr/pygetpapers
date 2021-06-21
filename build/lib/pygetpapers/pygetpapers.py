@@ -1,6 +1,6 @@
-from logging import fatal
 from pygetpapers.download_tools import download_tools
 from pygetpapers.europe_pmc import europe_pmc
+from pygetpapers.crossref import crossref
 
 
 class pygetpapers():
@@ -26,6 +26,7 @@ class pygetpapers():
         self.RESPONSE_WRAPPER = "responseWrapper"
         self.CURSOR_MARK = "nextCursorMark"
         self.europe_pmc = europe_pmc()
+        self.crossref = crossref()
         self.directory_url = os.path.join(
             str(os.getcwd()))
         self.download_tools = download_tools("europepmc")
@@ -228,7 +229,7 @@ class pygetpapers():
         :param citations: bool): whether to download citations (Default value = False)
         :param supplementaryFiles: bool): whether to download supplementary files (Default value = False)
         :param makehtml: Default value = False)
-        :param zipFiles:  (Default value = False)
+        :param zipFiles: Default value = False)
 
         """
         import logging
@@ -350,8 +351,8 @@ class pygetpapers():
         htmlurl = os.path.join(str(os.getcwd()), pmcid, "eupmc_result.html")
         return citationurl, destination_url, directory_url, jsonurl, referenceurl, supplementaryfilesurl, htmlurl, zipurl
 
-    def apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makehtml=False, makexml=False,
-                         references=False, citations=False, supplementaryFiles=False, synonym=True, zipFiles=False):
+    def eupmc_apipaperdownload(self, query, size, onlymakejson=False, getpdf=False, makecsv=False, makehtml=False, makexml=False,
+                               references=False, citations=False, supplementaryFiles=False, synonym=True, zipFiles=False):
         """Downloads and writes papers along with the metadata for the given query
 
         :param query: Query to download papers for
@@ -365,7 +366,7 @@ class pygetpapers():
         :param citations: Default value = False)
         :param supplementaryFiles: Default value = False)
         :param synonym: Default value = True)
-        :param zipFiles:  (Default value = False)
+        :param zipFiles: Default value = False)
 
         """
         import os
@@ -395,7 +396,7 @@ class pygetpapers():
         :param citations: Default value = False)
         :param supplementaryFiles: Default value = False)
         :param synonym: Default value = True)
-        :param zipFiles:  (Default value = False)
+        :param zipFiles: Default value = False)
 
         """
         import os
@@ -410,7 +411,7 @@ class pygetpapers():
                               makecsv=makecsv, makexml=makexml, makehtml=makehtml, references=references, citations=citations,
                               supplementaryFiles=supplementaryFiles, zipFiles=zipFiles)
 
-    def noexecute(self, query, synonym=True):
+    def eupmc_noexecute(self, query, synonym=True):
         """Tells how many hits found for the query
 
         :param query: param synonym:
@@ -445,10 +446,36 @@ class pygetpapers():
         with open('saved_config.ini', 'w') as f:
             parser.write(f)
 
+    def eupmc_update(self, args):
+        """
+
+        :param args: 
+
+        """
+        import os
+        read_json = self.download_tools.readjsondata(args.update)
+        os.chdir(os.path.dirname(args.update))
+        self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
+                          makecsv=args.makecsv, makexml=args.xml, references=args.references, makehtml=args.makehtml,
+                          citations=args.citations, supplementaryFiles=args.supp, synonym=args.synonym,
+                          zipFiles=args.zip)
+
+    def eupmc_restart(self, args):
+        """
+
+        :param args: 
+
+        """
+        import os
+        read_json = self.download_tools.readjsondata(args.restart)
+        os.chdir(os.path.dirname(args.restart))
+        self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
+                          references=args.references, citations=args.citations, supplementaryFiles=args.supp,
+                          zipFiles=args.zip)
+
     def handlecli(self):
         """Handles the command line interface using argparse"""
         version = self.version
-        import argparse
         import os
         import configargparse
         import logging
@@ -515,6 +542,11 @@ class pygetpapers():
         parser.add_argument("--enddate", default=False,
                             type=str,
                             help="Gives papers till given date. Format: YYYY-MM-DD")
+        parser.add_argument("--api", default='eupmc', type=str,
+                            help="API to search [eupmc, crossref] (default: eupmc)")
+        parser.add_argument("--filter", default=None, type=str,
+                            help="filter by key value pair, passed straight to the crossref api only")
+
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
@@ -522,6 +554,7 @@ class pygetpapers():
         for arg in vars(args):
             if vars(args)[arg] == "False":
                 vars(args)[arg] = False
+
         if os.path.exists(args.output):
             os.chdir(args.output)
         elif not args.noexecute and not args.update and not args.restart:
@@ -556,12 +589,15 @@ class pygetpapers():
                 level=level, format='%(levelname)s: %(message)s')
 
         if args.restart:
-            import os
-            import logging
-            read_json = self.download_tools.readjsondata(args.restart)
-            os.chdir(os.path.dirname(args.restart))
-            self.makexmlfiles(read_json, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml, makexml=args.xml,
-                              references=args.references, citations=args.citations, supplementaryFiles=args.supp, zipFiles=args.zip)
+            if args.api == "eupmc":
+                self.eupmc_restart(args)
+            elif args.api == "crossref":
+                logging.warning("Restart currently not supported for crossref")
+
+        if args.version:
+            logging.info(version)
+            sys.exit(1)
+
         if not args.query and not args.restart:
             logging.warning('Please specify a query')
             sys.exit(1)
@@ -575,21 +611,27 @@ class pygetpapers():
             args.query = f'({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])'
 
         if args.noexecute:
-            self.noexecute(args.query, synonym=args.synonym)
-        elif args.version:
-            logging.info(version)
+            if args.api == "eupmc":
+                self.eupmc_noexecute(args.query, synonym=args.synonym)
+            elif args.api == "crossref":
+                self.crossref.noexecute(args.query, size=10)
+
         elif args.update:
-            read_json = self.download_tools.readjsondata(args.update)
-            os.chdir(os.path.dirname(args.update))
-            self.updatecorpus(args.query, read_json, args.limit, getpdf=args.pdf,
-                              makecsv=args.makecsv, makexml=args.xml, references=args.references, makehtml=args.makehtml,
-                              citations=args.citations, supplementaryFiles=args.supp, synonym=args.synonym, zipFiles=args.zip)
+            if args.api == "eupmc":
+                self.eupmc_update(args)
+            elif args.api == "crossref":
+                logging.warning("update currently not supported for crossref")
         else:
             if args.query:
-                self.apipaperdownload(args.query, args.limit,
-                                      onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv, makehtml=args.makehtml,
-                                      makexml=args.xml, references=args.references, citations=args.citations,
-                                      supplementaryFiles=args.supp, zipFiles=args.zip, synonym=args.synonym)
+                if args.api == "eupmc":
+                    self.eupmc_apipaperdownload(args.query, args.limit,
+                                                onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv,
+                                                makehtml=args.makehtml,
+                                                makexml=args.xml, references=args.references, citations=args.citations,
+                                                supplementaryFiles=args.supp, zipFiles=args.zip, synonym=args.synonym)
+                elif args.api == "crossref":
+                    self.crossref.download_and_save_results(
+                        args.query, args.limit, filter=args.filter)
 
 
 def demo():
@@ -597,7 +639,7 @@ def demo():
     callgetpapers = pygetpapers()
     query = "artificial intelligence"
     numberofpapers = 210
-    callgetpapers.apipaperdownload(query, numberofpapers)
+    callgetpapers.eupmc_apipaperdownload(query, numberofpapers)
 
 
 def main():
