@@ -3,18 +3,22 @@ class download_tools:
 
     def __init__(self, api):
         import configparser
+        import logging
         import os
         with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
             config_file = f.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
 
-        self.posturl = config.get(api, "posturl")
-        self.citationurl = config.get(api, "citationurl")
-        self.referencesurl = config.get(api, "referencesurl")
-        self.xmlurl = config.get(api, "xmlurl")
-        self.zipurl = config.get(api, "zipurl")
-        self.suppurl = config.get(api, "suppurl")
+        try:
+            self.posturl = config.get(api, "posturl")
+            self.citationurl = config.get(api, "citationurl")
+            self.referencesurl = config.get(api, "referencesurl")
+            self.xmlurl = config.get(api, "xmlurl")
+            self.zipurl = config.get(api, "zipurl")
+            self.suppurl = config.get(api, "suppurl")
+        except:
+            logging.debug('API using wrapper')
 
     def postquery(self, headers, payload):
         """
@@ -312,7 +316,7 @@ class download_tools:
         :param pmcid: pmcid to get the supplementary files
         :param directory_url: directory containg destination
         :param destination_url: path to write the supplementary files to
-        :param fromFtpEndpoint:  (Default value = False)
+        :param fromFtpEndpoint: Default value = False)
 
         """
         import requests
@@ -344,9 +348,9 @@ class download_tools:
     def extract_zip_files(self, r, destination_url, log_key, pmcid):
         """
 
-        :param r: 
-        :param destination_url: 
-        :param log_key: 
+        :param r: param destination_url:
+        :param log_key: param pmcid:
+        :param destination_url: param pmcid:
         :param pmcid: 
 
         """

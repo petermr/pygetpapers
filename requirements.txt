@@ -4,3 +4,4 @@ pandas==0.25.3
 ConfigArgParse==1.4
 requests==2.20.0
 pytest==6.2.2
+habanero

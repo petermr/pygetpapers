@@ -1,5 +1,4 @@
 from pygetpapers.download_tools import download_tools
-import pygetpapers
 
 
 class europe_pmc:
@@ -89,7 +88,7 @@ class europe_pmc:
 
         :param maximum_hits_per_page: param nextCursorMark:
         :param query: param synonym:
-        :param nextCursorMark: 
+        :param nextCursorMark: param synonym:
         :param synonym: 
 
         """
@@ -114,12 +113,11 @@ class europe_pmc:
 
         :param content: param kwargs:
         :param number_of_papers_there: param paper:
-        :param size: 
+        :param size: param kwargs:
+        :param paper: param kwargs:
         :param kwargs: 
-        :param paper: 
 
         """
-        import logging
         if "update" in kwargs:
             if "pmcid" in paper and paper["pmcid"] not in kwargs["update"]:
                 if number_of_papers_there <= size:
