@@ -5,24 +5,17 @@ class download_tools:
         import configparser
         import logging
         import os
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
 
-        if api == "eupmc":
-            with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
-                config_file = f.read()
-            config = configparser.RawConfigParser(allow_no_value=True)
-            config.read_string(config_file)
-
-            try:
-                self.posturl = config.get(api, "posturl")
-                self.citationurl = config.get(api, "citationurl")
-                self.referencesurl = config.get(api, "referencesurl")
-                self.xmlurl = config.get(api, "xmlurl")
-                self.zipurl = config.get(api, "zipurl")
-                self.suppurl = config.get(api, "suppurl")
-            except:
-                logging.debug('API using wrapper')
-        else:
-            pass
+        self.posturl = config.get(api, "posturl")
+        self.citationurl = config.get(api, "citationurl")
+        self.referencesurl = config.get(api, "referencesurl")
+        self.xmlurl = config.get(api, "xmlurl")
+        self.zipurl = config.get(api, "zipurl")
+        self.suppurl = config.get(api, "suppurl")
 
     def postquery(self, headers, payload):
         """
