@@ -1,6 +1,7 @@
 from pygetpapers.download_tools import download_tools
 from pygetpapers.europe_pmc import europe_pmc
 from pygetpapers.crossref import crossref
+from pygetpapers.arxiv import arxiv
 
 
 class pygetpapers():
@@ -27,6 +28,7 @@ class pygetpapers():
         self.CURSOR_MARK = "nextCursorMark"
         self.europe_pmc = europe_pmc()
         self.crossref = crossref()
+        self.arxiv = arxiv()
         self.directory_url = os.path.join(
             str(os.getcwd()))
         self.download_tools = download_tools("europepmc")
@@ -543,10 +545,11 @@ class pygetpapers():
                             type=str,
                             help="Gives papers till given date. Format: YYYY-MM-DD")
         parser.add_argument("--api", default='eupmc', type=str,
-                            help="API to search [eupmc, crossref] (default: eupmc)")
+                            help="API to search [eupmc, crossref,arxiv] (default: eupmc)")
         parser.add_argument("--filter", default=None, type=str,
                             help="filter by key value pair, passed straight to the crossref api only")
-
+        parser.add_argument("--password", default=None, type=str,
+                            help="password for testing out hidden features")
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
@@ -593,6 +596,8 @@ class pygetpapers():
                 self.eupmc_restart(args)
             elif args.api == "crossref":
                 logging.warning("Restart currently not supported for crossref")
+            elif args.api == "arxiv":
+                logging.warning("Restart currently not supported for arxiv")
 
         if args.version:
             logging.info(version)
@@ -615,12 +620,16 @@ class pygetpapers():
                 self.eupmc_noexecute(args.query, synonym=args.synonym)
             elif args.api == "crossref":
                 self.crossref.noexecute(args.query, size=10)
+            elif args.api == "arxiv":
+                self.arxiv.noexecute(args.query)
 
         elif args.update:
             if args.api == "eupmc":
                 self.eupmc_update(args)
             elif args.api == "crossref":
                 logging.warning("update currently not supported for crossref")
+            elif args.api == "arxiv":
+                logging.warning("update currently not supported for arxiv")
         else:
             if args.query:
                 if args.api == "eupmc":
@@ -632,6 +641,9 @@ class pygetpapers():
                 elif args.api == "crossref":
                     self.crossref.download_and_save_results(
                         args.query, args.limit, filter=args.filter)
+                elif args.api == "arxiv" and args.password == "CEVOPEN2021":
+                    self.arxiv.arxiv(args.query, args.limit, getpdf=args.pdf,
+                                     makecsv=args.makecsv, makexml=args.xml, makehtml=args.makehtml)
 
 
 def demo():

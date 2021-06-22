@@ -4,6 +4,7 @@ README.rst
 setup.cfg
 setup.py
 pygetpapers/__init__.py
+pygetpapers/arxiv.py
 pygetpapers/config.ini
 pygetpapers/crossref.py
 pygetpapers/download_tools.py

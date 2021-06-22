@@ -13,7 +13,7 @@ class crossref:
         :param query: param size:
         :param filter: Default value = None)
         :param update: Default value = None)
-        :param size: 
+        :param size: param **kwargs:
         :param **kwargs: 
 
         """
@@ -80,7 +80,7 @@ class crossref:
 
         :param query: param size:
         :param filter: Default value = None)
-        :param size: 
+        :param size: param **kwargs:
         :param **kwargs: 
 
         """
@@ -96,7 +96,7 @@ class crossref:
         :param query: param size:
         :param filter: Default value = None)
         :param update: Default value = None)
-        :param size: 
+        :param size: param **kwargs:
         :param **kwargs: 
 
         """
