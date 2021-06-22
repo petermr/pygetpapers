@@ -5,20 +5,24 @@ class download_tools:
         import configparser
         import logging
         import os
-        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
-            config_file = f.read()
-        config = configparser.RawConfigParser(allow_no_value=True)
-        config.read_string(config_file)
 
-        try:
-            self.posturl = config.get(api, "posturl")
-            self.citationurl = config.get(api, "citationurl")
-            self.referencesurl = config.get(api, "referencesurl")
-            self.xmlurl = config.get(api, "xmlurl")
-            self.zipurl = config.get(api, "zipurl")
-            self.suppurl = config.get(api, "suppurl")
-        except:
-            logging.debug('API using wrapper')
+        if api == "eupmc":
+            with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
+                config_file = f.read()
+            config = configparser.RawConfigParser(allow_no_value=True)
+            config.read_string(config_file)
+
+            try:
+                self.posturl = config.get(api, "posturl")
+                self.citationurl = config.get(api, "citationurl")
+                self.referencesurl = config.get(api, "referencesurl")
+                self.xmlurl = config.get(api, "xmlurl")
+                self.zipurl = config.get(api, "zipurl")
+                self.suppurl = config.get(api, "suppurl")
+            except:
+                logging.debug('API using wrapper')
+        else:
+            pass
 
     def postquery(self, headers, payload):
         """
@@ -71,14 +75,15 @@ class download_tools:
         logging.debug("*/submitting RESTful query (I)*/")
         return {'headers': headers, 'payload': payload}
 
-    def write_or_append_to_csv(self, df_transposed):
+    def write_or_append_to_csv(self, df_transposed, name='europe_pmc.csv'):
         """Writes the csv file or appends to an existing one
 
         :param df_transposed: dataframe to write
+        :param name:  (Default value = 'europe_pmc.csv')
 
         """
         import os
-        path = os.path.join(str(os.getcwd()), 'europe_pmc.csv')
+        path = os.path.join(str(os.getcwd()), name)
         if os.path.exists(path):
             df_transposed.to_csv(path, mode='a', header=False)
         else:
@@ -218,7 +223,10 @@ class download_tools:
         import pandas as pd
         import logging
         dataframe = dataframe.T
-        dataframe = dataframe.drop(columns=['full', 'htmlmade'])
+        try:
+            dataframe = dataframe.drop(columns=['full', 'htmlmade'])
+        except:
+            pass
         if "htmllinks" in dataframe:
             try:
                 dataframe['htmllinks'] = dataframe['htmllinks'].apply(
