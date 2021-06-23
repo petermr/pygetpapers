@@ -11,12 +11,12 @@ class arxiv:
               makecsv=False, makexml=False, makehtml=False):
         """
 
-        :param query:
-        :param size:
-        :param getpdf:  (Default value = False)
-        :param makecsv:  (Default value = False)
-        :param makexml:  (Default value = False)
-        :param makehtml:  (Default value = False)
+        :param query: param size:
+        :param getpdf: Default value = False)
+        :param makecsv: Default value = False)
+        :param makexml: Default value = False)
+        :param makehtml: Default value = False)
+        :param size: 
 
         """
         import arxiv
@@ -51,7 +51,7 @@ class arxiv:
     def make_xml_for_arxiv_dict(self, return_dict):
         """
 
-        :param return_dict:
+        :param return_dict: 
 
         """
         import os
@@ -77,8 +77,8 @@ class arxiv:
     def make_html_for_arxiv_dict(self, df, return_dict):
         """
 
-        :param df:
-        :param return_dict:
+        :param df: param return_dict:
+        :param return_dict: 
 
         """
         import os
@@ -98,7 +98,7 @@ class arxiv:
     def make_dataframe_for_paper_dict(self, result, return_dict):
         """
 
-        :param result: 
+        :param result: param return_dict:
         :param return_dict: 
 
         """
@@ -111,7 +111,7 @@ class arxiv:
     def make_csv_for_arxiv_dict(self, df, return_dict):
         """
 
-        :param df: 
+        :param df: param return_dict:
         :param return_dict: 
 
         """
@@ -147,7 +147,7 @@ class arxiv:
     def make_dict_from_arxiv_output(self, return_dict, search):
         """
 
-        :param return_dict: 
+        :param return_dict: param search:
         :param search: 
 
         """
