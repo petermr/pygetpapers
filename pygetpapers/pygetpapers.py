@@ -22,6 +22,11 @@ class pygetpapers():
         self.download_tools = download_tools("europepmc")
 
     def handle_adding_terms_from_file(self, args):
+        """
+
+        :param args: 
+
+        """
         with open(args.terms, 'r') as f:
             all_terms = f.read()
             terms_list = all_terms.split(',')
@@ -29,6 +34,11 @@ class pygetpapers():
             args.query = f'({args.query} AND ({ORed_terms}))'
 
     def handle_noexecute(self, args):
+        """
+
+        :param args: 
+
+        """
         if args.api == "eupmc":
             self.europe_pmc.eupmc_noexecute(args.query, synonym=args.synonym)
         elif args.api == "crossref":
@@ -37,6 +47,11 @@ class pygetpapers():
             self.arxiv.noexecute(args.query)
 
     def handle_update(self, args):
+        """
+
+        :param args: 
+
+        """
         import logging
         if args.api == "eupmc":
             self.europe_pmc.eupmc_update(args)
@@ -46,19 +61,23 @@ class pygetpapers():
             logging.warning("update currently not supported for arxiv")
 
     def handle_query_download(self, args):
+        """
+
+        :param args: 
+
+        """
         if args.api == "eupmc":
             self.europe_pmc.eupmc_apipaperdownload(args.query, args.limit,
-                                        onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv,
-                                        makehtml=args.makehtml,
-                                        makexml=args.xml, references=args.references, citations=args.citations,
-                                        supplementaryFiles=args.supp, zipFiles=args.zip, synonym=args.synonym)
+                                                   onlymakejson=args.onlyquery, getpdf=args.pdf, makecsv=args.makecsv,
+                                                   makehtml=args.makehtml,
+                                                   makexml=args.xml, references=args.references, citations=args.citations,
+                                                   supplementaryFiles=args.supp, zipFiles=args.zip, synonym=args.synonym)
         elif args.api == "crossref":
             self.crossref.download_and_save_results(
                 args.query, args.limit, filter=args.filter)
         elif args.api == "arxiv" and args.password == "CEVOPEN2021":
             self.arxiv.arxiv(args.query, args.limit, getpdf=args.pdf,
                              makecsv=args.makecsv, makexml=args.xml, makehtml=args.makehtml)
-
 
     def handle_write_configuration_file(self, args):
         """
@@ -78,8 +97,13 @@ class pygetpapers():
         with open('saved_config.ini', 'w') as f:
             parser.write(f)
 
-
     def handle_logfile(self, args, level):
+        """
+
+        :param args: 
+        :param level: 
+
+        """
         import logging
         logging.basicConfig(filename=args.logfile,
                             level=level, filemode='w')
@@ -92,6 +116,11 @@ class pygetpapers():
         logging.info(f'Making log file at {args.logfile}')
 
     def handle_restart(self, args):
+        """
+
+        :param args: 
+
+        """
         import logging
         if args.api == "eupmc":
             self.europe_pmc.eupmc_restart(args)
@@ -101,6 +130,11 @@ class pygetpapers():
             logging.warning("Restart currently not supported for arxiv")
 
     def handle_adding_date_to_query(self, args):
+        """
+
+        :param args: 
+
+        """
         from time import gmtime, strftime
 
         if args.startdate and not args.enddate:
@@ -109,8 +143,6 @@ class pygetpapers():
             args.query = f'({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])'
         elif args.enddate:
             args.query = f'({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])'
-
-
 
     def handlecli(self):
         """Handles the command line interface using argparse"""

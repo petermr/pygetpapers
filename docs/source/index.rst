@@ -333,4 +333,6 @@ Contents
    pygetpapers
    download_tools
    europe_pmc
+   crossref
+   arxiv
 

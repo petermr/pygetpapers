@@ -72,7 +72,7 @@ class download_tools:
         """Writes the csv file or appends to an existing one
 
         :param df_transposed: dataframe to write
-        :param name:  (Default value = 'europe_pmc.csv')
+        :param name: Default value = 'europe_pmc.csv')
 
         """
         import os
