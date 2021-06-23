@@ -275,6 +275,32 @@ class download_tools:
             dict_to_write_html_from['full']['pmcid'])
         self.make_html_from_dataframe(df, url)
 
+    def make_references(self, directory_url, paperid, source, referenceurl):
+        """Downloads the references for the paper with pmcid (paperid) to reference url
+
+        :param directory_url: directory containing referenceurl
+        :param paperid: pmc id of the paper
+        :param source: source to get the citations from
+        :param referenceurl: path to write the references to
+
+        """
+        getreferences = self.getreferences(
+            paperid, source)
+        self.writexml(directory_url, referenceurl, getreferences)
+
+    def make_citations(self, source, citationurl, directory_url, paperid):
+        """Downloads the citations for the paper with pmcid (paperid) to citation url
+
+        :param source: source to get the citations from
+        :param citationurl: path to write the citations to
+        :param directory_url: directory containing citationurl
+        :param paperid: pmc id of the paper
+
+        """
+        getcitations = self.download_tools.getcitations(
+            paperid, source)
+        self.writexml(directory_url, citationurl, getcitations)
+
     def readjsondata(self, path):
         """Reads json from path and returns python dictionary
 

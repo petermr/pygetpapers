@@ -1,6 +1,5 @@
 from pygetpapers.download_tools import download_tools
 
-
 class crossref:
     """ """
 
