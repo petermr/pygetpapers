@@ -1,4 +1,4 @@
-crossref module
+arxiv module
 ==============================
 
 .. automodule:: pygetpapers.arxiv
