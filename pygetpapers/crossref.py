@@ -1,5 +1,6 @@
 from pygetpapers.download_tools import download_tools
 
+
 class crossref:
     """ """
 
@@ -7,12 +8,12 @@ class crossref:
         pass
 
     def crossref(self, query, size, filter=None, update=None, **kwargs):
-        """
+        """Makes the query to CROSSREF rest api then returns a python dictionary containing the research papers.
 
-        :param query: param size:
-        :param filter: Default value = None)
-        :param update: Default value = None)
-        :param size: param **kwargs:
+        :param query: the query passed on to payload
+        :param size: total number of papers
+        :param filter: Default value = None) Key Value pair passed down to the crossref api
+        :param update: Default value = None) Weather to update the dict with old papers
         :param **kwargs: 
 
         """
@@ -45,9 +46,9 @@ class crossref:
         return(dict_to_return)
 
     def make_json_files_for_paper(self, returned_dict):
-        """
+        """Makes json file for the dict
 
-        :param returned_dict: 
+        :param returned_dict: dict for which the json will be made
 
         """
         import os
@@ -75,11 +76,11 @@ class crossref:
             logging.info(f'Wrote metadata file for the paper {paper_numer}')
 
     def noexecute(self, query, size, filter=None, **kwargs):
-        """
+        """Noexecute command for the crossref
 
-        :param query: param size:
-        :param filter: Default value = None)
-        :param size: param **kwargs:
+        :param query: total number of papers
+        :param size: total number of papers
+        :param filter: Default value = None) Key Value pair passed down to the crossref api
         :param **kwargs: 
 
         """
@@ -90,12 +91,12 @@ class crossref:
         logging.info(f'Total number of hits for the query are {totalhits}')
 
     def download_and_save_results(self, query, size, filter=None, update=None, **kwargs):
-        """
+        """Downloads and saves results for the query
 
-        :param query: param size:
-        :param filter: Default value = None)
-        :param update: Default value = None)
-        :param size: param **kwargs:
+        :param query: total number of papers
+        :param filter: Default value = None) Key Value pair passed down to the crossref api
+        :param update: Default value = None) Weather to update the dict with old papers
+        :param size: total number of papers
         :param **kwargs: 
 
         """
