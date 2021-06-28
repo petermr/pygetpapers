@@ -31,7 +31,10 @@ class pygetpapers():
             all_terms = f.read()
             terms_list = all_terms.split(',')
             ORed_terms = ' OR '.join(terms_list)
-            args.query = f'({args.query} AND ({ORed_terms}))'
+            if args.query:
+                args.query = f'({args.query} AND ({ORed_terms}))'
+            else:
+                args.query = f'({ORed_terms})'
 
     def handle_noexecute(self, args):
         """This functions handles the assigning of apis for no execute command
@@ -261,7 +264,7 @@ class pygetpapers():
             logging.info(version)
             sys.exit(1)
 
-        if not args.query and not args.restart:
+        if not args.query and not args.restart and not args.terms:
             logging.warning('Please specify a query')
             sys.exit(1)
 

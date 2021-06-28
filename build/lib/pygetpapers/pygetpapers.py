@@ -22,21 +22,24 @@ class pygetpapers():
         self.download_tools = download_tools("europepmc")
 
     def handle_adding_terms_from_file(self, args):
-        """
+        """This functions handles the adding of terms to the query
 
-        :param args: 
+        :param args: args passed down from argparse
 
         """
         with open(args.terms, 'r') as f:
             all_terms = f.read()
             terms_list = all_terms.split(',')
             ORed_terms = ' OR '.join(terms_list)
-            args.query = f'({args.query} AND ({ORed_terms}))'
+            if args.query:
+                args.query = f'({args.query} AND ({ORed_terms}))'
+            else:
+                args.query = f'({ORed_terms})'
 
     def handle_noexecute(self, args):
-        """
+        """This functions handles the assigning of apis for no execute command
 
-        :param args: 
+        :param args: args passed down from argparse
 
         """
         if args.api == "eupmc":
@@ -47,9 +50,9 @@ class pygetpapers():
             self.arxiv.noexecute(args.query)
 
     def handle_update(self, args):
-        """
+        """This functions handles the assigning of apis for update
 
-        :param args: 
+        :param args: args passed down from argparse
 
         """
         import logging
@@ -61,9 +64,9 @@ class pygetpapers():
             logging.warning("update currently not supported for arxiv")
 
     def handle_query_download(self, args):
-        """
+        """This functions handles the assigning of apis for query download
 
-        :param args: 
+        :param args: args passed down from argparse
 
         """
         if args.api == "eupmc":
@@ -80,9 +83,9 @@ class pygetpapers():
                              makecsv=args.makecsv, makexml=args.xml, makehtml=args.makehtml)
 
     def handle_write_configuration_file(self, args):
-        """
+        """This functions handles the writing the args to a configuration file
 
-        :param args: 
+        :param args: This functions handles the assigning of apis for update
 
         """
         import configparser
@@ -98,10 +101,10 @@ class pygetpapers():
             parser.write(f)
 
     def handle_logfile(self, args, level):
-        """
+        """This functions handles storing of logs in a logfile
 
-        :param args: 
-        :param level: 
+        :param args: args passed down from argparse
+        :param level: level of logger
 
         """
         import logging
@@ -116,9 +119,9 @@ class pygetpapers():
         logging.info(f'Making log file at {args.logfile}')
 
     def handle_restart(self, args):
-        """
+        """This functions handles the assigning of apis for restarting the downloads
 
-        :param args: 
+        :param args: args passed down from argparse
 
         """
         import logging
@@ -130,9 +133,9 @@ class pygetpapers():
             logging.warning("Restart currently not supported for arxiv")
 
     def handle_adding_date_to_query(self, args):
-        """
+        """This functions handles the adding date to the query
 
-        :param args: 
+        :param args: args passed down from argparse
 
         """
         from time import gmtime, strftime
@@ -261,7 +264,7 @@ class pygetpapers():
             logging.info(version)
             sys.exit(1)
 
-        if not args.query and not args.restart:
+        if not args.query and not args.restart and not args.terms:
             logging.warning('Please specify a query')
             sys.exit(1)
 
