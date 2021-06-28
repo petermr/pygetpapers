@@ -105,9 +105,9 @@ class europe_pmc:
     def build_and_send_query(self, maximum_hits_per_page, nextCursorMark, query, synonym):
         """
 
-        :param maximum_hits_per_page: param nextCursorMark:
-        :param query: param synonym:
-        :param nextCursorMark: param synonym:
+        :param maximum_hits_per_page:
+        :param nextCursorMark: 
+        :param query: 
         :param synonym: 
 
         """
@@ -130,10 +130,10 @@ class europe_pmc:
     def append_paper_to_list(self, content, kwargs, number_of_papers_there, paper, size):
         """
 
-        :param content: param kwargs:
-        :param number_of_papers_there: param paper:
-        :param size: param kwargs:
-        :param paper: param kwargs:
+        :param content: 
+        :param number_of_papers_there: 
+        :param size:
+        :param paper:
         :param kwargs: 
 
         """
@@ -181,7 +181,7 @@ class europe_pmc:
     def eupmc_noexecute(self, query, synonym=True):
         """Tells how many hits found for the query
 
-        :param query: param synonym:
+        :param query:
         :param synonym: Default value = True)
 
         """
@@ -519,7 +519,7 @@ class europe_pmc:
             return False
 
     def make_initial_columns_for_paper_dict(self, pmcid, resultant_dict):
-        """
+        """Writes the json and csv for searchvaraible dict
 
         :param pmcid: pmcid of the paper for which fields will be created
         :param resultant_dict: dict in which the fields will be created
