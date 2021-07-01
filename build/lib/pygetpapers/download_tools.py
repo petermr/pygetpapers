@@ -1,5 +1,18 @@
+import configparser
+import json
+import time
+import zipfile
+import io
+import os
+import logging
+import requests
+import pandas as pd
+import xmltodict
+from dict2xml import dict2xml
+
+
 class DownloadTools:
-    """ """
+    """Generic tools for retrieving literature"""
 
     def __init__(self, api):
         """[summary]
@@ -7,10 +20,8 @@ class DownloadTools:
         :param api: [description]
         :type api: [type]
         """
-        import configparser
-        import os
-        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
-            config_file = f.read()
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as file_handler:
+            config_file = file_handler.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
 
@@ -29,19 +40,14 @@ class DownloadTools:
         :returns: Python dictionary containting the output got from eupmc rest api
 
         """
-
-        import xmltodict
-        import logging
-        import requests
-        import time
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
         start = time.time()
-        r = requests.post(
+        request_handler = requests.post(
             self.posturl, data=payload, headers=headers)
         stop = time.time()
         logging.debug("*/Got the Query Result */")
-        logging.debug(f"Time elapsed: {stop - start}")
-        return xmltodict.parse(r.content)
+        logging.debug("Time elapsed: %s", (stop - start))
+        return xmltodict.parse(request_handler.content)
 
     @staticmethod
     def check_or_make_directory(directory_url):
@@ -50,7 +56,6 @@ class DownloadTools:
         :param directory_url: directory url to check
 
         """
-        import os
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
 
@@ -58,7 +63,7 @@ class DownloadTools:
     def buildquery(cursormark, page_size, query, synonym=True, ):
         """
 
-        :param cursormark: the cursonmark for the rest api page. The first cursormark of query result is '*'
+        :param cursormark: the cursonmark for the rest api page.
         :param page_size: the size of each page in the output.
         :param query: the query passed on to payload
         :param synonym: whether synonym should be or not (Default value = True)
@@ -67,7 +72,6 @@ class DownloadTools:
 
         """
 
-        import logging
         headers = {'Content-type': 'application/x-www-form-urlencoded'}
         payload = {
             'query': query,
@@ -88,7 +92,6 @@ class DownloadTools:
         :param name: Default value = 'europe_pmc.csv')
 
         """
-        import os
         path = os.path.join(str(os.getcwd()), name)
         if os.path.exists(path):
             df_transposed.to_csv(path, mode='a', header=False)
@@ -104,15 +107,14 @@ class DownloadTools:
         :param content: xml content
 
         """
-        import os
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
-        with open(destination_url, 'wb') as f:
-            f.write(content)
+        with open(destination_url, 'wb') as file_handler:
+            file_handler.write(content)
 
     @staticmethod
     def make_dict_for_csv(resultant_dict):
-        """removes the fields downloaded, pdfdownloaded,csvmade for the resultant_dict to be written to a csv
+        """removes the fields downloaded, pdfdownloaded,csvmade for the resultant_dict
 
         :param resultant_dict: dictionary to remove the fields
         :returns: resultant_dict_for_csv
@@ -135,7 +137,6 @@ class DownloadTools:
         :param destination: destination to write pdf to
 
         """
-        import requests
         with open(destination, "wb") as file:
             response = requests.get(url)
             file.write(response.content)
@@ -148,10 +149,9 @@ class DownloadTools:
         :param final_xml_dict: python dictionary to make the json from
 
         """
-        import json
         append_write = 'w'
-        with open(path, append_write, encoding="utf-8") as fp:
-            json.dump(final_xml_dict, fp)
+        with open(path, append_write, encoding="utf-8") as file_handler:
+            json.dump(final_xml_dict, file_handler)
 
     @staticmethod
     def clean_dict_for_csv(paperdict):
@@ -174,7 +174,6 @@ class DownloadTools:
         :param return_dict:
 
         """
-        import pandas as pd
         dict_for_df = {k: [v]
                        for k, v in return_dict[result].items()}
         df_for_paper = pd.DataFrame(dict_for_df)
@@ -187,8 +186,11 @@ class DownloadTools:
         :param paperdict: dictionary to write rules for
 
         """
-        condition_to_down, condition_to_download_pdf, condition_to_download_json,\
-            condition_to_download_csv, condition_to_html = False
+        condition_to_down = False
+        condition_to_download_pdf = False
+        condition_to_download_json = False
+        condition_to_download_csv = False
+        condition_to_html = False
         if not paperdict["downloaded"]:
             condition_to_down = True
         if not paperdict["pdfdownloaded"]:
@@ -209,10 +211,10 @@ class DownloadTools:
         :param link: link for href
 
         """
+        tag_to_return = f'<a target="_blank" href="{link}">Link</a>'
         if str(link) == "nan":
-            return "Not Found"
-        else:
-            return f'<a target="_blank" href="{link}">Link</a>'
+            tag_to_return = "Not Found"
+        return tag_to_return
 
     def getcitations(self, pmcid, source):
         """Gets citations for the paper of pmcid
@@ -222,10 +224,9 @@ class DownloadTools:
         :returns: citations xml
 
         """
-        import requests
-        r = requests.get(self.citationurl.format(
+        request_handler = requests.get(self.citationurl.format(
             source=source, pmcid=pmcid))
-        return r.content
+        return request_handler.content
 
     def getreferences(self, pmcid, source):
         """Gets references for the paper of pmcid
@@ -235,10 +236,9 @@ class DownloadTools:
         :returns: references xml
 
         """
-        import requests
-        r = requests.get(
+        request_handler = requests.get(
             self.referencesurl.format(source=source, pmcid=pmcid))
-        return r.content
+        return request_handler.content
 
     @staticmethod
     def add_scrollbar(text):
@@ -256,30 +256,29 @@ class DownloadTools:
         :param url: URL to write html to
 
         """
-        import logging
         dataframe = dataframe.T
         try:
             dataframe = dataframe.drop(columns=['full', 'htmlmade'])
-        except Exception as e:
-            logging.debug(e)
+        except Exception as exception:
+            logging.debug(exception)
         if "htmllinks" in dataframe:
             try:
                 dataframe['htmllinks'] = dataframe['htmllinks'].apply(
                     lambda x: self.make_clickable(x))
-            except Exception as e:
-                logging.debug(e)
+            except Exception as exception:
+                logging.debug(exception)
         if "pdflinks" in dataframe:
             try:
                 dataframe['pdflinks'] = dataframe['pdflinks'].apply(
                     lambda x: self.make_clickable(x))
-            except Exception as e:
-                logging.debug(e)
+            except Exception as exception:
+                logging.debug(exception)
         try:
             dataframe['abstract'] = dataframe['abstract'].apply(
                 lambda x: self.add_scrollbar(x))
-        except Exception as e:
+        except Exception as exception:
             logging.warning("abstract empty")
-            logging.debug(e)
+            logging.debug(exception)
         base_html = """
     <!doctype html>
     <html>
@@ -314,7 +313,6 @@ class DownloadTools:
         :param url: URL to write html to
 
         """
-        import pandas as pd
         df = pd.Series(dict_to_write_html_from).to_frame(
             dict_to_write_html_from['full']['pmcid'])
         self.make_html_from_dataframe(df, url)
@@ -353,7 +351,6 @@ class DownloadTools:
         :returns: python dictionary for the json
 
         """
-        import json
         with open(path) as f:
             dict_from_json = json.load(f)
         return dict_from_json
@@ -361,14 +358,13 @@ class DownloadTools:
     @staticmethod
     def log_making_xml():
         """Logs that the xmls are being written"""
-        import logging
-        import os
+
         logging.debug(
             "*/saving xml to per-document directories (CTrees) (D)*/")
         loggingurl = os.path.join(
             str(os.getcwd()), '*', 'fulltext.xml')
         logging.info(
-            f"Saving XML files to {loggingurl}")
+            "Saving XML files to %s", loggingurl)
         logging.debug("*/Making the Request to get full text xml*/")
 
     def getxml(self, pmcid):
@@ -378,10 +374,9 @@ class DownloadTools:
         :returns: query result
 
         """
-        import requests
-        r = requests.get(
+        request_handler = requests.get(
             self.xmlurl.format(pmcid=pmcid))
-        return r.content
+        return request_handler.content
 
     def getsupplementaryfiles(
             self,
@@ -397,9 +392,6 @@ class DownloadTools:
         :param from_ftp_end_point: Default value = False)
 
         """
-        import requests
-        import os
-        import logging
 
         log_key = "supplementary"
         if from_ftp_end_point:
@@ -408,39 +400,37 @@ class DownloadTools:
             log_key = "zip"
         else:
             path = self.suppurl.format(pmcid=pmcid)
-        r = requests.get(path)
+        request_handler = requests.get(path)
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
         file_exits = False
-        for chunk in r.iter_content(chunk_size=128):
+        for chunk in request_handler.iter_content(chunk_size=128):
             if len(chunk) > 0:
                 file_exits = True
                 break
         if file_exits:
-            self.extract_zip_files(r, destination_url, log_key, pmcid)
+            self.extract_zip_files(
+                request_handler, destination_url, log_key, pmcid)
         else:
-            logging.warning(f"{log_key} files not found for {pmcid}")
+            logging.warning("%s files not found for %s", log_key, pmcid)
 
-    def extract_zip_files(self, r, destination_url, log_key, pmcid):
+    def extract_zip_files(self, request_handler, destination_url, log_key, pmcid):
         """
 
-        :param r: param destination_url:
+        :param request_handler: param destination_url:
         :param log_key: param pmcid:
         :param destination_url: param pmcid:
         :param pmcid:
 
         """
-        import logging
-        import zipfile
-        import io
         try:
-            z = zipfile.ZipFile(io.BytesIO(r.content))
+            z = zipfile.ZipFile(io.BytesIO(request_handler.content))
             self.check_or_make_directory(destination_url)
             z.extractall(destination_url)
-            logging.info(f"Wrote {log_key} files for {pmcid}")
-        except Exception as e:
-            logging.warning(f"{log_key} files not found for {pmcid}")
-            logging.debug(e)
+            logging.info("Wrote %s files for %s", log_key, log_key)
+        except Exception as exception:
+            logging.warning("%s files not found for %s", log_key, pmcid)
+            logging.debug(exception)
 
     def make_initial_columns_for_paper_dict(
             self, key_for_dict, resultant_dict):
@@ -479,9 +469,7 @@ class DownloadTools:
         :param output_paper:
 
         """
-        import os
-        import logging
-        logging.info(f'Making csv files for metadata at {os.getcwd()}')
+        logging.info('Making csv files for metadata at %s', os.getcwd())
         paper = 0
         self.write_or_append_to_csv(df, output_main)
         for result in return_dict:
@@ -495,7 +483,7 @@ class DownloadTools:
             self.write_or_append_to_csv(
                 df_for_paper, url)
             return_dict[result]['csvmade'] = True
-            logging.info(f'Wrote csv files for paper {paper}')
+            logging.info('Wrote csv files for paper %s', paper)
 
     def make_html_for_dict(self, df, return_dict, output_main, output_paper):
         """
@@ -506,9 +494,7 @@ class DownloadTools:
         :param output_paper:
 
         """
-        import os
-        import logging
-        logging.info(f'Making html files for metadata at {os.getcwd()}')
+        logging.info('Making html files for metadata at %s', os.getcwd())
         paper = 0
         htmlurl = os.path.join(os.getcwd(), output_main)
         self.make_html_from_dataframe(df, htmlurl)
@@ -522,7 +508,7 @@ class DownloadTools:
                 result, return_dict)
             self.make_html_from_dataframe(df_for_paper, url)
             return_dict[result]['htmlmade'] = True
-            logging.info(f'Wrote xml files for paper {paper}')
+            logging.info('Wrote xml files for paper %s', paper)
 
     def make_xml_for_dict(self, return_dict, output_main, output_paper):
         """
@@ -532,12 +518,9 @@ class DownloadTools:
         :param output_paper:
 
         """
-        import os
-        from dict2xml import dict2xml
-        import logging
         total_xml = dict2xml(return_dict,
                              wrap='root', indent="   ")
-        logging.info(f'Making xml files for metadata at {os.getcwd()}')
+        logging.info('Making xml files for metadata at %s', os.getcwd())
         xmlurl = os.path.join(os.getcwd(), output_main)
         with open(xmlurl, 'w') as f:
             f.write(total_xml)
@@ -555,7 +538,7 @@ class DownloadTools:
 
             with open(xmlurl_of_paper, 'w') as f:
                 f.write(total_xml_of_paper)
-            logging.info(f'Wrote xml files for paper {paper}')
+            logging.info('Wrote xml files for paper %s', paper)
 
     def handle_creation_of_csv_html_xml(
             self,
@@ -577,7 +560,6 @@ class DownloadTools:
         :param name: [description]
         :type name: [type]
         """
-        import pandas as pd
         df = pd.DataFrame.from_dict(return_dict)
         if makecsv:
             self.make_csv_for_dict(
@@ -604,8 +586,6 @@ class DownloadTools:
 
     @staticmethod
     def get_version():
-        import os
-        import configparser
         with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
             config_file = f.read()
         config = configparser.RawConfigParser(allow_no_value=True)

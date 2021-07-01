@@ -105,6 +105,8 @@ class Arxiv:
         """
 
         for result in return_dict:
+            self.download_tools.check_or_make_directory(
+                os.path.join(os.getcwd(), result))
             pdf_url = os.path.join(os.getcwd(), result, 'fulltext.pdf')
             self.download_tools.writepdf(
                 return_dict[result]['pdf_url'], pdf_url)
