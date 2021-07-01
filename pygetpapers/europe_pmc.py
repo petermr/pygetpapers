@@ -586,7 +586,8 @@ class EuropePmc:
                     if self.pmcid in paper:
                         paper_number += 1
                         html_url, paperpmcid, pdfurl, resultant_dict = \
-                            self.write_meta_data_for_paper(paper, paper_number, resultant_dict)
+                            self.write_meta_data_for_paper(
+                                paper, paper_number, resultant_dict)
                         self.add_fields_to_resultant_dict(
                             html_url, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
                         logging.debug(

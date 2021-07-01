@@ -29,8 +29,8 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
-        with open(args.terms, 'r') as f:
-            all_terms = f.read()
+        with open(args.terms, 'r') as file_handler:
+            all_terms = file_handler.read()
             terms_list = all_terms.split(',')
             or_ed_terms = ' OR '.join(terms_list)
             if args.query:
@@ -120,8 +120,8 @@ class Pygetpapers:
         for key in parsed_args.keys():
             parser.set('SAVED', key, str(parsed_args[key]))
 
-        with open('saved_config.ini', 'w') as f:
-            parser.write(f)
+        with open('saved_config.ini', 'w') as file_handler:
+            parser.write(file_handler)
 
     @staticmethod
     def handle_logfile(args, level):

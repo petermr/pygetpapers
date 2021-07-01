@@ -303,8 +303,8 @@ class DownloadTools:
     """
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html
-        with open(url, 'w', encoding='utf-8') as f:
-            f.write(html_with_pagination)
+        with open(url, 'w', encoding='utf-8') as file_handler:
+            file_handler.write(html_with_pagination)
 
     def make_html_from_dict(self, dict_to_write_html_from, url):
         """Writes html from python dictionary
@@ -351,8 +351,8 @@ class DownloadTools:
         :returns: python dictionary for the json
 
         """
-        with open(path) as f:
-            dict_from_json = json.load(f)
+        with open(path) as file_handler:
+            dict_from_json = json.load(file_handler)
         return dict_from_json
 
     @staticmethod
@@ -522,8 +522,8 @@ class DownloadTools:
                              wrap='root', indent="   ")
         logging.info('Making xml files for metadata at %s', os.getcwd())
         xmlurl = os.path.join(os.getcwd(), output_main)
-        with open(xmlurl, 'w') as f:
-            f.write(total_xml)
+        with open(xmlurl, 'w') as file_handler:
+            file_handler.write(total_xml)
         paper = 0
         for result in return_dict:
             paper += 1
@@ -536,8 +536,8 @@ class DownloadTools:
             self.check_or_make_directory(
                 os.path.join(os.getcwd(), result_encoded))
 
-            with open(xmlurl_of_paper, 'w') as f:
-                f.write(total_xml_of_paper)
+            with open(xmlurl_of_paper, 'w') as file_handler:
+                file_handler.write(total_xml_of_paper)
             logging.info('Wrote xml files for paper %s', paper)
 
     def handle_creation_of_csv_html_xml(
@@ -586,8 +586,8 @@ class DownloadTools:
 
     @staticmethod
     def get_version():
-        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
-            config_file = f.read()
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as file_handler:
+            config_file = file_handler.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
         version = config.get("pygetpapers", "version")
