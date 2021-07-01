@@ -1,10 +1,15 @@
+import os
+import logging
+import arxiv
 from pygetpapers.download_tools import DownloadTools
 
 
 class Arxiv:
-    """ """
+    """Arxiv class which handles arxiv repository"""
 
     def __init__(self):
+        """[summary]
+        """
         self.download_tools = DownloadTools("arxiv")
 
     def arxiv(self, query, size, getpdf=False,
@@ -19,8 +24,6 @@ class Arxiv:
         :param size:
 
         """
-        import arxiv
-        import logging
         logging.info("Making request to Arxiv through pygetpapers")
         search = arxiv.Search(
             query=query,
@@ -49,7 +52,6 @@ class Arxiv:
         :param return_dict:
 
         """
-        import os
         jsonurl = os.path.join(os.getcwd(), 'arxiv_results.json')
         self.download_tools.makejson(jsonurl, return_dict)
         for result in return_dict:
@@ -101,14 +103,13 @@ class Arxiv:
         :param return_dict:
 
         """
-        import os
-        import logging
+
         for result in return_dict:
             pdf_url = os.path.join(os.getcwd(), result, 'fulltext.pdf')
             self.download_tools.writepdf(
                 return_dict[result]['pdf_url'], pdf_url)
             return_dict[result]['pdfdownloaded'] = True
-            logging.info(f'Made pdf for {result}')
+            logging.info('Made pdf for %s', result)
 
     @staticmethod
     def noexecute(query):
@@ -117,5 +118,4 @@ class Arxiv:
         :param query:
 
         """
-        import logging
-        logging.info(f"Arxiv api working for the query {query}")
+        logging.info("Arxiv api working for the query %s", query)
