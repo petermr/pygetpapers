@@ -1,3 +1,8 @@
+import time
+import json
+import logging
+import os
+import pandas as pd
 from pygetpapers.download_tools import DownloadTools
 
 
@@ -5,24 +10,25 @@ class EuropePmc:
     """ """
 
     def __init__(self):
-        import os
-        self.LOGGING_URL = os.path.join(str(os.getcwd()), '*', 'fulltext.xml')
-        self.EUPMCJSON = os.path.join(str(os.getcwd()), 'eupmc_results.json')
-        self.EUPMCCSVURL = os.path.join(str(os.getcwd()), 'europe_pmc.csv')
-        self.TITLE = "title"
-        self.AUTHORINFO = "authorinfo"
-        self.JOURNALTITLE = "journaltitle"
-        self.PDFLINKS = "pdflinks"
-        self.HTMLLINKS = "htmllinks"
-        self.PMCID = "pmcid"
-        self.RESPONSE_WRAPPER = "responseWrapper"
-        self.CURSOR_MARK = "nextCursorMark"
+        """[summary]
+        """
+        self.logging_url = os.path.join(str(os.getcwd()), '*', 'fulltext.xml')
+        self.eupmc_json = os.path.join(str(os.getcwd()), 'eupmc_results.json')
+        self.eupmc_csv_url = os.path.join(str(os.getcwd()), 'europe_pmc.csv')
+        self.title = "title"
+        self.author_info = "authorinfo"
+        self.journal_title = "journaltitle"
+        self.pdf_links = "pdflinks"
+        self.html_links = "htmllinks"
+        self.pmcid = "pmcid"
+        self.response_wrapper = "responseWrapper"
+        self.cursor_mark = "nextCursorMark"
         self.directory_url = os.path.join(
             str(os.getcwd()))
         self.download_tools = DownloadTools("europepmc")
 
     def europepmc(self, query, size, synonym=True, **kwargs):
-        """Makes the query to europepmc rest api then returns a python dictionary containing the research papers.
+        """Makes the query to europepmc rest api then returns the research papers.
 
         :param query: the query passed on to payload
         :param size: total number of papers
@@ -31,8 +37,6 @@ class EuropePmc:
         :returns: Python dictionary containing the research papers.
 
         """
-        import json
-        import logging
         size = int(size)
         content, counter, maximum_hits_per_page, morepapers, next_cursor_mark, \
             number_of_papers_there = self.create_parameters_for_paper_download()
@@ -42,13 +46,13 @@ class EuropePmc:
                 maximum_hits_per_page, next_cursor_mark, query, synonym)
             totalhits = builtquery["responseWrapper"]["hitCount"]
             if counter == 1:
-                logging.info(f"Total Hits are {totalhits}")
+                logging.info("Total Hits are %s", totalhits)
             output_dict = json.loads(json.dumps(builtquery))
             try:
                 number_of_papers_there = self.create_final_paper_list(
                     content, kwargs, number_of_papers_there, output_dict, size)
-            except Exception as e:
-                logging.debug(e)
+            except Exception as exception:
+                logging.debug(exception)
                 morepapers = False
                 logging.warning("Could not find more papers")
                 break
@@ -65,7 +69,7 @@ class EuropePmc:
             number_of_papers_there,
             output_dict,
             size):
-        """Checks the number of results and then adds them to the list containing all the papers called content
+        """Checks the number of results and then adds them to the list containing all the papers
 
         :param content: list containing all the papers
         :param kwargs: kwargs of the main function containing whether to update or add papers
@@ -95,7 +99,6 @@ class EuropePmc:
         :param next_cursor_mark: list containing all cursor marks
 
         """
-        import logging
 
         if "nextCursorMark" in builtquery["responseWrapper"]:
             next_cursor_mark.append(
@@ -134,7 +137,8 @@ class EuropePmc:
         number_of_papers_there = 0
         maximum_hits_per_page = 1000
         counter = 0
-        return content, counter, maximum_hits_per_page, morepapers, next_cursor_mark, number_of_papers_there
+        return content, counter, maximum_hits_per_page, morepapers, next_cursor_mark, \
+            number_of_papers_there
 
     @staticmethod
     def append_paper_to_list(
@@ -172,7 +176,6 @@ class EuropePmc:
         :param args:
 
         """
-        import os
         read_json = self.download_tools.readjsondata(args.update)
         os.chdir(os.path.dirname(args.update))
         self.updatecorpus(
@@ -195,7 +198,6 @@ class EuropePmc:
         :param args:
 
         """
-        import os
         read_json = self.download_tools.readjsondata(args.restart)
         os.chdir(os.path.dirname(args.restart))
         self.makexmlfiles(
@@ -216,7 +218,6 @@ class EuropePmc:
         :param synonym: Default value = True)
 
         """
-        import logging
         builtqueryparams = self.download_tools.buildquery(
             '*', 25, query, synonym=synonym)
         headers = 'headers'
@@ -224,7 +225,7 @@ class EuropePmc:
         result = self.download_tools.postquery(
             builtqueryparams[headers], builtqueryparams[payload])
         totalhits = result['responseWrapper']['hitCount']
-        logging.info(f'Total number of hits for the query are {totalhits}')
+        logging.info('Total number of hits for the query are %s', totalhits)
 
     def updatecorpus(
             self,
@@ -258,7 +259,6 @@ class EuropePmc:
         :param zip_files: Default value = False)
 
         """
-        import os
         query_result = self.europepmc(
             query, size, update=original_json, synonym=synonym)
         is_search_successful = self.makecsv(
@@ -291,9 +291,9 @@ class EuropePmc:
             makexml=False,
             references=False,
             citations=False,
-            supplementaryFiles=False,
+            supplementary_files=False,
             synonym=True,
-            zipFiles=False):
+            zip_files=False):
         """Downloads and writes papers along with the metadata for the given query
 
         :param query: Query to download papers for
@@ -305,12 +305,11 @@ class EuropePmc:
         :param makexml: Default value = False)
         :param references: Default value = False)
         :param citations: Default value = False)
-        :param supplementaryFiles: Default value = False)
+        :param supplementary_files: Default value = False)
         :param synonym: Default value = True)
-        :param zipFiles: Default value = False)
+        :param zip_files: Default value = False)
 
         """
-        import os
         query_result = self.europepmc(query, size, synonym=synonym)
         is_search_successful = self.makecsv(
             query_result, makecsv=makecsv, makehtml=makehtml)
@@ -326,8 +325,8 @@ class EuropePmc:
                 makehtml=makehtml,
                 references=references,
                 citations=citations,
-                supplementary_files=supplementaryFiles,
-                zip_files=zipFiles)
+                supplementary_files=supplementary_files,
+                zip_files=zip_files)
 
     @staticmethod
     def get_urls_to_write_to(pmcid):
@@ -337,7 +336,6 @@ class EuropePmc:
         :returns: tuple containing urls where files for the fulltext will be written
 
         """
-        import os
         destination_url = os.path.join(
             str(os.getcwd()), pmcid, "fulltext.xml")
         directory_url = os.path.join(str(os.getcwd()), pmcid)
@@ -366,7 +364,7 @@ class EuropePmc:
             citations=False,
             supplementary_files=False,
             zip_files=False):
-        """Writes the pdf,csv,xml,references,citations,supplementaryFiles for the individual papers
+        """Writes the pdf,csv,xml,references,citations,supplementary_files for the individual papers
 
         :param final_xml_dict: Python dictionary containg all the papers
         :param getpdf: bool): whether to make pdfs (Default value = False)
@@ -374,14 +372,11 @@ class EuropePmc:
         :param makexml: bool): whether to make xml file for the paper (Default value = False)
         :param references: bool): whether to download references (Default value = False)
         :param citations: bool): whether to download citations (Default value = False)
-        :param supplementary_files: bool): whether to download supplementary files (Default value = False)
+        :param supplementary_files: bool): whether to download supp. files (Default value = False)
         :param makehtml: Default value = False)
         :param zip_files: Default value = False)
 
         """
-        import logging
-        import os
-        import time
         if makexml:
             self.download_tools.log_making_xml()
         paper_number = 0
@@ -391,17 +386,18 @@ class EuropePmc:
             pmcid = paper
             tree = self.download_tools.getxml(pmcid)
             citationurl, destination_url, directory_url, jsonurl, referenceurl, \
-                supplementaryfilesurl, htmlurl, zipurl = self.get_urls_to_write_to(pmcid)
+                supplementaryfilesurl, htmlurl, zipurl = self.get_urls_to_write_to(
+                    pmcid)
             paperdict = final_xml_dict[paper]
             paperid = paperdict["full"]["id"]
             if references:
                 self.download_tools.make_references(directory_url, paperid,
                                                     references, referenceurl)
-                logging.info(f"Made references for {pmcid}")
+                logging.info("Made references for %s", pmcid)
             if citations:
                 self.download_tools.make_citations(citations, citationurl,
                                                    directory_url, paperid)
-                logging.info(f"Made Citations for {pmcid}")
+                logging.info("Made Citations for %s", pmcid)
             if supplementary_files:
                 self.download_tools.getsupplementaryfiles(
                     pmcid, directory_url, supplementaryfilesurl)
@@ -411,12 +407,13 @@ class EuropePmc:
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             condition_to_down, condition_to_download_csv, condition_to_download_json, \
-                condition_to_download_pdf, condition_to_html = self.download_tools.conditions_to_download(paperdict)
+                condition_to_download_pdf, condition_to_html = \
+                self.download_tools.conditions_to_download(paperdict)
             if condition_to_down:
                 if makexml:
                     self.download_tools.writexml(
                         directory_url, destination_url, tree)
-                    logging.info(f"*/Wrote xml for {pmcid}/")
+                    logging.info("*/Wrote xml for %s/", pmcid)
                     paperdict["downloaded"] = True
             if condition_to_download_pdf:
                 if getpdf:
@@ -427,7 +424,7 @@ class EuropePmc:
                             self.download_tools.writepdf(
                                 paperdict["pdflinks"], pdf_destination)
                             paperdict["pdfdownloaded"] = True
-                            logging.info(f"Wrote the pdf file for {pmcid}")
+                            logging.info("Wrote the pdf file for %s", pmcid)
             dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
             if condition_to_download_json:
                 self.download_tools.makejson(jsonurl, dict_to_write)
@@ -440,13 +437,13 @@ class EuropePmc:
                 if makehtml:
                     self.download_tools.make_html_from_dict(
                         dict_to_write, htmlurl)
-                    logging.info(f"Wrote the html file for {pmcid}")
+                    logging.info("Wrote the html file for %s", pmcid)
                     paperdict["htmlmade"] = True
             self.download_tools.makejson(os.path.join(
                 str(os.getcwd()), 'eupmc_results.json'), final_xml_dict)
             stop = time.time()
-            logging.debug(f"Time elapsed: {stop - start}")
-            logging.debug(f"*/Updating the json*/\n")
+            logging.debug("Time elapsed: %s", stop - start)
+            logging.debug("*/Updating the json*/\n")
 
     @staticmethod
     def make_csv(dict_to_write, pmcid):
@@ -456,8 +453,6 @@ class EuropePmc:
         :param pmcid: pmcid of the paper
 
         """
-        import pandas as pd
-        import os
         df = pd.Series(dict_to_write).to_frame(
             'Info_By_EuropePMC_Api')
         df.to_csv(os.path.join(
@@ -474,7 +469,8 @@ class EuropePmc:
         condition_to_download_pdf = paperdict["pdfdownloaded"] is False
         condition_to_download_json = paperdict["jsondownloaded"] is False
         condition_to_download_csv = paperdict["csvmade"] is False
-        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf
+        return condition_to_down, condition_to_download_csv, \
+            condition_to_download_json, condition_to_download_pdf
 
     def add_fields_to_resultant_dict(
             self,
@@ -493,53 +489,52 @@ class EuropePmc:
         :returns: dict_for_paper
 
         """
-        import logging
         try:
-            dict_for_paper[self.HTMLLINKS] = htmlurl[0]
-        except Exception as e:
-            logging.debug(e)
+            dict_for_paper[self.html_links] = htmlurl[0]
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"html url not found for paper {paper_number}")
+                "html url not found for paper %s", paper_number)
         try:
             dict_for_paper["abstract"] = paper["abstractText"]
-        except Exception as e:
-            logging.debug(e)
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"Abstract not found for paper {paper_number}")
+                "Abstract not found for paper %s", paper_number)
 
         try:
             dict_for_paper["Keywords"] = paper["keywordList"]["keyword"]
-        except Exception as e:
-            logging.debug(e)
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"Keywords not found for paper {paper_number}")
+                "Keywords not found for paper %s", paper_number)
         try:
-            dict_for_paper[self.PDFLINKS] = pdfurl[0]
-        except Exception as e:
-            logging.debug(e)
+            dict_for_paper[self.pdf_links] = pdfurl[0]
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"pdf url not found for paper {paper_number}")
+                "pdf url not found for paper %s", paper_number)
         try:
-            dict_for_paper[self.JOURNALTITLE] = paper["journalInfo"]["journal"][self.TITLE]
-        except Exception as e:
-            logging.debug(e)
+            dict_for_paper[self.journal_title] = paper["journalInfo"]["journal"][self.title]
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"journalInfo not found for paper {paper_number}")
+                "journalInfo not found for paper %s", paper_number)
         try:
             author_list = []
             for author in paper["authorList"]["author"]:
                 author_list.append(author['fullName'])
-            dict_for_paper[self.AUTHORINFO] = author_list
-        except Exception as e:
-            logging.debug(e)
+            dict_for_paper[self.author_info] = author_list
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"Author list not found for paper {paper_number}")
+                "Author list not found for paper %s", paper_number)
         try:
-            dict_for_paper[self.TITLE] = paper[self.TITLE]
-        except Exception as e:
-            logging.debug(e)
+            dict_for_paper[self.title] = paper[self.title]
+        except Exception as exception:
+            logging.debug(exception)
             logging.warning(
-                f"Title not found for paper {paper_number}")
+                "Title not found for paper %s", paper_number)
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
         """Adds pdf and html url as well as makes the paper key in resultant_dict
@@ -550,9 +545,8 @@ class EuropePmc:
         :returns: htmlurl, paperpmcid, pdfurl, resultant_dict)
 
         """
-        import logging
         logging.debug(
-            f"Reading Query Result for paper {paper_number}")
+            "Reading Query Result for paper %s", paper_number)
         pdfurl = []
         htmlurl = []
         for x in paper["fullTextUrlList"]["fullTextUrl"]:
@@ -583,24 +577,21 @@ class EuropePmc:
         :returns: searchvariable
 
         """
-        import pandas as pd
-        import json
-        import os
-        import logging
+
         resultant_dict = {}
         if searchvariable:
             for paper_number, papers in enumerate(searchvariable):
                 output_dict = json.loads(json.dumps(papers))
                 for paper in output_dict:
-                    if self.PMCID in paper:
+                    if self.pmcid in paper:
                         paper_number += 1
-                        html_url, paperpmcid, pdfurl, resultant_dict = self.write_meta_data_for_paper(
-                            paper, paper_number, resultant_dict)
+                        html_url, paperpmcid, pdfurl, resultant_dict = \
+                            self.write_meta_data_for_paper(paper, paper_number, resultant_dict)
                         self.add_fields_to_resultant_dict(
                             html_url, paper, paper_number, pdfurl, resultant_dict[paperpmcid])
                         logging.debug(
-                            f'Wrote Meta Data to a dictionary that will be written to '
-                            f'all the chosen metadata file formats for paper {paperpmcid}')
+                            'Wrote Meta Data to a dictionary that will be written to '
+                            'all the chosen metadata file formats for paper %s', paperpmcid)
 
             if update:
                 resultant_dict.update(update)

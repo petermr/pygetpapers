@@ -1,14 +1,22 @@
+import os
+import logging
+import sys
+from time import gmtime, strftime
+import configargparse
+import configparser
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.europe_pmc import EuropePmc
-from pygetpapers.crossref import Crossref
+from pygetpapers.crossref import CrossRef
 from pygetpapers.arxiv import Arxiv
 
 
 class Pygetpapers:
+    """[summary]
+    """
 
     def __init__(self):
         """This function makes all the constants"""
-        self.crossref = Crossref()
+        self.crossref = CrossRef()
         self.arxiv = Arxiv()
         self.europe_pmc = EuropePmc()
         self.download_tools = DownloadTools("europepmc")
@@ -49,7 +57,6 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
-        import logging
         if args.api == "eupmc":
             self.europe_pmc.eupmc_update(args)
         elif args.api == "crossref":
@@ -105,7 +112,6 @@ class Pygetpapers:
         :param args: This functions handles the assigning of apis for update
 
         """
-        import configparser
         parser = configparser.ConfigParser()
 
         parsed_args = vars(args)
@@ -125,7 +131,6 @@ class Pygetpapers:
         :param level: level of logger
 
         """
-        import logging
         logging.basicConfig(filename=args.logfile,
                             level=level, filemode='w')
         console = logging.StreamHandler()
@@ -134,7 +139,7 @@ class Pygetpapers:
         # tell the handler to use this format
         console.setFormatter(formatter)
         logging.getLogger().addHandler(console)
-        logging.info(f'Making log file at {args.logfile}')
+        logging.info('Making log file at %s', args.logfile)
 
     def handle_restart(self, args):
         """This functions handles the assigning of apis for restarting the downloads
@@ -142,7 +147,6 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
-        import logging
         if args.api == "eupmc":
             self.europe_pmc.eupmc_restart(args)
         elif args.api == "crossref":
@@ -157,7 +161,6 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
-        from time import gmtime, strftime
 
         if args.startdate and not args.enddate:
             args.enddate = strftime("%Y-%d-%m", gmtime())
@@ -169,11 +172,7 @@ class Pygetpapers:
     def handlecli(self):
         """Handles the command line interface using argparse"""
         version = self.version
-        import os
-        import configargparse
-        import logging
-        import sys
-        from time import gmtime, strftime
+
         default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
         parser = configargparse.ArgParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help",
@@ -197,8 +196,10 @@ class Pygetpapers:
             help="query string transmitted to repository API. "
                  "Eg. \"Artificial Intelligence\" or \"Plant Parts\". "
                  "To escape special characters within the quotes, use backslash. "
-                 "Incase of nested quotes, ensure that the initial quotes are double and the qutoes inside are single. "
-                 "For eg: `'(LICENSE:\"cc by\" OR LICENSE:\"cc-by\") AND METHODS:\"transcriptome assembly\"' ` "
+                 "Incase of nested quotes, ensure that the initial "
+                 "quotes are double and the qutoes inside are single. "
+                 "For eg: `'(LICENSE:\"cc by\" OR LICENSE:\"cc-by\") "
+                 "AND METHODS:\"transcriptome assembly\"' ` "
                  "is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') "
                  "AND METHODS:'transcriptome assembly'\"` ")
 
@@ -277,7 +278,8 @@ class Pygetpapers:
             help="Updates the corpus by downloading new papers. "
                  "Takes the path of metadata json file of the orignal corpus as the input. "
                  "Requires -k or --limit "
-                 "(If not provided, default will be used) and -q or --query (must be provided) to be given. "
+                 "(If not provided, default will be used) and -q or --query "
+                 "(must be provided) to be given. "
                  "Takes the path to the json as the input.")
         parser.add_argument(
             "--onlyquery",
@@ -308,7 +310,7 @@ class Pygetpapers:
             "--terms",
             default=False,
             type=str,
-            help="Location of the txt file which contains terms serperated by a comma which will be "
+            help="Location of the txt file which contains terms serperated by a comma which will be"
                  "OR'ed among themselves and AND'ed with the query")
         parser.add_argument(
             "--api",
@@ -370,7 +372,7 @@ class Pygetpapers:
         if args.terms:
             self.handle_adding_terms_from_file(args)
 
-        logging.info(f'Final query is {args.query}')
+        logging.info('Final query is %s', args.logfile)
 
         if args.noexecute:
             self.handle_noexecute(args)
