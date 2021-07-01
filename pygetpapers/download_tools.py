@@ -1,9 +1,13 @@
-class download_tools:
+class DownloadTools:
     """ """
 
     def __init__(self, api):
+        """[summary]
+
+        :param api: [description]
+        :type api: [type]
+        """
         import configparser
-        import logging
         import os
         with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
             config_file = f.read()
@@ -39,7 +43,8 @@ class download_tools:
         logging.debug(f"Time elapsed: {stop - start}")
         return xmltodict.parse(r.content)
 
-    def check_or_make_directory(self, directory_url):
+    @staticmethod
+    def check_or_make_directory(directory_url):
         """Checks if the directory exists. If not, makes the directory
 
         :param directory_url: directory url to check
@@ -49,11 +54,12 @@ class download_tools:
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
 
-    def buildquery(self, cursormark, pageSize, query, synonym=True,):
+    @staticmethod
+    def buildquery(cursormark, page_size, query, synonym=True, ):
         """
 
         :param cursormark: the cursonmark for the rest api page. The first cursormark of query result is '*'
-        :param pageSize: the size of each page in the output.
+        :param page_size: the size of each page in the output.
         :param query: the query passed on to payload
         :param synonym: whether synonym should be or not (Default value = True)
         :returns: headers': headers, 'payload': payload}
@@ -63,12 +69,19 @@ class download_tools:
 
         import logging
         headers = {'Content-type': 'application/x-www-form-urlencoded'}
-        payload = {'query': query, 'resultType': 'core',
-                   'cursorMark': cursormark, 'pageSize': pageSize, 'synonym': synonym, 'format': 'xml', 'sort_PMCID': 'y'}
+        payload = {
+            'query': query,
+            'resultType': 'core',
+            'cursorMark': cursormark,
+            'pageSize': page_size,
+            'synonym': synonym,
+            'format': 'xml',
+            'sort_PMCID': 'y'}
         logging.debug("*/submitting RESTful query (I)*/")
         return {'headers': headers, 'payload': payload}
 
-    def write_or_append_to_csv(self, df_transposed, name='europe_pmc.csv'):
+    @staticmethod
+    def write_or_append_to_csv(df_transposed, name='europe_pmc.csv'):
         """Writes the csv file or appends to an existing one
 
         :param df_transposed: dataframe to write
@@ -82,7 +95,8 @@ class download_tools:
         else:
             df_transposed.to_csv(path)
 
-    def writexml(self, directory_url, destination_url, content):
+    @staticmethod
+    def writexml(directory_url, destination_url, content):
         """writes xml to the destination
 
         :param directory_url: directory containg destination
@@ -96,7 +110,8 @@ class download_tools:
         with open(destination_url, 'wb') as f:
             f.write(content)
 
-    def make_dict_for_csv(self, resultant_dict):
+    @staticmethod
+    def make_dict_for_csv(resultant_dict):
         """removes the fields downloaded, pdfdownloaded,csvmade for the resultant_dict to be written to a csv
 
         :param resultant_dict: dictionary to remove the fields
@@ -112,7 +127,8 @@ class download_tools:
             paper_dict.pop("csvmade")
         return resultant_dict_for_csv
 
-    def writepdf(self, url, destination):
+    @staticmethod
+    def writepdf(url, destination):
         """Writes pdf from url to destination
 
         :param url: Url to get pdf from
@@ -124,7 +140,8 @@ class download_tools:
             response = requests.get(url)
             file.write(response.content)
 
-    def makejson(self, path, final_xml_dict):
+    @staticmethod
+    def makejson(path, final_xml_dict):
         """Writes json of final_xml_dict to path
 
         :param path: path to write json to
@@ -133,10 +150,11 @@ class download_tools:
         """
         import json
         append_write = 'w'
-        with open(path, append_write) as fp:
+        with open(path, append_write, encoding="utf-8") as fp:
             json.dump(final_xml_dict, fp)
 
-    def clean_dict_for_csv(self, paperdict):
+    @staticmethod
+    def clean_dict_for_csv(paperdict):
         """Removes the fields pdfdownloaded , jsondownloaded , csvmade from dictionary of paper
 
         :param paperdict: dictionary to remove fields from
@@ -148,20 +166,44 @@ class download_tools:
         dict_to_write.pop('csvmade')
         return dict_to_write
 
-    def conditions_to_download(self, paperdict):
+    @staticmethod
+    def make_dataframe_for_paper_dict(result, return_dict):
+        """
+
+        :param result: param return_dict:
+        :param return_dict:
+
+        """
+        import pandas as pd
+        dict_for_df = {k: [v]
+                       for k, v in return_dict[result].items()}
+        df_for_paper = pd.DataFrame(dict_for_df)
+        return df_for_paper
+
+    @staticmethod
+    def conditions_to_download(paperdict):
         """Writes the conditions to download pdf, json and csv
 
         :param paperdict: dictionary to write rules for
 
         """
-        condition_to_down = paperdict["downloaded"] == False
-        condition_to_download_pdf = paperdict["pdfdownloaded"] == False
-        condition_to_download_json = paperdict["jsondownloaded"] == False
-        condition_to_download_csv = paperdict["csvmade"] == False
-        condition_to_html = paperdict["htmlmade"] == False
-        return condition_to_down, condition_to_download_csv, condition_to_download_json, condition_to_download_pdf, condition_to_html
+        condition_to_down, condition_to_download_pdf, condition_to_download_json,\
+            condition_to_download_csv, condition_to_html = False
+        if not paperdict["downloaded"]:
+            condition_to_down = True
+        if not paperdict["pdfdownloaded"]:
+            condition_to_download_pdf = True
+        if not paperdict["jsondownloaded"]:
+            condition_to_download_json = True
+        if not paperdict["csvmade"]:
+            condition_to_download_csv = True
+        if not paperdict["htmlmade"]:
+            condition_to_html = True
+        return condition_to_down, condition_to_download_csv, \
+            condition_to_download_json, condition_to_download_pdf, condition_to_html
 
-    def make_clickable(self, link):
+    @staticmethod
+    def make_clickable(link):
         """Returns a <a> Html String
 
         :param link: link for href
@@ -181,7 +223,7 @@ class download_tools:
 
         """
         import requests
-        r = requests.get((self.citationurl).format(
+        r = requests.get(self.citationurl.format(
             source=source, pmcid=pmcid))
         return r.content
 
@@ -195,10 +237,11 @@ class download_tools:
         """
         import requests
         r = requests.get(
-            (self.referencesurl).format(source=source, pmcid=pmcid))
+            self.referencesurl.format(source=source, pmcid=pmcid))
         return r.content
 
-    def add_scrollbar(self, text):
+    @staticmethod
+    def add_scrollbar(text):
         """Makes div scrollable
 
         :param text: text to wrap
@@ -213,36 +256,37 @@ class download_tools:
         :param url: URL to write html to
 
         """
-        import pandas as pd
         import logging
         dataframe = dataframe.T
         try:
             dataframe = dataframe.drop(columns=['full', 'htmlmade'])
-        except:
-            pass
+        except Exception as e:
+            logging.debug(e)
         if "htmllinks" in dataframe:
             try:
                 dataframe['htmllinks'] = dataframe['htmllinks'].apply(
                     lambda x: self.make_clickable(x))
-            except:
-                pass
+            except Exception as e:
+                logging.debug(e)
         if "pdflinks" in dataframe:
             try:
                 dataframe['pdflinks'] = dataframe['pdflinks'].apply(
                     lambda x: self.make_clickable(x))
-            except:
-                pass
+            except Exception as e:
+                logging.debug(e)
         try:
             dataframe['abstract'] = dataframe['abstract'].apply(
                 lambda x: self.add_scrollbar(x))
-        except:
+        except Exception as e:
             logging.warning("abstract empty")
+            logging.debug(e)
         base_html = """
     <!doctype html>
     <html>
       <head>
           <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js">
+          </script>
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
           <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
           <style>
@@ -297,11 +341,12 @@ class download_tools:
         :param paperid: pmc id of the paper
 
         """
-        getcitations = self.download_tools.getcitations(
+        getcitations = self.getcitations(
             paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
-    def readjsondata(self, path):
+    @staticmethod
+    def readjsondata(path):
         """Reads json from path and returns python dictionary
 
         :param path: path to read the json from
@@ -310,10 +355,11 @@ class download_tools:
         """
         import json
         with open(path) as f:
-            object = json.load(f)
-        return object
+            dict_from_json = json.load(f)
+        return dict_from_json
 
-    def log_making_xml(self):
+    @staticmethod
+    def log_making_xml():
         """Logs that the xmls are being written"""
         import logging
         import os
@@ -334,26 +380,29 @@ class download_tools:
         """
         import requests
         r = requests.get(
-            (self.xmlurl).format(pmcid=pmcid))
+            self.xmlurl.format(pmcid=pmcid))
         return r.content
 
-    def getsupplementaryfiles(self, pmcid, directory_url, destination_url, fromFtpEndpoint=False):
+    def getsupplementaryfiles(
+            self,
+            pmcid,
+            directory_url,
+            destination_url,
+            from_ftp_end_point=False):
         """Downloads the supplemetary marks for the paper having pmcid
 
         :param pmcid: pmcid to get the supplementary files
         :param directory_url: directory containg destination
         :param destination_url: path to write the supplementary files to
-        :param fromFtpEndpoint: Default value = False)
+        :param from_ftp_end_point: Default value = False)
 
         """
         import requests
         import os
         import logging
-        import zipfile
-        import io
 
         log_key = "supplementary"
-        if fromFtpEndpoint:
+        if from_ftp_end_point:
             key = "PMCxxxx" + pmcid[-3:]
             path = self.zipurl.format(key=key, pmcid=pmcid)
             log_key = "zip"
@@ -378,7 +427,7 @@ class download_tools:
         :param r: param destination_url:
         :param log_key: param pmcid:
         :param destination_url: param pmcid:
-        :param pmcid: 
+        :param pmcid:
 
         """
         import logging
@@ -389,5 +438,177 @@ class download_tools:
             self.check_or_make_directory(destination_url)
             z.extractall(destination_url)
             logging.info(f"Wrote {log_key} files for {pmcid}")
-        except:
+        except Exception as e:
             logging.warning(f"{log_key} files not found for {pmcid}")
+            logging.debug(e)
+
+    def make_initial_columns_for_paper_dict(
+            self, key_for_dict, resultant_dict):
+        """Writes the json and csv for searchvaraible dict
+
+        :param key_for_dict: id of the paper for which fields will be created
+        :param resultant_dict: dict in which the fields will be created
+        :returns: dict with the initial fields created for pmcid
+
+        """
+        resultant_dict[key_for_dict] = {}
+        self.add_keys_for_conditions(key_for_dict, resultant_dict)
+        return resultant_dict
+
+    @staticmethod
+    def add_keys_for_conditions(key_for_dict, resultant_dict):
+        """[summary]
+
+        :param key_for_dict: [description]
+        :type key_for_dict: [type]
+        :param resultant_dict: [description]
+        :type resultant_dict: [type]
+        """
+        resultant_dict[key_for_dict]["downloaded"] = False
+        resultant_dict[key_for_dict]["pdfdownloaded"] = False
+        resultant_dict[key_for_dict]["jsondownloaded"] = False
+        resultant_dict[key_for_dict]["csvmade"] = False
+        resultant_dict[key_for_dict]["htmlmade"] = False
+
+    def make_csv_for_dict(self, df, return_dict, output_main, output_paper):
+        """
+
+        :param df:
+        :param return_dict:
+        :param output_main:
+        :param output_paper:
+
+        """
+        import os
+        import logging
+        logging.info(f'Making csv files for metadata at {os.getcwd()}')
+        paper = 0
+        self.write_or_append_to_csv(df, output_main)
+        for result in return_dict:
+            paper += 1
+            result_encoded = self.url_encode_id(result)
+            url = os.path.join(os.getcwd(), result_encoded, output_paper)
+            self.check_or_make_directory(
+                os.path.join(os.getcwd(), result_encoded))
+            df_for_paper = self.make_dataframe_for_paper_dict(
+                result, return_dict)
+            self.write_or_append_to_csv(
+                df_for_paper, url)
+            return_dict[result]['csvmade'] = True
+            logging.info(f'Wrote csv files for paper {paper}')
+
+    def make_html_for_dict(self, df, return_dict, output_main, output_paper):
+        """
+
+        :param df:
+        :param return_dict:
+        :param output_main:
+        :param output_paper:
+
+        """
+        import os
+        import logging
+        logging.info(f'Making html files for metadata at {os.getcwd()}')
+        paper = 0
+        htmlurl = os.path.join(os.getcwd(), output_main)
+        self.make_html_from_dataframe(df, htmlurl)
+        for result in return_dict:
+            paper += 1
+            result_encoded = self.url_encode_id(result)
+            url = os.path.join(os.getcwd(), result_encoded, output_paper)
+            self.check_or_make_directory(
+                os.path.join(os.getcwd(), result_encoded))
+            df_for_paper = self.make_dataframe_for_paper_dict(
+                result, return_dict)
+            self.make_html_from_dataframe(df_for_paper, url)
+            return_dict[result]['htmlmade'] = True
+            logging.info(f'Wrote xml files for paper {paper}')
+
+    def make_xml_for_dict(self, return_dict, output_main, output_paper):
+        """
+
+        :param return_dict:
+        :param output_main:
+        :param output_paper:
+
+        """
+        import os
+        from dict2xml import dict2xml
+        import logging
+        total_xml = dict2xml(return_dict,
+                             wrap='root', indent="   ")
+        logging.info(f'Making xml files for metadata at {os.getcwd()}')
+        xmlurl = os.path.join(os.getcwd(), output_main)
+        with open(xmlurl, 'w') as f:
+            f.write(total_xml)
+        paper = 0
+        for result in return_dict:
+            paper += 1
+            total_xml_of_paper = dict2xml(
+                return_dict[result], wrap='root', indent="   ")
+            result_encoded = self.url_encode_id(result)
+            xmlurl_of_paper = os.path.join(
+                os.getcwd(), result_encoded, output_paper)
+
+            self.check_or_make_directory(
+                os.path.join(os.getcwd(), result_encoded))
+
+            with open(xmlurl_of_paper, 'w') as f:
+                f.write(total_xml_of_paper)
+            logging.info(f'Wrote xml files for paper {paper}')
+
+    def handle_creation_of_csv_html_xml(
+            self,
+            makecsv,
+            makehtml,
+            makexml,
+            return_dict,
+            name):
+        """[summary]
+
+        :param makecsv: [description]
+        :type makecsv: [type]
+        :param makehtml: [description]
+        :type makehtml: [type]
+        :param makexml: [description]
+        :type makexml: [type]
+        :param return_dict: [description]
+        :type return_dict: [type]
+        :param name: [description]
+        :type name: [type]
+        """
+        import pandas as pd
+        df = pd.DataFrame.from_dict(return_dict)
+        if makecsv:
+            self.make_csv_for_dict(
+                df, return_dict, f'{name}s.csv', f'{name}.csv')
+        if makehtml:
+            self.make_html_for_dict(
+                df, return_dict, f'{name}s.html', f'{name}.html')
+        if makexml:
+            self.make_xml_for_dict(
+                return_dict, f'{name}s.xml', f'{name}.xml')
+
+    @staticmethod
+    def url_encode_id(doi_of_paper):
+        """[summary]
+
+        :param doi_of_paper: [description]
+        :type doi_of_paper: [type]
+        :return: [description]
+        :rtype: [type]
+        """
+        url_encoded_doi_of_paper = doi_of_paper.replace(
+            '\\', '_').replace('/', '_')
+        return url_encoded_doi_of_paper
+
+    @staticmethod
+    def get_version():
+        import os
+        import configparser
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as f:
+            config_file = f.read()
+        config = configparser.RawConfigParser(allow_no_value=True)
+        config.read_string(config_file)
+        version = config.get("pygetpapers", "version")
+        return version
