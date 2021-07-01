@@ -1,10 +1,15 @@
+import os
+import logging
+from habanero import Crossref
 from pygetpapers.download_tools import DownloadTools
 
 
-class Crossref:
-    """ """
+class CrossRef:
+    """CrossRef class which handles crossref repository"""
 
     def __init__(self):
+        """[summary]
+        """
         self.download_tools = DownloadTools("crossref")
 
     def crossref(
@@ -17,7 +22,7 @@ class Crossref:
         makexml=False,
         makehtml=False,
     ):
-        """Makes the query to CROSSREF rest api then returns a python dictionary containing the research papers.
+        """Makes the query to CROSSREF rest api then returns research papers.
 
         :param query: the query passed on to payload
         :param size: total number of papers
@@ -28,16 +33,15 @@ class Crossref:
         :param makexml:
 
         """
-        import logging
-        cr = self.initiate_crossref()
+        crossref_client = self.initiate_crossref()
         logging.info('Making request to crossref')
 
         if update:
             cursor = update['cursor_mark']
         else:
             cursor = '*'
-        crossref_client = cr.works(query={query}, filter=filter_dict,
-                                   cursor_max=size, cursor=cursor)
+        crossref_client = crossref_client.works(query={query}, filter=filter_dict,
+                                                cursor_max=size, cursor=cursor)
         doi_list = []
         logging.info('Got request result from crossref')
         for item in crossref_client['message']['items']:
@@ -92,18 +96,17 @@ class Crossref:
             json_return_dict[paper['DOI']] = paper
         return json_return_dict
 
-    @staticmethod
-    def initiate_crossref():
+    def initiate_crossref(self):
         """[summary]
 
         :return: [description]
         :rtype: [type]
         """
-        from habanero import Crossref
         cr = Crossref()
         Crossref(mailto="ayushgarg@science.org.in")
+        version = self.download_tools.get_version()
         Crossref(
-            ua_string=f"pygetpapers/version@{self.download_tools.get_version()}")
+            ua_string=f"pygetpapers/version@{version}")
         return cr
 
     def crossref_update(
@@ -132,7 +135,6 @@ class Crossref:
         :param makehtml: [description], defaults to False
         :type makehtml: bool, optional
         """
-        import logging
         update = self.download_tools.readjsondata(update)
         logging.info('Reading old json metadata file')
         self.download_and_save_results(
@@ -150,13 +152,11 @@ class Crossref:
         :param returned_dict: dict for which the json will be made
 
         """
-        import os
-        import logging
         self.download_tools.makejson('crossref_results.json', returned_dict)
         logging.info('Wrote metadata file for the query')
         paper_numer = 0
         logging.info(
-            f'Writing metadata file for the papers at {str(os.getcwd())}')
+            'Writing metadata file for the papers at %s', str(os.getcwd()))
         total_dict = returned_dict['total_json_output']
         for paper in total_dict:
             dict_of_paper = total_dict[paper]
@@ -172,7 +172,7 @@ class Crossref:
                 dict_of_paper["jsondownloaded"] = True
                 self.download_tools.makejson(path_to_save_metadata, paper)
                 logging.info(
-                    f'Wrote metadata file for the paper {paper_numer}')
+                    'Wrote metadata file for the paper %s', paper_numer)
 
     def noexecute(self, query, filter_dict=None, **kwargs):
         """Noexecute command for the crossref
@@ -181,11 +181,10 @@ class Crossref:
         :param filter_dict: Default value = None) Key Value pair passed down to the crossref api
 
         """
-        import logging
         returned_result = self.crossref(
             query, size=10, filter_dict=filter_dict, **kwargs)
         totalhits = returned_result['total_hits']
-        logging.info(f'Total number of hits for the query are {totalhits}')
+        logging.info('Total number of hits for the query are %s', totalhits)
 
     def download_and_save_results(
             self,
@@ -196,7 +195,7 @@ class Crossref:
             makecsv=False,
             makexml=False,
             makehtml=False,
-            **kwargs):
+    ):
         """Downloads and saves results for the query
 
         :param query: total number of papers
@@ -215,6 +214,5 @@ class Crossref:
             update=update,
             makecsv=makecsv,
             makexml=makexml,
-            makehtml=makehtml,
-            **kwargs)
+            makehtml=makehtml)
         self.make_json_files_for_paper(returned_result)

@@ -104,8 +104,9 @@ class CrossRef:
         """
         cr = Crossref()
         Crossref(mailto="ayushgarg@science.org.in")
+        version = self.download_tools.get_version()
         Crossref(
-            ua_string=f"pygetpapers/version@{self.download_tools.get_version()}")
+            ua_string=f"pygetpapers/version@{version}")
         return cr
 
     def crossref_update(

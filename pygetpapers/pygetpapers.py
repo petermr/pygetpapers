@@ -85,8 +85,8 @@ class Pygetpapers:
                 makexml=args.xml,
                 references=args.references,
                 citations=args.citations,
-                supplementaryFiles=args.supp,
-                zipFiles=args.zip,
+                supplementary_files=args.supp,
+                zip_files=args.zip,
                 synonym=args.synonym)
         elif args.api == "crossref":
             self.crossref.download_and_save_results(
@@ -372,7 +372,7 @@ class Pygetpapers:
         if args.terms:
             self.handle_adding_terms_from_file(args)
 
-        logging.info('Final query is %s', args.logfile)
+        logging.info('Final query is %s', args.query)
 
         if args.noexecute:
             self.handle_noexecute(args)

@@ -186,8 +186,11 @@ class DownloadTools:
         :param paperdict: dictionary to write rules for
 
         """
-        condition_to_down, condition_to_download_pdf, condition_to_download_json,\
-            condition_to_download_csv, condition_to_html = False
+        condition_to_down = False
+        condition_to_download_pdf = False
+        condition_to_download_json = False
+        condition_to_download_csv = False
+        condition_to_html = False
         if not paperdict["downloaded"]:
             condition_to_down = True
         if not paperdict["pdfdownloaded"]:
