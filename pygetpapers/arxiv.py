@@ -1,6 +1,7 @@
 import os
 import logging
 import arxiv
+from tqdm import tqdm
 from pygetpapers.download_tools import DownloadTools
 
 
@@ -52,7 +53,7 @@ class Arxiv:
         """
         jsonurl = os.path.join(os.getcwd(), "arxiv_results.json")
         self.download_tools.makejson(jsonurl, return_dict)
-        for result in return_dict:
+        for result in tqdm(return_dict):
             return_dict[result]["jsondownloaded"] = True
             self.download_tools.check_or_make_directory(result)
             jsonurl = os.path.join(os.getcwd(), result, "arxiv_result.json")
@@ -70,14 +71,18 @@ class Arxiv:
             url_encoded_id_of_paper = str(result.entry_id).rsplit("/", 1)[-1]
 
             return_dict[url_encoded_id_of_paper] = {}
-            return_dict[url_encoded_id_of_paper]["date_updated"] = str(result.updated)
+            return_dict[url_encoded_id_of_paper]["date_updated"] = str(
+                result.updated)
             return_dict[url_encoded_id_of_paper]["date_published"] = str(
                 result.published
             )
             return_dict[url_encoded_id_of_paper]["title"] = str(result.title)
-            return_dict[url_encoded_id_of_paper]["authors"] = str(result.authors)
-            return_dict[url_encoded_id_of_paper]["summary"] = str(result.summary)
-            return_dict[url_encoded_id_of_paper]["comment"] = str(result.comment)
+            return_dict[url_encoded_id_of_paper]["authors"] = str(
+                result.authors)
+            return_dict[url_encoded_id_of_paper]["summary"] = str(
+                result.summary)
+            return_dict[url_encoded_id_of_paper]["comment"] = str(
+                result.comment)
             return_dict[url_encoded_id_of_paper]["journal_ref"] = str(
                 result.journal_ref
             )
@@ -85,10 +90,13 @@ class Arxiv:
             return_dict[url_encoded_id_of_paper]["primary_category"] = str(
                 result.primary_category
             )
-            return_dict[url_encoded_id_of_paper]["categories"] = str(result.categories)
+            return_dict[url_encoded_id_of_paper]["categories"] = str(
+                result.categories)
             return_dict[url_encoded_id_of_paper]["links"] = str(result.links)
-            return_dict[url_encoded_id_of_paper]["pdf_url"] = str(result.pdf_url)
-            return_dict[url_encoded_id_of_paper]["entry_id"] = str(result.entry_id)
+            return_dict[url_encoded_id_of_paper]["pdf_url"] = str(
+                result.pdf_url)
+            return_dict[url_encoded_id_of_paper]["entry_id"] = str(
+                result.entry_id)
 
     def download_pdf(self, return_dict):
         """
@@ -96,8 +104,8 @@ class Arxiv:
         :param return_dict:
 
         """
-
-        for result in return_dict:
+        logging.info("Downloading Pdfs for papers")
+        for result in tqdm(return_dict):
             self.download_tools.check_or_make_directory(
                 os.path.join(os.getcwd(), result)
             )
@@ -106,7 +114,6 @@ class Arxiv:
                 return_dict[result]["pdf_url"], pdf_url
             )
             return_dict[result]["pdfdownloaded"] = True
-            logging.info("Made pdf for %s", result)
 
     @staticmethod
     def noexecute(query):
