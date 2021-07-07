@@ -56,16 +56,11 @@ class CrossRef:
             total_result_list, key_in_dict="DOI"
         )
         for paper in json_return_dict:
-            self.download_tools.add_keys_for_conditions(paper, json_return_dict)
-        dict_to_return = {
-            "total_json_output": json_return_dict,
-            "total_hits": total_number_of_results,
-            "cursor_mark": cursor_mark,
-        }
-        if update:
-            dict_to_return["total_json_output"] = update["total_json_output"].update(
-                dict_to_return["total_json_output"]
-            )
+            self.download_tools.add_keys_for_conditions(
+                paper, json_return_dict)
+        dict_to_return = self.download_tools.make_dict_to_return(
+            cursor_mark, json_return_dict, total_number_of_results, update
+        )
         return_dict = dict_to_return["total_json_output"]
         self.download_tools.handle_creation_of_csv_html_xml(
             makecsv, makehtml, makexml, return_dict, "crossref-result"
@@ -137,33 +132,6 @@ class CrossRef:
             makexml=makexml,
             makehtml=makehtml,
         )
-
-    def make_json_files_for_paper(self, returned_dict):
-        """Makes json file for the dict
-
-        :param returned_dict: dict for which the json will be made
-
-        """
-        self.download_tools.makejson("crossref_results.json", returned_dict)
-        logging.info("Wrote metadata file for the query")
-        paper_numer = 0
-        logging.info("Writing metadata file for the papers at %s", str(os.getcwd()))
-        total_dict = returned_dict["total_json_output"]
-        for paper in total_dict:
-            dict_of_paper = total_dict[paper]
-            if not dict_of_paper["jsondownloaded"]:
-                paper_numer += 1
-                doi_of_paper = dict_of_paper["DOI"]
-                url_encoded_doi_of_paper = self.download_tools.url_encode_id(
-                    doi_of_paper
-                )
-                self.download_tools.check_or_make_directory(url_encoded_doi_of_paper)
-                path_to_save_metadata = os.path.join(
-                    str(os.getcwd()), url_encoded_doi_of_paper, "crossref_result.json"
-                )
-                dict_of_paper["jsondownloaded"] = True
-                self.download_tools.makejson(path_to_save_metadata, paper)
-                logging.info("Wrote metadata file for the paper %s", paper_numer)
 
     def noexecute(self, query, filter_dict=None, **kwargs):
         """Noexecute command for the crossref
