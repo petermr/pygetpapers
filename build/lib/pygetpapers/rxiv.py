@@ -12,6 +12,7 @@ class Rxiv:
     def __init__(self):
         """[summary]"""
         self.download_tools = DownloadTools("rxiv")
+        self.get_url = self.download_tools.posturl
 
     def rxiv(
         self,
@@ -62,8 +63,9 @@ class Rxiv:
             total_result_list, key_in_dict="doi"
         )
         for paper in json_return_dict:
-            self.download_tools.add_keys_for_conditions(paper, json_return_dict)
-        dict_to_return = self.make_dict_to_return(
+            self.download_tools.add_keys_for_conditions(
+                paper, json_return_dict)
+        dict_to_return = self.download_tools.make_dict_to_return(
             cursor_mark, json_return_dict, total_number_of_results, update
         )
         return_dict = dict_to_return["total_json_output"]
@@ -103,33 +105,6 @@ class Rxiv:
             total_number_of_results = request_dict["messages"][0]["total"]
         total_papers_list += papers_list
         return total_number_of_results, total_papers_list
-
-    def make_dict_to_return(
-        self, cursor_mark, json_return_dict, total_number_of_results, update
-    ):
-        """[summary]
-
-        :param cursor_mark: [description]
-        :type cursor_mark: [type]
-        :param json_return_dict: [description]
-        :type json_return_dict: [type]
-        :param total_number_of_results: [description]
-        :type total_number_of_results: [type]
-        :param update: [description]
-        :type update: [type]
-        :return: [description]
-        :rtype: [type]
-        """
-        dict_to_return = {
-            "total_json_output": json_return_dict,
-            "total_hits": total_number_of_results,
-            "cursor_mark": cursor_mark,
-        }
-        if update:
-            dict_to_return["total_json_output"] = update["total_json_output"].update(
-                dict_to_return["total_json_output"]
-            )
-        return dict_to_return
 
     def post_request(self):
         """[summary]
@@ -236,7 +211,8 @@ class Rxiv:
         if makexml:
             logging.info("Made xml for paper")
             dict_of_papers = returned_result["total_json_output"]
-            self.make_xml_for_rxiv(dict_of_papers, "jatsxml", "doi", "fulltext.xml")
+            self.make_xml_for_rxiv(
+                dict_of_papers, "jatsxml", "doi", "fulltext.xml")
         self.download_tools.make_json_files_for_paper(
             returned_result, key_in_dict="doi", name_of_file="rxiv-result"
         )
@@ -259,12 +235,15 @@ class Rxiv:
             dict_of_paper = dict_of_papers[paper]
             xml_url = dict_of_paper[xml_identifier]
             doi_of_paper = dict_of_paper[paper_id_identifier]
-            url_encoded_doi_of_paper = self.download_tools.url_encode_id(doi_of_paper)
-            self.download_tools.check_or_make_directory(url_encoded_doi_of_paper)
+            url_encoded_doi_of_paper = self.download_tools.url_encode_id(
+                doi_of_paper)
+            self.download_tools.check_or_make_directory(
+                url_encoded_doi_of_paper)
             path_to_save_xml = os.path.join(
                 str(os.getcwd()), url_encoded_doi_of_paper, filename
             )
-            self.download_tools.write_content_to_destination(xml_url, path_to_save_xml)
+            self.download_tools.write_content_to_destination(
+                xml_url, path_to_save_xml)
 
     def noexecute(self, time_interval, source):
         """[summary]

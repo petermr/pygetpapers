@@ -44,7 +44,8 @@ class DownloadTools:
         """
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
         start = time.time()
-        request_handler = requests.post(self.posturl, data=payload, headers=headers)
+        request_handler = requests.post(
+            self.posturl, data=payload, headers=headers)
         stop = time.time()
         logging.debug("*/Got the Query Result */")
         logging.debug("Time elapsed: %s", (stop - start))
@@ -373,7 +374,8 @@ class DownloadTools:
     def log_making_xml():
         """Logs that the xmls are being written"""
 
-        logging.debug("*/saving xml to per-document directories (CTrees) (D)*/")
+        logging.debug(
+            "*/saving xml to per-document directories (CTrees) (D)*/")
         loggingurl = os.path.join(str(os.getcwd()), "*", "fulltext.xml")
         logging.info("Saving XML files to %s", loggingurl)
         logging.debug("*/Making the Request to get full text xml*/")
@@ -416,7 +418,8 @@ class DownloadTools:
                 file_exits = True
                 break
         if file_exits:
-            self.extract_zip_files(request_handler, destination_url, log_key, pmcid)
+            self.extract_zip_files(
+                request_handler, destination_url, log_key, pmcid)
         else:
             logging.warning("%s files not found for %s", log_key, pmcid)
 
@@ -481,8 +484,10 @@ class DownloadTools:
             paper += 1
             result_encoded = self.url_encode_id(result)
             url = os.path.join(os.getcwd(), result_encoded, output_paper)
-            self.check_or_make_directory(os.path.join(os.getcwd(), result_encoded))
-            df_for_paper = self.make_dataframe_for_paper_dict(result, return_dict)
+            self.check_or_make_directory(
+                os.path.join(os.getcwd(), result_encoded))
+            df_for_paper = self.make_dataframe_for_paper_dict(
+                result, return_dict)
             self.write_or_append_to_csv(df_for_paper, url)
             return_dict[result]["csvmade"] = True
             logging.info("Wrote csv files for paper %s", paper)
@@ -504,8 +509,10 @@ class DownloadTools:
             paper += 1
             result_encoded = self.url_encode_id(result)
             url = os.path.join(os.getcwd(), result_encoded, output_paper)
-            self.check_or_make_directory(os.path.join(os.getcwd(), result_encoded))
-            df_for_paper = self.make_dataframe_for_paper_dict(result, return_dict)
+            self.check_or_make_directory(
+                os.path.join(os.getcwd(), result_encoded))
+            df_for_paper = self.make_dataframe_for_paper_dict(
+                result, return_dict)
             self.make_html_from_dataframe(df_for_paper, url)
             return_dict[result]["htmlmade"] = True
             logging.info("Wrote xml files for paper %s", paper)
@@ -530,9 +537,11 @@ class DownloadTools:
                 return_dict[result], wrap="root", indent="   "
             )
             result_encoded = self.url_encode_id(result)
-            xmlurl_of_paper = os.path.join(os.getcwd(), result_encoded, output_paper)
+            xmlurl_of_paper = os.path.join(
+                os.getcwd(), result_encoded, output_paper)
 
-            self.check_or_make_directory(os.path.join(os.getcwd(), result_encoded))
+            self.check_or_make_directory(
+                os.path.join(os.getcwd(), result_encoded))
 
             with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
                 file_handler.write(total_xml_of_paper)
@@ -556,9 +565,11 @@ class DownloadTools:
         """
         df = pd.DataFrame.from_dict(return_dict)
         if makecsv:
-            self.make_csv_for_dict(df, return_dict, f"{name}s.csv", f"{name}.csv")
+            self.make_csv_for_dict(
+                df, return_dict, f"{name}s.csv", f"{name}.csv")
         if makehtml:
-            self.make_html_for_dict(df, return_dict, f"{name}s.html", f"{name}.html")
+            self.make_html_for_dict(
+                df, return_dict, f"{name}s.html", f"{name}.html")
         if makexml:
             self.make_xml_for_dict(return_dict, f"{name}s.xml", f"{name}.xml")
 
@@ -571,7 +582,8 @@ class DownloadTools:
         :return: [description]
         :rtype: [type]
         """
-        url_encoded_doi_of_paper = doi_of_paper.replace("\\", "_").replace("/", "_")
+        url_encoded_doi_of_paper = doi_of_paper.replace(
+            "\\", "_").replace("/", "_")
         return url_encoded_doi_of_paper
 
     @staticmethod
@@ -614,7 +626,8 @@ class DownloadTools:
         self.makejson(f"{name_of_file}s.json", returned_dict)
         logging.info("Wrote metadata file for the query")
         paper_numer = 0
-        logging.info("Writing metadata file for the papers at %s", str(os.getcwd()))
+        logging.info("Writing metadata file for the papers at %s",
+                     str(os.getcwd()))
         total_dict = returned_dict["total_json_output"]
         for paper in total_dict:
             dict_of_paper = total_dict[paper]
@@ -624,8 +637,37 @@ class DownloadTools:
                 url_encoded_doi_of_paper = self.url_encode_id(doi_of_paper)
                 self.check_or_make_directory(url_encoded_doi_of_paper)
                 path_to_save_metadata = os.path.join(
-                    str(os.getcwd()), url_encoded_doi_of_paper, f"{name_of_file}.json"
+                    str(os.getcwd()
+                        ), url_encoded_doi_of_paper, f"{name_of_file}.json"
                 )
                 dict_of_paper["jsondownloaded"] = True
                 self.makejson(path_to_save_metadata, dict_of_paper)
-                logging.info("Wrote metadata file for the paper %s", paper_numer)
+                logging.info(
+                    "Wrote metadata file for the paper %s", paper_numer)
+
+    def make_dict_to_return(
+        self, cursor_mark, json_return_dict, total_number_of_results, update
+    ):
+        """[summary]
+
+        :param cursor_mark: [description]
+        :type cursor_mark: [type]
+        :param json_return_dict: [description]
+        :type json_return_dict: [type]
+        :param total_number_of_results: [description]
+        :type total_number_of_results: [type]
+        :param update: [description]
+        :type update: [type]
+        :return: [description]
+        :rtype: [type]
+        """
+        dict_to_return = {
+            "total_json_output": json_return_dict,
+            "total_hits": total_number_of_results,
+            "cursor_mark": cursor_mark,
+        }
+        if update:
+            dict_to_return["total_json_output"] = update["total_json_output"].update(
+                dict_to_return["total_json_output"]
+            )
+        return dict_to_return
