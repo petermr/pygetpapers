@@ -10,6 +10,7 @@ pygetpapers/crossref.py
 pygetpapers/download_tools.py
 pygetpapers/europe_pmc.py
 pygetpapers/pygetpapers.py
+pygetpapers/rxiv.py
 pygetpapers.egg-info/PKG-INFO
 pygetpapers.egg-info/SOURCES.txt
 pygetpapers.egg-info/dependency_links.txt

@@ -8,17 +8,18 @@ from pygetpapers.download_tools import DownloadTools
 from pygetpapers.europe_pmc import EuropePmc
 from pygetpapers.crossref import CrossRef
 from pygetpapers.arxiv import Arxiv
+from pygetpapers.rxiv import Rxiv
 
 
 class Pygetpapers:
-    """[summary]
-    """
+    """[summary]"""
 
     def __init__(self):
         """This function makes all the constants"""
         self.crossref = CrossRef()
         self.arxiv = Arxiv()
         self.europe_pmc = EuropePmc()
+        self.rxiv = Rxiv()
         self.download_tools = DownloadTools("europepmc")
         self.version = self.download_tools.get_version()
 
@@ -29,14 +30,14 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
-        with open(args.terms, 'r') as file_handler:
+        with open(args.terms, "r") as file_handler:
             all_terms = file_handler.read()
-            terms_list = all_terms.split(',')
-            or_ed_terms = ' OR '.join(terms_list)
+            terms_list = all_terms.split(",")
+            or_ed_terms = " OR ".join(terms_list)
             if args.query:
-                args.query = f'({args.query} AND ({or_ed_terms}))'
+                args.query = f"({args.query} AND ({or_ed_terms}))"
             else:
-                args.query = f'({or_ed_terms})'
+                args.query = f"({or_ed_terms})"
 
     def handle_noexecute(self, args):
         """This functions handles the assigning of apis for no execute command
@@ -48,6 +49,8 @@ class Pygetpapers:
             self.europe_pmc.eupmc_noexecute(args.query, synonym=args.synonym)
         elif args.api == "crossref":
             self.crossref.noexecute(args.query)
+        elif args.api == "biorxiv" or args.api == "medrxiv":
+            self.rxiv.noexecute(args.date_or_number_of_papers, source=args.api)
         elif args.api == "arxiv":
             self.arxiv.noexecute(args.query)
 
@@ -61,10 +64,28 @@ class Pygetpapers:
             self.europe_pmc.eupmc_update(args)
         elif args.api == "crossref":
             self.crossref.crossref_update(
-                args.query,
+                args.query, args.limit, filter_dict=args.filter, update=args.update
+            )
+        elif args.api == "biorxiv":
+            self.rxiv.rxiv_update(
+                args.date_or_number_of_papers,
                 args.limit,
-                filter_dict=args.filter,
-                update=args.update)
+                source="biorxiv",
+                update=args.update,
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
+        elif args.api == "medrxiv":
+            self.rxiv.rxiv_update(
+                args.date_or_number_of_papers,
+                args.limit,
+                source="medrxiv",
+                update=args.update,
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
         elif args.api == "arxiv":
             logging.warning("update currently not supported for arxiv")
 
@@ -87,7 +108,8 @@ class Pygetpapers:
                 citations=args.citations,
                 supplementary_files=args.supp,
                 zip_files=args.zip,
-                synonym=args.synonym)
+                synonym=args.synonym,
+            )
         elif args.api == "crossref":
             self.crossref.download_and_save_results(
                 args.query,
@@ -95,7 +117,26 @@ class Pygetpapers:
                 filter_dict=args.filter,
                 makecsv=args.makecsv,
                 makexml=args.xml,
-                makehtml=args.makehtml)
+                makehtml=args.makehtml,
+            )
+        elif args.api == "biorxiv":
+            self.rxiv.download_and_save_results(
+                args.date_or_number_of_papers,
+                args.limit,
+                source="biorxiv",
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
+        elif args.api == "medrxiv":
+            self.rxiv.download_and_save_results(
+                args.date_or_number_of_papers,
+                args.limit,
+                source="medrxiv",
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
         elif args.api == "arxiv" and args.password == "CEVOPEN2021":
             self.arxiv.arxiv(
                 args.query,
@@ -103,7 +144,8 @@ class Pygetpapers:
                 getpdf=args.pdf,
                 makecsv=args.makecsv,
                 makexml=args.xml,
-                makehtml=args.makehtml)
+                makehtml=args.makehtml,
+            )
 
     @staticmethod
     def handle_write_configuration_file(args):
@@ -116,11 +158,11 @@ class Pygetpapers:
 
         parsed_args = vars(args)
 
-        parser.add_section('SAVED')
+        parser.add_section("SAVED")
         for key in parsed_args.keys():
-            parser.set('SAVED', key, str(parsed_args[key]))
+            parser.set("SAVED", key, str(parsed_args[key]))
 
-        with open('saved_config.ini', 'w') as file_handler:
+        with open("saved_config.ini", "w") as file_handler:
             parser.write(file_handler)
 
     @staticmethod
@@ -131,15 +173,14 @@ class Pygetpapers:
         :param level: level of logger
 
         """
-        logging.basicConfig(filename=args.logfile,
-                            level=level, filemode='w')
+        logging.basicConfig(filename=args.logfile, level=level, filemode="w")
         console = logging.StreamHandler()
         console.setLevel(level)
-        formatter = logging.Formatter('%(levelname)s: %(message)s')
+        formatter = logging.Formatter("%(levelname)s: %(message)s")
         # tell the handler to use this format
         console.setFormatter(formatter)
         logging.getLogger().addHandler(console)
-        logging.info('Making log file at %s', args.logfile)
+        logging.info("Making log file at %s", args.logfile)
 
     def handle_restart(self, args):
         """This functions handles the assigning of apis for restarting the downloads
@@ -153,6 +194,10 @@ class Pygetpapers:
             logging.warning("Restart currently not supported for crossref")
         elif args.api == "arxiv":
             logging.warning("Restart currently not supported for arxiv")
+        elif args.api == "biorxiv":
+            logging.warning("Restart currently not supported for biorxiv")
+        elif args.api == "medrxiv":
+            logging.warning("Restart currently not supported for medrxiv")
 
     @staticmethod
     def handle_adding_date_to_query(args):
@@ -164,10 +209,18 @@ class Pygetpapers:
 
         if args.startdate and not args.enddate:
             args.enddate = strftime("%Y-%d-%m", gmtime())
+
+        if not args.startdate:
+            args.date_or_number_of_papers = args.limit
+        else:
+            args.date_or_number_of_papers = f"{args.startdate}/{args.enddate}"
+
         if args.startdate and args.enddate:
-            args.query = f'({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])'
+            args.query = (
+                f"({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])"
+            )
         elif args.enddate:
-            args.query = f'({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])'
+            args.query = f"({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])"
 
     def handlecli(self):
         """Handles the command line interface using argparse"""
@@ -176,99 +229,129 @@ class Pygetpapers:
         default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
         parser = configargparse.ArgParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help",
-            add_config_file_help=False)
+            add_config_file_help=False,
+        )
         parser.add_argument(
-            '--config',
+            "--config",
             is_config_file=True,
-            help='config file path to read query for pygetpapers')
+            help="config file path to read query for pygetpapers",
+        )
 
         parser.add_argument(
             "-v",
             "--version",
             default=False,
             action="store_true",
-            help="output the version number")
+            help="output the version number",
+        )
         parser.add_argument(
             "-q",
             "--query",
             type=str,
             default=False,
             help="query string transmitted to repository API. "
-                 "Eg. \"Artificial Intelligence\" or \"Plant Parts\". "
-                 "To escape special characters within the quotes, use backslash. "
-                 "Incase of nested quotes, ensure that the initial "
-                 "quotes are double and the qutoes inside are single. "
-                 "For eg: `'(LICENSE:\"cc by\" OR LICENSE:\"cc-by\") "
-                 "AND METHODS:\"transcriptome assembly\"' ` "
-                 "is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') "
-                 "AND METHODS:'transcriptome assembly'\"` ")
+            'Eg. "Artificial Intelligence" or "Plant Parts". '
+            "To escape special characters within the quotes, use backslash. "
+            "Incase of nested quotes, ensure that the initial "
+            "quotes are double and the qutoes inside are single. "
+            'For eg: `\'(LICENSE:"cc by" OR LICENSE:"cc-by") '
+            'AND METHODS:"transcriptome assembly"\' ` '
+            "is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') "
+            "AND METHODS:'transcriptome assembly'\"` ",
+        )
 
         parser.add_argument(
             "-o",
             "--output",
             type=str,
             help="output directory (Default: Folder inside current working directory named )",
-            default=os.path.join(
-                os.getcwd(),
-                default_path))
-        parser.add_argument("--save_query", default=False, action='store_true',
-                            help="saved the passed query in a config file")
-        parser.add_argument("-x", "--xml", default=False, action='store_true',
-                            help="download fulltext XMLs if available")
-        parser.add_argument("-p", "--pdf", default=False, action='store_true',
-                            help="download fulltext PDFs if available")
-        parser.add_argument("-s", "--supp", default=False, action='store_true',
-                            help="download supplementary files if available	")
+            default=os.path.join(os.getcwd(), default_path),
+        )
+        parser.add_argument(
+            "--save_query",
+            default=False,
+            action="store_true",
+            help="saved the passed query in a config file",
+        )
+        parser.add_argument(
+            "-x",
+            "--xml",
+            default=False,
+            action="store_true",
+            help="download fulltext XMLs if available",
+        )
+        parser.add_argument(
+            "-p",
+            "--pdf",
+            default=False,
+            action="store_true",
+            help="download fulltext PDFs if available",
+        )
+        parser.add_argument(
+            "-s",
+            "--supp",
+            default=False,
+            action="store_true",
+            help="download supplementary files if available	",
+        )
         parser.add_argument(
             "-z",
             "--zip",
             default=False,
-            action='store_true',
-            help="download files from ftp endpoint if available	")
+            action="store_true",
+            help="download files from ftp endpoint if available	",
+        )
         parser.add_argument(
             "--references",
             type=str,
             default=False,
             help="Download references if available. "
-                 "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+            "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
+        )
         parser.add_argument(
             "-n",
             "--noexecute",
             default=False,
-            action='store_true',
-            help="report how many results match the query, but don't actually download anything")
+            action="store_true",
+            help="report how many results match the query, but don't actually download anything",
+        )
 
         parser.add_argument(
             "--citations",
             type=str,
             default=False,
             help="Download citations if available. "
-                 "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).")
+            "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
+        )
         parser.add_argument(
             "-l",
-            '--loglevel',
+            "--loglevel",
             default="info",
             help="Provide logging level.  "
-                 "Example --log warning <<info,warning,debug,error,critical>>, default='info'")
+            "Example --log warning <<info,warning,debug,error,critical>>, default='info'",
+        )
         parser.add_argument(
             "-f",
             "--logfile",
             default=False,
             type=str,
-            help="save log to specified file in output directory as well as printing to terminal")
+            help="save log to specified file in output directory as well as printing to terminal",
+        )
         parser.add_argument(
             "-k",
             "--limit",
             default=100,
             type=int,
-            help="maximum number of hits (default: 100)")
+            help="maximum number of hits (default: 100)",
+        )
 
         parser.add_argument(
-            '-r',
+            "-r",
             "--restart",
             default=False,
             type=str,
-            help="Reads the json and makes the xml files. Takes the path to the json as the input")
+            help="Reads the json and makes the xml files. Takes the path to the json as the input",
+        )
 
         parser.add_argument(
             "-u",
@@ -276,54 +359,74 @@ class Pygetpapers:
             default=False,
             type=str,
             help="Updates the corpus by downloading new papers. "
-                 "Takes the path of metadata json file of the orignal corpus as the input. "
-                 "Requires -k or --limit "
-                 "(If not provided, default will be used) and -q or --query "
-                 "(must be provided) to be given. "
-                 "Takes the path to the json as the input.")
+            "Takes the path of metadata json file of the orignal corpus as the input. "
+            "Requires -k or --limit "
+            "(If not provided, default will be used) and -q or --query "
+            "(must be provided) to be given. "
+            "Takes the path to the json as the input.",
+        )
         parser.add_argument(
             "--onlyquery",
-            action='store_true',
+            action="store_true",
             help="Saves json file containing the result of the query in storage. "
-                 "The json file can be given to --restart to download the papers later.")
+            "The json file can be given to --restart to download the papers later.",
+        )
         parser.add_argument(
             "-c",
             "--makecsv",
             default=False,
-            action='store_true',
-            help="Stores the per-document metadata as csv.")
-        parser.add_argument("--makehtml", default=False, action='store_true',
-                            help="Stores the per-document metadata as html.")
-        parser.add_argument("--synonym", default=False, action='store_true',
-                            help="Results contain synonyms as well.")
+            action="store_true",
+            help="Stores the per-document metadata as csv.",
+        )
+        parser.add_argument(
+            "--makehtml",
+            default=False,
+            action="store_true",
+            help="Stores the per-document metadata as html.",
+        )
+        parser.add_argument(
+            "--synonym",
+            default=False,
+            action="store_true",
+            help="Results contain synonyms as well.",
+        )
         parser.add_argument(
             "--startdate",
             default=False,
             type=str,
-            help="Gives papers starting from given date. Format: YYYY-MM-DD")
+            help="Gives papers starting from given date. Format: YYYY-MM-DD",
+        )
         parser.add_argument(
             "--enddate",
             default=False,
             type=str,
-            help="Gives papers till given date. Format: YYYY-MM-DD")
+            help="Gives papers till given date. Format: YYYY-MM-DD",
+        )
         parser.add_argument(
             "--terms",
             default=False,
             type=str,
             help="Location of the txt file which contains terms serperated by a comma which will be"
-                 "OR'ed among themselves and AND'ed with the query")
+            "OR'ed among themselves and AND'ed with the query",
+        )
         parser.add_argument(
             "--api",
-            default='eupmc',
+            default="eupmc",
             type=str,
-            help="API to search [eupmc, crossref,arxiv] (default: eupmc)")
+            help="API to search [eupmc, crossref,arxiv,biorxiv,medrxiv] (default: eupmc)",
+        )
         parser.add_argument(
             "--filter",
             default=None,
             type=str,
-            help="filter by key value pair, passed straight to the crossref api only")
-        parser.add_argument("--password", default=None, type=str,
-                            help="password for testing out hidden features")
+            help="filter by key value pair, passed straight to the crossref api only",
+        )
+        parser.add_argument(
+            "--password",
+            default=None,
+            type=str,
+            help="password for testing out hidden features",
+        )
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             sys.exit()
@@ -340,12 +443,12 @@ class Pygetpapers:
         if args.save_query:
             self.handle_write_configuration_file(args)
         levels = {
-            'critical': logging.CRITICAL,
-            'error': logging.ERROR,
-            'warn': logging.WARNING,
-            'warning': logging.WARNING,
-            'info': logging.INFO,
-            'debug': logging.DEBUG
+            "critical": logging.CRITICAL,
+            "error": logging.ERROR,
+            "warn": logging.WARNING,
+            "warning": logging.WARNING,
+            "info": logging.INFO,
+            "debug": logging.DEBUG,
         }
         level = levels.get(args.loglevel.lower())
 
@@ -353,8 +456,7 @@ class Pygetpapers:
             self.handle_logfile(args, level)
 
         else:
-            logging.basicConfig(
-                level=level, format='%(levelname)s: %(message)s')
+            logging.basicConfig(level=level, format="%(levelname)s: %(message)s")
 
         if args.restart:
             self.handle_restart(args)
@@ -363,16 +465,27 @@ class Pygetpapers:
             logging.info(version)
             sys.exit(1)
 
-        if not args.query and not args.restart and not args.terms:
-            logging.warning('Please specify a query')
+        if (
+            not args.query
+            and not args.restart
+            and not args.terms
+            and not args.api == "biorxiv"
+            and not args.api == "medrxiv"
+        ):
+            logging.warning("Please specify a query")
             sys.exit(1)
+
+        if not args.query and (
+            args.api == "biorxiv" or args.api == "medrxiv" or args.terms
+        ):
+            args.query = "Default Pygetpapers Query"
 
         self.handle_adding_date_to_query(args)
 
         if args.terms:
             self.handle_adding_terms_from_file(args)
 
-        logging.info('Final query is %s', args.query)
+        logging.info("Final query is %s", args.query)
 
         if args.noexecute:
             self.handle_noexecute(args)
@@ -400,3 +513,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# TODO:Add days flag
+# TODO:Add tests for arxiv and rxiv
+# TODO:Fix rxiv for N recent posts
+# TODO:Fix xml for rxiv
