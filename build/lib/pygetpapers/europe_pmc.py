@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import pandas as pd
+from tqdm import tqdm
 from pygetpapers.download_tools import DownloadTools
 
 
@@ -107,7 +108,8 @@ class EuropePmc:
         """
 
         if "nextCursorMark" in builtquery["responseWrapper"]:
-            next_cursor_mark.append(builtquery["responseWrapper"]["nextCursorMark"])
+            next_cursor_mark.append(
+                builtquery["responseWrapper"]["nextCursorMark"])
         else:
             morepapers = False
             logging.warning("Could not find more papers")
@@ -402,7 +404,7 @@ class EuropePmc:
         if makexml:
             self.download_tools.log_making_xml()
         paper_number = 0
-        for paper in final_xml_dict:
+        for paper in tqdm(final_xml_dict):
             start = time.time()
             paper_number += 1
             pmcid = paper
@@ -423,12 +425,12 @@ class EuropePmc:
                 self.download_tools.make_references(
                     directory_url, paperid, references, referenceurl
                 )
-                logging.info("Made references for %s", pmcid)
+                logging.debug("Made references for %s", pmcid)
             if citations:
                 self.download_tools.make_citations(
                     citations, citationurl, directory_url, paperid
                 )
-                logging.info("Made Citations for %s", pmcid)
+                logging.debug("Made Citations for %s", pmcid)
             if supplementary_files:
                 self.download_tools.getsupplementaryfiles(
                     pmcid, directory_url, supplementaryfilesurl
@@ -448,8 +450,8 @@ class EuropePmc:
             ) = self.download_tools.conditions_to_download(paperdict)
             if condition_to_down:
                 if makexml:
-                    self.download_tools.writexml(directory_url, destination_url, tree)
-                    logging.info("*/Wrote xml for %s/", pmcid)
+                    self.download_tools.writexml(
+                        directory_url, destination_url, tree)
                     paperdict["downloaded"] = True
             if condition_to_download_pdf:
                 if getpdf:
@@ -462,7 +464,7 @@ class EuropePmc:
                                 paperdict["pdflinks"], pdf_destination
                             )
                             paperdict["pdfdownloaded"] = True
-                            logging.info("Wrote the pdf file for %s", pmcid)
+                            logging.debug("Wrote the pdf file for %s", pmcid)
             dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
             if condition_to_download_json:
                 self.download_tools.makejson(jsonurl, dict_to_write)
@@ -473,11 +475,13 @@ class EuropePmc:
                     paperdict["csvmade"] = True
             if condition_to_html:
                 if makehtml:
-                    self.download_tools.make_html_from_dict(dict_to_write, htmlurl)
-                    logging.info("Wrote the html file for %s", pmcid)
+                    self.download_tools.make_html_from_dict(
+                        dict_to_write, htmlurl)
+                    logging.debug("Wrote the html file for %s", pmcid)
                     paperdict["htmlmade"] = True
             self.download_tools.makejson(
-                os.path.join(str(os.getcwd()), "eupmc_results.json"), final_xml_dict
+                os.path.join(str(os.getcwd()),
+                             "eupmc_results.json"), final_xml_dict
             )
             stop = time.time()
             logging.debug("Time elapsed: %s", stop - start)
@@ -606,7 +610,7 @@ class EuropePmc:
 
         resultant_dict = {}
         if searchvariable:
-            for paper_number, papers in enumerate(searchvariable):
+            for paper_number, papers in tqdm(enumerate(searchvariable)):
                 output_dict = json.loads(json.dumps(papers))
                 for paper in output_dict:
                     if self.pmcid in paper:

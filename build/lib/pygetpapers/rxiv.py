@@ -3,6 +3,7 @@ import os
 import json
 import logging
 import requests
+from tqdm import tqdm
 from pygetpapers.download_tools import DownloadTools
 
 
@@ -209,7 +210,7 @@ class Rxiv:
             makehtml=makehtml,
         )
         if makexml:
-            logging.info("Made xml for paper")
+            logging.info("Making xml for paper")
             dict_of_papers = returned_result["total_json_output"]
             self.make_xml_for_rxiv(
                 dict_of_papers, "jatsxml", "doi", "fulltext.xml")
@@ -231,7 +232,7 @@ class Rxiv:
         :param filename: [description]
         :type filename: [type]
         """
-        for paper in dict_of_papers:
+        for paper in tqdm(dict_of_papers):
             dict_of_paper = dict_of_papers[paper]
             xml_url = dict_of_paper[xml_identifier]
             doi_of_paper = dict_of_paper[paper_id_identifier]

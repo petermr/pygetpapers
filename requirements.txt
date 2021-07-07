@@ -7,3 +7,4 @@ pytest==6.2.2
 habanero
 arxiv
 dict2xml
+tqdm

@@ -8,6 +8,7 @@ import logging
 import requests
 import pandas as pd
 import xmltodict
+from tqdm import tqdm
 from dict2xml import dict2xml
 
 
@@ -480,7 +481,7 @@ class DownloadTools:
         logging.info("Making csv files for metadata at %s", os.getcwd())
         paper = 0
         self.write_or_append_to_csv(df, output_main)
-        for result in return_dict:
+        for result in tqdm(return_dict):
             paper += 1
             result_encoded = self.url_encode_id(result)
             url = os.path.join(os.getcwd(), result_encoded, output_paper)
@@ -490,7 +491,7 @@ class DownloadTools:
                 result, return_dict)
             self.write_or_append_to_csv(df_for_paper, url)
             return_dict[result]["csvmade"] = True
-            logging.info("Wrote csv files for paper %s", paper)
+            logging.debug("Wrote csv files for paper %s", paper)
 
     def make_html_for_dict(self, df, return_dict, output_main, output_paper):
         """
@@ -505,7 +506,7 @@ class DownloadTools:
         paper = 0
         htmlurl = os.path.join(os.getcwd(), output_main)
         self.make_html_from_dataframe(df, htmlurl)
-        for result in return_dict:
+        for result in tqdm(return_dict):
             paper += 1
             result_encoded = self.url_encode_id(result)
             url = os.path.join(os.getcwd(), result_encoded, output_paper)
@@ -515,7 +516,7 @@ class DownloadTools:
                 result, return_dict)
             self.make_html_from_dataframe(df_for_paper, url)
             return_dict[result]["htmlmade"] = True
-            logging.info("Wrote xml files for paper %s", paper)
+            logging.debug("Wrote xml files for paper %s", paper)
 
     def make_xml_for_dict(self, return_dict, output_main, output_paper):
         """
@@ -531,7 +532,7 @@ class DownloadTools:
         with open(xmlurl, "w", encoding="utf-8") as file_handler:
             file_handler.write(total_xml)
         paper = 0
-        for result in return_dict:
+        for result in tqdm(return_dict):
             paper += 1
             total_xml_of_paper = dict2xml(
                 return_dict[result], wrap="root", indent="   "
@@ -545,7 +546,7 @@ class DownloadTools:
 
             with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
                 file_handler.write(total_xml_of_paper)
-            logging.info("Wrote xml files for paper %s", paper)
+            logging.debug("Wrote xml files for paper %s", paper)
 
     def handle_creation_of_csv_html_xml(
         self, makecsv, makehtml, makexml, return_dict, name
@@ -629,7 +630,7 @@ class DownloadTools:
         logging.info("Writing metadata file for the papers at %s",
                      str(os.getcwd()))
         total_dict = returned_dict["total_json_output"]
-        for paper in total_dict:
+        for paper in tqdm(total_dict):
             dict_of_paper = total_dict[paper]
             if not dict_of_paper["jsondownloaded"]:
                 paper_numer += 1
@@ -642,7 +643,7 @@ class DownloadTools:
                 )
                 dict_of_paper["jsondownloaded"] = True
                 self.makejson(path_to_save_metadata, dict_of_paper)
-                logging.info(
+                logging.debug(
                     "Wrote metadata file for the paper %s", paper_numer)
 
     def make_dict_to_return(
