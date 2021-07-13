@@ -13,7 +13,7 @@ config = configparser.RawConfigParser(allow_no_value=True)
 config.read_string(config_file)
 version = config.get("pygetpapers", "version")
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 requirements = ['requests', 'pandas',
                 'lxml', 'xmltodict', 'configargparse', 'habanero', 'arxiv', 'dict2xml', 'tqdm']
@@ -21,7 +21,7 @@ requirements = ['requests', 'pandas',
 setup(
     name='pygetpapers',
     version=f"{version}",
-    description='Automated Download of Research Papers from EuropePMC repository',
+    description='Automated Download of Research Papers from various scientific repositories',
     long_description=readme,
     author='Ayush Garg',
     author_email='ayush@science.org.in',
