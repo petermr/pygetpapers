@@ -1,8 +1,0 @@
-pygetpapers
-===========
-
-.. toctree::
-   :maxdepth: 4
-
-   pygetpapers
-   
