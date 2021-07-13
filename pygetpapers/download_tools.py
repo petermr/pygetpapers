@@ -3,6 +3,7 @@ import json
 import time
 import zipfile
 import io
+import copy
 import os
 import logging
 import requests
@@ -129,13 +130,19 @@ class DownloadTools:
         :returns: resultant_dict_for_csv
 
         """
-        resultant_dict_for_csv = resultant_dict
+        resultant_dict_for_csv = copy.deepcopy(resultant_dict)
         for paper in resultant_dict_for_csv:
             paper_dict = resultant_dict_for_csv[paper]
-            paper_dict.pop("downloaded")
-            paper_dict.pop("pdfdownloaded")
-            paper_dict.pop("jsondownloaded")
-            paper_dict.pop("csvmade")
+            if "downloaded" in paper_dict:
+                paper_dict.pop("downloaded")
+            if "pdfdownloaded" in paper_dict:
+                paper_dict.pop("pdfdownloaded")
+            if "jsondownloaded" in paper_dict:
+                paper_dict.pop("jsondownloaded")
+            if "csvmade" in paper_dict:
+                paper_dict.pop("csvmade")
+            if "htmlmade" in paper_dict:
+                paper_dict.pop("htmlmade")
         return resultant_dict_for_csv
 
     @staticmethod
@@ -481,14 +488,15 @@ class DownloadTools:
         logging.info("Making csv files for metadata at %s", os.getcwd())
         paper = 0
         self.write_or_append_to_csv(df, output_main)
-        for result in tqdm(return_dict):
+        dict_to_use = self.make_dict_for_csv(return_dict)
+        for result in tqdm(dict_to_use):
             paper += 1
             result_encoded = self.url_encode_id(result)
             url = os.path.join(os.getcwd(), result_encoded, output_paper)
             self.check_or_make_directory(
                 os.path.join(os.getcwd(), result_encoded))
             df_for_paper = self.make_dataframe_for_paper_dict(
-                result, return_dict)
+                result, dict_to_use)
             self.write_or_append_to_csv(df_for_paper, url)
             return_dict[result]["csvmade"] = True
             logging.debug("Wrote csv files for paper %s", paper)
@@ -526,16 +534,17 @@ class DownloadTools:
         :param output_paper:
 
         """
-        total_xml = dict2xml(return_dict, wrap="root", indent="   ")
+        dict_to_use = self.make_dict_for_csv(return_dict)
+        total_xml = dict2xml(dict_to_use, wrap="root", indent="   ")
         logging.info("Making xml files for metadata at %s", os.getcwd())
         xmlurl = os.path.join(os.getcwd(), output_main)
         with open(xmlurl, "w", encoding="utf-8") as file_handler:
             file_handler.write(total_xml)
         paper = 0
-        for result in tqdm(return_dict):
+        for result in tqdm(dict_to_use):
             paper += 1
             total_xml_of_paper = dict2xml(
-                return_dict[result], wrap="root", indent="   "
+                dict_to_use[result], wrap="root", indent="   "
             )
             result_encoded = self.url_encode_id(result)
             xmlurl_of_paper = os.path.join(
@@ -546,6 +555,7 @@ class DownloadTools:
 
             with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
                 file_handler.write(total_xml_of_paper)
+
             logging.debug("Wrote xml files for paper %s", paper)
 
     def handle_creation_of_csv_html_xml(
@@ -564,7 +574,8 @@ class DownloadTools:
         :param name: [description]
         :type name: [type]
         """
-        df = pd.DataFrame.from_dict(return_dict)
+        dict_to_use = self.make_dict_for_csv(return_dict)
+        df = pd.DataFrame.from_dict(dict_to_use)
         if makecsv:
             self.make_csv_for_dict(
                 df, return_dict, f"{name}s.csv", f"{name}.csv")

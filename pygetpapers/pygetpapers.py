@@ -9,6 +9,7 @@ from pygetpapers.europe_pmc import EuropePmc
 from pygetpapers.crossref import CrossRef
 from pygetpapers.arxiv import Arxiv
 from pygetpapers.rxiv import Rxiv
+from pygetpapers.rxivist import Rxivist
 
 
 class Pygetpapers:
@@ -20,6 +21,7 @@ class Pygetpapers:
         self.arxiv = Arxiv()
         self.europe_pmc = EuropePmc()
         self.rxiv = Rxiv()
+        self.rxivist = Rxivist()
         self.download_tools = DownloadTools("europepmc")
         self.version = self.download_tools.get_version()
 
@@ -51,6 +53,10 @@ class Pygetpapers:
             self.crossref.noexecute(args.query)
         elif args.api == "biorxiv" or args.api == "medrxiv":
             self.rxiv.noexecute(args.date_or_number_of_papers, source=args.api)
+        elif args.api == "rxivist-bio":
+            self.rxivist.noexecute(args.query, source="biorxiv")
+        elif args.api == "rxivist-med":
+            self.rxivist.noexecute(args.query, source="medrxiv")
         elif args.api == "arxiv":
             self.arxiv.noexecute(args.query)
 
@@ -79,6 +85,26 @@ class Pygetpapers:
         elif args.api == "medrxiv":
             self.rxiv.rxiv_update(
                 args.date_or_number_of_papers,
+                args.limit,
+                source="medrxiv",
+                update=args.update,
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
+        elif args.api == "rxivist-bio":
+            self.rxivist.rxivist_update(
+                args.query,
+                args.limit,
+                source="biorxiv",
+                update=args.update,
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
+        elif args.api == "rxivist-med":
+            self.rxivist.rxivist_update(
+                args.query,
                 args.limit,
                 source="medrxiv",
                 update=args.update,
@@ -137,7 +163,25 @@ class Pygetpapers:
                 makexml=args.xml,
                 makehtml=args.makehtml,
             )
-        elif args.api == "arxiv" and args.password == "CEVOPEN2021":
+        elif args.api == "rxivist-bio":
+            self.rxivist.download_and_save_results(
+                args.query,
+                args.limit,
+                source="biorxiv",
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
+        elif args.api == "rxivist-med":
+            self.rxivist.download_and_save_results(
+                args.query,
+                args.limit,
+                source="medrxiv",
+                makecsv=args.makecsv,
+                makexml=args.xml,
+                makehtml=args.makehtml,
+            )
+        elif args.api == "arxiv":
             self.arxiv.arxiv(
                 args.query,
                 args.limit,
@@ -190,14 +234,8 @@ class Pygetpapers:
         """
         if args.api == "eupmc":
             self.europe_pmc.eupmc_restart(args)
-        elif args.api == "crossref":
-            logging.warning("Restart currently not supported for crossref")
-        elif args.api == "arxiv":
-            logging.warning("Restart currently not supported for arxiv")
-        elif args.api == "biorxiv":
-            logging.warning("Restart currently not supported for biorxiv")
-        elif args.api == "medrxiv":
-            logging.warning("Restart currently not supported for medrxiv")
+        else:
+            logging.warning("Restart currently not supported for this repo")
 
     @staticmethod
     def handle_adding_date_to_query(args):
@@ -413,19 +451,13 @@ class Pygetpapers:
             "--api",
             default="eupmc",
             type=str,
-            help="API to search [eupmc, crossref,arxiv,biorxiv,medrxiv] (default: eupmc)",
+            help="API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med] (default: eupmc)",
         )
         parser.add_argument(
             "--filter",
             default=None,
             type=str,
             help="filter by key value pair, passed straight to the crossref api only",
-        )
-        parser.add_argument(
-            "--password",
-            default=None,
-            type=str,
-            help="password for testing out hidden features",
         )
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
@@ -456,7 +488,8 @@ class Pygetpapers:
             self.handle_logfile(args, level)
 
         else:
-            logging.basicConfig(level=level, format="%(levelname)s: %(message)s")
+            logging.basicConfig(
+                level=level, format="%(levelname)s: %(message)s")
 
         if args.restart:
             self.handle_restart(args)
@@ -514,7 +547,5 @@ def main():
 if __name__ == "__main__":
     main()
 
-# TODO:Add days flag
-# TODO:Add tests for arxiv and rxiv
-# TODO:Fix rxiv for N recent posts
-# TODO:Fix xml for rxiv
+# TODO:Add tests for arxiv and rxiv and rxivist
+# TODO:Fill docstrings

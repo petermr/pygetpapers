@@ -335,4 +335,6 @@ Contents
    europe_pmc
    crossref
    arxiv
+   rxivist
+   rxiv
 
