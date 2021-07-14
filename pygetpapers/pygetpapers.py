@@ -508,9 +508,8 @@ class Pygetpapers:
             logging.warning("Please specify a query")
             sys.exit(1)
 
-        if not args.query and (
-            args.api == "biorxiv" or args.api == "medrxiv" or args.terms
-        ):
+        if ((args.api == "biorxiv" or args.api == "medrxiv") or (not args.query and
+                                                                 args.terms)):
             args.query = "Default Pygetpapers Query"
 
         self.handle_adding_date_to_query(args)
