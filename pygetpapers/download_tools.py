@@ -186,7 +186,7 @@ class DownloadTools:
     def make_dataframe_for_paper_dict(result, return_dict):
         """
 
-        :param result: param return_dict:
+        :param result: 
         :param return_dict:
 
         """
