@@ -50,6 +50,9 @@ class Rxivist:
                 total_number_of_results,
                 total_papers_list,
             )
+            if len(total_papers_list) == 0:
+                logging.warning("Could not find more papers")
+                break
             cursor_mark += 1
 
         total_result_list = total_papers_list[:size]

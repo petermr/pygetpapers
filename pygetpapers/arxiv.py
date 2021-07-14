@@ -71,31 +71,32 @@ class Arxiv:
             url_encoded_id_of_paper = str(result.entry_id).rsplit("/", 1)[-1]
 
             return_dict[url_encoded_id_of_paper] = {}
-            return_dict[url_encoded_id_of_paper]["date_updated"] = str(
+            paper_dict = return_dict[url_encoded_id_of_paper]
+            paper_dict["date_updated"] = str(
                 result.updated)
-            return_dict[url_encoded_id_of_paper]["date_published"] = str(
+            paper_dict["date_published"] = str(
                 result.published
             )
-            return_dict[url_encoded_id_of_paper]["title"] = str(result.title)
-            return_dict[url_encoded_id_of_paper]["authors"] = str(
+            paper_dict["title"] = str(result.title)
+            paper_dict["authors"] = str(
                 result.authors)
-            return_dict[url_encoded_id_of_paper]["summary"] = str(
+            paper_dict["summary"] = str(
                 result.summary)
-            return_dict[url_encoded_id_of_paper]["comment"] = str(
+            paper_dict["comment"] = str(
                 result.comment)
-            return_dict[url_encoded_id_of_paper]["journal_ref"] = str(
+            paper_dict["journal_ref"] = str(
                 result.journal_ref
             )
-            return_dict[url_encoded_id_of_paper]["doi"] = str(result.doi)
-            return_dict[url_encoded_id_of_paper]["primary_category"] = str(
+            paper_dict["doi"] = str(result.doi)
+            paper_dict["primary_category"] = str(
                 result.primary_category
             )
-            return_dict[url_encoded_id_of_paper]["categories"] = str(
+            paper_dict["categories"] = str(
                 result.categories)
-            return_dict[url_encoded_id_of_paper]["links"] = str(result.links)
-            return_dict[url_encoded_id_of_paper]["pdf_url"] = str(
+            paper_dict["links"] = str(result.links)
+            paper_dict["pdf_url"] = str(
                 result.pdf_url)
-            return_dict[url_encoded_id_of_paper]["entry_id"] = str(
+            paper_dict["entry_id"] = str(
                 result.entry_id)
 
     def download_pdf(self, return_dict):
