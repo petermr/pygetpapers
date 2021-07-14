@@ -58,6 +58,9 @@ class Rxiv:
                 total_number_of_results,
                 total_papers_list,
             )
+            if len(total_papers_list) ==0:
+                logging.warning("No more papers found")
+                break
             cursor_mark += 1
         total_result_list = total_papers_list[:size]
         json_return_dict = self.download_tools.make_dict_from_returned_list(
