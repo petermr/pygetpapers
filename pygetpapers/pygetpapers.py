@@ -365,7 +365,7 @@ class Pygetpapers:
             "--restart",
             default=False,
             type=str,
-            help="Reads the json and makes the xml files. Takes the path to the json as the input",
+            help="Reads the json and makes the xml files. Takes the path to the json as the input (only eupmc supported)",
         )
 
         parser.add_argument(
