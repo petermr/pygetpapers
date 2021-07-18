@@ -48,17 +48,18 @@ class Rxiv:
             cursor_mark = update["cursor_mark"]
         else:
             cursor_mark = 0
-        total_number_of_results = size
+        total_number_of_results = 0
         total_papers_list = []
+        logging.info("Making Request to rxiv")
         while len(total_papers_list) < size:
-            total_number_of_results, total_papers_list = self.make_request_add_papers(
+            total_number_of_results, total_papers_list, papers_list = self.make_request_add_papers(
                 cursor_mark,
                 interval,
                 source,
                 total_number_of_results,
                 total_papers_list,
             )
-            if len(total_papers_list) ==0:
+            if len(papers_list) == 0:
                 logging.warning("No more papers found")
                 break
             cursor_mark += 1
@@ -100,7 +101,6 @@ class Rxiv:
         :return: [description]
         :rtype: [type]
         """
-        logging.info("Making Request to rxiv")
         self.make_request_url_for_rxiv(cursor_mark, interval, source)
         request_handler = self.post_request()
         request_dict = json.loads(request_handler.text)
@@ -108,7 +108,7 @@ class Rxiv:
         if "total" in request_dict["messages"][0]:
             total_number_of_results = request_dict["messages"][0]["total"]
         total_papers_list += papers_list
-        return total_number_of_results, total_papers_list
+        return total_number_of_results, total_papers_list, papers_list
 
     def post_request(self):
         """[summary]

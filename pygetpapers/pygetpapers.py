@@ -246,7 +246,7 @@ class Pygetpapers:
         """
 
         if args.startdate and not args.enddate:
-            args.enddate = strftime("%Y-%d-%m", gmtime())
+            args.enddate = strftime("%Y-%m-%d", gmtime())
 
         if not args.startdate:
             args.date_or_number_of_papers = args.limit

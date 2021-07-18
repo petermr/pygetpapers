@@ -42,18 +42,19 @@ class Rxivist:
             cursor_mark = 0
         total_number_of_results = size
         total_papers_list = []
+        logging.info("Making Request to rxivist")
         while len(total_papers_list) < size:
-            total_number_of_results, total_papers_list = self.make_request_add_papers(
+            total_number_of_results, total_papers_list, papers_list = self.make_request_add_papers(
                 query,
                 cursor_mark,
                 source,
                 total_number_of_results,
                 total_papers_list,
             )
-            if len(total_papers_list) == 0:
+            cursor_mark += 1
+            if len(papers_list) == 0:
                 logging.warning("Could not find more papers")
                 break
-            cursor_mark += 1
 
         total_result_list = total_papers_list[:size]
         json_return_dict = self.download_tools.make_dict_from_returned_list(
@@ -103,14 +104,13 @@ class Rxivist:
         :return: [description]
         :rtype: [type]
         """
-        logging.info("Making Request to rxivist")
         request_handler = self.send_post_request(query, cursor_mark, source)
         request_dict = json.loads(request_handler.text)
         papers_list = request_dict["results"]
         if "total_results" in request_dict["query"]:
             total_number_of_results = request_dict["query"]["total_results"]
         total_papers_list += papers_list
-        return total_number_of_results, total_papers_list
+        return total_number_of_results, total_papers_list, papers_list
 
     def rxivist_update(
         self,
