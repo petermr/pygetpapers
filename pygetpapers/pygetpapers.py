@@ -53,10 +53,8 @@ class Pygetpapers:
             self.crossref.noexecute(args.query)
         elif args.api == "biorxiv" or args.api == "medrxiv":
             self.rxiv.noexecute(args.date_or_number_of_papers, source=args.api)
-        elif args.api == "rxivist-bio":
-            self.rxivist.noexecute(args.query, source="biorxiv")
-        elif args.api == "rxivist-med":
-            self.rxivist.noexecute(args.query, source="medrxiv")
+        elif args.api == "rxivist":
+            self.rxivist.noexecute(args.query)
         elif args.api == "arxiv":
             self.arxiv.noexecute(args.query)
 
@@ -92,21 +90,10 @@ class Pygetpapers:
                 makexml=args.xml,
                 makehtml=args.makehtml,
             )
-        elif args.api == "rxivist-bio":
+        elif args.api == "rxivist":
             self.rxivist.rxivist_update(
                 args.query,
                 args.limit,
-                source="biorxiv",
-                update=args.update,
-                makecsv=args.makecsv,
-                makexml=args.xml,
-                makehtml=args.makehtml,
-            )
-        elif args.api == "rxivist-med":
-            self.rxivist.rxivist_update(
-                args.query,
-                args.limit,
-                source="medrxiv",
                 update=args.update,
                 makecsv=args.makecsv,
                 makexml=args.xml,
@@ -163,20 +150,10 @@ class Pygetpapers:
                 makexml=args.xml,
                 makehtml=args.makehtml,
             )
-        elif args.api == "rxivist-bio":
+        elif args.api == "rxivist":
             self.rxivist.download_and_save_results(
                 args.query,
                 args.limit,
-                source="biorxiv",
-                makecsv=args.makecsv,
-                makexml=args.xml,
-                makehtml=args.makehtml,
-            )
-        elif args.api == "rxivist-med":
-            self.rxivist.download_and_save_results(
-                args.query,
-                args.limit,
-                source="medrxiv",
                 makecsv=args.makecsv,
                 makexml=args.xml,
                 makehtml=args.makehtml,
@@ -316,34 +293,34 @@ class Pygetpapers:
             "--xml",
             default=False,
             action="store_true",
-            help="download fulltext XMLs if available",
+            help="download fulltext XMLs if available or save metadata as XML",
         )
         parser.add_argument(
             "-p",
             "--pdf",
             default=False,
             action="store_true",
-            help="download fulltext PDFs if available",
+            help="download fulltext PDFs if available (only eupmc and arxiv supported)",
         )
         parser.add_argument(
             "-s",
             "--supp",
             default=False,
             action="store_true",
-            help="download supplementary files if available	",
+            help="download supplementary files if available (only eupmc supported)	",
         )
         parser.add_argument(
             "-z",
             "--zip",
             default=False,
             action="store_true",
-            help="download files from ftp endpoint if available	",
+            help="download files from ftp endpoint if available (only eupmc supported)	",
         )
         parser.add_argument(
             "--references",
             type=str,
             default=False,
-            help="Download references if available. "
+            help="Download references if available. (only eupmc supported)"
             "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
         )
         parser.add_argument(
@@ -358,7 +335,7 @@ class Pygetpapers:
             "--citations",
             type=str,
             default=False,
-            help="Download citations if available. "
+            help="Download citations if available (only eupmc supported). "
             "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
         )
         parser.add_argument(
@@ -406,7 +383,7 @@ class Pygetpapers:
         parser.add_argument(
             "--onlyquery",
             action="store_true",
-            help="Saves json file containing the result of the query in storage. "
+            help="Saves json file containing the result of the query in storage. (only eupmc supported)"
             "The json file can be given to --restart to download the papers later.",
         )
         parser.add_argument(
@@ -451,13 +428,13 @@ class Pygetpapers:
             "--api",
             default="eupmc",
             type=str,
-            help="API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med] (default: eupmc)",
+            help="API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist] (default: eupmc)",
         )
         parser.add_argument(
             "--filter",
             default=None,
             type=str,
-            help="filter by key value pair, passed straight to the crossref api only",
+            help="filter by key value pair (only crossref supported)",
         )
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
@@ -508,9 +485,13 @@ class Pygetpapers:
             logging.warning("Please specify a query")
             sys.exit(1)
 
-        if ((args.api == "biorxiv" or args.api == "medrxiv") or (not args.query and
-                                                                 args.terms)):
+        if not args.query and args.terms:
             args.query = "Default Pygetpapers Query"
+
+        if (args.api == "biorxiv" or args.api == "medrxiv") and args.query:
+            logging.warning(
+                "*rxiv doesnt support giving a query. Please provide a date interval or number of results to get instead")
+            sys.exit(1)
 
         self.handle_adding_date_to_query(args)
 

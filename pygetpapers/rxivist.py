@@ -18,7 +18,6 @@ class Rxivist:
                 size,
                 update=None,
                 makecsv=False,
-                source=False,
                 makexml=False,
                 makehtml=False,):
         """[summary]
@@ -47,7 +46,6 @@ class Rxivist:
             total_number_of_results, total_papers_list, papers_list = self.make_request_add_papers(
                 query,
                 cursor_mark,
-                source,
                 total_number_of_results,
                 total_papers_list,
             )
@@ -76,9 +74,9 @@ class Rxivist:
         )
         return dict_to_return
 
-    def send_post_request(self, query, cursor_mark=0, source=False, page_size=20):
+    def send_post_request(self, query, cursor_mark=0, page_size=20):
         url_to_request = self.get_url.format(
-            query=query, cursor=cursor_mark, source=source, page_size=page_size)
+            query=query, cursor=cursor_mark, page_size=page_size)
         start = time.time()
         request_handler = requests.get(url_to_request)
         stop = time.time()
@@ -87,7 +85,7 @@ class Rxivist:
         return request_handler
 
     def make_request_add_papers(
-        self, query, cursor_mark, source, total_number_of_results, total_papers_list
+        self, query, cursor_mark, total_number_of_results, total_papers_list
     ):
         """[summary]
 
@@ -95,8 +93,6 @@ class Rxivist:
         :type query: [type]
         :param cursor_mark: [description]
         :type cursor_mark: [type]
-        :param source: [description]
-        :type source: [type]
         :param total_number_of_results: [description]
         :type total_number_of_results: [type]
         :param total_papers_list: [description]
@@ -104,7 +100,7 @@ class Rxivist:
         :return: [description]
         :rtype: [type]
         """
-        request_handler = self.send_post_request(query, cursor_mark, source)
+        request_handler = self.send_post_request(query, cursor_mark)
         request_dict = json.loads(request_handler.text)
         papers_list = request_dict["results"]
         if "total_results" in request_dict["query"]:
@@ -118,7 +114,6 @@ class Rxivist:
         size,
         update=None,
         makecsv=False,
-        source=False,
         makexml=False,
         makehtml=False,
     ):
@@ -128,8 +123,6 @@ class Rxivist:
         :type interval: [type]
         :param size: [description]
         :type size: [type]
-        :param source: [description], defaults to "biorxiv"
-        :type source: str, optional
         :param update: [description], defaults to None
         :type update: [type], optional
         :param makecsv: [description], defaults to False
@@ -144,7 +137,6 @@ class Rxivist:
         self.download_and_save_results(
             query,
             size,
-            source=source,
             makecsv=makecsv,
             makexml=makexml,
             makehtml=makehtml,
@@ -154,7 +146,6 @@ class Rxivist:
         self,
         query,
         size,
-        source,
         makecsv=False,
         makexml=False,
         makehtml=False,
@@ -165,8 +156,6 @@ class Rxivist:
         :type query: [type]
         :param size: [description]
         :type size: [type]
-        :param source: [description]
-        :type source: [type]
         :param makecsv: [description], defaults to False
         :type makecsv: bool, optional
         :param makexml: [description], defaults to False
@@ -177,7 +166,6 @@ class Rxivist:
         returned_result = self.rxivist(
             query,
             size,
-            source=source,
             makecsv=makecsv,
             makexml=makexml,
             makehtml=makehtml,
@@ -186,14 +174,12 @@ class Rxivist:
             returned_result, key_in_dict="doi", name_of_file="rxivist-result"
         )
 
-    def noexecute(self, query, source):
+    def noexecute(self, query):
         """[summary]
 
         :param query: [description]
         :type query: [type]
-        :param source: [description]
-        :type source: [type]
         """
-        returned_result = self.rxivist(query, size=10, source=source)
+        returned_result = self.rxivist(query, size=10)
         totalhits = returned_result["total_hits"]
         logging.info("Total number of hits for the query are %s", totalhits)
