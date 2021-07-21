@@ -237,6 +237,64 @@ class Pygetpapers:
         elif args.enddate:
             args.query = f"({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])"
 
+    def handle_output_directory(self, args):
+        """[summary]
+
+        :param args: [description]
+        :type args: [type]
+        """
+        if os.path.exists(args.output):
+            os.chdir(args.output)
+        elif not args.noexecute and not args.update and not args.restart:
+            os.makedirs(args.output)
+            os.chdir(args.output)
+
+    def handle_query_creation(self, args):
+        """[summary]
+
+        :param args: [description]
+        :type args: [type]
+        """
+        if (
+            not args.query
+            and not args.restart
+            and not args.terms
+            and not args.api == "biorxiv"
+            and not args.api == "medrxiv"
+        ):
+            logging.warning("Please specify a query")
+            sys.exit(1)
+
+        if (args.api == "biorxiv" or args.api == "medrxiv") and args.query:
+            logging.warning(
+                "*rxiv doesnt support giving a query. Please provide a date interval or number of results to get instead")
+            sys.exit(1)
+
+        if not args.query and args.terms:
+            args.query = None
+
+    def handle_logger_creation(self, args):
+        """[summary]
+
+        :param args: [description]
+        :type args: [type]
+        """
+        levels = {
+            "critical": logging.CRITICAL,
+            "error": logging.ERROR,
+            "warn": logging.WARNING,
+            "warning": logging.WARNING,
+            "info": logging.INFO,
+            "debug": logging.DEBUG,
+        }
+        level = levels.get(args.loglevel.lower())
+
+        if args.logfile:
+            self.handle_logfile(args, level)
+        else:
+            logging.basicConfig(
+                level=level, format="%(levelname)s: %(message)s")
+
     def handlecli(self):
         """Handles the command line interface using argparse"""
         version = self.version
@@ -443,54 +501,16 @@ class Pygetpapers:
         for arg in vars(args):
             if vars(args)[arg] == "False":
                 vars(args)[arg] = False
-
-        if os.path.exists(args.output):
-            os.chdir(args.output)
-        elif not args.noexecute and not args.update and not args.restart:
-            os.makedirs(args.output)
-            os.chdir(args.output)
+        self.handle_logger_creation(args)
+        self.handle_query_creation(args)
+        self.handle_output_directory(args)
         if args.save_query:
             self.handle_write_configuration_file(args)
-        levels = {
-            "critical": logging.CRITICAL,
-            "error": logging.ERROR,
-            "warn": logging.WARNING,
-            "warning": logging.WARNING,
-            "info": logging.INFO,
-            "debug": logging.DEBUG,
-        }
-        level = levels.get(args.loglevel.lower())
-
-        if args.logfile:
-            self.handle_logfile(args, level)
-
-        else:
-            logging.basicConfig(
-                level=level, format="%(levelname)s: %(message)s")
-
-        if args.restart:
-            self.handle_restart(args)
-
         if args.version:
             logging.info(version)
             sys.exit(1)
-
-        if (
-            not args.query
-            and not args.restart
-            and not args.terms
-            and not args.api == "biorxiv"
-            and not args.api == "medrxiv"
-        ):
-            logging.warning("Please specify a query")
-            sys.exit(1)
-
-        if not args.query and args.terms:
-            args.query = "Default Pygetpapers Query"
-
-        if (args.api == "biorxiv" or args.api == "medrxiv") and args.query:
-            logging.warning(
-                "*rxiv doesnt support giving a query. Please provide a date interval or number of results to get instead")
+        if args.restart:
+            self.handle_restart(args)
             sys.exit(1)
 
         self.handle_adding_date_to_query(args)
@@ -498,13 +518,17 @@ class Pygetpapers:
         if args.terms:
             self.handle_adding_terms_from_file(args)
 
-        logging.info("Final query is %s", args.query)
+        if args.query:
+            logging.info("Final query is %s", args.query)
 
         if args.noexecute:
             self.handle_noexecute(args)
+            sys.exit(1)
 
         elif args.update:
             self.handle_update(args)
+            sys.exit(1)
+
         else:
             if args.query:
                 self.handle_query_download(args)
