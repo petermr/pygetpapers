@@ -64,6 +64,8 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
+        logging.info(
+            "Please ensure that you are providing the same --api as the one in the corpus or you may get errors")
         if args.api == "eupmc":
             self.europe_pmc.eupmc_update(args)
         elif args.api == "crossref":
@@ -295,6 +297,32 @@ class Pygetpapers:
             logging.basicConfig(
                 level=level, format="%(levelname)s: %(message)s")
 
+    def warn_if_feature_not_supported_for_api(self, args):
+        """[summary]
+
+        :param args: [description]
+        :type args: [type]
+        """
+        if (args.api != "eupmc" or args.api != "arxiv") and args.pdf:
+            logging.warning("Pdf is not supported for this api")
+        if (args.api != "crossref") and args.filter:
+            logging.warning("filter is not supported for this api")
+        if (args.api != "eupmc") and args.synonym:
+            logging.warning("synonym is not supported for this api")
+        if (args.api != "eupmc") and args.onlyquery:
+            logging.warning("onlyquery is not supported for this api")
+        if (args.api != "eupmc") and args.onlyquery:
+            logging.warning("onlyquery is not supported for this api")
+        if (args.api != "eupmc") and args.citations:
+            logging.warning("citations is not supported for this api")
+        if (args.api != "eupmc") and args.references:
+            logging.warning("references is not supported for this api")
+        if (args.api != "eupmc") and args.supp:
+            logging.warning(
+                "supplementary files is not supported for this api")
+        if (args.api != "eupmc") and args.zip:
+            logging.warning("zip files is not supported for this api")
+
     def handlecli(self):
         """Handles the command line interface using argparse"""
         version = self.version
@@ -502,6 +530,7 @@ class Pygetpapers:
             if vars(args)[arg] == "False":
                 vars(args)[arg] = False
         self.handle_logger_creation(args)
+        self.warn_if_feature_not_supported_for_api(args)
         self.handle_query_creation(args)
         self.handle_output_directory(args)
         if args.save_query:
@@ -518,7 +547,7 @@ class Pygetpapers:
         if args.terms:
             self.handle_adding_terms_from_file(args)
 
-        if args.query:
+        if args.query and not (args.api == "medrxiv" or args.api == "biorxiv"):
             logging.info("Final query is %s", args.query)
 
         if args.noexecute:
