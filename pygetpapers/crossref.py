@@ -121,6 +121,7 @@ class CrossRef:
         :param makehtml: [description], defaults to False
         :type makehtml: bool, optional
         """
+        os.chdir(os.path.dirname(update))
         update = self.download_tools.readjsondata(update)
         logging.info("Reading old json metadata file")
         self.download_and_save_results(

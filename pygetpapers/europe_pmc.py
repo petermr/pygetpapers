@@ -185,6 +185,7 @@ class EuropePmc:
         :param args:
 
         """
+        os.chdir(os.path.dirname(args.update))
         read_json = self.download_tools.readjsondata(args.update)
         os.chdir(os.path.dirname(args.update))
         self.updatecorpus(
