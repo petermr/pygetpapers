@@ -4,6 +4,9 @@ import sys
 from time import gmtime, strftime
 import configargparse
 import configparser
+import coloredlogs
+from tqdm import tqdm
+from functools import partialmethod
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.europe_pmc import EuropePmc
 from pygetpapers.crossref import CrossRef
@@ -281,6 +284,7 @@ class Pygetpapers:
         :param args: [description]
         :type args: [type]
         """
+        coloredlogs.install()
         levels = {
             "critical": logging.CRITICAL,
             "error": logging.ERROR,
@@ -291,11 +295,13 @@ class Pygetpapers:
         }
         level = levels.get(args.loglevel.lower())
 
+        if level == logging.DEBUG:
+            tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
+
         if args.logfile:
             self.handle_logfile(args, level)
         else:
-            logging.basicConfig(
-                level=level, format="%(levelname)s: %(message)s")
+            coloredlogs.install(level=level, fmt='%(levelname)s: %(message)s')
 
     def warn_if_feature_not_supported_for_api(self, args):
         """[summary]

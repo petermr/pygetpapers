@@ -4,6 +4,8 @@ import logging
 import os
 import pandas as pd
 from tqdm import tqdm
+from functools import partialmethod
+
 from pygetpapers.download_tools import DownloadTools
 
 
