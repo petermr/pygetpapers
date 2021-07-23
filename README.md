@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png" alt="pygetpapers" height="50%" width="50%">
+  <img src="resources/pygetpapers_logo.png" alt="pygetpapers" height="50%" width="50%">
   <h2 align="center">Research Papers right from python</h2>
 </p>
 
@@ -11,18 +11,43 @@
 - [4. Architecture](#4-architecture)
 - [5. About the author and community](#5-about-the-author-and-community)
 - [6. Installation](#6-installation)
-  - [6.1. Way one (recommended):](#61-way-one-recommended)
-  - [6.2. Way two:](#62-way-two)
+  - [6.1. Method one (recommended):](#61-method-one-recommended)
+  - [6.2. Method two:](#62-method-two)
 - [7. Usage](#7-usage)
-- [8. Sample queries:](#8-sample-queries)
-- [9. Contributions](#9-contributions)
-- [10. Feature Requests](#10-feature-requests)
-- [11. Legal Implications](#11-legal-implications)
-  - [11.1. pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.](#111-pygetpapers-users-should-be-careful-to-understand-the-law-as-it-applies-to-their-content-mining-as-they-assume-full-responsibility-for-their-actions-when-using-the-software)
-  - [11.2. Countries with copyright exceptions for content mining:](#112-countries-with-copyright-exceptions-for-content-mining)
-  - [11.3. Countries with proposed copyright exceptions:](#113-countries-with-proposed-copyright-exceptions)
-  - [11.4. Countries with permissive interpretations of 'fair use' that might allow content mining:](#114-countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining)
-  - [11.5. General summaries and guides:](#115-general-summaries-and-guides)
+- [8. What is CProject?](#8-what-is-cproject)
+- [9. Tutorial](#9-tutorial)
+  - [9.1. EPMC (Default API)](#91-epmc-default-api)
+    - [9.1.1. Example Query](#911-example-query)
+    - [9.1.2. Scope the number of hits for a query](#912-scope-the-number-of-hits-for-a-query)
+    - [9.1.3. Update an existing CProject with **new papers** by feeding the metadata JSON](#913-update-an-existing-cproject-with-new-papers-by-feeding-the-metadata-json)
+      - [9.1.3.1. How is `--update` different from just downloading x number of papers to the same output directory?](#9131-how-is---update-different-from-just-downloading-x-number-of-papers-to-the-same-output-directory)
+    - [9.1.4. Restart downloading papers to an existing CProject](#914-restart-downloading-papers-to-an-existing-cproject)
+      - [9.1.4.1. Difference between `--restart` and `--update`](#9141-difference-between---restart-and---update)
+    - [9.1.5. Downloading citations and references for papers, if available](#915-downloading-citations-and-references-for-papers-if-available)
+    - [9.1.6. 9.1.6.Downloading only the metadata](#916-916downloading-only-the-metadata)
+    - [9.1.7. Download papers within certain start and end date range](#917-download-papers-within-certain-start-and-end-date-range)
+    - [9.1.8. Saving query for later use](#918-saving-query-for-later-use)
+    - [9.1.9. Feed query using `config.ini` file](#919-feed-query-using-configini-file)
+    - [9.1.10. Querying using a term list](#9110-querying-using-a-term-list)
+    - [9.1.11. 9.1.11 Log levels](#9111-9111-log-levels)
+    - [9.1.12. Log file](#9112-log-file)
+  - [9.2. Crossref](#92-crossref)
+    - [9.2.1. Sample query](#921-sample-query)
+    - [9.2.2. Filter](#922-filter)
+  - [9.3. arxiv](#93-arxiv)
+    - [9.3.1. Sample query](#931-sample-query)
+  - [9.4. Biorxiv and Medrxiv](#94-biorxiv-and-medrxiv)
+    - [9.4.1. Sample Query](#941-sample-query)
+    - [9.4.2. `--update`](#942---update)
+    - [9.5.1. Sample Query](#951-sample-query)
+  - [9.6. rxivist](#96-rxivist)
+- [10. Contributions](#10-contributions)
+- [11. Feature Requests](#11-feature-requests)
+- [12. Legal Implications](#12-legal-implications)
+  - [12.1. Countries with copyright exceptions for content mining:](#121-countries-with-copyright-exceptions-for-content-mining)
+  - [12.2. Countries with proposed copyright exceptions:](#122-countries-with-proposed-copyright-exceptions)
+  - [12.3. Countries with permissive interpretations of 'fair use' that might allow content mining:](#123-countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining)
+  - [12.4. General summaries and guides:](#124-general-summaries-and-guides)
 
 # 1. What is pygetpapers
 
@@ -61,15 +86,16 @@ The developer documentation has been setup at <a href="https://pygetpapers.readt
 
 # 3. Formats supported by pygetpapers
 
-pygetpapers gives fulltexts in xml and pdf format. 
-The metadata for papers can be saved in many formats including JSON, CSV, HTML. Queries can be saved in form of an ini configuration file. 
-The additional files for papers can also be downloaded. References and citations for papers are given in XML format. 
-Log files can be saved in txt format.
+- pygetpapers gives fulltexts in xml and pdf format. 
+- The metadata for papers can be saved in many formats including JSON, CSV, HTML.
+- Queries can be saved in form of an ini configuration file. 
+- The additional files for papers can also be downloaded. References and citations for papers are given in XML format. 
+- Log files can be saved in txt format.
 
 # 4. Architecture
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/petermr/pygetpapers/main/archietecture.png" >
+<img src="resources/archietecture.png" >
 </p>
 
 # 5. About the author and community
@@ -111,143 +137,410 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 <hr>
 
 # 7. Usage
-
-- Type the command `pygetpapers` to run the help.
+`pygetpapers` is a commandline tool. You can ask for help by running:
+```
+pygetpapers --help
+```
 
 ```
-usage: pygetpapers [-h] [--config CONFIG] [-v] [-q QUERY] [-o OUTPUT]
-                   [--save_query] [-x] [-p] [-s] [--references REFERENCES]
-                   [-n] [--citations CITATIONS] [-l LOGLEVEL] [-f LOGFILE]
-                   [-k LIMIT] [-r RESTART] [-u UPDATE] [--onlyquery] [-c]
-                   [--makehtml] [--synonym] [--startdate STARTDATE]
-                   [--enddate ENDDATE]
+usage: pygetpapers [-h] [--config CONFIG] [-v] [-q QUERY] [-o OUTPUT] [--save_query] [-x] [-p] [-s] [-z]
+                   [--references REFERENCES] [-n] [--citations CITATIONS] [-l LOGLEVEL] [-f LOGFILE] [-k LIMIT]
+                   [-r RESTART] [-u UPDATE] [--onlyquery] [-c] [--makehtml] [--synonym] [--startdate STARTDATE]
+                   [--enddate ENDDATE] [--terms TERMS] [--api API] [--filter FILTER]
 
-Welcome to Pygetpapers version 0.0.4. -h or --help for help
+Welcome to Pygetpapers version 0.0.6.3. -h or --help for help
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       config file path to read query for pygetpapers
   -v, --version         output the version number
   -q QUERY, --query QUERY
-                        query string transmitted to repository API. Eg.
-                        "Artificial Intelligence" or "Plant Parts". To escape
-                        special characters within the quotes, use backslash.
-                        Incase of nested quotes, ensure that the initial
-                        quotes are double and the qutoes inside are single.
-                        For eg: `'(LICENSE:"cc by" OR LICENSE:"cc-by") AND
-                        METHODS:"transcriptome assembly"' ` is wrong. We
-                        should instead use `"(LICENSE:'cc by' OR LICENSE:'cc-
-                        by') AND METHODS:'transcriptome assembly'"`
+                        query string transmitted to repository API. Eg. "Artificial Intelligence" or "Plant Parts". To
+                        escape special characters within the quotes, use backslash. Incase of nested quotes, ensure
+                        that the initial quotes are double and the qutoes inside are single. For eg: `'(LICENSE:"cc
+                        by" OR LICENSE:"cc-by") AND METHODS:"transcriptome assembly"' ` is wrong. We should instead
+                        use `"(LICENSE:'cc by' OR LICENSE:'cc-by') AND METHODS:'transcriptome assembly'"`
   -o OUTPUT, --output OUTPUT
-                        output directory (Default: Folder inside current
-                        working directory named )
+                        output directory (Default: Folder inside current working directory named )
   --save_query          saved the passed query in a config file
   -x, --xml             download fulltext XMLs if available
   -p, --pdf             download fulltext PDFs if available
   -s, --supp            download supplementary files if available
+  -z, --zip             download files from ftp endpoint if available
   --references REFERENCES
-                        Download references if available. Requires source for
-                        references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
-  -n, --noexecute       report how many results match the query, but don't
-                        actually download anything
+                        Download references if available. Requires source for references
+                        (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
+  -n, --noexecute       report how many results match the query, but don't actually download anything
   --citations CITATIONS
-                        Download citations if available. Requires source for
-                        citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
+                        Download citations if available. Requires source for citations
+                        (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
   -l LOGLEVEL, --loglevel LOGLEVEL
-                        Provide logging level. Example --log warning
-                        <<info,warning,debug,error,critical>>, default='info'
+                        Provide logging level. Example --log warning <<info,warning,debug,error,critical>>,
+                        default='info'
   -f LOGFILE, --logfile LOGFILE
-                        save log to specified file in output directory as well
-                        as printing to terminal
+                        save log to specified file in output directory as well as printing to terminal
   -k LIMIT, --limit LIMIT
                         maximum number of hits (default: 100)
   -r RESTART, --restart RESTART
-                        Reads the json and makes the xml files. Takes the path
-                        to the json as the input
+                        Reads the json and makes the xml files. Takes the path to the json as the input
   -u UPDATE, --update UPDATE
-                        Updates the corpus by downloading new papers. Takes
-                        the path of metadata json file of the orignal corpus
-                        as the input. Requires -k or --limit (If not provided,
-                        default will be used) and -q or --query (must be
-                        provided) to be given. Takes the path to the json as
-                        the input.
-  --onlyquery           Saves json file containing the result of the query in
-                        storage. The json file can be given to --restart to
-                        download the papers later.
+                        Updates the corpus by downloading new papers. Takes the path of metadata json file of the
+                        orignal corpus as the input. Requires -k or --limit (If not provided, default will be used)
+                        and -q or --query (must be provided) to be given. Takes the path to the json as the input.
+  --onlyquery           Saves json file containing the result of the query in storage. The json file can be given to
+                        --restart to download the papers later.
   -c, --makecsv         Stores the per-document metadata as csv.
   --makehtml            Stores the per-document metadata as html.
   --synonym             Results contain synonyms as well.
   --startdate STARTDATE
-                        Gives papers starting from given date. Format: YYYY-
-                        MM-DD
+                        Gives papers starting from given date. Format: YYYY-MM-DD
   --enddate ENDDATE     Gives papers till given date. Format: YYYY-MM-DD
-
-Args that start with '--' (eg. -v) can also be set in a config file (specified
-via --config). Config file syntax allows: key=value, flag=true, stuff=[a,b,c]
-(for details, see syntax at https://goo.gl/R74nmi). If an arg is specified in
-more than one place, then command line values override config file values which
-override defaults.
+  --terms TERMS         Location of the txt file which contains terms serperated by a comma which will beOR'ed among
+                        themselves and AND'ed with the query
+  --api API             API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med] (default: eupmc)
+  --filter FILTER       filter by key value pair, passed straight to the crossref api only
 ```
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
-# 8. Sample queries:
+# 8. What is CProject?
+A CProject is a directory structure that the AMI toolset uses to gather and process data. Each paper gets its folder. 
+<img src = "resources/cproject_structure.png">
+A CTree is a subdirectory of a CProject that deals with a single paper.
+<img src = "resources/PMC_folder_inside.png">
 
-1. The following query downloads 100 full-text XML, pdfs, and supplementary files along with the CSV and JSON(default) for the topic "lantana" and saves them in a directory called "test".
+# 9. Tutorial
+`pygetpapers` was on version `0.0.6.4.` when the tutorials were documented. 
 
-   `pygetpapers -q "lantana" -k 100 -o "test" --supp -c -p -x`
+`pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med. By default, it queries EPMC. You can specify the API by using `--api` flag.  
 
-   ![1](https://user-images.githubusercontent.com/70321942/116696048-03b61d80-a9df-11eb-8bb2-6190aef8a6db.PNG)
+|Features        |EPMC           |crossref      |arxiv|biorxiv        |medarxiv|rxvist|
+|----------------|---------------|--------------|-----|---------------|--------|------|
+|Fulltext formats|xml, pdf       |NA            |NA   |xml            |xml     |xml   |
+|Metdata formats |json, html, csv|json, xml, csv|json |json, csv, html|json, csv, html    |json, html, csv  |
+|`--query`       |yes            |yes           |yes  |NA             |NA      |NA    |
+|`--update`      |yes            |NA            |NA   |yes            |yes     |      |
+|`--restart`     |yes            |              |     |               |        |      |
+|`--citation`    |yes            |NA            |NA   |NA             |NA     |NA    |
+|`--references`  |yes            |NA            |NA   |NA             |NA     |NA    |
+|`--terms`       |yes            |yes           |yes  |NA             |NA      |NA    |
 
-2. The following query just prints out the number of hits for the topic `lantana`
+## 9.1. EPMC (Default API)
+### 9.1.1. Example Query
+Let's break down the following query:   
+```
+pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
+```
 
-   `pygetpapers -n -q "lantana"`
-
-   ![n](https://user-images.githubusercontent.com/70321942/116695234-ef255580-a9dd-11eb-96d1-a01841a5af21.PNG)
-
-3. The following query just creates the CSV output for metadata of 100 papers on the topic `lantana` in an output directory called "test"
-
-   `pygetpapers --onlyquery -q "lantana" -k 100 -o "test" -c`
-
-   ![3](https://user-images.githubusercontent.com/70321942/116697221-8c818900-a9e0-11eb-8a29-5414314b415d.PNG)
-
+|Flag|What it does|In this case `pygetpapers`...|
+|---|---|---|
+|`-q`|specifies the query|queries for 'essential oil' in METHODS section|
+|`-k`|number of hits (default 100)|limits hits to 30|
+|`-o`|specifies output directory|outputs to essential_oil_30|
+|`-x`|downloads fulltext xml||
+|`-c`|downloads per-paper metadata into a single csv|downloads single  CSV named [`europe_pmc.csv`](resources/invasiv_plant_species_test/europe_pmc.csv)|
+|`--makehtml`|downloads per-paper metadata into a single HTML file|downloads single HTML named [`europe_pmc.html`](resources/invasiv_plant_species_test/eupmc_results.html)|
 
 
-4. If the user wants to update an existing corpus in the directory test which has eupmc_resuts.json with 100 papers of query `lantana` along with their XML files and pdfs, the following query can be used:
+`pygetpapers`, by default, writes metadata to a JSON file within:
+- individual paper directory for corresponding paper (`epmc_result.json`)
+- working directory for all downloaded papers ([`epmc_results.json`](resources/invasiv_plant_species_test/eupmc_results.json))
 
-   `pygetpapers --update "C:\Users\DELL\test\eupmc_results.JSON" -q "lantana" -k 10 -x -p`
 
-5. If the user wants to download pdfs for a corpus in the directory test which has eupmc_resuts.json which originally only had XML files, or the query broke in between and they want to restart the download of pdfs and XML, they can use the following query
+OUTPUT:
+```  
+INFO: Final query is METHOD: invasive plant species
+INFO: Total Hits are 17910
+0it [00:00, ?it/s]WARNING: Keywords not found for paper 1
+WARNING: Keywords not found for paper 4
+1it [00:00, 164.87it/s]
+INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltext.xml
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
+```
 
-   `pygetpapers --restart "C:\Users\DELL\test\eupmc_results.json" -o "test" -x -p -q "lantana"`
+### 9.1.2. Scope the number of hits for a query 
+If you are just scoping the number of hits for a given query, you can use `-n` flag as shown below. 
+
+   ```
+   pygetpapers -n -q "essential oil"
+   ```
+OUTPUT:
+```
+INFO: Final query is essential oil
+INFO: Total number of hits for the query are 190710
+```
+
+### 9.1.3. Update an existing CProject with **new papers** by feeding the metadata JSON
+The `--update` command is used to update a CProject with a new set of papers on same or different query. 
+If let's say you have a corpus of a 30 papers on 'essential oil' (like before) and would like to download 20 more papers to the same CProject directory, you use `--update` command. 
+
+`--update` flags takes the `eupmc_results.JSON`'s absolute path present in the CProject directory. 
+INPUT:
+```
+pygetpapers --update "C:\Users\shweata\essential_oil_30_1\eupmc_results.JSON" -q "lantana" -k 20 -x
+```
+OUTPUT:
+```
+INFO: Final query is lantana
+INFO: Total Hits are 1909
+0it [00:00, ?it/s]WARNING: html url not found for paper 1
+WARNING: pdf url not found for paper 1
+WARNING: Keywords not found for paper 2
+WARNING: Keywords not found for paper 3
+WARNING: Author list not found for paper 5
+WARNING: Author list not found for paper 8
+WARNING: Keywords not found for paper 9
+WARNING: Keywords not found for paper 11
+WARNING: Keywords not found for paper 19
+1it [00:00, 216.37it/s]
+INFO: Saving XML files to C:\Users\shweata\essential_oil_30_1\*\fulltext.xml
+100%|██████████████████████████████████████████████████████████████████████████████████| 50/50 [01:28<00:00,  1.78s/it]
+```
+
+#### 9.1.3.1. How is `--update` different from just downloading x number of papers to the same output directory?
+By using `--update` command you can be sure that there are no duplicate papers. You can't be sure when you just download x number of papers to the output directory. 
+### 9.1.4. Restart downloading papers to an existing CProject
+`--restart` flag can be used for two purposes:
+-To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
+- Continue the download from the stage where it broke. This feature would particularly come in handy if you are on poor lines. You can resume downloading at whatever stage you cut off by using the `update` flag as we've described.
+  `--restart` flag takes in the absolute path of the `JSON` metadata file. 
+
+   ```
+   pygetpapers --restart "C:\Users\shweata\essential_oil_30_1\eupmc_results.JSON" -q "lantana" -x -p
+   ```
 
    ![5](https://user-images.githubusercontent.com/70321942/116698739-58a76300-a9e2-11eb-8b56-1fd177bf9b1c.PNG)
 
-6. If the user wants references then the following query download references.xml file if available. Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
+#### 9.1.4.1. Difference between `--restart` and `--update`
+- If you aren't looking download new set of papers but would want to download a papers in different format for existing papers, `--restart` is the flag you'd want to use
+- If you are looking to download a new set of papers to an existing Cproject, then you'd use `--update` command. You should note that the format in which you download papers would only apply to the new set of papers and not for the old. 
 
-   `pygetpapers -q "lantana" -k 10 -o "test" -c -x --references PMC`
+### 9.1.5. Downloading citations and references for papers, if available
+- `--references` and `--citations` flags can be used to download the references and citations respectively.  
+- It also requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
 
-   ![rrr](https://user-images.githubusercontent.com/70321942/116775022-0f0c5600-aa7e-11eb-9625-eaddd53f9aca.PNG)
+   `pygetpapers -q "lantana" -k 10 -o "test" -c -x --citation PMC`
 
-   ![rr](https://user-images.githubusercontent.com/70321942/116774866-1848f300-aa7d-11eb-907c-259e2047de69.PNG)
+### 9.1.6. 9.1.6.Downloading only the metadata
+If you are looking to download just the metadata in the supported formats`--onlyquery` is the flag you use. It saves the metadata in the output directory. 
 
-7. if the user wants a synonym then `--synonym` provides results that contain synonyms as well
+You can use `--restart` feature to download the fulltexts for these papers. 
+INPUT:
+```
+pygetpapers --onlyquery -q "lantana" -k 10 -o "lantana_test" -c
+```
+OUTPUT:
+```
+INFO: Final query is lantana
+INFO: Total Hits are 1909
+0it [00:00, ?it/s]WARNING: html url not found for paper 1
+WARNING: pdf url not found for paper 1
+WARNING: Keywords not found for paper 2
+WARNING: Keywords not found for paper 3
+WARNING: Author list not found for paper 5
+WARNING: Author list not found for paper 8
+WARNING: Keywords not found for paper 9
+1it [00:00, 407.69it/s]
+```
+### 9.1.7. Download papers within certain start and end date range
+By using `--startdate` and `--enddate` you can specify the date range within which the papers you want to download were first published. 
 
-   `pygetpapers --onlyquery -q "lantana" -k 10 -o "test" -c --synonym`
+```
+pygetpapers -q "METHOD:essential oil" --startdate "2020-01-02" --enddate "2021-09-09"
+```
 
-   ![s](https://user-images.githubusercontent.com/70321942/116773871-116ab200-aa76-11eb-962a-8cdd6366cc17.PNG)
+### 9.1.8. Saving query for later use
+To save a query for later use, you can use `--save_query`. What it does is that it saves the query in a `.ini` file in the output directory. 
+```
+pygetpapers -q "lantana" -k 10 -o "lantana_query_config"--save_query
+```
+[Here](resources/invasive_plant_species_test/saved_config.ini) is an example config file `pygetpapers` outputs
+### 9.1.9. Feed query using `config.ini` file
+Using can use the `config.ini` file you created using `--save_query`, you re-run the query. To do so, you will give `--config` flag the absolute path of the `saved_config.ini` file.
 
-8. if the user wants to save the query to use it later
-    `pygetpapers -q "lantana" --save_query`
+`pygetpapers --config "C:\Users\shweata\lantana_query_config\saved_config.ini"`
 
-9. if user wants to get papers within a date range
-    `pygetpapers -q "lantana" --startdate "2020-01-02" --enddate "2021-09-09"`
+### 9.1.10. Querying using a term list
+If your query is complex with multiple ORs, you can use `--terms` feature. To use this, you will:
+- Create a `.txt` file with list of terms separated by commas. 
+- Give the `--terms` flag the absolute path of the `.txt` file
 
-10. if the user wants to start query from a configuration file
-    `pygetpapers --config "C:\Users\DELL\test\saved_config.ini"`
+`-q` is optional.The terms would be OR'ed with each other ANDed with the query, if given. 
 
+INPUT:
+```
+pygetpapers -q "essential oil" --terms C:\Users\shweata\essential_oil_terms.txt -k 10 -o "terms_test_essential_oil" -x  
+```
+OUTPUT:
+```
+C:\Users\shweata>pygetpapers -q "essential oil" --terms C:\Users\shweata\essential_oil_terms.txt -k 10 -o "terms_test_essential_oil"
+INFO: Final query is (essential oil AND (antioxidant OR  antibacterial OR  antifungal OR  antiseptic OR  antitrichomonal agent))
+INFO: Total Hits are 43397
+0it [00:00, ?it/s]WARNING: Author list not found for paper 9
+1it [00:00, 1064.00it/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:19<00:00,  1.99s/it]
+```
 
-# 9. Contributions
+You can also use this feature to download papers by using the PMC Ids. You can feed the `.txt` file with PMC ids comman-separated. Make sure to give a large enough hit number to download all the papers specified in the text file. 
+
+Example text file can be found, [here](resources/essential_oil_terms.txt)
+INPUT:
+```
+pygetpapers --terms C:\Users\shweata\PMCID_pygetpapers_text.txt -k 100 -o "PMCID_test"
+```
+
+OUTPUT:
+```
+INFO: Final query is (PMC6856665 OR  PMC6877543 OR  PMC6927906 OR  PMC7008714 OR  PMC7040181 OR  PMC7080866 OR  PMC7082878 OR  PMC7096589 OR  PMC7111464 OR  PMC7142259 OR  PMC7158757 OR  PMC7174509 OR  PMC7193700 OR  PMC7198785 OR  PMC7201129 OR  PMC7203781 OR  PMC7206980 OR  PMC7214627 OR  PMC7214803 OR  PMC7220991
+)
+INFO: Total Hits are 20
+WARNING: Could not find more papers
+1it [00:00, 505.46it/s]
+100%|█████████████████████████████████████████████| 20/20 [00:32<00:00,  1.61s/it]
+```
+
+### 9.1.11. 9.1.11 Log levels
+You can specify the log level using the `-l` flag. The default as you've already seen so far is info. 
+
+INPUT:
+```
+pygetpapers -q "lantana" -k 10 -o lantana_test_10_2 --loglevel debug -x
+```
+### 9.1.12. Log file
+You can also choose to write the log to a `.txt` file while simultaneously printing it out. 
+
+INPUT:
+```
+pygetpapers -q "lantana" -k 10 -o lantana_test_10_4 --loglevel debug -x --logfile test_log.txt
+```
+## 9.2. Crossref
+You can query crossref api only for the metadata. 
+### 9.2.1. Sample query
+- The metadata formats flags are applicable as described in the EPMC tutorial
+- `--terms` and `-q` are also applicable to crossref
+INPUT:
+```
+pygetpapers --api crossref -q "essential oil" --terms C:\Users\shweata\essential_oil_terms.txt -k 10 -o "terms_test_essential_oil_crossref_3" -x -c --makehtml
+```
+OUTPUT:
+```
+INFO: Final query is (essential oil AND (antioxidant OR  antibacterial OR  antifungal OR  antiseptic OR  antitrichomonal agent))
+INFO: Making request to crossref
+INFO: Got request result from crossref
+INFO: Making csv files for metadata at C:\Users\shweata\terms_test_essential_oil_crossref_3
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 185.52it/s]
+INFO: Making html files for metadata at C:\Users\shweata\terms_test_essential_oil_crossref_3
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 87.98it/s]
+INFO: Making xml files for metadata at C:\Users\shweata\terms_test_essential_oil_crossref_3
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 366.97it/s]
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata\terms_test_essential_oil_crossref_3
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 996.82it/s]
+```
+### 9.2.2. Filter
+
+## 9.3. arxiv
+`pygetpapers` allows you to query `arxiv` wrapper for metadata and get results in XML format. 
+### 9.3.1. Sample query
+INPUT
+```
+pygetpapers --api arxiv -k 10 -o arxiv_test_2 -q "artificial intelligence" -x
+```
+OUTPUT
+```
+
+INFO: Final query is artificial intelligence
+INFO: Making request to Arxiv through pygetpapers
+INFO: Got request result from Arxiv through pygetpapers
+INFO: Requesting 10 results at offset 0
+INFO: Requesting page of results
+INFO: Got first page; 10 of 10 results available
+INFO: Making xml files for metadata at C:\Users\shweata\arxiv_test_2
+100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 427.09it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 982.89it/s]
+```
+## 9.4. Biorxiv and Medrxiv
+You can query `biorxiv` and `medrxiv` for fulltext and metadata (in all available formats)
+### 9.4.1. Sample Query
+INPUT:
+```
+pygetpapers --api biorxiv --startdate 2021-04-01 -o biorxiv_test -x -c --makehtml  -k 20
+```
+OUTPUT:
+```
+INFO: Final query is (Default Pygetpapers Query) AND (FIRST_PDATE:[2021-04-01 TO 2021-07-19])
+INFO: Making Request to rxiv
+INFO: Making csv files for metadata at C:\Users\shweata\biorxiv_test
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 253.38it/s]
+INFO: Making html files for metadata at C:\Users\shweata\biorxiv_test
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 218.29it/s]
+INFO: Making xml for paper
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:33<00:00,  1.99s/it]
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 1369.32it/s]
+```
+### 9.4.2. `--update` 
+Ensure that you specify the `--api` you used to download the existing corpus while updating. 
+INPUT:
+```
+pygetpapers --api biorxiv --update C:\Users\shweata\biorxiv_test_4\rxiv-results.json -k 10 --startdate 2021-07-03
+```
+OUTPUT: 
+```
+INFO: Final query is (False) AND (FIRST_PDATE:[2021-07-03 TO 2021-07-21])
+INFO: Reading old json metadata file
+INFO: Making Request to rxiv
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata
+```
+
+### 9.5.1. Sample Query
+INPUT
+```
+pygetpapers --api medrxiv --startdate 2021-04-01 -o medrxiv_test_2 -x -c -p  --makehtml -k 20
+```
+OUTPUT
+```
+INFO: Final query is (Default Pygetpapers Query) AND (FIRST_PDATE:[2021-04-01 TO 2021-07-19])
+INFO: Making Request to rxiv
+INFO: Making csv files for metadata at C:\Users\shweata\medrxiv_test_2
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 168.70it/s]
+INFO: Making html files for metadata at C:\Users\shweata\medrxiv_test_2
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 229.12it/s]
+INFO: Making xml for paper
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:38<00:00,  1.92s/it]
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata\medrxiv_test_2
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 241.71it/s]
+```
+- `--update` would work the same as medarxiv
+## 9.6. rxivist
+- Queries both `biorxiv` and `medarxiv`. The difference here is that you can specify a query. But rxivist has now clubbed `biorxiv` and `medarxiv`. That would mean that your downloads would be a mixture of both. 
+
+You can only retrieve metadata from `rxivist`. 
+
+INPUT:
+```
+pygetpapers --api rxivist -q "biomedicine" -k 10 -c -x -o "biomedicine_rxivist" --makehtml -p
+```
+OUTPUT:
+```
+WARNING: Pdf is not supported for this api
+INFO: Final query is biomedicine
+INFO: Making Request to rxivist
+INFO: Making csv files for metadata at C:\Users\shweata\biomedicine_rxivist
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 125.54it/s]
+INFO: Making html files for metadata at C:\Users\shweata\biomedicine_rxivist
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 124.71it/s]
+INFO: Making xml files for metadata at C:\Users\shweata\biomedicine_rxivist
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 633.38it/s]
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivist
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 751.09it/s]
+```
+
+# 10. Contributions
 
 Contributions are welcome through issues as well as pull requests. For direct contributions, you can mail the author at ayush@science.org.in.
 
@@ -255,31 +548,32 @@ To discuss problems or feature requests, file an issue. For bugs, please include
 
 To contribute, make a pull request. Contributions should include tests for any new features/bug fixes and follow best practices including PEP8, etc.
 
-# 10. Feature Requests
+# 11. Feature Requests
 
 To request features, please put them in issues
 
-# 11. Legal Implications
+# 12. Legal Implications
 
-## 11.1. pygetpapers users should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
+If you use`pygetpapers`, you should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
 
-## 11.2. Countries with copyright exceptions for content mining:
+## 12.1. Countries with copyright exceptions for content mining:
 
 - UK
 - Japan
 
-## 11.3. Countries with proposed copyright exceptions:
+## 12.2. Countries with proposed copyright exceptions:
 
 - Ireland
 - EU countries 
 
-## 11.4. Countries with permissive interpretations of 'fair use' that might allow content mining:
+## 12.3. Countries with permissive interpretations of 'fair use' that might allow content mining:
 
 - Israel
 - USA
 - Canada
 
-## 11.5. General summaries and guides:
+## 12.4. General summaries and guides:
 
 - _"The legal framework of text and data mining (TDM)"_, carried out for the European Commission in March 2014 ([PDF](http://ec.europa.eu/internal_market/copyright/docs/studies/1403_study2_en.pdf))
 - _"Standardisation in the area of innovation and technological development, notably in the field of Text and Data Mining"_, carried out for the European Commission in 2014 ([PDF](http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf))
+
