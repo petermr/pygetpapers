@@ -309,8 +309,10 @@ class Pygetpapers:
         :param args: [description]
         :type args: [type]
         """
-        if (args.api != "eupmc" or args.api != "arxiv") and args.pdf:
+        if (args.api != "eupmc" and args.api != "arxiv") and args.pdf:
             logging.warning("Pdf is not supported for this api")
+        if (args.api != "eupmc" and args.api != "biorxiv" and args.api != "medrxiv") and (args.startdate or args.enddate):
+            logging.warning("Date is not supported for this api")
         if (args.api != "crossref") and args.filter:
             logging.warning("filter is not supported for this api")
         if (args.api != "eupmc") and args.synonym:
@@ -548,7 +550,8 @@ class Pygetpapers:
             self.handle_restart(args)
             sys.exit(1)
 
-        self.handle_adding_date_to_query(args)
+        if args.api == "eupmc" or args.api == "medrxiv" or args.api == "biorxiv":
+            self.handle_adding_date_to_query(args)
 
         if args.terms:
             self.handle_adding_terms_from_file(args)

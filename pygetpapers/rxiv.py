@@ -11,7 +11,7 @@ class Rxiv:
     """Rxiv class which handles Biorxiv and Medrxiv repository"""
 
     def __init__(self):
-        """[summary]"""
+        """initiate Rxiv class"""
         self.download_tools = DownloadTools("rxiv")
         self.get_url = self.download_tools.posturl
 
@@ -31,7 +31,7 @@ class Rxiv:
         :type interval: [type]
         :param size: [description]
         :type size: [type]
-        :param source: [description], defaults to "biorxiv"
+        :param source: source, defaults to "biorxiv"
         :type source: str, optional
         :param update: [description], defaults to None
         :type update: [type], optional

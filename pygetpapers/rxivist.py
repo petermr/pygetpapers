@@ -10,7 +10,7 @@ class Rxivist:
     """Rxivist class which handles the rxivist wrapper"""
 
     def __init__(self):
-        """[summary]"""
+        """initiate Rxivist class"""
         self.download_tools = DownloadTools("rxivist")
         self.get_url = self.download_tools.posturl
 
@@ -21,19 +21,19 @@ class Rxivist:
                 makecsv=False,
                 makexml=False,
                 makehtml=False,):
-        """[summary]
+        """Request for the papers and returns the dict
 
-        :param query: [description]
-        :type query: [type]
-        :param size: [description]
-        :type size: [type]
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
+        :param query: the query given to the repo
+        :type query: string
+        :param size: number of results to get
+        :type size: int
+        :param update: dict containing old papers, defaults to None
+        :type update: dict, optional
+        :param makecsv: wheather to make the csv file, defaults to False
         :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
+        :param makexml: wheather to make the xml file, defaults to False
         :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
+        :param makehtml: wheather to make the html file, defaults to False
         :type makehtml: bool, optional
         """
         if update:
@@ -88,18 +88,18 @@ class Rxivist:
     def make_request_add_papers(
         self, query, cursor_mark, total_number_of_results, total_papers_list
     ):
-        """[summary]
+        """posts the request and adds the results to the lists
 
-        :param query: [description]
-        :type query: [type]
-        :param cursor_mark: [description]
-        :type cursor_mark: [type]
-        :param total_number_of_results: [description]
-        :type total_number_of_results: [type]
-        :param total_papers_list: [description]
-        :type total_papers_list: [type]
-        :return: [description]
-        :rtype: [type]
+        :param query: the query given to the repo
+        :type query: string
+        :param cursor_mark: cursor mark
+        :type cursor_mark: string
+        :param total_number_of_results: total number of results
+        :type total_number_of_results: int
+        :param total_papers_list: list containing all the papers
+        :type total_papers_list: list
+        :return: total_number_of_results, total_papers_list, papers_list
+        :rtype: tuple
         """
         request_handler = self.send_post_request(query, cursor_mark)
         request_dict = json.loads(request_handler.text)
@@ -118,19 +118,19 @@ class Rxivist:
         makexml=False,
         makehtml=False,
     ):
-        """[summary]
+        """Handles rxivist update
 
-        :param interval: [description]
-        :type interval: [type]
-        :param size: [description]
-        :type size: [type]
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
+        :param interval: interval to get papers from
+        :type interval: string
+        :param size: number of results to get
+        :type size: int
+        :param update: dict containing old papers, defaults to None
+        :type update: dict, optional
+        :param makecsv: wheather to make the csv file, defaults to False
         :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
+        :param makexml: wheather to make the xml file, defaults to False
         :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
+        :param makehtml: wheather to make the html file, defaults to False
         :type makehtml: bool, optional
         """
         os.chdir(os.path.dirname(update))
@@ -152,17 +152,17 @@ class Rxivist:
         makexml=False,
         makehtml=False,
     ):
-        """[summary]
+        """Downloads and saves the results
 
-        :param query: [description]
-        :type query: [type]
-        :param size: [description]
-        :type size: [type]
-        :param makecsv: [description], defaults to False
+        :param query: the query given to the repo
+        :type query: string
+        :param size: number of results to get
+        :type size: int
+        :param makecsv: wheather to make the csv file, defaults to False
         :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
+        :param makexml: wheather to make the xml file, defaults to False
         :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
+        :param makehtml: wheather to make the html file, defaults to False
         :type makehtml: bool, optional
         """
         returned_result = self.rxivist(
@@ -177,10 +177,10 @@ class Rxivist:
         )
 
     def noexecute(self, query):
-        """[summary]
+        """no execute for rxivist
 
-        :param query: [description]
-        :type query: [type]
+        :param query: the query given to the repo
+        :type query: string
         """
         returned_result = self.rxivist(query, size=10)
         totalhits = returned_result["total_hits"]
