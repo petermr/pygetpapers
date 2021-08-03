@@ -62,10 +62,11 @@ class Rxivist:
         for paper in json_return_dict:
             self.download_tools.add_keys_for_conditions(
                 paper, json_return_dict)
-        dict_to_return = self.download_tools.make_dict_to_return(
-            cursor_mark, json_return_dict, total_number_of_results, update
+        result_dict = self.download_tools.make_dict_to_return(
+            cursor_mark, json_return_dict, total_number_of_results, update=update
         )
-        return_dict = dict_to_return["total_json_output"]
+        new_dict_to_return = result_dict["new_results"]
+        return_dict = new_dict_to_return["total_json_output"]
         self.download_tools.handle_creation_of_csv_html_xml(
             makecsv=makecsv,
             makehtml=makehtml,
@@ -73,7 +74,7 @@ class Rxivist:
             return_dict=return_dict,
             name="rxivist-result",
         )
-        return dict_to_return
+        return result_dict
 
     def send_post_request(self, query, cursor_mark=0, page_size=20):
         url_to_request = self.get_url.format(
@@ -139,6 +140,7 @@ class Rxivist:
         self.download_and_save_results(
             query,
             size,
+            update=update,
             makecsv=makecsv,
             makexml=makexml,
             makehtml=makehtml,
@@ -148,6 +150,7 @@ class Rxivist:
         self,
         query,
         size,
+        update=False,
         makecsv=False,
         makexml=False,
         makehtml=False,
@@ -165,15 +168,16 @@ class Rxivist:
         :param makehtml: wheather to make the html file, defaults to False
         :type makehtml: bool, optional
         """
-        returned_result = self.rxivist(
+        result_dict = self.rxivist(
             query,
             size,
+            update=update,
             makecsv=makecsv,
             makexml=makexml,
             makehtml=makehtml,
         )
         self.download_tools.make_json_files_for_paper(
-            returned_result, key_in_dict="doi", name_of_file="rxivist-result"
+            result_dict["new_results"], updated_dict=result_dict["updated_dict"], key_in_dict="doi", name_of_file="rxivist-result"
         )
 
     def noexecute(self, query):
@@ -182,6 +186,6 @@ class Rxivist:
         :param query: the query given to the repo
         :type query: string
         """
-        returned_result = self.rxivist(query, size=10)
-        totalhits = returned_result["total_hits"]
+        result_dict = self.rxivist(query, size=10)
+        totalhits = result_dict["new_results"]["total_hits"]
         logging.info("Total number of hits for the query are %s", totalhits)
