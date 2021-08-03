@@ -1,6 +1,8 @@
 import os
 import logging
 import sys
+import glob
+import ntpath
 from time import gmtime, strftime
 import configargparse
 import configparser
@@ -67,20 +69,21 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
+        update_file_path = self.get_metadata_results_file()
         logging.info(
             "Please ensure that you are providing the same --api as the one in the corpus or you may get errors")
         if args.api == "eupmc":
-            self.europe_pmc.eupmc_update(args)
+            self.europe_pmc.eupmc_update(args, update_file_path)
         elif args.api == "crossref":
             self.crossref.crossref_update(
-                args.query, args.limit, filter_dict=args.filter, update=args.update
+                args.query, args.limit, filter_dict=args.filter, update=update_file_path
             )
         elif args.api == "biorxiv":
             self.rxiv.rxiv_update(
                 args.date_or_number_of_papers,
                 args.limit,
                 source="biorxiv",
-                update=args.update,
+                update=update_file_path,
                 makecsv=args.makecsv,
                 makexml=args.xml,
                 makehtml=args.makehtml,
@@ -90,7 +93,7 @@ class Pygetpapers:
                 args.date_or_number_of_papers,
                 args.limit,
                 source="medrxiv",
-                update=args.update,
+                update=update_file_path,
                 makecsv=args.makecsv,
                 makexml=args.xml,
                 makehtml=args.makehtml,
@@ -99,13 +102,26 @@ class Pygetpapers:
             self.rxivist.rxivist_update(
                 args.query,
                 args.limit,
-                update=args.update,
+                update=update_file_path,
                 makecsv=args.makecsv,
                 makexml=args.xml,
                 makehtml=args.makehtml,
             )
         elif args.api == "arxiv":
             logging.warning("update currently not supported for arxiv")
+
+    def get_metadata_results_file(self):
+        list_of_metadata_jsons = glob.glob(os.path.join(os.getcwd(), "*.json"))
+        update_file_path = None
+        for file in list_of_metadata_jsons:
+            metadata_file = ntpath.basename(file)
+            if metadata_file.endswith("results.json"):
+                update_file_path = file
+        if not update_file_path:
+            logging.warning(
+                "Corpus not existing in this directory. Please rerun the query without --update")
+            sys.exit(1)
+        return update_file_path
 
     def handle_query_download(self, args):
         """This functions handles the assigning of apis for query download
@@ -214,8 +230,9 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
+        restart_file_path = self.get_metadata_results_file()
         if args.api == "eupmc":
-            self.europe_pmc.eupmc_restart(args)
+            self.europe_pmc.eupmc_restart(args, restart_file_path)
         else:
             logging.warning("Restart currently not supported for this repo")
 
@@ -250,7 +267,7 @@ class Pygetpapers:
         """
         if os.path.exists(args.output):
             os.chdir(args.output)
-        elif not args.noexecute and not args.update and not args.restart:
+        elif not args.noexecute and not args.update and not args.restart and not args.version:
             os.makedirs(args.output)
             os.chdir(args.output)
 
@@ -264,6 +281,7 @@ class Pygetpapers:
             not args.query
             and not args.restart
             and not args.terms
+            and not args.version
             and not args.api == "biorxiv"
             and not args.api == "medrxiv"
         ):
@@ -394,27 +412,27 @@ class Pygetpapers:
             "--pdf",
             default=False,
             action="store_true",
-            help="download fulltext PDFs if available (only eupmc and arxiv supported)",
+            help="[E][A] download fulltext PDFs if available (only eupmc and arxiv supported)",
         )
         parser.add_argument(
             "-s",
             "--supp",
             default=False,
             action="store_true",
-            help="download supplementary files if available (only eupmc supported)	",
+            help="[E] download supplementary files if available (only eupmc supported)	",
         )
         parser.add_argument(
             "-z",
             "--zip",
             default=False,
             action="store_true",
-            help="download files from ftp endpoint if available (only eupmc supported)	",
+            help="[E] download files from ftp endpoint if available (only eupmc supported)	",
         )
         parser.add_argument(
             "--references",
             type=str,
             default=False,
-            help="Download references if available. (only eupmc supported)"
+            help="[E] Download references if available. (only eupmc supported)"
             "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
         )
         parser.add_argument(
@@ -422,21 +440,21 @@ class Pygetpapers:
             "--noexecute",
             default=False,
             action="store_true",
-            help="report how many results match the query, but don't actually download anything",
+            help="[ALL] report how many results match the query, but don't actually download anything",
         )
 
         parser.add_argument(
             "--citations",
             type=str,
             default=False,
-            help="Download citations if available (only eupmc supported). "
+            help="[E] Download citations if available (only eupmc supported). "
             "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
         )
         parser.add_argument(
             "-l",
             "--loglevel",
             default="info",
-            help="Provide logging level.  "
+            help="[All] Provide logging level.  "
             "Example --log warning <<info,warning,debug,error,critical>>, default='info'",
         )
         parser.add_argument(
@@ -444,14 +462,14 @@ class Pygetpapers:
             "--logfile",
             default=False,
             type=str,
-            help="save log to specified file in output directory as well as printing to terminal",
+            help="[All] save log to specified file in output directory as well as printing to terminal",
         )
         parser.add_argument(
             "-k",
             "--limit",
             default=100,
             type=int,
-            help="maximum number of hits (default: 100)",
+            help="[All] maximum number of hits (default: 100)",
         )
 
         parser.add_argument(
@@ -459,25 +477,24 @@ class Pygetpapers:
             "--restart",
             default=False,
             type=str,
-            help="Reads the json and makes the xml files. Takes the path to the json as the input (only eupmc supported)",
+            help="[E] Downloads the missing flags for the corpus."
+            "Searches for already existing corpus in the output directory",
         )
 
         parser.add_argument(
             "-u",
             "--update",
-            default=False,
-            type=str,
-            help="Updates the corpus by downloading new papers. "
-            "Takes the path of metadata json file of the orignal corpus as the input. "
+            action="store_true",
+            help="[E][B][M][C] Updates the corpus by downloading new papers. "
             "Requires -k or --limit "
             "(If not provided, default will be used) and -q or --query "
             "(must be provided) to be given. "
-            "Takes the path to the json as the input.",
+            "Searches for already existing corpus in the output directory",
         )
         parser.add_argument(
             "--onlyquery",
             action="store_true",
-            help="Saves json file containing the result of the query in storage. (only eupmc supported)"
+            help="[E] Saves json file containing the result of the query in storage. (only eupmc supported)"
             "The json file can be given to --restart to download the papers later.",
         )
         parser.add_argument(
@@ -485,37 +502,37 @@ class Pygetpapers:
             "--makecsv",
             default=False,
             action="store_true",
-            help="Stores the per-document metadata as csv.",
+            help="[All] Stores the per-document metadata as csv.",
         )
         parser.add_argument(
             "--makehtml",
             default=False,
             action="store_true",
-            help="Stores the per-document metadata as html.",
+            help="[All] Stores the per-document metadata as html.",
         )
         parser.add_argument(
             "--synonym",
             default=False,
             action="store_true",
-            help="Results contain synonyms as well.",
+            help="[E] Results contain synonyms as well.",
         )
         parser.add_argument(
             "--startdate",
             default=False,
             type=str,
-            help="Gives papers starting from given date. Format: YYYY-MM-DD",
+            help="[E][B][M] Gives papers starting from given date. Format: YYYY-MM-DD",
         )
         parser.add_argument(
             "--enddate",
             default=False,
             type=str,
-            help="Gives papers till given date. Format: YYYY-MM-DD",
+            help="[E][B][M] Gives papers till given date. Format: YYYY-MM-DD",
         )
         parser.add_argument(
             "--terms",
             default=False,
             type=str,
-            help="Location of the txt file which contains terms serperated by a comma which will be"
+            help="[All] Location of the txt file which contains terms serperated by a comma which will be"
             "OR'ed among themselves and AND'ed with the query",
         )
         parser.add_argument(
@@ -528,7 +545,7 @@ class Pygetpapers:
             "--filter",
             default=None,
             type=str,
-            help="filter by key value pair (only crossref supported)",
+            help="[C] filter by key value pair (only crossref supported)",
         )
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
@@ -541,11 +558,10 @@ class Pygetpapers:
         self.warn_if_feature_not_supported_for_api(args)
         self.handle_query_creation(args)
         self.handle_output_directory(args)
+        if args.version:
+            logging.info("You are running pygetpapers version %s", version)
         if args.save_query:
             self.handle_write_configuration_file(args)
-        if args.version:
-            logging.info(version)
-            sys.exit(1)
         if args.restart:
             self.handle_restart(args)
             sys.exit(1)
@@ -568,7 +584,7 @@ class Pygetpapers:
             sys.exit(1)
 
         else:
-            if args.query:
+            if args.query or args.api == "biorxiv" or args.api == "medrxiv":
                 self.handle_query_download(args)
 
 

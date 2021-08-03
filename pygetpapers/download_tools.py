@@ -625,7 +625,7 @@ class DownloadTools:
             json_return_dict[paper[key_in_dict]] = paper
         return json_return_dict
 
-    def make_json_files_for_paper(self, returned_dict, key_in_dict, name_of_file):
+    def make_json_files_for_paper(self, returned_dict, updated_dict, key_in_dict, name_of_file):
         """[summary]
 
         :param returned_dict: [description]
@@ -635,7 +635,7 @@ class DownloadTools:
         :param name_of_file: [description]
         :type name_of_file: [type]
         """
-        self.makejson(f"{name_of_file}s.json", returned_dict)
+        self.makejson(f"{name_of_file}s.json", updated_dict)
         logging.info("Wrote metadata file for the query")
         paper_numer = 0
         logging.info("Writing metadata file for the papers at %s",
@@ -658,7 +658,7 @@ class DownloadTools:
                     "Wrote metadata file for the paper %s", paper_numer)
 
     def make_dict_to_return(
-        self, cursor_mark, json_return_dict, total_number_of_results, update
+        self, cursor_mark, json_return_dict, total_number_of_results, update=None
     ):
         """[summary]
 
@@ -673,13 +673,16 @@ class DownloadTools:
         :return: [description]
         :rtype: [type]
         """
-        dict_to_return = {
+        new_dict_to_return = {
             "total_json_output": json_return_dict,
             "total_hits": total_number_of_results,
             "cursor_mark": cursor_mark,
         }
+
+        dict_to_return_with_previous = copy.deepcopy(new_dict_to_return)
         if update:
-            dict_to_return["total_json_output"] = update["total_json_output"].update(
-                dict_to_return["total_json_output"]
+
+            dict_to_return_with_previous["total_json_output"].update(
+                update["total_json_output"]
             )
-        return dict_to_return
+        return {"updated_dict": dict_to_return_with_previous, "new_results": new_dict_to_return}

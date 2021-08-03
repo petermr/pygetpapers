@@ -3,6 +3,7 @@ import os
 import json
 import logging
 import requests
+import sys
 from tqdm import tqdm
 from pygetpapers.download_tools import DownloadTools
 
@@ -63,25 +64,33 @@ class Rxiv:
                 logging.warning("No more papers found")
                 break
             cursor_mark += 1
-        total_result_list = total_papers_list[:size]
-        json_return_dict = self.download_tools.make_dict_from_returned_list(
-            total_result_list, key_in_dict="doi"
-        )
+        json_return_dict = {}
+        paper_counter = 0
+        while len(json_return_dict) < len(total_papers_list):
+            if update:
+                if total_papers_list[paper_counter]["doi"] not in update["total_json_output"]:
+                    json_return_dict[total_papers_list[paper_counter]
+                                     ["doi"]] = total_papers_list[paper_counter]
+            else:
+                json_return_dict[total_papers_list[paper_counter]
+                                 ["doi"]] = total_papers_list[paper_counter]
+            paper_counter += 1
+
         for paper in json_return_dict:
             self.download_tools.add_keys_for_conditions(
                 paper, json_return_dict)
-        dict_to_return = self.download_tools.make_dict_to_return(
-            cursor_mark, json_return_dict, total_number_of_results, update
-        )
-        return_dict = dict_to_return["total_json_output"]
+        result_dict = self.download_tools.make_dict_to_return(
+            cursor_mark, json_return_dict, total_number_of_results, update=update)
+
+        return_dict = result_dict["new_results"]["total_json_output"]
         self.download_tools.handle_creation_of_csv_html_xml(
             makecsv=makecsv,
             makehtml=makehtml,
             makexml=False,
             return_dict=return_dict,
-            name="rxiv-result",
+            name="rxiv_result",
         )
-        return dict_to_return
+        return result_dict
 
     def make_request_add_papers(
         self, cursor_mark, interval, source, total_number_of_results, total_papers_list
@@ -134,6 +143,7 @@ class Rxiv:
         :type source: [type]
         """
         if type(interval) == int:
+            logging.warning("Update will not work if date not provided")
             self.get_url = "https://api.biorxiv.org/details/{source}/{interval}".format(
                 source=source, interval=interval
             )
@@ -175,6 +185,7 @@ class Rxiv:
         self.download_and_save_results(
             interval,
             size,
+            update=update,
             source=source,
             makecsv=makecsv,
             makexml=makexml,
@@ -186,6 +197,7 @@ class Rxiv:
         interval,
         size,
         source,
+        update=False,
         makecsv=False,
         makexml=False,
         makehtml=False,
@@ -205,9 +217,13 @@ class Rxiv:
         :param makehtml: [description], defaults to False
         :type makehtml: bool, optional
         """
-        returned_result = self.rxiv(
+        if update and type(interval) == int:
+            logging.warning("Update will not work if date not provided")
+            sys.exit(1)
+        result_dict = self.rxiv(
             interval,
             size,
+            update=update,
             source=source,
             makecsv=makecsv,
             makexml=makexml,
@@ -215,11 +231,11 @@ class Rxiv:
         )
         if makexml:
             logging.info("Making xml for paper")
-            dict_of_papers = returned_result["total_json_output"]
+            dict_of_papers = result_dict["new_results"]["total_json_output"]
             self.make_xml_for_rxiv(
                 dict_of_papers, "jatsxml", "doi", "fulltext.xml")
         self.download_tools.make_json_files_for_paper(
-            returned_result, key_in_dict="doi", name_of_file="rxiv-result"
+            result_dict["new_results"], updated_dict=result_dict["updated_dict"], key_in_dict="doi", name_of_file="rxiv_result"
         )
 
     def make_xml_for_rxiv(
@@ -258,6 +274,7 @@ class Rxiv:
         :param source: [description]
         :type source: [type]
         """
-        returned_result = self.rxiv(time_interval, size=10, source=source)
-        totalhits = returned_result["total_hits"]
+        result_dict = self.rxiv(
+            time_interval, size=10, source=source)
+        totalhits = result_dict["new_results"]["total_hits"]
         logging.info("Total number of hits for the query are %s", totalhits)

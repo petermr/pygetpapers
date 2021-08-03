@@ -3,6 +3,7 @@ xmltodict
 pandas
 ConfigArgParse
 requests
+coloredlogs
 pytest
 habanero
 arxiv
