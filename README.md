@@ -232,7 +232,7 @@ INFO: Total number of hits for the query are 190710
 The `--update` command is used to update a CProject with a new set of papers on same or different query. 
 If let's say you have a corpus of a 30 papers on 'essential oil' (like before) and would like to download 20 more papers to the same CProject directory, you use `--update` command. 
 
-`--update` flags takes the `eupmc_results.JSON`'s absolute path present in the CProject directory. 
+To update your Cproject, you would give it the `-o` flag the already existing CProject name. Additionally, you should also add `--update ` flag. 
 INPUT:
 ```
 pygetpapers -q "invasive plant species" -k 10 -x -o lantana_test_5 --update
