@@ -15,15 +15,22 @@ class Arxiv:
     def arxiv(
         self, query, size, getpdf=False, makecsv=False, makexml=False, makehtml=False
     ):
-        """
+        """[summary]
 
-        :param query: param size:
-        :param getpdf: Default value = False)
-        :param makecsv: Default value = False)
-        :param makexml: Default value = False)
-        :param makehtml: Default value = False)
-        :param size:
-
+        :param query: [description]
+        :type query: [type]
+        :param size: [description]
+        :type size: [type]
+        :param getpdf: [description], defaults to False
+        :type getpdf: bool, optional
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makexml: [description], defaults to False
+        :type makexml: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
+        :return: [description]
+        :rtype: [type]
         """
         logging.info("Making request to Arxiv through pygetpapers")
         search = arxiv.Search(
@@ -46,10 +53,10 @@ class Arxiv:
         return return_dict
 
     def make_json_from_arxiv_dict(self, return_dict):
-        """
+        """[summary]
 
-        :param return_dict:
-
+        :param return_dict: [description]
+        :type return_dict: [type]
         """
         jsonurl = os.path.join(os.getcwd(), "arxiv_results.json")
         self.download_tools.makejson(jsonurl, return_dict)
@@ -61,11 +68,12 @@ class Arxiv:
 
     @staticmethod
     def make_dict_from_arxiv_output(return_dict, search):
-        """
+        """[summary]
 
-        :param return_dict: param search:
-        :param search:
-
+        :param return_dict: [description]
+        :type return_dict: [type]
+        :param search: [description]
+        :type search: [type]
         """
         for result in search.get():
             url_encoded_id_of_paper = str(result.entry_id).rsplit("/", 1)[-1]
@@ -100,10 +108,10 @@ class Arxiv:
                 result.entry_id)
 
     def download_pdf(self, return_dict):
-        """
+        """[summary]
 
-        :param return_dict:
-
+        :param return_dict: [description]
+        :type return_dict: [type]
         """
         logging.info("Downloading Pdfs for papers")
         for result in tqdm(return_dict):
@@ -118,9 +126,9 @@ class Arxiv:
 
     @staticmethod
     def noexecute(query):
-        """
+        """[summary]
 
-        :param query:
-
+        :param query: [description]
+        :type query: [type]
         """
         logging.info("Arxiv api working for the query %s", query)

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="resources/pygetpapers_logo.png" alt="pygetpapers" height="50%" width="50%">
+  <img src="https://raw.githubusercontent.com/petermr/pygetpapers/main/resources/pygetpapers_logo.png" alt="pygetpapers" height="50%" width="50%">
   <h2 align="center">Research Papers right from python</h2>
 </p>
 
@@ -95,7 +95,7 @@ The developer documentation has been setup at <a href="https://pygetpapers.readt
 # 4. Architecture
 
 <p align="center">
-<img src="resources/archietecture.png" >
+<img src="https://github.com/petermr/pygetpapers/raw/main/resources/archietecture.png" >
 </p>
 
 # 5. About the author and community

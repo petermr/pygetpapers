@@ -1,10 +1,8 @@
-pygetpapers user documentation
-=======================================
+What is pygetpapers
+======================
 
 .. figure:: https://user-images.githubusercontent.com/62711517/117457208-93c60b00-af7b-11eb-9c00-a7077786a430.png
    :alt: pygetpapers
-
-   pygetpapers
 
 -  pygetpapers is a tool to assist text miners. It makes requests to
    open access scientific text repositories, analyses the hits, and
@@ -19,6 +17,29 @@ pygetpapers user documentation
 
 -  ``pygetpapers`` has a modular design which makes maintenance easy and
    simple. This also allows adding support for more repositories simple.
+
+.. raw:: html
+
+   <p>
+
+.. raw:: html
+
+   </p>
+
+   <p align="center">
+     
+
+.. raw:: html
+
+   </p>
+
+   <p>
+
+The developer documentation has been setup at readthedocs
+
+.. raw:: html
+
+   </p>
 
 2. History
 ==========
@@ -704,26 +725,4 @@ responsibility for their actions when using the software.
    development, notably in the field of Text and Data Mining"*, carried
    out for the European Commission in 2014
    (`PDF <http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf>`__)
-
-
-Contents
-----------------------------------------------
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: User Documentation:
-
-   index
-
-.. toctree::
-   :maxdepth: 5
-   :caption: Developer Documentation:
-
-   pygetpapers
-   download_tools
-   europe_pmc
-   crossref
-   arxiv
-   rxivist
-   rxiv
 
