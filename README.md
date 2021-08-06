@@ -3,53 +3,7 @@
   <h2 align="center">Research Papers right from python</h2>
 </p>
 
-<p>Table of Contents</p>
-
-- [1. What is pygetpapers](#1-what-is-pygetpapers)
-- [2. History](#2-history)
-- [3. Formats supported by pygetpapers](#3-formats-supported-by-pygetpapers)
-- [4. Architecture](#4-architecture)
-- [5. About the author and community](#5-about-the-author-and-community)
-- [6. Installation](#6-installation)
-  - [6.1. Method one (recommended):](#61-method-one-recommended)
-  - [6.2. Method two:](#62-method-two)
-- [7. Usage](#7-usage)
-- [8. What is CProject?](#8-what-is-cproject)
-- [9. Tutorial](#9-tutorial)
-  - [9.1. EPMC (Default API)](#91-epmc-default-api)
-    - [9.1.1. Example Query](#911-example-query)
-    - [9.1.2. Scope the number of hits for a query](#912-scope-the-number-of-hits-for-a-query)
-    - [9.1.3. Update an existing CProject with **new papers** by feeding the metadata JSON](#913-update-an-existing-cproject-with-new-papers-by-feeding-the-metadata-json)
-      - [9.1.3.1. How is `--update` different from just downloading x number of papers to the same output directory?](#9131-how-is---update-different-from-just-downloading-x-number-of-papers-to-the-same-output-directory)
-    - [9.1.4. Restart downloading papers to an existing CProject](#914-restart-downloading-papers-to-an-existing-cproject)
-      - [9.1.4.1. Difference between `--restart` and `--update`](#9141-difference-between---restart-and---update)
-    - [9.1.5. Downloading citations and references for papers, if available](#915-downloading-citations-and-references-for-papers-if-available)
-    - [9.1.6. 9.1.6.Downloading only the metadata](#916-916downloading-only-the-metadata)
-    - [9.1.7. Download papers within certain start and end date range](#917-download-papers-within-certain-start-and-end-date-range)
-    - [9.1.8. Saving query for later use](#918-saving-query-for-later-use)
-    - [9.1.9. Feed query using `config.ini` file](#919-feed-query-using-configini-file)
-    - [9.1.10. Querying using a term list](#9110-querying-using-a-term-list)
-    - [9.1.11. 9.1.11 Log levels](#9111-9111-log-levels)
-    - [9.1.12. Log file](#9112-log-file)
-  - [9.2. Crossref](#92-crossref)
-    - [9.2.1. Sample query](#921-sample-query)
-    - [9.2.2. Filter](#922-filter)
-  - [9.3. arxiv](#93-arxiv)
-    - [9.3.1. Sample query](#931-sample-query)
-  - [9.4. Biorxiv and Medrxiv](#94-biorxiv-and-medrxiv)
-    - [9.4.1. Sample Query](#941-sample-query)
-    - [9.4.2. `--update`](#942---update)
-    - [9.5.1. Sample Query](#951-sample-query)
-  - [9.6. rxivist](#96-rxivist)
-- [10. Contributions](#10-contributions)
-- [11. Feature Requests](#11-feature-requests)
-- [12. Legal Implications](#12-legal-implications)
-  - [12.1. Countries with copyright exceptions for content mining:](#121-countries-with-copyright-exceptions-for-content-mining)
-  - [12.2. Countries with proposed copyright exceptions:](#122-countries-with-proposed-copyright-exceptions)
-  - [12.3. Countries with permissive interpretations of 'fair use' that might allow content mining:](#123-countries-with-permissive-interpretations-of-fair-use-that-might-allow-content-mining)
-  - [12.4. General summaries and guides:](#124-general-summaries-and-guides)
-
-# 1. What is pygetpapers
+# What is pygetpapers
 
 
 - pygetpapers is a tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits, and systematically downloads the articles without further interaction.
@@ -80,11 +34,11 @@
 The developer documentation has been setup at <a href="https://pygetpapers.readthedocs.io/en/latest/#">readthedocs</a>
 </p>
 
-# 2. History
+# History
 
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community requires a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
 
-# 3. Formats supported by pygetpapers
+# Formats supported by pygetpapers
 
 - pygetpapers gives fulltexts in xml and pdf format. 
 - The metadata for papers can be saved in many formats including JSON, CSV, HTML.
@@ -92,13 +46,13 @@ The developer documentation has been setup at <a href="https://pygetpapers.readt
 - The additional files for papers can also be downloaded. References and citations for papers are given in XML format. 
 - Log files can be saved in txt format.
 
-# 4. Architecture
+# Architecture
 
 <p align="center">
 <img src="https://github.com/petermr/pygetpapers/raw/main/resources/archietecture.png" >
 </p>
 
-# 5. About the author and community
+# About the author and community
 
 `pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
 
@@ -106,7 +60,7 @@ Testers from OpenVirus have given a lot of useful feedback to Ayush without whic
 
 The community has taken time to ensure that everyone can contribute to this project. So, YOU, the developer, reader and researcher can also contribute by testing, developing, and sharing.
 
-# 6. Installation
+# Installation
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
@@ -114,7 +68,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 6.1. Method one (recommended):
+## Method one (recommended):
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -126,7 +80,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## 6.2. Method two:
+## Method two:
 
 - Manually clone the repository and run `python setup.py install` from inside the repository directory
 
@@ -136,7 +90,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-# 7. Usage
+# Usage
 `pygetpapers` is a commandline tool. You can ask for help by running:
 ```
 pygetpapers --help
@@ -203,13 +157,13 @@ optional arguments:
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
 
-# 8. What is CProject?
+# What is CProject?
 A CProject is a directory structure that the AMI toolset uses to gather and process data. Each paper gets its folder. 
 <img src = "resources/cproject_structure.png">
 A CTree is a subdirectory of a CProject that deals with a single paper.
 <img src = "resources/PMC_folder_inside.png">
 
-# 9. Tutorial
+# Tutorial
 `pygetpapers` was on version `0.0.6.4.` when the tutorials were documented. 
 
 `pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med. By default, it queries EPMC. You can specify the API by using `--api` flag.  
@@ -225,8 +179,8 @@ A CTree is a subdirectory of a CProject that deals with a single paper.
 |`--references`  |yes            |NA            |NA   |NA             |NA     |NA    |
 |`--terms`       |yes            |yes           |yes  |NA             |NA      |NA    |
 
-## 9.1. EPMC (Default API)
-### 9.1.1. Example Query
+## EPMC (Default API)
+### Example Query
 Let's break down the following query:   
 ```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
@@ -258,7 +212,7 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
 ```
 
-### 9.1.2. Scope the number of hits for a query 
+### Scope the number of hits for a query 
 If you are just scoping the number of hits for a given query, you can use `-n` flag as shown below. 
 
    ```
@@ -270,7 +224,7 @@ INFO: Final query is essential oil
 INFO: Total number of hits for the query are 190710
 ```
 
-### 9.1.3. Update an existing CProject with **new papers** by feeding the metadata JSON
+### Update an existing CProject with **new papers** by feeding the metadata JSON
 The `--update` command is used to update a CProject with a new set of papers on same or different query. 
 If let's say you have a corpus of a 30 papers on 'essential oil' (like before) and would like to download 20 more papers to the same CProject directory, you use `--update` command. 
 
@@ -297,9 +251,9 @@ INFO: Saving XML files to C:\Users\shweata\essential_oil_30_1\*\fulltext.xml
 100%|██████████████████████████████████████████████████████████████████████████████████| 50/50 [01:28<00:00,  1.78s/it]
 ```
 
-#### 9.1.3.1. How is `--update` different from just downloading x number of papers to the same output directory?
+#### How is `--update` different from just downloading x number of papers to the same output directory?
 By using `--update` command you can be sure that there are no duplicate papers. You can't be sure when you just download x number of papers to the output directory. 
-### 9.1.4. Restart downloading papers to an existing CProject
+### Restart downloading papers to an existing CProject
 `--restart` flag can be used for two purposes:
 -To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
 - Continue the download from the stage where it broke. This feature would particularly come in handy if you are on poor lines. You can resume downloading at whatever stage you cut off by using the `update` flag as we've described.
@@ -311,17 +265,17 @@ By using `--update` command you can be sure that there are no duplicate papers. 
 
    ![5](https://user-images.githubusercontent.com/70321942/116698739-58a76300-a9e2-11eb-8b56-1fd177bf9b1c.PNG)
 
-#### 9.1.4.1. Difference between `--restart` and `--update`
+#### Difference between `--restart` and `--update`
 - If you aren't looking download new set of papers but would want to download a papers in different format for existing papers, `--restart` is the flag you'd want to use
 - If you are looking to download a new set of papers to an existing Cproject, then you'd use `--update` command. You should note that the format in which you download papers would only apply to the new set of papers and not for the old. 
 
-### 9.1.5. Downloading citations and references for papers, if available
+### Downloading citations and references for papers, if available
 - `--references` and `--citations` flags can be used to download the references and citations respectively.  
 - It also requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)
 
    `pygetpapers -q "lantana" -k 10 -o "test" -c -x --citation PMC`
 
-### 9.1.6. 9.1.6.Downloading only the metadata
+### 9.1.6.Downloading only the metadata
 If you are looking to download just the metadata in the supported formats`--onlyquery` is the flag you use. It saves the metadata in the output directory. 
 
 You can use `--restart` feature to download the fulltexts for these papers. 
@@ -342,25 +296,25 @@ WARNING: Author list not found for paper 8
 WARNING: Keywords not found for paper 9
 1it [00:00, 407.69it/s]
 ```
-### 9.1.7. Download papers within certain start and end date range
+### Download papers within certain start and end date range
 By using `--startdate` and `--enddate` you can specify the date range within which the papers you want to download were first published. 
 
 ```
 pygetpapers -q "METHOD:essential oil" --startdate "2020-01-02" --enddate "2021-09-09"
 ```
 
-### 9.1.8. Saving query for later use
+### Saving query for later use
 To save a query for later use, you can use `--save_query`. What it does is that it saves the query in a `.ini` file in the output directory. 
 ```
 pygetpapers -q "lantana" -k 10 -o "lantana_query_config"--save_query
 ```
 [Here](resources/invasive_plant_species_test/saved_config.ini) is an example config file `pygetpapers` outputs
-### 9.1.9. Feed query using `config.ini` file
+### Feed query using `config.ini` file
 Using can use the `config.ini` file you created using `--save_query`, you re-run the query. To do so, you will give `--config` flag the absolute path of the `saved_config.ini` file.
 
 `pygetpapers --config "C:\Users\shweata\lantana_query_config\saved_config.ini"`
 
-### 9.1.10. Querying using a term list
+### Querying using a term list
 If your query is complex with multiple ORs, you can use `--terms` feature. To use this, you will:
 - Create a `.txt` file with list of terms separated by commas. 
 - Give the `--terms` flag the absolute path of the `.txt` file
@@ -399,23 +353,23 @@ WARNING: Could not find more papers
 100%|█████████████████████████████████████████████| 20/20 [00:32<00:00,  1.61s/it]
 ```
 
-### 9.1.11. 9.1.11 Log levels
+### 9.1.11 Log levels
 You can specify the log level using the `-l` flag. The default as you've already seen so far is info. 
 
 INPUT:
 ```
 pygetpapers -q "lantana" -k 10 -o lantana_test_10_2 --loglevel debug -x
 ```
-### 9.1.12. Log file
+### Log file
 You can also choose to write the log to a `.txt` file while simultaneously printing it out. 
 
 INPUT:
 ```
 pygetpapers -q "lantana" -k 10 -o lantana_test_10_4 --loglevel debug -x --logfile test_log.txt
 ```
-## 9.2. Crossref
+## Crossref
 You can query crossref api only for the metadata. 
-### 9.2.1. Sample query
+### Sample query
 - The metadata formats flags are applicable as described in the EPMC tutorial
 - `--terms` and `-q` are also applicable to crossref
 INPUT:
@@ -437,11 +391,11 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata\terms_test_essential_oil_crossref_3
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 996.82it/s]
 ```
-### 9.2.2. Filter
+### Filter
 
-## 9.3. arxiv
+## arxiv
 `pygetpapers` allows you to query `arxiv` wrapper for metadata and get results in XML format. 
-### 9.3.1. Sample query
+### Sample query
 INPUT
 ```
 pygetpapers --api arxiv -k 10 -o arxiv_test_2 -q "artificial intelligence" -x
@@ -459,9 +413,9 @@ INFO: Making xml files for metadata at C:\Users\shweata\arxiv_test_2
 100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 427.09it/s]
 100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 982.89it/s]
 ```
-## 9.4. Biorxiv and Medrxiv
+## Biorxiv and Medrxiv
 You can query `biorxiv` and `medrxiv` for fulltext and metadata (in all available formats)
-### 9.4.1. Sample Query
+### Sample Query
 INPUT:
 ```
 pygetpapers --api biorxiv --startdate 2021-04-01 -o biorxiv_test -x -c --makehtml  -k 20
@@ -480,7 +434,7 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test
 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 1369.32it/s]
 ```
-### 9.4.2. `--update` 
+### `--update` 
 Ensure that you specify the `--api` you used to download the existing corpus while updating. 
 INPUT:
 ```
@@ -495,7 +449,7 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata
 ```
 
-### 9.5.1. Sample Query
+### Sample Query
 INPUT
 ```
 pygetpapers --api medrxiv --startdate 2021-04-01 -o medrxiv_test_2 -x -c -p  --makehtml -k 20
@@ -515,7 +469,7 @@ INFO: Writing metadata file for the papers at C:\Users\shweata\medrxiv_test_2
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 241.71it/s]
 ```
 - `--update` would work the same as medarxiv
-## 9.6. rxivist
+## rxivist
 - Queries both `biorxiv` and `medarxiv`. The difference here is that you can specify a query. But rxivist has now clubbed `biorxiv` and `medarxiv`. That would mean that your downloads would be a mixture of both. 
 
 You can only retrieve metadata from `rxivist`. 
@@ -540,7 +494,7 @@ INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivi
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 751.09it/s]
 ```
 
-# 10. Contributions
+# Contributions
 
 Contributions are welcome through issues as well as pull requests. For direct contributions, you can mail the author at ayush@science.org.in.
 
@@ -548,31 +502,31 @@ To discuss problems or feature requests, file an issue. For bugs, please include
 
 To contribute, make a pull request. Contributions should include tests for any new features/bug fixes and follow best practices including PEP8, etc.
 
-# 11. Feature Requests
+# Feature Requests
 
 To request features, please put them in issues
 
-# 12. Legal Implications
+# Legal Implications
 
 If you use`pygetpapers`, you should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
 
-## 12.1. Countries with copyright exceptions for content mining:
+## Countries with copyright exceptions for content mining:
 
 - UK
 - Japan
 
-## 12.2. Countries with proposed copyright exceptions:
+## Countries with proposed copyright exceptions:
 
 - Ireland
 - EU countries 
 
-## 12.3. Countries with permissive interpretations of 'fair use' that might allow content mining:
+## Countries with permissive interpretations of 'fair use' that might allow content mining:
 
 - Israel
 - USA
 - Canada
 
-## 12.4. General summaries and guides:
+## General summaries and guides:
 
 - _"The legal framework of text and data mining (TDM)"_, carried out for the European Commission in March 2014 ([PDF](http://ec.europa.eu/internal_market/copyright/docs/studies/1403_study2_en.pdf))
 - _"Standardisation in the area of innovation and technological development, notably in the field of Text and Data Mining"_, carried out for the European Commission in 2014 ([PDF](http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf))

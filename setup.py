@@ -13,7 +13,7 @@ config = configparser.RawConfigParser(allow_no_value=True)
 config.read_string(config_file)
 version = config.get("pygetpapers", "version")
 
-with open('README.md') as readme_file:
+with open('README.md', encoding='utf-8') as readme_file:
     readme = readme_file.read()
 requirements = ['requests', 'pandas',
                 'lxml', 'xmltodict', 'configargparse', 'habanero', 'arxiv', 'dict2xml', 'tqdm', 'coloredlogs']
@@ -28,10 +28,16 @@ setup(
     author_email='ayush@science.org.in',
     url='https://github.com/petermr/pygetpapers',
     packages=[
-        'pygetpapers',
+        'pygetpapers', 'arxiv', 'crossref', 'europe_pmc', 'rxiv', 'rxivist', 'download_tools'
     ],
     package_dir={'pygetpapers':
-                 'pygetpapers'},
+                 'pygetpapers', 'arxiv':
+                 'pygetpapers', 'crossref':
+                 'pygetpapers', 'europe_pmc':
+                 'pygetpapers', 'rxiv': 'pygetpapers',
+                 'rxivist': 'pygetpapers',
+                 'download_tools': 'pygetpapers'
+                 },
     include_package_data=True,
     install_requires=requirements,
     license='Apache License',
