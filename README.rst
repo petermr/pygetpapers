@@ -274,7 +274,7 @@ Let's break down the following query:
 ``pygetpapers``, by default, writes metadata to a JSON file within: -
 individual paper directory for corresponding paper
 (``epmc_result.json``) - working directory for all downloaded papers
-(```epmc_results.json`` <resources/invasiv_plant_species_test/eupmc_results.json>`__)
+(```epmc_results.json`` <resources/invasiv_plant_species_test/eupmc_results.json>```__)
 
 OUTPUT:
 
