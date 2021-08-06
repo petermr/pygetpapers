@@ -8,7 +8,8 @@ class CrossRef:
     """CrossRef class which handles crossref repository"""
 
     def __init__(self):
-        """[summary]"""
+        """[summary]
+        """
         self.download_tools = DownloadTools("crossref")
 
     def crossref(
@@ -21,16 +22,24 @@ class CrossRef:
         makexml=False,
         makehtml=False,
     ):
-        """Makes the query to CROSSREF rest api then returns research papers.
+        """[summary]
 
-        :param query: the query passed on to payload
-        :param size: total number of papers
-        :param filter_dict: Default value = None) Key Value pair passed down to the crossref api
-        :param update: Default value = None) Weather to update the dict with old papers
-        :param makehtml:
-        :param makecsv:
-        :param makexml:
-
+        :param query: [description]
+        :type query: [type]
+        :param size: [description]
+        :type size: [type]
+        :param filter_dict: [description], defaults to None
+        :type filter_dict: [type], optional
+        :param update: [description], defaults to None
+        :type update: [type], optional
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makexml: [description], defaults to False
+        :type makexml: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
+        :return: [description]
+        :rtype: [type]
         """
         crossref_client = self.initiate_crossref()
         logging.info("Making request to crossref")
@@ -135,11 +144,12 @@ class CrossRef:
         )
 
     def noexecute(self, query, filter_dict=None, **kwargs):
-        """Noexecute command for the crossref
+        """[summary]
 
-        :param query: total number of papers
-        :param filter_dict: Default value = None) Key Value pair passed down to the crossref api
-
+        :param query: [description]
+        :type query: [type]
+        :param filter_dict: [description], defaults to None
+        :type filter_dict: [type], optional
         """
         result_dict = self.crossref(
             query, size=10, filter_dict=filter_dict, **kwargs
@@ -157,16 +167,22 @@ class CrossRef:
         makexml=False,
         makehtml=False,
     ):
-        """Downloads and saves results for the query
+        """[summary]
 
-        :param query: total number of papers
-        :param filter_dict: Default value = None) Key Value pair passed down to the crossref api
-        :param update: Default value = None) Weather to update the dict with old papers
-        :param size: total number of papers
-        :param makehtml:
-        :param makexml:
-        :param makecsv:
-
+        :param query: [description]
+        :type query: [type]
+        :param size: [description]
+        :type size: [type]
+        :param filter_dict: [description], defaults to None
+        :type filter_dict: [type], optional
+        :param update: [description], defaults to None
+        :type update: [type], optional
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makexml: [description], defaults to False
+        :type makexml: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
         """
         result_dict = self.crossref(
             query,

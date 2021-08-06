@@ -37,12 +37,14 @@ class DownloadTools:
         self.suppurl = config.get(api, "suppurl")
 
     def postquery(self, headers, payload):
-        """
+        """[summary]
 
-        :param headers: headers that will be sent to eupmc rest api
-        :param payload: payload that will be sent to eupmc rest api
-        :returns: Python dictionary containting the output got from eupmc rest api
-
+        :param headers: [description]
+        :type headers: [type]
+        :param payload: [description]
+        :type payload: [type]
+        :return: [description]
+        :rtype: [type]
         """
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
         start = time.time()
@@ -55,10 +57,10 @@ class DownloadTools:
 
     @staticmethod
     def check_or_make_directory(directory_url):
-        """Checks if the directory exists. If not, makes the directory
+        """[summary]
 
-        :param directory_url: directory url to check
-
+        :param directory_url: [description]
+        :type directory_url: [type]
         """
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
@@ -70,15 +72,18 @@ class DownloadTools:
         query,
         synonym=True,
     ):
-        """
+        """[summary]
 
-        :param cursormark: the cursonmark for the rest api page.
-        :param page_size: the size of each page in the output.
-        :param query: the query passed on to payload
-        :param synonym: whether synonym should be or not (Default value = True)
-        :returns: headers': headers, 'payload': payload}
-        :rtype: Python dictionary containting headers and payload in the format
-
+        :param cursormark: [description]
+        :type cursormark: [type]
+        :param page_size: [description]
+        :type page_size: [type]
+        :param query: [description]
+        :type query: [type]
+        :param synonym: [description], defaults to True
+        :type synonym: bool, optional
+        :return: [description]
+        :rtype: [type]
         """
 
         headers = {"Content-type": "application/x-www-form-urlencoded"}
@@ -96,11 +101,12 @@ class DownloadTools:
 
     @staticmethod
     def write_or_append_to_csv(df_transposed, name="europe_pmc.csv"):
-        """Writes the csv file or appends to an existing one
+        """[summary]
 
-        :param df_transposed: dataframe to write
-        :param name: Default value = 'europe_pmc.csv')
-
+        :param df_transposed: [description]
+        :type df_transposed: [type]
+        :param name: [description], defaults to "europe_pmc.csv"
+        :type name: str, optional
         """
         path = os.path.join(str(os.getcwd()), name)
         if os.path.exists(path):
@@ -110,12 +116,14 @@ class DownloadTools:
 
     @staticmethod
     def writexml(directory_url, destination_url, content):
-        """writes xml to the destination
+        """[summary]
 
-        :param directory_url: directory containg destination
-        :param destination_url: path to write the xml to
-        :param content: xml content
-
+        :param directory_url: [description]
+        :type directory_url: [type]
+        :param destination_url: [description]
+        :type destination_url: [type]
+        :param content: [description]
+        :type content: [type]
         """
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
@@ -124,11 +132,12 @@ class DownloadTools:
 
     @staticmethod
     def make_dict_for_csv(resultant_dict):
-        """removes the fields downloaded, pdfdownloaded,csvmade for the resultant_dict
+        """[summary]
 
-        :param resultant_dict: dictionary to remove the fields
-        :returns: resultant_dict_for_csv
-
+        :param resultant_dict: [description]
+        :type resultant_dict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         resultant_dict_for_csv = copy.deepcopy(resultant_dict)
         for paper in resultant_dict_for_csv:
@@ -147,11 +156,12 @@ class DownloadTools:
 
     @staticmethod
     def write_content_to_destination(url, destination):
-        """Writes content from url to destination
+        """[summary]
 
-        :param url: Url to get content from
-        :param destination: destination to write content to
-
+        :param url: [description]
+        :type url: [type]
+        :param destination: [description]
+        :type destination: [type]
         """
         with open(destination, "wb") as file:
             response = requests.get(url)
@@ -159,11 +169,12 @@ class DownloadTools:
 
     @staticmethod
     def makejson(path, final_xml_dict):
-        """Writes json of final_xml_dict to path
+        """[summary]
 
-        :param path: path to write json to
-        :param final_xml_dict: python dictionary to make the json from
-
+        :param path: [description]
+        :type path: [type]
+        :param final_xml_dict: [description]
+        :type final_xml_dict: [type]
         """
         append_write = "w"
         with open(path, append_write, encoding="utf-8") as file_handler:
@@ -171,10 +182,12 @@ class DownloadTools:
 
     @staticmethod
     def clean_dict_for_csv(paperdict):
-        """Removes the fields pdfdownloaded , jsondownloaded , csvmade from dictionary of paper
+        """[summary]
 
-        :param paperdict: dictionary to remove fields from
-
+        :param paperdict: [description]
+        :type paperdict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         dict_to_write = dict(paperdict)
         dict_to_write.pop("pdfdownloaded")
@@ -184,11 +197,14 @@ class DownloadTools:
 
     @staticmethod
     def make_dataframe_for_paper_dict(result, return_dict):
-        """
+        """[summary]
 
-        :param result: 
-        :param return_dict:
-
+        :param result: [description]
+        :type result: [type]
+        :param return_dict: [description]
+        :type return_dict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         dict_for_df = {k: [v] for k, v in return_dict[result].items()}
         df_for_paper = pd.DataFrame(dict_for_df)
@@ -196,10 +212,12 @@ class DownloadTools:
 
     @staticmethod
     def conditions_to_download(paperdict):
-        """Writes the conditions to download pdf, json and csv
+        """[summary]
 
-        :param paperdict: dictionary to write rules for
-
+        :param paperdict: [description]
+        :type paperdict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         condition_to_down = False
         condition_to_download_pdf = False
@@ -226,10 +244,12 @@ class DownloadTools:
 
     @staticmethod
     def make_clickable(link):
-        """Returns a <a> Html String
+        """[summary]
 
-        :param link: link for href
-
+        :param link: [description]
+        :type link: [type]
+        :return: [description]
+        :rtype: [type]
         """
         tag_to_return = f'<a target="_blank" href="{link}">Link</a>'
         if str(link) == "nan":
@@ -237,12 +257,14 @@ class DownloadTools:
         return tag_to_return
 
     def getcitations(self, pmcid, source):
-        """Gets citations for the paper of pmcid
+        """[summary]
 
-        :param pmcid: pmcid to get the citations
-        :param source: source to get the citations from
-        :returns: citations xml
-
+        :param pmcid: [description]
+        :type pmcid: [type]
+        :param source: [description]
+        :type source: [type]
+        :return: [description]
+        :rtype: [type]
         """
         request_handler = requests.get(
             self.citationurl.format(source=source, pmcid=pmcid)
@@ -250,12 +272,14 @@ class DownloadTools:
         return request_handler.content
 
     def getreferences(self, pmcid, source):
-        """Gets references for the paper of pmcid
+        """[summary]
 
-        :param pmcid: pmcid to get the references
-        :param source: source to get the references from
-        :returns: references xml
-
+        :param pmcid: [description]
+        :type pmcid: [type]
+        :param source: [description]
+        :type source: [type]
+        :return: [description]
+        :rtype: [type]
         """
         request_handler = requests.get(
             self.referencesurl.format(source=source, pmcid=pmcid)
@@ -264,20 +288,17 @@ class DownloadTools:
 
     @staticmethod
     def add_scrollbar(text):
-        """Makes div scrollable
+        """[summary]
 
-        :param text: text to wrap
-
+        :param text: [description]
+        :type text: [type]
+        :return: [description]
+        :rtype: [type]
         """
         return f'<div id="table">{text}</div>'
 
     def make_html_from_dataframe(self, dataframe, url):
-        """Writes html from pandas dataframe
-
-        :param dataframe: Dataframe to make html from
-        :param url: URL to write html to
-
-        """
+        """[summary]"""
         dataframe = dataframe.T
         try:
             dataframe = dataframe.drop(columns=["full", "htmlmade"])
@@ -331,11 +352,12 @@ class DownloadTools:
             file_handler.write(html_with_pagination)
 
     def make_html_from_dict(self, dict_to_write_html_from, url):
-        """Writes html from python dictionary
+        """[summary]
 
-        :param dict_to_write_html_from: dict to make html from
-        :param url: URL to write html to
-
+        :param dict_to_write_html_from: [description]
+        :type dict_to_write_html_from: [type]
+        :param url: [description]
+        :type url: [type]
         """
         df = pd.Series(dict_to_write_html_from).to_frame(
             dict_to_write_html_from["full"]["pmcid"]
@@ -343,36 +365,43 @@ class DownloadTools:
         self.make_html_from_dataframe(df, url)
 
     def make_references(self, directory_url, paperid, source, referenceurl):
-        """Downloads the references for the paper with pmcid (paperid) to reference url
+        """[summary]
 
-        :param directory_url: directory containing referenceurl
-        :param paperid: pmc id of the paper
-        :param source: source to get the citations from
-        :param referenceurl: path to write the references to
-
+        :param directory_url: [description]
+        :type directory_url: [type]
+        :param paperid: [description]
+        :type paperid: [type]
+        :param source: [description]
+        :type source: [type]
+        :param referenceurl: [description]
+        :type referenceurl: [type]
         """
         getreferences = self.getreferences(paperid, source)
         self.writexml(directory_url, referenceurl, getreferences)
 
     def make_citations(self, source, citationurl, directory_url, paperid):
-        """Downloads the citations for the paper with pmcid (paperid) to citation url
+        """[summary]
 
-        :param source: source to get the citations from
-        :param citationurl: path to write the citations to
-        :param directory_url: directory containing citationurl
-        :param paperid: pmc id of the paper
-
+        :param source: [description]
+        :type source: [type]
+        :param citationurl: [description]
+        :type citationurl: [type]
+        :param directory_url: [description]
+        :type directory_url: [type]
+        :param paperid: [description]
+        :type paperid: [type]
         """
         getcitations = self.getcitations(paperid, source)
         self.writexml(directory_url, citationurl, getcitations)
 
     @staticmethod
     def readjsondata(path):
-        """Reads json from path and returns python dictionary
+        """[summary]
 
-        :param path: path to read the json from
-        :returns: python dictionary for the json
-
+        :param path: [description]
+        :type path: [type]
+        :return: [description]
+        :rtype: [type]
         """
         with open(path) as file_handler:
             dict_from_json = json.load(file_handler)
@@ -380,7 +409,8 @@ class DownloadTools:
 
     @staticmethod
     def log_making_xml():
-        """Logs that the xmls are being written"""
+        """[summary]
+        """
 
         logging.debug(
             "*/saving xml to per-document directories (CTrees) (D)*/")
@@ -389,11 +419,12 @@ class DownloadTools:
         logging.debug("*/Making the Request to get full text xml*/")
 
     def getxml(self, pmcid):
-        """Makes a query for the pmcid xml to eupmc rest.
+        """[summary]
 
-        :param pmcid: pmcid of the paper to query for
-        :returns: query result
-
+        :param pmcid: [description]
+        :type pmcid: [type]
+        :return: [description]
+        :rtype: [type]
         """
         request_handler = requests.get(self.xmlurl.format(pmcid=pmcid))
         return request_handler.content
@@ -401,13 +432,16 @@ class DownloadTools:
     def getsupplementaryfiles(
         self, pmcid, directory_url, destination_url, from_ftp_end_point=False
     ):
-        """Downloads the supplemetary marks for the paper having pmcid
+        """[summary]
 
-        :param pmcid: pmcid to get the supplementary files
-        :param directory_url: directory containg destination
-        :param destination_url: path to write the supplementary files to
-        :param from_ftp_end_point: Default value = False)
-
+        :param pmcid: [description]
+        :type pmcid: [type]
+        :param directory_url: [description]
+        :type directory_url: [type]
+        :param destination_url: [description]
+        :type destination_url: [type]
+        :param from_ftp_end_point: [description], defaults to False
+        :type from_ftp_end_point: bool, optional
         """
 
         log_key = "supplementary"
@@ -432,13 +466,16 @@ class DownloadTools:
             logging.warning("%s files not found for %s", log_key, pmcid)
 
     def extract_zip_files(self, request_handler, destination_url, log_key, pmcid):
-        """
+        """[summary]
 
-        :param request_handler: param destination_url:
-        :param log_key: param pmcid:
-        :param destination_url: param pmcid:
-        :param pmcid:
-
+        :param request_handler: [description]
+        :type request_handler: [type]
+        :param destination_url: [description]
+        :type destination_url: [type]
+        :param log_key: [description]
+        :type log_key: [type]
+        :param pmcid: [description]
+        :type pmcid: [type]
         """
         try:
             z = zipfile.ZipFile(io.BytesIO(request_handler.content))
@@ -450,12 +487,14 @@ class DownloadTools:
             logging.debug(exception)
 
     def make_initial_columns_for_paper_dict(self, key_for_dict, resultant_dict):
-        """Writes the json and csv for searchvaraible dict
+        """[summary]
 
-        :param key_for_dict: id of the paper for which fields will be created
-        :param resultant_dict: dict in which the fields will be created
-        :returns: dict with the initial fields created for pmcid
-
+        :param key_for_dict: [description]
+        :type key_for_dict: [type]
+        :param resultant_dict: [description]
+        :type resultant_dict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         resultant_dict[key_for_dict] = {}
         self.add_keys_for_conditions(key_for_dict, resultant_dict)
@@ -477,13 +516,16 @@ class DownloadTools:
         resultant_dict[key_for_dict]["htmlmade"] = False
 
     def make_csv_for_dict(self, df, return_dict, output_main, output_paper):
-        """
+        """[summary]
 
-        :param df:
-        :param return_dict:
-        :param output_main:
-        :param output_paper:
-
+        :param df: [description]
+        :type df: [type]
+        :param return_dict: [description]
+        :type return_dict: [type]
+        :param output_main: [description]
+        :type output_main: [type]
+        :param output_paper: [description]
+        :type output_paper: [type]
         """
         logging.info("Making csv files for metadata at %s", os.getcwd())
         paper = 0
@@ -502,13 +544,16 @@ class DownloadTools:
             logging.debug("Wrote csv files for paper %s", paper)
 
     def make_html_for_dict(self, df, return_dict, output_main, output_paper):
-        """
+        """[summary]
 
-        :param df:
-        :param return_dict:
-        :param output_main:
-        :param output_paper:
-
+        :param df: [description]
+        :type df: [type]
+        :param return_dict: [description]
+        :type return_dict: [type]
+        :param output_main: [description]
+        :type output_main: [type]
+        :param output_paper: [description]
+        :type output_paper: [type]
         """
         logging.info("Making html files for metadata at %s", os.getcwd())
         paper = 0
@@ -527,12 +572,14 @@ class DownloadTools:
             logging.debug("Wrote xml files for paper %s", paper)
 
     def make_xml_for_dict(self, return_dict, output_main, output_paper):
-        """
+        """[summary]
 
-        :param return_dict:
-        :param output_main:
-        :param output_paper:
-
+        :param return_dict: [description]
+        :type return_dict: [type]
+        :param output_main: [description]
+        :type output_main: [type]
+        :param output_paper: [description]
+        :type output_paper: [type]
         """
         dict_to_use = self.make_dict_for_csv(return_dict)
         total_xml = dict2xml(dict_to_use, wrap="root", indent="   ")
@@ -600,6 +647,11 @@ class DownloadTools:
 
     @staticmethod
     def get_version():
+        """[summary]
+
+        :return: [description]
+        :rtype: [type]
+        """
         with open(
             os.path.join(os.path.dirname(__file__), "config.ini")
         ) as file_handler:
@@ -630,6 +682,8 @@ class DownloadTools:
 
         :param returned_dict: [description]
         :type returned_dict: [type]
+        :param updated_dict: [description]
+        :type updated_dict: [type]
         :param key_in_dict: [description]
         :type key_in_dict: [type]
         :param name_of_file: [description]
@@ -668,8 +722,8 @@ class DownloadTools:
         :type json_return_dict: [type]
         :param total_number_of_results: [description]
         :type total_number_of_results: [type]
-        :param update: [description]
-        :type update: [type]
+        :param update: [description], defaults to None
+        :type update: [type], optional
         :return: [description]
         :rtype: [type]
         """

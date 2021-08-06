@@ -29,12 +29,16 @@ class EuropePmc:
         self.download_tools = DownloadTools("europepmc")
 
     def europepmc(self, query, size, synonym=True, **kwargs):
-        """Makes the query to europepmc rest api then returns the research papers.
-        :param query: the query passed on to payload
-        :param size: total number of papers
-        :param synonym: whether synonym should be or not (Default value = True)
-        :param kwargs: ensures that the output dict doesnt contain papers already there in update
-        :returns: Python dictionary containing the research papers.
+        """[summary]
+
+        :param query: [description]
+        :type query: [type]
+        :param size: [description]
+        :type size: [type]
+        :param synonym: [description], defaults to True
+        :type synonym: bool, optional
+        :return: [description]
+        :rtype: [type]
         """
         size = int(size)
         (
@@ -73,12 +77,20 @@ class EuropePmc:
     def create_final_paper_list(
         self, content, kwargs, number_of_papers_there, output_dict, size
     ):
-        """Checks the number of results and then adds them to the list containing all the papers
-        :param content: list containing all the papers
-        :param kwargs: kwargs of the main function containing whether to update or add papers
-        :param number_of_papers_there: total number of papers found till now
-        :param output_dict: output directory
-        :param size: required number of papers
+        """[summary]
+
+        :param content: [description]
+        :type content: [type]
+        :param kwargs: [description]
+        :type kwargs: [type]
+        :param number_of_papers_there: [description]
+        :type number_of_papers_there: [type]
+        :param output_dict: [description]
+        :type output_dict: [type]
+        :param size: [description]
+        :type size: [type]
+        :return: [description]
+        :rtype: [type]
         """
         check_if_only_result = isinstance(
             output_dict["responseWrapper"]["resultList"]["result"], dict
@@ -97,10 +109,16 @@ class EuropePmc:
 
     @staticmethod
     def add_cursor_mark_if_exists(builtquery, morepapers, next_cursor_mark):
-        """Adds the cursor mark if it exists in the api result
-        :param builtquery: api result dictionary
-        :param morepapers: weather to download more papers
-        :param next_cursor_mark: list containing all cursor marks
+        """[summary]
+
+        :param builtquery: [description]
+        :type builtquery: [type]
+        :param morepapers: [description]
+        :type morepapers: [type]
+        :param next_cursor_mark: [description]
+        :type next_cursor_mark: [type]
+        :return: [description]
+        :rtype: [type]
         """
 
         if "nextCursorMark" in builtquery["responseWrapper"]:
@@ -114,11 +132,18 @@ class EuropePmc:
     def build_and_send_query(
         self, maximum_hits_per_page, next_cursor_mark, query, synonym
     ):
-        """
-        :param maximum_hits_per_page:
-        :param next_cursor_mark:
-        :param query:
-        :param synonym:
+        """[summary]
+
+        :param maximum_hits_per_page: [description]
+        :type maximum_hits_per_page: [type]
+        :param next_cursor_mark: [description]
+        :type next_cursor_mark: [type]
+        :param query: [description]
+        :type query: [type]
+        :param synonym: [description]
+        :type synonym: [type]
+        :return: [description]
+        :rtype: [type]
         """
         queryparams = self.download_tools.buildquery(
             next_cursor_mark[-1], maximum_hits_per_page, query, synonym=synonym
@@ -130,7 +155,11 @@ class EuropePmc:
 
     @staticmethod
     def create_parameters_for_paper_download():
-        """ """
+        """[summary]
+
+        :return: [description]
+        :rtype: [type]
+        """
         content = [[]]
         next_cursor_mark = [
             "*",
@@ -150,12 +179,20 @@ class EuropePmc:
 
     @staticmethod
     def append_paper_to_list(content, kwargs, number_of_papers_there, paper, size):
-        """
-        :param content:
-        :param number_of_papers_there:
-        :param size:
-        :param paper:
-        :param kwargs:
+        """[summary]
+
+        :param content: [description]
+        :type content: [type]
+        :param kwargs: [description]
+        :type kwargs: [type]
+        :param number_of_papers_there: [description]
+        :type number_of_papers_there: [type]
+        :param paper: [description]
+        :type paper: [type]
+        :param size: [description]
+        :type size: [type]
+        :return: [description]
+        :rtype: [type]
         """
         if "update" in kwargs:
             if "pmcid" in paper and paper["pmcid"] not in kwargs["update"]:
@@ -172,8 +209,12 @@ class EuropePmc:
         return number_of_papers_there
 
     def eupmc_update(self, args, update_path):
-        """
-        :param args:
+        """[summary]
+
+        :param args: [description]
+        :type args: [type]
+        :param update_path: [description]
+        :type update_path: [type]
         """
         os.chdir(os.path.dirname(update_path))
         read_json = self.download_tools.readjsondata(update_path)
@@ -194,8 +235,10 @@ class EuropePmc:
         )
 
     def eupmc_restart(self, args):
-        """
-        :param args:
+        """[summary]
+
+        :param args: [description]
+        :type args: [type]
         """
         read_json = self.download_tools.readjsondata(args.restart)
         os.chdir(os.path.dirname(args.restart))
@@ -212,9 +255,12 @@ class EuropePmc:
         )
 
     def eupmc_noexecute(self, query, synonym=True):
-        """Tells how many hits found for the query
-        :param query:
-        :param synonym: Default value = True)
+        """[summary]
+
+        :param query: [description]
+        :type query: [type]
+        :param synonym: [description], defaults to True
+        :type synonym: bool, optional
         """
         builtqueryparams = self.download_tools.buildquery(
             "*", 25, query, synonym=synonym
@@ -243,20 +289,34 @@ class EuropePmc:
         synonym=True,
         zip_files=False,
     ):
-        """Updates the corpus with new papers
-        :param query: str):  Query to download papers for
-        :param original_json: Json of the original corpus in the form of python dictionary
-        :param size: int): Number of new papers to download
-        :param onlymakejson: Default value = False)
-        :param getpdf: Default value = False)
-        :param makehtml: Default value = False)
-        :param makecsv: Default value = False)
-        :param makexml: Default value = False)
-        :param references: Default value = False)
-        :param citations: Default value = False)
-        :param supplementary_files: Default value = False)
-        :param synonym: Default value = True)
-        :param zip_files: Default value = False)
+        """[summary]
+
+        :param query: [description]
+        :type query: [type]
+        :param original_json: [description]
+        :type original_json: [type]
+        :param size: [description]
+        :type size: [type]
+        :param onlymakejson: [description], defaults to False
+        :type onlymakejson: bool, optional
+        :param getpdf: [description], defaults to False
+        :type getpdf: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makexml: [description], defaults to False
+        :type makexml: bool, optional
+        :param references: [description], defaults to False
+        :type references: bool, optional
+        :param citations: [description], defaults to False
+        :type citations: bool, optional
+        :param supplementary_files: [description], defaults to False
+        :type supplementary_files: bool, optional
+        :param synonym: [description], defaults to True
+        :type synonym: bool, optional
+        :param zip_files: [description], defaults to False
+        :type zip_files: bool, optional
         """
         query_result = self.europepmc(
             query, size, update=original_json, synonym=synonym
@@ -295,19 +355,32 @@ class EuropePmc:
         synonym=True,
         zip_files=False,
     ):
-        """Downloads and writes papers along with the metadata for the given query
-        :param query: Query to download papers for
-        :param size: Number of papers to be downloaded
-        :param onlymakejson: Default value = False)
-        :param getpdf: Default value = False)
-        :param makecsv: Default value = False)
-        :param makehtml: Default value = False)
-        :param makexml: Default value = False)
-        :param references: Default value = False)
-        :param citations: Default value = False)
-        :param supplementary_files: Default value = False)
-        :param synonym: Default value = True)
-        :param zip_files: Default value = False)
+        """[summary]
+
+        :param query: [description]
+        :type query: [type]
+        :param size: [description]
+        :type size: [type]
+        :param onlymakejson: [description], defaults to False
+        :type onlymakejson: bool, optional
+        :param getpdf: [description], defaults to False
+        :type getpdf: bool, optional
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
+        :param makexml: [description], defaults to False
+        :type makexml: bool, optional
+        :param references: [description], defaults to False
+        :type references: bool, optional
+        :param citations: [description], defaults to False
+        :type citations: bool, optional
+        :param supplementary_files: [description], defaults to False
+        :type supplementary_files: bool, optional
+        :param synonym: [description], defaults to True
+        :type synonym: bool, optional
+        :param zip_files: [description], defaults to False
+        :type zip_files: bool, optional
         """
         query_result = self.europepmc(query, size, synonym=synonym)
         is_search_successful = self.makecsv(
@@ -332,9 +405,12 @@ class EuropePmc:
 
     @staticmethod
     def get_urls_to_write_to(pmcid):
-        """
-        :param pmcid: pmcid to write the urls for
-        :returns: tuple containing urls where files for the fulltext will be written
+        """[summary]
+
+        :param pmcid: [description]
+        :type pmcid: [type]
+        :return: [description]
+        :rtype: [type]
         """
         destination_url = os.path.join(str(os.getcwd()), pmcid, "fulltext.xml")
         directory_url = os.path.join(str(os.getcwd()), pmcid)
@@ -369,16 +445,26 @@ class EuropePmc:
         supplementary_files=False,
         zip_files=False,
     ):
-        """Writes the pdf,csv,xml,references,citations,supplementary_files for the individual papers
-        :param final_xml_dict: Python dictionary containg all the papers
-        :param getpdf: bool): whether to make pdfs (Default value = False)
-        :param makecsv: bool): whether to make csv for the metadata (Default value = False)
-        :param makexml: bool): whether to make xml file for the paper (Default value = False)
-        :param references: bool): whether to download references (Default value = False)
-        :param citations: bool): whether to download citations (Default value = False)
-        :param supplementary_files: bool): whether to download supp. files (Default value = False)
-        :param makehtml: Default value = False)
-        :param zip_files: Default value = False)
+        """[summary]
+
+        :param final_xml_dict: [description]
+        :type final_xml_dict: [type]
+        :param getpdf: [description], defaults to False
+        :type getpdf: bool, optional
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
+        :param makexml: [description], defaults to False
+        :type makexml: bool, optional
+        :param references: [description], defaults to False
+        :type references: bool, optional
+        :param citations: [description], defaults to False
+        :type citations: bool, optional
+        :param supplementary_files: [description], defaults to False
+        :type supplementary_files: bool, optional
+        :param zip_files: [description], defaults to False
+        :type zip_files: bool, optional
         """
         if makexml:
             self.download_tools.log_making_xml()
@@ -468,17 +554,24 @@ class EuropePmc:
 
     @staticmethod
     def make_csv(dict_to_write, pmcid):
-        """Makes csv file for the dict_to_write (python dictionary for the fulltext).
-        :param dict_to_write: Python dictionary to write the csv from
-        :param pmcid: pmcid of the paper
+        """[summary]
+
+        :param dict_to_write: [description]
+        :type dict_to_write: [type]
+        :param pmcid: [description]
+        :type pmcid: [type]
         """
         df = pd.Series(dict_to_write).to_frame("Info_By_EuropePMC_Api")
         df.to_csv(os.path.join(str(os.getcwd()), pmcid, "fulltext.csv"))
 
     @staticmethod
     def conditions_to_download(paperdict):
-        """Writes the conditions to download pdf, json and csv
-        :param paperdict: dictionary to write rules for
+        """[summary]
+
+        :param paperdict: [description]
+        :type paperdict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         condition_to_down = paperdict["downloaded"] is False
         condition_to_download_pdf = paperdict["pdfdownloaded"] is False
@@ -494,13 +587,18 @@ class EuropePmc:
     def add_fields_to_resultant_dict(
         self, htmlurl, paper, paper_number, pdfurl, dict_for_paper
     ):
-        """Writes urls to dictionary
-        :param htmlurl: list containing html urls for the paper
-        :param paper: python dictionary of the paper
-        :param paper_number: paper number to log
-        :param pdfurl: list containing pdf urls for the paper
-        :param dict_for_paper: python dictionary to write the urls to
-        :returns: dict_for_paper
+        """[summary]
+
+        :param htmlurl: [description]
+        :type htmlurl: [type]
+        :param paper: [description]
+        :type paper: [type]
+        :param paper_number: [description]
+        :type paper_number: [type]
+        :param pdfurl: [description]
+        :type pdfurl: [type]
+        :param dict_for_paper: [description]
+        :type dict_for_paper: [type]
         """
         try:
             dict_for_paper[self.html_links] = htmlurl[0]
@@ -545,11 +643,16 @@ class EuropePmc:
             logging.warning("Title not found for paper %s", paper_number)
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
-        """Adds pdf and html url as well as makes the paper key in resultant_dict
-        :param paper: python dictionary for the paper
-        :param paper_number: paper number to log
-        :param resultant_dict: dictionary to add paper as well as pdf,html url to
-        :returns: htmlurl, paperpmcid, pdfurl, resultant_dict)
+        """[summary]
+
+        :param paper: [description]
+        :type paper: [type]
+        :param paper_number: [description]
+        :type paper_number: [type]
+        :param resultant_dict: [description]
+        :type resultant_dict: [type]
+        :return: [description]
+        :rtype: [type]
         """
         logging.debug("Reading Query Result for paper %s", paper_number)
         pdfurl = []
@@ -568,13 +671,18 @@ class EuropePmc:
         return htmlurl, paperpmcid, pdfurl, resultant_dict
 
     def makecsv(self, searchvariable, makecsv=False, makehtml=False, update=False):
-        """Writes the json and csv for searchvaraible dict
-        :param searchvariable: dict): Python dictionary which contains all the research papers
-        :param makecsv: bool): whether to make csv files (Default value = False)
-        :param update: dict): if provided, will add the research papers
-            to the searchvariable dict (Default value = False)
-        :param makehtml: Default value = False)
-        :returns: searchvariable
+        """[summary]
+
+        :param searchvariable: [description]
+        :type searchvariable: [type]
+        :param makecsv: [description], defaults to False
+        :type makecsv: bool, optional
+        :param makehtml: [description], defaults to False
+        :type makehtml: bool, optional
+        :param update: [description], defaults to False
+        :type update: bool, optional
+        :return: [description]
+        :rtype: [type]
         """
 
         resultant_dict = {}

@@ -23,7 +23,6 @@ class Rxiv:
         source="biorxiv",
         update=None,
         makecsv=False,
-        makexml=False,
         makehtml=False,
     ):
         """[summary]
@@ -32,14 +31,12 @@ class Rxiv:
         :type interval: [type]
         :param size: [description]
         :type size: [type]
-        :param source: source, defaults to "biorxiv"
+        :param source: [description], defaults to "biorxiv"
         :type source: str, optional
         :param update: [description], defaults to None
         :type update: [type], optional
         :param makecsv: [description], defaults to False
         :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
         :param makehtml: [description], defaults to False
         :type makehtml: bool, optional
         :return: [description]
@@ -210,6 +207,8 @@ class Rxiv:
         :type size: [type]
         :param source: [description]
         :type source: [type]
+        :param update: [description], defaults to False
+        :type update: bool, optional
         :param makecsv: [description], defaults to False
         :type makecsv: bool, optional
         :param makexml: [description], defaults to False
@@ -226,7 +225,6 @@ class Rxiv:
             update=update,
             source=source,
             makecsv=makecsv,
-            makexml=makexml,
             makehtml=makehtml,
         )
         if makexml:

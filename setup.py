@@ -22,6 +22,7 @@ setup(
     name='pygetpapers',
     version=f"{version}",
     description='Automated Download of Research Papers from various scientific repositories',
+    long_description_content_type='text/markdown',
     long_description=readme,
     author='Ayush Garg',
     author_email='ayush@science.org.in',
