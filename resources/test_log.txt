@@ -1,0 +1,96 @@
+INFO:root:Making log file at test_log.txt
+INFO:root:Final query is lantana
+DEBUG:root:*/submitting RESTful query (I)*/
+DEBUG:root:*/RESTful request for fulltext.xml (D)*/
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "POST /europepmc/webservices/rest/searchPOST HTTP/1.1" 200 None
+DEBUG:root:*/Got the Query Result */
+DEBUG:root:Time elapsed: 13.24158525466919
+INFO:root:Total Hits are 1910
+DEBUG:root:Reading Query Result for paper 1
+DEBUG:root:list index out of range
+WARNING:root:html url not found for paper 1
+DEBUG:root:list index out of range
+WARNING:root:pdf url not found for paper 1
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8190976
+DEBUG:root:Reading Query Result for paper 2
+DEBUG:root:'keywordList'
+WARNING:root:Keywords not found for paper 2
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8112658
+DEBUG:root:Reading Query Result for paper 3
+DEBUG:root:'keywordList'
+WARNING:root:Keywords not found for paper 3
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8110560
+DEBUG:root:Reading Query Result for paper 4
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8161263
+DEBUG:root:Reading Query Result for paper 5
+DEBUG:root:string indices must be integers
+WARNING:root:Author list not found for paper 5
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC7645447
+DEBUG:root:Reading Query Result for paper 6
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8183526
+DEBUG:root:Reading Query Result for paper 7
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8258845
+DEBUG:root:Reading Query Result for paper 8
+DEBUG:root:string indices must be integers
+WARNING:root:Author list not found for paper 8
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC7455955
+DEBUG:root:Reading Query Result for paper 9
+DEBUG:root:'keywordList'
+WARNING:root:Keywords not found for paper 9
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC8178325
+DEBUG:root:Reading Query Result for paper 10
+DEBUG:root:Wrote Meta Data to a dictionary that will be written to all the chosen metadata file formats for paper PMC7915326
+DEBUG:root:*/saving xml to per-document directories (CTrees) (D)*/
+INFO:root:Saving XML files to C:\Users\shweata\lantana_test_10_4\*\fulltext.xml
+DEBUG:root:*/Making the Request to get full text xml*/
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8190976/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.3544611930847168
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8112658/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 2.013843059539795
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8110560/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.5126020908355713
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8161263/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.6912410259246826
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC7645447/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.7123658657073975
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8183526/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 0.9821827411651611
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8258845/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.532994031906128
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC7455955/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.6499724388122559
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC8178325/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 1.883009910583496
+DEBUG:root:*/Updating the json*/
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.ebi.ac.uk:443
+DEBUG:urllib3.connectionpool:https://www.ebi.ac.uk:443 "GET /europepmc/webservices/rest/PMC7915326/fullTextXML HTTP/1.1" 200 None
+DEBUG:root:Time elapsed: 2.1067168712615967
+DEBUG:root:*/Updating the json*/
+
