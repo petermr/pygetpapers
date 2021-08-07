@@ -99,10 +99,10 @@ pygetpapers --help
 ```
 usage: pygetpapers [-h] [--config CONFIG] [-v] [-q QUERY] [-o OUTPUT] [--save_query] [-x] [-p] [-s] [-z]
                    [--references REFERENCES] [-n] [--citations CITATIONS] [-l LOGLEVEL] [-f LOGFILE] [-k LIMIT]
-                   [-r RESTART] [-u UPDATE] [--onlyquery] [-c] [--makehtml] [--synonym] [--startdate STARTDATE]
+                   [-r RESTART] [-u] [--onlyquery] [-c] [--makehtml] [--synonym] [--startdate STARTDATE]
                    [--enddate ENDDATE] [--terms TERMS] [--api API] [--filter FILTER]
 
-Welcome to Pygetpapers version 0.0.6.3. -h or --help for help
+Welcome to Pygetpapers version 0.0.7.8. -h or --help for help
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -117,45 +117,48 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         output directory (Default: Folder inside current working directory named )
   --save_query          saved the passed query in a config file
-  -x, --xml             download fulltext XMLs if available
-  -p, --pdf             download fulltext PDFs if available
-  -s, --supp            download supplementary files if available
-  -z, --zip             download files from ftp endpoint if available
+  -x, --xml             download fulltext XMLs if available or save metadata as XML
+  -p, --pdf             [E][A] download fulltext PDFs if available (only eupmc and arxiv supported)
+  -s, --supp            [E] download supplementary files if available (only eupmc supported)
+  -z, --zip             [E] download files from ftp endpoint if available (only eupmc supported)
   --references REFERENCES
-                        Download references if available. Requires source for references
+                        [E] Download references if available. (only eupmc supported)Requires source for references
                         (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
-  -n, --noexecute       report how many results match the query, but don't actually download anything
+  -n, --noexecute       [ALL] report how many results match the query, but don't actually download anything
   --citations CITATIONS
-                        Download citations if available. Requires source for citations
+                        [E] Download citations if available (only eupmc supported). Requires source for citations
                         (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
   -l LOGLEVEL, --loglevel LOGLEVEL
-                        Provide logging level. Example --log warning <<info,warning,debug,error,critical>>,
+                        [All] Provide logging level. Example --log warning <<info,warning,debug,error,critical>>,
                         default='info'
   -f LOGFILE, --logfile LOGFILE
-                        save log to specified file in output directory as well as printing to terminal
+                        [All] save log to specified file in output directory as well as printing to terminal
   -k LIMIT, --limit LIMIT
-                        maximum number of hits (default: 100)
+                        [All] maximum number of hits (default: 100)
   -r RESTART, --restart RESTART
-                        Reads the json and makes the xml files. Takes the path to the json as the input
-  -u UPDATE, --update UPDATE
-                        Updates the corpus by downloading new papers. Takes the path of metadata json file of the
-                        orignal corpus as the input. Requires -k or --limit (If not provided, default will be used)
-                        and -q or --query (must be provided) to be given. Takes the path to the json as the input.
-  --onlyquery           Saves json file containing the result of the query in storage. The json file can be given to
-                        --restart to download the papers later.
-  -c, --makecsv         Stores the per-document metadata as csv.
-  --makehtml            Stores the per-document metadata as html.
-  --synonym             Results contain synonyms as well.
+                        [E] Downloads the missing flags for the corpus.Searches for already existing corpus in the
+                        output directory
+  -u, --update          [E][B][M][C] Updates the corpus by downloading new papers. Requires -k or --limit (If not
+                        provided, default will be used) and -q or --query (must be provided) to be given. Searches for
+                        already existing corpus in the output directory
+  --onlyquery           [E] Saves json file containing the result of the query in storage. (only eupmc supported)The
+                        json file can be given to --restart to download the papers later.
+  -c, --makecsv         [All] Stores the per-document metadata as csv.
+  --makehtml            [All] Stores the per-document metadata as html.
+  --synonym             [E] Results contain synonyms as well.
   --startdate STARTDATE
-                        Gives papers starting from given date. Format: YYYY-MM-DD
-  --enddate ENDDATE     Gives papers till given date. Format: YYYY-MM-DD
-  --terms TERMS         Location of the txt file which contains terms serperated by a comma which will beOR'ed among
-                        themselves and AND'ed with the query
-  --api API             API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med] (default: eupmc)
-  --filter FILTER       filter by key value pair, passed straight to the crossref api only
+                        [E][B][M] Gives papers starting from given date. Format: YYYY-MM-DD
+  --enddate ENDDATE     [E][B][M] Gives papers till given date. Format: YYYY-MM-DD
+  --terms TERMS         [All] Location of the txt file which contains terms serperated by a comma which will beOR'ed
+                        among themselves and AND'ed with the query
+  --api API             API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist] (default: eupmc)
+  --filter FILTER       [C] filter by key value pair (only crossref supported)
 ```
 
 Queries are build using `-q` flag. The query format can be found at http://europepmc.org/docs/EBI_Europe_PMC_Web_Service_Reference.pdf A condensed guide can be found at https://github.com/petermr/pygetpapers/wiki/query-format
+
+## Repository-specific flags
+To convey the repository specificity, we've used the first letter of the repository in square brackets in its description. 
 
 # What is CProject?
 A CProject is a directory structure that the AMI toolset uses to gather and process data. Each paper gets its folder. 
@@ -164,7 +167,7 @@ A CTree is a subdirectory of a CProject that deals with a single paper.
 <img src = "resources/PMC_folder_inside.png">
 
 # Tutorial
-`pygetpapers` was on version `0.0.6.4.` when the tutorials were documented. 
+`pygetpapers` was on version `0.0.7.8` when the tutorials were documented. 
 
 `pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med. By default, it queries EPMC. You can specify the API by using `--api` flag.  
 
@@ -192,8 +195,9 @@ pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species
 |`-k`|number of hits (default 100)|limits hits to 30|
 |`-o`|specifies output directory|outputs to essential_oil_30|
 |`-x`|downloads fulltext xml||
-|`-c`|downloads per-paper metadata into a single csv|downloads single  CSV named [`europe_pmc.csv`](resources/invasiv_plant_species_test/europe_pmc.csv)|
-|`--makehtml`|downloads per-paper metadata into a single HTML file|downloads single HTML named [`europe_pmc.html`](resources/invasiv_plant_species_test/eupmc_results.html)|
+|`-c`|saves per-paper metadata into a single csv|saves single  CSV named [`europe_pmc.csv`](resources/invasive_plant_species_test/europe_pmc.csv)|
+|`--makehtml`|saves per-paper metadata into a single HTML file|saves single HTML named [`europe_pmc.html`](resources/invasive_plant_species_test/eupmc_results.html)|
+|`--save_query`|saves the given query in a `config.ini` in output directory|saves query to [`saved_config.ini`](resources/invasive_plant_species_test/saved_config.ini)|
 
 
 `pygetpapers`, by default, writes metadata to a JSON file within:
@@ -228,31 +232,28 @@ INFO: Total number of hits for the query are 190710
 The `--update` command is used to update a CProject with a new set of papers on same or different query. 
 If let's say you have a corpus of a 30 papers on 'essential oil' (like before) and would like to download 20 more papers to the same CProject directory, you use `--update` command. 
 
-`--update` flags takes the `eupmc_results.JSON`'s absolute path present in the CProject directory. 
+To update your Cproject, you would give it the `-o` flag the already existing CProject name. Additionally, you should also add `--update ` flag. 
 INPUT:
 ```
-pygetpapers --update "C:\Users\shweata\essential_oil_30_1\eupmc_results.JSON" -q "lantana" -k 20 -x
+pygetpapers -q "invasive plant species" -k 10 -x -o lantana_test_5 --update
 ```
 OUTPUT:
 ```
-INFO: Final query is lantana
-INFO: Total Hits are 1909
-0it [00:00, ?it/s]WARNING: html url not found for paper 1
-WARNING: pdf url not found for paper 1
-WARNING: Keywords not found for paper 2
-WARNING: Keywords not found for paper 3
-WARNING: Author list not found for paper 5
-WARNING: Author list not found for paper 8
-WARNING: Keywords not found for paper 9
-WARNING: Keywords not found for paper 11
-WARNING: Keywords not found for paper 19
-1it [00:00, 216.37it/s]
-INFO: Saving XML files to C:\Users\shweata\essential_oil_30_1\*\fulltext.xml
-100%|██████████████████████████████████████████████████████████████████████████████████| 50/50 [01:28<00:00,  1.78s/it]
+INFO: Final query is invasive plant species
+INFO: Please ensure that you are providing the same --api as the one in the corpus or you may get errors
+INFO: Total Hits are 32956
+0it [00:00, ?it/s]WARNING: html url not found for paper 5
+WARNING: pdf url not found for paper 5
+WARNING: Keywords not found for paper 6
+WARNING: Keywords not found for paper 7
+WARNING: Author list not found for paper 10
+1it [00:00, 166.68it/s]
+INFO: Saving XML files to C:\Users\shweata\lantana_test_5\*\fulltext.xml
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [01:03<00:00,  3.16s/it]
 ```
 
 #### How is `--update` different from just downloading x number of papers to the same output directory?
-By using `--update` command you can be sure that there are no duplicate papers. You can't be sure when you just download x number of papers to the output directory. 
+By using `--update` command you can be sure that you don't overwrite the existing papers. 
 ### Restart downloading papers to an existing CProject
 `--restart` flag can be used for two purposes:
 -To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
@@ -260,10 +261,8 @@ By using `--update` command you can be sure that there are no duplicate papers. 
   `--restart` flag takes in the absolute path of the `JSON` metadata file. 
 
    ```
-   pygetpapers --restart "C:\Users\shweata\essential_oil_30_1\eupmc_results.JSON" -q "lantana" -x -p
+  pygetpapers -q "invasive plant species" -o lantana_test_5 --restart -c
    ```
-
-   ![5](https://user-images.githubusercontent.com/70321942/116698739-58a76300-a9e2-11eb-8b56-1fd177bf9b1c.PNG)
 
 #### Difference between `--restart` and `--update`
 - If you aren't looking download new set of papers but would want to download a papers in different format for existing papers, `--restart` is the flag you'd want to use
@@ -275,7 +274,7 @@ By using `--update` command you can be sure that there are no duplicate papers. 
 
    `pygetpapers -q "lantana" -k 10 -o "test" -c -x --citation PMC`
 
-### 9.1.6.Downloading only the metadata
+### Downloading only the metadata
 If you are looking to download just the metadata in the supported formats`--onlyquery` is the flag you use. It saves the metadata in the output directory. 
 
 You can use `--restart` feature to download the fulltexts for these papers. 
@@ -337,7 +336,7 @@ INFO: Total Hits are 43397
 
 You can also use this feature to download papers by using the PMC Ids. You can feed the `.txt` file with PMC ids comman-separated. Make sure to give a large enough hit number to download all the papers specified in the text file. 
 
-Example text file can be found, [here](resources/essential_oil_terms.txt)
+Example text file can be found, [here](resources/PMCID_pygetpapers_text.txt)
 INPUT:
 ```
 pygetpapers --terms C:\Users\shweata\PMCID_pygetpapers_text.txt -k 100 -o "PMCID_test"
@@ -353,7 +352,7 @@ WARNING: Could not find more papers
 100%|█████████████████████████████████████████████| 20/20 [00:32<00:00,  1.61s/it]
 ```
 
-### 9.1.11 Log levels
+### Log levels
 You can specify the log level using the `-l` flag. The default as you've already seen so far is info. 
 
 INPUT:
@@ -361,12 +360,13 @@ INPUT:
 pygetpapers -q "lantana" -k 10 -o lantana_test_10_2 --loglevel debug -x
 ```
 ### Log file
-You can also choose to write the log to a `.txt` file while simultaneously printing it out. 
+You can also choose to write the log to a `.txt` file in your HOME directory, while simultaneously printing it out. 
 
 INPUT:
 ```
 pygetpapers -q "lantana" -k 10 -o lantana_test_10_4 --loglevel debug -x --logfile test_log.txt
 ```
+[Here](resources/test_log.txt) is the log file. 
 ## Crossref
 You can query crossref api only for the metadata. 
 ### Sample query
@@ -415,7 +415,7 @@ INFO: Making xml files for metadata at C:\Users\shweata\arxiv_test_2
 ```
 ## Biorxiv and Medrxiv
 You can query `biorxiv` and `medrxiv` for fulltext and metadata (in all available formats)
-### Sample Query
+### Sample Query - Biorxiv
 INPUT:
 ```
 pygetpapers --api biorxiv --startdate 2021-04-01 -o biorxiv_test -x -c --makehtml  -k 20
@@ -438,7 +438,7 @@ INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test
 Ensure that you specify the `--api` you used to download the existing corpus while updating. 
 INPUT:
 ```
-pygetpapers --api biorxiv --update C:\Users\shweata\biorxiv_test_4\rxiv-results.json -k 10 --startdate 2021-07-03
+pygetpapers --api biorxiv --update -o biorxiv_test_4 -k 5 --startdate 2021-07-03
 ```
 OUTPUT: 
 ```
@@ -449,7 +449,7 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata
 ```
 
-### Sample Query
+### Sample Query - medrxiv
 INPUT
 ```
 pygetpapers --api medrxiv --startdate 2021-04-01 -o medrxiv_test_2 -x -c -p  --makehtml -k 20
@@ -493,7 +493,39 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivist
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 751.09it/s]
 ```
+### Query hits only 
+Like any other repositories under `pygetpapers`, you can use the `-n` flag to get only the hit number
+INPUT: 
+```
+C:\Users\shweata>pygetpapers --api rxivist -q "biomedical sciences" -n
+```
+OUTPUT:
+```
+INFO: Final query is biomedical sciences
+INFO: Making Request to rxivist
+INFO: Total number of hits for the query are 62
+```
+### Update
+`--update` works the same as many other repositories. Make sure to provide `rxvist` as api. 
 
+INPUT: 
+```
+pygetpapers --api rxivist -q "biomedical sciences" -k 20 -c -x -o "biomedicine_rxivist" --update
+```
+OUPUT: 
+```
+INFO: Final query is biomedical sciences
+INFO: Please ensure that you are providing the same --api as the one in the corpus or you may get errors
+INFO: Reading old json metadata file
+INFO: Making Request to rxivist
+INFO: Making csv files for metadata at C:\Users\shweata\biomedicine_rxivist
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 203.69it/s]
+INFO: Making xml files for metadata at C:\Users\shweata\biomedicine_rxivist
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 1059.17it/s]
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivist
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 1077.12it/s]
+```
 # Contributions
 
 Contributions are welcome through issues as well as pull requests. For direct contributions, you can mail the author at ayush@science.org.in.
