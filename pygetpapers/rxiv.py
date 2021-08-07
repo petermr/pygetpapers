@@ -15,6 +15,7 @@ class Rxiv:
         """initiate Rxiv class"""
         self.download_tools = DownloadTools("rxiv")
         self.get_url = self.download_tools.posturl
+        self.doi_done = []
 
     def rxiv(
         self,
@@ -49,7 +50,7 @@ class Rxiv:
         total_number_of_results = 0
         total_papers_list = []
         logging.info("Making Request to rxiv")
-        while len(total_papers_list) < size:
+        while len(total_papers_list) <= size:
             total_number_of_results, total_papers_list, papers_list = self.make_request_add_papers(
                 cursor_mark,
                 interval,
@@ -62,16 +63,14 @@ class Rxiv:
                 break
             cursor_mark += 1
         json_return_dict = {}
-        paper_counter = 0
-        while len(json_return_dict) < len(total_papers_list):
+        for paper in total_papers_list:
             if update:
-                if total_papers_list[paper_counter]["doi"] not in update["total_json_output"]:
-                    json_return_dict[total_papers_list[paper_counter]
-                                     ["doi"]] = total_papers_list[paper_counter]
+                if paper["doi"] not in update["total_json_output"]:
+                    json_return_dict[paper["doi"]] = paper
             else:
-                json_return_dict[total_papers_list[paper_counter]
-                                 ["doi"]] = total_papers_list[paper_counter]
-            paper_counter += 1
+                json_return_dict[paper["doi"]] = paper
+            if len(json_return_dict) >= size:
+                break
 
         for paper in json_return_dict:
             self.download_tools.add_keys_for_conditions(
@@ -111,10 +110,15 @@ class Rxiv:
         request_handler = self.post_request()
         request_dict = json.loads(request_handler.text)
         papers_list = request_dict["collection"]
+        final_list = []
+        for paper in papers_list:
+            if paper["doi"] not in self.doi_done:
+                final_list.append(paper)
+                self.doi_done.append(paper["doi"])
         if "total" in request_dict["messages"][0]:
             total_number_of_results = request_dict["messages"][0]["total"]
-        total_papers_list += papers_list
-        return total_number_of_results, total_papers_list, papers_list
+        total_papers_list += final_list
+        return total_number_of_results, total_papers_list, final_list
 
     def post_request(self):
         """[summary]
