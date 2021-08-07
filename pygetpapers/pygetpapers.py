@@ -119,7 +119,7 @@ class Pygetpapers:
                 update_file_path = file
         if not update_file_path:
             logging.warning(
-                "Corpus not existing in this directory. Please rerun the query without --update")
+                "Corpus not existing in this directory. Please rerun the query without --update or --restart")
             sys.exit(1)
         return update_file_path
 
@@ -327,6 +327,9 @@ class Pygetpapers:
         :param args: [description]
         :type args: [type]
         """
+        if (args.api == "medrxiv" or args.api == "biorxiv"):
+            logging.warning(
+                "Currently biorxiv api is malfunctioning and returning wrong DOIs")
         if (args.api != "eupmc" and args.api != "arxiv") and args.pdf:
             logging.warning("Pdf is not supported for this api")
         if (args.api != "eupmc" and args.api != "biorxiv" and args.api != "medrxiv") and (args.startdate or args.enddate):
@@ -475,8 +478,7 @@ class Pygetpapers:
         parser.add_argument(
             "-r",
             "--restart",
-            default=False,
-            type=str,
+            action="store_true",
             help="[E] Downloads the missing flags for the corpus."
             "Searches for already existing corpus in the output directory",
         )

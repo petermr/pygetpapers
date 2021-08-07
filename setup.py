@@ -28,15 +28,10 @@ setup(
     author_email='ayush@science.org.in',
     url='https://github.com/petermr/pygetpapers',
     packages=[
-        'pygetpapers', 'arxiv', 'crossref', 'europe_pmc', 'rxiv', 'rxivist', 'download_tools'
+        'pygetpapers'
     ],
     package_dir={'pygetpapers':
-                 'pygetpapers', 'arxiv':
-                 'pygetpapers', 'crossref':
-                 'pygetpapers', 'europe_pmc':
-                 'pygetpapers', 'rxiv': 'pygetpapers',
-                 'rxivist': 'pygetpapers',
-                 'download_tools': 'pygetpapers'
+                 'pygetpapers',
                  },
     include_package_data=True,
     install_requires=requirements,
