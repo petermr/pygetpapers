@@ -72,7 +72,7 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 - Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-- Enter the command: `pip install git+git://github.com/petermr/pygetpapers`
+- Enter the command: `pip install pygetpapers`
 
 - Ensure pygetpapers has been installed by reopening the terminal and typing the command `pygetpapers`
 
@@ -259,11 +259,13 @@ By using `--update` command you can be sure that you don't overwrite the existin
 -To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
 - Continue the download from the stage where it broke. This feature would particularly come in handy if you are on poor lines. You can resume downloading at whatever stage you cut off by using the `update` flag as we've described.
   `--restart` flag takes in the absolute path of the `JSON` metadata file. 
-
+INPUT: 
    ```
   pygetpapers -q "invasive plant species" -o lantana_test_5 --restart -c
    ```
-
+OUTPUT:
+```
+```
 #### Difference between `--restart` and `--update`
 - If you aren't looking download new set of papers but would want to download a papers in different format for existing papers, `--restart` is the flag you'd want to use
 - If you are looking to download a new set of papers to an existing Cproject, then you'd use `--update` command. You should note that the format in which you download papers would only apply to the new set of papers and not for the old. 
@@ -442,11 +444,13 @@ pygetpapers --api biorxiv --update -o biorxiv_test_4 -k 5 --startdate 2021-07-03
 ```
 OUTPUT: 
 ```
-INFO: Final query is (False) AND (FIRST_PDATE:[2021-07-03 TO 2021-07-21])
+WARNING: Currently biorxiv api is malfunctioning and returning wrong DOIs
+INFO: Please ensure that you are providing the same --api as the one in the corpus or you may get errors
 INFO: Reading old json metadata file
 INFO: Making Request to rxiv
 INFO: Wrote metadata file for the query
-INFO: Writing metadata file for the papers at C:\Users\shweata
+INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test_4
+100%|███████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 621.30it/s]
 ```
 
 ### Sample Query - medrxiv
