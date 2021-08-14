@@ -234,14 +234,14 @@ class EuropePmc:
             zip_files=args.zip,
         )
 
-    def eupmc_restart(self, args):
+    def eupmc_restart(self, args, restart_file_path):
         """[summary]
 
         :param args: [description]
         :type args: [type]
         """
-        read_json = self.download_tools.readjsondata(args.restart)
-        os.chdir(os.path.dirname(args.restart))
+        read_json = self.download_tools.readjsondata(restart_file_path)
+        os.chdir(os.path.dirname(restart_file_path))
         self.makexmlfiles(
             read_json,
             getpdf=args.pdf,
