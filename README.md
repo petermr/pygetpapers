@@ -191,9 +191,9 @@ pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species
 
 |Flag|What it does|In this case `pygetpapers`...|
 |---|---|---|
-|`-q`|specifies the query|queries for 'essential oil' in METHODS section|
-|`-k`|number of hits (default 100)|limits hits to 30|
-|`-o`|specifies output directory|outputs to essential_oil_30|
+|`-q`|specifies the query|queries for 'invasive plant species' in METHODS section|
+|`-k`|number of hits (default 100)|limits hits to 10|
+|`-o`|specifies output directory|outputs to invasive_plant_species_test|
 |`-x`|downloads fulltext xml||
 |`-c`|saves per-paper metadata into a single csv|saves single  CSV named [`europe_pmc.csv`](resources/invasive_plant_species_test/europe_pmc.csv)|
 |`--makehtml`|saves per-paper metadata into a single HTML file|saves single HTML named [`europe_pmc.html`](resources/invasive_plant_species_test/eupmc_results.html)|
