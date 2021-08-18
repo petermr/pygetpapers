@@ -9,6 +9,7 @@ import configparser
 import coloredlogs
 from tqdm import tqdm
 from functools import partialmethod
+import xml.etree.ElementTree as ET
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.europe_pmc import EuropePmc
 from pygetpapers.crossref import CrossRef
@@ -43,10 +44,19 @@ class Pygetpapers:
         elif args.notterms:
             terms = args.notterms
             seperator = "AND NOT"
-        with open(terms, "r") as file_handler:
-            all_terms = file_handler.read()
-        terms_list = all_terms.split(",")
+        if terms.endswith('.txt'):
+            with open(terms, "r") as file_handler:
+                all_terms = file_handler.read()
+            terms_list = all_terms.split(",")
+        elif terms.endswith('.xml'):
+            tree = ET.parse(terms)
+            root = tree.getroot()
+            terms_list = []
+            for para in root.iter('entry'):
+                terms_list.append(para.attrib["term"])
+
         or_ed_terms = " OR ".join(terms_list)
+
         if args.query:
             args.query = f"({args.query} {seperator} ({or_ed_terms}))"
         else:
@@ -544,14 +554,14 @@ class Pygetpapers:
             "--terms",
             default=False,
             type=str,
-            help="[All] Location of the txt file which contains terms serperated by a comma which will be"
+            help="[All] Location of the file which contains terms serperated by a comma or an ami dict which will be"
             "OR'ed among themselves and AND'ed with the query",
         )
         parser.add_argument(
             "--notterms",
             default=False,
             type=str,
-            help="[All] Location of the txt file which contains terms serperated by a comma which will be"
+            help="[All] Location of the txt file which contains terms serperated by a comma or an ami dict which will be"
             "OR'ed among themselves and NOT'ed with the query",
         )
         parser.add_argument(
