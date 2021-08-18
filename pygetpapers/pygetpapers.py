@@ -37,14 +37,23 @@ class Pygetpapers:
         :param args: args passed down from argparse
 
         """
-        with open(args.terms, "r") as file_handler:
+        if args.terms:
+            terms = args.terms
+            seperator = "AND"
+        elif args.notterms:
+            terms = args.notterms
+            seperator = "AND NOT"
+        with open(terms, "r") as file_handler:
             all_terms = file_handler.read()
-            terms_list = all_terms.split(",")
-            or_ed_terms = " OR ".join(terms_list)
-            if args.query:
-                args.query = f"({args.query} AND ({or_ed_terms}))"
-            else:
+        terms_list = all_terms.split(",")
+        or_ed_terms = " OR ".join(terms_list)
+        if args.query:
+            args.query = f"({args.query} {seperator} ({or_ed_terms}))"
+        else:
+            if args.terms:
                 args.query = f"({or_ed_terms})"
+            elif args.notterms:
+                args.query = f"NOT ({or_ed_terms})"
 
     def handle_noexecute(self, args):
         """This functions handles the assigning of apis for no execute command
@@ -282,6 +291,7 @@ class Pygetpapers:
             and not args.restart
             and not args.terms
             and not args.version
+            and not args.notterms
             and not args.api == "biorxiv"
             and not args.api == "medrxiv"
         ):
@@ -293,7 +303,7 @@ class Pygetpapers:
                 "*rxiv doesnt support giving a query. Please provide a date interval or number of results to get instead")
             sys.exit(1)
 
-        if not args.query and args.terms:
+        if not args.query and (args.terms or args.notterms):
             args.query = None
 
     def handle_logger_creation(self, args):
@@ -538,6 +548,13 @@ class Pygetpapers:
             "OR'ed among themselves and AND'ed with the query",
         )
         parser.add_argument(
+            "--notterms",
+            default=False,
+            type=str,
+            help="[All] Location of the txt file which contains terms serperated by a comma which will be"
+            "OR'ed among themselves and NOT'ed with the query",
+        )
+        parser.add_argument(
             "--api",
             default="eupmc",
             type=str,
@@ -571,7 +588,7 @@ class Pygetpapers:
         if args.api == "eupmc" or args.api == "medrxiv" or args.api == "biorxiv":
             self.handle_adding_date_to_query(args)
 
-        if args.terms:
+        if args.terms or args.notterms:
             self.handle_adding_terms_from_file(args)
 
         if args.query and not (args.api == "medrxiv" or args.api == "biorxiv"):
