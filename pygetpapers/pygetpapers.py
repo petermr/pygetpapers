@@ -63,7 +63,8 @@ class Pygetpapers:
             if args.terms:
                 args.query = f"({or_ed_terms})"
             elif args.notterms:
-                args.query = f"NOT ({or_ed_terms})"
+                logging.warning("Please provide a query with not")
+                sys.exit(1)
 
     def handle_noexecute(self, args):
         """This functions handles the assigning of apis for no execute command
@@ -301,7 +302,6 @@ class Pygetpapers:
             and not args.restart
             and not args.terms
             and not args.version
-            and not args.notterms
             and not args.api == "biorxiv"
             and not args.api == "medrxiv"
         ):
@@ -313,7 +313,7 @@ class Pygetpapers:
                 "*rxiv doesnt support giving a query. Please provide a date interval or number of results to get instead")
             sys.exit(1)
 
-        if not args.query and (args.terms or args.notterms):
+        if not args.query and args.terms:
             args.query = None
 
     def handle_logger_creation(self, args):
