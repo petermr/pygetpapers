@@ -16,7 +16,7 @@
 
 <br>
 <p>
-<a href="https://github.com/petermr/pygetpapers/actions"><img src="https://github.com/petermr/pygetpapers/actions/workflows/python-package.yml/badge.svg" alt="img" width="180px" height="25px"></a>
+<a href="https://github.com/petermr/pygetpapers/actions"><img src="https://img.shields.io/pypi/dm/pygetpapers" alt="img" width="180px" height="25px"></a>
 <a href="https://github.com/petermr/pygetpapers/issues"><img src="https://img.shields.io/github/issues-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img" width="180px" height="30px"></a>
 <a href="https://github.com/petermr/pygetpapers/issues?q=is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/petermr/pygetpapers?color=blue&style=for-the-badge" alt="img"  width="180px" height="30px"></a>
 <a href="https://github.com/petermr/pygetpapers/commits/main"><img src="https://img.shields.io/github/last-commit/petermr/pygetpapers.svg?color=blue&style=for-the-badge" alt="img" width="180px" height="30px"></a>
