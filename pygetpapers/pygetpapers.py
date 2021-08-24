@@ -227,22 +227,23 @@ class Pygetpapers:
         with open("saved_config.ini", "w") as file_handler:
             parser.write(file_handler)
 
-    @staticmethod
-    def handle_logfile(args, level):
+    def handle_logfile(self, args, level):
         """This functions handles storing of logs in a logfile
 
         :param args: args passed down from argparse
         :param level: level of logger
 
         """
-        logging.basicConfig(filename=args.logfile, level=level, filemode="w")
+        location_to_store_logs = os.path.join(args.output, args.logfile)
+        self.download_tools.check_or_make_directory(args.output)
+        logging.basicConfig(filename=location_to_store_logs,
+                            level=level, filemode="a")
         console = logging.StreamHandler()
         console.setLevel(level)
         formatter = logging.Formatter("%(levelname)s: %(message)s")
-        # tell the handler to use this format
         console.setFormatter(formatter)
         logging.getLogger().addHandler(console)
-        logging.info("Making log file at %s", args.logfile)
+        logging.info("Making log file at %s", location_to_store_logs)
 
     def handle_restart(self, args):
         """This functions handles the assigning of apis for restarting the downloads
@@ -322,7 +323,6 @@ class Pygetpapers:
         :param args: [description]
         :type args: [type]
         """
-        coloredlogs.install()
         levels = {
             "critical": logging.CRITICAL,
             "error": logging.ERROR,
