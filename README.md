@@ -417,66 +417,67 @@ INFO: Making xml files for metadata at C:\Users\shweata\arxiv_test_2
 ```
 ## Biorxiv and Medrxiv
 You can query `biorxiv` and `medrxiv` for fulltext and metadata (in all available formats)
-### Sample Query - Biorxiv
+### Sample Query - biorxiv
 INPUT:
 ```
-pygetpapers --api biorxiv --startdate 2021-04-01 -o biorxiv_test -x -c --makehtml  -k 20
+pygetpapers --api biorxiv -k 10 -x --startdate 2021-01-01 -o biorxiv_test_20210831
 ```
 OUTPUT:
 ```
-INFO: Final query is (Default Pygetpapers Query) AND (FIRST_PDATE:[2021-04-01 TO 2021-07-19])
+WARNING: Currently biorxiv api is malfunctioning and returning wrong DOIs
 INFO: Making Request to rxiv
-INFO: Making csv files for metadata at C:\Users\shweata\biorxiv_test
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 253.38it/s]
-INFO: Making html files for metadata at C:\Users\shweata\biorxiv_test
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 218.29it/s]
 INFO: Making xml for paper
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:33<00:00,  1.99s/it]
+100%|██████████████████████████████████████████████████████████████████████████████████| 10/10 [00:23<00:00,  2.34s/it]
 INFO: Wrote metadata file for the query
-INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:00<00:00, 1369.32it/s]
+INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test_20210831
+100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 684.72it/s]
 ```
-### `--update` 
-Ensure that you specify the `--api` you used to download the existing corpus while updating. 
-INPUT:
+### `--update` command
+INPUT
 ```
-pygetpapers --api biorxiv --update -o biorxiv_test_4 -k 5 --startdate 2021-07-03
+pygetpapers --api biorxiv -k 10 -x --startdate 2021-01-01 -o biorxiv_test_20210831 --update
 ```
-OUTPUT: 
+OUTPUT
 ```
 WARNING: Currently biorxiv api is malfunctioning and returning wrong DOIs
 INFO: Please ensure that you are providing the same --api as the one in the corpus or you may get errors
 INFO: Reading old json metadata file
 INFO: Making Request to rxiv
-INFO: Wrote metadata file for the query
-INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test_4
-100%|███████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 621.30it/s]
-```
-
-### Sample Query - medrxiv
-INPUT
-```
-pygetpapers --api medrxiv --startdate 2021-04-01 -o medrxiv_test_2 -x -c -p  --makehtml -k 20
-```
-OUTPUT
-```
-INFO: Final query is (Default Pygetpapers Query) AND (FIRST_PDATE:[2021-04-01 TO 2021-07-19])
-INFO: Making Request to rxiv
-INFO: Making csv files for metadata at C:\Users\shweata\medrxiv_test_2
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 168.70it/s]
-INFO: Making html files for metadata at C:\Users\shweata\medrxiv_test_2
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 229.12it/s]
 INFO: Making xml for paper
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:38<00:00,  1.92s/it]
+100%|██████████████████████████████████████████████████████████████████████████████████| 10/10 [00:22<00:00,  2.23s/it]
 INFO: Wrote metadata file for the query
-INFO: Writing metadata file for the papers at C:\Users\shweata\medrxiv_test_2
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 241.71it/s]
+INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test_20210831
+100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 492.39it/s]
 ```
-- `--update` would work the same as medarxiv
-## rxivist
-- Queries both `biorxiv` and `medarxiv`. The difference here is that you can specify a query. But rxivist has now clubbed `biorxiv` and `medarxiv`. That would mean that your downloads would be a mixture of both. 
+We've added ten more papers to the original CProject
+```
+├───10.1101_008326
+├───10.1101_010553
+├───10.1101_035972
+├───10.1101_046052
+├───10.1101_060012
+├───10.1101_067736
+├───10.1101_086710
+├───10.1101_092205
+├───10.1101_092619
+├───10.1101_093237
+├───10.1101_121061
+├───10.1101_135749
+├───10.1101_145664
+├───10.1101_145896
+├───10.1101_165845
+├───10.1101_180273
+├───10.1101_181198
+├───10.1101_191858
+├───10.1101_194266
+└───10.1101_196105
 
-You can only retrieve metadata from `rxivist`. 
+```
+
+## rxivist
+Lets you specify a queries string to both `biorxiv` and `medarxiv`. The results you get would be a mixture of papers from both repository since `rxivist` doesn't differentiate. 
+
+Another caveat here is that you can only retrieve metadata from `rxivist`. 
 
 INPUT:
 ```
