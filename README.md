@@ -256,7 +256,7 @@ INFO: Saving XML files to C:\Users\shweata\lantana_test_5\*\fulltext.xml
 By using `--update` command you can be sure that you don't overwrite the existing papers. 
 ### Restart downloading papers to an existing CProject
 `--restart` flag can be used for two purposes:
--To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
+- To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
 - Continue the download from the stage where it broke. This feature would particularly come in handy if you are on poor lines. You can resume downloading at whatever stage you cut off by using the `update` flag as we've described.
   `--restart` flag takes in the absolute path of the `JSON` metadata file. 
 INPUT: 
