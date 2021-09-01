@@ -478,7 +478,7 @@ Using can use the `config.ini` file you created using `--save_query`, you re-run
 ### Querying using a term list
 #### `--terms` flag
 If your query is complex with multiple ORs, you can use `--terms` feature. To do so, you will:
-- Create a `.txt` file with list of terms separated by commas or an `ami-dictionary` (Click here to learn how to create dictionaries). 
+- Create a `.txt` file with list of terms separated by commas or an `ami-dictionary` ([Click here](https://github.com/petermr/tigr2ess/blob/master/dictionaries/TUTORIAL.md) to learn how to create dictionaries). 
 - Give the `--terms` flag the absolute path of the `.txt` file or `ami-dictionary` (XML)
 
 `-q` is optional.The terms would be OR'ed with each other ANDed with the query, if given. 
@@ -515,7 +515,7 @@ WARNING: Could not find more papers
 100%|█████████████████████████████████████████████| 20/20 [00:32<00:00,  1.61s/it]
 ```
 #### `--notterms`
-Excluded papers that have certain keywords might also be of interest for you. For example, if you want papers on essential oil which doesn't mention `antibacterial` , `antiseptic` or `antimicrobial`, you can run either create a dictionary or a text file with these terms, specify its absolute path to `--notterms` flag. 
+Excluded papers that have certain keywords might also be of interest for you. For example, if you want papers on essential oil which doesn't mention `antibacterial` , `antiseptic` or `antimicrobial`, you can run either create a dictionary or a text file with these terms (comma-separated), specify its absolute path to `--notterms` flag. 
 
 INPUT:
 ```
@@ -534,12 +534,37 @@ C:\Users\shweata>pygetpapers -q "essential oil" -n
 INFO: Final query is essential oil
 INFO: Total number of hits for the query are 193922
 ```
-#### Using `--notterms` with dictionaries
-- `--terms` works in the same way, too. 
-Assu
-INPUT:
-OUTPUT:
+#### Using `--terms` with dictionaries
+We will take the same example as before. 
+- Assuming you have [`ami3`](https://github.com/petermr/ami3) installed, you can create `ami-dictionaries`
+    - Start off by listing the terms in a `.txt` file
+    ```
+    antimicrobial
+    antiseptic
+    antibacterial
+    ```
+    - Run the following command from the directory in which the text file exists
+    ```
+    amidict -v --dictionary pygetpapers_terms --directory pygetpapers_terms --input pygetpapers_terms.txt create --informat list --outformats xml
+    ```
+That's it! You've now created a simple `ami-dictionary`. There are ways of creating dictionaries from Wikidata as well. You can learn more about how to do that in this [Wiki](https://github.com/petermr/openVirus/wiki/Dictionaries:-creation-from-Wikidata) page. 
+- You can also use [standard dictionaries](https://github.com/petermr/dictionary/) that are available. 
+ we, then, pass the absolute path of the dictionary to `--terms` flag. 
 
+INPUT:
+```
+pygetpapers -q "essential oil" --terms C:\Users\shweata\pygetpapers_terms\pygetpapers_terms.xml -k 10 -o pygetpapers_dictionary_test -x
+```
+OUTPUT:
+```
+INFO: Final query is (essential oil AND (antibacterial OR antimicrobial OR antiseptic))
+INFO: Total Hits are 28365
+0it [00:00, ?it/s]WARNING: Keywords not found for paper 5
+WARNING: Keywords not found for paper 7
+1it [00:00, ?it/s]
+INFO: Saving XML files to C:\Users\shweata\pygetpapers_dictionary_test\*\fulltext.xml
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:36<00:00,  3.67s/it]
+```
 
 ### Log levels
 You can specify the log level using the `-l` flag. The default as you've already seen so far is info. 
