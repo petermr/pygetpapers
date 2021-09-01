@@ -97,61 +97,86 @@ pygetpapers --help
 ```
 
 ```
-usage: pygetpapers [-h] [--config CONFIG] [-v] [-q QUERY] [-o OUTPUT] [--save_query] [-x] [-p] [-s] [-z]
-                   [--references REFERENCES] [-n] [--citations CITATIONS] [-l LOGLEVEL] [-f LOGFILE] [-k LIMIT]
-                   [-r RESTART] [-u] [--onlyquery] [-c] [--makehtml] [--synonym] [--startdate STARTDATE]
-                   [--enddate ENDDATE] [--terms TERMS] [--api API] [--filter FILTER]
+usage: pygetpapers [-h] [--config CONFIG] [-v] [-q QUERY] [-o OUTPUT]
+                   [--save_query] [-x] [-p] [-s] [-z] [--references REFERENCES]
+                   [-n] [--citations CITATIONS] [-l LOGLEVEL] [-f LOGFILE]
+                   [-k LIMIT] [-r] [-u] [--onlyquery] [-c] [--makehtml]
+                   [--synonym] [--startdate STARTDATE] [--enddate ENDDATE]
+                   [--terms TERMS] [--notterms NOTTERMS] [--api API]
+                   [--filter FILTER]
 
-Welcome to Pygetpapers version 0.0.7.8. -h or --help for help
+Welcome to Pygetpapers version 0.0.9.3. -h or --help for help
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       config file path to read query for pygetpapers
   -v, --version         output the version number
   -q QUERY, --query QUERY
-                        query string transmitted to repository API. Eg. "Artificial Intelligence" or "Plant Parts". To
-                        escape special characters within the quotes, use backslash. Incase of nested quotes, ensure
-                        that the initial quotes are double and the qutoes inside are single. For eg: `'(LICENSE:"cc
-                        by" OR LICENSE:"cc-by") AND METHODS:"transcriptome assembly"' ` is wrong. We should instead
-                        use `"(LICENSE:'cc by' OR LICENSE:'cc-by') AND METHODS:'transcriptome assembly'"`
+                        query string transmitted to repository API. Eg.
+                        "Artificial Intelligence" or "Plant Parts". To escape
+                        special characters within the quotes, use backslash.
+                        Incase of nested quotes, ensure that the initial quotes
+                        are double and the qutoes inside are single. For eg:
+                        `'(LICENSE:"cc by" OR LICENSE:"cc-by") AND
+                        METHODS:"transcriptome assembly"' ` is wrong. We should
+                        instead use `"(LICENSE:'cc by' OR LICENSE:'cc-by') AND
+                        METHODS:'transcriptome assembly'"`
   -o OUTPUT, --output OUTPUT
-                        output directory (Default: Folder inside current working directory named )
+                        output directory (Default: Folder inside current working
+                        directory named )
   --save_query          saved the passed query in a config file
-  -x, --xml             download fulltext XMLs if available or save metadata as XML
-  -p, --pdf             [E][A] download fulltext PDFs if available (only eupmc and arxiv supported)
-  -s, --supp            [E] download supplementary files if available (only eupmc supported)
-  -z, --zip             [E] download files from ftp endpoint if available (only eupmc supported)
+  -x, --xml             download fulltext XMLs if available or save metadata as
+                        XML
+  -p, --pdf             [E][A] download fulltext PDFs if available (only eupmc
+                        and arxiv supported)
+  -s, --supp            [E] download supplementary files if available (only eupmc
+                        supported)
+  -z, --zip             [E] download files from ftp endpoint if available (only
+                        eupmc supported)
   --references REFERENCES
-                        [E] Download references if available. (only eupmc supported)Requires source for references
+                        [E] Download references if available. (only eupmc
+                        supported)Requires source for references
                         (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
-  -n, --noexecute       [ALL] report how many results match the query, but don't actually download anything
+  -n, --noexecute       [ALL] report how many results match the query, but don't
+                        actually download anything
   --citations CITATIONS
-                        [E] Download citations if available (only eupmc supported). Requires source for citations
+                        [E] Download citations if available (only eupmc
+                        supported). Requires source for citations
                         (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).
   -l LOGLEVEL, --loglevel LOGLEVEL
-                        [All] Provide logging level. Example --log warning <<info,warning,debug,error,critical>>,
-                        default='info'
+                        [All] Provide logging level. Example --log warning
+                        <<info,warning,debug,error,critical>>, default='info'
   -f LOGFILE, --logfile LOGFILE
-                        [All] save log to specified file in output directory as well as printing to terminal
+                        [All] save log to specified file in output directory as
+                        well as printing to terminal
   -k LIMIT, --limit LIMIT
                         [All] maximum number of hits (default: 100)
-  -r RESTART, --restart RESTART
-                        [E] Downloads the missing flags for the corpus.Searches for already existing corpus in the
-                        output directory
-  -u, --update          [E][B][M][C] Updates the corpus by downloading new papers. Requires -k or --limit (If not
-                        provided, default will be used) and -q or --query (must be provided) to be given. Searches for
-                        already existing corpus in the output directory
-  --onlyquery           [E] Saves json file containing the result of the query in storage. (only eupmc supported)The
-                        json file can be given to --restart to download the papers later.
+  -r, --restart         [E] Downloads the missing flags for the corpus.Searches
+                        for already existing corpus in the output directory
+  -u, --update          [E][B][M][C] Updates the corpus by downloading new
+                        papers. Requires -k or --limit (If not provided, default
+                        will be used) and -q or --query (must be provided) to be
+                        given. Searches for already existing corpus in the output
+                        directory
+  --onlyquery           [E] Saves json file containing the result of the query in
+                        storage. (only eupmc supported)The json file can be given
+                        to --restart to download the papers later.
   -c, --makecsv         [All] Stores the per-document metadata as csv.
   --makehtml            [All] Stores the per-document metadata as html.
   --synonym             [E] Results contain synonyms as well.
   --startdate STARTDATE
-                        [E][B][M] Gives papers starting from given date. Format: YYYY-MM-DD
-  --enddate ENDDATE     [E][B][M] Gives papers till given date. Format: YYYY-MM-DD
-  --terms TERMS         [All] Location of the txt file which contains terms serperated by a comma which will beOR'ed
+                        [E][B][M] Gives papers starting from given date. Format:
+                        YYYY-MM-DD
+  --enddate ENDDATE     [E][B][M] Gives papers till given date. Format: YYYY-MM-
+                        DD
+  --terms TERMS         [All] Location of the file which contains terms
+                        serperated by a comma or an ami dict which will beOR'ed
                         among themselves and AND'ed with the query
-  --api API             API to search [eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist] (default: eupmc)
+  --notterms NOTTERMS   [All] Location of the txt file which contains terms
+                        serperated by a comma or an ami dict which will beOR'ed
+                        among themselves and NOT'ed with the query
+  --api API             API to search [eupmc,
+                        crossref,arxiv,biorxiv,medrxiv,rxivist] (default: eupmc)
   --filter FILTER       [C] filter by key value pair (only crossref supported)
 ```
 
@@ -167,17 +192,17 @@ A CTree is a subdirectory of a CProject that deals with a single paper.
 <img src = "resources/PMC_folder_inside.png">
 
 # Tutorial
-`pygetpapers` was on version `0.0.7.8` when the tutorials were documented. 
+`pygetpapers` was on version `0.0.9.3` when the tutorials were documented. 
 
 `pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med. By default, it queries EPMC. You can specify the API by using `--api` flag.  
 
 |Features        |EPMC           |crossref      |arxiv|biorxiv        |medarxiv|rxvist|
 |----------------|---------------|--------------|-----|---------------|--------|------|
-|Fulltext formats|xml, pdf       |NA            |NA   |xml            |xml     |xml   |
-|Metdata formats |json, html, csv|json, xml, csv|json |json, csv, html|json, csv, html    |json, html, csv  |
+|Fulltext formats|xml, pdf       |NA            |pdf   |xml            |xml     |xml   |
+|Metdata formats |json, html, csv|json, xml, csv|json, csv, html, xml |json, csv, html|json, csv, html    |json, html, csv  |
 |`--query`       |yes            |yes           |yes  |NA             |NA      |NA    |
 |`--update`      |yes            |NA            |NA   |yes            |yes     |      |
-|`--restart`     |yes            |              |     |               |        |      |
+|`--restart`     |yes            |NA          |NA     |NA               |NA        |NA      |
 |`--citation`    |yes            |NA            |NA   |NA             |NA     |NA    |
 |`--references`  |yes            |NA            |NA   |NA             |NA     |NA    |
 |`--terms`       |yes            |yes           |yes  |NA             |NA      |NA    |
@@ -257,15 +282,148 @@ By using `--update` command you can be sure that you don't overwrite the existin
 ### Restart downloading papers to an existing CProject
 `--restart` flag can be used for two purposes:
 - To download papers in different format. Let's say you downloaded XMLs in the first round. If you want to download pdfs for same set of papers, you use this flag. 
-- Continue the download from the stage where it broke. This feature would particularly come in handy if you are on poor lines. You can resume downloading at whatever stage you cut off by using the `update` flag as we've described.
-  `--restart` flag takes in the absolute path of the `JSON` metadata file. 
-INPUT: 
-   ```
-  pygetpapers -q "invasive plant species" -o lantana_test_5 --restart -c
-   ```
+- Continue the download from the stage where it broke. This feature would particularly come in handy if you are on poor lines. 
+Let's start off by forcefully interrupting the download.   
+INPUT:
+```
+pygetpapers -q "pinus" -k 10 -o pinus_10 -x
+```
 OUTPUT:
 ```
+INFO: Final query is pinus
+INFO: Total Hits are 32086
+0it [00:00, ?it/s]WARNING: html url not found for paper 10
+WARNING: pdf url not found for paper 10
+1it [00:00, 63.84it/s]
+INFO: Saving XML files to C:\Users\shweata\pinus_10\*\fulltext.xml
+ 60%|██████████████████████████████████████████████████████████████████████████████▌                                                    | 6/10 [00:20<00:13,  3.42s/it]
+Traceback (most recent call last):
+...
+KeyboardInterrupt
+^C
 ```
+If you take a look at the CProject directory, there are 6 papers downloaded so far. 
+```
+C:.
+│   eupmc_results.json
+│
+├───PMC8157994
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8180188
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8198815
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8216501
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8309040
+│       eupmc_result.json
+│       fulltext.xml
+│
+└───PMC8325914
+        eupmc_result.json
+        fulltext.xml
+```
+To download the rest, we can use `--restart` flag.   
+INPUT
+```
+pygetpapers -q "pinus" -o pinus_10 --restart -x
+```
+OUTPUT:
+```
+INFO: Saving XML files to C:\Users\shweata\pinus_10\*\fulltext.xml
+ 80%|████████████████████████████████████████████████████████████████████████████████████████████████████████▊                          | 8/10 [00:27<00:07,  3.51s/it 90%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉             | 9/10 [00:38<00:05,  5.95s/it100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:40<00:00,  4.49s/it100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:40<00:00,  4.01s/it]
+```
+Now if we inspect the CProject directory, we see that we have 10 papers as specified.
+```
+C:.
+│   eupmc_results.json
+│
+├───PMC8157994
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8180188
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8198815
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8199922
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8216501
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8309040
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8309338
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8325914
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8399312
+│       eupmc_result.json
+│       fulltext.xml
+│
+└───PMC8400686
+        eupmc_result.json
+        fulltext.xml
+```
+ Under the hood, `pygetpapers` looks for `eupmc_results.json`, reads it and resumes the download. 
+
+You could also use `--restart` to download the fulltext or metadata in different format other than the ones that you've already downloaded. For example, if I want all the fulltext PDFs of the 10 papers on `pinus`, I can run:  
+
+INPUT: 
+```
+pygetpapers -q "pinus" -o pinus_10 --restart -p --makehtml
+```
+OUTPUT:
+```
+>pygetpapers -q "pinus" -o pinus_10 --restart -p --makehtml
+100%|█████████████████████████████████████████████| 10/10 [03:26<00:00, 20.68s/it]
+```
+Now, if we take a look at the CProject:
+```
+C:.
+│   eupmc_results.json
+│
+├───PMC8157994
+│       eupmc_result.html
+│       eupmc_result.json
+│       fulltext.pdf
+│       fulltext.xml
+│
+├───PMC8180188
+│       eupmc_result.html
+│       eupmc_result.json
+│       fulltext.pdf
+│       fulltext.xml
+│
+├───PMC8198815
+│       eupmc_result.html
+│       eupmc_result.json
+│       fulltext.pdf
+│       fulltext.xml
+...
+```
+We find that each paper now has fulltext PDFs and metadata in HTML. 
 #### Difference between `--restart` and `--update`
 - If you aren't looking download new set of papers but would want to download a papers in different format for existing papers, `--restart` is the flag you'd want to use
 - If you are looking to download a new set of papers to an existing Cproject, then you'd use `--update` command. You should note that the format in which you download papers would only apply to the new set of papers and not for the old. 
@@ -297,6 +455,8 @@ WARNING: Author list not found for paper 8
 WARNING: Keywords not found for paper 9
 1it [00:00, 407.69it/s]
 ```
+
+
 ### Download papers within certain start and end date range
 By using `--startdate` and `--enddate` you can specify the date range within which the papers you want to download were first published. 
 
@@ -316,9 +476,10 @@ Using can use the `config.ini` file you created using `--save_query`, you re-run
 `pygetpapers --config "C:\Users\shweata\lantana_query_config\saved_config.ini"`
 
 ### Querying using a term list
-If your query is complex with multiple ORs, you can use `--terms` feature. To use this, you will:
-- Create a `.txt` file with list of terms separated by commas. 
-- Give the `--terms` flag the absolute path of the `.txt` file
+#### `--terms` flag
+If your query is complex with multiple ORs, you can use `--terms` feature. To do so, you will:
+- Create a `.txt` file with list of terms separated by commas or an `ami-dictionary` (Click here to learn how to create dictionaries). 
+- Give the `--terms` flag the absolute path of the `.txt` file or `ami-dictionary` (XML)
 
 `-q` is optional.The terms would be OR'ed with each other ANDed with the query, if given. 
 
@@ -353,6 +514,32 @@ WARNING: Could not find more papers
 1it [00:00, 505.46it/s]
 100%|█████████████████████████████████████████████| 20/20 [00:32<00:00,  1.61s/it]
 ```
+#### `--notterms`
+Excluded papers that have certain keywords might also be of interest for you. For example, if you want papers on essential oil which doesn't mention `antibacterial` , `antiseptic` or `antimicrobial`, you can run either create a dictionary or a text file with these terms, specify its absolute path to `--notterms` flag. 
+
+INPUT:
+```
+pygetpapers -q "essential oil" -k 10 -o essential_oil_not_terms_test --notterms C:\Users\shweata\not_terms_test.txt
+```
+OUTPUT:
+```
+INFO: Final query is (essential oil AND NOT (antimicrobial OR  antiseptic OR  antibacterial))
+INFO: Total Hits are 165557
+1it [00:00, ?it/s]
+100%|█| 10/10 [00:49<00:00,  4.95s/
+```
+The number of papers are reduced by a some proportion. For comparision, "essential oil" query gives us 193922 hits.  
+```
+C:\Users\shweata>pygetpapers -q "essential oil" -n
+INFO: Final query is essential oil
+INFO: Total number of hits for the query are 193922
+```
+#### Using `--notterms` with dictionaries
+- `--terms` works in the same way, too. 
+Assu
+INPUT:
+OUTPUT:
+
 
 ### Log levels
 You can specify the log level using the `-l` flag. The default as you've already seen so far is info. 
@@ -370,7 +557,7 @@ pygetpapers -q "lantana" -k 10 -o lantana_test_10_4 --loglevel debug -x --logfil
 ```
 [Here](resources/test_log.txt) is the log file. 
 ## Crossref
-You can query crossref api only for the metadata. 
+You can query crossref api for the metadata only. 
 ### Sample query
 - The metadata formats flags are applicable as described in the EPMC tutorial
 - `--terms` and `-q` are also applicable to crossref
@@ -393,14 +580,70 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata\terms_test_essential_oil_crossref_3
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 996.82it/s]
 ```
+We have 10 folders in the CProject directory. 
+```
+C:\Users\shweata>cd terms_test_essential_oil_crossref_3
+
+C:\Users\shweata\terms_test_essential_oil_crossref_3>tree
+Folder PATH listing for volume Windows-SSD
+Volume serial number is D88A-559A
+C:.
+├───10.1016_j.bcab.2021.101913
+├───10.1055_s-0029-1234896
+├───10.1080_0972060x.2016.1231597
+├───10.1080_10412905.1989.9697767
+├───10.1111_j.1745-4565.2012.00378.x
+├───10.17795_bhs-24733
+├───10.23880_oajmms-16000131
+├───10.34302_crpjfst_2019.11.2.8
+├───10.5220_0008855200960099
+└───10.5220_0009957801190122
+```
+### `--update` 
+`--update` works the same as in `EPMC`. You can use this flag to increase the number of papers in a given CProject. 
+INPUT
+```
+pygetpapers --api crossref -q "essential oil" --terms C:\Users\shweata\essential_oil_terms.txt -k 5 -o "terms_test_essential_oil_crossref_3" -x -c --makehtml --update
+```
+OUTPUT: 
+```
+INFO: Final query is (essential oil AND (antioxidant OR  antibacterial OR  antifungal OR  antiseptic OR  antitrichomonal agent))
+INFO: Please ensure that you are providing the same --api as the one in the corpus or you may get errors
+INFO: Reading old json metadata file
+INFO: Making request to crossref
+INFO: Got request result from crossref
+INFO: Wrote metadata file for the query
+INFO: Writing metadata file for the papers at C:\Users\shweata\terms_test_essential_oil_crossref_3
+100%|██████████████████████████████████████████████| 5/5 [00:00<00:00, 346.84it/s]
+```
+The CProject after updating: 
+```
+C:.
+├───10.1002_mbo3.459
+├───10.1016_j.bcab.2021.101913
+├───10.1055_s-0029-1234896
+├───10.1080_0972060x.2014.895156
+├───10.1080_0972060x.2016.1231597
+├───10.1080_0972060x.2017.1345329
+├───10.1080_10412905.1989.9697767
+├───10.1080_10412905.2021.1941338
+├───10.1111_j.1745-4565.2012.00378.x
+├───10.15406_oajs.2019.03.00121
+├───10.17795_bhs-24733
+├───10.23880_oajmms-16000131
+├───10.34302_crpjfst_2019.11.2.8
+├───10.5220_0008855200960099
+└───10.5220_0009957801190122
+```
+We started off with 10 paper folders, and increased the number to 15. 
 ### Filter
 
 ## arxiv
-`pygetpapers` allows you to query `arxiv` wrapper for metadata and get results in XML format. 
+`pygetpapers` allows you to query `arxiv` for full text PDF and metadata in all supported formats.
 ### Sample query
 INPUT
 ```
-pygetpapers --api arxiv -k 10 -o arxiv_test_2 -q "artificial intelligence" -x
+pygetpapers --api arxiv -k 10 -o arxiv_test_3 -q "artificial intelligence" -x -p --makehtml -c
 ```
 OUTPUT
 ```
@@ -411,12 +654,19 @@ INFO: Got request result from Arxiv through pygetpapers
 INFO: Requesting 10 results at offset 0
 INFO: Requesting page of results
 INFO: Got first page; 10 of 10 results available
-INFO: Making xml files for metadata at C:\Users\shweata\arxiv_test_2
-100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 427.09it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 982.89it/s]
+INFO: Downloading Pdfs for papers
+100%|█████████████████████████████████████████████| 10/10 [01:02<00:00,  6.27s/it]
+INFO: Making csv files for metadata at C:\Users\shweata\arxiv_test_3
+100%|████████████████████████████████████████████| 10/10 [00:00<00:00, 187.31it/s]
+INFO: Making html files for metadata at C:\Users\shweata\arxiv_test_3
+100%|████████████████████████████████████████████| 10/10 [00:00<00:00, 161.87it/s]
+INFO: Making xml files for metadata at C:\Users\shweata\arxiv_test_3
+100%|█████████████████████████████████████████████████████| 10/10 [00:00<?, ?it/s]
+100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 1111.22it/s]
 ```
+Note: `--update` isn't supported for `arxiv`
 ## Biorxiv and Medrxiv
-You can query `biorxiv` and `medrxiv` for fulltext and metadata (in all available formats)
+You can query `biorxiv` and `medrxiv` for fulltext and metadata (in all supported formats). However, passing a query string using `-q` flag isn't supported for both the Repositories. You can only provide a date range. 
 ### Sample Query - biorxiv
 INPUT:
 ```
@@ -449,7 +699,7 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata\biorxiv_test_20210831
 100%|█████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 492.39it/s]
 ```
-We've added ten more papers to the original CProject
+The CProject now has 20 papers, in total after updating.
 ```
 ├───10.1101_008326
 ├───10.1101_010553
@@ -471,9 +721,8 @@ We've added ten more papers to the original CProject
 ├───10.1101_191858
 ├───10.1101_194266
 └───10.1101_196105
-
 ```
-
+The working of `medarxiv` is same as `biorxiv`
 ## rxivist
 Lets you specify a queries string to both `biorxiv` and `medarxiv`. The results you get would be a mixture of papers from both repository since `rxivist` doesn't differentiate. 
 
