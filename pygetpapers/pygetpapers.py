@@ -132,16 +132,16 @@ class Pygetpapers:
 
     def get_metadata_results_file(self):
         list_of_metadata_jsons = glob.glob(os.path.join(os.getcwd(), "*.json"))
-        update_file_path = None
+        meta_data_results_file_path = None
         for file in list_of_metadata_jsons:
             metadata_file = ntpath.basename(file)
             if metadata_file.endswith("results.json"):
-                update_file_path = file
-        if not update_file_path:
+                meta_data_results_file_path = file
+        if not meta_data_results_file_path:
             logging.warning(
                 "Corpus not existing in this directory. Please rerun the query without --update or --restart")
             sys.exit(1)
-        return update_file_path
+        return meta_data_results_file_path
 
     def handle_query_download(self, args):
         """This functions handles the assigning of apis for query download
@@ -634,5 +634,8 @@ def main():
 if __name__ == "__main__":
     main()
 
-# TODO:Add tests for arxiv and rxiv and rxivist
 # TODO:Fill docstrings
+# TODO:Look at plugins and add logics in the repository
+# TODO:Remove sys.exits and raise exceptions
+# TODO:Take out constants in variables everywhere
+# TODO: -results.json only the last file gets chosen

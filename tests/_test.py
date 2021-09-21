@@ -17,7 +17,7 @@ references_path = os.path.join(
     current_path, paper_for_citations_test, "citation.xml")
 path_for_zip = os.path.join(current_path, paper_for_zip, 'ftpfiles')
 path_for_supp = os.path.join(
-    current_path, paper_for_supp, "supplementaryFiles")
+    current_path, paper_for_supp, "supplementaryfiles")
 logfile_name = "abc.txt"
 path_for_logfile = os.path.join(current_path, logfile_name)
 
