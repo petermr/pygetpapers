@@ -2,3 +2,4 @@ build/
 dist/ 
 pygetpapers.egg-info/
 .vscode/
+.pytest_cache/

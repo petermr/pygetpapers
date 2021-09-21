@@ -639,3 +639,4 @@ if __name__ == "__main__":
 # TODO:Remove sys.exits and raise exceptions
 # TODO:Take out constants in variables everywhere
 # TODO: -results.json only the last file gets chosen
+# TODO:Add a guide on how to add new repositories
