@@ -9,16 +9,33 @@ But each repository has its own API and functionality, which makes it hard for i
 
 # Existing tools
 
-curl
-VOSViewer
-scrapy
+* curl
+* VOSViewer
+* scrapy
 
 # problems
 
-Download speeds.
-Authentication (alerting repo to downloader header)
-Legal aspects.
+* Download speeds.
+* Authentication (alerting repo to downloader header)
+* Legal aspects.
+
+# design
+* commandline (can be later wrapped in GUIs)
+* modular (one module per repo)
+* abstraction (e.g. of DATE functions)
+* supports both metadata and content
+* responsive to repository responses
+
+# implementation
+
+* history `getpapers` => `pygetpapers`
+
+# testing and examples
 
 
+# limitations
+
+* speed
+* multithreading
 
 
