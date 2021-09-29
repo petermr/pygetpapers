@@ -1,40 +1,123 @@
 import configparser
-import json
-import time
-import zipfile
-import io
 import copy
-import os
+import glob
+import io
+import json
 import logging
-import requests
+import ntpath
+import os
+import time
+import xml.etree.ElementTree as ET
+import zipfile
+from time import gmtime, strftime
+
 import pandas as pd
+import requests
 import xmltodict
-from tqdm import tqdm
 from dict2xml import dict2xml
+from tqdm import tqdm
+
+from pygetpapers.pgexceptions import PygetpapersError
+
+PYGETPAPERS = "pygetpapers"
+
+NEW_RESULTS = "new_results"
+
+UPDATED_DICT = "updated_dict"
+
+CURSOR_MARK = "cursor_mark"
+
+TOTAL_HITS = "total_hits"
+
+TOTAL_JSON_OUTPUT = "total_json_output"
+
+JSONDOWNLOADED = "jsondownloaded"
+
+HTMLMADE = "htmlmade"
+
+CSVMADE = "csvmade"
+
+PDF_DOWNLOADED = "pdfdownloaded"
+
+DOWNLOADED = "downloaded"
+
+SUPPLEMENTARY = "supplementary"
+
+PMCID = "pmcid"
+
+FULL = "full"
+
+ABSTRACT = "abstract"
+
+PDFLINKS = "pdflinks"
+
+HTMLLINKS = "htmllinks"
+
+PDFDOWNLOADED = "pdfdownloaded"
+
+SUPPURL = "suppurl"
+
+ZIPURL = "zipurl"
+
+XMLURL = "xmlurl"
+
+REFERENCESURL = "referencesurl"
+
+CITATIONURL = "citationurl"
+
+POSTURL = "posturl"
+
+CONFIG_INI = "config.ini"
+
+RESULTS_JSON = "results.json"
+
+TERM = "term"
+
+ENTRY = 'entry'
+
 
 
 class DownloadTools:
     """Generic tools for retrieving literature"""
 
-    def __init__(self, api):
+    def __init__(self, api=False):
+        """[summary]
+
+        :param api: [description], defaults to False
+        :type api: bool, optional
+        """
+        self.config = self.setup_config_file(CONFIG_INI)
+        if api:
+            self.set_up_config_variables(api)
+
+    def set_up_config_variables(self, config, api):
         """[summary]
 
         :param api: [description]
         :type api: [type]
         """
+        self.posturl = config.get(api, POSTURL)
+        self.citationurl = config.get(api, CITATIONURL)
+        self.referencesurl = config.get(api, REFERENCESURL)
+        self.xmlurl = config.get(api, XMLURL)
+        self.zipurl = config.get(api, ZIPURL)
+        self.suppurl = config.get(api, SUPPURL)
+
+    def setup_config_file(self,config_ini):
+        """[summary]
+
+        :param config_ini: [description]
+        :type config_ini: [type]
+        :return: [description]
+        :rtype: [type]
+        """
         with open(
-            os.path.join(os.path.dirname(__file__), "config.ini")
+            os.path.join(os.path.dirname(__file__), config_ini)
         ) as file_handler:
             config_file = file_handler.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
-
-        self.posturl = config.get(api, "posturl")
-        self.citationurl = config.get(api, "citationurl")
-        self.referencesurl = config.get(api, "referencesurl")
-        self.xmlurl = config.get(api, "xmlurl")
-        self.zipurl = config.get(api, "zipurl")
-        self.suppurl = config.get(api, "suppurl")
+        return config
 
     def postquery(self, headers, payload):
         """[summary]
@@ -85,7 +168,6 @@ class DownloadTools:
         :return: [description]
         :rtype: [type]
         """
-
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         payload = {
             "query": query,
@@ -142,16 +224,16 @@ class DownloadTools:
         resultant_dict_for_csv = copy.deepcopy(resultant_dict)
         for paper in resultant_dict_for_csv:
             paper_dict = resultant_dict_for_csv[paper]
-            if "downloaded" in paper_dict:
-                paper_dict.pop("downloaded")
-            if "pdfdownloaded" in paper_dict:
-                paper_dict.pop("pdfdownloaded")
-            if "jsondownloaded" in paper_dict:
-                paper_dict.pop("jsondownloaded")
-            if "csvmade" in paper_dict:
-                paper_dict.pop("csvmade")
-            if "htmlmade" in paper_dict:
-                paper_dict.pop("htmlmade")
+            if DOWNLOADED in paper_dict:
+                paper_dict.pop(DOWNLOADED)
+            if PDFDOWNLOADED in paper_dict:
+                paper_dict.pop(PDFDOWNLOADED)
+            if JSONDOWNLOADED in paper_dict:
+                paper_dict.pop(JSONDOWNLOADED)
+            if CSVMADE in paper_dict:
+                paper_dict.pop(CSVMADE)
+            if HTMLMADE in paper_dict:
+                paper_dict.pop(HTMLMADE)
         return resultant_dict_for_csv
 
     @staticmethod
@@ -190,9 +272,9 @@ class DownloadTools:
         :rtype: [type]
         """
         dict_to_write = dict(paperdict)
-        dict_to_write.pop("pdfdownloaded")
-        dict_to_write.pop("jsondownloaded")
-        dict_to_write.pop("csvmade")
+        dict_to_write.pop(PDF_DOWNLOADED)
+        dict_to_write.pop(JSONDOWNLOADED)
+        dict_to_write.pop(CSVMADE)
         return dict_to_write
 
     @staticmethod
@@ -224,15 +306,15 @@ class DownloadTools:
         condition_to_download_json = False
         condition_to_download_csv = False
         condition_to_html = False
-        if not paperdict["downloaded"]:
+        if not paperdict[DOWNLOADED]:
             condition_to_down = True
-        if not paperdict["pdfdownloaded"]:
+        if not paperdict[PDFDOWNLOADED]:
             condition_to_download_pdf = True
-        if not paperdict["jsondownloaded"]:
+        if not paperdict[JSONDOWNLOADED]:
             condition_to_download_json = True
-        if not paperdict["csvmade"]:
+        if not paperdict[CSVMADE]:
             condition_to_download_csv = True
-        if not paperdict["htmlmade"]:
+        if not paperdict[HTMLMADE]:
             condition_to_html = True
         return (
             condition_to_down,
@@ -298,28 +380,29 @@ class DownloadTools:
         return f'<div id="table">{text}</div>'
 
     def make_html_from_dataframe(self, dataframe, url):
-        """[summary]"""
+        """
+        """
         dataframe = dataframe.T
         try:
-            dataframe = dataframe.drop(columns=["full", "htmlmade"])
+            dataframe = dataframe.drop(columns=["full", HTMLMADE])
         except Exception as exception:
             logging.debug(exception)
-        if "htmllinks" in dataframe:
+        if HTMLLINKS in dataframe:
             try:
-                dataframe["htmllinks"] = dataframe["htmllinks"].apply(
+                dataframe[HTMLLINKS] = dataframe[HTMLLINKS].apply(
                     lambda x: self.make_clickable(x)
                 )
             except Exception as exception:
                 logging.debug(exception)
-        if "pdflinks" in dataframe:
+        if PDFLINKS in dataframe:
             try:
-                dataframe["pdflinks"] = dataframe["pdflinks"].apply(
+                dataframe[PDFLINKS] = dataframe[PDFLINKS].apply(
                     lambda x: self.make_clickable(x)
                 )
             except Exception as exception:
                 logging.debug(exception)
         try:
-            dataframe["abstract"] = dataframe["abstract"].apply(
+            dataframe[ABSTRACT] = dataframe[ABSTRACT].apply(
                 lambda x: self.add_scrollbar(x)
             )
         except Exception as exception:
@@ -360,7 +443,7 @@ class DownloadTools:
         :type url: [type]
         """
         df = pd.Series(dict_to_write_html_from).to_frame(
-            dict_to_write_html_from["full"]["pmcid"]
+            dict_to_write_html_from[FULL][PMCID]
         )
         self.make_html_from_dataframe(df, url)
 
@@ -411,7 +494,6 @@ class DownloadTools:
     def log_making_xml():
         """[summary]
         """
-
         logging.debug(
             "*/saving xml to per-document directories (CTrees) (D)*/")
         loggingurl = os.path.join(str(os.getcwd()), "*", "fulltext.xml")
@@ -443,8 +525,7 @@ class DownloadTools:
         :param from_ftp_end_point: [description], defaults to False
         :type from_ftp_end_point: bool, optional
         """
-
-        log_key = "supplementary"
+        log_key = SUPPLEMENTARY
         if from_ftp_end_point:
             key = "PMCxxxx" + pmcid[-3:]
             path = self.zipurl.format(key=key, pmcid=pmcid)
@@ -509,11 +590,11 @@ class DownloadTools:
         :param resultant_dict: [description]
         :type resultant_dict: [type]
         """
-        resultant_dict[key_for_dict]["downloaded"] = False
-        resultant_dict[key_for_dict]["pdfdownloaded"] = False
-        resultant_dict[key_for_dict]["jsondownloaded"] = False
-        resultant_dict[key_for_dict]["csvmade"] = False
-        resultant_dict[key_for_dict]["htmlmade"] = False
+        resultant_dict[key_for_dict][DOWNLOADED] = False
+        resultant_dict[key_for_dict][PDF_DOWNLOADED] = False
+        resultant_dict[key_for_dict][JSONDOWNLOADED] = False
+        resultant_dict[key_for_dict][CSVMADE] = False
+        resultant_dict[key_for_dict][HTMLMADE] = False
 
     def make_csv_for_dict(self, df, return_dict, output_main, output_paper):
         """[summary]
@@ -540,7 +621,7 @@ class DownloadTools:
             df_for_paper = self.make_dataframe_for_paper_dict(
                 result, dict_to_use)
             self.write_or_append_to_csv(df_for_paper, url)
-            return_dict[result]["csvmade"] = True
+            return_dict[result][CSVMADE] = True
             logging.debug("Wrote csv files for paper %s", paper)
 
     def make_html_for_dict(self, df, return_dict, output_main, output_paper):
@@ -568,7 +649,7 @@ class DownloadTools:
             df_for_paper = self.make_dataframe_for_paper_dict(
                 result, return_dict)
             self.make_html_from_dataframe(df_for_paper, url)
-            return_dict[result]["htmlmade"] = True
+            return_dict[result][HTMLMADE] = True
             logging.debug("Wrote xml files for paper %s", paper)
 
     def make_xml_for_dict(self, return_dict, output_main, output_paper):
@@ -697,7 +778,7 @@ class DownloadTools:
         total_dict = returned_dict["total_json_output"]
         for paper in tqdm(total_dict):
             dict_of_paper = total_dict[paper]
-            if not dict_of_paper["jsondownloaded"]:
+            if not dict_of_paper[JSONDOWNLOADED]:
                 paper_numer += 1
                 doi_of_paper = dict_of_paper[key_in_dict]
                 url_encoded_doi_of_paper = self.url_encode_id(doi_of_paper)
@@ -706,7 +787,7 @@ class DownloadTools:
                     str(os.getcwd()
                         ), url_encoded_doi_of_paper, f"{name_of_file}.json"
                 )
-                dict_of_paper["jsondownloaded"] = True
+                dict_of_paper[JSONDOWNLOADED] = True
                 self.makejson(path_to_save_metadata, dict_of_paper)
                 logging.debug(
                     "Wrote metadata file for the paper %s", paper_numer)
@@ -728,15 +809,35 @@ class DownloadTools:
         :rtype: [type]
         """
         new_dict_to_return = {
-            "total_json_output": json_return_dict,
-            "total_hits": total_number_of_results,
-            "cursor_mark": cursor_mark,
+            TOTAL_JSON_OUTPUT: json_return_dict,
+            TOTAL_HITS: total_number_of_results,
+            CURSOR_MARK: cursor_mark,
         }
 
         dict_to_return_with_previous = copy.deepcopy(new_dict_to_return)
         if update:
 
-            dict_to_return_with_previous["total_json_output"].update(
-                update["total_json_output"]
+            dict_to_return_with_previous[TOTAL_JSON_OUTPUT].update(
+                update[TOTAL_JSON_OUTPUT]
             )
-        return {"updated_dict": dict_to_return_with_previous, "new_results": new_dict_to_return}
+        return {UPDATED_DICT: dict_to_return_with_previous, NEW_RESULTS: new_dict_to_return}
+
+    def get_metadata_results_file(self):
+        """[summary]
+
+        :raises PygetpapersError: [description]
+        :return: [description]
+        :rtype: [type]
+        """
+        list_of_metadata_jsons = glob.glob(os.path.join(os.getcwd(), "*.json"))
+        meta_data_results_file_path = None
+        for file in list_of_metadata_jsons:
+            metadata_file = ntpath.basename(file)
+            if metadata_file.endswith(RESULTS_JSON):
+                meta_data_results_file_path = file
+        if not meta_data_results_file_path:
+            raise PygetpapersError(
+                "Corpus not existing in this directory. Please rerun the query without --update or --restart")
+        return meta_data_results_file_path
+
+    
