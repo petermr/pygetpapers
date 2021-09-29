@@ -88,7 +88,7 @@ class DownloadTools:
         """
         self.config = self.setup_config_file(CONFIG_INI)
         if api:
-            self.set_up_config_variables(api)
+            self.set_up_config_variables(self.config,api)
 
     def set_up_config_variables(self, config, api):
         """[summary]
@@ -166,6 +166,7 @@ class DownloadTools:
         :param synonym: [description], defaults to True
         :type synonym: bool, optional
         :return: [description]
+        :rtype: [type]
         :rtype: [type]
         """
         headers = {"Content-type": "application/x-www-form-urlencoded"}
