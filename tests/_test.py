@@ -40,11 +40,11 @@ def test_eupmc_does_update_work():
     print("Checking Update")
     path, dirs, files = next(os.walk(current_path))
     old_file_count = len(dirs)
-    os.system(f'pygetpapers -q "lantana" -k 5 --update -o {current_path}')
+    os.system(f'pygetpapers -q "lantana" -k 10 --update -o {current_path}')
     path, dirs, files = next(os.walk(current_path))
     new_file_count = len(dirs)
     print(new_file_count)
-    assert (old_file_count+5) == new_file_count
+    assert (old_file_count+10) == new_file_count
 
 
 def test_does_zip_work():

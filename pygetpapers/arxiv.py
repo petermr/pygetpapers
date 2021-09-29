@@ -1,8 +1,51 @@
-import os
 import logging
-import arxiv
+import os
+
 from tqdm import tqdm
+
+import arxiv
 from pygetpapers.download_tools import DownloadTools
+from pygetpapers.pgexceptions import PygetpapersError
+
+PDFDOWNLOADED = "pdfdownloaded"
+
+PDF_URL = "pdf_url"
+
+FULLTEXT_PDF = "fulltext.pdf"
+
+ENTRY_ID = "entry_id"
+
+LINKS = "links"
+
+CATEGORIES = "categories"
+
+PRIMARY_CATEGORY = "primary_category"
+
+DOI = "doi"
+
+JOURNAL_REF = "journal_ref"
+
+COMMENT = "comment"
+
+SUMMARY = "summary"
+
+AUTHORS = "authors"
+
+TITLE = "title"
+
+DATE_PUBLISHED = "date_published"
+
+DATE_UPDATED = "date_updated"
+
+ARXIV_RESULT_JSON = "arxiv_result.json"
+
+JSONDOWNLOADED = "jsondownloaded"
+
+ARXIV_RESULTS_JSON = "arxiv_results.json"
+
+ARXIV_RESULT = "arxiv-result"
+
+ARXIV = "arxiv"
 
 
 class Arxiv:
@@ -10,10 +53,10 @@ class Arxiv:
 
     def __init__(self):
         """[summary]"""
-        self.download_tools = DownloadTools("arxiv")
+        self.download_tools = DownloadTools(ARXIV)
 
     def arxiv(
-        self, query, size, getpdf=False, makecsv=False, makexml=False, makehtml=False
+            self, query, size, getpdf=False, makecsv=False, makexml=False, makehtml=False
     ):
         """[summary]
 
@@ -46,7 +89,7 @@ class Arxiv:
         if getpdf:
             self.download_pdf(return_dict)
         self.download_tools.handle_creation_of_csv_html_xml(
-            makecsv, makehtml, makexml, return_dict, "arxiv-result"
+            makecsv, makehtml, makexml, return_dict, ARXIV_RESULT
         )
         self.make_json_from_arxiv_dict(return_dict)
 
@@ -58,12 +101,12 @@ class Arxiv:
         :param return_dict: [description]
         :type return_dict: [type]
         """
-        jsonurl = os.path.join(os.getcwd(), "arxiv_results.json")
+        jsonurl = os.path.join(os.getcwd(), ARXIV_RESULTS_JSON)
         self.download_tools.makejson(jsonurl, return_dict)
         for result in tqdm(return_dict):
-            return_dict[result]["jsondownloaded"] = True
+            return_dict[result][JSONDOWNLOADED] = True
             self.download_tools.check_or_make_directory(result)
-            jsonurl = os.path.join(os.getcwd(), result, "arxiv_result.json")
+            jsonurl = os.path.join(os.getcwd(), result, ARXIV_RESULT_JSON)
             self.download_tools.makejson(jsonurl, return_dict[result])
 
     @staticmethod
@@ -80,31 +123,31 @@ class Arxiv:
 
             return_dict[url_encoded_id_of_paper] = {}
             paper_dict = return_dict[url_encoded_id_of_paper]
-            paper_dict["date_updated"] = str(
+            paper_dict[DATE_UPDATED] = str(
                 result.updated)
-            paper_dict["date_published"] = str(
+            paper_dict[DATE_PUBLISHED] = str(
                 result.published
             )
-            paper_dict["title"] = str(result.title)
-            paper_dict["authors"] = str(
+            paper_dict[TITLE] = str(result.title)
+            paper_dict[AUTHORS] = str(
                 result.authors)
-            paper_dict["summary"] = str(
+            paper_dict[SUMMARY] = str(
                 result.summary)
-            paper_dict["comment"] = str(
+            paper_dict[COMMENT] = str(
                 result.comment)
-            paper_dict["journal_ref"] = str(
+            paper_dict[JOURNAL_REF] = str(
                 result.journal_ref
             )
-            paper_dict["doi"] = str(result.doi)
-            paper_dict["primary_category"] = str(
+            paper_dict[DOI] = str(result.doi)
+            paper_dict[PRIMARY_CATEGORY] = str(
                 result.primary_category
             )
-            paper_dict["categories"] = str(
+            paper_dict[CATEGORIES] = str(
                 result.categories)
-            paper_dict["links"] = str(result.links)
-            paper_dict["pdf_url"] = str(
+            paper_dict[LINKS] = str(result.links)
+            paper_dict[PDF_URL] = str(
                 result.pdf_url)
-            paper_dict["entry_id"] = str(
+            paper_dict[ENTRY_ID] = str(
                 result.entry_id)
 
     def download_pdf(self, return_dict):
@@ -118,17 +161,31 @@ class Arxiv:
             self.download_tools.check_or_make_directory(
                 os.path.join(os.getcwd(), result)
             )
-            pdf_url = os.path.join(os.getcwd(), result, "fulltext.pdf")
+            pdf_url = os.path.join(os.getcwd(), result, FULLTEXT_PDF)
             self.download_tools.write_content_to_destination(
-                return_dict[result]["pdf_url"], pdf_url
+                return_dict[result][PDF_URL], pdf_url
             )
-            return_dict[result]["pdfdownloaded"] = True
+            return_dict[result][PDFDOWNLOADED] = True
 
     @staticmethod
-    def noexecute(query):
+    def noexecute(args):
         """[summary]
 
         :param query: [description]
         :type query: [type]
         """
-        logging.info("Arxiv api working for the query %s", query)
+        logging.info("Arxiv api working for the query %s", args.query)
+
+    @staticmethod
+    def update(args):
+        logging.warning("update currently not supported for arxiv")
+
+    def apipaperdownload(self, args):
+        self.arxiv(
+            args.query,
+            args.limit,
+            getpdf=args.pdf,
+            makecsv=args.makecsv,
+            makexml=args.xml,
+            makehtml=args.makehtml,
+        )   
