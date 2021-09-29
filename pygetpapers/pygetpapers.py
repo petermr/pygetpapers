@@ -42,7 +42,7 @@ class ApiPlugger:
         :type api: [type]
         """
         self.download_tools = DownloadTools(api)
-        self.setup_api_support_variables(self.config, api)
+        self.setup_api_support_variables(self.download_tools.config, api)
         api_class = getattr(importlib.import_module(f'{PYGETPAPERS}.{self.library_name}'),self.class_name)
         self.api= api_class()
     
@@ -167,7 +167,7 @@ class ApiPlugger:
                 except PygetpapersError as err:
                     logging.warning(err.message)
                     return
-        
+
         try:
             self.handle_adding_date_to_query(args)
         except PygetpapersError as err:
