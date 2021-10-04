@@ -16,6 +16,7 @@ import requests
 import xmltodict
 from dict2xml import dict2xml
 from tqdm import tqdm
+from lxml import etree
 
 from pygetpapers.pgexceptions import PygetpapersError
 
@@ -136,7 +137,11 @@ class DownloadTools:
         stop = time.time()
         logging.debug("*/Got the Query Result */")
         logging.debug("Time elapsed: %s", (stop - start))
-        return xmltodict.parse(request_handler.content)
+        parser = etree.XMLParser(recover=True)
+        e= etree.fromstring(request_handler.content, parser=parser)
+        xmlstr = etree.tostring(e, encoding='utf8', method='xml')
+        dict_to_return = xmltodict.parse(xmlstr)
+        return dict_to_return
 
     @staticmethod
     def check_or_make_directory(directory_url):
@@ -386,27 +391,27 @@ class DownloadTools:
         dataframe = dataframe.T
         try:
             dataframe = dataframe.drop(columns=["full", HTMLMADE])
-        except Exception as exception:
+        except PygetpapersError as exception:
             logging.debug(exception)
         if HTMLLINKS in dataframe:
             try:
                 dataframe[HTMLLINKS] = dataframe[HTMLLINKS].apply(
                     lambda x: self.make_clickable(x)
                 )
-            except Exception as exception:
+            except PygetpapersError as exception:
                 logging.debug(exception)
         if PDFLINKS in dataframe:
             try:
                 dataframe[PDFLINKS] = dataframe[PDFLINKS].apply(
                     lambda x: self.make_clickable(x)
                 )
-            except Exception as exception:
+            except PygetpapersError as exception:
                 logging.debug(exception)
         try:
             dataframe[ABSTRACT] = dataframe[ABSTRACT].apply(
                 lambda x: self.add_scrollbar(x)
             )
-        except Exception as exception:
+        except PygetpapersError as exception:
             logging.debug(exception)
         base_html = """
     <!doctype html>
@@ -564,7 +569,7 @@ class DownloadTools:
             self.check_or_make_directory(destination_url)
             z.extractall(destination_url)
             logging.info("Wrote %s files for %s", log_key, log_key)
-        except Exception as exception:
+        except PygetpapersError as exception:
             logging.warning("%s files not found for %s", log_key, pmcid)
             logging.debug(exception)
 
