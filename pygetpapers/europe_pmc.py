@@ -12,6 +12,7 @@ from pygetpapers.pgexceptions import PygetpapersError
 FULLTEXT_XML = "fulltext.xml"
 FULLTEXT_PDF = "fulltext.pdf"
 RESULTS_JSON = "eupmc_results.json"
+RESULT_JSON = "eupmc_result.json"
 RESULTS_CSV = "europe_pmc.csv"
 REFERENCE_XML = "references.xml"
 DOWNLOADED = "downloaded"
@@ -67,14 +68,6 @@ class EuropePmc:
 
     def __init__(self):
         """[summary]"""
-
-        self.logging_url = os.path.join(
-            str(os.getcwd()), "*", FULLTEXT_XML)
-        self.eupmc_json = os.path.join(
-            str(os.getcwd()), RESULTS_JSON)
-        self.eupmc_csv_url = os.path.join(
-            str(os.getcwd()), RESULTS_CSV)
-        self.directory_url = os.path.join(str(os.getcwd()))
         self.download_tools = DownloadTools(EUROPEPMC)
 
     def europepmc(self, query, size, synonym=True, **kwargs):
@@ -99,26 +92,27 @@ class EuropePmc:
             number_of_papers_there,
         ) = self.create_parameters_for_paper_download()
         while number_of_papers_there <= size and morepapers is True:
-            counter += 1
             builtquery = self.build_and_send_query(
                 maximum_hits_per_page, next_cursor_mark, query, synonym
             )
-            totalhits = builtquery[RESPONSE_WRAPPER][HITCOUNT]
-            if counter == 1:
-                logging.info("Total Hits are %s", totalhits)
-            output_dict = json.loads(json.dumps(builtquery))
-            try:
-                number_of_papers_there = self.create_final_paper_list(
-                    content, kwargs, number_of_papers_there, output_dict, size
+            if builtquery:
+                counter += 1
+                totalhits = builtquery[RESPONSE_WRAPPER][HITCOUNT]
+                if counter == 1:
+                    logging.info("Total Hits are %s", totalhits)
+                output_dict = json.loads(json.dumps(builtquery))
+                try:
+                    number_of_papers_there = self.create_final_paper_list(
+                        content, kwargs, number_of_papers_there, output_dict, size
+                    )
+                except PygetpapersError as exception:
+                    logging.debug(exception)
+                    morepapers = False
+                    logging.warning("Could not find more papers")
+                    break
+                morepapers = self.add_cursor_mark_if_exists(
+                    builtquery, morepapers, next_cursor_mark
                 )
-            except Exception as exception:
-                logging.debug(exception)
-                morepapers = False
-                logging.warning("Could not find more papers")
-                break
-            morepapers = self.add_cursor_mark_if_exists(
-                builtquery, morepapers, next_cursor_mark
-            )
         if len(content[0]) > size:
             content[0] = content[0][0:size]
         return content
@@ -439,7 +433,7 @@ class EuropePmc:
         destination_url = os.path.join(
             str(os.getcwd()), pmcid, FULLTEXT_XML)
         directory_url = os.path.join(str(os.getcwd()), pmcid)
-        jsonurl = os.path.join(str(os.getcwd()), pmcid, RESULTS_JSON)
+        jsonurl = os.path.join(str(os.getcwd()), pmcid, RESULT_JSON)
         referenceurl = os.path.join(
             str(os.getcwd()), pmcid, REFERENCE_XML)
         citationurl = os.path.join(str(os.getcwd()), pmcid, CITATION_XML)
@@ -625,46 +619,38 @@ class EuropePmc:
         :param dict_for_paper: [description]
         :type dict_for_paper: [type]
         """
-        try:
+        if HTML_LINKS in dict_for_paper:
             dict_for_paper[HTML_LINKS] = htmlurl[0]
-        except Exception as exception:
-            logging.debug(exception)
+        else :
             logging.warning("html url not found for paper %s", paper_number)
-        try:
+        if ABSTRACT in dict_for_paper:
             dict_for_paper[ABSTRACT] = paper[ABSTRACT_TEXT]
-        except Exception as exception:
-            logging.debug(exception)
+        else:
             logging.warning("Abstract not found for paper %s", paper_number)
-
-        try:
+        if KEYWORDS in dict_for_paper:
             dict_for_paper[KEYWORDS] = paper["keywordList"][KEYWORD]
-        except Exception as exception:
-            logging.debug(exception)
+        else:
             logging.warning("Keywords not found for paper %s", paper_number)
-        try:
+        if PDF_LINKS in dict_for_paper:
             dict_for_paper[PDF_LINKS] = pdfurl[0]
-        except Exception as exception:
-            logging.debug(exception)
+        else:
             logging.warning("pdf url not found for paper %s", paper_number)
-        try:
+        if JOURNAL_TITLE in dict_for_paper:
             dict_for_paper[JOURNAL_TITLE] = paper[JOURNAL_INFO][JOURNAL][
                 TITLE
             ]
-        except Exception as exception:
-            logging.debug(exception)
+        else:
             logging.warning("journalInfo not found for paper %s", paper_number)
-        try:
+        if AUTHOR_LIST in dict_for_paper:
             author_list = []
             for author in paper[AUTHOR_LIST][AUTHOR]:
                 author_list.append(author[FULL_NAME])
             dict_for_paper[AUTHOR_INFO] = author_list
-        except Exception as exception:
-            logging.debug(exception)
+        else:
             logging.warning("Author list not found for paper %s", paper_number)
-        try:
+        if TITLE in dict_for_paper:
             dict_for_paper[TITLE] = paper[TITLE]
-        except Exception as exception:
-            logging.debug(exception)
+        else:
             logging.warning("Title not found for paper %s", paper_number)
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
