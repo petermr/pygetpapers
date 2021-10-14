@@ -543,13 +543,15 @@ class EuropePmc:
                     pdf_destination = os.path.join(
                         str(os.getcwd()), pmcid, FULLTEXT_PDF
                     )
-                    if PDF_LINKS in paperdict:
-                        if len(paperdict[PDF_LINKS]) > 0:
-                            self.download_tools.write_content_to_destination(
-                                paperdict[PDF_LINKS], pdf_destination
-                            )
-                            paperdict[PDF_DOWNLOADED] = True
-                            logging.debug("Wrote the pdf file for %s", pmcid)
+                    if "fullTextUrlList" in paperdict["full"]:
+                        full_text_list = paperdict["full"]["fullTextUrlList"]["fullTextUrl"]
+                        for paper_links in full_text_list:
+                            if (paper_links["availability"] == "Open access" and paper_links["documentStyle"] == "pdf"):
+                                self.download_tools.write_content_to_destination(
+                                    paper_links["url"], pdf_destination
+                                )
+                                paperdict[PDF_DOWNLOADED] = True
+                                logging.info("Wrote the pdf file for %s", pmcid)
             dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
             if condition_to_download_json:
                 self.download_tools.makejson(jsonurl, dict_to_write)
@@ -710,13 +712,7 @@ class EuropePmc:
                         ) = self.write_meta_data_for_paper(
                             paper, paper_number, resultant_dict
                         )
-                        self.add_fields_to_resultant_dict(
-                            html_url,
-                            paper,
-                            paper_number,
-                            pdfurl,
-                            resultant_dict[paperpmcid],
-                        )
+                        
                         logging.debug(
                             "Wrote Meta Data to a dictionary that will be written to "
                             "all the chosen metadata file formats for paper %s",
