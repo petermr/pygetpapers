@@ -52,7 +52,6 @@ class ApiPlugger:
         :param args: [description]
         :type args: [type]
         :raises PygetpapersError: [description]
-        :raises PygetpapersError: [description]
         """ 
         for feature in self.features_not_supported_by_api:
             if getattr(args,feature):
@@ -503,6 +502,7 @@ class Pygetpapers:
         self.handle_output_directory(args)
         if args.version:
             logging.info("You are running pygetpapers version %s", version)
+            return
         if args.save_query:
             self.handle_write_configuration_file(args)
         if args.api not in list(self.download_tools.config):

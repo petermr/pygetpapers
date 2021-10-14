@@ -137,6 +137,8 @@ class DownloadTools:
         stop = time.time()
         logging.debug("*/Got the Query Result */")
         logging.debug("Time elapsed: %s", (stop - start))
+        with open('test.xml', mode='w',encoding='utf-8') as f:
+            f.write(request_handler.text)
         parser = etree.XMLParser(recover=True)
         e= etree.fromstring(request_handler.content, parser=parser)
         xmlstr = etree.tostring(e, encoding='utf8', method='xml')
@@ -389,30 +391,7 @@ class DownloadTools:
         """
         """
         dataframe = dataframe.T
-        try:
-            dataframe = dataframe.drop(columns=["full", HTMLMADE])
-        except PygetpapersError as exception:
-            logging.debug(exception)
-        if HTMLLINKS in dataframe:
-            try:
-                dataframe[HTMLLINKS] = dataframe[HTMLLINKS].apply(
-                    lambda x: self.make_clickable(x)
-                )
-            except PygetpapersError as exception:
-                logging.debug(exception)
-        if PDFLINKS in dataframe:
-            try:
-                dataframe[PDFLINKS] = dataframe[PDFLINKS].apply(
-                    lambda x: self.make_clickable(x)
-                )
-            except PygetpapersError as exception:
-                logging.debug(exception)
-        try:
-            dataframe[ABSTRACT] = dataframe[ABSTRACT].apply(
-                lambda x: self.add_scrollbar(x)
-            )
-        except PygetpapersError as exception:
-            logging.debug(exception)
+        
         base_html = """
     <!doctype html>
     <html>
