@@ -206,3 +206,4 @@ class CrossRef:
         self.download_tools.make_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], key_in_dict=DOI, name_of_file=CROSSREF_RESULTS
         )
+        

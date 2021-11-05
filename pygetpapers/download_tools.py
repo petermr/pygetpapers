@@ -10,7 +10,6 @@ import time
 import xml.etree.ElementTree as ET
 import zipfile
 from time import gmtime, strftime
-
 import pandas as pd
 import requests
 import xmltodict
@@ -45,8 +44,6 @@ DOWNLOADED = "downloaded"
 SUPPLEMENTARY = "supplementary"
 
 PMCID = "pmcid"
-
-FULL = "full"
 
 ABSTRACT = "abstract"
 
@@ -137,8 +134,6 @@ class DownloadTools:
         stop = time.time()
         logging.debug("*/Got the Query Result */")
         logging.debug("Time elapsed: %s", (stop - start))
-        with open('test.xml', mode='w',encoding='utf-8') as f:
-            f.write(request_handler.text)
         parser = etree.XMLParser(recover=True)
         e= etree.fromstring(request_handler.content, parser=parser)
         xmlstr = etree.tostring(e, encoding='utf8', method='xml')
@@ -428,7 +423,7 @@ class DownloadTools:
         :type url: [type]
         """
         df = pd.Series(dict_to_write_html_from).to_frame(
-            dict_to_write_html_from[FULL][PMCID]
+            dict_to_write_html_from[PMCID]
         )
         self.make_html_from_dataframe(df, url)
 

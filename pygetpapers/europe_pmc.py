@@ -406,7 +406,7 @@ class EuropePmc:
             query_result, makecsv=makecsv, makehtml=makehtml
         )
 
-        if not onlymakejson and is_search_successful is not False:
+        if not onlymakejson and is_search_successful:
             read_json = self.download_tools.readjsondata(
                 os.path.join(str(os.getcwd()), RESULTS_JSON)
             )
@@ -505,7 +505,7 @@ class EuropePmc:
                 zipurl,
             ) = self.get_urls_to_write_to(pmcid)
             paperdict = final_xml_dict[paper]
-            paperid = paperdict[FULL][ID]
+            paperid = paperdict[ID]
             if references:
                 self.download_tools.make_references(
                     directory_url, paperid, references, referenceurl
@@ -543,8 +543,8 @@ class EuropePmc:
                     pdf_destination = os.path.join(
                         str(os.getcwd()), pmcid, FULLTEXT_PDF
                     )
-                    if "fullTextUrlList" in paperdict["full"]:
-                        full_text_list = paperdict["full"]["fullTextUrlList"]["fullTextUrl"]
+                    if "fullTextUrlList" in paperdict:
+                        full_text_list = paperdict["fullTextUrlList"]["fullTextUrl"]
                         for paper_links in full_text_list:
                             if (paper_links["availability"] == "Open access" and paper_links["documentStyle"] == "pdf"):
                                 self.download_tools.write_content_to_destination(
@@ -680,7 +680,7 @@ class EuropePmc:
         resultant_dict = self.download_tools.make_initial_columns_for_paper_dict(
             paperpmcid, resultant_dict
         )
-        resultant_dict[paperpmcid][FULL] = paper
+        resultant_dict[paperpmcid].update(paper)
         return htmlurl, paperpmcid, pdfurl, resultant_dict
 
     def makecsv(self, searchvariable, makecsv=False, makehtml=False, update=False):
