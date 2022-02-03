@@ -9,9 +9,11 @@ But each repository has its own API and functionality, which makes it hard for i
 
 In 2015 we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers`, with the key advance of integrating a query submission with bulk fulltext-download of all the hits. `getpapers` was written in NodeJs and has now been completely rewritten in Python3 (`pygetpapers`) for easier distribution and integration. Typical use of `getpapers` is shown in a recent paper (https://europepmc.org/article/MED/33916878) where the authors "analyzed key term frequency within 20,000 representative [Antimicrobial Resistance] articles".
 
-An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it tkinter` GUI (see below). The architecture of the results is also important and we base this on full-text files in the normal filesystem, allowing maximum flexibility of re-use.
+An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter` GUI (see below). The architecture of the results is simple and natural based on full-text files in the normal filesystem. This allows allowing maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
-The number and type of scientific repositories (espcially preprints) is expanding and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. 
+The number and type of scientific repositories (espcially preprints) is expanding and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. 
+
+Simple keyword searches often fail to include sysnonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictiomary-based approach to automate much of the creation of complex queries.
 
 The content is inherently complex. A download consists of:
 * the metadata for the operation (date, query, errors, etc.)
@@ -20,13 +22,13 @@ The content is inherently complex. A download consists of:
 * backmatter (references, permissions, ethics, etc.)
 * non-text: tables, diagrams. images
 * supplemental/supporting material
-Much of this has been systematised and we use the JATS/NISO standard to create highly structured documents and their sections on filestore.
+Some of this has been systematised, especially in biosciences, and the NIH (US National Institutes of Health) led  to the JATS/NISO standard to create highly structured documents.
 
 Frequently users want to search incrementally, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also `pygetpapers` allows regular updates , e.g. weekly searches of preprint servers.
 
 `pygetpapers` takes the approach of downloading once and re-analysing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveill users (Brembs). Moreover publishers rarely provide more than full-text Boolean searches, whereas local tools can analyse sections, and non-textual material.
 
-We do not know of othe tools which have the same functionality. `curl` requires detailed knowledge of the download protocol. VosViewer is 
+We do not know of othe tools which have the same functionality. `curl` (ref) requires detailed knowledge of the download protocol. VosViewer (ref) is mainly aimed at biblography/citations.
 
 # overview of architecture
 
@@ -38,10 +40,10 @@ The download may be repository-dependent but usually contains:
 * fulltext. This can be 
    - XML (fulltext and metadata) 
    - images (these may not always be available)
-   - tables (these are often separate
+   - tables (these are often separate)
    - PDF - usually includes the whole material but not machine-sectioned
    - HTML . often avaliable on websites
-* supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is too varied for machines to analyse automatically.
+* supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
 
 see Fig 1 (typical download directory). This is designed so that analysis tools can add computed data for articles
 
@@ -65,17 +67,14 @@ The control module `pygetpapers` reads the commandline and
 * downloads according to protocol above, including recording progress in a metadata file
 
 
-# Existing tools
 
+# generic downloading concerns
 
-# problems
-
-* Download speeds.
-* Authentication (alerting repo to downloader header)
-* Legal aspects.
+* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (EPMC, biorXiv, Crossref etc. and have a default (resettable) delay in `pygetpapers`. 
+* Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for Crossref)
 
 # design
-* commandline (can be later wrapped in GUIs)
+* commandline (can be later wrapped in GUIs).
 * modular (one module per repo)
 * abstraction (e.g. of DATE functions)
 * supports both metadata and content
@@ -89,25 +88,25 @@ The download process for (most) servers of scientific articles is:
 * server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
 * pygetpapers - incremental aggregates XML metadata as python dict in memory - small example for paper
 * if cursor indicates next page, submits query for next page , else if end, terminates this part
-* when finished all pages, writes metadata tp CProject as JSON (total, and creates CTrees with individual metadata)
+* when finished all pages, writes metadata to CProject as JSON (total, and creates CTrees with individual metadata)
 * CONTENT
 * from total metadata in memory, systematically download requested (optional content) (minutes, depending on size)
 * recover from crashes, restart 
 
 # implementation
 
-* history `getpapers` => `pygetpapers`
+`getpapers` was implemednted in NodeJS which allows multithreading and therefore potentially download rates of several XML documents per second on a fast line. Insalling NodeJS was a problem on some systems (especially Windows) and was not well suited tom integrattion with scientific libraries (mainly in Java and Python). We therefore decided to rewrite in Python, keeping only the commandline and output structure, and have found very easy integration with other tools, including GUIs.
 
 # testing and examples
 
 
-# limitations
-
-* speed
-* multithreading
-
 # interface with other tools
 
-* docanalysis
-* 
+Downloading is naturally modular, rather slow, and we interface by writing all output to the filesystem. This means that a wide range of tools (Unix, Windows, Java, Python, etc.) can analyse and transform it. The target documents are usually static so downlloads only need to be done once.
+Among our own downstream tools are
+* pyami - sectioning the document
+* docanalysis - textual analysus and Natural Language Processing
+* pyamiinage - analysis of the content of images in downloaded documents
+
+For fulltext analysis of PDF we use GROBID and PDFBox.
 
