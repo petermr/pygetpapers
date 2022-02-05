@@ -63,7 +63,7 @@ REFERENCESURL = "referencesurl"
 
 CITATIONURL = "citationurl"
 
-POSTURL = "posturl"
+query_url = "query_url"
 
 CONFIG_INI = "config.ini"
 
@@ -94,7 +94,7 @@ class DownloadTools:
         :param api: [description]
         :type api: [type]
         """
-        self.posturl = config.get(api, POSTURL)
+        self.query_url = config.get(api, query_url)
         self.citationurl = config.get(api, CITATIONURL)
         self.referencesurl = config.get(api, REFERENCESURL)
         self.xmlurl = config.get(api, XMLURL)
@@ -130,7 +130,7 @@ class DownloadTools:
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
         start = time.time()
         request_handler = requests.post(
-            self.posturl, data=payload, headers=headers)
+            self.query_url, data=payload, headers=headers)
         stop = time.time()
         logging.debug("*/Got the Query Result */")
         logging.debug("Time elapsed: %s", (stop - start))
@@ -558,11 +558,11 @@ class DownloadTools:
         :rtype: [type]
         """
         resultant_dict[key_for_dict] = {}
-        self.add_keys_for_conditions(key_for_dict, resultant_dict)
+        self.add_download_status_keys(key_for_dict, resultant_dict)
         return resultant_dict
 
     @staticmethod
-    def add_keys_for_conditions(key_for_dict, resultant_dict):
+    def add_download_status_keys(key_for_dict, resultant_dict):
         """[summary]
 
         :param key_for_dict: [description]
@@ -723,30 +723,30 @@ class DownloadTools:
         return version
 
     @staticmethod
-    def make_dict_from_returned_list(total_json_output, key_in_dict):
+    def make_dict_from_list(metadata_list, paper_key):
         """[summary]
 
-        :param total_json_output: [description]
-        :type total_json_output: [type]
-        :param key_in_dict: [description]
-        :type key_in_dict: [type]
+        :param metadata_list: [description]
+        :type metadata_list: [type]
+        :param paper_key: [description]
+        :type paper_key: [type]
         :return: [description]
         :rtype: [type]
         """
-        json_return_dict = {}
-        for paper in total_json_output:
-            json_return_dict[paper[key_in_dict]] = paper
-        return json_return_dict
+        paper_by_key = {}
+        for paper in metadata_list:
+            paper_by_key[paper[paper_key]] = paper
+        return paper_by_key
 
-    def make_json_files_for_paper(self, returned_dict, updated_dict, key_in_dict, name_of_file):
+    def make_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
         """[summary]
 
         :param returned_dict: [description]
         :type returned_dict: [type]
         :param updated_dict: [description]
         :type updated_dict: [type]
-        :param key_in_dict: [description]
-        :type key_in_dict: [type]
+        :param paper_key: [description]
+        :type paper_key: [type]
         :param name_of_file: [description]
         :type name_of_file: [type]
         """
@@ -760,7 +760,7 @@ class DownloadTools:
             dict_of_paper = total_dict[paper]
             if not dict_of_paper[JSONDOWNLOADED]:
                 paper_numer += 1
-                doi_of_paper = dict_of_paper[key_in_dict]
+                doi_of_paper = dict_of_paper[paper_key]
                 url_encoded_doi_of_paper = self.url_encode_id(doi_of_paper)
                 self.check_or_make_directory(url_encoded_doi_of_paper)
                 path_to_save_metadata = os.path.join(
@@ -773,14 +773,14 @@ class DownloadTools:
                     "Wrote metadata file for the paper %s", paper_numer)
 
     def make_dict_to_return(
-        self, cursor_mark, json_return_dict, total_number_of_results, update=None
+        self, cursor_mark, paper_by_key, total_number_of_results, update=None
     ):
         """[summary]
 
         :param cursor_mark: [description]
         :type cursor_mark: [type]
-        :param json_return_dict: [description]
-        :type json_return_dict: [type]
+        :param paper_by_key: [description]
+        :type paper_by_key: [type]
         :param total_number_of_results: [description]
         :type total_number_of_results: [type]
         :param update: [description], defaults to None
@@ -789,7 +789,7 @@ class DownloadTools:
         :rtype: [type]
         """
         new_dict_to_return = {
-            TOTAL_JSON_OUTPUT: json_return_dict,
+            TOTAL_JSON_OUTPUT: paper_by_key,
             TOTAL_HITS: total_number_of_results,
             CURSOR_MARK: cursor_mark,
         }
