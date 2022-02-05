@@ -33,6 +33,12 @@ CLASSNAME="class_name"
 LIBRARYNAME="library_name"
 FEATURESNOTSUPPORTED = "features_not_supported"
 
+class Dict2Class(object):
+      
+    def __init__(self, my_dict):
+          
+        for key in my_dict:
+            setattr(self, key, my_dict[key])
 class ApiPlugger:
     
     def __init__(self,api):
@@ -45,6 +51,8 @@ class ApiPlugger:
         self.setup_api_support_variables(self.download_tools.config, api)
         api_class = getattr(importlib.import_module(f'{PYGETPAPERS}.{self.library_name}'),self.class_name)
         self.api= api_class()
+        
+
     
     def assist_warning_api(self,args):
         """[summary]
@@ -208,6 +216,8 @@ class Pygetpapers:
         """This function makes all the constants"""
         self.download_tools = DownloadTools()
         self.version = self.download_tools.get_version()
+        default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
+        self.default_path= os.path.join(os.getcwd(), default_path)
 
     @staticmethod
     def handle_write_configuration_file(args):
@@ -282,11 +292,31 @@ class Pygetpapers:
         else:
             coloredlogs.install(level=level, fmt='%(levelname)s: %(message)s')
     
+    def run_command(self,output=False,query=False,save_query=False,xml=False,pdf=False,supp=False,zip=False,references=False,noexecute=False,citations=False,limit=100,restart=False,update=False,onlyquery=False,makecsv=False,makehtml=False,synonym=False,startdate=False,enddate=False,terms=False,notterms=False,api="europe_pmc",filter=None,loglevel="info",logfile=False,version=False):
+        got_parameters = locals()
+        if output==False:
+            got_parameters["output"]=self.default_path
+        args= Dict2Class(got_parameters)
+        self.handle_running_of_args(args)
+
+    def handle_running_of_args(self,args):
+        self.handle_logger_creation(args)
+        self.handle_output_directory(args)
+        if args.version:
+            logging.info("You are running pygetpapers version %s", self.version)
+            return
+        if args.save_query:
+            self.handle_write_configuration_file(args)
+        if args.api not in list(self.download_tools.config):
+            raise PygetpapersError("API not supported yet")
+            return 
+        api_handler = ApiPlugger(args.api)
+        api_handler.handle_cli_logic(args)
+        
     def handlecli(self):
         """Handles the command line interface using argparse"""
         version = self.version
 
-        default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
         parser = configargparse.ArgParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help",
             add_config_file_help=False,
@@ -325,7 +355,7 @@ class Pygetpapers:
             "--output",
             type=str,
             help="output directory (Default: Folder inside current working directory named )",
-            default=os.path.join(os.getcwd(), default_path),
+            default=self.default_url,
         )
         parser.add_argument(
             "--save_query",
@@ -498,26 +528,8 @@ class Pygetpapers:
         for arg in vars(args):
             if vars(args)[arg] == "False":
                 vars(args)[arg] = False
-        self.handle_logger_creation(args)
-        self.handle_output_directory(args)
-        if args.version:
-            logging.info("You are running pygetpapers version %s", version)
-            return
-        if args.save_query:
-            self.handle_write_configuration_file(args)
-        if args.api not in list(self.download_tools.config):
-            raise PygetpapersError("API not supported yet")
-            return 
-        api_handler = ApiPlugger(args.api)
-        api_handler.handle_cli_logic(args)
-
-
-def demo():
-    """Shows demo to use the library to download papers"""
-    callgetpapers = Pygetpapers()
-    query = "artificial intelligence"
-    numberofpapers = 210
-    callgetpapers.europe_pmc.apipaperdownload(query, numberofpapers)
+        self.handle_running_of_args(args)
+        
 
 
 def main():

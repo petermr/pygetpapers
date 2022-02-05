@@ -85,7 +85,7 @@ class Arxiv:
 
         self.make_dict_from_arxiv_output(return_dict, search)
         for paper in return_dict:
-            self.download_tools.add_keys_for_conditions(paper, return_dict)
+            self.download_tools.add_download_status_keys(paper, return_dict)
         if getpdf:
             self.download_pdf(return_dict)
         self.download_tools.handle_creation_of_csv_html_xml(

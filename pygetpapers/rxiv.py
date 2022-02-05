@@ -31,7 +31,7 @@ class Rxiv:
     def __init__(self,api="biorxiv"):
         """initiate Rxiv class"""
         self.download_tools = DownloadTools(api)
-        self.get_url = self.download_tools.posturl
+        self.get_url = self.download_tools.query_url
         self.doi_done = []
 
     def rxiv(
@@ -90,7 +90,7 @@ class Rxiv:
                 break
 
         for paper in json_return_dict:
-            self.download_tools.add_keys_for_conditions(
+            self.download_tools.add_download_status_keys(
                 paper, json_return_dict)
         result_dict = self.download_tools.make_dict_to_return(
             cursor_mark, json_return_dict, total_number_of_results, update=update)
@@ -165,7 +165,7 @@ class Rxiv:
                 source=source, interval=interval
             )
         else:
-            self.get_url = self.download_tools.posturl.format(
+            self.get_url = self.download_tools.query_url.format(
                 source=source, interval=interval, cursor=cursor_mark
             )
 
@@ -254,7 +254,7 @@ class Rxiv:
             self.make_xml_for_rxiv(
                 dict_of_papers, JATSXML, DOI, FULLTEXT_XML)
         self.download_tools.make_json_files_for_paper(
-            result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], key_in_dict=DOI,
+            result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=RXIV_RESULT
         )
 
