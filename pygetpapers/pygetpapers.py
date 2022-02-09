@@ -355,7 +355,7 @@ class Pygetpapers:
             "--output",
             type=str,
             help="output directory (Default: Folder inside current working directory named )",
-            default=self.default_url,
+            default=self.default_path,
         )
         parser.add_argument(
             "--save_query",
