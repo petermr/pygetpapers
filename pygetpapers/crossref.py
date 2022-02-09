@@ -6,7 +6,7 @@ from habanero import Crossref
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.pgexceptions import PygetpapersError
 
-raw_crossref_metadataS = "raw_crossref_metadata"
+crossref_file_name = "crossref_result"
 
 DOI = "DOI"
 
@@ -159,7 +159,7 @@ class CrossRef:
         )
         self.download_tools.make_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
-            name_of_file=raw_crossref_metadataS
+            name_of_file=crossref_file_name
         )
 
     def noexecute(self, args):
@@ -201,6 +201,6 @@ class CrossRef:
             makehtml=makehtml,
         )
         self.download_tools.make_json_files_for_paper(
-            result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=raw_crossref_metadataS
+            result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=crossref_file_name
         )
         
