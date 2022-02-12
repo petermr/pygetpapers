@@ -57,7 +57,7 @@ The download may be repository-dependent but usually contains:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720800-36a32046-9c92-4999-9adf-5ea34b77c29e.png" alt="pygetpapers" height="50%" width="50%">
-  <h2 align="center">Example entry in configuration file</h2>
+  <h2 align="center">Architecture of pygetpapers</h2>
 </p>
 
 
