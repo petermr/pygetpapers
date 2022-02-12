@@ -11,10 +11,17 @@ In 2015 we reviewed tools for scraping websites and decided that none met our ne
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like curl too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn pygetpapers in minutes. It was also easy to wrap it tkinter GUI. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of pygetpapers is interfaced using a “master” json file, which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
-![image](https://user-images.githubusercontent.com/62711517/153720690-771163fe-110b-4112-8d5a-36b28d94ebda.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/62711517/153720690-771163fe-110b-4112-8d5a-36b28d94ebda.png" alt="pygetpapers" height="50%" width="50%">
+  <h2 align="center">Example query of pygetpapers</h2>
+</p>
 
 The number and type of scientific repositories (especially preprints) is expanding and users do not want to use a different tool for each new one. pygetpapers is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and pygetpapers makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
-![image](https://user-images.githubusercontent.com/62711517/153720720-927c3c58-96e5-4d38-865b-85f76d901e3b.png)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/62711517/153720720-927c3c58-96e5-4d38-865b-85f76d901e3b.png" alt="pygetpapers" height="50%" width="50%">
+  <h2 align="center">Example entry in configuration file</h2>
+</p>
 
 Simple keyword searches often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
@@ -47,11 +54,19 @@ The download may be repository-dependent but usually contains:
    - PDF - usually includes the whole material but not machine-sectioned
    - HTML . often avaliable on websites
 * supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
-![image](https://user-images.githubusercontent.com/62711517/153720800-36a32046-9c92-4999-9adf-5ea34b77c29e.png)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/62711517/153720800-36a32046-9c92-4999-9adf-5ea34b77c29e.png" alt="pygetpapers" height="50%" width="50%">
+  <h2 align="center">Example entry in configuration file</h2>
+</p>
 
 
 see Fig 1 (typical download directory). This is designed so that analysis tools can add computed data for articles
-![image](https://user-images.githubusercontent.com/62711517/153720821-d3cfdb9c-fb1b-432f-95b7-bdcc1ef6ecc0.png)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/62711517/153720821-d3cfdb9c-fb1b-432f-95b7-bdcc1ef6ecc0.png" alt="pygetpapers" height="50%" width="50%">
+  <h2 align="center">Typical download directory</h2>
+</p>
 
 
 ## Code 
@@ -102,9 +117,6 @@ The download process for (most) servers of scientific articles is:
 # Implementation
 
 getpapers was implemented in NodeJS which allows multithreading and therefore potentially download rates of several XML documents per second on a fast line. Installing NodeJS was a problem on some systems (especially Windows) and was not well suited for integration with scientific libraries (mainly coded in Java and Python). We, therefore, decided to rewrite in Python, keeping only the command line and output structure, and have found very easy integration with other tools, including GUIs. pygetpapers can be run both as a command-line tool and a module, which makes it versatile. 
-
-# Testing and examples
-
 
 # Interface with other tools
 
