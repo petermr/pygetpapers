@@ -30,7 +30,7 @@ pygetpapers takes the approach of downloading once and re-analyzing later on loc
 
 We do not know of other tools which have the same functionality. curl (3) requires detailed knowledge of the download protocol. VosViewer (2) is mainly aimed at bibliography/citations.
 
-# overview of architecture
+# overview of the architecture
 
 ## data
 
@@ -53,7 +53,7 @@ see Fig 1 (typical download directory). This is designed so that analysis tools 
 ### download protocol
 
 Most repository APIs provide a cursor-based approach to querying:
-1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start and returns this information to the `pygetpapers` client.
+1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
 2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
 3. The client downloads the fulltext for each pointer (using REST) and continues until all N pointers are exhausted. 
 4. The client resets the cursor mark for the next iteration. If there are no more pointers, break
@@ -106,7 +106,7 @@ Downloading is naturally modular, rather slow, and we interface by writing all o
 Among our own downstream tools are
 * pyami - sectioning the document
 * docanalysis - textual analysis and Natural Language Processing
-* pyamiinage - analysis of the content of images in downloaded documents
+* pyamiimage - analysis of the content of images in downloaded documents
 
 For fulltext analysis of PDF we use GROBID and PDFBox.
 
