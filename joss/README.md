@@ -125,6 +125,8 @@ Among our own downstream tools are
 
 For fulltext analysis of PDF we use GROBID and PDFBox.
 
+# References
+
 [1]Bao, Yujia, et al. “Using Machine Learning and Natural Language Processing to Review and Classify the Medical Literature on Cancer Susceptibility Genes.” JCO Clinical Cancer Informatics, no. 3, Dec. 2019, pp. 1–9, arxiv.org/pdf/1904.12617, 10.1200/cci.19.00042.
 
 [2]van Eck N. J., Waltman L. (2010) ‘ Software Survey: VOSviewer, a Computer Program for Bibliometric Mapping’, Scientometrics , 84/2: 523–38.
