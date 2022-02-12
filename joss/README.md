@@ -38,7 +38,7 @@ Frequently users want to search incrementally, e.g. downloading part and resumin
 
 pygetpapers takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
 
-We do not know of other tools which have the same functionality. curl (3) requires detailed knowledge of the download protocol. VosViewer (2) is mainly aimed at bibliography/citations.
+We do not know of other tools which have the same functionality. curl [3] requires detailed knowledge of the download protocol. VosViewer [2] is mainly aimed at bibliography/citations.
 
 # Overview of the architecture
 
@@ -46,7 +46,7 @@ We do not know of other tools which have the same functionality. curl (3) requir
 
 The download may be repository-dependent but usually contains:
 * download metadata. (query, date, errors, etc.)
-* journal/article metadata. We use JATS-NISO (ref) which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
+* journal/article metadata. We use JATS-NISO [4] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
 * fulltext. This can be 
    - XML (fulltext and metadata) 
    - images (these may not always be available)
@@ -59,7 +59,6 @@ The download may be repository-dependent but usually contains:
   <img src="https://user-images.githubusercontent.com/62711517/153720800-36a32046-9c92-4999-9adf-5ea34b77c29e.png" alt="pygetpapers" height="50%" width="50%">
   <h2 align="center">Architecture of pygetpapers</h2>
 </p>
-
 
 see Fig 1 (typical download directory). This is designed so that analysis tools can add computed data for articles
 
@@ -86,8 +85,6 @@ The control module `pygetpapers` reads the commandline and
 * Creates a query from user input and/or terms from dictiomaries
 * Adds options and constraints
 * Downloads according to protocol above, including recording progress in a metadata file
-
-
 
 # Generic downloading concerns
 
