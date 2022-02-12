@@ -60,7 +60,7 @@ The download may be repository-dependent but usually contains:
   <h2 align="center">Architecture of pygetpapers</h2>
 </p>
 
-see Fig 1 (typical download directory). This is designed so that analysis tools can add computed data for articles
+This directory structure is designed so that analysis tools can add computed data for articles
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720821-d3cfdb9c-fb1b-432f-95b7-bdcc1ef6ecc0.png" alt="pygetpapers" height="50%" width="50%">
