@@ -2,12 +2,12 @@
 
 # Justification
 
-An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [5]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining (1). A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
+An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [1]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
 The typical text-based searches on sites are broad, with many false positives and often only based on abstracts. We know of cases where systematic reviewers downloaded 30,000 articles and eventually used 30.
 Retrieval is often done by crawling/scraping sites, such as journals but is easier and faster when these articles are in Open Access repositories such as arXiv, Europe/PMC biorxiv, medrxiv.
 But each repository has its own API and functionality, which makes it hard for individuals to (a) access (b) set flags (c) use generic queries.
 
-In 2015 we reviewed tools for scraping websites and decided that none met our needs and so developed getpapers, with the key advance of integrating a query submission with bulk fulltext-download of all the hits. getpapers was written in NodeJs and has now been completely rewritten in Python3 (pygetpapers) for easier distribution and integration. Typical use of getpapers is shown in a recent paper [6] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
+In 2015 we reviewed tools for scraping websites and decided that none met our needs and so developed getpapers, with the key advance of integrating a query submission with bulk fulltext-download of all the hits. getpapers was written in NodeJs and has now been completely rewritten in Python3 (pygetpapers) for easier distribution and integration. Typical use of getpapers is shown in a recent paper [2] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like curl too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn pygetpapers in minutes. It was also easy to wrap it tkinter GUI. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of pygetpapers is interfaced using a “master” json file, which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
@@ -38,7 +38,7 @@ Frequently users want to search incrementally, e.g. downloading part and resumin
 
 pygetpapers takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
 
-We do not know of other tools which have the same functionality. curl [3] requires detailed knowledge of the download protocol. VosViewer [2] is mainly aimed at bibliography/citations.
+We do not know of other tools which have the same functionality. curl [3] requires detailed knowledge of the download protocol. VosViewer [4] is mainly aimed at bibliography/citations.
 
 # Overview of the architecture
 
@@ -46,7 +46,7 @@ We do not know of other tools which have the same functionality. curl [3] requir
 
 The download may be repository-dependent but usually contains:
 * download metadata. (query, date, errors, etc.)
-* journal/article metadata. We use JATS-NISO [4] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
+* journal/article metadata. We use JATS-NISO [5] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
 * fulltext. This can be 
    - XML (fulltext and metadata) 
    - images (these may not always be available)
@@ -127,15 +127,17 @@ For fulltext analysis of PDF we use GROBID and PDFBox.
 
 # References
 
-[1]Bao, Yujia, et al. “Using Machine Learning and Natural Language Processing to Review and Classify the Medical Literature on Cancer Susceptibility Genes.” JCO Clinical Cancer Informatics, no. 3, Dec. 2019, pp. 1–9, arxiv.org/pdf/1904.12617, 10.1200/cci.19.00042.
+[1]“Systematic Reviews.” BioMed Central, 12 Feb. 2022, systematicreviewsjournal.biomedcentral.com/. Accessed 12 Feb. 2022.
 
-[2]van Eck N. J., Waltman L. (2010) ‘ Software Survey: VOSviewer, a Computer Program for Bibliometric Mapping’, Scientometrics , 84/2: 523–38.
+[2]Wind LL, Briganti JS, Brown AM, et al. Finding What Is Inaccessible: Antimicrobial Resistance Language Use among the One Health Domains. Antibiotics (Basel, Switzerland). 2021 Apr;10(4). DOI: 10.3390/antibiotics10040385. PMID: 33916878; PMCID: PMC8065768.
 
 [3]Hostetter, M., Kranz, D. A., Seed, C., Terman, C., & Ward, S. (1997). Curl: a gentle slope language for the Web. World Wide Web Journal, 2(2), 121–134.
 
-[4]“Standardized Markup for Journal Articles: Journal Article Tag Suite (JATS) | NISO Website.” Niso.org, 7 July 2021, www.niso.org/standards-committees/jats. Accessed 12 Feb. 2022.
+[4]van Eck N. J., Waltman L. (2010) ‘ Software Survey: VOSviewer, a Computer Program for Bibliometric Mapping’, Scientometrics , 84/2: 523–38.
 
-[5]“Systematic Reviews.” BioMed Central, 12 Feb. 2022, systematicreviewsjournal.biomedcentral.com/. Accessed 12 Feb. 2022.
+[5]“Standardized Markup for Journal Articles: Journal Article Tag Suite (JATS) | NISO Website.” Niso.org, 7 July 2021, www.niso.org/standards-committees/jats. Accessed 12 Feb. 2022.
 
-[6]Wind LL, Briganti JS, Brown AM, et al. Finding What Is Inaccessible: Antimicrobial Resistance Language Use among the One Health Domains. Antibiotics (Basel, Switzerland). 2021 Apr;10(4). DOI: 10.3390/antibiotics10040385. PMID: 33916878; PMCID: PMC8065768.
+
+
+
 
