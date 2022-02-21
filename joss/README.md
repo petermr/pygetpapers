@@ -69,10 +69,11 @@ This directory structure is designed so that analysis tools can add computed dat
 Most repository APIs provide a cursor-based approach to querying:
 1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
 2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
-3. The client downloads the fulltext for each pointer (using REST) and continues until all N pointers are exhausted. 
-4. The client resets the cursor mark for the next iteration. If there are no more pointers, break
-5. Goto 2
-
+3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
+4. pygetpapers - incremental aggregates XML metadata as python dict in memory - small example for paper
+5. If cursor indicates next page, submits a query for next page, else if end terminates this part
+6. When finished all pages, writes metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
+7. Recover from crashes, restart (if needed) 
 
 The control module `pygetpapers` reads the commandline and
 * Selects the repository-specific downloader
@@ -91,17 +92,6 @@ The control module `pygetpapers` reads the commandline and
 * abstraction (e.g. of DATE functions)
 * supports both metadata and content
 * responsive to repository responses
-
-# Mechanism of downloading
-The download process for (most) servers of scientific articles is:
-* create a RESTful query as URL 
-* post query (includes optional cursor mark (units = pages), optional pagesize)
-* server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
-* pygetpapers - incremental aggregates XML metadata as python dict in memory - small example for paper
-* if cursor indicates next page, submits a query for next page, else if end terminates this part
-* when finished all pages, writes metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
-* from total metadata in memory, systematically download requested (optional content) (minutes, depending on size)
-* recover from crashes, restart (if needed) 
 
 # Implementation
 
