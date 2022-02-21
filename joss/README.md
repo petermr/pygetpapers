@@ -12,7 +12,7 @@ In 2015 we reviewed tools for scraping websites and decided that none met our ne
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” json file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
 <p align="center">
-  ```
+```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
 ```
 
