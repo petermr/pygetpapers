@@ -20,7 +20,7 @@ The number and type of scientific repositories (especially preprints) is expandi
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720720-927c3c58-96e5-4d38-865b-85f76d901e3b.png" alt="pygetpapers" height="50%" width="50%">
-  <h2 align="center">Fig.2 Example entry in configuration file</h2>
+  <h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
 </p>
 
 Simple keyword searches often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
