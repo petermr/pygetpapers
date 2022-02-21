@@ -25,7 +25,7 @@ The number and type of scientific repositories (especially preprints) is expandi
 
 Simple keyword searches often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
-The content is inherently complex. A download consists of:
+**The downloaded material is inherently complex.** A download consists of:
 * the metadata for the operation (date, query, errors, etc.)
 * the metadata for each article (authors, pubdate, journal, DOI, language, etc.)
 * the fulltext content (abstract, introduction, methods, discussion, etc.)
