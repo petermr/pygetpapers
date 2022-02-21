@@ -100,6 +100,9 @@ class EuropePmc:
                 totalhits = builtquery[RESPONSE_WRAPPER][HITCOUNT]
                 if counter == 1:
                     logging.info("Total Hits are %s", totalhits)
+                if int(totalhits) == 0:
+                    logging.warning("Could not find more papers")
+                    break
                 output_dict = json.loads(json.dumps(builtquery))
                 try:
                     number_of_papers_there = self.create_final_paper_list(
