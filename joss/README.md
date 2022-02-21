@@ -13,14 +13,14 @@ An important aspect is to provide a simple cross-platform approach for scientist
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720690-771163fe-110b-4112-8d5a-36b28d94ebda.png" alt="pygetpapers" height="50%" width="50%">
-  <h2 align="center">Example query of pygetpapers</h2>
+  <h2 align="center">Fig.1 Example query of pygetpapers</h2>
 </p>
 
 The number and type of scientific repositories (especially preprints) is expanding and users do not want to use a different tool for each new one. pygetpapers is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and pygetpapers makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720720-927c3c58-96e5-4d38-865b-85f76d901e3b.png" alt="pygetpapers" height="50%" width="50%">
-  <h2 align="center">Example entry in configuration file</h2>
+  <h2 align="center">Fig.2 Example entry in configuration file</h2>
 </p>
 
 Simple keyword searches often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
@@ -57,14 +57,14 @@ The download may be repository-dependent but usually contains:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720800-36a32046-9c92-4999-9adf-5ea34b77c29e.png" alt="pygetpapers" height="50%" width="50%">
-  <h2 align="center">Architecture of pygetpapers</h2>
+  <h2 align="center">Fig.3 Architecture of pygetpapers</h2>
 </p>
 
 This directory structure is designed so that analysis tools can add computed data for articles
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/62711517/153720821-d3cfdb9c-fb1b-432f-95b7-bdcc1ef6ecc0.png" alt="pygetpapers" height="50%" width="50%">
-  <h2 align="center">Typical download directory</h2>
+  <h2 align="center">Fig.4 Typical download directory</h2>
 </p>
 
 
