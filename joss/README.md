@@ -23,18 +23,12 @@ The number and type of scientific repositories (especially preprints) is expandi
   <h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
 </p>
 
-Simple keyword searches often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
+Many **searches** are simple keywords or phrases. However, these often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
-**The downloaded material is inherently complex.** A download consists of:
-* the metadata for the operation (date, query, errors, etc.)
-* the metadata for each article (authors, pubdate, journal, DOI, language, etc.)
-* the fulltext content (abstract, introduction, methods, discussion, etc.)
-* backmatter (references, permissions, ethics, etc.)
-* non-text: tables, diagrams. images
-* supplemental/supporting material
+The **downloaded material** is inherently complex. See [Data]
 Some of this has been systematized, especially in biosciences, and the NIH (US National Institutes of Health) led to the JATS/NISO standard to create highly structured documents.
 
-Frequently users want to search incrementally, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also, pygetpapers allows regular updates, e.g. weekly searches of preprint servers.
+Frequently users want to search **incrementally**, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also, pygetpapers allows regular updates, e.g. weekly searches of preprint servers.
 
 pygetpapers takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
 
@@ -101,15 +95,13 @@ The control module `pygetpapers` reads the commandline and
 # Mechanism of downloading
 The download process for (most) servers of scientific articles is:
 * create a RESTful query as URL 
-* METADATA
 * post query (includes optional cursor mark (units = pages), optional pagesize)
 * server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
 * pygetpapers - incremental aggregates XML metadata as python dict in memory - small example for paper
 * if cursor indicates next page, submits a query for next page, else if end terminates this part
-* when finished all pages, writes metadata to CProject as JSON (total, and creates CTrees with individual metadata)
-* CONTENT
+* when finished all pages, writes metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
 * from total metadata in memory, systematically download requested (optional content) (minutes, depending on size)
-* recover from crashes, restart 
+* recover from crashes, restart (if needed) 
 
 # Implementation
 
@@ -122,8 +114,7 @@ Among our own downstream tools are
 * pyami - sectioning the document
 * docanalysis - textual analysis and Natural Language Processing
 * pyamiimage - analysis of the content of images in downloaded documents
-
-For fulltext analysis of PDF we use GROBID and PDFBox.
+* third party text analysis of PDF using GROBID and PDFBox.
 
 # References
 
