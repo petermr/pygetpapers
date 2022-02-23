@@ -90,6 +90,8 @@ The download may be repository-dependent but usually contains:
 
 ![Fig.3 Architecture of `pygetpapers`](../resources/archietecture.png)
 
+<h2 align="center">Fig.3 Architecture of `pygetpapers`</h2>
+
 This directory structure is designed so that analysis tools can add computed data for articles
 
 
