@@ -25,7 +25,6 @@ In 2015 we reviewed tools for scraping websites and decided that none met our ne
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” json file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
-<p align="center">
 ```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
 ```
@@ -42,7 +41,6 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 ```
 
   <h2 align="center">Fig.1 Example query of `pygetpapers`</h2>
-</p>
 
 The number and type of scientific repositories (especially preprints) is expanding and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
 
