@@ -88,7 +88,7 @@ The download may be repository-dependent but usually contains:
    - HTML . often avaliable on websites
 * supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
 
-![Fig.3 Architecture of `pygetpapers`](../resources/archietecture.png){ width=40% }
+![Fig.3 Architecture of `pygetpapers`](../resources/archietecture.png)
 
 This directory structure is designed so that analysis tools can add computed data for articles
 
