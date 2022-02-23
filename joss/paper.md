@@ -1,15 +1,29 @@
 # JOSS article
 
+---
+title: '`pygetpapers`: a Python library for automated retreival of scientific literature'
+tags:
+  - Python
+  - REST API
+authors:
+  - name: Ayush Garg
+    orcid:  0000-0001-7016-747X
+    affiliation: 1
+
+date: February 2022
+bibliography: paper.bib
+---
+
 # Justification
 
-An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [1]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
+An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [@systematic_review]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
 The typical text-based searches on sites are broad, with many false positives and often only based on abstracts. We know of cases where systematic reviewers downloaded 30,000 articles and eventually used 30.
 Retrieval is often done by crawling/scraping sites, such as journals but is easier and faster when these articles are in Open Access repositories such as arXiv, Europe/PMC biorxiv, medrxiv.
 But each repository has its own API and functionality, which makes it hard for individuals to (a) access (b) set flags (c) use generic queries.
 
-In 2015 we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers`, with the key advance of integrating a query submission with bulk fulltext-download of all the hits. `getpapers` was written in NodeJs and has now been completely rewritten in Python3 (`pygetpapers`) for easier distribution and integration. Typical use of `getpapers` is shown in a recent paper [2] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
+In 2015 we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers` [@getpapers], with the key advance of integrating a query submission with bulk fulltext-download of all the hits. `getpapers` was written in NodeJs and has now been completely rewritten in Python3 (`pygetpapers`) for easier distribution and integration. Typical use of `getpapers` is shown in a recent paper [@getpapers_use] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
 
-An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” json file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
+An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” json file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
 <p align="center">
 ```
@@ -32,10 +46,24 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 
 The number and type of scientific repositories (especially preprints) is expanding and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/62711517/153720720-927c3c58-96e5-4d38-865b-85f76d901e3b.png" alt="`pygetpapers`" height="50%" width="50%">
-  <h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
-</p>
+'''
+[europe_pmc]
+query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
+citationurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&pageSize=1000&format=xml
+referencesurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&pageSize=1000&format=xml
+xmlurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML
+suppurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles
+zipurl= http://europepmc.org/ftp/suppl/OA/{key}/{pmcid}.zip
+date_query=SUPPORTED
+term=SUPPORTED
+update=SUPPORTED
+restart=SUPPORTED
+class_name=EuropePmc
+library_name= europe_pmc
+features_not_supported = ["filter",]
+'''
+  
+<h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
 
 Many **searches** are simple keywords or phrases. However, these often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
@@ -46,7 +74,7 @@ Frequently users want to search **incrementally**, e.g. downloading part and res
 
 `pygetpapers` takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
 
-We do not know of other tools which have the same functionality. `curl` [3] requires detailed knowledge of the download protocol. VosViewer [4] is mainly aimed at bibliography/citations.
+We do not know of other tools which have the same functionality. `curl` [@curl] requires detailed knowledge of the download protocol. VosViewer [@VOSviewer] is mainly aimed at bibliography/citations.
 
 # Overview of the architecture
 
@@ -54,7 +82,7 @@ We do not know of other tools which have the same functionality. `curl` [3] requ
 
 The download may be repository-dependent but usually contains:
 * download metadata. (query, date, errors, etc.)
-* journal/article metadata. We use JATS-NISO [5] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
+* journal/article metadata. We use JATS-NISO [@JATS] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
 * fulltext. This can be 
    - XML (fulltext and metadata) 
    - images (these may not always be available)
@@ -70,10 +98,36 @@ The download may be repository-dependent but usually contains:
 
 This directory structure is designed so that analysis tools can add computed data for articles
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/62711517/153720821-d3cfdb9c-fb1b-432f-95b7-bdcc1ef6ecc0.png" alt="`pygetpapers`" height="50%" width="50%">
-  <h2 align="center">Fig.4 Typical download directory</h2>
-</p>
+
+'''
+C:.
+│   eupmc_results.json
+│
+├───PMC8157994
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8180188
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8198815
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8216501
+│       eupmc_result.json
+│       fulltext.xml
+│
+├───PMC8309040
+│       eupmc_result.json
+│       fulltext.xml
+│
+└───PMC8325914
+        eupmc_result.json
+        fulltext.xml
+'''
+<h2 align="center">Fig.4 Typical download directory</h2>
 
 
 ## Code 
@@ -115,27 +169,14 @@ The control module `pygetpapers` reads the commandline and
 
 Downloading is naturally modular, rather slow, and we interface by writing all output to the filesystem. This means that a wide range of tools (Unix, Windows, Java, Python, etc.) can analyze and transform it. The target documents are usually static so downloads only need to be done once.
 Among our own downstream tools are
-* `pyami` - sectioning the document
-* `docanalysis` - textual analysis and Natural Language Processing
-* `pyamiimage` - analysis of the content of images in downloaded documents
-* third party text analysis of PDF using GROBID and PDFBox.
+* `pyami` [@pyami] - sectioning the document
+* `docanalysis` [@docanalysis] - textual analysis and Natural Language Processing
+* `pyamiimage` [@pyamiimage] - analysis of the content of images in downloaded documents
+* third party text analysis of PDF using GROBID[@GROBID] and PDFBox[@PDFBox].
 
 # Acknowledgements
 
 We thank Dr. Peter Murray Rust for the support and help with the design of the manuscript. 
-
-# References
-
-[1]“Systematic Reviews.” BioMed Central, 12 Feb. 2022, systematicreviewsjournal.biomedcentral.com/. Accessed 12 Feb. 2022.
-
-[2]Wind LL, Briganti JS, Brown AM, et al. Finding What Is Inaccessible: Antimicrobial Resistance Language Use among the One Health Domains. Antibiotics (Basel, Switzerland). 2021 Apr;10(4). DOI: 10.3390/antibiotics10040385. PMID: 33916878; PMCID: PMC8065768.
-
-[3]Hostetter, M., Kranz, D. A., Seed, C., Terman, C., & Ward, S. (1997). Curl: a gentle slope language for the Web. World Wide Web Journal, 2(2), 121–134.
-
-[4]van Eck N. J., Waltman L. (2010) ‘ Software Survey: VOSviewer, a Computer Program for Bibliometric Mapping’, Scientometrics , 84/2: 523–38.
-
-[5]“Standardized Markup for Journal Articles: Journal Article Tag Suite (JATS) | NISO Website.” Niso.org, 7 July 2021, www.niso.org/standards-committees/jats. Accessed 12 Feb. 2022.
-
 
 
 
