@@ -7,6 +7,12 @@ authors:
   - name: Ayush Garg
     orcid:  0000-0001-7016-747X
     affiliation: 1
+  - name: Richard D Smith-Unna
+    orcid:  0000-0001-8721-7197
+    affiliation: 2
+  - name: Peter Murray-Rust
+    orcid:  0000-0003-3386-3972
+    affiliation: 3
 
 date: February 2022
 bibliography: paper.bib
