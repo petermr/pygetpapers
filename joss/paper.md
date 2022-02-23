@@ -1,5 +1,3 @@
-# JOSS article
-
 ---
 title: '`pygetpapers`: a Python library for automated retreival of scientific literature'
 tags:
@@ -13,6 +11,7 @@ authors:
 date: February 2022
 bibliography: paper.bib
 ---
+# JOSS article
 
 # Justification
 
@@ -44,7 +43,7 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 
 The number and type of scientific repositories (especially preprints) is expanding and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
 
-'''
+```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
 citationurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&pageSize=1000&format=xml
@@ -59,7 +58,7 @@ restart=SUPPORTED
 class_name=EuropePmc
 library_name= europe_pmc
 features_not_supported = ["filter",]
-'''
+```
   
 <h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
 
@@ -97,7 +96,7 @@ The download may be repository-dependent but usually contains:
 This directory structure is designed so that analysis tools can add computed data for articles
 
 
-'''
+```
 C:.
 │   eupmc_results.json
 │
@@ -124,7 +123,7 @@ C:.
 └───PMC8325914
         eupmc_result.json
         fulltext.xml
-'''
+```
 <h2 align="center">Fig.4 Typical download directory</h2>
 
 
