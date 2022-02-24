@@ -1,5 +1,5 @@
 ---
-title: '`pygetpapers`: a Python library for automated retreival of scientific literature'
+title: '`pygetpapers`: a Python library for automated retrieval of scientific literature
 tags:
   - Python
   - REST API
@@ -47,8 +47,8 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 
   <h2 align="center">Fig.1 Example query of `pygetpapers`</h2>
 
-The number and type of scientific repositories (especially preprints) is expanding and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
-
+The number and type of scientific repositories (especially preprints) is expanding , and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
+    
 ```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
@@ -149,7 +149,7 @@ The control module `pygetpapers` reads the commandline and
 * Selects the repository-specific downloader
 * Creates a query from user input and/or terms from dictionaries
 * Adds options and constraints
-* Downloads according to protocol above, including recording progress in a metadata file
+* Downloads according to the protocol above, including recording progress in a metadata file
 
 # Generic downloading concerns
 
