@@ -8,7 +8,7 @@
 
 - pygetpapers is a tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits, and systematically downloads the articles without further interaction.
 
-- It comes with the packages `pygetpapers` and `downloadtools` which provide various functions to download, process and save research papers and their metadata.
+- Comes with the packages `pygetpapers` and `downloadtools` which provide various functions to download, process and save research papers and their metadata.
 
 - The main medium of its interaction with users is through a command-line interface.
 
