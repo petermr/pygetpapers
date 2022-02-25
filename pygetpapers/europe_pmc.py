@@ -71,17 +71,7 @@ class EuropePmc:
         self.download_tools = DownloadTools(EUROPEPMC)
 
     def europepmc(self, query, size, synonym=True, **kwargs):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param size: [description]
-        :type size: [type]
-        :param synonym: [description], defaults to True
-        :type synonym: bool, optional
-        :return: [description]
-        :rtype: [type]
-        """
+        """"""     
         size = int(size)
         (
             content,
