@@ -178,7 +178,7 @@ Among our own downstream tools are
 
 # Acknowledgements
 
-We thank Dr. Peter Murray Rust for the support and help with the design of the manuscript. 
+We thank Dr. Peter Murray-Rust for the support and help with the design of the manuscript. 
 
 
 
