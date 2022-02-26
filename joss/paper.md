@@ -1,5 +1,5 @@
 ---
-title: '`pygetpapers`: a Python library for automated retrieval of scientific literature
+title: '`pygetpapers`: a Python library for automated retrieval of scientific literature'
 tags:
   - Python
   - REST API
