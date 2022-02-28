@@ -24,8 +24,6 @@ date: February 2022
 bibliography: paper.bib
 ---
 
-# JOSS article
-
 # Justification
 
 An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [@systematic_review]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
