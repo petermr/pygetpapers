@@ -8,11 +8,11 @@
 
    index
 
-.. toctree::
-   :maxdepth: 5
-   :caption: Developer Documentation:
+   .. toctree::
+      :maxdepth: 5
+      :caption: Developer Documentation:
 
-   query
-   how_to_add_repo
+      query
+      how_to_add_repo
    
 
