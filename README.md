@@ -844,6 +844,10 @@ If you use`pygetpapers`, you should be careful to understand the law as it appli
 
 # Run `pygetpapers` within the module
 
+```
+def run_command(output=False, query=False, save_query=False, xml=False, pdf=False, supp=False, zip=False, references=False, noexecute=False, citations=False, limit=100, restart=False, update=False, onlyquery=False, makecsv=False, makehtml=False, synonym=False, startdate=False, enddate=False, terms=False, notterms=False, api='europe_pmc', filter=None, loglevel='info', logfile=False, version=False)
+```
+
 Here's an example script to download 50 papers from EPMC on 'lantana camara'.
 
 ```
