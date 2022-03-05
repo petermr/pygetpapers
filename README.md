@@ -842,3 +842,12 @@ If you use`pygetpapers`, you should be careful to understand the law as it appli
 - _"The legal framework of text and data mining (TDM)"_, carried out for the European Commission in March 2014 ([PDF](http://ec.europa.eu/internal_market/copyright/docs/studies/1403_study2_en.pdf))
 - _"Standardisation in the area of innovation and technological development, notably in the field of Text and Data Mining"_, carried out for the European Commission in 2014 ([PDF](http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf))
 
+# Run `pygetpapers` within the module
+
+Here's an example script to download 50 papers from EPMC on 'lantana camara'.
+
+```
+from pygetpapers import Pygetpapers
+pygetpapers_call=Pygetpapers()
+pygetpapers_call.run_command(query='lantana camara',limit=-50 ,output= lantana_camara, xml=True)
+```
