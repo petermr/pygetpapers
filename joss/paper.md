@@ -1,5 +1,5 @@
 ---
-title: '`pygetpapers`: a Python library for automated retrieval of scientific literature
+title: '`pygetpapers`: a Python library for automated retrieval of scientific literature'
 tags:
   - Python
   - REST API
@@ -13,11 +13,16 @@ authors:
   - name: Peter Murray-Rust
     orcid:  0000-0003-3386-3972
     affiliation: 3
-
+affiliations:
+ - name: Global Indian International School, 27 Punggol Field Walk, Singapore
+   index: 1
+ - name: 
+   index: 2 
+ - name: Yusuf-Hamied Department of Chemistry, University of Cambridge, Lensfield Road, Cambridge, CB2 1EW, UK
+   index: 3 
 date: February 2022
 bibliography: paper.bib
 ---
-# JOSS article
 
 # Justification
 

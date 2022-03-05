@@ -556,7 +556,7 @@ class Pygetpapers:
             "--notterms",
             default=False,
             type=str,
-            help="[All] Location of the txt file which contains terms serperated by a comma or an "
+            help="[All] Location of the txt file which contains terms separated by a comma or an "
                  "ami dict which will be "
                  "OR'ed among themselves and NOT'ed with the query",
         )
