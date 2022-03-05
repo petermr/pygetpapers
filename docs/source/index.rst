@@ -17,15 +17,18 @@
 
 .. toctree::
    :maxdepth: 7
-   :caption: Core modules:
+   :caption: Repos modules:
+
    europe_pmc
-   rxiv
-   rxivist
    arxiv
+   rxivist
    crossref
+   rxiv
 
 .. toctree::
    :maxdepth: 7
-   :caption: Developer docs:   
+   :caption: Developer Docs:
+
    query
    how_to_add_repo
+
