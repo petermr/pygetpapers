@@ -91,9 +91,9 @@ class CrossRef:
             cutoff_metadata_list, paper_key=DOI
         )
         for paper in cutoff_metadata_dictionary:
-            self.download_tools.add_download_status_keys(
+            self.download_tools._add_download_status_keys(
                 paper, cutoff_metadata_dictionary)
-        result_dict = self.download_tools.make_dict_to_return(
+        result_dict = self.download_tools.adds_new_results_to_metadata_dictionary(
             cursor_mark, cutoff_metadata_dictionary, metadata_count, update
         )
         return_dict = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
@@ -131,45 +131,39 @@ class CrossRef:
 
     def update(
         self,
-        args
+        query_namespace
     ):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
         logging.info("Reading old json metadata file")
         update_path = self.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
         update = self.download_tools.readjsondata(update_path)
-        query = args.query
-        cutoff_size = args.limit
-        filter_dict = args.filter
-        makecsv = args.makecsv
-        makexml = args.xml
-        makehtml = args.makehtml
         result_dict = self.crossref(
-            query,
-            cutoff_size,
-            filter_dict=filter_dict,
+            query_namespace["query"],
+            query_namespace["limit"],
+            filter_dict=query_namespace["filter"],
             update=update,
-            makecsv=makecsv,
-            makexml=makexml,
-            makehtml=makehtml,
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )
         self.download_tools.make_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=crossref_file_name
         )
 
-    def noexecute(self, args):
+    def noexecute(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
-        query = args.query
-        filter_dict = args.filter
+        query = query_namespace["query"]
+        filter_dict = query_namespace["filter"]
         result_dict = self.crossref(
             query, cutoff_size=10, filter_dict=filter_dict
         )
@@ -178,27 +172,21 @@ class CrossRef:
 
     def apipaperdownload(
         self,
-        args
+        query_namespace
     ):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
-        query = args.query
-        cutoff_size = args.limit
-        filter_dict = args.filter
-        makecsv = args.makecsv
-        makexml = args.xml
-        makehtml = args.makehtml
         result_dict = self.crossref(
-            query,
-            cutoff_size,
-            filter_dict=filter_dict,
+            query_namespace["query"],
+            query_namespace["limit"],
+            filter_dict=query_namespace["filter"],
             update=None,
-            makecsv=makecsv,
-            makexml=makexml,
-            makehtml=makehtml,
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )
         self.download_tools.make_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=crossref_file_name

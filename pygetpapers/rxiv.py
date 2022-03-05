@@ -43,23 +43,7 @@ class Rxiv:
             makecsv=False,
             makehtml=False,
     ):
-        """[summary]
-
-        :param interval: [description]
-        :type interval: [type]
-        :param size: [description]
-        :type size: [type]
-        :param source: [description], defaults to BIORXIV
-        :type source: [type], optional
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :return: [description]
-        :rtype: [type]
-        """
+        
         if update:
             cursor_mark = update[CURSOR_MARK]
         else:
@@ -90,9 +74,9 @@ class Rxiv:
                 break
 
         for paper in json_return_dict:
-            self.download_tools.add_download_status_keys(
+            self.download_tools._add_download_status_keys(
                 paper, json_return_dict)
-        result_dict = self.download_tools.make_dict_to_return(
+        result_dict = self.download_tools.adds_new_results_to_metadata_dictionary(
             cursor_mark, json_return_dict, total_number_of_results, update=update)
 
         return_dict = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
@@ -108,21 +92,7 @@ class Rxiv:
     def make_request_add_papers(
             self, cursor_mark, interval, source, total_number_of_results, total_papers_list
     ):
-        """[summary]
-
-        :param cursor_mark: [description]
-        :type cursor_mark: [type]
-        :param interval: [description]
-        :type interval: [type]
-        :param source: [description]
-        :type source: [type]
-        :param total_number_of_results: [description]
-        :type total_number_of_results: [type]
-        :param total_papers_list: [description]
-        :type total_papers_list: [type]
-        :return: [description]
-        :rtype: [type]
-        """
+        
         self.make_request_url_for_rxiv(cursor_mark, interval, source)
         request_handler = self.post_request()
         request_dict = json.loads(request_handler.text)
@@ -138,11 +108,7 @@ class Rxiv:
         return total_number_of_results, total_papers_list, final_list
 
     def post_request(self):
-        """[summary]
-
-        :return: [description]
-        :rtype: [type]
-        """
+        
         start = time.time()
         request_handler = requests.post(self.get_url)
         stop = time.time()
@@ -151,15 +117,7 @@ class Rxiv:
         return request_handler
 
     def make_request_url_for_rxiv(self, cursor_mark, interval, source):
-        """[summary]
-
-        :param cursor_mark: [description]
-        :type cursor_mark: [type]
-        :param interval: [description]
-        :type interval: [type]
-        :param source: [description]
-        :type source: [type]
-        """
+        
         if type(interval) == int:
             self.get_url = "https://api.biorxiv.org/details/{source}/{interval}".format(
                 source=source, interval=interval
@@ -179,23 +137,7 @@ class Rxiv:
             makexml=False,
             makehtml=False,
     ):
-        """[summary]
-
-        :param interval: [description]
-        :type interval: [type]
-        :param size: [description]
-        :type size: [type]
-        :param source: [description], defaults to BIORXIV
-        :type source: [type], optional
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        """
+        
         os.chdir(os.path.dirname(update))
         update = self.download_tools.readjsondata(update)
         logging.info("Reading old json metadata file")
@@ -219,24 +161,7 @@ class Rxiv:
             makexml=False,
             makehtml=False,
     ):
-        """[summary]
-
-        :param interval: [description]
-        :type interval: [type]
-        :param size: [description]
-        :type size: [type]
-        :param source: [description]
-        :type source: [type]
-        :param update: [description], defaults to False
-        :type update: bool, optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :raises PygetpapersError: [description]
-        """
+        
         if update and type(interval) == int:
             raise PygetpapersError("Update will not work if date not provided")
 
@@ -261,17 +186,7 @@ class Rxiv:
     def make_xml_for_rxiv(
             self, dict_of_papers, xml_identifier, paper_id_identifier, filename
     ):
-        """[summary]
-
-        :param dict_of_papers: [description]
-        :type dict_of_papers: [type]
-        :param xml_identifier: [description]
-        :type xml_identifier: [type]
-        :param paper_id_identifier: [description]
-        :type paper_id_identifier: [type]
-        :param filename: [description]
-        :type filename: [type]
-        """
+        
         for paper in tqdm(dict_of_papers):
             dict_of_paper = dict_of_papers[paper]
             xml_url = dict_of_paper[xml_identifier]
@@ -283,53 +198,41 @@ class Rxiv:
             path_to_save_xml = os.path.join(
                 str(os.getcwd()), url_encoded_doi_of_paper, filename
             )
-            self.download_tools.write_content_to_destination(
+            self.download_tools.queries_the_url_and_writes_response_to_destination(
                 xml_url, path_to_save_xml)
 
-    def noexecute(self, args):
-        """[summary]
-
-        :param args: [description]
-        :type args: [type]
-        """
-        time_interval = args.date_or_number_of_papers
-        source = args.api
+    def noexecute(self, query_namespace):
+        
+        time_interval = query_namespace["date_or_number_of_papers"]
+        source = query_namespace["api"]
         result_dict = self.rxiv(
             time_interval, size=10, source=source)
         totalhits = result_dict[NEW_RESULTS][TOTAL_HITS]
         logging.info("Total number of hits for the query are %s", totalhits)
 
-    def update(self, args):
-        """[summary]
-
-        :param args: [description]
-        :type args: [type]
-        """
+    def update(self, query_namespace):
+        
         update_file_path = self.download_tools.get_metadata_results_file()
         logging.info(
             "Please ensure that you are providing the same --api as the one in the corpus or you "
             "may get errors")
         self.rxiv_update(
-            args.date_or_number_of_papers,
-            args.limit,
-            source=args.api,
+            query_namespace["date_or_number_of_papers"],
+            query_namespace["limit"],
+            source=query_namespace["api"],
             update=update_file_path,
-            makecsv=args.makecsv,
-            makexml=args.xml,
-            makehtml=args.makehtml,
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )
 
-    def apipaperdownload(self, args):
-        """[summary]
-
-        :param args: [description]
-        :type args: [type]
-        """
+    def apipaperdownload(self, query_namespace):
+        
         self.download_and_save_results(
-            args.date_or_number_of_papers,
-            args.limit,
-            args.api,
-            makecsv=args.makecsv,
-            makexml=args.xml,
-            makehtml=args.makehtml,
+            query_namespace["query"],
+            query_namespace["limit"],
+            query_namespace["api"],
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )

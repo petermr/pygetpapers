@@ -33,12 +33,6 @@ CLASSNAME="class_name"
 LIBRARYNAME="library_name"
 FEATURESNOTSUPPORTED = "features_not_supported"
 
-class Dict2Class(object):
-      
-    def __init__(self, my_dict):
-          
-        for key in my_dict:
-            setattr(self, key, my_dict[key])
 class ApiPlugger:
     
     def __init__(self,api):
@@ -54,27 +48,27 @@ class ApiPlugger:
         
 
     
-    def assist_warning_api(self,args):
+    def assist_warning_api(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         :raises PygetpapersError: [description]
         """ 
         for feature in self.features_not_supported_by_api:
-            if getattr(args,feature):
-                logging.warning(f"{feature} is not supported by {args.api}")
-        if args.query and (args.api == BIORXIV or args.api == MEDRXIV):
+            if query_namespace[feature]:
+                logging.warning(f'{feature} is not supported by {query_namespace["api"]}')
+        if query_namespace["query"] and (query_namespace["api"] == BIORXIV or query_namespace["api"] == MEDRXIV):
             raise PygetpapersError(
                 "*rxiv doesnt support giving a query. Please provide a date interval or number of "
                 "results to get instead")
         if (
-            not args.query
-            and not args.restart
-            and not args.terms
-            and not args.api == BIORXIV
-            and not args.api == MEDRXIV
-            and not args.version
+            not query_namespace["query"]
+            and not query_namespace["restart"]
+            and not query_namespace["terms"]
+            and not query_namespace["api"] == BIORXIV
+            and not query_namespace["api"] == MEDRXIV
+            and not query_namespace["version"]
         ):
             raise PygetpapersError("Please specify a query")
 
@@ -95,116 +89,118 @@ class ApiPlugger:
         self.features_not_supported_by_api = ast.literal_eval(config.get(api,FEATURESNOTSUPPORTED))
 
     @staticmethod
-    def handle_adding_date_to_query(args):
-        """This functions handles the adding date to the query
+    def _add_date_to_query(query_namespace):
+        """Builds query from simple dates in --startdate and --enddate. (See https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)
+        Edits the namespace object's query flag.
 
-        :param args: args passed down from argparse
+        :param query_namespace: namespace object from argparse (using --startdate and --enddate)
 
         """
 
-        if args.startdate and not args.enddate:
-            args.enddate = strftime("%Y-%m-%d", gmtime())
+        if query_namespace["startdate"] and not query_namespace["enddate"]:
+            query_namespace["enddate"] = strftime("%Y-%m-%d", gmtime())
 
-        if not args.startdate:
-            args.date_or_number_of_papers = args.limit
+        if not query_namespace["startdate"]:
+            query_namespace["date_or_number_of_papers"] = query_namespace["limit"]
         else:
-            args.date_or_number_of_papers = f"{args.startdate}/{args.enddate}"
+            query_namespace["date_or_number_of_papers"] = f'{query_namespace["startdate"]}/{query_namespace["enddate"]}'
 
-        if args.startdate and args.enddate:
-            args.query = (
-                f"({args.query}) AND (FIRST_PDATE:[{args.startdate} TO {args.enddate}])"
+        if query_namespace["startdate"] and query_namespace["enddate"]:
+            query_namespace["query"] = (
+                f'({query_namespace["query"]}) AND (FIRST_PDATE:[{query_namespace["startdate"]} TO {query_namespace["enddate"]}])'
             )
-        elif args.enddate:
-            args.query = f"({args.query}) AND (FIRST_PDATE:[TO {args.enddate}])"
+        elif query_namespace["enddate"]:
+            query_namespace["query"] = f'({query_namespace["query"]}) AND (FIRST_PDATE:[TO {query_namespace["enddate"]}])'
 
     @staticmethod
-    def handle_adding_terms_from_file(args):
-        """This functions handles the adding of terms to the query
+    def add_terms_from_file(query_namespace):
+        """Builds query from terms mentioned in a text file described in the argparse namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)
+        Edits the namespace object's query flag.
 
-        :param args: args passed down from argparse
+        :param query_namespace: namespace object from argparse (using --terms and --notterms)
 
         """
-        if args.terms:
-            terms = args.terms
-            seperator = "AND"
-        elif args.notterms:
-            terms = args.notterms
-            seperator = "AND NOT"
-        if terms.endswith('.txt'):
-            with open(terms, "r") as file_handler:
+        if query_namespace["terms"]:
+            terms_path = query_namespace["terms"]
+            separator = "AND"
+        elif query_namespace["notterms"]:
+            terms_path = query_namespace["notterms"]
+            separator = "AND NOT"
+        if terms_path.endswith('.txt'):
+            with open(terms_path, "r") as file_handler:
                 all_terms = file_handler.read()
             terms_list = all_terms.split(",")
-        elif terms.endswith('.xml'):
-            tree = ET.parse(terms)
+        elif terms_path.endswith('.xml'):
+            tree = ET.parse(terms_path)
             root = tree.getroot()
             terms_list = []
             for para in root.iter(ENTRY):
                 terms_list.append(para.attrib[TERM])
 
         or_ed_terms = " OR ".join(terms_list)
-
-        if args.query:
-            args.query = f"({args.query} {seperator} ({or_ed_terms}))"
+        #modify query in namespace object
+        if query_namespace["query"]:
+            query_namespace["query"] = f'({query_namespace["query"]} {separator} ({or_ed_terms}))'
         else:
-            if args.terms:
-                args.query = f"({or_ed_terms})"
-            elif args.notterms:
+            if query_namespace["terms"]:
+                query_namespace["query"] = f"({or_ed_terms})"
+            elif query_namespace["notterms"]:
                 raise PygetpapersError("Please provide a query with not")
 
 
-    def handle_cli_logic(self, args):
+    def check_query_syntax_and_values(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
         try:
-            self.assist_warning_api(args)
+            self.assist_warning_api(query_namespace)
         except PygetpapersError as err:
             logging.warning(err.message)
             return
 
-        if not args.query and args.terms:
-            args.query = None
+        if not query_namespace["query"] and query_namespace["terms"]:
+            query_namespace["query"] = None
 
         if self.term:
-            if args.terms or args.notterms:
+            if query_namespace["terms"] or query_namespace["notterms"]:
                 try:
-                    self.handle_adding_terms_from_file(args)
+                    self.add_terms_from_file(query_namespace)
                 except PygetpapersError as err:
                     logging.warning(err.message)
                     return
 
         try:
-            self.handle_adding_date_to_query(args)
+            self._add_date_to_query(query_namespace)
         except PygetpapersError as err:
             logging.warning(err.message)
             return
 
-        if args.noexecute:
+        if query_namespace["noexecute"]:
             try:
-                self.api.noexecute(args)
+                self.api.noexecute(query_namespace)
             except PygetpapersError as err:
                 logging.warning(err.message)
                 return
-        elif args.restart and self.restart:
+        elif query_namespace["restart"] and self.restart:
             try:
-                self.api.restart(args)
+                self.api.restart(query_namespace)
             except PygetpapersError as err:
                 logging.warning(err.message)
                 return
-        elif args.update and self.update:
+        elif query_namespace["update"] and self.update:
             logging.info(
                 "Please ensure that you are providing the same --api as the one in the corpus or "
                 "you may get errors")
             try:
-                self.api.update(args)
+                self.api.update(query_namespace)
             except PygetpapersError as err:
                 logging.warning(err.message)
                 return
         else:
             try:
-                self.api.apipaperdownload(args)
+                self.api.apipaperdownload(query_namespace)
             except PygetpapersError as err:
                 logging.warning(err.message)
                 return
@@ -220,15 +216,15 @@ class Pygetpapers:
         self.default_path= os.path.join(os.getcwd(), default_path)
 
     @staticmethod
-    def handle_write_configuration_file(args):
-        """This functions handles the writing the args to a configuration file
+    def write_configuration_file(query_namespace):
+        """Writes the argparse namespace to SAVED_CONFIG_INI
 
-        :param args: This functions handles the assigning of apis for update
+        :param query_namespace: argparse namespace object
 
         """
         parser = configparser.ConfigParser()
 
-        parsed_args = vars(args)
+        parsed_args = vars(query_namespace)
 
         parser.add_section(SAVED)
         for key in parsed_args.keys():
@@ -237,15 +233,15 @@ class Pygetpapers:
         with open(SAVED_CONFIG_INI, "w") as file_handler:
             parser.write(file_handler)
 
-    def handle_logfile(self, args, level):
-        """This functions handles storing of logs in a logfile
+    def write_logfile(self, query_namespace, level):
+        """This functions stores logs to a logfile
 
-        :param args: args passed down from argparse
-        :param level: level of logger
+        :param query_namespace: argparse namespace object
+        :param level: level of logger (See https://docs.python.org/3/library/logging.html#logging-levels)
 
         """
-        location_to_store_logs = os.path.join(args.output, args.logfile)
-        self.download_tools.check_or_make_directory(args.output)
+        location_to_store_logs = os.path.join(query_namespace["output"], query_namespace["logfile"])
+        self.download_tools.check_or_make_directory(query_namespace["output"])
         logging.basicConfig(filename=location_to_store_logs,
                             level=level, filemode="a")
         console = logging.StreamHandler()
@@ -256,23 +252,23 @@ class Pygetpapers:
         logging.info("Making log file at %s", location_to_store_logs)
 
     @staticmethod
-    def handle_output_directory(args):
+    def makes_output_directory(query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
-        if os.path.exists(args.output):
-            os.chdir(args.output)
-        elif not args.noexecute and not args.update and not args.restart and not args.version:
-            os.makedirs(args.output)
-            os.chdir(args.output)
+        if os.path.exists(query_namespace["output"]):
+            os.chdir(query_namespace["output"])
+        elif not query_namespace["noexecute"] and not query_namespace["update"] and not query_namespace["restart"] and not query_namespace["version"]:
+            os.makedirs(query_namespace["output"])
+            os.chdir(query_namespace["output"])
 
-    def handle_logger_creation(self, args):
+    def generate_logger(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
         levels = {
             "critical": logging.CRITICAL,
@@ -282,39 +278,94 @@ class Pygetpapers:
             "info": logging.INFO,
             "debug": logging.DEBUG,
         }
-        level = levels.get(args.loglevel.lower())
+        level = levels.get(query_namespace["loglevel"].lower())
 
         if level == logging.DEBUG:
             tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
 
-        if args.logfile:
-            self.handle_logfile(args, level)
+        if query_namespace["logfile"]:
+            self.write_logfile(query_namespace, level)
         else:
             coloredlogs.install(level=level, fmt='%(levelname)s: %(message)s')
     
-    def run_command(self,output=False,query=False,save_query=False,xml=False,pdf=False,supp=False,zip=False,references=False,noexecute=False,citations=False,limit=100,restart=False,update=False,onlyquery=False,makecsv=False,makehtml=False,synonym=False,startdate=False,enddate=False,terms=False,notterms=False,api="europe_pmc",filter=None,loglevel="info",logfile=False,version=False):
+    def run_command(self,output=None,query=None,save_query=False,xml=False,pdf=False,supp=False,zip=False,references=False,noexecute=False,citations=False,limit=100,restart=False,update=False,onlyquery=False,makecsv=False,makehtml=False,synonym=False,startdate=False,enddate=False,terms=False,notterms=False,api="europe_pmc",filter=None,loglevel="info",logfile=False,version=False):
+        """_summary_
+
+        :param output: _description_, defaults to None
+        :type output: _type_, optional
+        :param query: _description_, defaults to None
+        :type query: _type_, optional
+        :param save_query: _description_, defaults to False
+        :type save_query: bool, optional
+        :param xml: _description_, defaults to False
+        :type xml: bool, optional
+        :param pdf: _description_, defaults to False
+        :type pdf: bool, optional
+        :param supp: _description_, defaults to False
+        :type supp: bool, optional
+        :param zip: _description_, defaults to False
+        :type zip: bool, optional
+        :param references: _description_, defaults to False
+        :type references: bool, optional
+        :param noexecute: _description_, defaults to False
+        :type noexecute: bool, optional
+        :param citations: _description_, defaults to False
+        :type citations: bool, optional
+        :param limit: _description_, defaults to 100
+        :type limit: int, optional
+        :param restart: _description_, defaults to False
+        :type restart: bool, optional
+        :param update: _description_, defaults to False
+        :type update: bool, optional
+        :param onlyquery: _description_, defaults to False
+        :type onlyquery: bool, optional
+        :param makecsv: _description_, defaults to False
+        :type makecsv: bool, optional
+        :param makehtml: _description_, defaults to False
+        :type makehtml: bool, optional
+        :param synonym: _description_, defaults to False
+        :type synonym: bool, optional
+        :param startdate: _description_, defaults to False
+        :type startdate: bool, optional
+        :param enddate: _description_, defaults to False
+        :type enddate: bool, optional
+        :param terms: _description_, defaults to False
+        :type terms: bool, optional
+        :param notterms: _description_, defaults to False
+        :type notterms: bool, optional
+        :param api: _description_, defaults to "europe_pmc"
+        :type api: str, optional
+        :param filter: _description_, defaults to None
+        :type filter: _type_, optional
+        :param loglevel: _description_, defaults to "info"
+        :type loglevel: str, optional
+        :param logfile: _description_, defaults to False
+        :type logfile: bool, optional
+        :param version: _description_, defaults to False
+        :type version: bool, optional
+        """
         got_parameters = locals()
         if output==False:
             got_parameters["output"]=self.default_path
-        args= Dict2Class(got_parameters)
-        self.handle_running_of_args(args)
+        self.runs_pygetpapers_for_given_args(got_parameters)
 
-    def handle_running_of_args(self,args):
-        self.handle_logger_creation(args)
-        self.handle_output_directory(args)
-        if args.version:
+    def runs_pygetpapers_for_given_args(self,query_namespace):
+        self.generate_logger(query_namespace)
+        self.makes_output_directory(query_namespace)
+        if query_namespace["version"]:
             logging.info("You are running pygetpapers version %s", self.version)
             return
-        if args.save_query:
-            self.handle_write_configuration_file(args)
-        if args.api not in list(self.download_tools.config):
+        if query_namespace["save_query"]:
+            self.write_configuration_file(query_namespace)
+        if query_namespace["api"] not in list(self.download_tools.config):
             raise PygetpapersError("API not supported yet")
             return 
-        api_handler = ApiPlugger(args.api)
-        api_handler.handle_cli_logic(args)
+        api_handler = ApiPlugger(query_namespace["api"])
+        api_handler.check_query_syntax_and_values(query_namespace)
         
-    def handlecli(self):
-        """Handles the command line interface using argparse"""
+    def create_argparser(self):
+        """_summary_
+        """        
         version = self.version
 
         parser = configargparse.ArgParser(
@@ -524,23 +575,21 @@ class Pygetpapers:
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
             return
-        args = parser.parse_args()
-        for arg in vars(args):
-            if vars(args)[arg] == "False":
-                vars(args)[arg] = False
-        self.handle_running_of_args(args)
+        query_namespace = vars(parser.parse_args())
+        for arg in (query_namespace):
+            if (query_namespace)[arg] == "False":
+                (query_namespace)[arg] = False
+        self.runs_pygetpapers_for_given_args(query_namespace)
         
 
 
 def main():
     """Runs the CLI"""
     callpygetpapers = Pygetpapers()
-    callpygetpapers.handlecli()
+    callpygetpapers.create_argparser()
 
 
 if __name__ == "__main__":
     main()
 
-# TODO:Fill docstrings
-# TODO: -results.json only the last file gets chosen
-# TODO:Add a guide on how to add new repositories
+#TODO: add half a sentence about config queries
