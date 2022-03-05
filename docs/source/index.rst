@@ -12,6 +12,12 @@
    :maxdepth: 5
    :caption: Developer Documentation:
 
+   pygetpapers
+   europe_pmc
+   rxiv
+   rxivist
+   arxiv
+   crossref
    query
    how_to_add_repo
    
