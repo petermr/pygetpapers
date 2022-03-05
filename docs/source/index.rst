@@ -7,18 +7,12 @@
    :caption: User Documentation:
 
    index
-..
-    .. toctree::
-    :maxdepth: 5
-    :caption: Developer Documentation:
 
-    pygetpapers
-    tutorial
-    download_tools
-    europe_pmc
-    crossref
-    arxiv
-    rxivist
-    rxiv
+.. toctree::
+   :maxdepth: 5
+   :caption: Developer Documentation:
+
+   query
+   how_to_add_repo
    
 
