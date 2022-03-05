@@ -593,3 +593,4 @@ if __name__ == "__main__":
     main()
 
 #TODO: add half a sentence about config queries
+#TODO: add them to another folder

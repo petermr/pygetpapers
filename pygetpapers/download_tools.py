@@ -74,7 +74,7 @@ ENTRY = 'entry'
 
 
 class DownloadTools:
-    """Generic tools for retrieving literature"""
+    """Generic tools for retrieving literature. Several are called by each repository"""
 
     def __init__(self, api=None):
         """Reads the configuration file for the api
