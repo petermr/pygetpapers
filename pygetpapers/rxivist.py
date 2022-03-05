@@ -34,7 +34,6 @@ class Rxivist:
     """Rxivist class which handles the rxivist wrapper"""
 
     def __init__(self):
-        """initiate Rxivist class"""
         self.download_tools = DownloadTools(RXIVIST)
         self.get_url = self.download_tools.query_url
 
@@ -45,23 +44,7 @@ class Rxivist:
                 makecsv=False,
                 makexml=False,
                 makehtml=False, ):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param size: [description]
-        :type size: [type]
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :return: [description]
-        :rtype: [type]
-        """
+ 
         
         if update:
             cursor_mark = update[CURSOR_MARK]
@@ -87,9 +70,9 @@ class Rxivist:
             total_result_list, paper_key=DOI
         )
         for paper in json_return_dict:
-            self.download_tools.add_download_status_keys(
+            self.download_tools._add_download_status_keys(
                 paper, json_return_dict)
-        result_dict = self.download_tools.make_dict_to_return(
+        result_dict = self.download_tools.adds_new_results_to_metadata_dictionary(
             cursor_mark, json_return_dict, total_number_of_results, update=update
         )
         new_dict_to_return = result_dict[NEW_RESULTS]
@@ -104,17 +87,7 @@ class Rxivist:
         return result_dict
 
     def send_post_request(self, query, cursor_mark=0, page_size=20):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param cursor_mark: [description], defaults to 0
-        :type cursor_mark: int, optional
-        :param page_size: [description], defaults to 20
-        :type page_size: int, optional
-        :return: [description]
-        :rtype: [type]
-        """
+       
         
         url_to_request = self.get_url.format(
             query=query, cursor=cursor_mark, page_size=page_size)
@@ -128,19 +101,7 @@ class Rxivist:
     def make_request_add_papers(
             self, query, cursor_mark, total_number_of_results, total_papers_list
     ):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param cursor_mark: [description]
-        :type cursor_mark: [type]
-        :param total_number_of_results: [description]
-        :type total_number_of_results: [type]
-        :param total_papers_list: [description]
-        :type total_papers_list: [type]
-        :return: [description]
-        :rtype: [type]
-        """
+        
         request_handler = self.send_post_request(query, cursor_mark)
         request_dict = json.loads(request_handler.text)
         papers_list = request_dict[RESULTS]
@@ -158,21 +119,7 @@ class Rxivist:
             makexml=False,
             makehtml=False,
     ):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param size: [description]
-        :type size: [type]
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        """
+        
 
         os.chdir(os.path.dirname(update))
         update = self.download_tools.readjsondata(update)
@@ -195,21 +142,7 @@ class Rxivist:
             makexml=False,
             makehtml=False,
     ):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param size: [description]
-        :type size: [type]
-        :param update: [description], defaults to False
-        :type update: bool, optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        """
+       
         
         result_dict = self.rxivist(
             query,
@@ -224,46 +157,35 @@ class Rxivist:
             name_of_file=RXIVIST_RESULT
         )
 
-    def apipaperdownload(self, args):
-        """[summary]
-
-        :param args: [description]
-        :type args: [type]
-        """
+    def apipaperdownload(self, query_namespace):
+        
         self.download_and_save_results(
-            args.query,
-            args.limit,
-            makecsv=args.makecsv,
-            makexml=args.xml,
-            makehtml=args.makehtml,
+            query_namespace["query"],
+            query_namespace["limit"],
+            query_namespace["api"],
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )
 
-    def update(self, args):
-        """[summary]
-
-        :param args: [description]
-        :type args: [type]
-        """
+    def update(self, query_namespace):
+        
         update_file_path = self.download_tools.get_metadata_results_file()
         logging.info(
             "Please ensure that you are providing the same --api as the one in the corpus or you "
             "may get errors")
         self.rxivist_update(
-            args.query,
-            args.limit,
+            query_namespace["query"],
+            query_namespace["limit"],
             update=update_file_path,
-            makecsv=args.makecsv,
-            makexml=args.xml,
-            makehtml=args.makehtml,
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )
 
-    def noexecute(self, args):
-        """[summary]
-
-        :param args: [description]
-        :type args: [type]
-        """
-        result_dict = self.rxivist(args.query, size=10)
+    def noexecute(self, query_namespace):
+       
+        result_dict = self.rxivist(query_namespace.query, size=10)
         results = result_dict[NEW_RESULTS]
         totalhits = results[TOTAL_HITS]
         logging.info("Total number of hits for the query are %s", totalhits)

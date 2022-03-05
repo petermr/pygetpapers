@@ -181,7 +181,7 @@ class EuropePmc:
         :rtype: [type]
         """
         
-        queryparams = self.download_tools.buildquery(
+        queryparams = self.buildquery(
             next_cursor_mark[-1], maximum_hits_per_page, query, synonym=synonym
         )
         builtquery = self.download_tools.postquery(
@@ -244,61 +244,61 @@ class EuropePmc:
                 pass
         return number_of_papers_there
 
-    def update(self, args):
+    def update(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
         update_path = self.download_tools.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
         read_json = self.download_tools.readjsondata(update_path)
         os.chdir(os.path.dirname(update_path))
         self.updatecorpus(
-            args.query,
+            query_namespace["query"],
             read_json,
-            args.limit,
-            getpdf=args.pdf,
-            makecsv=args.makecsv,
-            makexml=args.xml,
-            references=args.references,
-            makehtml=args.makehtml,
-            citations=args.citations,
-            supplementary_files=args.supp,
-            synonym=args.synonym,
-            zip_files=args.zip,
+            query_namespace["limit"],
+            getpdf=query_namespace["pdf"],
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            references=query_namespace["references"],
+            makehtml=query_namespace["makehtml"],
+            citations=query_namespace["citations"],
+            supplementary_files=query_namespace["supp"],
+            synonym=query_namespace["synonym"],
+            zip_files=query_namespace["zip"],
         )
 
-    def restart(self, args):
+    def restart(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
         restart_file_path = self.download_tools.get_metadata_results_file()
         read_json = self.download_tools.readjsondata(restart_file_path)
         os.chdir(os.path.dirname(restart_file_path))
         self.makexmlfiles(
             read_json,
-            getpdf=args.pdf,
-            makecsv=args.makecsv,
-            makehtml=args.makehtml,
-            makexml=args.xml,
-            references=args.references,
-            citations=args.citations,
-            supplementary_files=args.supp,
-            zip_files=args.zip,
+            getpdf=query_namespace["pdf"],
+            makecsv=query_namespace["makecsv"],
+            makehtml=query_namespace["makehtml"],
+            makexml=query_namespace["xml"],
+            references=query_namespace["references"],
+            citations=query_namespace["citations"],
+            supplementary_files=query_namespace["supp"],
+            zip_files=query_namespace["zip"],
         )
 
-    def noexecute(self, args):
+    def noexecute(self, query_namespace):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
-        query = args.query
-        synonym = args.synonym
-        builtqueryparams = self.download_tools.buildquery(
+        query = query_namespace["query"]
+        synonym = query_namespace["synonym"]
+        builtqueryparams = self.buildquery(
             "*", 25, query, synonym=synonym
         )
         result = self.download_tools.postquery(
@@ -375,25 +375,25 @@ class EuropePmc:
             )
 
     def apipaperdownload(
-        self, args
+        self, query_namespace
     ):
         """[summary]
 
-        :param args: [description]
-        :type args: [type]
+        :param query_namespace: [description]
+        :type query_namespace: [type]
         """
-        query = args.query
-        size = args.limit
-        onlymakejson = args.onlyquery
-        getpdf = args.pdf
-        makecsv = args.makecsv
-        makehtml = args.makehtml
-        makexml = args.xml
-        references = args.references
-        citations = args.citations
-        supplementary_files = args.supp
-        zip_files = args.zip
-        synonym = args.synonym
+        query = query_namespace["query"]
+        size = query_namespace["limit"]
+        onlymakejson = query_namespace["onlyquery"]
+        getpdf = query_namespace["pdf"]
+        makecsv = query_namespace["makecsv"]
+        makehtml = query_namespace["makehtml"]
+        makexml = query_namespace["xml"]
+        references = query_namespace["references"]
+        citations = query_namespace["citations"]
+        supplementary_files = query_namespace["supp"]
+        zip_files = query_namespace["zip"]
+        synonym = query_namespace["synonym"]
         query_result = self.europepmc(query, size, synonym=synonym)
         is_search_successful = self.makecsv(
             query_result, makecsv=makecsv, makehtml=makehtml
@@ -414,6 +414,52 @@ class EuropePmc:
                 supplementary_files=supplementary_files,
                 zip_files=zip_files,
             )
+    @staticmethod
+    def buildquery(
+        cursormark,
+        page_size,
+        query,
+        synonym=True,
+    ):
+        """Builds the python dictionary that gets sent to the api of the repository
+
+        :param cursormark: cursor point for the given query
+        :type cursormark: string
+        :param page_size: number of results to get in a single iteration
+        :type page_size: int
+        :param query: query passed to the api
+        :type query: string
+        :param synonym: Whether to get synonyms of the given query
+        :type synonym: bool, optional
+        :return: dictionary with data in form of headers and payload
+        :rtype: dictionary
+        """
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        payload = {
+            "query": query,
+            "resultType": "core",
+            "cursorMark": cursormark,
+            "pageSize": page_size,
+            "synonym": synonym,
+            "format": "xml",
+            "sort_PMCID": "y",
+        }
+        logging.debug("*/submitting RESTful query (I)*/")
+        return {"headers": headers, "payload": payload}
+
+    
+    def make_html_from_dict(self, dict_to_write_html_from, url):
+        """[summary]
+
+        :param dict_to_write_html_from: [description]
+        :type dict_to_write_html_from: [type]
+        :param url: [description]
+        :type url: [type]
+        """
+        df = pd.Series(dict_to_write_html_from).to_frame(
+            dict_to_write_html_from[PMCID]
+        )
+        self.make_html_from_dataframe(df, url)
 
     def get_urls_to_write_to(self, pmcid):
         """[summary]
@@ -480,13 +526,13 @@ class EuropePmc:
         :type zip_files: bool, optional
         """
         if makexml:
-            self.download_tools.log_making_xml()
+            self.download_tools._log_making_xml()
         paper_number = 0
         for paper in tqdm(final_xml_dict):
             start = time.time()
             paper_number += 1
             pmcid = paper
-            tree = self.download_tools.getxml(pmcid)
+            tree = self.download_tools.get_request_endpoint_for_xml(pmcid)
             (
                 citationurl,
                 destination_url,
@@ -525,7 +571,7 @@ class EuropePmc:
                 condition_to_download_json,
                 condition_to_download_pdf,
                 condition_to_html,
-            ) = self.download_tools.conditions_to_download(paperdict)
+            ) = self.download_tools._conditions_to_download(paperdict)
             if condition_to_down:
                 if makexml:
                     self.download_tools.writexml(
@@ -540,14 +586,14 @@ class EuropePmc:
                         full_text_list = paperdict["fullTextUrlList"]["fullTextUrl"]
                         for paper_links in full_text_list:
                             if (paper_links["availability"] == "Open access" and paper_links["documentStyle"] == "pdf"):
-                                self.download_tools.write_content_to_destination(
+                                self.download_tools.queries_the_url_and_writes_response_to_destination(
                                     paper_links["url"], pdf_destination
                                 )
                                 paperdict[PDF_DOWNLOADED] = True
                                 logging.info("Wrote the pdf file for %s", pmcid)
-            dict_to_write = self.download_tools.clean_dict_for_csv(paperdict)
+            dict_to_write = self.download_tools._eupmc_clean_dict_for_csv(paperdict)
             if condition_to_download_json:
-                self.download_tools.makejson(jsonurl, dict_to_write)
+                self.download_tools.dumps_json_to_given_path(jsonurl, dict_to_write)
                 paperdict[JSON_DOWNLOADED] = True
             if condition_to_download_csv:
                 if makecsv:
@@ -555,11 +601,11 @@ class EuropePmc:
                     paperdict[CSVMADE] = True
             if condition_to_html:
                 if makehtml:
-                    self.download_tools.make_html_from_dict(
+                    self.make_html_from_dict(
                         dict_to_write, htmlurl)
                     logging.debug("Wrote the html file for %s", pmcid)
                     paperdict[HTML_MADE] = True
-            self.download_tools.makejson(
+            self.download_tools.dumps_json_to_given_path(
                 os.path.join(str(os.getcwd()),
                              RESULTS_JSON), final_xml_dict
             )
@@ -670,7 +716,7 @@ class EuropePmc:
             if x[DOCUMENTSTYLE] == HTML and x[AVAILABILITY] == OPENACCESS:
                 htmlurl.append(x[URL])
         paperpmcid = paper[PMCID]
-        resultant_dict = self.download_tools.make_initial_columns_for_paper_dict(
+        resultant_dict = self.download_tools._make_initial_columns_for_paper_dict(
             paperpmcid, resultant_dict
         )
         resultant_dict[paperpmcid].update(paper)
@@ -718,8 +764,8 @@ class EuropePmc:
             jsonurl = os.path.join(str(os.getcwd()),  RESULTS_JSON)
             html_url = os.path.join(str(os.getcwd()), EUPMC_HTML)
             self.download_tools.check_or_make_directory(directory_url)
-            self.download_tools.makejson(jsonurl, resultant_dict)
-            resultant_dict_for_csv = self.download_tools.make_dict_for_csv(
+            self.download_tools.dumps_json_to_given_path(jsonurl, resultant_dict)
+            resultant_dict_for_csv = self.download_tools.removing_added_attributes_from_dictionary(
                 resultant_dict
             )
             df = pd.DataFrame.from_dict(

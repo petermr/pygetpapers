@@ -85,7 +85,7 @@ class Arxiv:
 
         self.make_dict_from_arxiv_output(return_dict, search)
         for paper in return_dict:
-            self.download_tools.add_download_status_keys(paper, return_dict)
+            self.download_tools._add_download_status_keys(paper, return_dict)
         if getpdf:
             self.download_pdf(return_dict)
         self.download_tools.handle_creation_of_csv_html_xml(
@@ -102,12 +102,12 @@ class Arxiv:
         :type return_dict: [type]
         """
         jsonurl = os.path.join(os.getcwd(), ARXIV_RESULTS_JSON)
-        self.download_tools.makejson(jsonurl, return_dict)
+        self.download_tools.dumps_json_to_given_path(jsonurl, return_dict)
         for result in tqdm(return_dict):
             return_dict[result][JSONDOWNLOADED] = True
             self.download_tools.check_or_make_directory(result)
             jsonurl = os.path.join(os.getcwd(), result, ARXIV_RESULT_JSON)
-            self.download_tools.makejson(jsonurl, return_dict[result])
+            self.download_tools.dumps_json_to_given_path(jsonurl, return_dict[result])
 
     @staticmethod
     def make_dict_from_arxiv_output(return_dict, search):
@@ -162,30 +162,30 @@ class Arxiv:
                 os.path.join(os.getcwd(), result)
             )
             pdf_url = os.path.join(os.getcwd(), result, FULLTEXT_PDF)
-            self.download_tools.write_content_to_destination(
+            self.download_tools.queries_the_url_and_writes_response_to_destination(
                 return_dict[result][PDF_URL], pdf_url
             )
             return_dict[result][PDFDOWNLOADED] = True
 
     @staticmethod
-    def noexecute(args):
+    def noexecute(query_namespace):
         """[summary]
 
         :param query: [description]
         :type query: [type]
         """
-        logging.info("Arxiv api working for the query %s", args.query)
+        logging.info("Arxiv api working for the query %s", query_namespace["query"])
 
     @staticmethod
-    def update(args):
+    def update(query_namespace):
         logging.warning("update currently not supported for arxiv")
 
-    def apipaperdownload(self, args):
+    def apipaperdownload(self, query_namespace):
         self.arxiv(
-            args.query,
-            args.limit,
-            getpdf=args.pdf,
-            makecsv=args.makecsv,
-            makexml=args.xml,
-            makehtml=args.makehtml,
+            query_namespace["query"],
+            query_namespace["limit"],
+            query_namespace["pdf"],
+            makecsv=query_namespace["makecsv"],
+            makexml=query_namespace["xml"],
+            makehtml=query_namespace["makehtml"],
         )   
