@@ -37,8 +37,7 @@ class CrossRef:
     """CrossRef class which handles crossref repository"""
 
     def __init__(self):
-        """[summary]
-        """
+        
         self.download_tools = DownloadTools(CROSSREF)
 
     def crossref(
@@ -51,25 +50,7 @@ class CrossRef:
         makexml=False,
         makehtml=False,
     ):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param cutoff_size: [description]
-        :type cutoff_size: [type]
-        :param filter_dict: [description], defaults to None
-        :type filter_dict: [type], optional
-        :param update: [description], defaults to None
-        :type update: [type], optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :return: [description]
-        :rtype: [type]
-        """
+        
         crossref_client = self.initiate_crossref()
         logging.info("Making request to crossref")
 
@@ -104,25 +85,13 @@ class CrossRef:
 
     @staticmethod
     def make_metadata_subset(crossref_client, cutoff_size):
-        """[summary]
-
-        :param crossref_client: [description]
-        :type crossref_client: [type]
-        :param cutoff_size: [description]
-        :type cutoff_size: [type]
-        :return: [description]
-        :rtype: [type]
-        """
+        
         total_metadata_list = crossref_client[MESSAGE][ITEMS]
         total_metadata_list = total_metadata_list[:cutoff_size]
         return total_metadata_list
 
     def initiate_crossref(self):
-        """[summary]
-
-        :return: [description]
-        :rtype: [type]
-        """
+        
         cr = Crossref()
         Crossref(mailto="ayushgarg@science.org.in")
         version = self.download_tools.get_version()
@@ -133,11 +102,7 @@ class CrossRef:
         self,
         query_namespace
     ):
-        """[summary]
-
-        :param query_namespace: [description]
-        :type query_namespace: [type]
-        """
+        
         logging.info("Reading old json metadata file")
         update_path = self.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
@@ -157,11 +122,7 @@ class CrossRef:
         )
 
     def noexecute(self, query_namespace):
-        """[summary]
-
-        :param query_namespace: [description]
-        :type query_namespace: [type]
-        """
+        
         query = query_namespace["query"]
         filter_dict = query_namespace["filter"]
         result_dict = self.crossref(
@@ -174,11 +135,7 @@ class CrossRef:
         self,
         query_namespace
     ):
-        """[summary]
-
-        :param query_namespace: [description]
-        :type query_namespace: [type]
-        """
+        
         result_dict = self.crossref(
             query_namespace["query"],
             query_namespace["limit"],
