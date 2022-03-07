@@ -548,21 +548,21 @@ class EuropePmc(RepositoryInterface):
             paperid = paperdict[ID]
             if references:
                 self.download_tools.make_references(
-                    directory_url, paperid, references, referenceurl
+                    paperid, references, referenceurl
                 )
                 logging.debug("Made references for %s", pmcid)
             if citations:
                 self.download_tools.make_citations(
-                    citations, citationurl, directory_url, paperid
+                    citations, citationurl, paperid
                 )
                 logging.debug("Made Citations for %s", pmcid)
             if supplementary_files:
                 self.download_tools.getsupplementaryfiles(
-                    pmcid, directory_url, supplementaryfilesurl
+                    pmcid, supplementaryfilesurl
                 )
             if zip_files:
                 self.download_tools.getsupplementaryfiles(
-                    pmcid, directory_url, zipurl, from_ftp_end_point=True
+                    pmcid, zipurl, from_ftp_end_point=True
                 )
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
@@ -576,7 +576,7 @@ class EuropePmc(RepositoryInterface):
             if condition_to_down:
                 if makexml:
                     self.download_tools.writexml(
-                        directory_url, destination_url, tree)
+                        destination_url, tree)
                     paperdict[DOWNLOADED] = True
             if condition_to_download_pdf:
                 if getpdf:

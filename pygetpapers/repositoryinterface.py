@@ -1,7 +1,19 @@
 from abc import ABC, abstractmethod
 
 class RepositoryInterface(ABC):
-
+    def __new__(mcls, classname, bases, cls_dict):
+        cls = ABC.ABCMeta.__new__(mcls, classname, bases, cls_dict)
+        mro = cls.__mro__[1:]
+        for name, member in cls_dict.iteritems():
+            if not getattr(member, '__doc__'):
+                for base in mro:
+                    try:
+                        member.__doc__ = getattr(base, name).__doc__
+                        break
+                    except AttributeError:
+                        pass
+        return cls
+        
     @abstractmethod
     def noexecute(self, query_namespace):
         """Takes in the query_namespace object as the parameter and runs the query search for given search parameters but only prints the output and not write to disk.

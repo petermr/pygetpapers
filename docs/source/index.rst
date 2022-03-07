@@ -31,4 +31,5 @@
 
    query
    how_to_add_repo
+   repositoryinterface
 

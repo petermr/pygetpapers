@@ -1,4 +1,4 @@
-how_to_add_repo
+How to add a new repository
 ==============================  
 
 .. include:: ../../resources/how_to_add_new_repositories.md
