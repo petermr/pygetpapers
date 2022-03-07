@@ -1,7 +1,7 @@
 crossref module
 ==============================
 
-.. automodule:: pygetpapers.crossref
+.. automodule:: pygetpapers.repository.crossref
    :members:
    :undoc-members:
    :show-inheritance:

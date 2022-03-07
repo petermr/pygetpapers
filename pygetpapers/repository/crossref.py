@@ -5,7 +5,7 @@ from habanero import Crossref
 
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.pgexceptions import PygetpapersError
-
+from pygetpapers.repositoryinterface import RepositoryInterface
 crossref_file_name = "crossref_result"
 
 DOI = "DOI"
@@ -33,7 +33,7 @@ CURSOR_MARK = "cursor_mark"
 CROSSREF = "crossref"
 
 
-class CrossRef:
+class CrossRef(RepositoryInterface):
     """CrossRef class which handles crossref repository"""
 
     def __init__(self):
@@ -65,7 +65,7 @@ class CrossRef:
         )
         metadata_count = raw_crossref_metadata[MESSAGE][TOTAL_RESULTS]
         cursor_mark = raw_crossref_metadata[MESSAGE][NEXT_CURSOR]
-        cutoff_metadata_list = self.make_metadata_subset(
+        cutoff_metadata_list = self._make_metadata_subset(
             raw_crossref_metadata, cutoff_size
         )
         cutoff_metadata_dictionary = self.download_tools.make_dict_from_list(
@@ -83,8 +83,7 @@ class CrossRef:
         )
         return result_dict
 
-    @staticmethod
-    def make_metadata_subset(crossref_client, cutoff_size):
+    def _make_metadata_subset(self,crossref_client, cutoff_size):
         
         total_metadata_list = crossref_client[MESSAGE][ITEMS]
         total_metadata_list = total_metadata_list[:cutoff_size]
@@ -102,7 +101,11 @@ class CrossRef:
         self,
         query_namespace
     ):
-        
+        """_summary_
+
+        :param query_namespace: _description_
+        :type query_namespace: _type_
+        """
         logging.info("Reading old json metadata file")
         update_path = self.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
@@ -116,13 +119,17 @@ class CrossRef:
             makexml=query_namespace["xml"],
             makehtml=query_namespace["makehtml"],
         )
-        self.download_tools.make_json_files_for_paper(
+        self.download_tools.make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=crossref_file_name
         )
 
     def noexecute(self, query_namespace):
-        
+        """_summary_
+
+        :param query_namespace: _description_
+        :type query_namespace: _type_
+        """
         query = query_namespace["query"]
         filter_dict = query_namespace["filter"]
         result_dict = self.crossref(
@@ -135,7 +142,11 @@ class CrossRef:
         self,
         query_namespace
     ):
-        
+        """_summary_
+
+        :param query_namespace: _description_
+        :type query_namespace: _type_
+        """
         result_dict = self.crossref(
             query_namespace["query"],
             query_namespace["limit"],
@@ -145,7 +156,7 @@ class CrossRef:
             makexml=query_namespace["xml"],
             makehtml=query_namespace["makehtml"],
         )
-        self.download_tools.make_json_files_for_paper(
+        self.download_tools.make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=crossref_file_name
         )
         

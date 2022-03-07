@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.pgexceptions import PygetpapersError
+from pygetpapers.repositoryinterface import RepositoryInterface
 
 TOTAL_HITS = "total_hits"
 NEW_RESULTS = "new_results"
@@ -25,7 +26,7 @@ CURSOR_MARK = "cursor_mark"
 RXIV = "rxiv"
 
 
-class Rxiv:
+class Rxiv(RepositoryInterface):
     """Rxiv class which handles Biorxiv and Medrxiv repository"""
 
     def __init__(self,api="biorxiv"):
@@ -178,7 +179,7 @@ class Rxiv:
             dict_of_papers = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
             self.make_xml_for_rxiv(
                 dict_of_papers, JATSXML, DOI, FULLTEXT_XML)
-        self.download_tools.make_json_files_for_paper(
+        self.download_tools.make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=RXIV_RESULT
         )

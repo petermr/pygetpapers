@@ -6,6 +6,7 @@ import time
 import requests
 
 from pygetpapers.download_tools import DownloadTools
+from pygetpapers.repositoryinterface import RepositoryInterface
 
 TOTAL_HITS = "total_hits"
 
@@ -30,7 +31,7 @@ CURSOR_MARK = "cursor_mark"
 RXIVIST = "rxivist"
 
 
-class Rxivist:
+class Rxivist(RepositoryInterface):
     """Rxivist class which handles the rxivist wrapper"""
 
     def __init__(self):
@@ -152,7 +153,7 @@ class Rxivist:
             makexml=makexml,
             makehtml=makehtml,
         )
-        self.download_tools.make_json_files_for_paper(
+        self.download_tools.make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=RXIVIST_RESULT
         )

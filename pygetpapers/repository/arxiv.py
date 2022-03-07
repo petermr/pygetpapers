@@ -47,8 +47,9 @@ ARXIV_RESULT = "arxiv-result"
 
 ARXIV = "arxiv"
 
+from pygetpapers.repositoryinterface import RepositoryInterface
 
-class Arxiv:
+class Arxiv(RepositoryInterface):
     """Arxiv class which handles arxiv repository"""
 
     def __init__(self):

@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.pgexceptions import PygetpapersError
+from pygetpapers.repositoryinterface import RepositoryInterface
 
 FULLTEXT_XML = "fulltext.xml"
 FULLTEXT_PDF = "fulltext.pdf"
@@ -63,7 +64,7 @@ OPENACCESS = "Open access"
 PDF = "pdf"
 HTML = "html"
 
-class EuropePmc:
+class EuropePmc(RepositoryInterface):
     """ """
 
     def __init__(self):

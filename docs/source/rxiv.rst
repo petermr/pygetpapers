@@ -1,7 +1,7 @@
 rxiv module
 ==============================
 
-.. automodule:: pygetpapers.rxiv
+.. automodule:: pygetpapers.repository.rxiv
    :members:
    :undoc-members:
    :show-inheritance:
