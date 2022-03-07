@@ -1,7 +1,7 @@
 rxivist module
 ==============================
 
-.. automodule:: pygetpapers.rxivist
+.. automodule:: pygetpapers.repository.rxivist
    :members:
    :undoc-members:
    :show-inheritance:

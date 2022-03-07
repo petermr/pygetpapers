@@ -584,7 +584,7 @@ class DownloadTools:
             paper_by_key[paper[paper_key]] = paper
         return paper_by_key
 
-    def make_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
+    def make_metadata_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
         
         self.dumps_json_to_given_path(f"{name_of_file}s.json", updated_dict)
         logging.info("Wrote metadata file for the query")

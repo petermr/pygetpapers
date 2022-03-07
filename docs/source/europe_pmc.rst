@@ -1,7 +1,7 @@
 europe\_pmc module
 ==============================
 
-.. automodule:: pygetpapers.europe_pmc
+.. automodule:: pygetpapers.repository.europe_pmc
    :members:
    :undoc-members:
    :show-inheritance:

@@ -28,7 +28,7 @@ setup(
     author_email='ayush@science.org.in',
     url='https://github.com/petermr/pygetpapers',
     packages=[
-        'pygetpapers'
+        'pygetpapers','pygetpapers.repository'
     ],
     package_dir={'pygetpapers':
                  'pygetpapers',

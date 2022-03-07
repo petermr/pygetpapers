@@ -1,7 +1,7 @@
 arxiv module
 ==============================
 
-.. automodule:: pygetpapers.arxiv
+.. automodule:: pygetpapers.repository.arxiv
    :members:
    :undoc-members:
    :show-inheritance:

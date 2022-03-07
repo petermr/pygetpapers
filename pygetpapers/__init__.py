@@ -2,11 +2,11 @@
 pygetpapers module
 """
 from pygetpapers.download_tools import DownloadTools
-from pygetpapers.europe_pmc import EuropePmc
-from pygetpapers.crossref import CrossRef
-from pygetpapers.arxiv import Arxiv
-from pygetpapers.rxiv import Rxiv
-from pygetpapers.rxivist import Rxivist
+from pygetpapers.repository.europe_pmc import EuropePmc
+from pygetpapers.repository.crossref import CrossRef
+from pygetpapers.repository.arxiv import Arxiv
+from pygetpapers.repository.rxiv import Rxiv
+from pygetpapers.repository.rxivist import Rxivist
 from pygetpapers.pygetpapers import Pygetpapers
 
 __author__ = "Ayush Garg"
