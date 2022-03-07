@@ -349,18 +349,18 @@ class DownloadTools:
         with open(path_to_save, "w", encoding="utf-8") as file_handler:
             file_handler.write(html_with_pagination)
 
-    def make_references(self, paperid, source, referenceurl):
-        """[summary]
+    def make_references(self, paperid, identifier, path_to_save):
+        """Writes references for the given paperid from source to reference url
 
-        :param paperid: [description]
-        :type paperid: [type]
-        :param source: [description]
-        :type source: [type]
-        :param referenceurl: [description]
-        :type referenceurl: [type]
+        :param identifier: identifier for the paper
+        :type identifier: string
+        :param source: source to get references from
+        :type source: string
+        :param path_to_save: path to store the references
+        :type path_to_save: string
         """
-        getreferences = self.get_request_endpoint_for_references(paperid, source)
-        self.writexml(referenceurl, getreferences)
+        getreferences = self.get_request_endpoint_for_references(paperid, identifier)
+        self.writexml(path_to_save, getreferences)
 
     def make_citations(self, source, citationurl, identifier):
         """Retreives URL for the citations for the given paperid, gets the xml, writes to citationurl
@@ -425,7 +425,7 @@ class DownloadTools:
         :param from_ftp_end_point: to get the results from eupmc ftp endpoint
         :type from_ftp_end_point: bool, optional
         """
-        url, log_key = self.get_url_for_zip_file(identifier, from_ftp_end_point)
+        url, log_key = self._get_url_for_zip_file(identifier, from_ftp_end_point)
         directory_url = self.get_parent_directory(path_to_save)
         request_handler = requests.get(url)
         if not os.path.isdir(directory_url):
@@ -438,13 +438,20 @@ class DownloadTools:
             logging.warning("%s files not found for %s", log_key, identifier)
 
     def check_if_content_is_zip(self, request_handler):
+        """Checks if content in request object is a zip
+
+        :param request_handler: request object for the given zip
+        :type request_handler: request object
+        :return: if zip file exits
+        :rtype: bool
+        """
         for chunk in request_handler.iter_content(chunk_size=128):
             if len(chunk) > 0:
                 file_exits = True
                 break
         return file_exits
 
-    def get_url_for_zip_file(self, identifier, from_ftp_end_point):
+    def _get_url_for_zip_file(self, identifier, from_ftp_end_point):
         if from_ftp_end_point:
             key = "PMCxxxx" + identifier[-3:]
             url = self.zipurl.format(key=key, identifier=identifier)
@@ -455,7 +462,7 @@ class DownloadTools:
         return url,log_key
 
     def extract_zip_files(self, byte_content_to_extract_from, destination_url):
-        """[summary]
+        """Extracts zip file to destination_url
 
         :param byte_content_to_extract_from: byte content to extract from
         :type byte_content_to_extract_from: bytes
@@ -484,93 +491,151 @@ class DownloadTools:
         resultant_dict[key_for_dict][CSVMADE] = False
         resultant_dict[key_for_dict][HTMLMADE] = False
 
-    def make_csv_for_dict(self, df, return_dict, output_main, output_paper):
+    def make_csv_for_dict(self, return_dict, name_main_result_file, name_result_file_for_paper):
+        """
+        Writes csv content for the given dictionary to disk 
         
+        :param return_dict: dictionary to write the content for
+        :type return_dict: dict
+        :param name_main_result_file: name of the main result file (eg. eupmc-results.xml)
+        :type name_main_result_file: string
+        :param name_result_file_for_paper: name of the result file for a paper
+        :type name_result_file_for_paper: string
+        """
         logging.info("Making csv files for metadata at %s", os.getcwd())
+        df = self._get_dataframe_without_additional_pygetpapers_attributes(return_dict)
+        self.write_or_append_to_csv(df, name_main_result_file)
+        self._make_csv_xml_or_html(name_result_file_for_paper,return_dict,makecsv=True)
+
+    def _make_csv_xml_or_html(self,name_result_file_for_paper,return_dict,makecsv=False,makexml=False,makehtml=False):
+        """Write csv, html or html content for papers in return_dict
+
+        :param name_result_file_for_paper: name of the result file for a paper
+        :type name_result_file_for_paper: string
+        :param return_dict: Dictionary containing papers
+        :type return_dict: dict
+        :param makecsv: whether to get csv 
+        :type makecsv: bool
+        :param makehtml: whether to get html 
+        :type makehtml: bool
+        :param makexml: whether to get xml 
+        :type makexml: bool
+        """
         paper = 0
-        self.write_or_append_to_csv(df, output_main)
         dict_to_use = self.removing_added_attributes_from_dictionary(return_dict)
         for result in tqdm(dict_to_use):
             paper += 1
             result_encoded = self.url_encode_id(result)
-            url = os.path.join(os.getcwd(), result_encoded, output_paper)
+            url = os.path.join(os.getcwd(), result_encoded, name_result_file_for_paper)
             self.check_or_make_directory(
                 os.path.join(os.getcwd(), result_encoded))
             df_for_paper = self._make_dataframe_for_paper_dict(
                 result, dict_to_use)
-            self.write_or_append_to_csv(df_for_paper, url)
-            return_dict[result][CSVMADE] = True
-            logging.debug("Wrote csv files for paper %s", paper)
+            if makecsv:
+                self.write_or_append_to_csv(df_for_paper, url)
+                return_dict[result][CSVMADE] = True
+                logging.debug("Wrote csv files for paper %s", paper)
+            if makehtml:
+                self.make_html_from_dataframe(df_for_paper, url)
+                return_dict[result][HTMLMADE] = True
+                logging.debug("Wrote html files for paper %s", paper)
+            if makexml:
+                total_xml_of_paper = dict2xml(
+                dict_to_use[result], wrap="root", indent="   "
+                )
+                xmlurl_of_paper = os.path.join(
+                    os.getcwd(), result_encoded, name_result_file_for_paper)
+                with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
+                    file_handler.write(total_xml_of_paper)
+                logging.debug("Wrote xml files for paper %s", paper)
 
-    def make_html_for_dict(self, df, return_dict, output_main, output_paper):
-        
+    def make_html_for_dict(self, return_dict, name_main_result_file, name_result_file_for_paper):
+        """Writes html content for the given dictionary to disk 
+
+        :param return_dict: dictionary to write the content for
+        :type return_dict: dict
+        :param name_main_result_file: name of the main result file (eg. eupmc-results.xml)
+        :type name_main_result_file: string
+        :param name_result_file_for_paper: name of the result file for a paper
+        :type name_result_file_for_paper: string
+        """
         logging.info("Making html files for metadata at %s", os.getcwd())
-        paper = 0
-        htmlurl = os.path.join(os.getcwd(), output_main)
+        htmlurl = os.path.join(os.getcwd(), name_main_result_file)
+        df = self._get_dataframe_without_additional_pygetpapers_attributes(return_dict)
         self.make_html_from_dataframe(df, htmlurl)
-        for result in tqdm(return_dict):
-            paper += 1
-            result_encoded = self.url_encode_id(result)
-            url = os.path.join(os.getcwd(), result_encoded, output_paper)
-            self.check_or_make_directory(
-                os.path.join(os.getcwd(), result_encoded))
-            df_for_paper = self._make_dataframe_for_paper_dict(
-                result, return_dict)
-            self.make_html_from_dataframe(df_for_paper, url)
-            return_dict[result][HTMLMADE] = True
-            logging.debug("Wrote xml files for paper %s", paper)
+        self._make_csv_xml_or_html(name_result_file_for_paper,return_dict,makehtml=True)
 
-    def make_xml_for_dict(self, return_dict, output_main, output_paper):
-        
+
+    def _get_dataframe_without_additional_pygetpapers_attributes(self, return_dict):
+        dict_to_use = self.removing_added_attributes_from_dictionary(return_dict)
+        df = pd.DataFrame.from_dict(dict_to_use)
+        return df
+
+    def make_xml_for_dict(self, return_dict, name_main_result_file, name_result_file_for_paper):
+        """Writes xml content for the given dictionary to disk 
+
+        :param return_dict: dictionary to write the content for
+        :type return_dict: dict
+        :param name_main_result_file: name of the main result file (eg. eupmc-results.xml)
+        :type name_main_result_file: string
+        :param name_result_file_for_paper: name of the result file for a paper
+        :type name_result_file_for_paper: string
+        """
         dict_to_use = self.removing_added_attributes_from_dictionary(return_dict)
         total_xml = dict2xml(dict_to_use, wrap="root", indent="   ")
         logging.info("Making xml files for metadata at %s", os.getcwd())
-        xmlurl = os.path.join(os.getcwd(), output_main)
+        xmlurl = os.path.join(os.getcwd(), name_main_result_file)
         with open(xmlurl, "w", encoding="utf-8") as file_handler:
             file_handler.write(total_xml)
         paper = 0
-        for result in tqdm(dict_to_use):
-            paper += 1
-            total_xml_of_paper = dict2xml(
-                dict_to_use[result], wrap="root", indent="   "
-            )
-            result_encoded = self.url_encode_id(result)
-            xmlurl_of_paper = os.path.join(
-                os.getcwd(), result_encoded, output_paper)
-
-            self.check_or_make_directory(
-                os.path.join(os.getcwd(), result_encoded))
-
-            with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
-                file_handler.write(total_xml_of_paper)
-
-            logging.debug("Wrote xml files for paper %s", paper)
+        self._make_csv_xml_or_html(name_result_file_for_paper,return_dict,paper,makexml=True)
 
     def handle_creation_of_csv_html_xml(
         self, makecsv, makehtml, makexml, return_dict, name
     ):
+        """Writes csv, html, xml for given conditions
+
+        :param makecsv: whether to get csv 
+        :type makecsv: bool
+        :param makehtml: whether to get html 
+        :type makehtml: bool
+        :param makexml: whether to get xml 
+        :type makexml: bool
+        :param return_dict: dictionary to write the content for
+        :type return_dict: dict
+        :param name: name of the file to save
+        :type name: string
+        """
         
-        dict_to_use = self.removing_added_attributes_from_dictionary(return_dict)
-        df = pd.DataFrame.from_dict(dict_to_use)
         if makecsv:
             self.make_csv_for_dict(
-                df, return_dict, f"{name}s.csv", f"{name}.csv")
+               return_dict, f"{name}s.csv", f"{name}.csv")
         if makehtml:
             self.make_html_for_dict(
-                df, return_dict, f"{name}s.html", f"{name}.html")
+                return_dict, f"{name}s.html", f"{name}.html")
         if makexml:
             self.make_xml_for_dict(return_dict, f"{name}s.xml", f"{name}.xml")
 
     @staticmethod
     def url_encode_id(doi_of_paper):
-        
+        """Encodes the doi of paper in a file savable name
+
+        :param doi_of_paper: doi 
+        :type doi_of_paper: string
+        :return: url encoded doi
+        :rtype: string
+        """
         url_encoded_doi_of_paper = doi_of_paper.replace(
             "\\", "_").replace("/", "_")
         return url_encoded_doi_of_paper
 
     @staticmethod
     def get_version():
-        
+        """Gets version from the configuration file
+
+        :return: version of pygetpapers as described in the configuration file
+        :rtype: string
+        """
         with open(
             os.path.join(os.path.dirname(__file__), "config.ini")
         ) as file_handler:
@@ -581,14 +646,14 @@ class DownloadTools:
         return version
 
     @staticmethod
-    def make_dict_from_list(metadata_list, paper_key):
+    def _make_dict_from_list(metadata_list, paper_key):
         
         paper_by_key = {}
         for paper in metadata_list:
             paper_by_key[paper[paper_key]] = paper
         return paper_by_key
 
-    def make_metadata_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
+    def _make_metadata_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
         
         self.dumps_json_to_given_path(f"{name_of_file}s.json", updated_dict)
         logging.info("Wrote metadata file for the query")
@@ -612,7 +677,7 @@ class DownloadTools:
                 logging.debug(
                     "Wrote metadata file for the paper %s", paper_numer)
 
-    def adds_new_results_to_metadata_dictionary(
+    def _adds_new_results_to_metadata_dictionary(
         self, cursor_mark, previous_metadata_dictionary, total_number_of_results, update=None
     ):
         

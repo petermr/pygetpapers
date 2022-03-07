@@ -54,10 +54,7 @@ FEATURESNOTSUPPORTED = "features_not_supported"
 class ApiPlugger:
     
     def __init__(self,query_namespace):
-        """[summary]
-
-        :param api: [description]
-        :type api: [type]
+        """Helps run query for given api in the query_namespace
         """
         self.download_tools = DownloadTools(query_namespace[API])
         self.query_namespace = query_namespace
@@ -67,11 +64,7 @@ class ApiPlugger:
         
     
     def _assist_warning_api(self):
-        """[summary]
-
-        :param query_namespace: [description]
-        :type query_namespace: [type]
-        :raises PygetpapersError: [description]
+        """Raises error if feature not supported for api but given in query_namespace
         """ 
         for feature in self.features_not_supported_by_api:
             if self.query_namespace[feature]:
@@ -91,12 +84,12 @@ class ApiPlugger:
             raise PygetpapersError("Please specify a query")
 
     def setup_api_support_variables(self, config, api):
-        """[summary]
+        """Reads in the configuration file namespace object and sets up class variable for the given api
 
-        :param config: [description]
-        :type config: [type]
-        :param api: [description]
-        :type api: [type]
+        :param config: Configparser configured configuration file
+        :type config: configparser object
+        :param api: the repository to get the variables for
+        :type api: string
         """
         self.class_name = config.get(api,CLASSNAME)
         self.library_name = config.get(api,LIBRARYNAME)
@@ -165,10 +158,7 @@ class ApiPlugger:
 
 
     def check_query_logic_and_run(self):
-        """[summary]
-
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        """Checks the logic in query_namespace and runs pygetpapers for the given query
         """
         try:
             self._assist_warning_api()
@@ -270,10 +260,10 @@ class Pygetpapers:
 
     @staticmethod
     def makes_output_directory(query_namespace):
-        """[summary]
+        """Makes the output directory for the given output in query_namespace
 
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        :param query_namespace: pygetpaper's name space object
+        :type query_namespace: dict
         """
         if os.path.exists(query_namespace[OUTPUT]):
             os.chdir(query_namespace[OUTPUT])
@@ -283,10 +273,10 @@ class Pygetpapers:
             os.chdir(query_namespace[OUTPUT])
 
     def generate_logger(self, query_namespace):
-        """[summary]
+        """Creates logger for the given loglevel
 
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        :param query_namespace: pygetpaper's name space object
+        :type query_namespace: dict
         """
         levels = {
             "critical": logging.CRITICAL,
@@ -307,60 +297,7 @@ class Pygetpapers:
             coloredlogs.install(level=level, fmt='%(levelname)s: %(message)s')
     
     def run_command(self,output=None,query=None,save_query=False,xml=False,pdf=False,supp=False,zip=False,references=False,noexecute=False,citations=False,limit=100,restart=False,update=False,onlyquery=False,makecsv=False,makehtml=False,synonym=False,startdate=False,enddate=False,terms=False,notterms=False,api="europe_pmc",filter=None,loglevel="info",logfile=False,version=False):
-        """_summary_
-
-        :param output: _description_, defaults to None
-        :type output: _type_, optional
-        :param query: _description_, defaults to None
-        :type query: _type_, optional
-        :param save_query: _description_, defaults to False
-        :type save_query: bool, optional
-        :param xml: _description_, defaults to False
-        :type xml: bool, optional
-        :param pdf: _description_, defaults to False
-        :type pdf: bool, optional
-        :param supp: _description_, defaults to False
-        :type supp: bool, optional
-        :param zip: _description_, defaults to False
-        :type zip: bool, optional
-        :param references: _description_, defaults to False
-        :type references: bool, optional
-        :param noexecute: _description_, defaults to False
-        :type noexecute: bool, optional
-        :param citations: _description_, defaults to False
-        :type citations: bool, optional
-        :param limit: _description_, defaults to 100
-        :type limit: int, optional
-        :param restart: _description_, defaults to False
-        :type restart: bool, optional
-        :param update: _description_, defaults to False
-        :type update: bool, optional
-        :param onlyquery: _description_, defaults to False
-        :type onlyquery: bool, optional
-        :param makecsv: _description_, defaults to False
-        :type makecsv: bool, optional
-        :param makehtml: _description_, defaults to False
-        :type makehtml: bool, optional
-        :param synonym: _description_, defaults to False
-        :type synonym: bool, optional
-        :param startdate: _description_, defaults to False
-        :type startdate: bool, optional
-        :param enddate: _description_, defaults to False
-        :type enddate: bool, optional
-        :param terms: _description_, defaults to False
-        :type terms: bool, optional
-        :param notterms: _description_, defaults to False
-        :type notterms: bool, optional
-        :param api: _description_, defaults to "europe_pmc"
-        :type api: str, optional
-        :param filter: _description_, defaults to None
-        :type filter: _type_, optional
-        :param loglevel: _description_, defaults to "info"
-        :type loglevel: str, optional
-        :param logfile: _description_, defaults to False
-        :type logfile: bool, optional
-        :param version: _description_, defaults to False
-        :type version: bool, optional
+        """Runs pygetpapers for the given parameters
         """
         got_parameters = locals()
         if output==False:
@@ -368,6 +305,11 @@ class Pygetpapers:
         self.runs_pygetpapers_for_given_args(got_parameters)
 
     def runs_pygetpapers_for_given_args(self,query_namespace):
+        """Runs pygetpapers for flags described in a dictionary
+
+        :param query_namespace: pygetpaper's namespace object
+        :type query_namespace: dict
+        """
         self.generate_logger(query_namespace)
         self.makes_output_directory(query_namespace)
         if query_namespace[VERSION]:
@@ -382,7 +324,7 @@ class Pygetpapers:
         api_handler.check_query_logic_and_run()
         
     def create_argparser(self):
-        """_summary_
+        """Creates the cli
         """        
         version = self.version
 
@@ -612,5 +554,3 @@ if __name__ == "__main__":
 
 #TODO: add half a sentence about config queries
 #TODO: document habenaro usage in crossref and define the common functions
-#TODO: describe apiplugger
-#TODO: bifurcate check_query_logic_and_run

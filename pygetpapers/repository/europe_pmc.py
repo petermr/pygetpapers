@@ -248,8 +248,8 @@ class EuropePmc(RepositoryInterface):
     def update(self, query_namespace):
         """[summary]
 
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        :param query_namespace: pygetpaper's name space object
+        :type query_namespace: dict
         """
         update_path = self.download_tools.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
@@ -273,8 +273,8 @@ class EuropePmc(RepositoryInterface):
     def restart(self, query_namespace):
         """[summary]
 
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        :param query_namespace: pygetpaper's name space object
+        :type query_namespace: dict
         """
         restart_file_path = self.download_tools.get_metadata_results_file()
         read_json = self.download_tools.readjsondata(restart_file_path)
@@ -294,8 +294,8 @@ class EuropePmc(RepositoryInterface):
     def noexecute(self, query_namespace):
         """[summary]
 
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        :param query_namespace: pygetpaper's name space object
+        :type query_namespace: dict
         """
         query = query_namespace["query"]
         synonym = query_namespace["synonym"]
@@ -380,8 +380,8 @@ class EuropePmc(RepositoryInterface):
     ):
         """[summary]
 
-        :param query_namespace: [description]
-        :type query_namespace: [type]
+        :param query_namespace: pygetpaper's name space object
+        :type query_namespace: dict
         """
         query = query_namespace["query"]
         size = query_namespace["limit"]
