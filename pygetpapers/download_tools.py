@@ -16,7 +16,7 @@ import xmltodict
 from dict2xml import dict2xml
 from tqdm import tqdm
 from lxml import etree
-
+from pathlib import Path
 from pygetpapers.pgexceptions import PygetpapersError
 
 PYGETPAPERS = "pygetpapers"
@@ -165,17 +165,15 @@ class DownloadTools:
         else:
             df_transposed.to_csv(path)
 
-    @staticmethod
-    def writexml(directory_url, destination_url, xml_content):
-        """writes xml content to given destination_url in given directory_url
+    def writexml(self, destination_url, xml_content):
+        """writes xml content to given destination_url
 
-        :param directory_url: directory in which file is to be saved
-        :type directory_url: string
         :param destination_url: path to dump xml content
         :type destination_url: string
         :param xml_content: xml content 
         :type xml_content: byte string
         """
+        directory_url = self.get_parent_directory(destination_url)
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
         with open(destination_url, "wb") as file_handler:
@@ -351,11 +349,9 @@ class DownloadTools:
         with open(path_to_save, "w", encoding="utf-8") as file_handler:
             file_handler.write(html_with_pagination)
 
-    def make_references(self, directory_url, paperid, source, referenceurl):
+    def make_references(self, paperid, source, referenceurl):
         """[summary]
 
-        :param directory_url: [description]
-        :type directory_url: [type]
         :param paperid: [description]
         :type paperid: [type]
         :param source: [description]
@@ -364,22 +360,20 @@ class DownloadTools:
         :type referenceurl: [type]
         """
         getreferences = self.get_request_endpoint_for_references(paperid, source)
-        self.writexml(directory_url, referenceurl, getreferences)
+        self.writexml(referenceurl, getreferences)
 
-    def make_citations(self, source, citationurl, directory_url, identifier):
-        """Retreives URL for the citations for the given paperid, gets the xml, writes to directory_url
+    def make_citations(self, source, citationurl, identifier):
+        """Retreives URL for the citations for the given paperid, gets the xml, writes to citationurl
 
         :param source: which repository to get the citations from
         :type source: which repository to get the citations from 
         :param citationurl: path to save the citations to 
         :type citationurl: string
-        :param directory_url: directory to save the citations to
-        :type directory_url: string
         :param identifier: unique identifier present in the url for the particular paper
         :type identifier: string
         """
         getcitations = self.get_request_endpoint_for_citations(identifier, source)
-        self.writexml(directory_url, citationurl, getcitations)
+        self.writexml(citationurl, getcitations)
 
     @staticmethod
     def readjsondata(path):
@@ -408,21 +402,31 @@ class DownloadTools:
         request_handler = requests.get(self.xmlurl.format(identifier=identifier))
         return request_handler.content
 
+    def get_parent_directory(self,path):
+        """Returns path of the parent directory for given path
+
+        :param path: path of the file
+        :type path: string
+        :return: path of the parent directory
+        :rtype: string
+        """
+        path = Path(path)
+        return path.parent.absolute()
+
     def getsupplementaryfiles(
-        self, identifier, directory_url, path_to_save, from_ftp_end_point=False
+        self, identifier, path_to_save, from_ftp_end_point=False
     ):
-        """[summary]
+        """Retrieves supplementary files for the given paper (according to identifier) and saves to path_to_save
 
         :param identifier: unique identifier present in the url for the particular paper
         :type identifier: string
-        :param directory_url: directory to save the supplementary files to
-        :type directory_url: string
         :param path_to_save: path to save the supplementary files to
         :type path_to_save: string
         :param from_ftp_end_point: to get the results from eupmc ftp endpoint
         :type from_ftp_end_point: bool, optional
         """
         url, log_key = self.get_url_for_zip_file(identifier, from_ftp_end_point)
+        directory_url = self.get_parent_directory(path_to_save)
         request_handler = requests.get(url)
         if not os.path.isdir(directory_url):
             os.makedirs(directory_url)
