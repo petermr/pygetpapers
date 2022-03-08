@@ -573,23 +573,7 @@ class EuropePmc(RepositoryInterface):
         else:
             logging.warning("Title not found for paper %s", paper_number)
 
-    def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
-        
-        logging.debug("Reading Query Result for paper %s", paper_number)
-        pdfurl = []
-        htmlurl = []
-        for x in paper[FULL_TEST_URL_LIST][FULL_TEXT_URL]:
-            if x[DOCUMENTSTYLE] == PDF and x[AVAILABILITY] == OPENACCESS:
-                pdfurl.append(x[URL])
 
-            if x[DOCUMENTSTYLE] == HTML and x[AVAILABILITY] == OPENACCESS:
-                htmlurl.append(x[URL])
-        identifier_for_paper = paper[identifier_for_paper]
-        resultant_dict = self.download_tools._make_initial_columns_for_paper_dict(
-            identifier_for_paper, resultant_dict
-        )
-        resultant_dict[identifier_for_paper].update(paper)
-        return htmlurl, identifier_for_paper, pdfurl, resultant_dict
 
     def make_metadata_json(self, resultant_dict, update=False):
         if update:
