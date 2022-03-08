@@ -56,44 +56,66 @@ class Arxiv(RepositoryInterface):
         self.download_tools = DownloadTools(ARXIV)
 
     def arxiv(
-            self, query, size, getpdf=False, makecsv=False, makexml=False, makehtml=False
+            self, query, cutoff_size, getpdf=False, makecsv=False, makexml=False, makehtml=False
     ):
+        """Builds the arxiv searcher and writes the xml, pdf, csv and html
+
+        :param query: query given to arxiv
+        :type query: string
+        :param cutoff_size: number of papers to retrieve
+        :type cutoff_size: int
+        :param getpdf: whether to get pdf
+        :type getpdf: bool, optional
+        :param makecsv: whether to get csv 
+        :type makecsv: bool
+        :param makehtml: whether to get html 
+        :type makehtml: bool
+        :param makexml: whether to get xml 
+        :type makexml: bool
+        :return: dictionary of results retrieved from arxiv
+        :rtype: dict
+        """
         logging.info("Making request to Arxiv through pygetpapers")
         search = arxiv.Search(
-            query=query, max_results=size, sort_by=arxiv.SortCriterion.Relevance
+            query=query, max_results=cutoff_size, sort_by=arxiv.SortCriterion.Relevance
         )
 
-        return_dict = {}
+        metadata_dictionary = {}
         logging.info("Got request result from Arxiv through pygetpapers")
 
-        self.make_dict_from_arxiv_output(return_dict, search)
-        for paper in return_dict:
-            self.download_tools._add_download_status_keys(paper, return_dict)
+        self._make_dict_from_arxiv_output(metadata_dictionary, search)
+        for paper in metadata_dictionary:
+            self.download_tools._add_download_status_keys(paper, metadata_dictionary)
         if getpdf:
-            self.download_pdf(return_dict)
+            self.download_pdf(metadata_dictionary)
         self.download_tools.handle_creation_of_csv_html_xml(
-            makecsv, makehtml, makexml, return_dict, ARXIV_RESULT
+            makecsv, makehtml, makexml, metadata_dictionary, ARXIV_RESULT
         )
-        self.make_json_from_arxiv_dict(return_dict)
+        self.make_json_from_arxiv_dict(metadata_dictionary)
 
-        return return_dict
+        return metadata_dictionary
 
-    def make_json_from_arxiv_dict(self, return_dict):
+    def make_json_from_arxiv_dict(self, metadata_dictionary):
+        """Iterates through metadata_dictionary and makes json metadata file for papers
+
+        :param metadata_dictionary: metadata dictionary for papers
+        :type metadata_dictionary: dict
+        """
         jsonurl = os.path.join(os.getcwd(), ARXIV_RESULTS_JSON)
-        self.download_tools.dumps_json_to_given_path(jsonurl, return_dict)
-        for result in tqdm(return_dict):
-            return_dict[result][JSONDOWNLOADED] = True
+        self.download_tools.dumps_json_to_given_path(jsonurl, metadata_dictionary)
+        for result in tqdm(metadata_dictionary):
+            metadata_dictionary[result][JSONDOWNLOADED] = True
             self.download_tools.check_or_make_directory(result)
             jsonurl = os.path.join(os.getcwd(), result, ARXIV_RESULT_JSON)
-            self.download_tools.dumps_json_to_given_path(jsonurl, return_dict[result])
+            self.download_tools.dumps_json_to_given_path(jsonurl, metadata_dictionary[result])
 
     @staticmethod
-    def make_dict_from_arxiv_output(return_dict, search):
+    def _make_dict_from_arxiv_output(metadata_dictionary, search):
         for result in search.get():
             url_encoded_id_of_paper = str(result.entry_id).rsplit("/", 1)[-1]
 
-            return_dict[url_encoded_id_of_paper] = {}
-            paper_dict = return_dict[url_encoded_id_of_paper]
+            metadata_dictionary[url_encoded_id_of_paper] = {}
+            paper_dict = metadata_dictionary[url_encoded_id_of_paper]
             paper_dict[DATE_UPDATED] = str(
                 result.updated)
             paper_dict[DATE_PUBLISHED] = str(
@@ -121,22 +143,25 @@ class Arxiv(RepositoryInterface):
             paper_dict[ENTRY_ID] = str(
                 result.entry_id)
 
-    def download_pdf(self, return_dict):
-       
+    def download_pdf(self, metadata_dictionary):
+        """Downloads pdfs for papers in metadata dictionary
+
+        :param metadata_dictionary: metadata dictionary for papers
+        :type metadata_dictionary: dict
+        """
         logging.info("Downloading Pdfs for papers")
-        for result in tqdm(return_dict):
+        for result in tqdm(metadata_dictionary):
             self.download_tools.check_or_make_directory(
                 os.path.join(os.getcwd(), result)
             )
             pdf_url = os.path.join(os.getcwd(), result, FULLTEXT_PDF)
             self.download_tools.queries_the_url_and_writes_response_to_destination(
-                return_dict[result][PDF_URL], pdf_url
+                metadata_dictionary[result][PDF_URL], pdf_url
             )
-            return_dict[result][PDFDOWNLOADED] = True
+            metadata_dictionary[result][PDFDOWNLOADED] = True
 
     @staticmethod
     def noexecute(query_namespace):
-        
         logging.info("Arxiv api working for the query %s", query_namespace["query"])
 
     @staticmethod

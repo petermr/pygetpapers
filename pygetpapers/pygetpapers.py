@@ -115,13 +115,16 @@ class ApiPlugger:
         else:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = f'{self.query_namespace[STARTDATE]}/{self.query_namespace[ENDDATE]}'
 
-        if self.query_namespace[STARTDATE] and self.query_namespace[ENDDATE]:
+
+        if self.query_namespace[STARTDATE] and self.query_namespace[ENDDATE] and self.query_namespace[API]==EUROPEPMC:
             self.query_namespace[QUERY] = (
                 f'({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO {self.query_namespace[ENDDATE]}])'
             )
-        elif self.query_namespace[ENDDATE]:
+        elif self.query_namespace[ENDDATE] and self.query_namespace[API]==EUROPEPMC:
             self.query_namespace[QUERY] = f'({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[TO {self.query_namespace[ENDDATE]}])'
 
+        if self.query_namespace[API]==BIORXIV or self.query_namespace[API]==MEDRXIV:
+            self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
     def add_terms_from_file(self):
         """Builds query from terms mentioned in a text file described in the argparse namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)
         Edits the namespace object's query flag.

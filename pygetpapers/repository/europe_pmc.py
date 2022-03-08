@@ -68,127 +68,96 @@ class EuropePmc(RepositoryInterface):
     """ """
 
     def __init__(self):
-        """[summary]"""
         self.download_tools = DownloadTools(EUROPEPMC)
 
-    def europepmc(self, query, size, synonym=True, **kwargs):
-        """"""     
-        size = int(size)
+    def europepmc(self, query, cutoff_size, synonym=True, cursor_mark="*"):
+        """Queries eupmc for given query for given number(cutoff_size) papers
+
+        :param query: query
+        :type query: string
+        :param cutoff_size: number of papers to get
+        :type cutoff_size: int
+        :param synonym: whether to get synonyms, defaults to True
+        :type synonym: bool, optional
+        :return: list containg the papers
+        :rtype: list
+        """            
+        cutoff_size = int(cutoff_size)
+        cursor_mark=cursor_mark
         (
-            content,
-            counter,
+            list_of_papers,
             maximum_hits_per_page,
             morepapers,
-            next_cursor_mark,
-            number_of_papers_there,
+            len_list_papers,
         ) = self.create_parameters_for_paper_download()
-        while number_of_papers_there <= size and morepapers is True:
-            builtquery = self.build_and_send_query(
-                maximum_hits_per_page, next_cursor_mark, query, synonym
+        counter=0
+        while len_list_papers <= cutoff_size and morepapers is True:
+            retireved_metadata_dictionary = self.build_and_send_query(
+                maximum_hits_per_page, cursor_mark, query, synonym
             )
-            if builtquery:
+            if retireved_metadata_dictionary:
                 counter += 1
-                totalhits = builtquery[RESPONSE_WRAPPER][HITCOUNT]
+                totalhits = retireved_metadata_dictionary[RESPONSE_WRAPPER][HITCOUNT]
                 if counter == 1:
                     logging.info("Total Hits are %s", totalhits)
                 if int(totalhits) == 0:
                     logging.warning("Could not find more papers")
                     break
-                output_dict = json.loads(json.dumps(builtquery))
-                try:
-                    number_of_papers_there = self.create_final_paper_list(
-                        content, kwargs, number_of_papers_there, output_dict, size
-                    )
-                except PygetpapersError as exception:
-                    logging.debug(exception)
-                    morepapers = False
-                    logging.warning("Could not find more papers")
-                    break
-                morepapers = self.add_cursor_mark_if_exists(
-                    builtquery, morepapers, next_cursor_mark
+                list_of_papers,morepapers = self._add_papers_to_list_of_papers(list_of_papers,retireved_metadata_dictionary)
+                len_list_papers+=len(list_of_papers)
+                morepapers,cursor_mark = self.add_cursor_mark_if_exists(
+                    retireved_metadata_dictionary
                 )
-        if len(content[0]) > size:
-            content[0] = content[0][0:size]
-        return content
+        list_of_papers = self.remove_extra_papers_from_list(cutoff_size, list_of_papers)
+        dictionary_with_papers = self._make_metadata_dictionary_from_list_of_papers(list_of_papers)
+        metadata_dictionary={CURSOR_MARK:cursor_mark,"papers":dictionary_with_papers}
+        return metadata_dictionary
 
-    def create_final_paper_list(
-        self, content, kwargs, number_of_papers_there, output_dict, size
-    ):
-        """[summary]
+    def remove_extra_papers_from_list(self, cutoff_size, list_of_papers):
+        if len(list_of_papers) > cutoff_size:
+            list_of_papers = list_of_papers[0:cutoff_size]
+        return list_of_papers
 
-        :param content: [description]
-        :type content: [type]
-        :param kwargs: [description]
-        :type kwargs: [type]
-        :param number_of_papers_there: [description]
-        :type number_of_papers_there: [type]
-        :param output_dict: [description]
-        :type output_dict: [type]
-        :param size: [description]
-        :type size: [type]
-        :return: [description]
-        :rtype: [type]
-        """
-        check_if_only_result = isinstance(
-            output_dict[RESPONSE_WRAPPER][RESULT_LIST][RESULT], dict
-        )
-        if check_if_only_result:
-            paper = output_dict[RESPONSE_WRAPPER][RESULT_LIST][RESULT]
-            number_of_papers_there = self.append_paper_to_list(
-                content, kwargs, number_of_papers_there, paper, size
+    def _add_papers_to_list_of_papers(self, list_of_papers,retireved_metadata_dictionary):
+        morepapers = True
+        if RESULT in retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST]:
+            single_result = isinstance(
+            retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST][RESULT],dict
             )
-        else:
-            for paper in output_dict[RESPONSE_WRAPPER][RESULT_LIST][RESULT]:
-                number_of_papers_there = self.append_paper_to_list(
-                    content, kwargs, number_of_papers_there, paper, size
-                )
-        return number_of_papers_there
-
-    def add_cursor_mark_if_exists(self, builtquery, morepapers, next_cursor_mark):
-        """[summary]
-
-        :param builtquery: [description]
-        :type builtquery: [type]
-        :param morepapers: [description]
-        :type morepapers: [type]
-        :param next_cursor_mark: [description]
-        :type next_cursor_mark: [type]
-        :return: [description]
-        :rtype: [type]
-        """
-
-        if CURSOR_MARK in builtquery[RESPONSE_WRAPPER]:
-            next_cursor_mark.append(
-                builtquery[RESPONSE_WRAPPER][CURSOR_MARK])
+            papers = retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST][RESULT]
+            if single_result and PMCID in papers:
+                list_of_papers.append(papers)
+            else:
+                for paper in retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST][RESULT]:
+                    if PMCID in paper:
+                        list_of_papers.append(paper)
         else:
             morepapers = False
             logging.warning("Could not find more papers")
-        return morepapers
+        return list_of_papers,morepapers
+
+
+    def add_cursor_mark_if_exists(self, retireved_metadata_dictionary):
+        morepapers = True
+        if CURSOR_MARK in retireved_metadata_dictionary[RESPONSE_WRAPPER]:
+            cursor_mark= (
+                retireved_metadata_dictionary[RESPONSE_WRAPPER][CURSOR_MARK])
+        else:
+            cursor_mark= None
+            morepapers = False
+            logging.warning("Could not find more papers")
+        return morepapers,cursor_mark
 
     def build_and_send_query(
-        self, maximum_hits_per_page, next_cursor_mark, query, synonym
-    ):
-        """[summary]
-
-        :param maximum_hits_per_page: [description]
-        :type maximum_hits_per_page: [type]
-        :param next_cursor_mark: [description]
-        :type next_cursor_mark: [type]
-        :param query: [description]
-        :type query: [type]
-        :param synonym: [description]
-        :type synonym: [type]
-        :return: [description]
-        :rtype: [type]
-        """
-        
+        self, maximum_hits_per_page, cursor_mark, query, synonym
+    ):        
         queryparams = self.buildquery(
-            next_cursor_mark[-1], maximum_hits_per_page, query, synonym=synonym
+            cursor_mark, maximum_hits_per_page, query, synonym=synonym
         )
-        builtquery = self.download_tools.postquery(
+        retireved_metadata_dictionary = self.download_tools.gets_result_dict_for_query(
             queryparams[HEADERS], queryparams[PAYLOAD]
         )
-        return builtquery
+        return retireved_metadata_dictionary
 
     @staticmethod
     def create_parameters_for_paper_download():
@@ -198,52 +167,17 @@ class EuropePmc(RepositoryInterface):
         :rtype: [type]
         """
         
-        content = [[]]
-        next_cursor_mark = [
-            "*",
-        ]
+        list_of_papers = []
         morepapers = True
         number_of_papers_there = 0
         maximum_hits_per_page = 1000
-        counter = 0
         return (
-            content,
-            counter,
+            list_of_papers,
             maximum_hits_per_page,
             morepapers,
-            next_cursor_mark,
             number_of_papers_there,
         )
 
-    def append_paper_to_list(self, content, kwargs, number_of_papers_there, paper, size):
-        """[summary]
-
-        :param content: [description]
-        :type content: [type]
-        :param kwargs: [description]
-        :type kwargs: [type]
-        :param number_of_papers_there: [description]
-        :type number_of_papers_there: [type]
-        :param paper: [description]
-        :type paper: [type]
-        :param size: [description]
-        :type size: [type]
-        :return: [description]
-        :rtype: [type]
-        """
-        if UPDATE in kwargs:
-            if PMCID in paper and paper[PMCID] not in kwargs[UPDATE]:
-                if number_of_papers_there <= size:
-                    content[0].append(paper)
-                    number_of_papers_there += 1
-        else:
-            if PMCID in paper:
-                if number_of_papers_there <= size:
-                    content[0].append(paper)
-                    number_of_papers_there += 1
-            else:
-                pass
-        return number_of_papers_there
 
     def update(self, query_namespace):
         """[summary]
@@ -254,11 +188,10 @@ class EuropePmc(RepositoryInterface):
         update_path = self.download_tools.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
         read_json = self.download_tools.readjsondata(update_path)
-        os.chdir(os.path.dirname(update_path))
-        self.updatecorpus(
+        self.run_eupmc_query_and_get_metadata(
             query_namespace["query"],
-            read_json,
-            query_namespace["limit"],
+            update=read_json,
+            cutoff_size=query_namespace["limit"],
             getpdf=query_namespace["pdf"],
             makecsv=query_namespace["makecsv"],
             makexml=query_namespace["xml"],
@@ -277,10 +210,10 @@ class EuropePmc(RepositoryInterface):
         :type query_namespace: dict
         """
         restart_file_path = self.download_tools.get_metadata_results_file()
-        read_json = self.download_tools.readjsondata(restart_file_path)
+        dict_from_previous_run = self.download_tools.readjsondata(restart_file_path)
         os.chdir(os.path.dirname(restart_file_path))
-        self.makexmlfiles(
-            read_json,
+        self.get_supplementary_metadata_formats(
+            metadata_dictionary=dict_from_previous_run,
             getpdf=query_namespace["pdf"],
             makecsv=query_namespace["makecsv"],
             makehtml=query_namespace["makehtml"],
@@ -302,17 +235,17 @@ class EuropePmc(RepositoryInterface):
         builtqueryparams = self.buildquery(
             "*", 25, query, synonym=synonym
         )
-        result = self.download_tools.postquery(
+        result = self.download_tools.gets_result_dict_for_query(
             builtqueryparams[HEADERS], builtqueryparams[PAYLOAD]
         )
         totalhits = result[RESPONSE_WRAPPER][HITCOUNT]
         logging.info("Total number of hits for the query are %s", totalhits)
 
-    def updatecorpus(
+    def run_eupmc_query_and_get_metadata(
         self,
         query,
-        original_json,
-        size,
+        cutoff_size,
+        update=None,
         onlymakejson=False,
         getpdf=False,
         makehtml=False,
@@ -324,47 +257,19 @@ class EuropePmc(RepositoryInterface):
         synonym=True,
         zip_files=False,
     ):
-        """[summary]
-
-        :param query: [description]
-        :type query: [type]
-        :param original_json: [description]
-        :type original_json: [type]
-        :param size: [description]
-        :type size: [type]
-        :param onlymakejson: [description], defaults to False
-        :type onlymakejson: bool, optional
-        :param getpdf: [description], defaults to False
-        :type getpdf: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param references: [description], defaults to False
-        :type references: bool, optional
-        :param citations: [description], defaults to False
-        :type citations: bool, optional
-        :param supplementary_files: [description], defaults to False
-        :type supplementary_files: bool, optional
-        :param synonym: [description], defaults to True
-        :type synonym: bool, optional
-        :param zip_files: [description], defaults to False
-        :type zip_files: bool, optional
-        """
-        query_result = self.europepmc(
-            query, size, update=original_json, synonym=synonym
+        if update:
+            cursor_mark= (update[CURSOR_MARK])
+        else:
+            cursor_mark = "*"
+        metadata_dictionary = self.europepmc(
+            query, cutoff_size, cursor_mark=cursor_mark, synonym=synonym
         )
-        is_search_successful = self.makecsv(
-            query_result, makecsv=makecsv, makehtml=makehtml, update=original_json
+        self.make_metadata_json(
+            metadata_dictionary,update=update
         )
-        if not onlymakejson and is_search_successful is not False:
-            read_json = self.download_tools.readjsondata(
-                os.path.join(str(os.getcwd()), RESULTS_JSON)
-            )
-            self.makexmlfiles(
-                read_json,
+        if not onlymakejson:
+            self.get_supplementary_metadata_formats(
+                metadata_dictionary,
                 getpdf=getpdf,
                 makecsv=makecsv,
                 makexml=makexml,
@@ -378,13 +283,9 @@ class EuropePmc(RepositoryInterface):
     def apipaperdownload(
         self, query_namespace
     ):
-        """[summary]
-
-        :param query_namespace: pygetpaper's name space object
-        :type query_namespace: dict
-        """
+      
         query = query_namespace["query"]
-        size = query_namespace["limit"]
+        cutoff_size = query_namespace["limit"]
         onlymakejson = query_namespace["onlyquery"]
         getpdf = query_namespace["pdf"]
         makecsv = query_namespace["makecsv"]
@@ -395,26 +296,21 @@ class EuropePmc(RepositoryInterface):
         supplementary_files = query_namespace["supp"]
         zip_files = query_namespace["zip"]
         synonym = query_namespace["synonym"]
-        query_result = self.europepmc(query, size, synonym=synonym)
-        is_search_successful = self.makecsv(
-            query_result, makecsv=makecsv, makehtml=makehtml
+        self.run_eupmc_query_and_get_metadata(
+            query,
+            cutoff_size,
+            onlymakejson=onlymakejson,
+            getpdf=getpdf,
+            makehtml=makehtml,
+            makecsv=makecsv,
+            makexml=makexml,
+            references=references,
+            citations=citations,
+            supplementary_files=supplementary_files,
+            synonym=synonym,
+            zip_files=zip_files,
         )
-
-        if not onlymakejson and is_search_successful:
-            read_json = self.download_tools.readjsondata(
-                os.path.join(str(os.getcwd()), RESULTS_JSON)
-            )
-            self.makexmlfiles(
-                read_json,
-                getpdf=getpdf,
-                makecsv=makecsv,
-                makexml=makexml,
-                makehtml=makehtml,
-                references=references,
-                citations=citations,
-                supplementary_files=supplementary_files,
-                zip_files=zip_files,
-            )
+        
     @staticmethod
     def buildquery(
         cursormark,
@@ -422,19 +318,7 @@ class EuropePmc(RepositoryInterface):
         query,
         synonym=True,
     ):
-        """Builds the python dictionary that gets sent to the api of the repository
 
-        :param cursormark: cursor point for the given query
-        :type cursormark: string
-        :param page_size: number of results to get in a single iteration
-        :type page_size: int
-        :param query: query passed to the api
-        :type query: string
-        :param synonym: Whether to get synonyms of the given query
-        :type synonym: bool, optional
-        :return: dictionary with data in form of headers and payload
-        :rtype: dictionary
-        """
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         payload = {
             "query": query,
@@ -449,7 +333,7 @@ class EuropePmc(RepositoryInterface):
         return {"headers": headers, "payload": payload}
 
     
-    def make_html_from_dict(self, dict_to_write_html_from, url):
+    def make_html_from_dict(self, dict_to_write_html_from, url,identifier_for_paper):
         """[summary]
 
         :param dict_to_write_html_from: [description]
@@ -458,30 +342,30 @@ class EuropePmc(RepositoryInterface):
         :type url: [type]
         """
         df = pd.Series(dict_to_write_html_from).to_frame(
-            dict_to_write_html_from[PMCID]
+            dict_to_write_html_from[identifier_for_paper]
         )
-        self.make_html_from_dataframe(df, url)
+        self.download_tools.make_html_from_dataframe(df, url)
 
-    def get_urls_to_write_to(self, pmcid):
+    def get_urls_to_write_to(self, identifier_for_paper):
         """[summary]
 
-        :param pmcid: [description]
-        :type pmcid: [type]
+        :param identifier_for_paper: [description]
+        :type identifier_for_paper: [type]
         :return: [description]
         :rtype: [type]
         """
         destination_url = os.path.join(
-            str(os.getcwd()), pmcid, FULLTEXT_XML)
-        directory_url = os.path.join(str(os.getcwd()), pmcid)
-        jsonurl = os.path.join(str(os.getcwd()), pmcid, RESULT_JSON)
+            str(os.getcwd()), identifier_for_paper, FULLTEXT_XML)
+        directory_url = os.path.join(str(os.getcwd()), identifier_for_paper)
+        jsonurl = os.path.join(str(os.getcwd()), identifier_for_paper, RESULT_JSON)
         referenceurl = os.path.join(
-            str(os.getcwd()), pmcid, REFERENCE_XML)
-        citationurl = os.path.join(str(os.getcwd()), pmcid, CITATION_XML)
+            str(os.getcwd()), identifier_for_paper, REFERENCE_XML)
+        citationurl = os.path.join(str(os.getcwd()), identifier_for_paper, CITATION_XML)
         supplementaryfilesurl = os.path.join(
-            str(os.getcwd()), pmcid, SUPPLEMENTARY_FILES
+            str(os.getcwd()), identifier_for_paper, SUPPLEMENTARY_FILES
         )
-        zipurl = os.path.join(str(os.getcwd()), pmcid, FTPFILES)
-        htmlurl = os.path.join(str(os.getcwd()), pmcid, EUPMC_HTML)
+        zipurl = os.path.join(str(os.getcwd()), identifier_for_paper, FTPFILES)
+        htmlurl = os.path.join(str(os.getcwd()), identifier_for_paper, EUPMC_HTML)
         return (
             citationurl,
             destination_url,
@@ -493,9 +377,9 @@ class EuropePmc(RepositoryInterface):
             zipurl,
         )
 
-    def makexmlfiles(
+    def get_supplementary_metadata_formats(
         self,
-        final_xml_dict,
+        metadata_dictionary,
         getpdf=False,
         makecsv=False,
         makehtml=False,
@@ -505,35 +389,27 @@ class EuropePmc(RepositoryInterface):
         supplementary_files=False,
         zip_files=False,
     ):
-        """[summary]
-
-        :param final_xml_dict: [description]
-        :type final_xml_dict: [type]
-        :param getpdf: [description], defaults to False
-        :type getpdf: bool, optional
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :param makexml: [description], defaults to False
-        :type makexml: bool, optional
-        :param references: [description], defaults to False
-        :type references: bool, optional
-        :param citations: [description], defaults to False
-        :type citations: bool, optional
-        :param supplementary_files: [description], defaults to False
-        :type supplementary_files: bool, optional
-        :param zip_files: [description], defaults to False
-        :type zip_files: bool, optional
-        """
+        html_url = os.path.join(str(os.getcwd()), EUPMC_HTML)
+        resultant_dict_for_csv = self.download_tools.removing_added_attributes_from_dictionary(
+            metadata_dictionary["papers"]
+        )
+        df = pd.DataFrame.from_dict(
+            resultant_dict_for_csv,
+        )
+        df_transposed = df.T
+        if makecsv:
+            self.download_tools.write_or_append_to_csv(df_transposed)
+        if makehtml:
+            self.download_tools.make_html_from_dataframe(df, html_url)
         if makexml:
             self.download_tools._log_making_xml()
         paper_number = 0
-        for paper in tqdm(final_xml_dict):
+        dict_of_papers = metadata_dictionary["papers"]
+        for paper in tqdm(dict_of_papers):
             start = time.time()
             paper_number += 1
-            pmcid = paper
-            tree = self.download_tools.get_request_endpoint_for_xml(pmcid)
+            identifier_for_paper = dict_of_papers[paper][PMCID]
+            tree = self.download_tools.get_request_endpoint_for_xml(identifier_for_paper)
             (
                 citationurl,
                 destination_url,
@@ -543,27 +419,12 @@ class EuropePmc(RepositoryInterface):
                 supplementaryfilesurl,
                 htmlurl,
                 zipurl,
-            ) = self.get_urls_to_write_to(pmcid)
-            paperdict = final_xml_dict[paper]
-            paperid = paperdict[ID]
-            if references:
-                self.download_tools.make_references(
-                    paperid, references, referenceurl
-                )
-                logging.debug("Made references for %s", pmcid)
-            if citations:
-                self.download_tools.make_citations(
-                    citations, citationurl, paperid
-                )
-                logging.debug("Made Citations for %s", pmcid)
-            if supplementary_files:
-                self.download_tools.getsupplementaryfiles(
-                    pmcid, supplementaryfilesurl
-                )
-            if zip_files:
-                self.download_tools.getsupplementaryfiles(
-                    pmcid, zipurl, from_ftp_end_point=True
-                )
+            ) = self.get_urls_to_write_to(identifier_for_paper)
+            paper_dictionary = dict_of_papers[paper]
+            self.make_references(references, identifier_for_paper, referenceurl)
+            self.make_citations(citations, identifier_for_paper, citationurl)
+            self.make_supplementary_files(supplementary_files, identifier_for_paper, supplementaryfilesurl)
+            self.make_zip_files(zip_files, identifier_for_paper, zipurl)
             if not os.path.isdir(directory_url):
                 os.makedirs(directory_url)
             (
@@ -572,72 +433,101 @@ class EuropePmc(RepositoryInterface):
                 condition_to_download_json,
                 condition_to_download_pdf,
                 condition_to_html,
-            ) = self.download_tools._conditions_to_download(paperdict)
-            if condition_to_down:
-                if makexml:
-                    self.download_tools.writexml(
-                        destination_url, tree)
-                    paperdict[DOWNLOADED] = True
-            if condition_to_download_pdf:
-                if getpdf:
-                    pdf_destination = os.path.join(
-                        str(os.getcwd()), pmcid, FULLTEXT_PDF
-                    )
-                    if "fullTextUrlList" in paperdict:
-                        full_text_list = paperdict["fullTextUrlList"]["fullTextUrl"]
-                        for paper_links in full_text_list:
-                            if (paper_links["availability"] == "Open access" and paper_links["documentStyle"] == "pdf"):
-                                self.download_tools.queries_the_url_and_writes_response_to_destination(
-                                    paper_links["url"], pdf_destination
-                                )
-                                paperdict[PDF_DOWNLOADED] = True
-                                logging.info("Wrote the pdf file for %s", pmcid)
-            dict_to_write = self.download_tools._eupmc_clean_dict_for_csv(paperdict)
-            if condition_to_download_json:
-                self.download_tools.dumps_json_to_given_path(jsonurl, dict_to_write)
-                paperdict[JSON_DOWNLOADED] = True
-            if condition_to_download_csv:
-                if makecsv:
-                    self.make_csv(dict_to_write, pmcid)
-                    paperdict[CSVMADE] = True
-            if condition_to_html:
-                if makehtml:
-                    self.make_html_from_dict(
-                        dict_to_write, htmlurl)
-                    logging.debug("Wrote the html file for %s", pmcid)
-                    paperdict[HTML_MADE] = True
+            ) = self.download_tools._conditions_to_download(paper_dictionary)
+            self.make_xml(makexml, tree, destination_url, paper_dictionary, condition_to_down)
+            self.make_pdf(getpdf, identifier_for_paper, paper_dictionary, condition_to_download_pdf)
+            dict_to_write = self.download_tools._eupmc_clean_dict_for_csv(paper_dictionary)
+            self.make_json(jsonurl, paper_dictionary, condition_to_download_json, dict_to_write)
+            self.make_csv(makecsv, identifier_for_paper, paper_dictionary, condition_to_download_csv, dict_to_write)
+            self.make_html(makehtml, identifier_for_paper, htmlurl, paper_dictionary, condition_to_html, dict_to_write)
             self.download_tools.dumps_json_to_given_path(
                 os.path.join(str(os.getcwd()),
-                             RESULTS_JSON), final_xml_dict
+                                RESULTS_JSON), metadata_dictionary
             )
             stop = time.time()
             logging.debug("Time elapsed: %s", stop - start)
             logging.debug("*/Updating the json*/\n")
 
+    def make_csv(self, makecsv, identifier_for_paper, metadata_dictionary, condition_to_download_csv, dict_to_write):
+        if condition_to_download_csv:
+            if makecsv:
+                self.csv_from_dict(dict_to_write, identifier_for_paper)
+                metadata_dictionary[CSVMADE] = True
+
+    def make_json(self, jsonurl, metadata_dictionary, condition_to_download_json, dict_to_write):
+        if condition_to_download_json:
+            self.download_tools.dumps_json_to_given_path(jsonurl, dict_to_write)
+            metadata_dictionary[JSON_DOWNLOADED] = True
+
+    def make_xml(self, makexml, tree, destination_url, metadata_dictionary, condition_to_down):
+        if condition_to_down:
+            if makexml:
+                self.download_tools.writexml(
+                        destination_url, tree)
+                metadata_dictionary[DOWNLOADED] = True
+
+    def make_zip_files(self, zip_files, identifier_for_paper, zipurl):
+        if zip_files:
+            self.download_tools.getsupplementaryfiles(
+                    identifier_for_paper, zipurl, from_ftp_end_point=True
+                )
+
+    def make_html(self, makehtml, identifier_for_paper, htmlurl, metadata_dictionary, condition_to_html, dict_to_write):
+        if condition_to_html:
+            if makehtml:
+                self.make_html_from_dict(
+                        dict_to_write, htmlurl,identifier_for_paper)
+                logging.debug("Wrote the html file for %s", identifier_for_paper)
+                metadata_dictionary[HTML_MADE] = True
+
+    def make_pdf(self, getpdf, identifier_for_paper, metadata_dictionary, condition_to_download_pdf):
+        if condition_to_download_pdf:
+            if getpdf:
+                pdf_destination = os.path.join(
+                        str(os.getcwd()), identifier_for_paper, FULLTEXT_PDF
+                    )
+                if "fullTextUrlList" in metadata_dictionary:
+                    full_text_list = metadata_dictionary["fullTextUrlList"]["fullTextUrl"]
+                    for paper_links in full_text_list:
+                        if (paper_links["availability"] == "Open access" and paper_links["documentStyle"] == "pdf"):
+                            self.download_tools.queries_the_url_and_writes_response_to_destination(
+                                    paper_links["url"], pdf_destination
+                                )
+                            metadata_dictionary[PDF_DOWNLOADED] = True
+                            logging.info("Wrote the pdf file for %s", identifier_for_paper)
+
+    def make_supplementary_files(self, supplementary_files, identifier_for_paper, supplementaryfilesurl):
+        if supplementary_files:
+            self.download_tools.getsupplementaryfiles(
+                    identifier_for_paper, supplementaryfilesurl
+                )
+
+    def make_citations(self, citations, identifier_for_paper, citationurl):
+        if citations:
+            self.download_tools.make_citations(
+                    citations, citationurl, identifier_for_paper
+                )
+            logging.debug("Made Citations for %s", identifier_for_paper)
+
+    def make_references(self, references, identifier_for_paper, referenceurl):
+        if references:
+            self.download_tools.make_references(
+                    identifier_for_paper, references, referenceurl
+                )
+            logging.debug("Made references for %s", identifier_for_paper)
+
     @staticmethod
-    def make_csv(dict_to_write, pmcid):
-        """[summary]
+    def csv_from_dict(dict_to_write, identifier_for_paper):
 
-        :param dict_to_write: [description]
-        :type dict_to_write: [type]
-        :param pmcid: [description]
-        :type pmcid: [type]
-        """
         df = pd.Series(dict_to_write).to_frame("Info_By_EuropePMC_Api")
-        df.to_csv(os.path.join(str(os.getcwd()), pmcid, FULLTEXT_CSV))
+        df.to_csv(os.path.join(str(os.getcwd()), identifier_for_paper, FULLTEXT_CSV))
 
-    def conditions_to_download(self, paperdict):
-        """[summary]
-
-        :param paperdict: [description]
-        :type paperdict: [type]
-        :return: [description]
-        :rtype: [type]
-        """
-        condition_to_down = paperdict[DOWNLOADED] is False
-        condition_to_download_pdf = paperdict[PDF_DOWNLOADED] is False
-        condition_to_download_json = paperdict[JSON_DOWNLOADED] is False
-        condition_to_download_csv = paperdict[CSVMADE] is False
+    def conditions_to_download(self, metadata_dictionary):
+        
+        condition_to_down = metadata_dictionary[DOWNLOADED] is False
+        condition_to_download_pdf = metadata_dictionary[PDF_DOWNLOADED] is False
+        condition_to_download_json = metadata_dictionary[JSON_DOWNLOADED] is False
+        condition_to_download_csv = metadata_dictionary[CSVMADE] is False
         return (
             condition_to_down,
             condition_to_download_csv,
@@ -648,19 +538,7 @@ class EuropePmc(RepositoryInterface):
     def add_fields_to_resultant_dict(
         self, htmlurl, paper, paper_number, pdfurl, dict_for_paper
     ):
-        """[summary]
-
-        :param htmlurl: [description]
-        :type htmlurl: [type]
-        :param paper: [description]
-        :type paper: [type]
-        :param paper_number: [description]
-        :type paper_number: [type]
-        :param pdfurl: [description]
-        :type pdfurl: [type]
-        :param dict_for_paper: [description]
-        :type dict_for_paper: [type]
-        """
+        
         if HTML_LINKS in dict_for_paper:
             dict_for_paper[HTML_LINKS] = htmlurl[0]
         else :
@@ -696,17 +574,7 @@ class EuropePmc(RepositoryInterface):
             logging.warning("Title not found for paper %s", paper_number)
 
     def write_meta_data_for_paper(self, paper, paper_number, resultant_dict):
-        """[summary]
-
-        :param paper: [description]
-        :type paper: [type]
-        :param paper_number: [description]
-        :type paper_number: [type]
-        :param resultant_dict: [description]
-        :type resultant_dict: [type]
-        :return: [description]
-        :rtype: [type]
-        """
+        
         logging.debug("Reading Query Result for paper %s", paper_number)
         pdfurl = []
         htmlurl = []
@@ -716,68 +584,29 @@ class EuropePmc(RepositoryInterface):
 
             if x[DOCUMENTSTYLE] == HTML and x[AVAILABILITY] == OPENACCESS:
                 htmlurl.append(x[URL])
-        paperpmcid = paper[PMCID]
+        identifier_for_paper = paper[identifier_for_paper]
         resultant_dict = self.download_tools._make_initial_columns_for_paper_dict(
-            paperpmcid, resultant_dict
+            identifier_for_paper, resultant_dict
         )
-        resultant_dict[paperpmcid].update(paper)
-        return htmlurl, paperpmcid, pdfurl, resultant_dict
+        resultant_dict[identifier_for_paper].update(paper)
+        return htmlurl, identifier_for_paper, pdfurl, resultant_dict
 
-    def makecsv(self, searchvariable, makecsv=False, makehtml=False, update=False):
-        """[summary]
+    def make_metadata_json(self, resultant_dict, update=False):
+        if update:
+            resultant_dict["papers"].update(update["papers"])
+        directory_url = os.path.join(str(os.getcwd()))
+        jsonurl = os.path.join(str(os.getcwd()),  RESULTS_JSON)
+        self.download_tools.check_or_make_directory(directory_url)
+        self.download_tools.dumps_json_to_given_path(jsonurl, resultant_dict)
+        return resultant_dict
 
-        :param searchvariable: [description]
-        :type searchvariable: [type]
-        :param makecsv: [description], defaults to False
-        :type makecsv: bool, optional
-        :param makehtml: [description], defaults to False
-        :type makehtml: bool, optional
-        :param update: [description], defaults to False
-        :type update: bool, optional
-        :return: [description]
-        :rtype: [type]
-        """
+    def _make_metadata_dictionary_from_list_of_papers(self, list_of_papers):
         resultant_dict = {}
-        if searchvariable:
-            for paper_number, papers in tqdm(enumerate(searchvariable)):
-                output_dict = json.loads(json.dumps(papers))
-                for paper in output_dict:
-                    if PMCID in paper:
-                        paper_number += 1
-                        (
-                            html_url,
-                            paperpmcid,
-                            pdfurl,
-                            resultant_dict,
-                        ) = self.write_meta_data_for_paper(
-                            paper, paper_number, resultant_dict
-                        )
-                        
-                        logging.debug(
-                            "Wrote Meta Data to a dictionary that will be written to "
-                            "all the chosen metadata file formats for paper %s",
-                            paperpmcid,
-                        )
-
-            if update:
-                resultant_dict.update(update)
-            directory_url = os.path.join(str(os.getcwd()))
-            jsonurl = os.path.join(str(os.getcwd()),  RESULTS_JSON)
-            html_url = os.path.join(str(os.getcwd()), EUPMC_HTML)
-            self.download_tools.check_or_make_directory(directory_url)
-            self.download_tools.dumps_json_to_given_path(jsonurl, resultant_dict)
-            resultant_dict_for_csv = self.download_tools.removing_added_attributes_from_dictionary(
-                resultant_dict
+        for paper_number, paper in tqdm(enumerate(list_of_papers)):
+            paper_number += 1
+            identifier_for_paper = paper[PMCID]
+            resultant_dict = self.download_tools._make_initial_columns_for_paper_dict(
+                identifier_for_paper, resultant_dict
             )
-            df = pd.DataFrame.from_dict(
-                resultant_dict_for_csv,
-            )
-            df_transposed = df.T
-            if makecsv:
-                self.download_tools.write_or_append_to_csv(df_transposed)
-            if makehtml:
-                self.download_tools.make_html_from_dataframe(df, html_url)
-            return searchvariable
-        else:
-            logging.warning("API gave empty result")
-            return False
+            resultant_dict[identifier_for_paper].update(paper)
+        return resultant_dict
