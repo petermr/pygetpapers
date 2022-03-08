@@ -24,6 +24,7 @@ TOTAL = "total"
 COLLECTION = "collection"
 CURSOR_MARK = "cursor_mark"
 RXIV = "rxiv"
+DATE_OR_NUMBER_OF_PAPERS = "date_or_number_of_papers"
 
 
 class Rxiv(RepositoryInterface):
@@ -32,13 +33,12 @@ class Rxiv(RepositoryInterface):
     def __init__(self,api="biorxiv"):
         """initiate Rxiv class"""
         self.download_tools = DownloadTools(api)
-        self.get_url = self.download_tools.query_url
         self.doi_done = []
 
     def rxiv(
             self,
-            interval,
-            size,
+            query,
+            cutoff_size,
             source=BIORXIV,
             update=None,
             makecsv=False,
@@ -52,10 +52,10 @@ class Rxiv(RepositoryInterface):
         total_number_of_results = 0
         total_papers_list = []
         logging.info("Making Request to rxiv")
-        while len(total_papers_list) <= size:
+        while len(total_papers_list) <= cutoff_size:
             total_number_of_results, total_papers_list, papers_list = self.make_request_add_papers(
+                query,
                 cursor_mark,
-                interval,
                 source,
                 total_number_of_results,
                 total_papers_list,
@@ -64,38 +64,32 @@ class Rxiv(RepositoryInterface):
                 logging.warning("No more papers found")
                 break
             cursor_mark += 1
-        json_return_dict = {}
-        for paper in total_papers_list:
-            if update:
-                if paper[DOI] not in update[TOTAL_JSON_OUTPUT]:
-                    json_return_dict[paper[DOI]] = paper
-            else:
-                json_return_dict[paper[DOI]] = paper
-            if len(json_return_dict) >= size:
-                break
-
-        for paper in json_return_dict:
+        total_result_list = total_papers_list[:cutoff_size]
+        json_metadata_dictionary = self.download_tools._make_dict_from_list(
+            total_result_list, paper_key=DOI
+        )
+        for paper in json_metadata_dictionary:
             self.download_tools._add_download_status_keys(
-                paper, json_return_dict)
-        result_dict = self.download_tools.adds_new_results_to_metadata_dictionary(
-            cursor_mark, json_return_dict, total_number_of_results, update=update)
+                paper, json_metadata_dictionary)
+        result_dict = self.download_tools._adds_new_results_to_metadata_dictionary(
+            cursor_mark, json_metadata_dictionary, total_number_of_results, update=update)
 
-        return_dict = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
+        metadata_dictionary = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
         self.download_tools.handle_creation_of_csv_html_xml(
             makecsv=makecsv,
             makehtml=makehtml,
             makexml=False,
-            return_dict=return_dict,
+            metadata_dictionary=metadata_dictionary,
             name=RXIV_RESULT,
         )
         return result_dict
 
     def make_request_add_papers(
-            self, cursor_mark, interval, source, total_number_of_results, total_papers_list
+            self, interval, cursor_mark, source, total_number_of_results, total_papers_list
     ):
-        
+        print("interval",interval)
         self.make_request_url_for_rxiv(cursor_mark, interval, source)
-        request_handler = self.post_request()
+        request_handler = self.download_tools.post_query(self.get_url)
         request_dict = json.loads(request_handler.text)
         papers_list = request_dict[COLLECTION]
         final_list = []
@@ -108,17 +102,8 @@ class Rxiv(RepositoryInterface):
         total_papers_list += final_list
         return total_number_of_results, total_papers_list, final_list
 
-    def post_request(self):
-        
-        start = time.time()
-        request_handler = requests.post(self.get_url)
-        stop = time.time()
-        logging.debug("*/Got the Query Result */")
-        logging.debug("Time elapsed: %s", (stop - start))
-        return request_handler
-
     def make_request_url_for_rxiv(self, cursor_mark, interval, source):
-        
+        print(interval)
         if type(interval) == int:
             self.get_url = "https://api.biorxiv.org/details/{source}/{interval}".format(
                 source=source, interval=interval
@@ -131,7 +116,7 @@ class Rxiv(RepositoryInterface):
     def rxiv_update(
             self,
             interval,
-            size,
+            cutoff_size,
             source=BIORXIV,
             update=None,
             makecsv=False,
@@ -144,7 +129,7 @@ class Rxiv(RepositoryInterface):
         logging.info("Reading old json metadata file")
         self.download_and_save_results(
             interval,
-            size,
+            cutoff_size,
             update=update,
             source=source,
             makecsv=makecsv,
@@ -154,8 +139,8 @@ class Rxiv(RepositoryInterface):
 
     def download_and_save_results(
             self,
-            interval,
-            size,
+            query,
+            cutoff_size,
             source,
             update=False,
             makecsv=False,
@@ -163,12 +148,12 @@ class Rxiv(RepositoryInterface):
             makehtml=False,
     ):
         
-        if update and type(interval) == int:
+        if update and type(query) == int:
             raise PygetpapersError("Update will not work if date not provided")
 
         result_dict = self.rxiv(
-            interval,
-            size,
+            query,
+            cutoff_size,
             update=update,
             source=source,
             makecsv=makecsv,
@@ -179,7 +164,7 @@ class Rxiv(RepositoryInterface):
             dict_of_papers = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
             self.make_xml_for_rxiv(
                 dict_of_papers, JATSXML, DOI, FULLTEXT_XML)
-        self.download_tools.make_metadata_json_files_for_paper(
+        self.download_tools._make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=RXIV_RESULT
         )
@@ -187,7 +172,7 @@ class Rxiv(RepositoryInterface):
     def make_xml_for_rxiv(
             self, dict_of_papers, xml_identifier, paper_id_identifier, filename
     ):
-        
+
         for paper in tqdm(dict_of_papers):
             dict_of_paper = dict_of_papers[paper]
             xml_url = dict_of_paper[xml_identifier]
@@ -204,10 +189,10 @@ class Rxiv(RepositoryInterface):
 
     def noexecute(self, query_namespace):
         
-        time_interval = query_namespace["date_or_number_of_papers"]
+        time_interval = query_namespace["query"]
         source = query_namespace["api"]
         result_dict = self.rxiv(
-            time_interval, size=10, source=source)
+            time_interval, cutoff_size=10, source=source)
         totalhits = result_dict[NEW_RESULTS][TOTAL_HITS]
         logging.info("Total number of hits for the query are %s", totalhits)
 
@@ -218,7 +203,7 @@ class Rxiv(RepositoryInterface):
             "Please ensure that you are providing the same --api as the one in the corpus or you "
             "may get errors")
         self.rxiv_update(
-            query_namespace["date_or_number_of_papers"],
+            query_namespace["query"],
             query_namespace["limit"],
             source=query_namespace["api"],
             update=update_file_path,

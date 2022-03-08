@@ -50,7 +50,25 @@ class CrossRef(RepositoryInterface):
         makexml=False,
         makehtml=False,
     ):
-        
+        """Builds the crossref searcher and writes the xml, csv and html
+
+        :param query: query given to crossref
+        :type query: string
+        :param cutoff_size: number of papers to retrieve
+        :type cutoff_size: int
+        :param filter_dict: filters for crossref search
+        :type filter_dict: bool, optional
+        :param makecsv: whether to get csv 
+        :type makecsv: bool
+        :param makehtml: whether to get html 
+        :type makehtml: bool
+        :param makexml: whether to get xml 
+        :type makexml: bool
+        :param update: dictionary containing results from previous run of pygetpapers
+        :type update: dict
+        :return: dictionary of results retrieved from crossref
+        :rtype: dict
+        """
         crossref_client = self.initiate_crossref()
         logging.info("Making request to crossref")
 
@@ -68,18 +86,18 @@ class CrossRef(RepositoryInterface):
         cutoff_metadata_list = self._make_metadata_subset(
             raw_crossref_metadata, cutoff_size
         )
-        cutoff_metadata_dictionary = self.download_tools.make_dict_from_list(
+        cutoff_metadata_dictionary = self.download_tools._make_dict_from_list(
             cutoff_metadata_list, paper_key=DOI
         )
         for paper in cutoff_metadata_dictionary:
             self.download_tools._add_download_status_keys(
                 paper, cutoff_metadata_dictionary)
-        result_dict = self.download_tools.adds_new_results_to_metadata_dictionary(
+        result_dict = self.download_tools._adds_new_results_to_metadata_dictionary(
             cursor_mark, cutoff_metadata_dictionary, metadata_count, update
         )
-        return_dict = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
+        metadata_dictionary = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
         self.download_tools.handle_creation_of_csv_html_xml(
-            makecsv, makehtml, makexml, return_dict, raw_crossref_metadata
+            makecsv, makehtml, makexml, metadata_dictionary, raw_crossref_metadata
         )
         return result_dict
 
@@ -90,7 +108,10 @@ class CrossRef(RepositoryInterface):
         return total_metadata_list
 
     def initiate_crossref(self):
-        
+        """Initate habanero wrapper for crossref
+
+        :return: crossref object
+        """
         cr = Crossref()
         Crossref(mailto="ayushgarg@science.org.in")
         version = self.download_tools.get_version()
@@ -101,11 +122,7 @@ class CrossRef(RepositoryInterface):
         self,
         query_namespace
     ):
-        """_summary_
 
-        :param query_namespace: _description_
-        :type query_namespace: _type_
-        """
         logging.info("Reading old json metadata file")
         update_path = self.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
@@ -119,17 +136,13 @@ class CrossRef(RepositoryInterface):
             makexml=query_namespace["xml"],
             makehtml=query_namespace["makehtml"],
         )
-        self.download_tools.make_metadata_json_files_for_paper(
+        self.download_tools._make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=crossref_file_name
         )
 
     def noexecute(self, query_namespace):
-        """_summary_
-
-        :param query_namespace: _description_
-        :type query_namespace: _type_
-        """
+ 
         query = query_namespace["query"]
         filter_dict = query_namespace["filter"]
         result_dict = self.crossref(
@@ -142,11 +155,7 @@ class CrossRef(RepositoryInterface):
         self,
         query_namespace
     ):
-        """_summary_
 
-        :param query_namespace: _description_
-        :type query_namespace: _type_
-        """
         result_dict = self.crossref(
             query_namespace["query"],
             query_namespace["limit"],
@@ -156,7 +165,7 @@ class CrossRef(RepositoryInterface):
             makexml=query_namespace["xml"],
             makehtml=query_namespace["makehtml"],
         )
-        self.download_tools.make_metadata_json_files_for_paper(
+        self.download_tools._make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=crossref_file_name
         )
         

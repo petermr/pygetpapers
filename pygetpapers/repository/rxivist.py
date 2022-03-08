@@ -45,7 +45,7 @@ class Rxivist(RepositoryInterface):
                 makecsv=False,
                 makexml=False,
                 makehtml=False, ):
-
+ 
         
         if update:
             cursor_mark = update[CURSOR_MARK]
@@ -67,13 +67,13 @@ class Rxivist(RepositoryInterface):
                 break
 
         total_result_list = total_papers_list[:size]
-        json_return_dict = self.download_tools._make_dict_from_list(
+        json_return_dict = self.download_tools.make_dict_from_list(
             total_result_list, paper_key=DOI
         )
         for paper in json_return_dict:
             self.download_tools._add_download_status_keys(
                 paper, json_return_dict)
-        result_dict = self.download_tools._adds_new_results_to_metadata_dictionary(
+        result_dict = self.download_tools.adds_new_results_to_metadata_dictionary(
             cursor_mark, json_return_dict, total_number_of_results, update=update
         )
         new_dict_to_return = result_dict[NEW_RESULTS]
@@ -88,6 +88,8 @@ class Rxivist(RepositoryInterface):
         return result_dict
 
     def send_post_request(self, query, cursor_mark=0, page_size=20):
+       
+        
         url_to_request = self.get_url.format(
             query=query, cursor=cursor_mark, page_size=page_size)
         start = time.time()
@@ -100,6 +102,7 @@ class Rxivist(RepositoryInterface):
     def make_request_add_papers(
             self, query, cursor_mark, total_number_of_results, total_papers_list
     ):
+        
         request_handler = self.send_post_request(query, cursor_mark)
         request_dict = json.loads(request_handler.text)
         papers_list = request_dict[RESULTS]
@@ -150,7 +153,7 @@ class Rxivist(RepositoryInterface):
             makexml=makexml,
             makehtml=makehtml,
         )
-        self.download_tools._make_metadata_json_files_for_paper(
+        self.download_tools.make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI,
             name_of_file=RXIVIST_RESULT
         )
@@ -160,7 +163,7 @@ class Rxivist(RepositoryInterface):
         self.download_and_save_results(
             query_namespace["query"],
             query_namespace["limit"],
-            query_namespace["api"],
+            update=None,
             makecsv=query_namespace["makecsv"],
             makexml=query_namespace["xml"],
             makehtml=query_namespace["makehtml"],
