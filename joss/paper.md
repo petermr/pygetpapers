@@ -94,6 +94,8 @@ We do not know of other tools which have the same functionality. `curl` [@curl] 
 
 ## Data
 
+### raw data
+
 The download may be repository-dependent but usually contains:
 * download metadata. (query, date, errors, etc.)
 * journal/article metadata. We use JATS-NISO [@JATS] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
@@ -115,12 +117,13 @@ The download may be repository-dependent but usually contains:
 
 For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying CTrees. This means that a `CProject` contains subdirectories which may be CTrees or not, distinguished by this marker.
 
-## derived data
+### derived data
 
 Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the `CTree`:
 * docanalysis (text analysis including NLTK and spaCy/sciSpaCy [URL]
 * pyamiimage (image processing and analysis of figures). [URL]
 
+<hr/>
 <div class="figure">
   
 ```
@@ -173,6 +176,7 @@ and with examples of derived data
 <h2 align="center">Fig.4 Typical download directory</h2>
   <p>Several types of download have been combined in this CProject and some CTrees have derived data
   </div>
+</hr>
 
 
 
@@ -210,6 +214,18 @@ The control module `pygetpapers` reads the commandline and
 # Implementation
 
 `getpapers` was implemented in `NodeJS` which allows multithreading and therefore potentially download rates of several XML documents per second on a fast line. Installing `NodeJS` was a problem on some systems (especially Windows) and was not well suited for integration with scientific libraries (mainly coded in Java and Python). We, therefore, decided to rewrite in Python, keeping only the command line and output structure, and have found very easy integration with other tools, including GUIs. `pygetpapers` can be run both as a command-line tool and a module, which makes it versatile. 
+
+## core
+The core mainly consists of:
+* `pygetpapers.py` (query-builder and runner). This includes query abstractions such as dates and Boolean queries for terms
+* `download_tools.py` (generic code for query/download (REST))
+
+## repository interfaces
+We have tried to minimise the amount of repository-specific code, choosing to use declarative configuration files. To add a new repository you will need to:
+* create a configuration file (Fig. 2)
+* subclass the repo from `repository_interface.py`
+* add any repository_specific code to add features or disable others 
+
 
 # Interface with other tools
 
