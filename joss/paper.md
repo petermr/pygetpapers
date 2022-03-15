@@ -122,6 +122,7 @@ Besides the downloaded data (already quite variable) users often wish to create 
 * pyamiimage (image processing and analysis of figures). [URL]
 
 <div class="figure">
+  
 ```
 C:.
 │   eupmc_results.json
@@ -135,7 +136,9 @@ C:.
 │       fulltext.xml
 │
 ```
+  
 and with examples of derived data 
+  
 ```
 ├───PMC8198815
 │       eupmc_result.json
@@ -166,6 +169,7 @@ and with examples of derived data
 |            <aggregated and filtered figures>
   
 ```
+  
 <h2 align="center">Fig.4 Typical download directory</h2>
   <p>Several types of download have been combined in this CProject and some CTrees have derived data
   </div>
@@ -218,7 +222,6 @@ Among our own downstream tools are
 
 # Acknowledgements
 
-We thank Dr. Peter Murray-Rust for the support and help with the design of the manuscript. 
 
 
 
