@@ -122,7 +122,7 @@ Besides the downloaded data (already quite variable) users often wish to create 
 * pyamiimage (image processing and analysis of figures). [URL]
 
 <div class="figure">
-```directory
+```
 C:.
 │   eupmc_results.json
 │
