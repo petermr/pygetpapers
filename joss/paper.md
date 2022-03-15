@@ -35,6 +35,7 @@ In 2015, we reviewed tools for scraping websites and decided that none met our n
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
+<div class="figure">
 ```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
 ```
@@ -51,9 +52,11 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 ```
 
   <h2 align="center">Fig.1 Example query of `pygetpapers`</h2>
-
+                    </div>
 The number and type of scientific repositories (especially preprints) is expanding , and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
     
+<div class="figure">
+          
 ```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
@@ -72,6 +75,7 @@ features_not_supported = ["filter",]
 ```
   
 <h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
+  </div>
 
 Many **searches** are simple keywords or phrases. However, these often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
@@ -81,6 +85,8 @@ Some of this has been systematized, especially in biosciences, and the NIH (US N
 Frequently users want to search **incrementally**, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also, `pygetpapers` allows regular updates, e.g. weekly searches of preprint servers.
 
 `pygetpapers` takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
+
+The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as EuropePMC, HAL, SciELO, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have littlw coding experience.
 
 We do not know of other tools which have the same functionality. `curl` [@curl] requires detailed knowledge of the download protocol. VosViewer [@VOSviewer] is mainly aimed at bibliography/citations.
 
@@ -98,15 +104,25 @@ The download may be repository-dependent but usually contains:
    - PDF - usually includes the whole material but not machine-sectioned
    - HTML . often avaliable on websites
 * supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
+* figures. This is not supported by some repositories and others may require custom code. 
+
+<div class="figure">
 
 ![Fig.3 Architecture of `pygetpapers`](../resources/archietecture.png)
 
 <h2 align="center">Fig.3 Architecture of `pygetpapers`</h2>
+  </div>
 
-This directory structure is designed so that analysis tools can add computed data for articles
+For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying CTrees. This means that a `CProject` contains subdirectories which may be CTrees or not, distinguished by this marker.
 
+## derived data
 
-```
+Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the `CTree`:
+* docanalysis (text analysis including NLTK and spaCy/sciSpaCy [URL]
+* pyamiimage (image processing and analysis of figures). [URL]
+
+<div class="figure">
+```directory
 C:.
 │   eupmc_results.json
 │
@@ -118,23 +134,42 @@ C:.
 │       eupmc_result.json
 │       fulltext.xml
 │
+```
+and with examples of derived data 
+```
 ├───PMC8198815
 │       eupmc_result.json
 │       fulltext.xml
+|.      bag_of_words.txt
+|.      figure/
+|.          raw.jpg
+|.          skeleton.png
 │
-├───PMC8216501
-│       eupmc_result.json
+├───10.9999_123456 # CTree due to fooRxiv_result.json
+│       fooRxiv_result.json
 │       fulltext.xml
+|.      bag_of_words.txt
+|.      search/
+|.          results/
+|.              terpenes.csv
 │
-├───PMC8309040
-│       eupmc_result.json
-│       fulltext.xml
-│
-└───PMC8325914
-        eupmc_result.json
-        fulltext.xml
+|.   univ_bar_thesis_studies_on_lantana/ # CTree dues to thesis_12345_results.json
+|.      thesis_12345_results.json
+|       fulltext.pdf
+|.      figures/
+|.          figure/
+|               Fig1/
+|.       
+|____summary/ # not CTree as no child *_results.json
+|.       bag_of_words.txt
+|.       figures/
+|            <aggregated and filtered figures>
+  
 ```
 <h2 align="center">Fig.4 Typical download directory</h2>
+  <p>Several types of download have been combined in this CProject and some CTrees have derived data
+  </div>
+
 
 
 ## Code 
