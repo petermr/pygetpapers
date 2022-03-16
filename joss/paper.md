@@ -53,7 +53,7 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 
   <h2 align="center">Fig.1 Example query of `pygetpapers`</h2>
                     </div>
-The number and type of scientific repositories (especially preprints) is expanding , and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
+The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as EuropePMC, HAL, SciELO, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
     
 <div class="figure">
           
@@ -85,8 +85,6 @@ Some of this has been systematized, especially in biosciences, and the NIH (US N
 Frequently users want to search **incrementally**, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also, `pygetpapers` allows regular updates, e.g. weekly searches of preprint servers.
 
 `pygetpapers` takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
-
-The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as EuropePMC, HAL, SciELO, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have littlw coding experience.
 
 We do not know of other tools which have the same functionality. `curl` [@curl] requires detailed knowledge of the download protocol. VosViewer [@VOSviewer] is mainly aimed at bibliography/citations.
 
@@ -188,12 +186,13 @@ Most repository APIs provide a cursor-based approach to querying:
 1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
 2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
 3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
-4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory - small example for paper
-5. If cursor indicates next page, submits a query for next page, else if end terminates this part
-6. When finished all pages, writes metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
-7. Recover from crashes, restart (if needed) 
+4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory 
+5. If cursor indicates next page, `pygetpapers` submits a query for next page, otherwise it terminates the data collection and processes the python dict
+6. If user has requested supplemental data (eg. references, citations, fulltext, etc.) then the `pygetpapers` iterates through the python dict and uses the identifier, usually in the form of DOI, to query and download supplemental data seperately. 
+7. When the search is finished, `pygetpapers` writes the metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
+8. It also recovers from crashes and restarts if needed).
 
-The control module `pygetpapers` reads the commandline and
+The control module `pygetpapers.py` reads the commandline and
 * Selects the repository-specific downloader
 * Creates a query from user input and/or terms from dictionaries
 * Adds options and constraints
@@ -201,7 +200,7 @@ The control module `pygetpapers` reads the commandline and
 
 # Generic downloading concerns
 
-* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (EPMC, biorXiv, Crossref etc. and have a default (resettable) delay in `pygetpapers`. 
+* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (EPMC, biorXiv, Crossref etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
 * Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for Crossref)
 
 # Design
@@ -224,7 +223,7 @@ The core mainly consists of:
 We have tried to minimise the amount of repository-specific code, choosing to use declarative configuration files. To add a new repository you will need to:
 * create a configuration file (Fig. 2)
 * subclass the repo from `repository_interface.py`
-* add any repository_specific code to add features or disable others 
+* add any repository specific code to add features or disable others 
 
 
 # Interface with other tools
