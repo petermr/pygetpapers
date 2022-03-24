@@ -65,7 +65,23 @@ PDF = "pdf"
 HTML = "html"
 
 class EuropePmc(RepositoryInterface):
-    """ """
+    """ Downloads metadata and optionally fulltext from https://europepmc.org"""
+    
+    """Can optionally download supplemental author data, the content of which is irregular and
+    not weell specified.
+    For articles with figures, the links to the figures on the EPMC site are included in the fulltext.xml
+    but the figures are NOT included. (We have are adding this functionality to our `docanalysis` and `pyamiimage`
+    codes.
+
+    In some cases a "zip" file is provided by EPMC which does contain figures in the paper and supplemntal author data;
+    this can be downloaded.
+    
+    EPMC has a number of additional services including:
+        - references and citations denoted by 3-letter codes
+    
+    pygetpapers can translate a standard date into EPMC format and include it in the query.
+    
+    """
 
     def __init__(self):
         self.download_tools = DownloadTools(EUROPEPMC)
