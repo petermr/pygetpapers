@@ -35,6 +35,7 @@ In 2015, we reviewed tools for scraping websites and decided that none met our n
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
+<div class="figure">
 ```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
 ```
@@ -51,9 +52,11 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 ```
 
   <h2 align="center">Fig.1 Example query of `pygetpapers`</h2>
-
-The number and type of scientific repositories (especially preprints) is expanding , and users do not want to use a different tool for each new one. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. Often they use different query systems and `pygetpapers` makes a start on simplifying this. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
+                    </div>
+The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as EuropePMC, HAL, SciELO, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
     
+<div class="figure">
+          
 ```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
@@ -72,6 +75,7 @@ features_not_supported = ["filter",]
 ```
   
 <h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
+  </div>
 
 Many **searches** are simple keywords or phrases. However, these often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
@@ -88,6 +92,8 @@ We do not know of other tools which have the same functionality. `curl` [@curl] 
 
 ## Data
 
+### raw data
+
 The download may be repository-dependent but usually contains:
 * download metadata. (query, date, errors, etc.)
 * journal/article metadata. We use JATS-NISO [@JATS] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
@@ -98,14 +104,26 @@ The download may be repository-dependent but usually contains:
    - PDF - usually includes the whole material but not machine-sectioned
    - HTML . often avaliable on websites
 * supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
+* figures. This is not supported by some repositories and others may require custom code. 
+
+<div class="figure">
 
 ![Fig.3 Architecture of `pygetpapers`](../resources/archietecture.png)
 
 <h2 align="center">Fig.3 Architecture of `pygetpapers`</h2>
+  </div>
 
-This directory structure is designed so that analysis tools can add computed data for articles
+For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying CTrees. This means that a `CProject` contains subdirectories which may be CTrees or not, distinguished by this marker.
 
+### derived data
 
+Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the `CTree`:
+* docanalysis (text analysis including NLTK and spaCy/sciSpaCy [URL]
+* pyamiimage (image processing and analysis of figures). [URL]
+
+<hr/>
+<div class="figure">
+  
 ```
 C:.
 │   eupmc_results.json
@@ -118,23 +136,46 @@ C:.
 │       eupmc_result.json
 │       fulltext.xml
 │
+```
+  
+and with examples of derived data 
+  
+```
 ├───PMC8198815
 │       eupmc_result.json
 │       fulltext.xml
+|.      bag_of_words.txt
+|.      figure/
+|.          raw.jpg
+|.          skeleton.png
 │
-├───PMC8216501
-│       eupmc_result.json
+├───10.9999_123456 # CTree due to fooRxiv_result.json
+│       fooRxiv_result.json
 │       fulltext.xml
+|.      bag_of_words.txt
+|.      search/
+|.          results/
+|.              terpenes.csv
 │
-├───PMC8309040
-│       eupmc_result.json
-│       fulltext.xml
-│
-└───PMC8325914
-        eupmc_result.json
-        fulltext.xml
+|.   univ_bar_thesis_studies_on_lantana/ # CTree dues to thesis_12345_results.json
+|.      thesis_12345_results.json
+|       fulltext.pdf
+|.      figures/
+|.          figure/
+|               Fig1/
+|.       
+|____summary/ # not CTree as no child *_results.json
+|.       bag_of_words.txt
+|.       figures/
+|            <aggregated and filtered figures>
+  
 ```
+  
 <h2 align="center">Fig.4 Typical download directory</h2>
+  <p>Several types of download have been combined in this CProject and some CTrees have derived data
+  </div>
+</hr>
+
 
 
 ## Code 
@@ -145,12 +186,13 @@ Most repository APIs provide a cursor-based approach to querying:
 1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
 2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
 3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
-4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory - small example for paper
-5. If cursor indicates next page, submits a query for next page, else if end terminates this part
-6. When finished all pages, writes metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
-7. Recover from crashes, restart (if needed) 
+4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory 
+5. If cursor indicates next page, `pygetpapers` submits a query for next page, otherwise it terminates the data collection and processes the python dict
+6. If user has requested supplemental data (eg. references, citations, fulltext, etc.) then the `pygetpapers` iterates through the python dict and uses the identifier, usually in the form of DOI, to query and download supplemental data seperately. 
+7. When the search is finished, `pygetpapers` writes the metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
+8. It also recovers from crashes and restarts if needed).
 
-The control module `pygetpapers` reads the commandline and
+The control module `pygetpapers.py` reads the commandline and
 * Selects the repository-specific downloader
 * Creates a query from user input and/or terms from dictionaries
 * Adds options and constraints
@@ -158,7 +200,7 @@ The control module `pygetpapers` reads the commandline and
 
 # Generic downloading concerns
 
-* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (EPMC, biorXiv, Crossref etc. and have a default (resettable) delay in `pygetpapers`. 
+* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (EPMC, biorXiv, Crossref etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
 * Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for Crossref)
 
 # Design
@@ -172,6 +214,18 @@ The control module `pygetpapers` reads the commandline and
 
 `getpapers` was implemented in `NodeJS` which allows multithreading and therefore potentially download rates of several XML documents per second on a fast line. Installing `NodeJS` was a problem on some systems (especially Windows) and was not well suited for integration with scientific libraries (mainly coded in Java and Python). We, therefore, decided to rewrite in Python, keeping only the command line and output structure, and have found very easy integration with other tools, including GUIs. `pygetpapers` can be run both as a command-line tool and a module, which makes it versatile. 
 
+## core
+The core mainly consists of:
+* `pygetpapers.py` (query-builder and runner). This includes query abstractions such as dates and Boolean queries for terms
+* `download_tools.py` (generic code for query/download (REST))
+
+## repository interfaces
+We have tried to minimise the amount of repository-specific code, choosing to use declarative configuration files. To add a new repository you will need to:
+* create a configuration file (Fig. 2)
+* subclass the repo from `repository_interface.py`
+* add any repository specific code to add features or disable others 
+
+
 # Interface with other tools
 
 Downloading is naturally modular, rather slow, and we interface by writing all output to the filesystem. This means that a wide range of tools (Unix, Windows, Java, Python, etc.) can analyze and transform it. The target documents are usually static so downloads only need to be done once.
@@ -183,7 +237,6 @@ Among our own downstream tools are
 
 # Acknowledgements
 
-We thank Dr. Peter Murray-Rust for the support and help with the design of the manuscript. 
 
 
 

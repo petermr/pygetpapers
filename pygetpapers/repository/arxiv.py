@@ -50,7 +50,15 @@ ARXIV = "arxiv"
 from pygetpapers.repositoryinterface import RepositoryInterface
 
 class Arxiv(RepositoryInterface):
-    """Arxiv class which handles arxiv repository. It uses arxiv repository wrapper to make its query(check https://github.com/lukasschwab/arxiv.py)"""
+    """arxiv.org repository
+    
+    This uses a PyPI code `arxiv` to download metadata. It is not clear whether this is 
+    created by the `arXiv` project or layered on top of the public API. 
+    
+    `arXiv` current practice for bulk data download (e.g. PDFs) is described in
+https://arxiv.org/help/bulk_data. Please be considerate and also include a rate limit.
+    
+    """
 
     def __init__(self):
         self.download_tools = DownloadTools(ARXIV)

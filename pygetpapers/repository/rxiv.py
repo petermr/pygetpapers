@@ -28,7 +28,12 @@ DATE_OR_NUMBER_OF_PAPERS = "date_or_number_of_papers"
 
 
 class Rxiv(RepositoryInterface):
-    """Rxiv class which handles Biorxiv and Medrxiv repository"""
+    """Biorxiv and Medrxiv repositories
+    
+    At present (2022-03) the API appears only to support date searches. 
+    The `rxivist` system is layered on top and supports fuller queries
+
+"""
 
     def __init__(self,api="biorxiv"):
         """initiate Rxiv class"""
