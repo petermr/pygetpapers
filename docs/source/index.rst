@@ -1,12 +1,9 @@
-.. include:: ../../README.md
-   :parser: myst_parser.sphinx_
-
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Table of Contents:
+   :caption: User Documentation:
 
-   index
+   user_documentation
 
 .. toctree::
    :maxdepth: 7
