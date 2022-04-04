@@ -32,7 +32,15 @@ RXIVIST = "rxivist"
 
 
 class Rxivist(RepositoryInterface):
-    """Rxivist class which handles the rxivist wrapper"""
+    """Rxivist wrapper for biorxiv and medrxiv
+    
+    From the site (rxivist.org):
+    "Rxivist combines biology preprints from bioRxiv and medRxiv with data from Twitter
+    to help you find the papers being discussed in your field."
+    
+    Appears to be metadata-only. To get full-text you may have to submit the IDs to biorxiv or medrxiv
+    or EPMC as this aggregates preprints.
+    """
 
     def __init__(self):
         self.download_tools = DownloadTools(RXIVIST)
