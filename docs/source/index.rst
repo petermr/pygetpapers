@@ -2,7 +2,7 @@
    :parser: myst_parser.sphinx_
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 1
    :hidden:
    :caption: Table of Contents:
 
