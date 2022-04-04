@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import time
+from numpy import True_
 
 import pandas as pd
 from tqdm import tqdm
@@ -70,7 +71,7 @@ class EuropePmc(RepositoryInterface):
     def __init__(self):
         self.download_tools = DownloadTools(EUROPEPMC)
 
-    def europepmc(self, query, cutoff_size, synonym=True, cursor_mark="*"):
+    def query(self, query, cutoff_size, synonym=True, cursor_mark="*"):
         """Queries eupmc for given query for given number(cutoff_size) papers
 
         :param query: query
@@ -83,42 +84,42 @@ class EuropePmc(RepositoryInterface):
         :rtype: list
         """            
         cutoff_size = int(cutoff_size)
-        cursor_mark=cursor_mark
-        (
-            list_of_papers,
-            maximum_hits_per_page,
-            morepapers,
-            len_list_papers,
-        ) = self.create_parameters_for_paper_download()
+        maximum_hits_per_page=1000
+        morepapers=True
+        len_list_papers=0
         counter=0
+        print(len_list_papers)
+        print(cutoff_size)
         while len_list_papers <= cutoff_size and morepapers is True:
-            retireved_metadata_dictionary = self.build_and_send_query(
+            retrieved_metadata_dictionary = self.build_and_send_query(
                 maximum_hits_per_page, cursor_mark, query, synonym
             )
-            if retireved_metadata_dictionary:
+            if retrieved_metadata_dictionary:
                 counter += 1
-                totalhits = retireved_metadata_dictionary[RESPONSE_WRAPPER][HITCOUNT]
+                totalhits = retrieved_metadata_dictionary[RESPONSE_WRAPPER][HITCOUNT]
                 if counter == 1:
                     logging.info("Total Hits are %s", totalhits)
                 if int(totalhits) == 0:
                     logging.warning("Could not find more papers")
                     break
-                list_of_papers,morepapers = self._add_papers_to_list_of_papers(list_of_papers,retireved_metadata_dictionary)
-                len_list_papers+=len(list_of_papers)
+                list_of_paper_metadata,morepapers = self._metadata_dictionary_to_list_of_dictionaries_for_each_paper(retrieved_metadata_dictionary)
+                len_list_papers+=len(list_of_paper_metadata)
                 morepapers,cursor_mark = self.add_cursor_mark_if_exists(
-                    retireved_metadata_dictionary
+                    retrieved_metadata_dictionary
                 )
-        list_of_papers = self.remove_extra_papers_from_list(cutoff_size, list_of_papers)
-        dictionary_with_papers = self._make_metadata_dictionary_from_list_of_papers(list_of_papers)
+        list_of_paper_metadata = self.remove_extra_papers_from_list(cutoff_size, list_of_paper_metadata)
+        dictionary_with_papers = self._make_dictionary_from_list_of_papers(list_of_paper_metadata)
+        # We use this dictionary_with_papers as a sub dictionary for the metadata_dictionary
         metadata_dictionary={CURSOR_MARK:cursor_mark,"papers":dictionary_with_papers}
         return metadata_dictionary
 
-    def remove_extra_papers_from_list(self, cutoff_size, list_of_papers):
-        if len(list_of_papers) > cutoff_size:
-            list_of_papers = list_of_papers[0:cutoff_size]
-        return list_of_papers
+    def remove_extra_papers_from_list(self, cutoff_size, list_of_paper_metadata):
+        if len(list_of_paper_metadata) > cutoff_size:
+            list_of_paper_metadata = list_of_paper_metadata[0:cutoff_size]
+        return list_of_paper_metadata
 
-    def _add_papers_to_list_of_papers(self, list_of_papers,retireved_metadata_dictionary):
+    def _metadata_dictionary_to_list_of_dictionaries_for_each_paper(self,retireved_metadata_dictionary):
+        list_of_paper_metadata=[]
         morepapers = True
         if RESULT in retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST]:
             single_result = isinstance(
@@ -126,15 +127,15 @@ class EuropePmc(RepositoryInterface):
             )
             papers = retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST][RESULT]
             if single_result and PMCID in papers:
-                list_of_papers.append(papers)
+                list_of_paper_metadata.append(papers)
             else:
                 for paper in retireved_metadata_dictionary[RESPONSE_WRAPPER][RESULT_LIST][RESULT]:
                     if PMCID in paper:
-                        list_of_papers.append(paper)
+                        list_of_paper_metadata.append(paper)
         else:
             morepapers = False
             logging.warning("Could not find more papers")
-        return list_of_papers,morepapers
+        return list_of_paper_metadata,morepapers
 
 
     def add_cursor_mark_if_exists(self, retireved_metadata_dictionary):
@@ -167,12 +168,12 @@ class EuropePmc(RepositoryInterface):
         :rtype: [type]
         """
         
-        list_of_papers = []
+        list_of_paper_metadata = []
         morepapers = True
         number_of_papers_there = 0
         maximum_hits_per_page = 1000
         return (
-            list_of_papers,
+            list_of_paper_metadata,
             maximum_hits_per_page,
             morepapers,
             number_of_papers_there,
@@ -261,7 +262,7 @@ class EuropePmc(RepositoryInterface):
             cursor_mark= (update[CURSOR_MARK])
         else:
             cursor_mark = "*"
-        metadata_dictionary = self.europepmc(
+        metadata_dictionary = self.query(
             query, cutoff_size, cursor_mark=cursor_mark, synonym=synonym
         )
         self.make_metadata_json(
@@ -573,8 +574,6 @@ class EuropePmc(RepositoryInterface):
         else:
             logging.warning("Title not found for paper %s", paper_number)
 
-
-
     def make_metadata_json(self, resultant_dict, update=False):
         if update:
             resultant_dict["papers"].update(update["papers"])
@@ -584,9 +583,9 @@ class EuropePmc(RepositoryInterface):
         self.download_tools.dumps_json_to_given_path(jsonurl, resultant_dict)
         return resultant_dict
 
-    def _make_metadata_dictionary_from_list_of_papers(self, list_of_papers):
+    def _make_dictionary_from_list_of_papers(self, list_of_paper_metadata):
         resultant_dict = {}
-        for paper_number, paper in tqdm(enumerate(list_of_papers)):
+        for paper_number, paper in tqdm(enumerate(list_of_paper_metadata)):
             paper_number += 1
             identifier_for_paper = paper[PMCID]
             resultant_dict = self.download_tools._make_initial_columns_for_paper_dict(

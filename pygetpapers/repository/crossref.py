@@ -34,7 +34,7 @@ CROSSREF = "crossref"
 
 
 class CrossRef(RepositoryInterface):
-    """CrossRef class which handles crossref repository"""
+    """CrossRef class which handles crossref repository. It uses habanero repository wrapper to make its query"""
 
     def __init__(self):
         
