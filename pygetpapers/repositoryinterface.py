@@ -18,6 +18,10 @@ CURSOR_MARK = "cursor_mark"
 RXIV = "rxiv"
 class RepositoryInterface(ABC):
     
+    def __init__(self) -> None:
+        super().__init__()
+        self.metadata_dictionary=dict()
+
     @abstractmethod
     def noexecute(self, query_namespace):
         """Takes in the query_namespace object as the parameter and runs the query search for given search parameters but only prints the output and not write to disk.

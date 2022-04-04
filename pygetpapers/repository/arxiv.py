@@ -3,7 +3,7 @@ import os
 
 from tqdm import tqdm
 
-import arxiv
+import arxiv as arxiv_wrapper
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.pgexceptions import PygetpapersError
 
@@ -50,7 +50,7 @@ ARXIV = "arxiv"
 from pygetpapers.repositoryinterface import RepositoryInterface
 
 class Arxiv(RepositoryInterface):
-    """Arxiv class which handles arxiv repository"""
+    """Arxiv class which handles arxiv repository. It uses arxiv repository wrapper to make its query(check https://github.com/lukasschwab/arxiv.py)"""
 
     def __init__(self):
         self.download_tools = DownloadTools(ARXIV)
@@ -76,14 +76,14 @@ class Arxiv(RepositoryInterface):
         :rtype: dict
         """
         logging.info("Making request to Arxiv through pygetpapers")
-        search = arxiv.Search(
-            query=query, max_results=cutoff_size, sort_by=arxiv.SortCriterion.Relevance
+        search = arxiv_wrapper.Search(
+            query=query, max_results=cutoff_size, sort_by=arxiv_wrapper.SortCriterion.Relevance
         )
 
-        metadata_dictionary = {}
         logging.info("Got request result from Arxiv through pygetpapers")
+        search_results = search.get()
+        metadata_dictionary = self._make_metadata_dict_from_arxiv_output(search_results)
 
-        self._make_dict_from_arxiv_output(metadata_dictionary, search)
         for paper in metadata_dictionary:
             self.download_tools._add_download_status_keys(paper, metadata_dictionary)
         if getpdf:
@@ -91,11 +91,11 @@ class Arxiv(RepositoryInterface):
         self.download_tools.handle_creation_of_csv_html_xml(
             makecsv, makehtml, makexml, metadata_dictionary, ARXIV_RESULT
         )
-        self.make_json_from_arxiv_dict(metadata_dictionary)
+        self.write_metadata_json_from_arxiv_dict(metadata_dictionary)
 
         return metadata_dictionary
 
-    def make_json_from_arxiv_dict(self, metadata_dictionary):
+    def write_metadata_json_from_arxiv_dict(self, metadata_dictionary):
         """Iterates through metadata_dictionary and makes json metadata file for papers
 
         :param metadata_dictionary: metadata dictionary for papers
@@ -110,8 +110,9 @@ class Arxiv(RepositoryInterface):
             self.download_tools.dumps_json_to_given_path(jsonurl, metadata_dictionary[result])
 
     @staticmethod
-    def _make_dict_from_arxiv_output(metadata_dictionary, search):
-        for result in search.get():
+    def _make_metadata_dict_from_arxiv_output(search_results):
+        metadata_dictionary = {}
+        for result in search_results:
             url_encoded_id_of_paper = str(result.entry_id).rsplit("/", 1)[-1]
 
             metadata_dictionary[url_encoded_id_of_paper] = {}
@@ -142,6 +143,7 @@ class Arxiv(RepositoryInterface):
                 result.pdf_url)
             paper_dict[ENTRY_ID] = str(
                 result.entry_id)
+        return metadata_dictionary
 
     def download_pdf(self, metadata_dictionary):
         """Downloads pdfs for papers in metadata dictionary

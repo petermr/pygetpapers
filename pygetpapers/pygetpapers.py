@@ -159,7 +159,6 @@ class ApiPlugger:
             elif self.query_namespace[NOTTERMS]:
                 raise PygetpapersError("Please provide a query with not")
 
-
     def check_query_logic_and_run(self):
         """Checks the logic in query_namespace and runs pygetpapers for the given query
         """
