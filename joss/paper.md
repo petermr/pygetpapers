@@ -24,13 +24,14 @@ date: February 2022
 bibliography: paper.bib
 ---
 
-# Justification
+# Introduction
 
 An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [@systematic_review]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
 The typical text-based searches on sites are broad, with many false positives and often only based on abstracts. We know of cases where systematic reviewers downloaded 30,000 articles and eventually used 30.
 Retrieval is often done by crawling/scraping sites, such as journals but is easier and faster when these articles are in Open Access repositories such as arXiv, Europe/PMC biorxiv, medrxiv.
 But each repository has its own API and functionality, which makes it hard for individuals to (a) access (b) set flags (c) use generic queries.
 
+## pygetpapers
 In 2015, we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers` [@getpapers], with the key advance of integrating a query submission with bulk fulltext-download of all the hits. `getpapers` was written in NodeJS and has now been completely rewritten in Python3 (`pygetpapers`) for easier distribution and integration. Typical use of `getpapers` is shown in a recent paper [@getpapers_use] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
@@ -204,11 +205,10 @@ The control module `pygetpapers.py` reads the commandline and
 * Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for Crossref)
 
 # Design
-* commandline (can be later wrapped in GUIs).
-* modular (one module per repo)
-* abstraction (e.g. of DATE functions)
-* supports both metadata and content
-* responsive to repository responses
+
+The tool has been designed for ease of implementation , installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", most EuropePMC uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `biorxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
+
+Some repositories only support metadata while others include text and some even provide links to data downloads; again pygetpapers supports this range. Because there are hundreds of repositories (including preprints) the deign includes a modular approach. And because some repositories emit variable amounts of information we can customise the outputs.
 
 # Implementation
 
