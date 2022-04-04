@@ -56,4 +56,6 @@ setup(
             'pygetpapers=pygetpapers.pygetpapers:main',
         ],
     },
+    python_requires='>=3.5',
+
 )

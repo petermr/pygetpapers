@@ -34,11 +34,11 @@
 The developer documentation has been setup at <a href="https://pygetpapers.readthedocs.io/en/latest/#">readthedocs</a>
 </p>
 
-# History
+## History
 
 `getpapers` is a tool written by Rik Smith-Unna funded by ContentMine at https://github.com/ContentMine/getpapers. The OpenVirus community requires a Python version and Ayush Garg has written an implementation from scratch, with some enhancements.
 
-# Formats supported by pygetpapers
+## Formats supported by pygetpapers
 
 - pygetpapers gives fulltexts in xml and pdf format. 
 - The metadata for papers can be saved in many formats including JSON, CSV, HTML.
@@ -46,17 +46,17 @@ The developer documentation has been setup at <a href="https://pygetpapers.readt
 - The additional files for papers can also be downloaded. References and citations for papers are given in XML format. 
 - Log files can be saved in txt format.
 
-# Repository Structure
+## Repository Structure
 
 The main code is located in the pygetpapers directory. All the supporting modules for different repositories are described in the pygetpapers/repository directory.
 
-# Architecture
+## Architecture
 
 <p align="center">
 <img src="https://github.com/petermr/pygetpapers/raw/main/resources/archietecture.png" >
 </p>
 
-# About the author and community
+## About the author and community
 
 `pygetpapers` has been developed by Ayush Garg under the dear guidance of the OpenVirus community and Peter Murray Rust. Ayush is currently a high school student who believes that the world can only truly progress when knowledge is open and accessible by all.
 
