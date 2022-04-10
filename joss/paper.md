@@ -40,7 +40,6 @@ But each repository has its own API and functionality, which makes it hard for i
 
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
-<div class="figure">
 ```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
 ```
@@ -55,13 +54,12 @@ WARNING: Keywords not found for paper 4
 INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltext.xml
 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
 ```
+Example query of `pygetpapers`
 
-  <h2 align="center">Fig.1 Example query of `pygetpapers`</h2>
-                    </div>
+
 The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as EuropePMC, HAL, SciELO, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
-    
-<div class="figure">
-          
+
+
 ```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
@@ -79,8 +77,7 @@ library_name= europe_pmc
 features_not_supported = ["filter",]
 ```
   
-<h2 align="center">Fig.2 Example configuration for a repository (europePMC)</h2>
-  </div>
+Example configuration for a repository (europePMC)
 
 Many **searches** are simple keywords or phrases. However, these often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
@@ -113,10 +110,9 @@ The download may be repository-dependent but usually contains:
 
 <div class="figure">
 
-![Fig.3 Architecture of `pygetpapers`](../resources/archietecture.png)
+![Fig.1 Architecture of `pygetpapers`](../resources/archietecture.png)
 
-<h2 align="center">Fig.3 Architecture of `pygetpapers`</h2>
-  </div>
+Fig.1 Architecture of `pygetpapers`
 
 For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying CTrees. This means that a `CProject` contains subdirectories which may be CTrees or not, distinguished by this marker.
 
@@ -126,8 +122,6 @@ Besides the downloaded data (already quite variable) users often wish to create 
 * docanalysis (text analysis including NLTK and spaCy/sciSpaCy [URL]
 * pyamiimage (image processing and analysis of figures). [URL]
 
-<hr/>
-<div class="figure">
   
 ```
 C:.
@@ -176,12 +170,9 @@ and with examples of derived data
   
 ```
   
-<h2 align="center">Fig.4 Typical download directory</h2>
-  <p>Several types of download have been combined in this CProject and some CTrees have derived data
-  </div>
-</hr>
+Typical download directory
 
-
+Several types of download have been combined in this CProject and some CTrees have derived data
 
 ## Code 
 
@@ -239,7 +230,6 @@ Among our own downstream tools are
 * `pyamiimage` [@pyamiimage] - analysis of the content of images in downloaded documents
 * third party text analysis of PDF using GROBID[@GROBID] and PDFBox[@PDFBox].
 
-# Acknowledgements
 
 
 
