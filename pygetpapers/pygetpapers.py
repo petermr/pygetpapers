@@ -114,8 +114,6 @@ class ApiPlugger:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = self.query_namespace[LIMIT]
         else:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = f'{self.query_namespace[STARTDATE]}/{self.query_namespace[ENDDATE]}'
-
-
         if self.query_namespace[STARTDATE] and self.query_namespace[ENDDATE] and self.query_namespace[API]==EUROPEPMC:
             self.query_namespace[QUERY] = (
                 f'({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO {self.query_namespace[ENDDATE]}])'
