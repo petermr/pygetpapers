@@ -16,7 +16,7 @@ authors:
 affiliations:
  - name: Global Indian International School, 27 Punggol Field Walk, Singapore
    index: 1
- - name: 
+ - name: LabDAO, https://www.labdao.com/
    index: 2 
  - name: Yusuf-Hamied Department of Chemistry, University of Cambridge, Lensfield Road, Cambridge, CB2 1EW, UK
    index: 3 
@@ -32,7 +32,7 @@ bibliography: paper.bib
 
 An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [@systematic_review]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
 The typical text-based searches on sites are broad, with many false positives and often only based on abstracts. We know of cases where systematic reviewers downloaded 30,000 articles and eventually used 30.
-Retrieval is often done by crawling/scraping sites, such as journals but is easier and faster when these articles are in Open Access repositories such as arXiv, Europe/PMC biorxiv, medrxiv.
+Retrieval is often done by crawling/scraping sites, such as journals but is easier and faster when these articles are in Open Access repositories such as `arXiv`, `EuropePMC`, `bioRxiv`, `medRxiv`.
 But each repository has its own API and functionality, which makes it hard for individuals to (a) access (b) set flags (c) use generic queries. In 2015, we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers` [@getpapers], with the key advance of integrating a query submission with bulk fulltext-download of all the hits. 
 
 ## pygetpapers
@@ -57,7 +57,7 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 Example query of `pygetpapers`
 
 
-The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as EuropePMC, HAL, SciELO, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
+The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as `EuropePMC`, `HAL`, `SciELO`, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
 
 
 ```
@@ -88,7 +88,7 @@ Frequently users want to search **incrementally**, e.g. downloading part and res
 
 `pygetpapers` takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
 
-We do not know of other tools which have the same functionality. `curl` [@curl] requires detailed knowledge of the download protocol. VosViewer [@VOSviewer] is mainly aimed at bibliography/citations.
+We do not know of other tools which have the same functionality. `curl` [@curl] requires detailed knowledge of the download protocol. `VosViewer` [@VOSviewer] is mainly aimed at bibliography/citations.
 
 # Overview of the architecture
 
@@ -114,13 +114,13 @@ The download may be repository-dependent but usually contains:
 
 Fig.1 Architecture of `pygetpapers`
 
-For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying CTrees. This means that a `CProject` contains subdirectories which may be CTrees or not, distinguished by this marker.
+For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying `CTrees`. This means that a `CProject` contains subdirectories which may be `CTrees` or not, distinguished by this marker.
 
 ### derived data
 
 Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the `CTree`:
-* docanalysis (text analysis including NLTK and spaCy/sciSpaCy [URL]
-* pyamiimage (image processing and analysis of figures). [URL]
+* `docanalysis` (text analysis including `NLTK` and `spaCy/sciSpaCy` [URL]
+* `pyamiimage` (image processing and analysis of figures). [URL]
 
   
 ```
@@ -196,12 +196,12 @@ The control module `pygetpapers.py` reads the commandline and
 
 # Generic downloading concerns
 
-* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (EPMC, biorXiv, Crossref etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
-* Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for Crossref)
+* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (`EuropePMC`, `biorXiv`, `Crossref` etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
+* Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for `Crossref`)
 
 # Design
 
-The tool has been designed for ease of implementation , installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", most EuropePMC uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `biorxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
+The tool has been designed for ease of implementation , installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", most `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
 
 Some repositories only support metadata while others include text and some even provide links to data downloads; again pygetpapers supports this range. Because there are hundreds of repositories (including preprints) the deign includes a modular approach. And because some repositories emit variable amounts of information we can customise the outputs.
 
