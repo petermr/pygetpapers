@@ -231,7 +231,7 @@ class Pygetpapers:
         """
         parser = configparser.ConfigParser()
 
-        parsed_args = vars(query_namespace)
+        parsed_args = (query_namespace)
 
         parser.add_section(SAVED)
         for key in parsed_args.keys():

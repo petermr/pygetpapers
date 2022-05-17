@@ -104,8 +104,7 @@ class EuropePmc(RepositoryInterface):
         morepapers=True
         len_list_papers=0
         counter=0
-        print(len_list_papers)
-        print(cutoff_size)
+
         while len_list_papers <= cutoff_size and morepapers is True:
             retrieved_metadata_dictionary = self.build_and_send_query(
                 maximum_hits_per_page, cursor_mark, query, synonym
@@ -365,7 +364,7 @@ class EuropePmc(RepositoryInterface):
         :type url: str
         """
         df = pd.Series(dict_to_write_html_from).to_frame(
-            dict_to_write_html_from[identifier_for_paper]
+            dict_to_write_html_from[PMCID]
         )
         self.download_tools.make_html_from_dataframe(df, url)
 
@@ -464,7 +463,7 @@ class EuropePmc(RepositoryInterface):
                 htmlurl,
                 zipurl,
             ) = self.get_urls_to_write_to(identifier_for_paper)
-            paper_dictionary = dict_of_papers[paper]
+            metadata_dictionary = dict_of_papers[paper]
             self._make_references(references, identifier_for_paper, referenceurl)
             self._make_citations(citations, identifier_for_paper, citationurl)
             self._make_supplementary_files(supplementary_files, identifier_for_paper, supplementaryfilesurl)
@@ -477,13 +476,13 @@ class EuropePmc(RepositoryInterface):
                 condition_to_download_json,
                 condition_to_download_pdf,
                 condition_to_html,
-            ) = self.download_tools._conditions_to_download(paper_dictionary)
-            self._make_xml(makexml, tree, destination_url, paper_dictionary, condition_to_down)
-            self._make_pdf(getpdf, identifier_for_paper, paper_dictionary, condition_to_download_pdf)
-            dict_to_write = self.download_tools._eupmc_clean_dict_for_csv(paper_dictionary)
-            self._make_json(jsonurl, paper_dictionary, condition_to_download_json, dict_to_write)
-            self._make_csv(makecsv, identifier_for_paper, paper_dictionary, condition_to_download_csv, dict_to_write)
-            self._make_html(makehtml, identifier_for_paper, htmlurl, paper_dictionary, condition_to_html, dict_to_write)
+            ) = self.download_tools._conditions_to_download(metadata_dictionary)
+            self._make_xml(makexml, tree, destination_url, metadata_dictionary, condition_to_down)
+            self._make_pdf(getpdf, identifier_for_paper, metadata_dictionary, condition_to_download_pdf)
+            dict_to_write = self.download_tools._eupmc_clean_dict_for_csv(metadata_dictionary)
+            self._make_json(jsonurl, metadata_dictionary, condition_to_download_json, dict_to_write)
+            self._make_csv(makecsv, identifier_for_paper, metadata_dictionary, condition_to_download_csv, dict_to_write)
+            self._make_html(makehtml, identifier_for_paper, htmlurl, metadata_dictionary, condition_to_html, dict_to_write)
             self.download_tools.dumps_json_to_given_path(
                 os.path.join(str(os.getcwd()),
                                 RESULTS_JSON), metadata_dictionary
