@@ -119,28 +119,6 @@ class Rxivist(RepositoryInterface):
         total_papers_list += papers_list
         return total_number_of_results, total_papers_list, papers_list
 
-    def rxivist_update(
-            self,
-            query,
-            size,
-            update=None,
-            makecsv=False,
-            makexml=False,
-            makehtml=False,
-    ):
-        
-
-        os.chdir(os.path.dirname(update))
-        update = self.download_tools.readjsondata(update)
-        logging.info("Reading old json metadata file")
-        self.download_and_save_results(
-            query,
-            size,
-            update=update,
-            makecsv=makecsv,
-            makexml=makexml,
-            makehtml=makehtml,
-        )
 
     def download_and_save_results(
             self,
@@ -183,7 +161,10 @@ class Rxivist(RepositoryInterface):
         logging.info(
             "Please ensure that you are providing the same --api as the one in the corpus or you "
             "may get errors")
-        self.rxivist_update(
+        os.chdir(os.path.dirname(update))
+        update = self.download_tools.readjsondata(update)
+        logging.info("Reading old json metadata file")
+        self.download_and_save_results(
             query_namespace["query"],
             query_namespace["limit"],
             update=update_file_path,

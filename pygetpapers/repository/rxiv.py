@@ -92,7 +92,6 @@ class Rxiv(RepositoryInterface):
     def make_request_add_papers(
             self, interval, cursor_mark, source, total_number_of_results, total_papers_list
     ):
-        print("interval",interval)
         self.make_request_url_for_rxiv(cursor_mark, interval, source)
         request_handler = self.download_tools.post_query(self.get_url)
         request_dict = json.loads(request_handler.text)
@@ -108,7 +107,6 @@ class Rxiv(RepositoryInterface):
         return total_number_of_results, total_papers_list, final_list
 
     def make_request_url_for_rxiv(self, cursor_mark, interval, source):
-        print(interval)
         if type(interval) == int:
             self.get_url = "https://api.biorxiv.org/details/{source}/{interval}".format(
                 source=source, interval=interval
