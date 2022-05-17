@@ -184,9 +184,12 @@ class EuropePmc(RepositoryInterface):
         queryparams = self.buildquery(
             cursor_mark, maximum_hits_per_page, query, synonym=synonym
         )
-        retireved_metadata_dictionary = self.download_tools.gets_result_dict_for_query(
-            queryparams[HEADERS], queryparams[PAYLOAD]
-        )
+        try:
+            retireved_metadata_dictionary = self.download_tools.gets_result_dict_for_query(
+                queryparams[HEADERS], queryparams[PAYLOAD]
+            )
+        except:
+            retireved_metadata_dictionary = None
         return retireved_metadata_dictionary
 
     @staticmethod
