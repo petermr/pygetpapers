@@ -161,8 +161,7 @@ class Rxivist(RepositoryInterface):
         logging.info(
             "Please ensure that you are providing the same --api as the one in the corpus or you "
             "may get errors")
-        os.chdir(os.path.dirname(update))
-        update = self.download_tools.readjsondata(update)
+        os.chdir(os.path.dirname(update_file_path))
         logging.info("Reading old json metadata file")
         self.download_and_save_results(
             query_namespace["query"],
