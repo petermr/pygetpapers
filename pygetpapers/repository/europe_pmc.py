@@ -401,7 +401,7 @@ class EuropePmc(RepositoryInterface):
 
     def get_supplementary_metadata(
         self,
-        metadata_dictionary,
+        metadata_dictionary_with_all_papers,
         getpdf=False,
         makecsv=False,
         makehtml=False,
@@ -413,8 +413,8 @@ class EuropePmc(RepositoryInterface):
     ):
         """Gets supplementary metadata
 
-        :param metadata_dictionary: metadata dictionary
-        :type metadata_dictionary: dict
+        :param metadata_dictionary_with_all_papers: metadata dictionary
+        :type metadata_dictionary_with_all_papers: dict
         :param getpdf: whether to get pdfs
         :type getpdf: bool, optional
         :param makecsv:  whether to create csv output
@@ -434,7 +434,7 @@ class EuropePmc(RepositoryInterface):
         """
         html_url = os.path.join(str(os.getcwd()), EUPMC_HTML)
         resultant_dict_for_csv = self.download_tools.removing_added_attributes_from_dictionary(
-            metadata_dictionary["papers"]
+            metadata_dictionary_with_all_papers["papers"]
         )
         df = pd.DataFrame.from_dict(
             resultant_dict_for_csv,
@@ -447,7 +447,7 @@ class EuropePmc(RepositoryInterface):
         if makexml:
             self.download_tools._log_making_xml()
         paper_number = 0
-        dict_of_papers = metadata_dictionary["papers"]
+        dict_of_papers = metadata_dictionary_with_all_papers["papers"]
         for paper in tqdm(dict_of_papers):
             start = time.time()
             paper_number += 1
@@ -485,7 +485,7 @@ class EuropePmc(RepositoryInterface):
             self._make_html(makehtml, identifier_for_paper, htmlurl, metadata_dictionary, condition_to_html, dict_to_write)
             self.download_tools.dumps_json_to_given_path(
                 os.path.join(str(os.getcwd()),
-                                RESULTS_JSON), metadata_dictionary
+                                RESULTS_JSON), metadata_dictionary_with_all_papers
             )
             stop = time.time()
             logging.debug("Time elapsed: %s", stop - start)
