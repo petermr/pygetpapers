@@ -57,7 +57,7 @@ INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltex
 Example query of `pygetpapers`
 
 
-The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as `EuropePMC`, `HAL`, `SciELO`, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repositories, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
+The number of repositories is rapidly expanding, driven by the rise in preprint use (both per-subjects and percountry), Institutional repositories and aggregation sites such as `EuropePMC`, `HAL`, `SciELO`, etc. Each of these uses their own dialect of query syntax and API access. A major aspect of `pygetpapers` is to make it easy to add new repository downloaders, often by people who have little coding experience. `pygetpapers` is built on a modular system and repository-specific code can be swapped in as needed. By configuring repositories in a configuration file, users can easily configure support for new repositories. 
 
 
 ```
@@ -106,7 +106,7 @@ The download may be repository-dependent but usually contains:
    - PDF - usually includes the whole material but not machine-sectioned
    - HTML . often avaliable on websites
 * supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
-* figures. This is not supported by some repositories and others may require custom code. 
+* figures. This is not supported by some repositories, and others may require custom code. 
 
 <div class="figure">
 
@@ -114,7 +114,7 @@ The download may be repository-dependent but usually contains:
 
 Fig.1 Architecture of `pygetpapers`
 
-For this reason we create a directory structure with a root (`CProjects`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying `CTrees`. This means that a `CProject` contains subdirectories which may be `CTrees` or not, distinguished by this marker.
+For this reason we create a directory structure with a root (`CProject`) and a (`CTree`) subdirectory for each downloaded article or document. `pygetpapers` will routinely populate this with 1-5 files or subdirectories (see above). At present `pygetpapers` always creates a *_result.json file (possibly empty) and this can be used as a marker for identifying `CTrees`. This means that a `CProject` contains subdirectories which may be `CTree`s or not, distinguished by this marker.
 
 ### derived data
 
@@ -201,9 +201,9 @@ The control module `pygetpapers.py` reads the commandline and
 
 # Design
 
-The tool has been designed for ease of implementation , installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", most `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
+The tool has been designed for ease of implementation , installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
 
-Some repositories only support metadata while others include text and some even provide links to data downloads; again pygetpapers supports this range. Because there are hundreds of repositories (including preprints) the deign includes a modular approach. And because some repositories emit variable amounts of information we can customise the outputs.
+Some repositories only support metadata while others include text and some even provide links to data downloads; again pygetpapers supports this range. Because there are hundreds of repositories (including preprints) the design includes a modular approach. And because some repositories emit variable amounts of information we can customise the outputs.
 
 # Implementation
 
