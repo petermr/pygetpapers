@@ -230,6 +230,14 @@ Among our own downstream tools are
 * `pyamiimage` [@pyamiimage] - analysis of the content of images in downloaded documents
 * third party text analysis of PDF using GROBID[@GROBID] and PDFBox[@PDFBox].
 
+# Acknowledgements
+  
+We acknowledge contributions from Shweata N Hegde in helping write the documentation. We also acknowledge Matthew Evans support to help improve the quality of the code, and the repository. 
+  
+# CRediT Statement
+  
+Ayush Garg: Development of the Tool, Architecture. Richard D Smith-Unna: Base framework, work on `getpapers` (predecessor to `pygetpapers`). Peter Murray-Rust: Supervision, framework, writing manuscript.
+
 
 
 
