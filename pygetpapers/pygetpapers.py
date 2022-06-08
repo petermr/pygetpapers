@@ -365,7 +365,7 @@ class Pygetpapers:
             "-o",
             "--output",
             type=str,
-            help="output directory (Default: Folder inside current working directory named )",
+            help="output directory (Default: Folder inside current working directory named current date and time)",
             default=self.default_path,
         )
         parser.add_argument(
