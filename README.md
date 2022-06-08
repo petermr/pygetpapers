@@ -200,6 +200,8 @@ A CTree is a subdirectory of a CProject that deals with a single paper.
 
 `pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med. By default, it queries EPMC. You can specify the API by using `--api` flag.  
 
+You can also follow this [colab notebook](https://colab.research.google.com/drive/18SJ9H4Hm_7Y2rJENXdEhmJMS59Ojm2SK?usp=sharing) as part of the tutorial. 
+
 |Features        |EPMC           |crossref      |arxiv|biorxiv        |medarxiv|rxvist|
 |----------------|---------------|--------------|-----|---------------|--------|------|
 |Fulltext formats|xml, pdf       |NA            |pdf   |xml            |xml     |xml   |
