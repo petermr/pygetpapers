@@ -825,7 +825,7 @@ pygetpapers_call.run_command(query='lantana camara',limit=-50 ,output= lantana_c
 
 # Contributions
 
-https://github.com/petermr/pygetpapers/blob/main/docs/CONTRIBUTING.md
+https://github.com/petermr/pygetpapers/blob/main/resources/CONTRIBUTING.md
 
 # Feature Requests
 
