@@ -68,13 +68,11 @@ The community has taken time to ensure that everyone can contribute to this proj
 
 Ensure that `pip` is installed along with python. Download python from: https://www.python.org/downloads/ and select the option Add Python to Path while installing.
 
-Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing pip.
+Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing pip. Also, checkout https://packaging.python.org/en/latest/tutorials/installing-packages/ to learn more about installing packages in `python`.
 
 <hr>
 
 ## Method one (recommended):
-
-- Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 - Enter the command: `pip install pygetpapers`
 
@@ -84,9 +82,11 @@ Check out https://pip.pypa.io/en/stable/installing/ if difficulties installing p
 
 <hr>
 
-## Method two:
+## Method two (Install Directly From Head):
 
-- Manually clone the repository and run `python setup.py install` from inside the repository directory
+- Ensure git cli is installed and is available in path. Check out (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+- Enter the command: `pip install git+https://github.com/petermr/pygetpapers.git`
 
 - Ensure pygetpapers has been installed by reopening the terminal and typing the command `pygetpapers`
 
