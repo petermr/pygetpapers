@@ -190,7 +190,7 @@ Queries are build using `-q` flag. The query format can be found at http://europ
 To convey the repository specificity, we've used the first letter of the repository in square brackets in its description. 
 
 # What is CProject?
-A CProject is a directory structure that the AMI toolset uses to gather and process data. Each paper gets its folder. 
+A CProject is a directory structure that the [AMI](https://github.com/petermr.ami3) toolset uses to gather and process data. Each paper gets its folder. 
 <img src = "resources/cproject_structure.png">
 A CTree is a subdirectory of a CProject that deals with a single paper.
 <img src = "resources/PMC_folder_inside.png">
