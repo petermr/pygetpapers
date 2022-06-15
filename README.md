@@ -126,8 +126,7 @@ optional arguments:
                         instead use `"(LICENSE:'cc by' OR LICENSE:'cc-by') AND
                         METHODS:'transcriptome assembly'"`
   -o OUTPUT, --output OUTPUT
-                        output directory (Default: Folder inside current working
-                        directory named )
+                        output directory (Default: Folder inside current working directory named current date and time)
   --save_query          saved the passed query in a config file
   -x, --xml             download fulltext XMLs if available or save metadata as
                         XML
