@@ -824,6 +824,13 @@ pygetpapers_call=Pygetpapers()
 pygetpapers_call.run_command(query='lantana camara',limit=-50 ,output= lantana_camara, xml=True)
 ```
 
+## Test `pygetpapers` 
+To run automated testing on `pygetpapers`, do the following:
+1) Install `pygetpapers`
+2) Clone into `pygetpapers` repository
+3) Install pytest
+4) Run the command, `pytest`
+
 # Contributions
 
 https://github.com/petermr/pygetpapers/blob/main/resources/CONTRIBUTING.md
