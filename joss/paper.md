@@ -196,6 +196,8 @@ Most repository APIs provide a cursor-based approach to querying:
 8. It also recovers from crashes and restarts if needed).
 
 The control module `pygetpapers.py` reads the commandline and
+
+
 * Selects the repository-specific downloader
 
 * Creates a query from user input and/or terms from dictionaries
@@ -222,12 +224,16 @@ Some repositories only support metadata while others include text and some even 
 
 ## core
 The core mainly consists of:
+
+
 * `pygetpapers.py` (query-builder and runner). This includes query abstractions such as dates and Boolean queries for terms
   
 * `download_tools.py` (generic code for query/download (REST))
 
 ## repository interfaces
 We have tried to minimise the amount of repository-specific code, choosing to use declarative configuration files. To add a new repository you will need to:
+
+
 * create a configuration file (Fig. 2)
   
 * subclass the repo from `repository_interface.py`
@@ -239,6 +245,8 @@ We have tried to minimise the amount of repository-specific code, choosing to us
 
 Downloading is naturally modular, rather slow, and we interface by writing all output to the filesystem. This means that a wide range of tools (Unix, Windows, Java, Python, etc.) can analyze and transform it. The target documents are usually static so downloads only need to be done once.
 Among our own downstream tools are
+
+
 * `pyami` [@pyami] - sectioning the document
   
 * `docanalysis` [@docanalysis] - textual analysis and Natural Language Processing
