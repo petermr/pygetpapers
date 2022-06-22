@@ -97,15 +97,20 @@ We do not know of other tools which have the same functionality. `curl` [@curl] 
 ### raw data
 
 The download may be repository-dependent but usually contains:
+
 * download metadata. (query, date, errors, etc.)
+
 * journal/article metadata. We use JATS-NISO [@JATS] which is widely used by publishers and repository owners, especially in bioscience and medicine. There are over 200 tags. 
+  
 * fulltext. This can be 
    - XML (fulltext and metadata) 
    - images (these may not always be available)
    - tables (these are often separate)
    - PDF - usually includes the whole material but not machine-sectioned
    - HTML . often avaliable on websites
+  
 * supplemental data. This is very variable, often as PDF but also raw data files and sometimes zipped. It is not systematically arranged but `pygetpapers` allows for some heuristics.
+  
 * figures. This is not supported by some repositories, and others may require custom code. 
 
 <div class="figure">
@@ -119,7 +124,9 @@ For this reason we create a directory structure with a root (`CProject`) and a (
 ### derived data
 
 Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the `CTree`:
+
 * `docanalysis` (text analysis including `NLTK` and [`spaCy/sciSpaCy`](https://github.com/explosion/spaCy)
+  
 * `pyamiimage` [image processing and analysis of figures](https://github.com/petermr/pyamiimage)
 
   
@@ -190,13 +197,17 @@ Most repository APIs provide a cursor-based approach to querying:
 
 The control module `pygetpapers.py` reads the commandline and
 * Selects the repository-specific downloader
+
 * Creates a query from user input and/or terms from dictionaries
+  
 * Adds options and constraints
+  
 * Downloads according to the protocol above, including recording progress in a metadata file
 
 # Generic downloading concerns
 
 * Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (`EuropePMC`, `biorXiv`, `Crossref` etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
+  
 * Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for `Crossref`)
 
 # Design
@@ -212,12 +223,15 @@ Some repositories only support metadata while others include text and some even 
 ## core
 The core mainly consists of:
 * `pygetpapers.py` (query-builder and runner). This includes query abstractions such as dates and Boolean queries for terms
+  
 * `download_tools.py` (generic code for query/download (REST))
 
 ## repository interfaces
 We have tried to minimise the amount of repository-specific code, choosing to use declarative configuration files. To add a new repository you will need to:
 * create a configuration file (Fig. 2)
+  
 * subclass the repo from `repository_interface.py`
+  
 * add any repository specific code to add features or disable others 
 
 
@@ -226,8 +240,11 @@ We have tried to minimise the amount of repository-specific code, choosing to us
 Downloading is naturally modular, rather slow, and we interface by writing all output to the filesystem. This means that a wide range of tools (Unix, Windows, Java, Python, etc.) can analyze and transform it. The target documents are usually static so downloads only need to be done once.
 Among our own downstream tools are
 * `pyami` [@pyami] - sectioning the document
+  
 * `docanalysis` [@docanalysis] - textual analysis and Natural Language Processing
+  
 * `pyamiimage` [@pyamiimage] - analysis of the content of images in downloaded documents
+  
 * third party text analysis of PDF using GROBID[@GROBID] and PDFBox[@PDFBox].
 
 # Acknowledgements
