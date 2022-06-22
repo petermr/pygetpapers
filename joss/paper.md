@@ -119,8 +119,8 @@ For this reason we create a directory structure with a root (`CProject`) and a (
 ### derived data
 
 Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the `CTree`:
-* `docanalysis` (text analysis including `NLTK` and `spaCy/sciSpaCy` [URL]
-* `pyamiimage` (image processing and analysis of figures). [URL]
+* `docanalysis` (text analysis including `NLTK` and `spaCy/sciSpaCy` ['https://github.com/explosion/spaCy']
+* `pyamiimage` (image processing and analysis of figures) ['https://github.com/petermr/pyamiimage']
 
   
 ```
