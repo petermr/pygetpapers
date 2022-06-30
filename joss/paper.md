@@ -38,7 +38,7 @@ But each repository has its own API and functionality, which makes it hard for i
 ## pygetpapers
 `getpapers` was written in NodeJS and has now been completely rewritten in Python3 (`pygetpapers`) for easier distribution and integration. Typical use of `getpapers` is shown in a recent paper [@getpapers_use] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
 
-An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it `tkinter GUI`[@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
+An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it into a `tkinter` graphical user interface (GUI) [@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a “master” JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
 ```
 pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
@@ -186,13 +186,21 @@ Several types of download have been combined in this CProject and some CTrees ha
 ### Download protocol
 
 Most repository APIs provide a cursor-based approach to querying:
+
 1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
-2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
-3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
+
+2. The client requests a chunk of size $N \le M$ (normally 25-1000) and the repository replies with $N$ pointers to documents.
+
+3. The server response is pages of hits (metadata) as XML , normally $\le 1000$ hits per page , (1 sec) 
+
 4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory 
+
 5. If cursor indicates next page, `pygetpapers` submits a query for next page, otherwise it terminates the data collection and processes the python dict
+
 6. If user has requested supplemental data (eg. references, citations, fulltext, etc.) then the `pygetpapers` iterates through the python dict and uses the identifier, usually in the form of DOI, to query and download supplemental data seperately. 
+
 7. When the search is finished, `pygetpapers` writes the metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
+
 8. It also recovers from crashes and restarts if needed).
 
 The control module `pygetpapers.py` reads the commandline and
@@ -214,7 +222,7 @@ The control module `pygetpapers.py` reads the commandline and
 
 # Design
 
-The tool has been designed for ease of implementation , installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
+The tool has been designed for ease of implementation, installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
 
 Some repositories only support metadata while others include text and some even provide links to data downloads; again pygetpapers supports this range. Because there are hundreds of repositories (including preprints) the design includes a modular approach. And because some repositories emit variable amounts of information we can customise the outputs.
 
@@ -257,7 +265,7 @@ Among our own downstream tools are
 
 # Acknowledgements
   
-We acknowledge contributions from Shweata N Hegde in helping write the documentation. We also acknowledge Matthew Evans support to help improve the quality of the code, and the repository. 
+We acknowledge contributions from Shweata N Hegde in helping write the documentation. We also acknowledge Matthew Evans' support to help improve the quality of the code, and the repository. 
   
 # CRediT Statement
   
