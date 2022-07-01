@@ -189,9 +189,9 @@ Most repository APIs provide a cursor-based approach to querying:
 
 1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
 
-2. The client requests a chunk of size $N \le M$ (normally 25-1000) and the repository replies with $N$ pointers to documents.
+2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
 
-3. The server response is pages of hits (metadata) as XML , normally $\le 1000$ hits per page , (1 sec) 
+3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
 
 4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory 
 
