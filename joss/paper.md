@@ -14,7 +14,7 @@ authors:
     orcid:  0000-0003-3386-3972
     affiliation: 3
 affiliations:
- - name: Global Indian International School, 27 Punggol Field Walk, Singapore
+ - name: University of Richmond, Richmond, VA 23173, United States
    index: 1
  - name: LabDAO, https://www.labdao.com/
    index: 2 
