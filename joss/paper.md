@@ -81,8 +81,7 @@ Example configuration for a repository (europePMC)
 
 Many **searches** are simple keywords or phrases. However, these often fail to include synonyms and phrases and authors spend time creating complex error-prone boolean queries. We have developed a dictionary-based approach to automate much of the creation of complex queries.
 
-The **downloaded material** is inherently complex. See [Data](#data)
-Some of this has been systematized, especially in biosciences, and the NIH (US National Institutes of Health) led to the JATS/NISO standard to create highly structured documents.
+The **downloaded material** is inherently complex (See [Data](#data)). Some of this has been systematized, especially in biosciences, and the NIH (US National Institutes of Health) led to the JATS/NISO standard to create highly structured documents.
 
 Frequently users want to search **incrementally**, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also, `pygetpapers` allows regular updates, e.g. weekly searches of preprint servers.
 
