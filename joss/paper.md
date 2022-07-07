@@ -41,7 +41,7 @@ But each repository has its own API and functionality, which makes it hard for i
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it into a `tkinter` graphical user interface (GUI) [@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a "main" or "controller" JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
 ```
-pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant_species_test" -c --makehtml -x --save_query
+pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant" -c --makehtml -x
 ```
 
 OUTPUT:
@@ -51,8 +51,8 @@ INFO: Total Hits are 17910
 0it [00:00, ?it/s]WARNING: Keywords not found for paper 1
 WARNING: Keywords not found for paper 4
 1it [00:00, 164.87it/s]
-INFO: Saving XML files to C:\Users\shweata\invasive_plant_species_test\*\fulltext.xml
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
+INFO: Saving XML files to C:\invasive_plant\*\fulltext.xml
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
 ```
 Example query of `pygetpapers`
 
@@ -63,10 +63,16 @@ The number of repositories is rapidly expanding, driven by the rise in preprint 
 ```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
-citationurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/citations?page=1&pageSize=1000&format=xml
-referencesurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{source}/{pmcid}/references?page=1&pageSize=1000&format=xml
+citationurl=https://www.ebi.ac.uk/europepmc/webservices/rest
+
+/{source}/{pmcid}/citations?page=1&pageSize=1000&format=xml
+referencesurl=https://www.ebi.ac.uk/europepmc/webservices/rest
+
+/{source}/{pmcid}/references?page=1&pageSize=1000&format=xml
 xmlurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML
-suppurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/supplementaryFiles
+suppurl=https://www.ebi.ac.uk/europepmc/webservices/rest
+
+/{pmcid}/supplementaryFiles
 zipurl= http://europepmc.org/ftp/suppl/OA/{key}/{pmcid}.zip
 date_query=SUPPORTED
 term=SUPPORTED
