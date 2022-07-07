@@ -53,7 +53,7 @@ INFO: Total Hits are 17910
 WARNING: Keywords not found for paper 4
 1it [00:00, 164.87it/s]
 INFO: Saving XML files to C:\invasive_plant\*\fulltext.xml
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
+100%|███████████████████████████████████| 10/10 [00:21<00:00,  2.11s/it]
 ```
 Example query of `pygetpapers`
 
