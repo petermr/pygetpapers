@@ -63,17 +63,20 @@ The number of repositories is rapidly expanding, driven by the rise in preprint 
 ```
 [europe_pmc]
 query_url=https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST
+
 citationurl=https://www.ebi.ac.uk/europepmc/webservices/rest
-
 /{source}/{pmcid}/citations?page=1&pageSize=1000&format=xml
+
 referencesurl=https://www.ebi.ac.uk/europepmc/webservices/rest
-
 /{source}/{pmcid}/references?page=1&pageSize=1000&format=xml
-xmlurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML
-suppurl=https://www.ebi.ac.uk/europepmc/webservices/rest
 
+xmlurl=https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML
+
+suppurl=https://www.ebi.ac.uk/europepmc/webservices/rest
 /{pmcid}/supplementaryFiles
+
 zipurl= http://europepmc.org/ftp/suppl/OA/{key}/{pmcid}.zip
+
 date_query=SUPPORTED
 term=SUPPORTED
 update=SUPPORTED
