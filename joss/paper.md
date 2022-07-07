@@ -41,7 +41,8 @@ But each repository has its own API and functionality, which makes it hard for i
 An important aspect is to provide a simple cross-platform approach for scientists who may find tools like `curl` too complex and want a one-line command to combine the search, download, and analysis into a single: "please give me the results". We've tested this on many interns who learn `pygetpapers` in minutes. It was also easy to wrap it into a `tkinter` graphical user interface (GUI) [@tkinter]. The architecture of the results is simple and natural, based on full-text files in the normal filesystem. The result of `pygetpapers` is interfaced using a "main" or "controller" JSON file (for eg. eupmc_results.json), which allows corpus to be reused/added to. This allows maximum flexibility of re-use and some projects have large amounts of derived data in these directories.
 
 ```
-pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant" -c --makehtml -x
+pygetpapers -q "METHOD: invasive plant species" -k 10 -o "invasive_plant" 
+-c --makehtml -x
 ```
 
 OUTPUT:
