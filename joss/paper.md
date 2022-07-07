@@ -33,7 +33,7 @@ bibliography: paper.bib
 An increasing amount of research, particularly in medicine and applied science, is now based on meta-analysis and systematic review of the existing literature [@systematic_review]. In such reviews, scientists frequently download thousands of articles and analyze them by Natural Language Processing (NLP) through Text and Data Mining (TDM) or Content Mining. A common approach is to search bibliographic resources with keywords, download the hits, scan them manually, and reject papers that do not fit the criteria for the meta-analysis.
 The typical text-based searches on sites are broad, with many false positives and often only based on abstracts. We know of cases where systematic reviewers downloaded 30,000 articles and eventually used 30.
 Retrieval is often done by crawling/scraping sites, such as journals but is easier and faster when these articles are in Open Access repositories such as `arXiv`, `EuropePMC`, `bioRxiv`, `medRxiv`.
-But each repository has its own API and functionality, which makes it hard for individuals to (a) access (b) set flags (c) use generic queries. In 2015, we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers` [@getpapers], with the key advance of integrating a query submission with bulk fulltext-download of all the hits. 
+But each repository has its own API and functionality, which makes it hard for individuals to (a) access, (b) set flags, and (c) use generic queries. In 2015, we reviewed tools for scraping websites and decided that none met our needs and so developed `getpapers` [@getpapers], with the key advance of integrating a query submission with bulk fulltext-download of all the hits. 
 
 ## pygetpapers
 `getpapers` was written in NodeJS and has now been completely rewritten in Python3 (`pygetpapers`) for easier distribution and integration. Typical use of `getpapers` is shown in a recent paper [@getpapers_use] where the authors "analyzed key term frequency within 20,000 representatives [Antimicrobial Resistance] articles".
@@ -93,7 +93,7 @@ Many **searches** are simple keywords or phrases. However, these often fail to i
 
 The **downloaded material** is inherently complex (See [Data](#data)). Some of this has been systematized, especially in biosciences, and the NIH (US National Institutes of Health) led to the JATS/NISO standard to create highly structured documents.
 
-Frequently users want to search **incrementally**, e.g. downloading part and resuming later (especially with poor connectivity where work is often lost). Also, `pygetpapers` allows regular updates, e.g. weekly searches of preprint servers.
+Frequently users want to search **incrementally**, e.g., downloading part and resuming later (especially with poor connectivity where work is often lost). Also, `pygetpapers` allows regular updates, e.g., weekly searches of preprint servers.
 
 `pygetpapers` takes the approach of downloading once and re-analyzing later on local filestore. This saves repeated querying where connections are poor or where there is suspicion that publishers may surveil users. Moreover, publishers rarely provide more than full-text Boolean searches, whereas local tools can analyze sections and non-textual material.
 
@@ -132,7 +132,7 @@ For this reason we create a directory structure with a root ([`CProject`](https:
 
 ### derived data
 
-Besides the downloaded data (already quite variable) users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the [`CTree`](https://github.com/ContentMine/CTree/blob/master/CTree.md):
+In addition to the downloaded data (already quite variable), users often wish to create new derived data and this directory structure is designed so that tools can add an arbitrary amount of new data, normally in sub-directory trees. For example we have sibling projects that add data to the [`CTree`](https://github.com/ContentMine/CTree/blob/master/CTree.md):
 
 * `docanalysis` (text analysis including `NLTK` and [`spaCy/sciSpaCy`](https://github.com/explosion/spaCy)
   
@@ -188,7 +188,7 @@ and with examples of derived data
   
 Typical download directory
 
-Several types of download have been combined in this CProject and some CTrees have derived data
+Several types of download have been combined in this CProject and some CTrees have derived data.
 
 ## Code 
 
@@ -199,16 +199,16 @@ Most repository APIs provide a cursor-based approach to querying:
 1. A query is sent and the repository creates a list of M hits (pointers to documents), sets a cursor start, and returns this information to the `pygetpapers` client.
 
 2. The client requests a chunk of size N <= M (normally 25-1000) and the repository replies with N pointers to documents.
+                                            
+3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page (1 sec). 
 
-3. The server response is pages of hits (metadata) as XML , normally <= 1000 hits per page , (1 sec) 
+4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory.
 
-4. `pygetpapers` - incremental aggregates XML metadata as python dict in memory 
+5. If cursor indicates next page, `pygetpapers` submits a query for next page, otherwise it terminates the data collection and processes the python dict.
 
-5. If cursor indicates next page, `pygetpapers` submits a query for next page, otherwise it terminates the data collection and processes the python dict
+6. If user has requested supplemental data (e.g., references, citations, fulltext) then the `pygetpapers` iterates through the python dict and uses the identifier, usually in the form of DOI, to query and download supplemental data seperately. 
 
-6. If user has requested supplemental data (eg. references, citations, fulltext, etc.) then the `pygetpapers` iterates through the python dict and uses the identifier, usually in the form of DOI, to query and download supplemental data seperately. 
-
-7. When the search is finished, `pygetpapers` writes the metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata)
+7. When the search is finished, `pygetpapers` writes the metadata to CProject (Top level project directory) as JSON (total, and creates CTrees (per-article directories) with individual metadata).
 
 8. It also recovers from crashes and restarts if needed).
 
@@ -225,19 +225,19 @@ The control module `pygetpapers.py` reads the commandline and
 
 # Generic downloading concerns
 
-* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (`EuropePMC`, `biorXiv`, `Crossref` etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
+* Download speeds. Excessively rapid or voluminous downloads can overload servers and are sometimes hostile (DOS). We have discussed this with major sites (`EuropePMC`, `biorXiv`, `Crossref`, etc. and therefore choose to download sequentially instead of sending parallel requests in `pygetpapers`. 
   
-* Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g. for `Crossref`)
+* Authentication (alerting repo to downloader header). `pygetpapers` supports anonymous, non-authenticated, access but includes a header (e.g., for `Crossref`)
 
 # Design
 
-The tool has been designed for ease of implementation, installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` (This is the format in which you provide a date constraint to a query for `EuropePMC`) but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline which makes it easy either to wrap the use in system calls, or layer a GUI on top.
+The tool has been designed for ease of implementation, installation (including platform independence) and future extension. It also abstracts some of the variation in query languages and APIs (where there do not appear to be standards). For example for "date", `EuropePMC` uses `FIRST_PDATE[DD-MM-YYYY to DD-MM-YY]` (This is the format in which you provide a date constraint to a query for `EuropePMC`) but `bioRxiv` uses `DD-MM-YYYY/DD-MM-YY`. `pygetpapers` provides `DATE` as an abstraction. It also uses a commandline, which makes it easy either to wrap the use in system calls, or layer a GUI on top.
 
 Some repositories only support metadata while others include text and some even provide links to data downloads; again pygetpapers supports this range. Because there are hundreds of repositories (including preprints) the design includes a modular approach. And because some repositories emit variable amounts of information we can customise the outputs.
 
 # Implementation
 
-`getpapers` was implemented in `NodeJS` which allows multithreading and therefore potentially download rates of several XML documents per second on a fast line. Installing `NodeJS` was a problem on some systems (especially Windows) and was not well suited for integration with scientific libraries (mainly coded in Java and Python). We, therefore, decided to rewrite in Python, keeping only the command line and output structure, and have found very easy integration with other tools, including GUIs. `pygetpapers` can be run both as a command-line tool and a module, which makes it versatile. 
+`getpapers` was implemented in `NodeJS`, which allows multithreading and therefore potentially download rates of several XML documents per second on a fast line. Installing `NodeJS` was a problem on some systems (especially Windows) and was not well suited for integration with scientific libraries (mainly coded in Java and Python). We, therefore, decided to rewrite in Python, keeping only the command line and output structure, and have found very easy integration with other tools, including GUIs. `pygetpapers` can be run both as a command-line tool and a module, which makes it versatile. 
 
 ## core
 The core mainly consists of:
@@ -274,11 +274,11 @@ Among our own downstream tools are
 
 # Acknowledgements
   
-We acknowledge contributions from Shweata N Hegde in helping write the documentation. We also acknowledge Matthew Evans' support to help improve the quality of the code, and the repository. 
+We acknowledge contributions from Shweata N. Hegde in helping write the documentation. We also acknowledge Matthew Evans' support to help improve the quality of the code, and the repository. 
   
 # Contribution statement
   
-Ayush Garg: Development of the Tool, Architecture. Richard D Smith-Unna: Base framework, work on `getpapers` (predecessor to `pygetpapers`). Peter Murray-Rust: Supervision, framework, writing manuscript.
+Ayush Garg: Development of the Tool, Architecture. Richard D. Smith-Unna: Base framework, work on `getpapers` (predecessor to `pygetpapers`). Peter Murray-Rust: Supervision, framework, writing manuscript.
 
 # References
 
