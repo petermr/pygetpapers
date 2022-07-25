@@ -7,6 +7,7 @@ import sys
 import xml.etree.ElementTree as ET
 from functools import partialmethod
 from time import gmtime, strftime
+from gooey import Gooey, GooeyParser
 
 import coloredlogs
 import configargparse
@@ -322,15 +323,15 @@ class Pygetpapers:
             return 
         api_handler = ApiPlugger(query_namespace)
         api_handler.check_query_logic_and_run()
-        
+    
+    @Gooey    
     def create_argparser(self):
         """Creates the cli
         """        
         version = self.version
 
-        parser = configargparse.ArgParser(
+        parser = GooeyParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help",
-            add_config_file_help=False,
         )
         parser.add_argument(
             "--config",
@@ -532,9 +533,7 @@ class Pygetpapers:
             type=str,
             help="[C] filter by key value pair (only crossref supported)",
         )
-        if len(sys.argv) == 1:
-            parser.print_help(sys.stderr)
-            return
+        
         self.query_namespace = vars(parser.parse_args())
         for arg in (self.query_namespace):
             if (self.query_namespace)[arg] == "False":

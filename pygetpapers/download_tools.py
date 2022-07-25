@@ -131,6 +131,10 @@ class DownloadTools:
         logging.debug("*/RESTful request for fulltext.xml (D)*/")
         request_handler = self.post_query(
             self.query_url, data=data, headers=headers)
+        dict_to_return = self.parse_request_handler(request_handler)
+        return dict_to_return
+
+    def parse_request_handler(self, request_handler):
         parser = etree.XMLParser(recover=True)
         e= etree.fromstring(request_handler.content, parser=parser)
         xmlstr = etree.tostring(e, encoding='utf8', method='xml')
