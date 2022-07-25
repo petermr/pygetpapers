@@ -7,7 +7,6 @@ import sys
 import xml.etree.ElementTree as ET
 from functools import partialmethod
 from time import gmtime, strftime
-from gooey import Gooey, GooeyParser
 
 import coloredlogs
 import configargparse
@@ -86,7 +85,6 @@ class ApiPlugger:
 
     def setup_api_support_variables(self, config, api):
         """Reads in the configuration file namespace object and sets up class variable for the given api
-
         :param config: Configparser configured configuration file
         :type config: configparser object
         :param api: the repository to get the variables for
@@ -103,9 +101,7 @@ class ApiPlugger:
     def _add_date_to_query(self):
         """Builds query from simple dates in --startdate and --enddate. (See https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)
         Edits the namespace object's query flag.
-
         :param query_namespace: namespace object from argparse (using --startdate and --enddate)
-
         """
 
         if self.query_namespace[STARTDATE] and not self.query_namespace[ENDDATE]:
@@ -127,9 +123,7 @@ class ApiPlugger:
     def add_terms_from_file(self):
         """Builds query from terms mentioned in a text file described in the argparse namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)
         Edits the namespace object's query flag.
-
         :param query_namespace: namespace object from argparse (using --terms and --notterms)
-
         """
         if self.query_namespace[TERMS]:
             terms_path = self.query_namespace[TERMS]
@@ -226,9 +220,7 @@ class Pygetpapers:
     @staticmethod
     def write_configuration_file(query_namespace):
         """Writes the argparse namespace to SAVED_CONFIG_INI
-
         :param query_namespace: argparse namespace object
-
         """
         parser = configparser.ConfigParser()
 
@@ -243,10 +235,8 @@ class Pygetpapers:
 
     def write_logfile(self, query_namespace, level):
         """This functions stores logs to a logfile
-
         :param query_namespace: argparse namespace object
         :param level: level of logger (See https://docs.python.org/3/library/logging.html#logging-levels)
-
         """
         location_to_store_logs = os.path.join(query_namespace[OUTPUT], query_namespace[LOGFILE])
         self.download_tools.check_or_make_directory(query_namespace[OUTPUT])
@@ -262,7 +252,6 @@ class Pygetpapers:
     @staticmethod
     def makes_output_directory(query_namespace):
         """Makes the output directory for the given output in query_namespace
-
         :param query_namespace: pygetpaper's name space object
         :type query_namespace: dict
         """
@@ -275,7 +264,6 @@ class Pygetpapers:
 
     def generate_logger(self, query_namespace):
         """Creates logger for the given loglevel
-
         :param query_namespace: pygetpaper's name space object
         :type query_namespace: dict
         """
@@ -307,7 +295,6 @@ class Pygetpapers:
 
     def runs_pygetpapers_for_given_args(self,query_namespace):
         """Runs pygetpapers for flags described in a dictionary
-
         :param query_namespace: pygetpaper's namespace object
         :type query_namespace: dict
         """
@@ -323,15 +310,15 @@ class Pygetpapers:
             return 
         api_handler = ApiPlugger(query_namespace)
         api_handler.check_query_logic_and_run()
-    
-    @Gooey    
+        
     def create_argparser(self):
         """Creates the cli
         """        
         version = self.version
 
-        parser = GooeyParser(
+        parser = configargparse.ArgParser(
             description=f"Welcome to Pygetpapers version {version}. -h or --help for help",
+            add_config_file_help=False,
         )
         parser.add_argument(
             "--config",
@@ -366,7 +353,7 @@ class Pygetpapers:
             "-o",
             "--output",
             type=str,
-            help="output directory (Default: Folder inside current working directory named current date and time)",
+            help="output directory (Default: Folder inside current working directory named )",
             default=self.default_path,
         )
         parser.add_argument(
@@ -533,7 +520,9 @@ class Pygetpapers:
             type=str,
             help="[C] filter by key value pair (only crossref supported)",
         )
-        
+        if len(sys.argv) == 1:
+            parser.print_help(sys.stderr)
+            return
         self.query_namespace = vars(parser.parse_args())
         for arg in (self.query_namespace):
             if (self.query_namespace)[arg] == "False":
