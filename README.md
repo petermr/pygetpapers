@@ -24,7 +24,11 @@
 <a href='https://pygetpapers.readthedocs.io/en/latest/?badge=latest'>
     <img src='https://readthedocs.org/projects/pygetpapers/badge/?version=latest' alt='Documentation Status' height="25px" />
 </a>
+<a style="border-width:0" href="https://doi.org/10.21105/joss.04451">
+  <img src="https://joss.theoj.org/papers/10.21105/joss.04451/status.svg" alt="DOI badge" >
+</a>
 </p>
+
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/pin/?username=petermr&repo=pygetpapers">
