@@ -1,3 +1,4 @@
+arxiv>=2.1.0
 coloredlogs>=15.0.1
 ConfigArgParse>=1.5.3
 dict2xml>=1.7.0
