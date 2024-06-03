@@ -1,0 +1,944 @@
+<root>
+   <abstract_inverted_index>
+      <__CP>65</__CP>
+      <__CP-LVs_>46</__CP-LVs_>
+      <_-LVs>86</_-LVs>
+      <_-LVs>140</_-LVs>
+      <_-LVs_>67</_-LVs_>
+      <_0.4>64</_0.4>
+      <_1>66</_1>
+      <_1>85</_1>
+      <_1>139</_1>
+      <Abstract>0</Abstract>
+      <Benefiting>130</Benefiting>
+      <CD44>94</CD44>
+      <CP>84</CP>
+      <CP>138</CP>
+      <CP-LVs>57</CP-LVs>
+      <CP-LVs>123</CP-LVs>
+      <Herein_>36</Herein_>
+      <Moreover_>83</Moreover_>
+      <Our>148</Our>
+      <PEGylated>146</PEGylated>
+      <Precisely>18</Precisely>
+      <The>1</The>
+      <The>106</The>
+      <a>151</a>
+      <abundant>88</abundant>
+      <adsorb>87</adsorb>
+      <adsorption>74</adsorption>
+      <affect>13</affect>
+      <affected>117</affected>
+      <alternative>30</alternative>
+      <amino_hydroxyl>49</amino_hydroxyl>
+      <amino_hydroxyl>60</amino_hydroxyl>
+      <an>29</an>
+      <an>59</an>
+      <and>55</and>
+      <and>77</and>
+      <and>95</and>
+      <and>124</and>
+      <antitumor>143</antitumor>
+      <appears>114</appears>
+      <approximately>63</approximately>
+      <are>68</are>
+      <as>93</as>
+      <be>116</be>
+      <been>9</been>
+      <behaviors.>17</behaviors.>
+      <between>122</between>
+      <blood>76</blood>
+      <by>118</by>
+      <cell>104</cell>
+      <circulation.>82</circulation.>
+      <corona>4</corona>
+      <corona>24</corona>
+      <corona>53</corona>
+      <corona>108</corona>
+      <corona>135</corona>
+      <corona>162</corona>
+      <delivery.>35</delivery.>
+      <delivery.>167</delivery.>
+      <demonstrate>141</demonstrate>
+      <different>48</different>
+      <distinctive>90</distinctive>
+      <diverse>127</diverse>
+      <drug>34</drug>
+      <drug>166</drug>
+      <dynamic>2</dynamic>
+      <efficacy>144</efficacy>
+      <efficient>165</efficient>
+      <efficiently>71</efficiently>
+      <electrostatic>120</electrostatic>
+      <environment>113</environment>
+      <evolution.>56</evolution.>
+      <explore>38</explore>
+      <fluids_>100</fluids_>
+      <for>32</for>
+      <for>164</for>
+      <formation>21</formation>
+      <formation>54</formation>
+      <formation>163</formation>
+      <formed>5</formed>
+      <found>69</found>
+      <from>131</from>
+      <glycosylated>42</glycosylated>
+      <has>8</has>
+      <immunoglobulin>73</immunoglobulin>
+      <impetus>31</impetus>
+      <in>15</in>
+      <in>51</in>
+      <in>75</in>
+      <in>80</in>
+      <in>97</in>
+      <interaction>121</interaction>
+      <internalization.>105</internalization.>
+      <interstitial>99</interstitial>
+      <isoelectric>128</isoelectric>
+      <liposomes.>147</liposomes.>
+      <livers_>78</livers_>
+      <manipulating>19</manipulating>
+      <may>27</may>
+      <mediating>101</mediating>
+      <modification-mediated>133</modification-mediated>
+      <modulate>159</modulate>
+      <nanocarriers>7</nanocarriers>
+      <nanocarriers>26</nanocarriers>
+      <nanocarriers>157</nanocarriers>
+      <nanovesicles>45</nanovesicles>
+      <of>22</of>
+      <of>41</of>
+      <of>62</of>
+      <of>156</of>
+      <offers>150</offers>
+      <on>6</on>
+      <on>25</on>
+      <on>153</on>
+      <osteopontin>96</osteopontin>
+      <paclitaxel-loaded>137</paclitaxel-loaded>
+      <perspective>152</perspective>
+      <points.>129</points.>
+      <polyhydroxy>43</polyhydroxy>
+      <polymer-modified>44</polymer-modified>
+      <prolonged>81</prolonged>
+      <protein>3</protein>
+      <protein>23</protein>
+      <protein>52</protein>
+      <protein>134</protein>
+      <protein>161</protein>
+      <proteins>107</proteins>
+      <proteins>125</proteins>
+      <proteins_>91</proteins_>
+      <provide>28</provide>
+      <ratio>61</ratio>
+      <rational>154</rational>
+      <ratios>50</ratios>
+      <regulation_>136</regulation_>
+      <resulting>79</resulting>
+      <revealed>10</revealed>
+      <role>40</role>
+      <selective>102</selective>
+      <specific>33</specific>
+      <specific>110</specific>
+      <strongly>12</strongly>
+      <such>92</such>
+      <superior>142</superior>
+      <suppress>72</suppress>
+      <surface>132</surface>
+      <surface-design>155</surface-design>
+      <the>20</the>
+      <the>39</the>
+      <the>112</the>
+      <the>119</the>
+      <the>160</the>
+      <their>14</their>
+      <to>11</to>
+      <to>70</to>
+      <to>111</to>
+      <to>115</to>
+      <to>145</to>
+      <to>158</to>
+      <transformation>109</transformation>
+      <tumor>89</tumor>
+      <tumor>98</tumor>
+      <tumor>103</tumor>
+      <vivo>16</vivo>
+      <we>37</we>
+      <with>47</with>
+      <with>58</with>
+      <with>126</with>
+      <work>149</work>
+   </abstract_inverted_index>
+   <apc_list>
+      <currency>GBP</currency>
+      <provenance>doaj</provenance>
+      <value>3920</value>
+      <value_usd>4808</value_usd>
+   </apc_list>
+   <apc_paid>
+      <currency>GBP</currency>
+      <provenance>doaj</provenance>
+      <value>3920</value>
+      <value_usd>4808</value_usd>
+   </apc_paid>
+   <authorships>
+      <author>
+         <display_name>Yulong Miao</display_name>
+         <id>https://openalex.org/A5086848888</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Yunqiu Miao</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Lijun Li</display_name>
+         <id>https://openalex.org/A5036413944</id>
+         <orcid>https://orcid.org/0000-0002-6746-5940</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Lijun Li</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Yinghan Wang</display_name>
+         <id>https://openalex.org/A5034963415</id>
+         <orcid>https://orcid.org/0000-0001-7002-3097</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Ying Wang</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Jiangyue Wang</display_name>
+         <id>https://openalex.org/A5078769857</id>
+         <orcid>https://orcid.org/0000-0001-6057-512X</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Jiangyue Wang</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Yihan Zhou</display_name>
+         <id>https://openalex.org/A5060010965</id>
+         <orcid>https://orcid.org/0000-0002-6970-065X</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Yihan Zhou</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Linmiao Guo</display_name>
+         <id>https://openalex.org/A5040492578</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Linmiao Guo</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Yanqi Zhao</display_name>
+         <id>https://openalex.org/A5035820331</id>
+         <orcid>https://orcid.org/0000-0002-1023-6549</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Yanqi Zhao</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Di Nie</display_name>
+         <id>https://openalex.org/A5025180836</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Di Nie</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Zhou Yang</display_name>
+         <id>https://openalex.org/A5052761636</id>
+         <orcid>https://orcid.org/0000-0003-1229-3739</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Tenth People's Hospital</display_name>
+         <id>https://openalex.org/I4210132741</id>
+         <lineage>https://openalex.org/I4210132741</lineage>
+         <ror>https://ror.org/03vjkf643</ror>
+         <type>healthcare</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Tongji University</display_name>
+         <id>https://openalex.org/I116953780</id>
+         <lineage>https://openalex.org/I116953780</lineage>
+         <ror>https://ror.org/03rc6as71</ror>
+         <type>education</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Shanghai Tenth People’s Hospital, School of Medicine, Tongji University, Shanghai, 200072, China</raw_affiliation_strings>
+      <raw_author_name>Yang Zhang</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Xinxin Zhang</display_name>
+         <id>https://openalex.org/A5033149708</id>
+         <orcid>https://orcid.org/0000-0002-1782-1046</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Shanghai Institute of Materia Medica</display_name>
+         <id>https://openalex.org/I4210112820</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210112820</lineage>
+         <ror>https://ror.org/022syn853</ror>
+         <type>facility</type>
+      </institutions>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I19820366</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <ror>https://ror.org/034t30j35</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>State Key Laboratory of Drug Research, Shanghai Institute of Materia Medica, Chinese Academy of Sciences, Shanghai, 201203, China</raw_affiliation_strings>
+      <raw_author_name>Xinxin Zhang</raw_author_name>
+   </authorships>
+   <authorships>
+      <author>
+         <display_name>Yong Gan</display_name>
+         <id>https://openalex.org/A5050475714</id>
+         <orcid>https://orcid.org/0000-0002-4579-994X</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>CN</countries>
+      <institutions>
+         <country_code>CN</country_code>
+         <display_name>University of Chinese Academy of Sciences</display_name>
+         <id>https://openalex.org/I4210165038</id>
+         <lineage>https://openalex.org/I19820366</lineage>
+         <lineage>https://openalex.org/I4210165038</lineage>
+         <ror>https://ror.org/05qbk4x57</ror>
+         <type>education</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>University of Chinese Academy of Sciences, Beijing, 100049, China</raw_affiliation_strings>
+      <raw_author_name>Yong Gan</raw_author_name>
+   </authorships>
+   <best_oa_location>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1038/s41467-024-45254-7</landing_page_url>
+      <license>cc-by</license>
+      <license_id>https://openalex.org/licenses/cc-by</license_id>
+      <pdf_url>https://www.nature.com/articles/s41467-024-45254-7.pdf</pdf_url>
+      <source>
+         <display_name>Nature communications</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S64187185</id>
+         <is_in_doaj>True</is_in_doaj>
+         <is_oa>True</is_oa>
+         <issn>2041-1723</issn>
+         <issn_l>2041-1723</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </best_oa_location>
+   <biblio>
+      <first_page>None</first_page>
+      <issue>1</issue>
+      <last_page>None</last_page>
+      <volume>15</volume>
+   </biblio>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W4391598081</cited_by_api_url>
+   <cited_by_count>2</cited_by_count>
+   <cited_by_percentile_year>
+      <max>99</max>
+      <min>97</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Nanocarriers</display_name>
+      <id>https://openalex.org/C18150654</id>
+      <level>3</level>
+      <score>0.86597943</score>
+      <wikidata>https://www.wikidata.org/wiki/Q17153796</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Drug delivery</display_name>
+      <id>https://openalex.org/C2779820397</id>
+      <level>2</level>
+      <score>0.67380273</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1392806</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Chemistry</display_name>
+      <id>https://openalex.org/C185592680</id>
+      <level>0</level>
+      <score>0.5912324</score>
+      <wikidata>https://www.wikidata.org/wiki/Q2329</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biophysics</display_name>
+      <id>https://openalex.org/C12554922</id>
+      <level>1</level>
+      <score>0.58720773</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7100</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Liposome</display_name>
+      <id>https://openalex.org/C185154212</id>
+      <level>2</level>
+      <score>0.46061134</score>
+      <wikidata>https://www.wikidata.org/wiki/Q410454</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Drug carrier</display_name>
+      <id>https://openalex.org/C13245373</id>
+      <level>3</level>
+      <score>0.41519177</score>
+      <wikidata>https://www.wikidata.org/wiki/Q3715494</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biochemistry</display_name>
+      <id>https://openalex.org/C55493867</id>
+      <level>1</level>
+      <score>0.26736128</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7094</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Organic chemistry</display_name>
+      <id>https://openalex.org/C178790620</id>
+      <level>1</level>
+      <score>0.11438766</score>
+      <wikidata>https://www.wikidata.org/wiki/Q11351</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.10623708</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <corresponding_author_ids></corresponding_author_ids>
+   <corresponding_institution_ids></corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>1</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <created_date>2024-02-08</created_date>
+   <datasets></datasets>
+   <display_name>Regulating protein corona on nanovesicles by glycosylated polyhydroxy polymer modification for efficient drug delivery</display_name>
+   <doi>https://doi.org/10.1038/s41467-024-45254-7</doi>
+   <fulltext_origin>pdf</fulltext_origin>
+   <grants>
+      <award_id>21ZR1475800</award_id>
+      <funder>https://openalex.org/F4320309612</funder>
+      <funder_display_name>Natural Science Foundation of Shanghai</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>82222066</award_id>
+      <funder>https://openalex.org/F4320321001</funder>
+      <funder_display_name>National Natural Science Foundation of China</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>81973250</award_id>
+      <funder>https://openalex.org/F4320321001</funder>
+      <funder_display_name>National Natural Science Foundation of China</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>82025032</award_id>
+      <funder>https://openalex.org/F4320321001</funder>
+      <funder_display_name>National Natural Science Foundation of China</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>82104113</award_id>
+      <funder>https://openalex.org/F4320321001</funder>
+      <funder_display_name>National Natural Science Foundation of China</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>2022T150675</award_id>
+      <funder>https://openalex.org/F4320321543</funder>
+      <funder_display_name>China Postdoctoral Science Foundation</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>SIMM2103ZZ-01</award_id>
+      <funder>https://openalex.org/F4320335657</funder>
+      <funder_display_name>State Key Laboratory of Drug Research</funder_display_name>
+   </grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W4391598081</id>
+   <ids>
+      <doi>https://doi.org/10.1038/s41467-024-45254-7</doi>
+      <openalex>https://openalex.org/W4391598081</openalex>
+      <pmid>https://pubmed.ncbi.nlm.nih.gov/38326312</pmid>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <indexed_in>pubmed</indexed_in>
+   <institutions_distinct_count>5</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Nanocarriers</display_name>
+      <id>https://openalex.org/keywords/nanocarriers</id>
+      <score>0.53316</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1038/s41467-024-45254-7</landing_page_url>
+      <license>cc-by</license>
+      <license_id>https://openalex.org/licenses/cc-by</license_id>
+      <pdf_url>https://www.nature.com/articles/s41467-024-45254-7.pdf</pdf_url>
+      <source>
+         <display_name>Nature communications</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S64187185</id>
+         <is_in_doaj>True</is_in_doaj>
+         <is_oa>True</is_oa>
+         <issn>2041-1723</issn>
+         <issn_l>2041-1723</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://pubmed.ncbi.nlm.nih.gov/38326312</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>PubMed</display_name>
+         <host_organization>https://openalex.org/I1299303238</host_organization>
+         <host_organization_lineage>https://openalex.org/I1299303238</host_organization_lineage>
+         <host_organization_lineage_names>National Institutes of Health</host_organization_lineage_names>
+         <host_organization_name>National Institutes of Health</host_organization_name>
+         <id>https://openalex.org/S4306525036</id>
+         <is_in_doaj>False</is_in_doaj>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>2</locations_count>
+   <mesh>
+      <descriptor_name>Nanoparticles</descriptor_name>
+      <descriptor_ui>D053758</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Protein Corona</descriptor_name>
+      <descriptor_ui>D000066970</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Drug Delivery Systems</descriptor_name>
+      <descriptor_ui>D016503</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Nanoparticles</descriptor_name>
+      <descriptor_ui>D053758</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>metabolism</qualifier_name>
+      <qualifier_ui>Q000378</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Osteopontin</descriptor_name>
+      <descriptor_ui>D053495</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Polymers</descriptor_name>
+      <descriptor_ui>D011108</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Protein Corona</descriptor_name>
+      <descriptor_ui>D000066970</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>metabolism</qualifier_name>
+      <qualifier_ui>Q000378</qualifier_ui>
+   </mesh>
+   <ngrams_url>https://api.openalex.org/works/W4391598081/ngrams</ngrams_url>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>True</is_oa>
+      <oa_status>gold</oa_status>
+      <oa_url>https://www.nature.com/articles/s41467-024-45254-7.pdf</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1038/s41467-024-45254-7</landing_page_url>
+      <license>cc-by</license>
+      <license_id>https://openalex.org/licenses/cc-by</license_id>
+      <pdf_url>https://www.nature.com/articles/s41467-024-45254-7.pdf</pdf_url>
+      <source>
+         <display_name>Nature communications</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S64187185</id>
+         <is_in_doaj>True</is_in_doaj>
+         <is_oa>True</is_oa>
+         <issn>2041-1723</issn>
+         <issn_l>2041-1723</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Nanoparticle-Based Drug Delivery Systems</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Materials Science</display_name>
+         <id>https://openalex.org/fields/25</id>
+      </field>
+      <id>https://openalex.org/T10063</id>
+      <score>0.9996</score>
+      <subfield>
+         <display_name>Biomaterials</display_name>
+         <id>https://openalex.org/subfields/2502</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2024-02-07</publication_date>
+   <publication_year>2024</publication_year>
+   <referenced_works>https://openalex.org/W1843302206</referenced_works>
+   <referenced_works>https://openalex.org/W1973831032</referenced_works>
+   <referenced_works>https://openalex.org/W1983361018</referenced_works>
+   <referenced_works>https://openalex.org/W1987259801</referenced_works>
+   <referenced_works>https://openalex.org/W1997153101</referenced_works>
+   <referenced_works>https://openalex.org/W2017205253</referenced_works>
+   <referenced_works>https://openalex.org/W2021876818</referenced_works>
+   <referenced_works>https://openalex.org/W2028893730</referenced_works>
+   <referenced_works>https://openalex.org/W2057910069</referenced_works>
+   <referenced_works>https://openalex.org/W2077569218</referenced_works>
+   <referenced_works>https://openalex.org/W2086856055</referenced_works>
+   <referenced_works>https://openalex.org/W2090210040</referenced_works>
+   <referenced_works>https://openalex.org/W2110634891</referenced_works>
+   <referenced_works>https://openalex.org/W2156997107</referenced_works>
+   <referenced_works>https://openalex.org/W2161319992</referenced_works>
+   <referenced_works>https://openalex.org/W2283022630</referenced_works>
+   <referenced_works>https://openalex.org/W2418409367</referenced_works>
+   <referenced_works>https://openalex.org/W2562957244</referenced_works>
+   <referenced_works>https://openalex.org/W2581325338</referenced_works>
+   <referenced_works>https://openalex.org/W2610807263</referenced_works>
+   <referenced_works>https://openalex.org/W2757080762</referenced_works>
+   <referenced_works>https://openalex.org/W2757272801</referenced_works>
+   <referenced_works>https://openalex.org/W2758787877</referenced_works>
+   <referenced_works>https://openalex.org/W2786451303</referenced_works>
+   <referenced_works>https://openalex.org/W2792549134</referenced_works>
+   <referenced_works>https://openalex.org/W2886620535</referenced_works>
+   <referenced_works>https://openalex.org/W2888241757</referenced_works>
+   <referenced_works>https://openalex.org/W2898317973</referenced_works>
+   <referenced_works>https://openalex.org/W2899360647</referenced_works>
+   <referenced_works>https://openalex.org/W2907835634</referenced_works>
+   <referenced_works>https://openalex.org/W2924699622</referenced_works>
+   <referenced_works>https://openalex.org/W2969540689</referenced_works>
+   <referenced_works>https://openalex.org/W2969588567</referenced_works>
+   <referenced_works>https://openalex.org/W2977326962</referenced_works>
+   <referenced_works>https://openalex.org/W2996911776</referenced_works>
+   <referenced_works>https://openalex.org/W3007168493</referenced_works>
+   <referenced_works>https://openalex.org/W3011183407</referenced_works>
+   <referenced_works>https://openalex.org/W3011663610</referenced_works>
+   <referenced_works>https://openalex.org/W3021123534</referenced_works>
+   <referenced_works>https://openalex.org/W3041026308</referenced_works>
+   <referenced_works>https://openalex.org/W3093266015</referenced_works>
+   <referenced_works>https://openalex.org/W3108059276</referenced_works>
+   <referenced_works>https://openalex.org/W3109746568</referenced_works>
+   <referenced_works>https://openalex.org/W3125953498</referenced_works>
+   <referenced_works>https://openalex.org/W3167513896</referenced_works>
+   <referenced_works>https://openalex.org/W3198884354</referenced_works>
+   <referenced_works>https://openalex.org/W3206858365</referenced_works>
+   <referenced_works>https://openalex.org/W3208196257</referenced_works>
+   <referenced_works>https://openalex.org/W3209508487</referenced_works>
+   <referenced_works>https://openalex.org/W4200266344</referenced_works>
+   <referenced_works>https://openalex.org/W4205393865</referenced_works>
+   <referenced_works>https://openalex.org/W4210251577</referenced_works>
+   <referenced_works>https://openalex.org/W4213087234</referenced_works>
+   <referenced_works>https://openalex.org/W4213165144</referenced_works>
+   <referenced_works>https://openalex.org/W4220848577</referenced_works>
+   <referenced_works>https://openalex.org/W4221054606</referenced_works>
+   <referenced_works>https://openalex.org/W4224007732</referenced_works>
+   <referenced_works>https://openalex.org/W4281713647</referenced_works>
+   <referenced_works>https://openalex.org/W4295082439</referenced_works>
+   <referenced_works>https://openalex.org/W4295249044</referenced_works>
+   <referenced_works>https://openalex.org/W4295678900</referenced_works>
+   <referenced_works>https://openalex.org/W4309326495</referenced_works>
+   <referenced_works>https://openalex.org/W94549752</referenced_works>
+   <referenced_works_count>63</referenced_works_count>
+   <related_works>https://openalex.org/W4388310991</related_works>
+   <related_works>https://openalex.org/W3201778902</related_works>
+   <related_works>https://openalex.org/W2566737253</related_works>
+   <related_works>https://openalex.org/W2351872509</related_works>
+   <related_works>https://openalex.org/W2285748728</related_works>
+   <related_works>https://openalex.org/W2122689299</related_works>
+   <related_works>https://openalex.org/W2117797874</related_works>
+   <related_works>https://openalex.org/W2048487789</related_works>
+   <related_works>https://openalex.org/W1968053235</related_works>
+   <related_works>https://openalex.org/W1965976865</related_works>
+   <relevance_score>118.8469</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Good health and well-being</display_name>
+      <id>https://metadata.un.org/sdg/3</id>
+      <score>0.84</score>
+   </sustainable_development_goals>
+   <title>Regulating protein corona on nanovesicles by glycosylated polyhydroxy polymer modification for efficient drug delivery</title>
+   <topics>
+      <display_name>Nanoparticle-Based Drug Delivery Systems</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Materials Science</display_name>
+         <id>https://openalex.org/fields/25</id>
+      </field>
+      <id>https://openalex.org/T10063</id>
+      <score>0.9996</score>
+      <subfield>
+         <display_name>Biomaterials</display_name>
+         <id>https://openalex.org/subfields/2502</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Role of Osteopontin in Biomineralization and Inflammation</display_name>
+      <domain>
+         <display_name>Health Sciences</display_name>
+         <id>https://openalex.org/domains/4</id>
+      </domain>
+      <field>
+         <display_name>Medicine</display_name>
+         <id>https://openalex.org/fields/27</id>
+      </field>
+      <id>https://openalex.org/T12110</id>
+      <score>0.9925</score>
+      <subfield>
+         <display_name>Rheumatology</display_name>
+         <id>https://openalex.org/subfields/2745</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Mussel-Inspired Surface Chemistry for Multifunctional Coatings</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Materials Science</display_name>
+         <id>https://openalex.org/fields/25</id>
+      </field>
+      <id>https://openalex.org/T10859</id>
+      <score>0.9915</score>
+      <subfield>
+         <display_name>Surfaces, Coatings and Films</display_name>
+         <id>https://openalex.org/subfields/2508</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2024-05-28T05:37:11.343874</updated_date>
+   <versions></versions>
+</root>
