@@ -1,5 +1,8 @@
+from pathlib import Path
+
 import pytest
 import os
+
 paper_for_references_test = "PMC8348691"
 paper_for_citations_test = "PMC7645447"
 category_for_references_test = "AGR"
@@ -112,3 +115,4 @@ def test_remove_dir():
     import shutil
     shutil.rmtree(current_path)
     assert "Ran all the tests" == "Ran all the tests"
+
