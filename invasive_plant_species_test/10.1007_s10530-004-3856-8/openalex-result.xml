@@ -1,0 +1,529 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>EUR</currency>
+      <value>2690</value>
+      <value_usd>3490</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1339248906</institution_ids>
+         <raw_affiliation_string>American Institute of Biological Sciencs NEON Project Office, Washington, USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Katharine M. Batten</display_name>
+         <id>https://openalex.org/A5064515287</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>American Institute of Biological Sciences</display_name>
+         <id>https://openalex.org/I1339248906</id>
+         <lineage>https://openalex.org/I1318687432</lineage>
+         <lineage>https://openalex.org/I1339248906</lineage>
+         <lineage>https://openalex.org/I197604219</lineage>
+         <ror>https://ror.org/016ex3g83</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>American Institute of Biological Sciencs NEON Project Office, Washington, USA</raw_affiliation_strings>
+      <raw_author_name>Katharine M. Batten</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Department of Land, Air, and Water Resources University of California  Davis USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Kate M. Scow</display_name>
+         <id>https://openalex.org/A5059528569</id>
+         <orcid>https://orcid.org/0000-0002-2649-1122</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Land, Air, and Water Resources University of California  Davis USA</raw_affiliation_strings>
+      <raw_author_name>Kate M. Scow</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Department of Environmental Science and Policy University of California  Davis USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Kendi F. Davies</display_name>
+         <id>https://openalex.org/A5071979623</id>
+         <orcid>https://orcid.org/0000-0001-7716-3359</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Environmental Science and Policy University of California  Davis USA</raw_affiliation_strings>
+      <raw_author_name>Kendi F. Davies</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Department of Environmental Science and Policy University of California  Davis USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Susan Harrison</display_name>
+         <id>https://openalex.org/A5042011740</id>
+         <orcid>https://orcid.org/0000-0001-6278-2181</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Environmental Science and Policy University of California  Davis USA</raw_affiliation_strings>
+      <raw_author_name>Susan P. Harrison</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>217</first_page>
+      <issue>2</issue>
+      <last_page>230</last_page>
+      <volume>8</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>False</is_in_top_1_percent>
+      <value>0.95799</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W1997095220</cited_by_api_url>
+   <cited_by_count>267</cited_by_count>
+   <cited_by_percentile_year>
+      <max>99</max>
+      <min>98</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.87073904</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Rhizosphere</display_name>
+      <id>https://openalex.org/C86626682</id>
+      <level>3</level>
+      <score>0.8428815</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1124578</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Native plant</display_name>
+      <id>https://openalex.org/C178772583</id>
+      <level>3</level>
+      <score>0.6256505</score>
+      <wikidata>https://www.wikidata.org/wiki/Q169480</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Invasive species</display_name>
+      <id>https://openalex.org/C136020623</id>
+      <level>2</level>
+      <score>0.59782964</score>
+      <wikidata>https://www.wikidata.org/wiki/Q183368</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Microbial population biology</display_name>
+      <id>https://openalex.org/C81407943</id>
+      <level>3</level>
+      <score>0.5397931</score>
+      <wikidata>https://www.wikidata.org/wiki/Q17149178</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Plant community</display_name>
+      <id>https://openalex.org/C53002841</id>
+      <level>3</level>
+      <score>0.52123415</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1418712</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Botany</display_name>
+      <id>https://openalex.org/C59822182</id>
+      <level>1</level>
+      <score>0.51980126</score>
+      <wikidata>https://www.wikidata.org/wiki/Q441</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Introduced species</display_name>
+      <id>https://openalex.org/C173651095</id>
+      <level>2</level>
+      <score>0.49056166</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1065449</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecosystem</display_name>
+      <id>https://openalex.org/C110872660</id>
+      <level>2</level>
+      <score>0.4304847</score>
+      <wikidata>https://www.wikidata.org/wiki/Q37813</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecology</display_name>
+      <id>https://openalex.org/C18903297</id>
+      <level>1</level>
+      <score>0.39798388</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7150</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Agronomy</display_name>
+      <id>https://openalex.org/C6557445</id>
+      <level>1</level>
+      <score>0.3476615</score>
+      <wikidata>https://www.wikidata.org/wiki/Q173113</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Bacteria</display_name>
+      <id>https://openalex.org/C523546767</id>
+      <level>2</level>
+      <score>0.11992282</score>
+      <wikidata>https://www.wikidata.org/wiki/Q10876</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecological succession</display_name>
+      <id>https://openalex.org/C150117547</id>
+      <level>2</level>
+      <score>0.07472357</score>
+      <wikidata>https://www.wikidata.org/wiki/Q188230</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Genetics</display_name>
+      <id>https://openalex.org/C54355233</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7162</wikidata>
+   </concepts>
+   <corresponding_author_ids></corresponding_author_ids>
+   <corresponding_institution_ids></corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>12</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>17</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>17</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>11</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>14</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>15</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>14</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>16</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>19</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>15</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>16</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>19</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>18</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Two Invasive Plants Alter Soil Microbial Community Composition in Serpentine Grasslands</display_name>
+   <doi>https://doi.org/10.1007/s10530-004-3856-8</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>7.105</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W1997095220</id>
+   <ids>
+      <doi>https://doi.org/10.1007/s10530-004-3856-8</doi>
+      <mag>1997095220</mag>
+      <openalex>https://openalex.org/W1997095220</openalex>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>2</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Native plant</display_name>
+      <id>https://openalex.org/keywords/native-plant</id>
+      <score>0.6256505</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1007/s10530-004-3856-8</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Biological Invasions</display_name>
+         <host_organization>https://openalex.org/P4310319900</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319900</host_organization_lineage>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Science+Business Media</host_organization_lineage_names>
+         <host_organization_name>Springer Science+Business Media</host_organization_name>
+         <id>https://openalex.org/S207083915</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>1387-3547</issn>
+         <issn>1573-1464</issn>
+         <issn_l>1387-3547</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>1</locations_count>
+   <mesh></mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1007/s10530-004-3856-8</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Biological Invasions</display_name>
+         <host_organization>https://openalex.org/P4310319900</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319900</host_organization_lineage>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Science+Business Media</host_organization_lineage_names>
+         <host_organization_name>Springer Science+Business Media</host_organization_name>
+         <id>https://openalex.org/S207083915</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>1387-3547</issn>
+         <issn>1573-1464</issn>
+         <issn_l>1387-3547</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Soil Carbon and Nitrogen Dynamics</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10004</id>
+      <score>0.9951</score>
+      <subfield>
+         <display_name>Soil Science</display_name>
+         <id>https://openalex.org/subfields/1111</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2005-12-30</publication_date>
+   <publication_year>2005</publication_year>
+   <referenced_works>https://openalex.org/W106339042</referenced_works>
+   <referenced_works>https://openalex.org/W1517697768</referenced_works>
+   <referenced_works>https://openalex.org/W1542649433</referenced_works>
+   <referenced_works>https://openalex.org/W1576511234</referenced_works>
+   <referenced_works>https://openalex.org/W1579996152</referenced_works>
+   <referenced_works>https://openalex.org/W1587627133</referenced_works>
+   <referenced_works>https://openalex.org/W1668351664</referenced_works>
+   <referenced_works>https://openalex.org/W1802560918</referenced_works>
+   <referenced_works>https://openalex.org/W1839637775</referenced_works>
+   <referenced_works>https://openalex.org/W1900595810</referenced_works>
+   <referenced_works>https://openalex.org/W1966328156</referenced_works>
+   <referenced_works>https://openalex.org/W1968306045</referenced_works>
+   <referenced_works>https://openalex.org/W1971623944</referenced_works>
+   <referenced_works>https://openalex.org/W1987441394</referenced_works>
+   <referenced_works>https://openalex.org/W1987672576</referenced_works>
+   <referenced_works>https://openalex.org/W1992532486</referenced_works>
+   <referenced_works>https://openalex.org/W1992809988</referenced_works>
+   <referenced_works>https://openalex.org/W1992915840</referenced_works>
+   <referenced_works>https://openalex.org/W2003589321</referenced_works>
+   <referenced_works>https://openalex.org/W2008405188</referenced_works>
+   <referenced_works>https://openalex.org/W2012986022</referenced_works>
+   <referenced_works>https://openalex.org/W2015606998</referenced_works>
+   <referenced_works>https://openalex.org/W2020520495</referenced_works>
+   <referenced_works>https://openalex.org/W2022813109</referenced_works>
+   <referenced_works>https://openalex.org/W2023189738</referenced_works>
+   <referenced_works>https://openalex.org/W2035928753</referenced_works>
+   <referenced_works>https://openalex.org/W2039752764</referenced_works>
+   <referenced_works>https://openalex.org/W2040034839</referenced_works>
+   <referenced_works>https://openalex.org/W2041530687</referenced_works>
+   <referenced_works>https://openalex.org/W2043080281</referenced_works>
+   <referenced_works>https://openalex.org/W2044587471</referenced_works>
+   <referenced_works>https://openalex.org/W2050745733</referenced_works>
+   <referenced_works>https://openalex.org/W2050985282</referenced_works>
+   <referenced_works>https://openalex.org/W2052203183</referenced_works>
+   <referenced_works>https://openalex.org/W2064576215</referenced_works>
+   <referenced_works>https://openalex.org/W2065203600</referenced_works>
+   <referenced_works>https://openalex.org/W2072022785</referenced_works>
+   <referenced_works>https://openalex.org/W2082404422</referenced_works>
+   <referenced_works>https://openalex.org/W2082681287</referenced_works>
+   <referenced_works>https://openalex.org/W2085072564</referenced_works>
+   <referenced_works>https://openalex.org/W2085200858</referenced_works>
+   <referenced_works>https://openalex.org/W2085820231</referenced_works>
+   <referenced_works>https://openalex.org/W2089327753</referenced_works>
+   <referenced_works>https://openalex.org/W2093148797</referenced_works>
+   <referenced_works>https://openalex.org/W2098387463</referenced_works>
+   <referenced_works>https://openalex.org/W2101052364</referenced_works>
+   <referenced_works>https://openalex.org/W2108856870</referenced_works>
+   <referenced_works>https://openalex.org/W2116191106</referenced_works>
+   <referenced_works>https://openalex.org/W2117085239</referenced_works>
+   <referenced_works>https://openalex.org/W2132820206</referenced_works>
+   <referenced_works>https://openalex.org/W2133600437</referenced_works>
+   <referenced_works>https://openalex.org/W2138132363</referenced_works>
+   <referenced_works>https://openalex.org/W2139206081</referenced_works>
+   <referenced_works>https://openalex.org/W2140515049</referenced_works>
+   <referenced_works>https://openalex.org/W2143659897</referenced_works>
+   <referenced_works>https://openalex.org/W2144450527</referenced_works>
+   <referenced_works>https://openalex.org/W2157517871</referenced_works>
+   <referenced_works>https://openalex.org/W2167034548</referenced_works>
+   <referenced_works>https://openalex.org/W2167370078</referenced_works>
+   <referenced_works>https://openalex.org/W2177883644</referenced_works>
+   <referenced_works>https://openalex.org/W2186502338</referenced_works>
+   <referenced_works>https://openalex.org/W2198252688</referenced_works>
+   <referenced_works>https://openalex.org/W2479628903</referenced_works>
+   <referenced_works>https://openalex.org/W2614914932</referenced_works>
+   <referenced_works>https://openalex.org/W2764467706</referenced_works>
+   <referenced_works>https://openalex.org/W4229809534</referenced_works>
+   <referenced_works>https://openalex.org/W4230596562</referenced_works>
+   <referenced_works>https://openalex.org/W4246717991</referenced_works>
+   <referenced_works>https://openalex.org/W4249269768</referenced_works>
+   <referenced_works_count>69</referenced_works_count>
+   <related_works>https://openalex.org/W4388861646</related_works>
+   <related_works>https://openalex.org/W3150721957</related_works>
+   <related_works>https://openalex.org/W3024353263</related_works>
+   <related_works>https://openalex.org/W2164541852</related_works>
+   <related_works>https://openalex.org/W2088096162</related_works>
+   <related_works>https://openalex.org/W2060081151</related_works>
+   <related_works>https://openalex.org/W2037907130</related_works>
+   <related_works>https://openalex.org/W2034438996</related_works>
+   <related_works>https://openalex.org/W2028504128</related_works>
+   <related_works>https://openalex.org/W1979812679</related_works>
+   <relevance_score>958.82764</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Life on land</display_name>
+      <id>https://metadata.un.org/sdg/15</id>
+      <score>0.78</score>
+   </sustainable_development_goals>
+   <title>Two Invasive Plants Alter Soil Microbial Community Composition in Serpentine Grasslands</title>
+   <topics>
+      <display_name>Soil Carbon and Nitrogen Dynamics</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10004</id>
+      <score>0.9951</score>
+      <subfield>
+         <display_name>Soil Science</display_name>
+         <id>https://openalex.org/subfields/1111</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.9911</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Rangeland and Wildlife Management</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T13388</id>
+      <score>0.9838</score>
+      <subfield>
+         <display_name>Ecology</display_name>
+         <id>https://openalex.org/subfields/2303</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-17T09:55:28.581322</updated_date>
+   <versions></versions>
+</root>

@@ -1,0 +1,725 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>EUR</currency>
+      <value>9750</value>
+      <value_usd>11690</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I130769515</institution_ids>
+         <raw_affiliation_string>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Dietmar Schwarz</display_name>
+         <id>https://openalex.org/A5103107100</id>
+         <orcid>https://orcid.org/0000-0002-7742-7227</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Pennsylvania State University</display_name>
+         <id>https://openalex.org/I130769515</id>
+         <lineage>https://openalex.org/I130769515</lineage>
+         <ror>https://ror.org/04p491231</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_strings>
+      <raw_author_name>Dietmar Schwarz</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I130769515</institution_ids>
+         <raw_affiliation_string>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I170201317</institution_ids>
+         <raw_affiliation_string>Department of Surgery, University of Pittsburgh, Pittsburgh, USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Benjamin M. Matta</display_name>
+         <id>https://openalex.org/A5020537396</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Pennsylvania State University</display_name>
+         <id>https://openalex.org/I130769515</id>
+         <lineage>https://openalex.org/I130769515</lineage>
+         <ror>https://ror.org/04p491231</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of Pittsburgh</display_name>
+         <id>https://openalex.org/I170201317</id>
+         <lineage>https://openalex.org/I170201317</lineage>
+         <ror>https://ror.org/01an3r305</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Surgery, University of Pittsburgh, Pittsburgh, USA</raw_affiliation_strings>
+      <raw_author_name>Benjamin M. Matta</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I130769515</institution_ids>
+         <raw_affiliation_string>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Nicole L. Shakir-Botteri</display_name>
+         <id>https://openalex.org/A5071320368</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Pennsylvania State University</display_name>
+         <id>https://openalex.org/I130769515</id>
+         <lineage>https://openalex.org/I130769515</lineage>
+         <ror>https://ror.org/04p491231</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_strings>
+      <raw_author_name>Nicole L. Shakir-Botteri</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I130769515</institution_ids>
+         <raw_affiliation_string>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Bruce A. McPheron</display_name>
+         <id>https://openalex.org/A5027670397</id>
+         <orcid>https://orcid.org/0000-0001-9623-5100</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Pennsylvania State University</display_name>
+         <id>https://openalex.org/I130769515</id>
+         <lineage>https://openalex.org/I130769515</lineage>
+         <ror>https://ror.org/04p491231</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Entomology, The Pennsylvania State University, University Park, USA</raw_affiliation_strings>
+      <raw_author_name>Bruce A. McPheron</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>546</first_page>
+      <issue>7050</issue>
+      <last_page>549</last_page>
+      <volume>436</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.999906</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2069259487</cited_by_api_url>
+   <cited_by_count>264</cited_by_count>
+   <cited_by_percentile_year>
+      <max>99</max>
+      <min>98</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.8182626</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Genetic algorithm</display_name>
+      <id>https://openalex.org/C2776838516</id>
+      <level>2</level>
+      <score>0.7981562</score>
+      <wikidata>https://www.wikidata.org/wiki/Q187787</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Reproductive isolation</display_name>
+      <id>https://openalex.org/C26772143</id>
+      <level>3</level>
+      <score>0.79476297</score>
+      <wikidata>https://www.wikidata.org/wiki/Q572872</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Evolutionary biology</display_name>
+      <id>https://openalex.org/C78458016</id>
+      <level>1</level>
+      <score>0.63989234</score>
+      <wikidata>https://www.wikidata.org/wiki/Q840400</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Host adaptation</display_name>
+      <id>https://openalex.org/C2776914050</id>
+      <level>4</level>
+      <score>0.51155955</score>
+      <wikidata>https://www.wikidata.org/wiki/Q19597524</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Lineage (genetic)</display_name>
+      <id>https://openalex.org/C2776817793</id>
+      <level>3</level>
+      <score>0.4841081</score>
+      <wikidata>https://www.wikidata.org/wiki/Q6553369</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Plant evolution</display_name>
+      <id>https://openalex.org/C58677359</id>
+      <level>4</level>
+      <score>0.43351838</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7201511</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Hybrid zone</display_name>
+      <id>https://openalex.org/C7649158</id>
+      <level>5</level>
+      <score>0.42382455</score>
+      <wikidata>https://www.wikidata.org/wiki/Q10395284</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Genetics</display_name>
+      <id>https://openalex.org/C54355233</id>
+      <level>1</level>
+      <score>0.2548672</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7162</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Gene flow</display_name>
+      <id>https://openalex.org/C107023163</id>
+      <level>4</level>
+      <score>0.18761319</score>
+      <wikidata>https://www.wikidata.org/wiki/Q143089</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Genome</display_name>
+      <id>https://openalex.org/C141231307</id>
+      <level>3</level>
+      <score>0.15548217</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7020</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Genetic variation</display_name>
+      <id>https://openalex.org/C68873052</id>
+      <level>3</level>
+      <score>0.1554496</score>
+      <wikidata>https://www.wikidata.org/wiki/Q349856</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Gene</display_name>
+      <id>https://openalex.org/C104317684</id>
+      <level>2</level>
+      <score>0.09757498</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7187</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Population</display_name>
+      <id>https://openalex.org/C2908647359</id>
+      <level>2</level>
+      <score>0.07127008</score>
+      <wikidata>https://www.wikidata.org/wiki/Q2625603</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Demography</display_name>
+      <id>https://openalex.org/C149923435</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q37732</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Sociology</display_name>
+      <id>https://openalex.org/C144024400</id>
+      <level>0</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q21201</wikidata>
+   </concepts>
+   <corresponding_author_ids></corresponding_author_ids>
+   <corresponding_institution_ids></corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>2</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>6</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>2</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>7</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>11</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>6</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>15</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>9</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>32</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>12</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>17</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>16</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>10</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>14</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Host shift to an invasive plant triggers rapid animal hybrid speciation</display_name>
+   <doi>https://doi.org/10.1038/nature03800</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>20.849</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2069259487</id>
+   <ids>
+      <doi>https://doi.org/10.1038/nature03800</doi>
+      <mag>2069259487</mag>
+      <openalex>https://openalex.org/W2069259487</openalex>
+      <pmid>https://pubmed.ncbi.nlm.nih.gov/16049486</pmid>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <indexed_in>pubmed</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>2</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Genetic algorithm</display_name>
+      <id>https://openalex.org/keywords/genetic-algorithm</id>
+      <score>0.7981562</score>
+   </keywords>
+   <keywords>
+      <display_name>Reproductive isolation</display_name>
+      <id>https://openalex.org/keywords/reproductive-isolation</id>
+      <score>0.79476297</score>
+   </keywords>
+   <keywords>
+      <display_name>Host adaptation</display_name>
+      <id>https://openalex.org/keywords/host-adaptation</id>
+      <score>0.51155955</score>
+   </keywords>
+   <keywords>
+      <display_name>Lineage (genetic)</display_name>
+      <id>https://openalex.org/keywords/lineage</id>
+      <score>0.4841081</score>
+   </keywords>
+   <keywords>
+      <display_name>plant evolution</display_name>
+      <id>https://openalex.org/keywords/plant-evolution</id>
+      <score>0.43351838</score>
+   </keywords>
+   <keywords>
+      <display_name>Hybrid zone</display_name>
+      <id>https://openalex.org/keywords/hybrid-zone</id>
+      <score>0.42382455</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1038/nature03800</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Nature</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S137773608</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0028-0836</issn>
+         <issn>1476-4687</issn>
+         <issn_l>0028-0836</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://pubmed.ncbi.nlm.nih.gov/16049486</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>PubMed</display_name>
+         <host_organization>https://openalex.org/I1299303238</host_organization>
+         <host_organization_lineage>https://openalex.org/I1299303238</host_organization_lineage>
+         <host_organization_lineage_names>National Institutes of Health</host_organization_lineage_names>
+         <host_organization_name>National Institutes of Health</host_organization_name>
+         <id>https://openalex.org/S4306525036</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>2</locations_count>
+   <mesh>
+      <descriptor_name>Biological Evolution</descriptor_name>
+      <descriptor_ui>D005075</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Diptera</descriptor_name>
+      <descriptor_ui>D004175</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>physiology</qualifier_name>
+      <qualifier_ui>Q000502</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Diptera</descriptor_name>
+      <descriptor_ui>D004175</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>genetics</qualifier_name>
+      <qualifier_ui>Q000235</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Hybridization, Genetic</descriptor_name>
+      <descriptor_ui>D006824</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>genetics</qualifier_name>
+      <qualifier_ui>Q000235</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>parasitology</qualifier_name>
+      <qualifier_ui>Q000469</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Adaptation, Physiological</descriptor_name>
+      <descriptor_ui>D000222</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>genetics</qualifier_name>
+      <qualifier_ui>Q000235</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Adaptation, Physiological</descriptor_name>
+      <descriptor_ui>D000222</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Alleles</descriptor_name>
+      <descriptor_ui>D000483</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Animals</descriptor_name>
+      <descriptor_ui>D000818</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Cell Nucleus</descriptor_name>
+      <descriptor_ui>D002467</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Cell Nucleus</descriptor_name>
+      <descriptor_ui>D002467</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>genetics</qualifier_name>
+      <qualifier_ui>Q000235</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>DNA, Mitochondrial</descriptor_name>
+      <descriptor_ui>D004272</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>genetics</qualifier_name>
+      <qualifier_ui>Q000235</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>DNA, Mitochondrial</descriptor_name>
+      <descriptor_ui>D004272</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Diptera</descriptor_name>
+      <descriptor_ui>D004175</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Diptera</descriptor_name>
+      <descriptor_ui>D004175</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>classification</qualifier_name>
+      <qualifier_ui>Q000145</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Female</descriptor_name>
+      <descriptor_ui>D005260</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Gene Frequency</descriptor_name>
+      <descriptor_ui>D005787</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Hybridization, Genetic</descriptor_name>
+      <descriptor_ui>D006824</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Male</descriptor_name>
+      <descriptor_ui>D008297</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Species Specificity</descriptor_name>
+      <descriptor_ui>D013045</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Time Factors</descriptor_name>
+      <descriptor_ui>D013997</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1038/nature03800</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Nature</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S137773608</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0028-0836</issn>
+         <issn>1476-4687</issn>
+         <issn_l>0028-0836</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9995</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2005-07-27</publication_date>
+   <publication_year>2005</publication_year>
+   <referenced_works>https://openalex.org/W1679724687</referenced_works>
+   <referenced_works>https://openalex.org/W1891857422</referenced_works>
+   <referenced_works>https://openalex.org/W1941936348</referenced_works>
+   <referenced_works>https://openalex.org/W1943341518</referenced_works>
+   <referenced_works>https://openalex.org/W1964901903</referenced_works>
+   <referenced_works>https://openalex.org/W1968266351</referenced_works>
+   <referenced_works>https://openalex.org/W1987688840</referenced_works>
+   <referenced_works>https://openalex.org/W1988004702</referenced_works>
+   <referenced_works>https://openalex.org/W2016570544</referenced_works>
+   <referenced_works>https://openalex.org/W2031620499</referenced_works>
+   <referenced_works>https://openalex.org/W2035232059</referenced_works>
+   <referenced_works>https://openalex.org/W2055997230</referenced_works>
+   <referenced_works>https://openalex.org/W2091458978</referenced_works>
+   <referenced_works>https://openalex.org/W2093331429</referenced_works>
+   <referenced_works>https://openalex.org/W2098882885</referenced_works>
+   <referenced_works>https://openalex.org/W2107564934</referenced_works>
+   <referenced_works>https://openalex.org/W2121453398</referenced_works>
+   <referenced_works>https://openalex.org/W2126918260</referenced_works>
+   <referenced_works>https://openalex.org/W2132192579</referenced_works>
+   <referenced_works>https://openalex.org/W2136327879</referenced_works>
+   <referenced_works>https://openalex.org/W2139718698</referenced_works>
+   <referenced_works>https://openalex.org/W2141718064</referenced_works>
+   <referenced_works>https://openalex.org/W2143497561</referenced_works>
+   <referenced_works>https://openalex.org/W2158489424</referenced_works>
+   <referenced_works>https://openalex.org/W2181038373</referenced_works>
+   <referenced_works>https://openalex.org/W2328920725</referenced_works>
+   <referenced_works>https://openalex.org/W2329251094</referenced_works>
+   <referenced_works>https://openalex.org/W2390806247</referenced_works>
+   <referenced_works>https://openalex.org/W2479638547</referenced_works>
+   <referenced_works>https://openalex.org/W2499220959</referenced_works>
+   <referenced_works>https://openalex.org/W3140461535</referenced_works>
+   <referenced_works_count>31</referenced_works_count>
+   <related_works>https://openalex.org/W4309496852</related_works>
+   <related_works>https://openalex.org/W3213225294</related_works>
+   <related_works>https://openalex.org/W2586488967</related_works>
+   <related_works>https://openalex.org/W2211745061</related_works>
+   <related_works>https://openalex.org/W2125831716</related_works>
+   <related_works>https://openalex.org/W2097810747</related_works>
+   <related_works>https://openalex.org/W2086847862</related_works>
+   <related_works>https://openalex.org/W2069560407</related_works>
+   <related_works>https://openalex.org/W1840956397</related_works>
+   <related_works>https://openalex.org/W129429225</related_works>
+   <relevance_score>1018.8813</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Zero hunger</display_name>
+      <id>https://metadata.un.org/sdg/2</id>
+      <score>0.57</score>
+   </sustainable_development_goals>
+   <title>Host shift to an invasive plant triggers rapid animal hybrid speciation</title>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9995</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Genetic diversity and population structure</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Biochemistry, Genetics and Molecular Biology</display_name>
+         <id>https://openalex.org/fields/13</id>
+      </field>
+      <id>https://openalex.org/T10012</id>
+      <score>0.9994</score>
+      <subfield>
+         <display_name>Genetics</display_name>
+         <id>https://openalex.org/subfields/1311</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Evolution and Genetic Dynamics</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Biochemistry, Genetics and Molecular Biology</display_name>
+         <id>https://openalex.org/fields/13</id>
+      </field>
+      <id>https://openalex.org/T11764</id>
+      <score>0.997</score>
+      <subfield>
+         <display_name>Genetics</display_name>
+         <id>https://openalex.org/subfields/1311</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-17T06:16:58.181558</updated_date>
+   <versions></versions>
+</root>

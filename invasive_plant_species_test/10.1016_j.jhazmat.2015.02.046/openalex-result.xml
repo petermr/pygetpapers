@@ -1,0 +1,770 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>USD</currency>
+      <value>4170</value>
+      <value_usd>4170</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165507594</institution_ids>
+         <raw_affiliation_string>Korea Biochar Research Center &amp; Department of Biological Environment, Kangwon National University, Chuncheon 200-701, Republic of Korea</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I3129956861</institution_ids>
+         <raw_affiliation_string>Chemical and Environmental Systems Modeling Research Group, National Institute of Fundamental Studies, Kandy, Sri Lanka</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Anushka Upamali Rajapaksha</display_name>
+         <id>https://openalex.org/A5088869437</id>
+         <orcid>https://orcid.org/0000-0002-3240-3934</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>KR</countries>
+      <countries>LK</countries>
+      <institutions>
+         <country_code>KR</country_code>
+         <display_name>Kangwon National University</display_name>
+         <id>https://openalex.org/I165507594</id>
+         <lineage>https://openalex.org/I165507594</lineage>
+         <ror>https://ror.org/01mh5ph17</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>LK</country_code>
+         <display_name>National Institute of Fundamental Studies</display_name>
+         <id>https://openalex.org/I3129956861</id>
+         <lineage>https://openalex.org/I3129956861</lineage>
+         <ror>https://ror.org/03wvtrq14</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Chemical and Environmental Systems Modeling Research Group, National Institute of Fundamental Studies, Kandy, Sri Lanka</raw_affiliation_strings>
+      <raw_affiliation_strings>Korea Biochar Research Center &amp; Department of Biological Environment, Kangwon National University, Chuncheon 200-701, Republic of Korea</raw_affiliation_strings>
+      <raw_author_name>Anushka Upamali Rajapaksha</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I3129956861</institution_ids>
+         <raw_affiliation_string>Chemical and Environmental Systems Modeling Research Group, National Institute of Fundamental Studies, Kandy, Sri Lanka</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Meththika Vithanage</display_name>
+         <id>https://openalex.org/A5053693280</id>
+         <orcid>https://orcid.org/0000-0003-2923-4065</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>LK</countries>
+      <institutions>
+         <country_code>LK</country_code>
+         <display_name>National Institute of Fundamental Studies</display_name>
+         <id>https://openalex.org/I3129956861</id>
+         <lineage>https://openalex.org/I3129956861</lineage>
+         <ror>https://ror.org/03wvtrq14</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Chemical and Environmental Systems Modeling Research Group, National Institute of Fundamental Studies, Kandy, Sri Lanka</raw_affiliation_strings>
+      <raw_author_name>Meththika Vithanage</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I28022161</institution_ids>
+         <raw_affiliation_string>Soil Sciences Department, College of Food &amp; Agricultural Sciences, King Saud University, P.O. Box 2460, Riyadh 11451, Saudi Arabia</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Mahtab Ahmad</display_name>
+         <id>https://openalex.org/A5071313086</id>
+         <orcid>https://orcid.org/0000-0003-1853-5161</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>SA</countries>
+      <institutions>
+         <country_code>SA</country_code>
+         <display_name>King Saud University</display_name>
+         <id>https://openalex.org/I28022161</id>
+         <lineage>https://openalex.org/I28022161</lineage>
+         <ror>https://ror.org/02f81g417</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Soil Sciences Department, College of Food &amp; Agricultural Sciences, King Saud University, P.O. Box 2460, Riyadh 11451, Saudi Arabia</raw_affiliation_strings>
+      <raw_author_name>Mahtab Ahmad</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I199143407</institution_ids>
+         <raw_affiliation_string>Department of Biological Environment, Sunchon National University, Sunchon 540-742, Republic of Korea</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Dong-Cheol Seo</display_name>
+         <id>https://openalex.org/A5109277883</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>KR</countries>
+      <institutions>
+         <country_code>KR</country_code>
+         <display_name>Sunchon National University</display_name>
+         <id>https://openalex.org/I199143407</id>
+         <lineage>https://openalex.org/I199143407</lineage>
+         <ror>https://ror.org/043jqrs76</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Biological Environment, Sunchon National University, Sunchon 540-742, Republic of Korea</raw_affiliation_strings>
+      <raw_author_name>Dong-Cheol Seo</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I199143407</institution_ids>
+         <raw_affiliation_string>Department of Biological Environment, Sunchon National University, Sunchon 540-742, Republic of Korea</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Ju-Sik Cho</display_name>
+         <id>https://openalex.org/A5111491149</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>KR</countries>
+      <institutions>
+         <country_code>KR</country_code>
+         <display_name>Sunchon National University</display_name>
+         <id>https://openalex.org/I199143407</id>
+         <lineage>https://openalex.org/I199143407</lineage>
+         <ror>https://ror.org/043jqrs76</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings>Department of Biological Environment, Sunchon National University, Sunchon 540-742, Republic of Korea</raw_affiliation_strings>
+      <raw_author_name>Ju-Sik Cho</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I31419693</institution_ids>
+         <raw_affiliation_string>School of Applied Biosciences, Kyungpook National University, Daegu 702-701, Republic of Korea</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Sung‐Eun Lee</display_name>
+         <id>https://openalex.org/A5101976351</id>
+         <orcid>https://orcid.org/0000-0001-7690-9956</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>KR</countries>
+      <institutions>
+         <country_code>KR</country_code>
+         <display_name>Kyungpook National University</display_name>
+         <id>https://openalex.org/I31419693</id>
+         <lineage>https://openalex.org/I31419693</lineage>
+         <ror>https://ror.org/040c17130</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>School of Applied Biosciences, Kyungpook National University, Daegu 702-701, Republic of Korea</raw_affiliation_strings>
+      <raw_author_name>Sung-Eun Lee</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165507594</institution_ids>
+         <raw_affiliation_string>Korea Biochar Research Center &amp; Department of Biological Environment, Kangwon National University, Chuncheon 200-701, Republic of Korea</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Sang Soo Lee</display_name>
+         <id>https://openalex.org/A5100656055</id>
+         <orcid>https://orcid.org/0000-0001-8585-474X</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>KR</countries>
+      <institutions>
+         <country_code>KR</country_code>
+         <display_name>Kangwon National University</display_name>
+         <id>https://openalex.org/I165507594</id>
+         <lineage>https://openalex.org/I165507594</lineage>
+         <ror>https://ror.org/01mh5ph17</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Korea Biochar Research Center &amp; Department of Biological Environment, Kangwon National University, Chuncheon 200-701, Republic of Korea</raw_affiliation_strings>
+      <raw_author_name>Sang Soo Lee</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165507594</institution_ids>
+         <raw_affiliation_string>Korea Biochar Research Center &amp; Department of Biological Environment, Kangwon National University, Chuncheon 200-701, Republic of Korea</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Yong Sik Ok</display_name>
+         <id>https://openalex.org/A5053298437</id>
+         <orcid>https://orcid.org/0000-0003-3401-0912</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>KR</countries>
+      <institutions>
+         <country_code>KR</country_code>
+         <display_name>Kangwon National University</display_name>
+         <id>https://openalex.org/I165507594</id>
+         <lineage>https://openalex.org/I165507594</lineage>
+         <ror>https://ror.org/01mh5ph17</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings>Korea Biochar Research Center &amp; Department of Biological Environment, Kangwon National University, Chuncheon 200-701, Republic of Korea</raw_affiliation_strings>
+      <raw_author_name>Yong Sik Ok</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>43</first_page>
+      <issue>None</issue>
+      <last_page>50</last_page>
+      <volume>290</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.999861</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W1975098884</cited_by_api_url>
+   <cited_by_count>353</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Biochar</display_name>
+      <id>https://openalex.org/C56085101</id>
+      <level>3</level>
+      <score>0.991775</score>
+      <wikidata>https://www.wikidata.org/wiki/Q905495</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Sorption</display_name>
+      <id>https://openalex.org/C58445606</id>
+      <level>3</level>
+      <score>0.945011</score>
+      <wikidata>https://www.wikidata.org/wiki/Q898533</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Pyrolysis</display_name>
+      <id>https://openalex.org/C36759035</id>
+      <level>2</level>
+      <score>0.73443455</score>
+      <wikidata>https://www.wikidata.org/wiki/Q176848</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Chemistry</display_name>
+      <id>https://openalex.org/C185592680</id>
+      <level>0</level>
+      <score>0.710909</score>
+      <wikidata>https://www.wikidata.org/wiki/Q2329</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Environmental chemistry</display_name>
+      <id>https://openalex.org/C107872376</id>
+      <level>1</level>
+      <score>0.5828572</score>
+      <wikidata>https://www.wikidata.org/wiki/Q321355</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Activated carbon</display_name>
+      <id>https://openalex.org/C2779647737</id>
+      <level>3</level>
+      <score>0.54644156</score>
+      <wikidata>https://www.wikidata.org/wiki/Q190878</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Adsorption</display_name>
+      <id>https://openalex.org/C150394285</id>
+      <level>2</level>
+      <score>0.5211956</score>
+      <wikidata>https://www.wikidata.org/wiki/Q180254</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Freundlich equation</display_name>
+      <id>https://openalex.org/C112825004</id>
+      <level>3</level>
+      <score>0.45376435</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1924292</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Chemical engineering</display_name>
+      <id>https://openalex.org/C42360764</id>
+      <level>1</level>
+      <score>0.4282722</score>
+      <wikidata>https://www.wikidata.org/wiki/Q83588</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Organic chemistry</display_name>
+      <id>https://openalex.org/C178790620</id>
+      <level>1</level>
+      <score>0.16543004</score>
+      <wikidata>https://www.wikidata.org/wiki/Q11351</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Engineering</display_name>
+      <id>https://openalex.org/C127413603</id>
+      <level>0</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q11023</wikidata>
+   </concepts>
+   <corresponding_author_ids>https://openalex.org/A5111491149</corresponding_author_ids>
+   <corresponding_author_ids>https://openalex.org/A5053298437</corresponding_author_ids>
+   <corresponding_institution_ids>https://openalex.org/I199143407</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I165507594</corresponding_institution_ids>
+   <countries_distinct_count>3</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>7</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>42</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>44</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>50</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>41</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>50</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>42</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>19</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>25</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>27</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>5</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Enhanced sulfamethazine removal by steam-activated invasive plant-derived biochar</display_name>
+   <doi>https://doi.org/10.1016/j.jhazmat.2015.02.046</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>11.281</fwci>
+   <grants>
+      <award_id>G112-00056-0004-0</award_id>
+      <funder>https://openalex.org/F4320322007</funder>
+      <funder_display_name>Ministry of Environment</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>None</award_id>
+      <funder>https://openalex.org/F4320322111</funder>
+      <funder_display_name>Korea Basic Science Institute</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>None</award_id>
+      <funder>https://openalex.org/F4320322120</funder>
+      <funder_display_name>National Research Foundation of Korea</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>2012R1A1B3001409</award_id>
+      <funder>https://openalex.org/F4320322349</funder>
+      <funder_display_name>Ministry of Education, Science and Technology</funder_display_name>
+   </grants>
+   <grants>
+      <award_id>None</award_id>
+      <funder>https://openalex.org/F4320330661</funder>
+      <funder_display_name>Jinan Environmental Research Institute</funder_display_name>
+   </grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W1975098884</id>
+   <ids>
+      <doi>https://doi.org/10.1016/j.jhazmat.2015.02.046</doi>
+      <mag>1975098884</mag>
+      <openalex>https://openalex.org/W1975098884</openalex>
+      <pmid>https://pubmed.ncbi.nlm.nih.gov/25734533</pmid>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <indexed_in>pubmed</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>5</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords></keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1016/j.jhazmat.2015.02.046</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Journal of Hazardous Materials</display_name>
+         <host_organization>https://openalex.org/P4310320990</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320990</host_organization_lineage>
+         <host_organization_lineage_names>Elsevier BV</host_organization_lineage_names>
+         <host_organization_name>Elsevier BV</host_organization_name>
+         <id>https://openalex.org/S145089992</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0304-3894</issn>
+         <issn>1873-3336</issn>
+         <issn_l>0304-3894</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://pubmed.ncbi.nlm.nih.gov/25734533</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>PubMed</display_name>
+         <host_organization>https://openalex.org/I1299303238</host_organization>
+         <host_organization_lineage>https://openalex.org/I1299303238</host_organization_lineage>
+         <host_organization_lineage_names>National Institutes of Health</host_organization_lineage_names>
+         <host_organization_name>National Institutes of Health</host_organization_name>
+         <id>https://openalex.org/S4306525036</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>2</locations_count>
+   <mesh>
+      <descriptor_name>Anti-Bacterial Agents</descriptor_name>
+      <descriptor_ui>D000900</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>isolation &amp; purification</qualifier_name>
+      <qualifier_ui>Q000302</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Charcoal</descriptor_name>
+      <descriptor_ui>D002606</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>chemistry</qualifier_name>
+      <qualifier_ui>Q000737</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>chemistry</qualifier_name>
+      <qualifier_ui>Q000737</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Sulfamethazine</descriptor_name>
+      <descriptor_ui>D013418</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>isolation &amp; purification</qualifier_name>
+      <qualifier_ui>Q000302</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Veterinary Drugs</descriptor_name>
+      <descriptor_ui>D019155</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>isolation &amp; purification</qualifier_name>
+      <qualifier_ui>Q000302</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Water Pollutants, Chemical</descriptor_name>
+      <descriptor_ui>D014874</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>isolation &amp; purification</qualifier_name>
+      <qualifier_ui>Q000302</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Adsorption</descriptor_name>
+      <descriptor_ui>D000327</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Anti-Bacterial Agents</descriptor_name>
+      <descriptor_ui>D000900</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Biomass</descriptor_name>
+      <descriptor_ui>D018533</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Charcoal</descriptor_name>
+      <descriptor_ui>D002606</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Environmental Restoration and Remediation</descriptor_name>
+      <descriptor_ui>D052918</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Hydrogen-Ion Concentration</descriptor_name>
+      <descriptor_ui>D006863</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Soil Pollutants</descriptor_name>
+      <descriptor_ui>D012989</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>chemistry</qualifier_name>
+      <qualifier_ui>Q000737</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Soil Pollutants</descriptor_name>
+      <descriptor_ui>D012989</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Steam</descriptor_name>
+      <descriptor_ui>D013227</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Sulfamethazine</descriptor_name>
+      <descriptor_ui>D013418</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Thermodynamics</descriptor_name>
+      <descriptor_ui>D013816</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Veterinary Drugs</descriptor_name>
+      <descriptor_ui>D019155</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Water Pollutants, Chemical</descriptor_name>
+      <descriptor_ui>D014874</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1016/j.jhazmat.2015.02.046</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Journal of Hazardous Materials</display_name>
+         <host_organization>https://openalex.org/P4310320990</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320990</host_organization_lineage>
+         <host_organization_lineage_names>Elsevier BV</host_organization_lineage_names>
+         <host_organization_name>Elsevier BV</host_organization_name>
+         <id>https://openalex.org/S145089992</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0304-3894</issn>
+         <issn>1873-3336</issn>
+         <issn_l>0304-3894</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Pharmaceutical and Antibiotic Environmental Impacts</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10419</id>
+      <score>0.9992</score>
+      <subfield>
+         <display_name>Pollution</display_name>
+         <id>https://openalex.org/subfields/2310</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2015-02-17</publication_date>
+   <publication_year>2015</publication_year>
+   <referenced_works>https://openalex.org/W1602508706</referenced_works>
+   <referenced_works>https://openalex.org/W1967770098</referenced_works>
+   <referenced_works>https://openalex.org/W1984466377</referenced_works>
+   <referenced_works>https://openalex.org/W1990438722</referenced_works>
+   <referenced_works>https://openalex.org/W1994246153</referenced_works>
+   <referenced_works>https://openalex.org/W1999722614</referenced_works>
+   <referenced_works>https://openalex.org/W2005109511</referenced_works>
+   <referenced_works>https://openalex.org/W2006276740</referenced_works>
+   <referenced_works>https://openalex.org/W2007352558</referenced_works>
+   <referenced_works>https://openalex.org/W2008953083</referenced_works>
+   <referenced_works>https://openalex.org/W2017855248</referenced_works>
+   <referenced_works>https://openalex.org/W2022459399</referenced_works>
+   <referenced_works>https://openalex.org/W2030057515</referenced_works>
+   <referenced_works>https://openalex.org/W2031493035</referenced_works>
+   <referenced_works>https://openalex.org/W2031720269</referenced_works>
+   <referenced_works>https://openalex.org/W2035819151</referenced_works>
+   <referenced_works>https://openalex.org/W2040152771</referenced_works>
+   <referenced_works>https://openalex.org/W2046538769</referenced_works>
+   <referenced_works>https://openalex.org/W2048408406</referenced_works>
+   <referenced_works>https://openalex.org/W2049623865</referenced_works>
+   <referenced_works>https://openalex.org/W2051082673</referenced_works>
+   <referenced_works>https://openalex.org/W2053255216</referenced_works>
+   <referenced_works>https://openalex.org/W2055691218</referenced_works>
+   <referenced_works>https://openalex.org/W2056641622</referenced_works>
+   <referenced_works>https://openalex.org/W2061483818</referenced_works>
+   <referenced_works>https://openalex.org/W2064493562</referenced_works>
+   <referenced_works>https://openalex.org/W2065771202</referenced_works>
+   <referenced_works>https://openalex.org/W2066057005</referenced_works>
+   <referenced_works>https://openalex.org/W2068733733</referenced_works>
+   <referenced_works>https://openalex.org/W2078491621</referenced_works>
+   <referenced_works>https://openalex.org/W2081952917</referenced_works>
+   <referenced_works>https://openalex.org/W2087652531</referenced_works>
+   <referenced_works>https://openalex.org/W2089539075</referenced_works>
+   <referenced_works>https://openalex.org/W2096348730</referenced_works>
+   <referenced_works>https://openalex.org/W2096977309</referenced_works>
+   <referenced_works>https://openalex.org/W2101278844</referenced_works>
+   <referenced_works>https://openalex.org/W2121894163</referenced_works>
+   <referenced_works>https://openalex.org/W2123145468</referenced_works>
+   <referenced_works>https://openalex.org/W2129824396</referenced_works>
+   <referenced_works>https://openalex.org/W2131327442</referenced_works>
+   <referenced_works>https://openalex.org/W2131880210</referenced_works>
+   <referenced_works>https://openalex.org/W2134938611</referenced_works>
+   <referenced_works>https://openalex.org/W2137495760</referenced_works>
+   <referenced_works>https://openalex.org/W2142107860</referenced_works>
+   <referenced_works>https://openalex.org/W2312559707</referenced_works>
+   <referenced_works>https://openalex.org/W2905093525</referenced_works>
+   <referenced_works>https://openalex.org/W4251064196</referenced_works>
+   <referenced_works_count>47</referenced_works_count>
+   <related_works>https://openalex.org/W4295196983</related_works>
+   <related_works>https://openalex.org/W3199771669</related_works>
+   <related_works>https://openalex.org/W3150549663</related_works>
+   <related_works>https://openalex.org/W3133168690</related_works>
+   <related_works>https://openalex.org/W3096992177</related_works>
+   <related_works>https://openalex.org/W3091306688</related_works>
+   <related_works>https://openalex.org/W2726540672</related_works>
+   <related_works>https://openalex.org/W2377508262</related_works>
+   <related_works>https://openalex.org/W2253284738</related_works>
+   <related_works>https://openalex.org/W2093341206</related_works>
+   <relevance_score>1150.2968</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Clean water and sanitation</display_name>
+      <id>https://metadata.un.org/sdg/6</id>
+      <score>0.41</score>
+   </sustainable_development_goals>
+   <title>Enhanced sulfamethazine removal by steam-activated invasive plant-derived biochar</title>
+   <topics>
+      <display_name>Pharmaceutical and Antibiotic Environmental Impacts</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10419</id>
+      <score>0.9992</score>
+      <subfield>
+         <display_name>Pollution</display_name>
+         <id>https://openalex.org/subfields/2310</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Adsorption and biosorption for pollutant removal</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10016</id>
+      <score>0.9982</score>
+      <subfield>
+         <display_name>Water Science and Technology</display_name>
+         <id>https://openalex.org/subfields/2312</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Analytical chemistry methods development</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Chemistry</display_name>
+         <id>https://openalex.org/fields/16</id>
+      </field>
+      <id>https://openalex.org/T10180</id>
+      <score>0.995</score>
+      <subfield>
+         <display_name>Analytical Chemistry</display_name>
+         <id>https://openalex.org/subfields/1602</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-17T02:08:37.801324</updated_date>
+   <versions></versions>
+</root>

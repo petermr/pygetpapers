@@ -1,0 +1,271 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>None</apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations></affiliations>
+      <author>
+         <display_name>Charles Elton</display_name>
+         <id>https://openalex.org/A5010440658</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries></countries>
+      <institutions></institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings></raw_affiliation_strings>
+      <raw_author_name>Charles S. Elton</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>None</first_page>
+      <issue>None</issue>
+      <last_page>None</last_page>
+      <volume>None</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>False</is_in_top_1_percent>
+      <value>0.980392</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W4291174900</cited_by_api_url>
+   <cited_by_count>4004</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Ecology</display_name>
+      <id>https://openalex.org/C18903297</id>
+      <level>1</level>
+      <score>0.7316995</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7150</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.42773587</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Geography</display_name>
+      <id>https://openalex.org/C205649164</id>
+      <level>0</level>
+      <score>0.4276808</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1071</wikidata>
+   </concepts>
+   <corresponding_author_ids>https://openalex.org/A5010440658</corresponding_author_ids>
+   <corresponding_institution_ids></corresponding_institution_ids>
+   <countries_distinct_count>0</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>42</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>169</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>183</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>168</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>208</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>192</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>185</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>164</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>173</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>167</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>173</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>168</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>145</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>148</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2022-08-13</created_date>
+   <datasets></datasets>
+   <display_name>The Ecology of Invasions by Animals and Plants</display_name>
+   <doi>https://doi.org/10.1007/978-1-4899-7214-9</doi>
+   <fwci>24.048</fwci>
+   <grants></grants>
+   <has_fulltext>False</has_fulltext>
+   <id>https://openalex.org/W4291174900</id>
+   <ids>
+      <doi>https://doi.org/10.1007/978-1-4899-7214-9</doi>
+      <openalex>https://openalex.org/W4291174900</openalex>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>0</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords></keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1007/978-1-4899-7214-9</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Springer eBooks</display_name>
+         <host_organization>https://openalex.org/P4310319965</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Springer Nature</host_organization_name>
+         <id>https://openalex.org/S4306463937</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>ebook platform</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>1</locations_count>
+   <mesh></mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1007/978-1-4899-7214-9</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Springer eBooks</display_name>
+         <host_organization>https://openalex.org/P4310319965</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Springer Nature</host_organization_name>
+         <id>https://openalex.org/S4306463937</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>ebook platform</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.6578</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>1958-01-01</publication_date>
+   <publication_year>1958</publication_year>
+   <referenced_works></referenced_works>
+   <referenced_works_count>0</referenced_works_count>
+   <related_works>https://openalex.org/W2788277189</related_works>
+   <related_works>https://openalex.org/W2748952813</related_works>
+   <related_works>https://openalex.org/W2151865869</related_works>
+   <related_works>https://openalex.org/W2130076355</related_works>
+   <related_works>https://openalex.org/W2119695867</related_works>
+   <related_works>https://openalex.org/W2117258802</related_works>
+   <related_works>https://openalex.org/W2082860237</related_works>
+   <related_works>https://openalex.org/W2013243191</related_works>
+   <related_works>https://openalex.org/W1993764875</related_works>
+   <related_works>https://openalex.org/W1990804418</related_works>
+   <relevance_score>1592.4073</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Zero hunger</display_name>
+      <id>https://metadata.un.org/sdg/2</id>
+      <score>0.45</score>
+   </sustainable_development_goals>
+   <title>The Ecology of Invasions by Animals and Plants</title>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.6578</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.566</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </topics>
+   <type>book</type>
+   <type_crossref>book</type_crossref>
+   <updated_date>2025-05-16T11:39:51.535241</updated_date>
+   <versions></versions>
+</root>

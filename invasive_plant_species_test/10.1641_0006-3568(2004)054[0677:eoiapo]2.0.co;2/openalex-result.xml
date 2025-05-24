@@ -1,0 +1,1696 @@
+<root>
+   <abstract_inverted_index>
+      <As>67</As>
+      <If>47</If>
+      <One>12</One>
+      <Plant>0</Plant>
+      <Restoration>82</Restoration>
+      <We>110</We>
+      <a>112</a>
+      <a>125</a>
+      <addition>98</addition>
+      <affect>16</affect>
+      <affect>28</affect>
+      <alter>33</alter>
+      <altered_>74</altered_>
+      <an>59</an>
+      <and>43</and>
+      <and>71</and>
+      <and>93</and>
+      <and>121</and>
+      <and>134</and>
+      <and>139</and>
+      <and_>31</and_>
+      <are>2</are>
+      <are>73</are>
+      <as>5</as>
+      <as>38</as>
+      <be>65</be>
+      <becomes>79</becomes>
+      <behavior>30</behavior>
+      <between>118</between>
+      <biodiversity>9</biodiversity>
+      <by>20</by>
+      <can>15</can>
+      <can>25</can>
+      <can>64</can>
+      <caused>103</caused>
+      <changes>50</changes>
+      <changes>105</changes>
+      <changing>21</changing>
+      <characteristics>36</characteristics>
+      <communities_>92</communities_>
+      <components>70</components>
+      <conditions>78</conditions>
+      <conditions_>87</conditions_>
+      <conservation>10</conservation>
+      <control_>138</control_>
+      <cycle>63</cycle>
+      <describing>115</describing>
+      <difficult.>81</difficult.>
+      <dominance>54</dominance>
+      <ecosystem>69</ecosystem>
+      <ecosystem>95</ecosystem>
+      <ecosystems>18</ecosystems>
+      <effects>131</effects>
+      <established.>66</established.>
+      <evaluating>128</evaluating>
+      <extent_>41</extent_>
+      <fire>29</fire>
+      <fire>34</fire>
+      <fire>88</fire>
+      <fire>122</fire>
+      <fire>145</fire>
+      <fire.>46</fire.>
+      <first>108</first>
+      <for>127</for>
+      <for>137</for>
+      <frequency_>39</frequency_>
+      <fuel>22</fuel>
+      <fuel>86</fuel>
+      <in>26</in>
+      <in>97</in>
+      <in>106</in>
+      <intensity_>40</intensity_>
+      <interactions>72</interactions>
+      <interrelationships>117</interrelationships>
+      <invaders>101</invaders>
+      <invaders>120</invaders>
+      <invaders>133</invaders>
+      <invaders_>57</invaders_>
+      <invasions>1</invasions>
+      <invasions>14</invasions>
+      <invasive>60</invasive>
+      <is>19</is>
+      <managing>85</managing>
+      <may>83</may>
+      <model>114</model>
+      <more>68</more>
+      <more>80</more>
+      <multiphase>113</multiphase>
+      <native>17</native>
+      <native>90</native>
+      <of>45</of>
+      <of>55</of>
+      <of>76</of>
+      <of>132</of>
+      <other>94</other>
+      <place.>109</place.>
+      <plant>91</plant>
+      <plant>119</plant>
+      <plant_fire>61</plant_fire>
+      <pre-invasion>144</pre-invasion>
+      <preinvasion>77</preinvasion>
+      <present>111</present>
+      <prioritizing>135</prioritizing>
+      <promote>52</promote>
+      <properties>96</properties>
+      <properties_>23</properties_>
+      <properties.>147</properties.>
+      <provide>124</provide>
+      <recognized>4</recognized>
+      <recommend>140</recommend>
+      <regime>35</regime>
+      <regime>49</regime>
+      <regime>62</regime>
+      <regime>146</regime>
+      <regimes_>89</regimes_>
+      <regimes_>123</regimes_>
+      <relative>130</relative>
+      <require>84</require>
+      <restoration>75</restoration>
+      <restore>143</restore>
+      <seasonality>44</seasonality>
+      <significant>6</significant>
+      <subsequently>51</subsequently>
+      <such>37</such>
+      <system>126</system>
+      <that>102</that>
+      <the>48</the>
+      <the>53</the>
+      <the>56</the>
+      <the>100</the>
+      <the>104</the>
+      <the>107</the>
+      <the>116</the>
+      <the>129</the>
+      <them>136</them>
+      <then>58</then>
+      <threats>7</threats>
+      <to>8</to>
+      <to>99</to>
+      <to>142</to>
+      <turn>27</turn>
+      <type_>42</type_>
+      <ultimately_>32</ultimately_>
+      <way>13</way>
+      <ways>141</ways>
+      <which>24</which>
+      <widely>3</widely>
+      <worldwide.>11</worldwide.>
+   </abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>USD</currency>
+      <value>4705</value>
+      <value_usd>4705</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Matthew L. Brooks</display_name>
+         <id>https://openalex.org/A5102816792</id>
+         <orcid>https://orcid.org/0000-0002-3518-6787</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>MATTHEW L. BROOKS</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations></affiliations>
+      <author>
+         <display_name>Carla M. D’Antonio</display_name>
+         <id>https://openalex.org/A5069652658</id>
+         <orcid>https://orcid.org/0000-0002-0395-9650</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries></countries>
+      <institutions></institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings></raw_affiliation_strings>
+      <raw_author_name>CARLA M. D'ANTONIO</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>David M. Richardson</display_name>
+         <id>https://openalex.org/A5089936580</id>
+         <orcid>https://orcid.org/0000-0001-9574-8297</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>DAVID M. RICHARDSON</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>James B. Grace</display_name>
+         <id>https://openalex.org/A5002341330</id>
+         <orcid>https://orcid.org/0000-0001-6374-4726</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>JAMES B. GRACE</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Jon E. Keeley</display_name>
+         <id>https://openalex.org/A5062019511</id>
+         <orcid>https://orcid.org/0000-0002-4564-6521</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>JON E. KEELEY</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Joseph M. DiTomaso</display_name>
+         <id>https://openalex.org/A5066742364</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>JOSEPH M. DiTOMASO</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>School of Plant Biology</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Richard J. Hobbs</display_name>
+         <id>https://openalex.org/A5031161391</id>
+         <orcid>https://orcid.org/0000-0003-4047-3147</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries></countries>
+      <institutions></institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>School of Plant Biology</raw_affiliation_strings>
+      <raw_author_name>RICHARD J. HOBBS</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Mike Pellant</display_name>
+         <id>https://openalex.org/A5023335857</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>MIKE PELLANT</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1286329397</institution_ids>
+         <raw_affiliation_string>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1336096307</institution_ids>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <raw_affiliation_string>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I157614274</institution_ids>
+         <raw_affiliation_string>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4387152364</institution_ids>
+         <raw_affiliation_string>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I161318765</institution_ids>
+         <raw_affiliation_string>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I84218800</institution_ids>
+         <raw_affiliation_string>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I176790772</institution_ids>
+         <raw_affiliation_string>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I1302124595</institution_ids>
+         <raw_affiliation_string>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210106247</institution_ids>
+         <raw_affiliation_string>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>David A. Pyke</display_name>
+         <id>https://openalex.org/A5084490085</id>
+         <orcid>https://orcid.org/0000-0002-4578-8335</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>AU</countries>
+      <countries>US</countries>
+      <countries>ZA</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Geological Survey</display_name>
+         <id>https://openalex.org/I1286329397</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/035a68863</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>United States Department of Agriculture</display_name>
+         <id>https://openalex.org/I1336096307</id>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/01na82s61</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>ZA</country_code>
+         <display_name>University of Cape Town</display_name>
+         <id>https://openalex.org/I157614274</id>
+         <lineage>https://openalex.org/I157614274</lineage>
+         <ror>https://ror.org/03p74gp79</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>None</country_code>
+         <display_name>Western Ecological Research Center</display_name>
+         <id>https://openalex.org/I4387152364</id>
+         <lineage>https://openalex.org/I1286329397</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <lineage>https://openalex.org/I4387152364</lineage>
+         <ror>https://ror.org/051g31x14</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Los Angeles</display_name>
+         <id>https://openalex.org/I161318765</id>
+         <lineage>https://openalex.org/I161318765</lineage>
+         <ror>https://ror.org/046rm7j60</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of California, Davis</display_name>
+         <id>https://openalex.org/I84218800</id>
+         <lineage>https://openalex.org/I84218800</lineage>
+         <ror>https://ror.org/05rrcem69</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Murdoch University</display_name>
+         <id>https://openalex.org/I176790772</id>
+         <lineage>https://openalex.org/I176790772</lineage>
+         <ror>https://ror.org/00r4sry34</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Bureau of Land Management</display_name>
+         <id>https://openalex.org/I1302124595</id>
+         <lineage>https://openalex.org/I1302124595</lineage>
+         <lineage>https://openalex.org/I1335927249</lineage>
+         <ror>https://ror.org/01sy5zn44</ror>
+         <type>government</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Corvallis Environmental Center</display_name>
+         <id>https://openalex.org/I4210106247</id>
+         <lineage>https://openalex.org/I4210106247</lineage>
+         <ror>https://ror.org/01kdb6822</ror>
+         <type>nonprofit</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Bureau of Land Management, Idaho State Office, Boise, ID 83709.</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Organismic Biology, Ecology, and Evolution at the University of California, Los Angeles, CA 90095.</raw_affiliation_strings>
+      <raw_affiliation_strings>Institute for Plant Conservation, Botany Department, University of Cape Town, Rondebosch 7701, South Africa.</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Environmental Science at Murdoch University, Murdoch, WA 6150, Australia.</raw_affiliation_strings>
+      <raw_affiliation_strings>US Department of Agriculture's Agricultural Research Service, Reno, NV 89512.</raw_affiliation_strings>
+      <raw_affiliation_strings>USGS Western Ecological Research Center, Three Rivers, CA 93271,</raw_affiliation_strings>
+      <raw_affiliation_strings>Weed Science Program at the University of California, Davis, CA 95616.</raw_affiliation_strings>
+      <raw_affiliation_strings>land Ecosystem Science Center, Corvallis, OR 97331.</raw_affiliation_strings>
+      <raw_affiliation_strings>research ecologist at the USGS National Wetlands Research Center, Lafayette, LA 70506.</raw_affiliation_strings>
+      <raw_affiliation_strings>the Western Ecological Research Center, US Geological Survey (USGS), Henderson, NV 89074.</raw_affiliation_strings>
+      <raw_author_name>DAVID PYKE</raw_author_name>
+   </authorships>
+   <best_oa_location>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1641/0006-3568(2004)054[0677:eoiapo]2.0.co;2</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>https://academic.oup.com/bioscience/article-pdf/54/7/677/26895848/54-7-677.pdf</pdf_url>
+      <source>
+         <display_name>BioScience</display_name>
+         <host_organization>https://openalex.org/P4310311648</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310311647</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310311648</host_organization_lineage>
+         <host_organization_lineage_names>University of Oxford</host_organization_lineage_names>
+         <host_organization_lineage_names>Oxford University Press</host_organization_lineage_names>
+         <host_organization_name>Oxford University Press</host_organization_name>
+         <id>https://openalex.org/S121830084</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0006-3568</issn>
+         <issn>1525-3244</issn>
+         <issn_l>0006-3568</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </best_oa_location>
+   <biblio>
+      <first_page>677</first_page>
+      <issue>7</issue>
+      <last_page>677</last_page>
+      <volume>54</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.99981</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2117456634</cited_by_api_url>
+   <cited_by_count>1569</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Ecosystem</display_name>
+      <id>https://openalex.org/C110872660</id>
+      <level>2</level>
+      <score>0.69040215</score>
+      <wikidata>https://www.wikidata.org/wiki/Q37813</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Dominance (genetics)</display_name>
+      <id>https://openalex.org/C151913843</id>
+      <level>3</level>
+      <score>0.6282771</score>
+      <wikidata>https://www.wikidata.org/wiki/Q3454555</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Fire regime</display_name>
+      <id>https://openalex.org/C89736061</id>
+      <level>3</level>
+      <score>0.6194879</score>
+      <wikidata>https://www.wikidata.org/wiki/Q5451644</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Invasive species</display_name>
+      <id>https://openalex.org/C136020623</id>
+      <level>2</level>
+      <score>0.58771783</score>
+      <wikidata>https://www.wikidata.org/wiki/Q183368</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biodiversity</display_name>
+      <id>https://openalex.org/C130217890</id>
+      <level>2</level>
+      <score>0.55614275</score>
+      <wikidata>https://www.wikidata.org/wiki/Q47041</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Fire ecology</display_name>
+      <id>https://openalex.org/C195330766</id>
+      <level>3</level>
+      <score>0.55477107</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1409472</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecology</display_name>
+      <id>https://openalex.org/C18903297</id>
+      <level>1</level>
+      <score>0.53040636</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7150</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Environmental science</display_name>
+      <id>https://openalex.org/C39432304</id>
+      <level>0</level>
+      <score>0.4869648</score>
+      <wikidata>https://www.wikidata.org/wiki/Q188847</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Introduced species</display_name>
+      <id>https://openalex.org/C173651095</id>
+      <level>2</level>
+      <score>0.45832574</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1065449</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Native plant</display_name>
+      <id>https://openalex.org/C178772583</id>
+      <level>3</level>
+      <score>0.4197743</score>
+      <wikidata>https://www.wikidata.org/wiki/Q169480</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Environmental resource management</display_name>
+      <id>https://openalex.org/C107826830</id>
+      <level>1</level>
+      <score>0.356149</score>
+      <wikidata>https://www.wikidata.org/wiki/Q929380</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Agroforestry</display_name>
+      <id>https://openalex.org/C54286561</id>
+      <level>1</level>
+      <score>0.32367986</score>
+      <wikidata>https://www.wikidata.org/wiki/Q397350</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.31935495</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biochemistry</display_name>
+      <id>https://openalex.org/C55493867</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7094</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Gene</display_name>
+      <id>https://openalex.org/C104317684</id>
+      <level>2</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7187</wikidata>
+   </concepts>
+   <corresponding_author_ids>https://openalex.org/A5102816792</corresponding_author_ids>
+   <corresponding_institution_ids>https://openalex.org/I1312222531</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I1336096307</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I157614274</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I4387152364</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I161318765</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I84218800</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I176790772</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I1302124595</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I4210106247</corresponding_institution_ids>
+   <corresponding_institution_ids>https://openalex.org/I1286329397</corresponding_institution_ids>
+   <countries_distinct_count>3</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>18</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>79</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>82</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>85</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>101</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>97</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>96</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>93</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>79</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>82</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>91</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>81</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>116</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>76</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Effects of Invasive Alien Plants on Fire Regimes</display_name>
+   <doi>https://doi.org/10.1641/0006-3568(2004)054[0677:eoiapo]2.0.co;2</doi>
+   <fulltext_origin>pdf</fulltext_origin>
+   <fwci>23.545</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2117456634</id>
+   <ids>
+      <doi>https://doi.org/10.1641/0006-3568(2004)054[0677:eoiapo]2.0.co;2</doi>
+      <mag>2117456634</mag>
+      <openalex>https://openalex.org/W2117456634</openalex>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>10</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Dominance (genetics)</display_name>
+      <id>https://openalex.org/keywords/dominance</id>
+      <score>0.6282771</score>
+   </keywords>
+   <keywords>
+      <display_name>Fire regime</display_name>
+      <id>https://openalex.org/keywords/fire-regime</id>
+      <score>0.6194879</score>
+   </keywords>
+   <keywords>
+      <display_name>Fire ecology</display_name>
+      <id>https://openalex.org/keywords/fire-ecology</id>
+      <score>0.55477107</score>
+   </keywords>
+   <keywords>
+      <display_name>Native plant</display_name>
+      <id>https://openalex.org/keywords/native-plant</id>
+      <score>0.4197743</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1641/0006-3568(2004)054[0677:eoiapo]2.0.co;2</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>https://academic.oup.com/bioscience/article-pdf/54/7/677/26895848/54-7-677.pdf</pdf_url>
+      <source>
+         <display_name>BioScience</display_name>
+         <host_organization>https://openalex.org/P4310311648</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310311647</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310311648</host_organization_lineage>
+         <host_organization_lineage_names>University of Oxford</host_organization_lineage_names>
+         <host_organization_lineage_names>Oxford University Press</host_organization_lineage_names>
+         <host_organization_name>Oxford University Press</host_organization_name>
+         <id>https://openalex.org/S121830084</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0006-3568</issn>
+         <issn>1525-3244</issn>
+         <issn_l>0006-3568</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </locations>
+   <locations_count>1</locations_count>
+   <mesh></mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>True</is_oa>
+      <oa_status>bronze</oa_status>
+      <oa_url>https://academic.oup.com/bioscience/article-pdf/54/7/677/26895848/54-7-677.pdf</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1641/0006-3568(2004)054[0677:eoiapo]2.0.co;2</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>https://academic.oup.com/bioscience/article-pdf/54/7/677/26895848/54-7-677.pdf</pdf_url>
+      <source>
+         <display_name>BioScience</display_name>
+         <host_organization>https://openalex.org/P4310311648</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310311647</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310311648</host_organization_lineage>
+         <host_organization_lineage_names>University of Oxford</host_organization_lineage_names>
+         <host_organization_lineage_names>Oxford University Press</host_organization_lineage_names>
+         <host_organization_name>Oxford University Press</host_organization_name>
+         <id>https://openalex.org/S121830084</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0006-3568</issn>
+         <issn>1525-3244</issn>
+         <issn_l>0006-3568</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.9998</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2004-01-01</publication_date>
+   <publication_year>2004</publication_year>
+   <referenced_works>https://openalex.org/W119378269</referenced_works>
+   <referenced_works>https://openalex.org/W1259083310</referenced_works>
+   <referenced_works>https://openalex.org/W1520019413</referenced_works>
+   <referenced_works>https://openalex.org/W1544664318</referenced_works>
+   <referenced_works>https://openalex.org/W1560511508</referenced_works>
+   <referenced_works>https://openalex.org/W1561387878</referenced_works>
+   <referenced_works>https://openalex.org/W1565634959</referenced_works>
+   <referenced_works>https://openalex.org/W1572650998</referenced_works>
+   <referenced_works>https://openalex.org/W1610019199</referenced_works>
+   <referenced_works>https://openalex.org/W180519193</referenced_works>
+   <referenced_works>https://openalex.org/W1970701432</referenced_works>
+   <referenced_works>https://openalex.org/W1974815412</referenced_works>
+   <referenced_works>https://openalex.org/W1980034158</referenced_works>
+   <referenced_works>https://openalex.org/W1980735279</referenced_works>
+   <referenced_works>https://openalex.org/W2003419745</referenced_works>
+   <referenced_works>https://openalex.org/W2008497144</referenced_works>
+   <referenced_works>https://openalex.org/W2010288422</referenced_works>
+   <referenced_works>https://openalex.org/W2014983278</referenced_works>
+   <referenced_works>https://openalex.org/W2036938507</referenced_works>
+   <referenced_works>https://openalex.org/W2041827958</referenced_works>
+   <referenced_works>https://openalex.org/W2050705916</referenced_works>
+   <referenced_works>https://openalex.org/W2069403683</referenced_works>
+   <referenced_works>https://openalex.org/W2094490273</referenced_works>
+   <referenced_works>https://openalex.org/W2119658459</referenced_works>
+   <referenced_works>https://openalex.org/W2121214273</referenced_works>
+   <referenced_works>https://openalex.org/W2126826780</referenced_works>
+   <referenced_works>https://openalex.org/W2130439396</referenced_works>
+   <referenced_works>https://openalex.org/W2138132363</referenced_works>
+   <referenced_works>https://openalex.org/W2139206081</referenced_works>
+   <referenced_works>https://openalex.org/W2143257800</referenced_works>
+   <referenced_works>https://openalex.org/W2143659897</referenced_works>
+   <referenced_works>https://openalex.org/W2148152179</referenced_works>
+   <referenced_works>https://openalex.org/W2151279668</referenced_works>
+   <referenced_works>https://openalex.org/W2163826476</referenced_works>
+   <referenced_works>https://openalex.org/W2203161671</referenced_works>
+   <referenced_works>https://openalex.org/W2241137709</referenced_works>
+   <referenced_works>https://openalex.org/W2335663788</referenced_works>
+   <referenced_works>https://openalex.org/W2472827083</referenced_works>
+   <referenced_works>https://openalex.org/W2501536296</referenced_works>
+   <referenced_works>https://openalex.org/W3172973823</referenced_works>
+   <referenced_works>https://openalex.org/W330618850</referenced_works>
+   <referenced_works>https://openalex.org/W4230596562</referenced_works>
+   <referenced_works>https://openalex.org/W4250668843</referenced_works>
+   <referenced_works>https://openalex.org/W4254528901</referenced_works>
+   <referenced_works>https://openalex.org/W4255791196</referenced_works>
+   <referenced_works>https://openalex.org/W4285719527</referenced_works>
+   <referenced_works>https://openalex.org/W4301406630</referenced_works>
+   <referenced_works>https://openalex.org/W4392963387</referenced_works>
+   <referenced_works>https://openalex.org/W74939158</referenced_works>
+   <referenced_works_count>49</referenced_works_count>
+   <related_works>https://openalex.org/W4388861646</related_works>
+   <related_works>https://openalex.org/W3150721957</related_works>
+   <related_works>https://openalex.org/W3024353263</related_works>
+   <related_works>https://openalex.org/W2164541852</related_works>
+   <related_works>https://openalex.org/W2125648425</related_works>
+   <related_works>https://openalex.org/W2088096162</related_works>
+   <related_works>https://openalex.org/W2060081151</related_works>
+   <related_works>https://openalex.org/W2034438996</related_works>
+   <related_works>https://openalex.org/W2028504128</related_works>
+   <related_works>https://openalex.org/W1979812679</related_works>
+   <relevance_score>1311.3788</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Life on land</display_name>
+      <id>https://metadata.un.org/sdg/15</id>
+      <score>0.79</score>
+   </sustainable_development_goals>
+   <title>Effects of Invasive Alien Plants on Fire Regimes</title>
+   <topics>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.9998</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9992</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Fire effects on ecosystems</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10555</id>
+      <score>0.9989</score>
+      <subfield>
+         <display_name>Global and Planetary Change</display_name>
+         <id>https://openalex.org/subfields/2306</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-20T18:49:35.439873</updated_date>
+   <versions></versions>
+</root>

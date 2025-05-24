@@ -1,0 +1,571 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>EUR</currency>
+      <value>9750</value>
+      <value_usd>11690</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I205783295</institution_ids>
+         <raw_affiliation_string>Department of Ecology and Evolutionary Biology, Cornell University Ithaca USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Charles E. Mitchell</display_name>
+         <id>https://openalex.org/A5060068632</id>
+         <orcid>https://orcid.org/0000-0002-1633-1993</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Cornell University</display_name>
+         <id>https://openalex.org/I205783295</id>
+         <lineage>https://openalex.org/I205783295</lineage>
+         <ror>https://ror.org/05bnh6r87</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Ecology and Evolutionary Biology, Cornell University Ithaca USA</raw_affiliation_strings>
+      <raw_author_name>Charles E. Mitchell</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I205783295</institution_ids>
+         <raw_affiliation_string>Department of Ecology and Evolutionary Biology, Cornell University Ithaca USA</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Alison G. Power</display_name>
+         <id>https://openalex.org/A5063654582</id>
+         <orcid>https://orcid.org/0000-0002-2442-0953</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Cornell University</display_name>
+         <id>https://openalex.org/I205783295</id>
+         <lineage>https://openalex.org/I205783295</lineage>
+         <ror>https://ror.org/05bnh6r87</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Ecology and Evolutionary Biology, Cornell University Ithaca USA</raw_affiliation_strings>
+      <raw_author_name>Alison G. Power</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>625</first_page>
+      <issue>6923</issue>
+      <last_page>627</last_page>
+      <volume>421</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.999895</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2093774931</cited_by_api_url>
+   <cited_by_count>1275</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.8323436</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Invasive species</display_name>
+      <id>https://openalex.org/C136020623</id>
+      <level>2</level>
+      <score>0.73958445</score>
+      <wikidata>https://www.wikidata.org/wiki/Q183368</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Introduced species</display_name>
+      <id>https://openalex.org/C173651095</id>
+      <level>2</level>
+      <score>0.62568426</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1065449</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Resistance (ecology)</display_name>
+      <id>https://openalex.org/C57473165</id>
+      <level>2</level>
+      <score>0.5816359</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7315604</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Native plant</display_name>
+      <id>https://openalex.org/C178772583</id>
+      <level>3</level>
+      <score>0.5395808</score>
+      <wikidata>https://www.wikidata.org/wiki/Q169480</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecology</display_name>
+      <id>https://openalex.org/C18903297</id>
+      <level>1</level>
+      <score>0.52544373</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7150</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biodiversity</display_name>
+      <id>https://openalex.org/C130217890</id>
+      <level>2</level>
+      <score>0.5013058</score>
+      <wikidata>https://www.wikidata.org/wiki/Q47041</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Range (aeronautics)</display_name>
+      <id>https://openalex.org/C204323151</id>
+      <level>2</level>
+      <score>0.47560698</score>
+      <wikidata>https://www.wikidata.org/wiki/Q905424</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Powdery mildew</display_name>
+      <id>https://openalex.org/C2779336322</id>
+      <level>2</level>
+      <score>0.43897238</score>
+      <wikidata>https://www.wikidata.org/wiki/Q934008</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecosystem</display_name>
+      <id>https://openalex.org/C110872660</id>
+      <level>2</level>
+      <score>0.43751416</score>
+      <wikidata>https://www.wikidata.org/wiki/Q37813</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Botany</display_name>
+      <id>https://openalex.org/C59822182</id>
+      <level>1</level>
+      <score>0.18838474</score>
+      <wikidata>https://www.wikidata.org/wiki/Q441</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Materials science</display_name>
+      <id>https://openalex.org/C192562407</id>
+      <level>0</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q228736</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Composite material</display_name>
+      <id>https://openalex.org/C159985019</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q181790</wikidata>
+   </concepts>
+   <corresponding_author_ids></corresponding_author_ids>
+   <corresponding_institution_ids></corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>26</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>42</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>45</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>36</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>67</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>47</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>63</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>43</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>50</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>74</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>55</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>53</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>49</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>67</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Release of invasive plants from fungal and viral pathogens</display_name>
+   <doi>https://doi.org/10.1038/nature01317</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>82.584</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2093774931</id>
+   <ids>
+      <doi>https://doi.org/10.1038/nature01317</doi>
+      <mag>2093774931</mag>
+      <openalex>https://openalex.org/W2093774931</openalex>
+      <pmid>https://pubmed.ncbi.nlm.nih.gov/12571594</pmid>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <indexed_in>pubmed</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>1</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Native plant</display_name>
+      <id>https://openalex.org/keywords/native-plant</id>
+      <score>0.5395808</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1038/nature01317</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Nature</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S137773608</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0028-0836</issn>
+         <issn>1476-4687</issn>
+         <issn_l>0028-0836</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://pubmed.ncbi.nlm.nih.gov/12571594</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>PubMed</display_name>
+         <host_organization>https://openalex.org/I1299303238</host_organization>
+         <host_organization_lineage>https://openalex.org/I1299303238</host_organization_lineage>
+         <host_organization_lineage_names>National Institutes of Health</host_organization_lineage_names>
+         <host_organization_name>National Institutes of Health</host_organization_name>
+         <id>https://openalex.org/S4306525036</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>2</locations_count>
+   <mesh>
+      <descriptor_name>Ecosystem</descriptor_name>
+      <descriptor_ui>D017753</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Fungi</descriptor_name>
+      <descriptor_ui>D005658</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>isolation &amp; purification</qualifier_name>
+      <qualifier_ui>Q000302</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Models, Biological</descriptor_name>
+      <descriptor_ui>D008954</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plant Physiological Phenomena</descriptor_name>
+      <descriptor_ui>D018521</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plant Viruses</descriptor_name>
+      <descriptor_ui>D010942</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>isolation &amp; purification</qualifier_name>
+      <qualifier_ui>Q000302</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>microbiology</qualifier_name>
+      <qualifier_ui>Q000382</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>virology</qualifier_name>
+      <qualifier_ui>Q000821</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Fungi</descriptor_name>
+      <descriptor_ui>D005658</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>physiology</qualifier_name>
+      <qualifier_ui>Q000502</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Fungi</descriptor_name>
+      <descriptor_ui>D005658</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Host-Parasite Interactions</descriptor_name>
+      <descriptor_ui>D006790</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Pest Control, Biological</descriptor_name>
+      <descriptor_ui>D010572</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plant Viruses</descriptor_name>
+      <descriptor_ui>D010942</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plants</descriptor_name>
+      <descriptor_ui>D010944</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Population Dynamics</descriptor_name>
+      <descriptor_ui>D011157</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Virus Physiological Phenomena</descriptor_name>
+      <descriptor_ui>D018406</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1038/nature01317</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Nature</display_name>
+         <host_organization>https://openalex.org/P4310319908</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310319908</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310319965</host_organization_lineage>
+         <host_organization_lineage_names>Nature Portfolio</host_organization_lineage_names>
+         <host_organization_lineage_names>Springer Nature</host_organization_lineage_names>
+         <host_organization_name>Nature Portfolio</host_organization_name>
+         <id>https://openalex.org/S137773608</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0028-0836</issn>
+         <issn>1476-4687</issn>
+         <issn_l>0028-0836</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9989</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2003-02-01</publication_date>
+   <publication_year>2003</publication_year>
+   <referenced_works>https://openalex.org/W1493919779</referenced_works>
+   <referenced_works>https://openalex.org/W1500210162</referenced_works>
+   <referenced_works>https://openalex.org/W1502700877</referenced_works>
+   <referenced_works>https://openalex.org/W1507549955</referenced_works>
+   <referenced_works>https://openalex.org/W1541965230</referenced_works>
+   <referenced_works>https://openalex.org/W1550717289</referenced_works>
+   <referenced_works>https://openalex.org/W1572650998</referenced_works>
+   <referenced_works>https://openalex.org/W1678035252</referenced_works>
+   <referenced_works>https://openalex.org/W1982007166</referenced_works>
+   <referenced_works>https://openalex.org/W1988713807</referenced_works>
+   <referenced_works>https://openalex.org/W1992809988</referenced_works>
+   <referenced_works>https://openalex.org/W2003605835</referenced_works>
+   <referenced_works>https://openalex.org/W2007347028</referenced_works>
+   <referenced_works>https://openalex.org/W2048712203</referenced_works>
+   <referenced_works>https://openalex.org/W2053407221</referenced_works>
+   <referenced_works>https://openalex.org/W2059655508</referenced_works>
+   <referenced_works>https://openalex.org/W2073589781</referenced_works>
+   <referenced_works>https://openalex.org/W2095636926</referenced_works>
+   <referenced_works>https://openalex.org/W2101280078</referenced_works>
+   <referenced_works>https://openalex.org/W2102151056</referenced_works>
+   <referenced_works>https://openalex.org/W2114093436</referenced_works>
+   <referenced_works>https://openalex.org/W2132145325</referenced_works>
+   <referenced_works>https://openalex.org/W2150624595</referenced_works>
+   <referenced_works>https://openalex.org/W2313645900</referenced_works>
+   <referenced_works>https://openalex.org/W2315990401</referenced_works>
+   <referenced_works>https://openalex.org/W253059816</referenced_works>
+   <referenced_works>https://openalex.org/W2546569899</referenced_works>
+   <referenced_works>https://openalex.org/W2788357600</referenced_works>
+   <referenced_works>https://openalex.org/W2790845857</referenced_works>
+   <referenced_works>https://openalex.org/W295504252</referenced_works>
+   <referenced_works>https://openalex.org/W4252186328</referenced_works>
+   <referenced_works>https://openalex.org/W4291174900</referenced_works>
+   <referenced_works>https://openalex.org/W83055577</referenced_works>
+   <referenced_works_count>33</referenced_works_count>
+   <related_works>https://openalex.org/W4229709859</related_works>
+   <related_works>https://openalex.org/W3176710017</related_works>
+   <related_works>https://openalex.org/W3150721957</related_works>
+   <related_works>https://openalex.org/W2177101160</related_works>
+   <related_works>https://openalex.org/W2171988270</related_works>
+   <related_works>https://openalex.org/W2164541852</related_works>
+   <related_works>https://openalex.org/W2088096162</related_works>
+   <related_works>https://openalex.org/W2060081151</related_works>
+   <related_works>https://openalex.org/W2034438996</related_works>
+   <related_works>https://openalex.org/W1979812679</related_works>
+   <relevance_score>2394.754</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Zero hunger</display_name>
+      <id>https://metadata.un.org/sdg/2</id>
+      <score>0.86</score>
+   </sustainable_development_goals>
+   <title>Release of invasive plants from fungal and viral pathogens</title>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9989</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Plant Parasitism and Resistance</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T12475</id>
+      <score>0.9982</score>
+      <subfield>
+         <display_name>Plant Science</display_name>
+         <id>https://openalex.org/subfields/1110</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Forest Insect Ecology and Management</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T11691</id>
+      <score>0.9961</score>
+      <subfield>
+         <display_name>Ecology</display_name>
+         <id>https://openalex.org/subfields/2303</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-22T18:12:41.130814</updated_date>
+   <versions></versions>
+</root>

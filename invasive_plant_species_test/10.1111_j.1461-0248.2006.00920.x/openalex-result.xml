@@ -1,0 +1,857 @@
+<root>
+   <abstract_inverted_index>
+      <_1_>46</_1_>
+      <_5_>48</_5_>
+      <A>136</A>
+      <Abstract>0</Abstract>
+      <Application>152</Application>
+      <Eradication>24</Eradication>
+      <Given>103</Given>
+      <Helenium>161</Helenium>
+      <Rather>56</Rather>
+      <The>1</The>
+      <We>84</We>
+      <a>106</a>
+      <a>115</a>
+      <a>170</a>
+      <absent>94</absent>
+      <actual>166</actual>
+      <ad>31</ad>
+      <amarum>162</amarum>
+      <an>11</an>
+      <an>30</an>
+      <an>68</an>
+      <and>20</and>
+      <and>123</and>
+      <and>128</and>
+      <approach>70</approach>
+      <approach>155</approach>
+      <arbitrary>43</arbitrary>
+      <arbitrary>62</arbitrary>
+      <at>60</at>
+      <bank>38</bank>
+      <banks.>23</banks.>
+      <basis_>33</basis_>
+      <because>16</because>
+      <being>4</being>
+      <benefits.>83</benefits.>
+      <between>117</between>
+      <commonly>26</commonly>
+      <compares>141</compares>
+      <completely>9</completely>
+      <confidence>49</confidence>
+      <confidence_>65</confidence_>
+      <continued>121</continued>
+      <cost>119</cost>
+      <cost>125</cost>
+      <cost.>102</cost.>
+      <costs>79</costs>
+      <damage>129</damage>
+      <declared>27</declared>
+      <declared>133</declared>
+      <declaring>58</declaring>
+      <detection>19</detection>
+      <detection>104</detection>
+      <determines>88</determines>
+      <develop>85</develop>
+      <dynamic>150</dynamic>
+      <each>177</each>
+      <economic>69</economic>
+      <either>28</either>
+      <eradicated>10</eradicated>
+      <eradication>59</eradication>
+      <eradication>131</eradication>
+      <eradication>158</eradication>
+      <escape>127</escape>
+      <exact>145</exact>
+      <expected>78</expected>
+      <expected>82</expected>
+      <expected>101</expected>
+      <fanciful>15</fanciful>
+      <for>176</for>
+      <given>173</given>
+      <have>8</have>
+      <hoc>32</hoc>
+      <if>130</if>
+      <imperfect>18</imperfect>
+      <imperfect_>109</imperfect_>
+      <in>71</in>
+      <invasive>12</invasive>
+      <is>14</is>
+      <is>25</is>
+      <is>53</is>
+      <is>108</is>
+      <is>114</is>
+      <is>132</is>
+      <level>63</level>
+      <longevity_>39</longevity_>
+      <looking>75</looking>
+      <minimize>98</minimize>
+      <net>100</net>
+      <not>54</not>
+      <notion>2</notion>
+      <notions>35</notions>
+      <number>90</number>
+      <of>3</of>
+      <of>17</of>
+      <of>36</of>
+      <of>45</of>
+      <of>64</of>
+      <of>91</of>
+      <of>93</of>
+      <of>105</of>
+      <of>120</of>
+      <of>126</of>
+      <of>139</of>
+      <of>153</of>
+      <of>160</of>
+      <on>29</on>
+      <on>34</on>
+      <on>41</on>
+      <one>172</one>
+      <optimal>111</optimal>
+      <optimal>146</optimal>
+      <or>40</or>
+      <or>47</or>
+      <outweigh>80</outweigh>
+      <parameter.>178</parameter.>
+      <persistent>21</persistent>
+      <precautionary>171</precautionary>
+      <present.>55</present.>
+      <programme>159</programme>
+      <programming.>151</programming.>
+      <ranges>175</ranges>
+      <required>96</required>
+      <reveals>163</reveals>
+      <rule>138</rule>
+      <seed>22</seed>
+      <seed>37</seed>
+      <setting>42</setting>
+      <simple>137</simple>
+      <solution>147</solution>
+      <some>61</some>
+      <soon.>135</soon.>
+      <species>13</species>
+      <species>52</species>
+      <species>107</species>
+      <stochastic>149</stochastic>
+      <stop>74</stop>
+      <stopping>112</stopping>
+      <stopping>167</stopping>
+      <sure>5</sure>
+      <surveying>122</surveying>
+      <surveys>95</surveys>
+      <take>67</take>
+      <than>57</than>
+      <that>6</that>
+      <that>50</that>
+      <that>87</that>
+      <that>164</that>
+      <the>51</the>
+      <the>77</the>
+      <the>81</the>
+      <the>89</the>
+      <the>99</the>
+      <the>110</the>
+      <the>118</the>
+      <the>124</the>
+      <the>144</the>
+      <the>154</the>
+      <the>157</the>
+      <the>165</the>
+      <the>174</the>
+      <theory>86</theory>
+      <thresholds>44</thresholds>
+      <thumb>140</thumb>
+      <time>113</time>
+      <time>168</time>
+      <to>97</to>
+      <to>143</to>
+      <to>156</to>
+      <too>134</too>
+      <trade_off>116</trade_off>
+      <using>148</using>
+      <was>169</was>
+      <we>66</we>
+      <we>73</we>
+      <well>142</well>
+      <when>76</when>
+      <which>72</which>
+      <years>92</years>
+      <you>7</you>
+   </abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>USD</currency>
+      <value>5050</value>
+      <value_usd>5050</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165143802</institution_ids>
+         <raw_affiliation_string>The Ecology Centre, School of Integrative Biology, The University of Queensland, St Lucia, QLD 4072, Australia</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>CRC for Australian Weed Management, PMB 1, Waite Campus, Glen Osmond, SA 5064, Australia</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Tracey J. Regan</display_name>
+         <id>https://openalex.org/A5076996941</id>
+         <orcid>https://orcid.org/0000-0001-6858-0265</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>AU</countries>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>The University of Queensland</display_name>
+         <id>https://openalex.org/I165143802</id>
+         <lineage>https://openalex.org/I165143802</lineage>
+         <ror>https://ror.org/00rqy9422</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings>CRC for Australian Weed Management, PMB 1, Waite Campus, Glen Osmond, SA 5064, Australia</raw_affiliation_strings>
+      <raw_affiliation_strings>The Ecology Centre, School of Integrative Biology, The University of Queensland, St Lucia, QLD 4072, Australia</raw_affiliation_strings>
+      <raw_author_name>Tracey J. Regan</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165779595</institution_ids>
+         <raw_affiliation_string>School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165779595</institution_ids>
+         <institution_ids>https://openalex.org/I4210130668</institution_ids>
+         <raw_affiliation_string>Australian Research Centre for Urban Ecology, Royal Botanic Gardens Melbourne c/- School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Michael A. McCarthy</display_name>
+         <id>https://openalex.org/A5025024507</id>
+         <orcid>https://orcid.org/0000-0003-1039-7980</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>The University of Melbourne</display_name>
+         <id>https://openalex.org/I165779595</id>
+         <lineage>https://openalex.org/I165779595</lineage>
+         <ror>https://ror.org/01ej9dk98</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Royal Botanic Garden Sydney</display_name>
+         <id>https://openalex.org/I4210130668</id>
+         <lineage>https://openalex.org/I4210130668</lineage>
+         <ror>https://ror.org/03nw3dq29</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Australian Research Centre for Urban Ecology, Royal Botanic Gardens Melbourne c/- School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_strings>
+      <raw_author_name>Michael A. McCarthy</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165143802</institution_ids>
+         <raw_affiliation_string>The Ecology Centre, School of Integrative Biology, The University of Queensland, St Lucia, QLD 4072, Australia</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165779595</institution_ids>
+         <raw_affiliation_string>School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I4210130668</institution_ids>
+         <institution_ids>https://openalex.org/I165779595</institution_ids>
+         <raw_affiliation_string>Australian Research Centre for Urban Ecology, Royal Botanic Gardens Melbourne c/- School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>P. W. J. Baxter</display_name>
+         <id>https://openalex.org/A5034034436</id>
+         <orcid>https://orcid.org/0000-0003-0585-9482</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>The University of Queensland</display_name>
+         <id>https://openalex.org/I165143802</id>
+         <lineage>https://openalex.org/I165143802</lineage>
+         <ror>https://ror.org/00rqy9422</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>The University of Melbourne</display_name>
+         <id>https://openalex.org/I165779595</id>
+         <lineage>https://openalex.org/I165779595</lineage>
+         <ror>https://ror.org/01ej9dk98</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>Royal Botanic Garden Sydney</display_name>
+         <id>https://openalex.org/I4210130668</id>
+         <lineage>https://openalex.org/I4210130668</lineage>
+         <ror>https://ror.org/03nw3dq29</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Australian Research Centre for Urban Ecology, Royal Botanic Gardens Melbourne c/- School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_strings>
+      <raw_affiliation_strings>School of Botany, University of Melbourne, Victoria 3010, Australia</raw_affiliation_strings>
+      <raw_affiliation_strings>The Ecology Centre, School of Integrative Biology, The University of Queensland, St Lucia, QLD 4072, Australia</raw_affiliation_strings>
+      <raw_author_name>Peter W. J. Baxter</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>Department of Natural Resources and Mines, PO Box 36, Sherwood, QLD 4075, Australia</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>CRC for Australian Weed Management, PMB 1, Waite Campus, Glen Osmond, SA 5064, Australia</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>F. D. Panetta</display_name>
+         <id>https://openalex.org/A5110411332</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>AU</countries>
+      <institutions></institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>CRC for Australian Weed Management, PMB 1, Waite Campus, Glen Osmond, SA 5064, Australia</raw_affiliation_strings>
+      <raw_affiliation_strings>Department of Natural Resources and Mines, PO Box 36, Sherwood, QLD 4075, Australia</raw_affiliation_strings>
+      <raw_author_name>F. Dane Panetta</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>CRC for Australian Weed Management, PMB 1, Waite Campus, Glen Osmond, SA 5064, Australia</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I165143802</institution_ids>
+         <raw_affiliation_string>The Ecology Centre, School of Integrative Biology, The University of Queensland, St Lucia, QLD 4072, Australia</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Hugh P. Possingham</display_name>
+         <id>https://openalex.org/A5043437297</id>
+         <orcid>https://orcid.org/0000-0001-7755-996X</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>AU</countries>
+      <institutions>
+         <country_code>AU</country_code>
+         <display_name>The University of Queensland</display_name>
+         <id>https://openalex.org/I165143802</id>
+         <lineage>https://openalex.org/I165143802</lineage>
+         <ror>https://ror.org/00rqy9422</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>CRC for Australian Weed Management, PMB 1, Waite Campus, Glen Osmond, SA 5064, Australia</raw_affiliation_strings>
+      <raw_affiliation_strings>The Ecology Centre, School of Integrative Biology, The University of Queensland, St Lucia, QLD 4072, Australia</raw_affiliation_strings>
+      <raw_author_name>Hugh P. Possingham</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>759</first_page>
+      <issue>7</issue>
+      <last_page>766</last_page>
+      <volume>9</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>False</is_in_top_1_percent>
+      <value>0.953781</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2104980790</cited_by_api_url>
+   <cited_by_count>205</cited_by_count>
+   <cited_by_percentile_year>
+      <max>99</max>
+      <min>98</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Imperfect</display_name>
+      <id>https://openalex.org/C2780310539</id>
+      <level>2</level>
+      <score>0.706098</score>
+      <wikidata>https://www.wikidata.org/wiki/Q12547192</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Rule of thumb</display_name>
+      <id>https://openalex.org/C89246107</id>
+      <level>2</level>
+      <score>0.56024724</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1398821</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Optimal stopping</display_name>
+      <id>https://openalex.org/C99414536</id>
+      <level>2</level>
+      <score>0.45660284</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7098950</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Dynamic programming</display_name>
+      <id>https://openalex.org/C37404715</id>
+      <level>2</level>
+      <score>0.4335971</score>
+      <wikidata>https://www.wikidata.org/wiki/Q380679</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Effi</display_name>
+      <id>https://openalex.org/C2780707294</id>
+      <level>2</level>
+      <score>0.4295385</score>
+      <wikidata>https://www.wikidata.org/wiki/Q27795853</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Computer science</display_name>
+      <id>https://openalex.org/C41008148</id>
+      <level>0</level>
+      <score>0.38581884</score>
+      <wikidata>https://www.wikidata.org/wiki/Q21198</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Economics</display_name>
+      <id>https://openalex.org/C162324750</id>
+      <level>0</level>
+      <score>0.37188104</score>
+      <wikidata>https://www.wikidata.org/wiki/Q8134</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Mathematical economics</display_name>
+      <id>https://openalex.org/C144237770</id>
+      <level>1</level>
+      <score>0.3667153</score>
+      <wikidata>https://www.wikidata.org/wiki/Q747534</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Algorithm</display_name>
+      <id>https://openalex.org/C11413529</id>
+      <level>1</level>
+      <score>0.12838623</score>
+      <wikidata>https://www.wikidata.org/wiki/Q8366</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Financial economics</display_name>
+      <id>https://openalex.org/C106159729</id>
+      <level>1</level>
+      <score>0.10774922</score>
+      <wikidata>https://www.wikidata.org/wiki/Q2294553</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Philosophy</display_name>
+      <id>https://openalex.org/C138885662</id>
+      <level>0</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q5891</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Linguistics</display_name>
+      <id>https://openalex.org/C41895202</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q8162</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Database</display_name>
+      <id>https://openalex.org/C77088390</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q8513</wikidata>
+   </concepts>
+   <corresponding_author_ids>https://openalex.org/A5076996941</corresponding_author_ids>
+   <corresponding_institution_ids>https://openalex.org/I165143802</corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>7</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>2</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>18</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>9</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>6</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>8</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>6</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>22</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>9</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>9</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>13</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>11</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>10</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Optimal eradication: when to stop looking for an invasive plant</display_name>
+   <doi>https://doi.org/10.1111/j.1461-0248.2006.00920.x</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>11.466</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2104980790</id>
+   <ids>
+      <doi>https://doi.org/10.1111/j.1461-0248.2006.00920.x</doi>
+      <mag>2104980790</mag>
+      <openalex>https://openalex.org/W2104980790</openalex>
+      <pmid>https://pubmed.ncbi.nlm.nih.gov/16796564</pmid>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <indexed_in>pubmed</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>3</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Rule of thumb</display_name>
+      <id>https://openalex.org/keywords/rule-of-thumb</id>
+      <score>0.56024724</score>
+   </keywords>
+   <keywords>
+      <display_name>Effi</display_name>
+      <id>https://openalex.org/keywords/effi</id>
+      <score>0.4295385</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1111/j.1461-0248.2006.00920.x</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Ecology Letters</display_name>
+         <host_organization>https://openalex.org/P4310320595</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320595</host_organization_lineage>
+         <host_organization_lineage_names>Wiley</host_organization_lineage_names>
+         <host_organization_name>Wiley</host_organization_name>
+         <id>https://openalex.org/S80967739</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>1461-023X</issn>
+         <issn>1461-0248</issn>
+         <issn_l>1461-023X</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://pubmed.ncbi.nlm.nih.gov/16796564</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>PubMed</display_name>
+         <host_organization>https://openalex.org/I1299303238</host_organization>
+         <host_organization_lineage>https://openalex.org/I1299303238</host_organization_lineage>
+         <host_organization_lineage_names>National Institutes of Health</host_organization_lineage_names>
+         <host_organization_name>National Institutes of Health</host_organization_name>
+         <id>https://openalex.org/S4306525036</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>2</locations_count>
+   <mesh>
+      <descriptor_name>Pest Control</descriptor_name>
+      <descriptor_ui>D010571</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Plant Development</descriptor_name>
+      <descriptor_ui>D063245</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Seeds</descriptor_name>
+      <descriptor_ui>D012639</descriptor_ui>
+      <is_major_topic>True</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Conservation of Natural Resources</descriptor_name>
+      <descriptor_ui>D003247</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Cost-Benefit Analysis</descriptor_name>
+      <descriptor_ui>D003362</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Data Collection</descriptor_name>
+      <descriptor_ui>D003625</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>methods</qualifier_name>
+      <qualifier_ui>Q000379</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Data Collection</descriptor_name>
+      <descriptor_ui>D003625</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>economics</qualifier_name>
+      <qualifier_ui>Q000191</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Data Collection</descriptor_name>
+      <descriptor_ui>D003625</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Endpoint Determination</descriptor_name>
+      <descriptor_ui>D023381</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Environmental Monitoring</descriptor_name>
+      <descriptor_ui>D004784</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>economics</qualifier_name>
+      <qualifier_ui>Q000191</qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Environmental Monitoring</descriptor_name>
+      <descriptor_ui>D004784</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Models, Statistical</descriptor_name>
+      <descriptor_ui>D015233</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Population Dynamics</descriptor_name>
+      <descriptor_ui>D011157</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <mesh>
+      <descriptor_name>Reference Values</descriptor_name>
+      <descriptor_ui>D012016</descriptor_ui>
+      <is_major_topic>False</is_major_topic>
+      <qualifier_name>None</qualifier_name>
+      <qualifier_ui></qualifier_ui>
+   </mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1111/j.1461-0248.2006.00920.x</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Ecology Letters</display_name>
+         <host_organization>https://openalex.org/P4310320595</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320595</host_organization_lineage>
+         <host_organization_lineage_names>Wiley</host_organization_lineage_names>
+         <host_organization_name>Wiley</host_organization_name>
+         <id>https://openalex.org/S80967739</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>1461-023X</issn>
+         <issn>1461-0248</issn>
+         <issn_l>1461-023X</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.997</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2006-04-25</publication_date>
+   <publication_year>2006</publication_year>
+   <referenced_works>https://openalex.org/W1481546449</referenced_works>
+   <referenced_works>https://openalex.org/W1528801611</referenced_works>
+   <referenced_works>https://openalex.org/W2011991282</referenced_works>
+   <referenced_works>https://openalex.org/W2029534154</referenced_works>
+   <referenced_works>https://openalex.org/W2038783300</referenced_works>
+   <referenced_works>https://openalex.org/W2042218105</referenced_works>
+   <referenced_works>https://openalex.org/W2043647402</referenced_works>
+   <referenced_works>https://openalex.org/W2047089531</referenced_works>
+   <referenced_works>https://openalex.org/W2064388359</referenced_works>
+   <referenced_works>https://openalex.org/W2073916749</referenced_works>
+   <referenced_works>https://openalex.org/W2079599792</referenced_works>
+   <referenced_works>https://openalex.org/W2085043124</referenced_works>
+   <referenced_works>https://openalex.org/W2085810503</referenced_works>
+   <referenced_works>https://openalex.org/W2088124175</referenced_works>
+   <referenced_works>https://openalex.org/W2095301120</referenced_works>
+   <referenced_works>https://openalex.org/W2096252857</referenced_works>
+   <referenced_works>https://openalex.org/W2116665868</referenced_works>
+   <referenced_works>https://openalex.org/W2131500751</referenced_works>
+   <referenced_works>https://openalex.org/W2145593041</referenced_works>
+   <referenced_works>https://openalex.org/W2155187887</referenced_works>
+   <referenced_works>https://openalex.org/W2162715430</referenced_works>
+   <referenced_works>https://openalex.org/W2173997975</referenced_works>
+   <referenced_works>https://openalex.org/W2237471617</referenced_works>
+   <referenced_works>https://openalex.org/W2319693973</referenced_works>
+   <referenced_works>https://openalex.org/W2795568650</referenced_works>
+   <referenced_works>https://openalex.org/W3195995264</referenced_works>
+   <referenced_works>https://openalex.org/W4301112389</referenced_works>
+   <referenced_works>https://openalex.org/W84833874</referenced_works>
+   <referenced_works_count>28</referenced_works_count>
+   <related_works>https://openalex.org/W4241084179</related_works>
+   <related_works>https://openalex.org/W4230341267</related_works>
+   <related_works>https://openalex.org/W3125929579</related_works>
+   <related_works>https://openalex.org/W3019796462</related_works>
+   <related_works>https://openalex.org/W2553437679</related_works>
+   <related_works>https://openalex.org/W2550980753</related_works>
+   <related_works>https://openalex.org/W2382494474</related_works>
+   <related_works>https://openalex.org/W2359707114</related_works>
+   <related_works>https://openalex.org/W2099597305</related_works>
+   <related_works>https://openalex.org/W2055003010</related_works>
+   <relevance_score>964.3631</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Life on land</display_name>
+      <id>https://metadata.un.org/sdg/15</id>
+      <score>0.7</score>
+   </sustainable_development_goals>
+   <title>Optimal eradication: when to stop looking for an invasive plant</title>
+   <topics>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.997</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9887</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Botany, Ecology, and Taxonomy Studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T13015</id>
+      <score>0.9851</score>
+      <subfield>
+         <display_name>Plant Science</display_name>
+         <id>https://openalex.org/subfields/1110</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-20T19:58:32.830681</updated_date>
+   <versions></versions>
+</root>

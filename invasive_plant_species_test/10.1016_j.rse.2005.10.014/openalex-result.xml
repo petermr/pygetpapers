@@ -1,0 +1,494 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>USD</currency>
+      <value>4070</value>
+      <value_usd>4070</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I23732399</institution_ids>
+         <raw_affiliation_string>Department of Land Resources and Environmental Sciences, PO Box 173490, Montana State University, Bozeman, Montana 59717, United States</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Rick L. Lawrence</display_name>
+         <id>https://openalex.org/A5038136343</id>
+         <orcid>https://orcid.org/0000-0001-8085-5524</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Montana State University</display_name>
+         <id>https://openalex.org/I23732399</id>
+         <lineage>https://openalex.org/I23732399</lineage>
+         <lineage>https://openalex.org/I4210126032</lineage>
+         <ror>https://ror.org/02w0trx84</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings>Department of Land Resources and Environmental Sciences, PO Box 173490, Montana State University, Bozeman, Montana 59717, United States</raw_affiliation_strings>
+      <raw_author_name>Rick L. Lawrence</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I23732399</institution_ids>
+         <raw_affiliation_string>Department of Land Resources and Environmental Sciences, Montana State University, United States</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Shana D. Wood</display_name>
+         <id>https://openalex.org/A5034679543</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>middle</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Montana State University</display_name>
+         <id>https://openalex.org/I23732399</id>
+         <lineage>https://openalex.org/I23732399</lineage>
+         <lineage>https://openalex.org/I4210126032</lineage>
+         <ror>https://ror.org/02w0trx84</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Department of Land Resources and Environmental Sciences, Montana State University, United States</raw_affiliation_strings>
+      <raw_author_name>Shana D. Wood</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I207168215</institution_ids>
+         <institution_ids>https://openalex.org/I1312222531</institution_ids>
+         <raw_affiliation_string>USDA-Agricultural Research Service, Eastern Oregon Agricultural Research Center, United States</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Roger L. Sheley</display_name>
+         <id>https://openalex.org/A5028599356</id>
+         <orcid>https://orcid.org/0000-0002-1248-6293</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Eastern Oregon University</display_name>
+         <id>https://openalex.org/I207168215</id>
+         <lineage>https://openalex.org/I207168215</lineage>
+         <ror>https://ror.org/01s8xxq04</ror>
+         <type>education</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>Agricultural Research Service</display_name>
+         <id>https://openalex.org/I1312222531</id>
+         <lineage>https://openalex.org/I1312222531</lineage>
+         <lineage>https://openalex.org/I1336096307</lineage>
+         <ror>https://ror.org/02d2m2044</ror>
+         <type>government</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>USDA-Agricultural Research Service, Eastern Oregon Agricultural Research Center, United States</raw_affiliation_strings>
+      <raw_author_name>Roger L. Sheley</raw_author_name>
+   </authorships>
+   <best_oa_location>None</best_oa_location>
+   <biblio>
+      <first_page>356</first_page>
+      <issue>3</issue>
+      <last_page>362</last_page>
+      <volume>100</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.999929</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2166307050</cited_by_api_url>
+   <cited_by_count>677</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Hyperspectral imaging</display_name>
+      <id>https://openalex.org/C159078339</id>
+      <level>2</level>
+      <score>0.7151698</score>
+      <wikidata>https://www.wikidata.org/wiki/Q959005</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Remote sensing</display_name>
+      <id>https://openalex.org/C62649853</id>
+      <level>1</level>
+      <score>0.6607994</score>
+      <wikidata>https://www.wikidata.org/wiki/Q199687</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ranging</display_name>
+      <id>https://openalex.org/C115051666</id>
+      <level>2</level>
+      <score>0.58071154</score>
+      <wikidata>https://www.wikidata.org/wiki/Q6522493</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Random forest</display_name>
+      <id>https://openalex.org/C169258074</id>
+      <level>2</level>
+      <score>0.575953</score>
+      <wikidata>https://www.wikidata.org/wiki/Q245748</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Computer science</display_name>
+      <id>https://openalex.org/C41008148</id>
+      <level>0</level>
+      <score>0.4735412</score>
+      <wikidata>https://www.wikidata.org/wiki/Q21198</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Vegetation (pathology)</display_name>
+      <id>https://openalex.org/C2776133958</id>
+      <level>2</level>
+      <score>0.4680082</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7918366</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Contextual image classification</display_name>
+      <id>https://openalex.org/C75294576</id>
+      <level>3</level>
+      <score>0.44438016</score>
+      <wikidata>https://www.wikidata.org/wiki/Q5165192</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Cartography</display_name>
+      <id>https://openalex.org/C58640448</id>
+      <level>1</level>
+      <score>0.3244538</score>
+      <wikidata>https://www.wikidata.org/wiki/Q42515</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Artificial intelligence</display_name>
+      <id>https://openalex.org/C154945302</id>
+      <level>1</level>
+      <score>0.3009157</score>
+      <wikidata>https://www.wikidata.org/wiki/Q11660</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Geography</display_name>
+      <id>https://openalex.org/C205649164</id>
+      <level>0</level>
+      <score>0.26321322</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1071</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Image (mathematics)</display_name>
+      <id>https://openalex.org/C115961682</id>
+      <level>2</level>
+      <score>0.13015601</score>
+      <wikidata>https://www.wikidata.org/wiki/Q860623</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Medicine</display_name>
+      <id>https://openalex.org/C71924100</id>
+      <level>0</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q11190</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Telecommunications</display_name>
+      <id>https://openalex.org/C76155785</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q418</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Pathology</display_name>
+      <id>https://openalex.org/C142724271</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7208</wikidata>
+   </concepts>
+   <corresponding_author_ids>https://openalex.org/A5038136343</corresponding_author_ids>
+   <corresponding_institution_ids>https://openalex.org/I23732399</corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>11</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>34</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>28</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>45</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>56</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>52</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>82</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>45</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>43</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>52</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>37</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>36</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>28</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>31</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Mapping invasive plants using hyperspectral imagery and Breiman Cutler classifications (randomForest)</display_name>
+   <doi>https://doi.org/10.1016/j.rse.2005.10.014</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>7.503</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2166307050</id>
+   <ids>
+      <doi>https://doi.org/10.1016/j.rse.2005.10.014</doi>
+      <mag>2166307050</mag>
+      <openalex>https://openalex.org/W2166307050</openalex>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>3</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Ranging</display_name>
+      <id>https://openalex.org/keywords/ranging</id>
+      <score>0.58071154</score>
+   </keywords>
+   <keywords>
+      <display_name>Contextual image classification</display_name>
+      <id>https://openalex.org/keywords/contextual-image-classification</id>
+      <score>0.44438016</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1016/j.rse.2005.10.014</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Remote Sensing of Environment</display_name>
+         <host_organization>https://openalex.org/P4310320990</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320990</host_organization_lineage>
+         <host_organization_lineage_names>Elsevier BV</host_organization_lineage_names>
+         <host_organization_name>Elsevier BV</host_organization_name>
+         <id>https://openalex.org/S141808269</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0034-4257</issn>
+         <issn>1879-0704</issn>
+         <issn_l>0034-4257</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>1</locations_count>
+   <mesh></mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>False</is_oa>
+      <oa_status>closed</oa_status>
+      <oa_url>None</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1016/j.rse.2005.10.014</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Remote Sensing of Environment</display_name>
+         <host_organization>https://openalex.org/P4310320990</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320990</host_organization_lineage>
+         <host_organization_lineage_names>Elsevier BV</host_organization_lineage_names>
+         <host_organization_name>Elsevier BV</host_organization_name>
+         <id>https://openalex.org/S141808269</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0034-4257</issn>
+         <issn>1879-0704</issn>
+         <issn_l>0034-4257</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Remote Sensing in Agriculture</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10111</id>
+      <score>0.9997</score>
+      <subfield>
+         <display_name>Ecology</display_name>
+         <id>https://openalex.org/subfields/2303</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2005-12-02</publication_date>
+   <publication_year>2005</publication_year>
+   <referenced_works>https://openalex.org/W1529383820</referenced_works>
+   <referenced_works>https://openalex.org/W1536340909</referenced_works>
+   <referenced_works>https://openalex.org/W1625730066</referenced_works>
+   <referenced_works>https://openalex.org/W1765594597</referenced_works>
+   <referenced_works>https://openalex.org/W1784940512</referenced_works>
+   <referenced_works>https://openalex.org/W1975174683</referenced_works>
+   <referenced_works>https://openalex.org/W1978005360</referenced_works>
+   <referenced_works>https://openalex.org/W2004483149</referenced_works>
+   <referenced_works>https://openalex.org/W2025170151</referenced_works>
+   <referenced_works>https://openalex.org/W2039989944</referenced_works>
+   <referenced_works>https://openalex.org/W2046557917</referenced_works>
+   <referenced_works>https://openalex.org/W2064552842</referenced_works>
+   <referenced_works>https://openalex.org/W2066015174</referenced_works>
+   <referenced_works>https://openalex.org/W2068744742</referenced_works>
+   <referenced_works>https://openalex.org/W2070029724</referenced_works>
+   <referenced_works>https://openalex.org/W2079342209</referenced_works>
+   <referenced_works>https://openalex.org/W2083297183</referenced_works>
+   <referenced_works>https://openalex.org/W2103726450</referenced_works>
+   <referenced_works>https://openalex.org/W2107919956</referenced_works>
+   <referenced_works>https://openalex.org/W2112732795</referenced_works>
+   <referenced_works>https://openalex.org/W2125055259</referenced_works>
+   <referenced_works>https://openalex.org/W2135405393</referenced_works>
+   <referenced_works>https://openalex.org/W2136036783</referenced_works>
+   <referenced_works>https://openalex.org/W2136625467</referenced_works>
+   <referenced_works>https://openalex.org/W2144205029</referenced_works>
+   <referenced_works>https://openalex.org/W2144587714</referenced_works>
+   <referenced_works>https://openalex.org/W2147723763</referenced_works>
+   <referenced_works>https://openalex.org/W2155632266</referenced_works>
+   <referenced_works>https://openalex.org/W2158770403</referenced_works>
+   <referenced_works>https://openalex.org/W2170653440</referenced_works>
+   <referenced_works>https://openalex.org/W2177360904</referenced_works>
+   <referenced_works>https://openalex.org/W2236036291</referenced_works>
+   <referenced_works>https://openalex.org/W2269028235</referenced_works>
+   <referenced_works>https://openalex.org/W2312997001</referenced_works>
+   <referenced_works>https://openalex.org/W2513160923</referenced_works>
+   <referenced_works>https://openalex.org/W2521491949</referenced_works>
+   <referenced_works>https://openalex.org/W273955616</referenced_works>
+   <referenced_works>https://openalex.org/W2894619144</referenced_works>
+   <referenced_works>https://openalex.org/W2911964244</referenced_works>
+   <referenced_works>https://openalex.org/W3146391403</referenced_works>
+   <referenced_works>https://openalex.org/W365119913</referenced_works>
+   <referenced_works>https://openalex.org/W422580816</referenced_works>
+   <referenced_works>https://openalex.org/W4255100633</referenced_works>
+   <referenced_works_count>43</referenced_works_count>
+   <related_works>https://openalex.org/W4384112194</related_works>
+   <related_works>https://openalex.org/W4328132048</related_works>
+   <related_works>https://openalex.org/W4312958259</related_works>
+   <related_works>https://openalex.org/W4308259661</related_works>
+   <related_works>https://openalex.org/W2969318460</related_works>
+   <related_works>https://openalex.org/W2783354812</related_works>
+   <related_works>https://openalex.org/W2376202349</related_works>
+   <related_works>https://openalex.org/W2349383066</related_works>
+   <related_works>https://openalex.org/W2103009189</related_works>
+   <related_works>https://openalex.org/W1969901537</related_works>
+   <relevance_score>1493.2885</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Life on land</display_name>
+      <id>https://metadata.un.org/sdg/15</id>
+      <score>0.78</score>
+   </sustainable_development_goals>
+   <title>Mapping invasive plants using hyperspectral imagery and Breiman Cutler classifications (randomForest)</title>
+   <topics>
+      <display_name>Remote Sensing in Agriculture</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10111</id>
+      <score>0.9997</score>
+      <subfield>
+         <display_name>Ecology</display_name>
+         <id>https://openalex.org/subfields/2303</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Species Distribution and Climate Change</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10895</id>
+      <score>0.9979</score>
+      <subfield>
+         <display_name>Ecological Modeling</display_name>
+         <id>https://openalex.org/subfields/2302</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Rangeland and Wildlife Management</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T13388</id>
+      <score>0.9978</score>
+      <subfield>
+         <display_name>Ecology</display_name>
+         <id>https://openalex.org/subfields/2303</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-16T06:23:09.384235</updated_date>
+   <versions></versions>
+</root>

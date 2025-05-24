@@ -1,0 +1,561 @@
+<root>
+   <abstract_inverted_index>
+      <And>21</And>
+      <It>44</It>
+      <There>0</There>
+      <about_>7</about_>
+      <all>40</all>
+      <and>11</and>
+      <and>58</and>
+      <any>16</any>
+      <as>32</as>
+      <been>3</been>
+      <continued>28</continued>
+      <did>33</did>
+      <first>52</first>
+      <garden>27</garden>
+      <growing>8</growing>
+      <growth>30</growth>
+      <have>2</have>
+      <in>25</in>
+      <in>37</in>
+      <inoffensively_>12</inoffensively_>
+      <it>36</it>
+      <its>29</its>
+      <its>56</its>
+      <later>49</later>
+      <like>35</like>
+      <little>47</little>
+      <must>1</must>
+      <neglected>38</neglected>
+      <nobody>14</nobody>
+      <notice>18</notice>
+      <of>5</of>
+      <of>19</of>
+      <one>24</one>
+      <one>53</one>
+      <our>26</our>
+      <over>41</over>
+      <particular>17</particular>
+      <peacefully_>31</peacefully_>
+      <picked>54</picked>
+      <plenty>4</plenty>
+      <quietly>10</quietly>
+      <roots>57</roots>
+      <so>22</so>
+      <some>46</some>
+      <spots>39</spots>
+      <taking>15</taking>
+      <that>50</that>
+      <the>23</the>
+      <the>42</the>
+      <the>51</the>
+      <them>6</them>
+      <them_.>20</them_.>
+      <thousands>34</thousands>
+      <time>48</time>
+      <up>9</up>
+      <up>55</up>
+      <walked.>59</walked.>
+      <was>45</was>
+      <with>13</with>
+      <world_.>43</world_.>
+   </abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>USD</currency>
+      <value>4705</value>
+      <value_usd>4705</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I201448701</institution_ids>
+         <raw_affiliation_string>Ecosystems Sciences Division of the College of Forest Resources and is affiliated with the Center for Urban Horticulture, University of Washington, Seattle, Washington 98195.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I114027177</institution_ids>
+         <raw_affiliation_string>fessor of biology at the University of North Carolina at Chapel Hill and is director of the North Carolina Botanical Garden, Chapel Hill, North Carolina 27599-3280.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>Invasive Plant Introductions in the United States</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>MOST INVASIVE PLANTS</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Sarah Reichard</display_name>
+         <id>https://openalex.org/A5066008170</id>
+         <orcid>None</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of Washington</display_name>
+         <id>https://openalex.org/I201448701</id>
+         <lineage>https://openalex.org/I201448701</lineage>
+         <ror>https://ror.org/00cvxb145</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of North Carolina at Chapel Hill</display_name>
+         <id>https://openalex.org/I114027177</id>
+         <lineage>https://openalex.org/I114027177</lineage>
+         <ror>https://ror.org/0130frc33</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Ecosystems Sciences Division of the College of Forest Resources and is affiliated with the Center for Urban Horticulture, University of Washington, Seattle, Washington 98195.</raw_affiliation_strings>
+      <raw_affiliation_strings>Invasive Plant Introductions in the United States</raw_affiliation_strings>
+      <raw_affiliation_strings>MOST INVASIVE PLANTS</raw_affiliation_strings>
+      <raw_affiliation_strings>fessor of biology at the University of North Carolina at Chapel Hill and is director of the North Carolina Botanical Garden, Chapel Hill, North Carolina 27599-3280.</raw_affiliation_strings>
+      <raw_author_name>SARAH HAYDEN REICHARD</raw_author_name>
+   </authorships>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I201448701</institution_ids>
+         <raw_affiliation_string>Ecosystems Sciences Division of the College of Forest Resources and is affiliated with the Center for Urban Horticulture, University of Washington, Seattle, Washington 98195.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids>https://openalex.org/I114027177</institution_ids>
+         <raw_affiliation_string>fessor of biology at the University of North Carolina at Chapel Hill and is director of the North Carolina Botanical Garden, Chapel Hill, North Carolina 27599-3280.</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>Invasive Plant Introductions in the United States</raw_affiliation_string>
+      </affiliations>
+      <affiliations>
+         <institution_ids></institution_ids>
+         <raw_affiliation_string>MOST INVASIVE PLANTS</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Peter White</display_name>
+         <id>https://openalex.org/A5054843611</id>
+         <orcid>https://orcid.org/0000-0002-9742-4939</orcid>
+      </author>
+      <author_position>last</author_position>
+      <countries>US</countries>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of Washington</display_name>
+         <id>https://openalex.org/I201448701</id>
+         <lineage>https://openalex.org/I201448701</lineage>
+         <ror>https://ror.org/00cvxb145</ror>
+         <type>funder</type>
+      </institutions>
+      <institutions>
+         <country_code>US</country_code>
+         <display_name>University of North Carolina at Chapel Hill</display_name>
+         <id>https://openalex.org/I114027177</id>
+         <lineage>https://openalex.org/I114027177</lineage>
+         <ror>https://ror.org/0130frc33</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>False</is_corresponding>
+      <raw_affiliation_strings>Ecosystems Sciences Division of the College of Forest Resources and is affiliated with the Center for Urban Horticulture, University of Washington, Seattle, Washington 98195.</raw_affiliation_strings>
+      <raw_affiliation_strings>Invasive Plant Introductions in the United States</raw_affiliation_strings>
+      <raw_affiliation_strings>MOST INVASIVE PLANTS</raw_affiliation_strings>
+      <raw_affiliation_strings>fessor of biology at the University of North Carolina at Chapel Hill and is director of the North Carolina Botanical Garden, Chapel Hill, North Carolina 27599-3280.</raw_affiliation_strings>
+      <raw_author_name>PETER WHITE</raw_author_name>
+   </authorships>
+   <best_oa_location>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1641/0006-3568(2001)051[0103:haapoi]2.0.co;2</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>https://academic.oup.com/bioscience/article-pdf/51/2/103/26890926/51-2-103.pdf</pdf_url>
+      <source>
+         <display_name>BioScience</display_name>
+         <host_organization>https://openalex.org/P4310311648</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310311647</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310311648</host_organization_lineage>
+         <host_organization_lineage_names>University of Oxford</host_organization_lineage_names>
+         <host_organization_lineage_names>Oxford University Press</host_organization_lineage_names>
+         <host_organization_name>Oxford University Press</host_organization_name>
+         <id>https://openalex.org/S121830084</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0006-3568</issn>
+         <issn>1525-3244</issn>
+         <issn_l>0006-3568</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </best_oa_location>
+   <biblio>
+      <first_page>103</first_page>
+      <issue>2</issue>
+      <last_page>103</last_page>
+      <volume>51</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.999883</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2274990797</cited_by_api_url>
+   <cited_by_count>795</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>nobody</display_name>
+      <id>https://openalex.org/C36914074</id>
+      <level>2</level>
+      <score>0.95243096</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1940501</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Notice</display_name>
+      <id>https://openalex.org/C2779913896</id>
+      <level>2</level>
+      <score>0.8616477</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7063001</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Plant growth</display_name>
+      <id>https://openalex.org/C2982966219</id>
+      <level>2</level>
+      <score>0.458585</score>
+      <wikidata>https://www.wikidata.org/wiki/Q3045481</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Geography</display_name>
+      <id>https://openalex.org/C205649164</id>
+      <level>0</level>
+      <score>0.42481953</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1071</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Horticulture</display_name>
+      <id>https://openalex.org/C144027150</id>
+      <level>1</level>
+      <score>0.41428757</score>
+      <wikidata>https://www.wikidata.org/wiki/Q48803</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.3402259</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Political science</display_name>
+      <id>https://openalex.org/C17744445</id>
+      <level>0</level>
+      <score>0.3137051</score>
+      <wikidata>https://www.wikidata.org/wiki/Q36442</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Law</display_name>
+      <id>https://openalex.org/C199539241</id>
+      <level>1</level>
+      <score>0.2507789</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7748</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Computer science</display_name>
+      <id>https://openalex.org/C41008148</id>
+      <level>0</level>
+      <score>0.06395841</score>
+      <wikidata>https://www.wikidata.org/wiki/Q21198</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Operating system</display_name>
+      <id>https://openalex.org/C111919701</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q9135</wikidata>
+   </concepts>
+   <corresponding_author_ids></corresponding_author_ids>
+   <corresponding_institution_ids></corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>6</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>26</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>38</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>33</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>48</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>35</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>29</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>26</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>33</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>32</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>42</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>43</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>40</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>44</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Horticulture as a Pathway of Invasive Plant Introductions in the United States</display_name>
+   <doi>https://doi.org/10.1641/0006-3568(2001)051[0103:haapoi]2.0.co;2</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>18.167</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2274990797</id>
+   <ids>
+      <doi>https://doi.org/10.1641/0006-3568(2001)051[0103:haapoi]2.0.co;2</doi>
+      <mag>2274990797</mag>
+      <openalex>https://openalex.org/W2274990797</openalex>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>2</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>nobody</display_name>
+      <id>https://openalex.org/keywords/nobody</id>
+      <score>0.95243096</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1641/0006-3568(2001)051[0103:haapoi]2.0.co;2</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>https://academic.oup.com/bioscience/article-pdf/51/2/103/26890926/51-2-103.pdf</pdf_url>
+      <source>
+         <display_name>BioScience</display_name>
+         <host_organization>https://openalex.org/P4310311648</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310311647</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310311648</host_organization_lineage>
+         <host_organization_lineage_names>University of Oxford</host_organization_lineage_names>
+         <host_organization_lineage_names>Oxford University Press</host_organization_lineage_names>
+         <host_organization_name>Oxford University Press</host_organization_name>
+         <id>https://openalex.org/S121830084</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0006-3568</issn>
+         <issn>1525-3244</issn>
+         <issn_l>0006-3568</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </locations>
+   <locations_count>1</locations_count>
+   <mesh></mesh>
+   <open_access>
+      <any_repository_has_fulltext>False</any_repository_has_fulltext>
+      <is_oa>True</is_oa>
+      <oa_status>bronze</oa_status>
+      <oa_url>https://academic.oup.com/bioscience/article-pdf/51/2/103/26890926/51-2-103.pdf</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>True</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>True</is_published>
+      <landing_page_url>https://doi.org/10.1641/0006-3568(2001)051[0103:haapoi]2.0.co;2</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>https://academic.oup.com/bioscience/article-pdf/51/2/103/26890926/51-2-103.pdf</pdf_url>
+      <source>
+         <display_name>BioScience</display_name>
+         <host_organization>https://openalex.org/P4310311648</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310311647</host_organization_lineage>
+         <host_organization_lineage>https://openalex.org/P4310311648</host_organization_lineage>
+         <host_organization_lineage_names>University of Oxford</host_organization_lineage_names>
+         <host_organization_lineage_names>Oxford University Press</host_organization_lineage_names>
+         <host_organization_name>Oxford University Press</host_organization_name>
+         <id>https://openalex.org/S121830084</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0006-3568</issn>
+         <issn>1525-3244</issn>
+         <issn_l>0006-3568</issn_l>
+         <type>journal</type>
+      </source>
+      <version>publishedVersion</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9959</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2001-01-01</publication_date>
+   <publication_year>2001</publication_year>
+   <referenced_works>https://openalex.org/W1521510369</referenced_works>
+   <referenced_works>https://openalex.org/W1547543412</referenced_works>
+   <referenced_works>https://openalex.org/W1568263841</referenced_works>
+   <referenced_works>https://openalex.org/W1571796549</referenced_works>
+   <referenced_works>https://openalex.org/W2002316904</referenced_works>
+   <referenced_works>https://openalex.org/W2022627678</referenced_works>
+   <referenced_works>https://openalex.org/W2042124695</referenced_works>
+   <referenced_works>https://openalex.org/W2046647383</referenced_works>
+   <referenced_works>https://openalex.org/W2049719542</referenced_works>
+   <referenced_works>https://openalex.org/W2064006231</referenced_works>
+   <referenced_works>https://openalex.org/W2064730852</referenced_works>
+   <referenced_works>https://openalex.org/W2069199565</referenced_works>
+   <referenced_works>https://openalex.org/W2092596817</referenced_works>
+   <referenced_works>https://openalex.org/W2110080690</referenced_works>
+   <referenced_works>https://openalex.org/W2112486274</referenced_works>
+   <referenced_works>https://openalex.org/W2114093436</referenced_works>
+   <referenced_works>https://openalex.org/W2118460640</referenced_works>
+   <referenced_works>https://openalex.org/W2131886454</referenced_works>
+   <referenced_works>https://openalex.org/W2132145325</referenced_works>
+   <referenced_works>https://openalex.org/W2134435079</referenced_works>
+   <referenced_works>https://openalex.org/W2143659897</referenced_works>
+   <referenced_works>https://openalex.org/W2162828401</referenced_works>
+   <referenced_works>https://openalex.org/W2252287880</referenced_works>
+   <referenced_works>https://openalex.org/W229119369</referenced_works>
+   <referenced_works>https://openalex.org/W2305994764</referenced_works>
+   <referenced_works>https://openalex.org/W2313511553</referenced_works>
+   <referenced_works>https://openalex.org/W2315990401</referenced_works>
+   <referenced_works>https://openalex.org/W2317623006</referenced_works>
+   <referenced_works>https://openalex.org/W2329613250</referenced_works>
+   <referenced_works>https://openalex.org/W2336785247</referenced_works>
+   <referenced_works>https://openalex.org/W2343434126</referenced_works>
+   <referenced_works>https://openalex.org/W2346287750</referenced_works>
+   <referenced_works>https://openalex.org/W2489785417</referenced_works>
+   <referenced_works>https://openalex.org/W2788221439</referenced_works>
+   <referenced_works>https://openalex.org/W2918982278</referenced_works>
+   <referenced_works>https://openalex.org/W49517247</referenced_works>
+   <referenced_works>https://openalex.org/W601415257</referenced_works>
+   <referenced_works>https://openalex.org/W640962084</referenced_works>
+   <referenced_works>https://openalex.org/W646907669</referenced_works>
+   <referenced_works>https://openalex.org/W77742727</referenced_works>
+   <referenced_works>https://openalex.org/W83055577</referenced_works>
+   <referenced_works_count>41</referenced_works_count>
+   <related_works>https://openalex.org/W4381511496</related_works>
+   <related_works>https://openalex.org/W4252091596</related_works>
+   <related_works>https://openalex.org/W3217193274</related_works>
+   <related_works>https://openalex.org/W2899084033</related_works>
+   <related_works>https://openalex.org/W2898696350</related_works>
+   <related_works>https://openalex.org/W2784053798</related_works>
+   <related_works>https://openalex.org/W2748952813</related_works>
+   <related_works>https://openalex.org/W2323702547</related_works>
+   <related_works>https://openalex.org/W2065156438</related_works>
+   <related_works>https://openalex.org/W1543072206</related_works>
+   <relevance_score>1875.6812</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Zero hunger</display_name>
+      <id>https://metadata.un.org/sdg/2</id>
+      <score>0.55</score>
+   </sustainable_development_goals>
+   <title>Horticulture as a Pathway of Invasive Plant Introductions in the United States</title>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9959</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Plant Parasitism and Resistance</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T12475</id>
+      <score>0.9879</score>
+      <subfield>
+         <display_name>Plant Science</display_name>
+         <id>https://openalex.org/subfields/1110</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Ecology and Vegetation Dynamics Studies</display_name>
+      <domain>
+         <display_name>Physical Sciences</display_name>
+         <id>https://openalex.org/domains/3</id>
+      </domain>
+      <field>
+         <display_name>Environmental Science</display_name>
+         <id>https://openalex.org/fields/23</id>
+      </field>
+      <id>https://openalex.org/T10005</id>
+      <score>0.9841</score>
+      <subfield>
+         <display_name>Nature and Landscape Conservation</display_name>
+         <id>https://openalex.org/subfields/2309</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-15T19:49:05.440173</updated_date>
+   <versions></versions>
+</root>

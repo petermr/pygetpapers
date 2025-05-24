@@ -1,0 +1,503 @@
+<root>
+   <abstract_inverted_index>None</abstract_inverted_index>
+   <abstract_inverted_index_v3>None</abstract_inverted_index_v3>
+   <apc_list>
+      <currency>USD</currency>
+      <value>6830</value>
+      <value_usd>6830</value_usd>
+   </apc_list>
+   <apc_paid>None</apc_paid>
+   <authorships>
+      <affiliations>
+         <institution_ids>https://openalex.org/I154338468</institution_ids>
+         <raw_affiliation_string>Département de Biologie, Unité Ecologie et Evolution, Université de Fribourg, CH-1700 Fribourg, Switzerland</raw_affiliation_string>
+      </affiliations>
+      <author>
+         <display_name>Heinz Müller‐Schärer</display_name>
+         <id>https://openalex.org/A5029430908</id>
+         <orcid>https://orcid.org/0000-0003-0936-1470</orcid>
+      </author>
+      <author_position>first</author_position>
+      <countries>CH</countries>
+      <institutions>
+         <country_code>CH</country_code>
+         <display_name>University of Fribourg</display_name>
+         <id>https://openalex.org/I154338468</id>
+         <lineage>https://openalex.org/I154338468</lineage>
+         <ror>https://ror.org/022fs9h90</ror>
+         <type>funder</type>
+      </institutions>
+      <is_corresponding>True</is_corresponding>
+      <raw_affiliation_strings>Département de Biologie, Unité Ecologie et Evolution, Université de Fribourg, CH-1700 Fribourg, Switzerland</raw_affiliation_strings>
+      <raw_author_name>H MULLERSCHARER</raw_author_name>
+   </authorships>
+   <best_oa_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>http://doc.rero.ch/record/4111/files/1_steinger_eip.pdf</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>http://doc.rero.ch/record/4111/files/1_steinger_eip.pdf</pdf_url>
+      <source>
+         <display_name>reroDoc Digital Library</display_name>
+         <host_organization>https://openalex.org/I67311998</host_organization>
+         <host_organization_lineage>https://openalex.org/I67311998</host_organization_lineage>
+         <host_organization_lineage_names>European Organization for Nuclear Research</host_organization_lineage_names>
+         <host_organization_name>European Organization for Nuclear Research</host_organization_name>
+         <id>https://openalex.org/S4306400148</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>True</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>submittedVersion</version>
+   </best_oa_location>
+   <biblio>
+      <first_page>417</first_page>
+      <issue>8</issue>
+      <last_page>422</last_page>
+      <volume>19</volume>
+   </biblio>
+   <citation_normalized_percentile>
+      <is_in_top_10_percent>True</is_in_top_10_percent>
+      <is_in_top_1_percent>True</is_in_top_1_percent>
+      <value>0.999766</value>
+   </citation_normalized_percentile>
+   <cited_by_api_url>https://api.openalex.org/works?filter=cites:W2066042564</cited_by_api_url>
+   <cited_by_count>648</cited_by_count>
+   <cited_by_percentile_year>
+      <max>100</max>
+      <min>99</min>
+   </cited_by_percentile_year>
+   <concepts>
+      <display_name>Biology</display_name>
+      <id>https://openalex.org/C86803240</id>
+      <level>0</level>
+      <score>0.6662241</score>
+      <wikidata>https://www.wikidata.org/wiki/Q420</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Adaptive evolution</display_name>
+      <id>https://openalex.org/C2992278830</id>
+      <level>3</level>
+      <score>0.6000492</score>
+      <wikidata>https://www.wikidata.org/wiki/Q483921</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Resistance (ecology)</display_name>
+      <id>https://openalex.org/C57473165</id>
+      <level>2</level>
+      <score>0.5285605</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7315604</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Invasive species</display_name>
+      <id>https://openalex.org/C136020623</id>
+      <level>2</level>
+      <score>0.49459407</score>
+      <wikidata>https://www.wikidata.org/wiki/Q183368</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Selection (genetic algorithm)</display_name>
+      <id>https://openalex.org/C81917197</id>
+      <level>2</level>
+      <score>0.4738724</score>
+      <wikidata>https://www.wikidata.org/wiki/Q628760</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Evolutionary biology</display_name>
+      <id>https://openalex.org/C78458016</id>
+      <level>1</level>
+      <score>0.4637905</score>
+      <wikidata>https://www.wikidata.org/wiki/Q840400</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Control (management)</display_name>
+      <id>https://openalex.org/C2775924081</id>
+      <level>2</level>
+      <score>0.44445267</score>
+      <wikidata>https://www.wikidata.org/wiki/Q55608371</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Biological evolution</display_name>
+      <id>https://openalex.org/C2988562018</id>
+      <level>2</level>
+      <score>0.4360699</score>
+      <wikidata>https://www.wikidata.org/wiki/Q1063</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Ecology</display_name>
+      <id>https://openalex.org/C18903297</id>
+      <level>1</level>
+      <score>0.39561865</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7150</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Computer science</display_name>
+      <id>https://openalex.org/C41008148</id>
+      <level>0</level>
+      <score>0.13784033</score>
+      <wikidata>https://www.wikidata.org/wiki/Q21198</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Genetics</display_name>
+      <id>https://openalex.org/C54355233</id>
+      <level>1</level>
+      <score>0.09893826</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7162</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Artificial intelligence</display_name>
+      <id>https://openalex.org/C154945302</id>
+      <level>1</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q11660</wikidata>
+   </concepts>
+   <concepts>
+      <display_name>Gene</display_name>
+      <id>https://openalex.org/C104317684</id>
+      <level>2</level>
+      <score>0.0</score>
+      <wikidata>https://www.wikidata.org/wiki/Q7187</wikidata>
+   </concepts>
+   <corresponding_author_ids>https://openalex.org/A5029430908</corresponding_author_ids>
+   <corresponding_institution_ids>https://openalex.org/I154338468</corresponding_institution_ids>
+   <countries_distinct_count>1</countries_distinct_count>
+   <counts_by_year>
+      <cited_by_count>9</cited_by_count>
+      <year>2025</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>21</cited_by_count>
+      <year>2024</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>39</cited_by_count>
+      <year>2023</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>59</cited_by_count>
+      <year>2022</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>28</cited_by_count>
+      <year>2021</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>20</cited_by_count>
+      <year>2020</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>28</cited_by_count>
+      <year>2019</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>34</cited_by_count>
+      <year>2018</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>30</cited_by_count>
+      <year>2017</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>26</cited_by_count>
+      <year>2016</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>37</cited_by_count>
+      <year>2015</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>30</cited_by_count>
+      <year>2014</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>44</cited_by_count>
+      <year>2013</year>
+   </counts_by_year>
+   <counts_by_year>
+      <cited_by_count>40</cited_by_count>
+      <year>2012</year>
+   </counts_by_year>
+   <created_date>2016-06-24</created_date>
+   <datasets></datasets>
+   <display_name>Evolution in invasive plants: implications for biological control</display_name>
+   <doi>https://doi.org/10.1016/j.tree.2004.05.010</doi>
+   <fulltext_origin>ngrams</fulltext_origin>
+   <fwci>22.083</fwci>
+   <grants></grants>
+   <has_fulltext>True</has_fulltext>
+   <id>https://openalex.org/W2066042564</id>
+   <ids>
+      <doi>https://doi.org/10.1016/j.tree.2004.05.010</doi>
+      <mag>2066042564</mag>
+      <openalex>https://openalex.org/W2066042564</openalex>
+      <pmid>https://pubmed.ncbi.nlm.nih.gov/16701299</pmid>
+   </ids>
+   <indexed_in>crossref</indexed_in>
+   <indexed_in>pubmed</indexed_in>
+   <institution_assertions></institution_assertions>
+   <institutions_distinct_count>1</institutions_distinct_count>
+   <is_paratext>False</is_paratext>
+   <is_retracted>False</is_retracted>
+   <keywords>
+      <display_name>Adaptive Evolution</display_name>
+      <id>https://openalex.org/keywords/adaptive-evolution</id>
+      <score>0.6000492</score>
+   </keywords>
+   <language>en</language>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1016/j.tree.2004.05.010</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Trends in Ecology &amp; Evolution</display_name>
+         <host_organization>https://openalex.org/P4310320990</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320990</host_organization_lineage>
+         <host_organization_lineage_names>Elsevier BV</host_organization_lineage_names>
+         <host_organization_name>Elsevier BV</host_organization_name>
+         <id>https://openalex.org/S79131028</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0169-5347</issn>
+         <issn>1872-8383</issn>
+         <issn_l>0169-5347</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>True</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>http://doc.rero.ch/record/4111/files/1_steinger_eip.pdf</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>http://doc.rero.ch/record/4111/files/1_steinger_eip.pdf</pdf_url>
+      <source>
+         <display_name>reroDoc Digital Library</display_name>
+         <host_organization>https://openalex.org/I67311998</host_organization>
+         <host_organization_lineage>https://openalex.org/I67311998</host_organization_lineage>
+         <host_organization_lineage_names>European Organization for Nuclear Research</host_organization_lineage_names>
+         <host_organization_name>European Organization for Nuclear Research</host_organization_name>
+         <id>https://openalex.org/S4306400148</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>True</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>submittedVersion</version>
+   </locations>
+   <locations>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://pubmed.ncbi.nlm.nih.gov/16701299</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>PubMed</display_name>
+         <host_organization>https://openalex.org/I1299303238</host_organization>
+         <host_organization_lineage>https://openalex.org/I1299303238</host_organization_lineage>
+         <host_organization_lineage_names>National Institutes of Health</host_organization_lineage_names>
+         <host_organization_name>National Institutes of Health</host_organization_name>
+         <id>https://openalex.org/S4306525036</id>
+         <is_core>False</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>False</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>None</issn>
+         <issn_l>None</issn_l>
+         <type>repository</type>
+      </source>
+      <version>None</version>
+   </locations>
+   <locations_count>3</locations_count>
+   <mesh></mesh>
+   <open_access>
+      <any_repository_has_fulltext>True</any_repository_has_fulltext>
+      <is_oa>True</is_oa>
+      <oa_status>green</oa_status>
+      <oa_url>http://doc.rero.ch/record/4111/files/1_steinger_eip.pdf</oa_url>
+   </open_access>
+   <primary_location>
+      <is_accepted>False</is_accepted>
+      <is_oa>False</is_oa>
+      <is_published>False</is_published>
+      <landing_page_url>https://doi.org/10.1016/j.tree.2004.05.010</landing_page_url>
+      <license>None</license>
+      <license_id>None</license_id>
+      <pdf_url>None</pdf_url>
+      <source>
+         <display_name>Trends in Ecology &amp; Evolution</display_name>
+         <host_organization>https://openalex.org/P4310320990</host_organization>
+         <host_organization_lineage>https://openalex.org/P4310320990</host_organization_lineage>
+         <host_organization_lineage_names>Elsevier BV</host_organization_lineage_names>
+         <host_organization_name>Elsevier BV</host_organization_name>
+         <id>https://openalex.org/S79131028</id>
+         <is_core>True</is_core>
+         <is_in_doaj>False</is_in_doaj>
+         <is_indexed_in_scopus>True</is_indexed_in_scopus>
+         <is_oa>False</is_oa>
+         <issn>0169-5347</issn>
+         <issn>1872-8383</issn>
+         <issn_l>0169-5347</issn_l>
+         <type>journal</type>
+      </source>
+      <version>None</version>
+   </primary_location>
+   <primary_topic>
+      <display_name>Biological Control of Invasive Species</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T12701</id>
+      <score>0.9992</score>
+      <subfield>
+         <display_name>Insect Science</display_name>
+         <id>https://openalex.org/subfields/1109</id>
+      </subfield>
+   </primary_topic>
+   <publication_date>2004-06-15</publication_date>
+   <publication_year>2004</publication_year>
+   <referenced_works>https://openalex.org/W1567028249</referenced_works>
+   <referenced_works>https://openalex.org/W1577316741</referenced_works>
+   <referenced_works>https://openalex.org/W1580176313</referenced_works>
+   <referenced_works>https://openalex.org/W1964744361</referenced_works>
+   <referenced_works>https://openalex.org/W1969517445</referenced_works>
+   <referenced_works>https://openalex.org/W1984144725</referenced_works>
+   <referenced_works>https://openalex.org/W1988713807</referenced_works>
+   <referenced_works>https://openalex.org/W1991589325</referenced_works>
+   <referenced_works>https://openalex.org/W2003567683</referenced_works>
+   <referenced_works>https://openalex.org/W2006786598</referenced_works>
+   <referenced_works>https://openalex.org/W2014072463</referenced_works>
+   <referenced_works>https://openalex.org/W2033453303</referenced_works>
+   <referenced_works>https://openalex.org/W2039601717</referenced_works>
+   <referenced_works>https://openalex.org/W2048309867</referenced_works>
+   <referenced_works>https://openalex.org/W2060001561</referenced_works>
+   <referenced_works>https://openalex.org/W2065621798</referenced_works>
+   <referenced_works>https://openalex.org/W2068156907</referenced_works>
+   <referenced_works>https://openalex.org/W2072282183</referenced_works>
+   <referenced_works>https://openalex.org/W2073349219</referenced_works>
+   <referenced_works>https://openalex.org/W2081437604</referenced_works>
+   <referenced_works>https://openalex.org/W2083652099</referenced_works>
+   <referenced_works>https://openalex.org/W2085130525</referenced_works>
+   <referenced_works>https://openalex.org/W2093774931</referenced_works>
+   <referenced_works>https://openalex.org/W2094562158</referenced_works>
+   <referenced_works>https://openalex.org/W2098394278</referenced_works>
+   <referenced_works>https://openalex.org/W2098822763</referenced_works>
+   <referenced_works>https://openalex.org/W2102151056</referenced_works>
+   <referenced_works>https://openalex.org/W2114335951</referenced_works>
+   <referenced_works>https://openalex.org/W2116551517</referenced_works>
+   <referenced_works>https://openalex.org/W2120062081</referenced_works>
+   <referenced_works>https://openalex.org/W2123326807</referenced_works>
+   <referenced_works>https://openalex.org/W2125867410</referenced_works>
+   <referenced_works>https://openalex.org/W2128706217</referenced_works>
+   <referenced_works>https://openalex.org/W2129668362</referenced_works>
+   <referenced_works>https://openalex.org/W2131839095</referenced_works>
+   <referenced_works>https://openalex.org/W2135157956</referenced_works>
+   <referenced_works>https://openalex.org/W2137795315</referenced_works>
+   <referenced_works>https://openalex.org/W2149812981</referenced_works>
+   <referenced_works>https://openalex.org/W2160025325</referenced_works>
+   <referenced_works>https://openalex.org/W2162291114</referenced_works>
+   <referenced_works>https://openalex.org/W2164113375</referenced_works>
+   <referenced_works>https://openalex.org/W2165551571</referenced_works>
+   <referenced_works>https://openalex.org/W2167996558</referenced_works>
+   <referenced_works>https://openalex.org/W2321076945</referenced_works>
+   <referenced_works>https://openalex.org/W2328923612</referenced_works>
+   <referenced_works>https://openalex.org/W274215398</referenced_works>
+   <referenced_works>https://openalex.org/W4233293813</referenced_works>
+   <referenced_works>https://openalex.org/W611966160</referenced_works>
+   <referenced_works_count>48</referenced_works_count>
+   <related_works>https://openalex.org/W4322623845</related_works>
+   <related_works>https://openalex.org/W3193267382</related_works>
+   <related_works>https://openalex.org/W2174939902</related_works>
+   <related_works>https://openalex.org/W2164034484</related_works>
+   <related_works>https://openalex.org/W2157175495</related_works>
+   <related_works>https://openalex.org/W2117627743</related_works>
+   <related_works>https://openalex.org/W2107109285</related_works>
+   <related_works>https://openalex.org/W2102425056</related_works>
+   <related_works>https://openalex.org/W2038926948</related_works>
+   <related_works>https://openalex.org/W1907161532</related_works>
+   <relevance_score>1752.8854</relevance_score>
+   <sustainable_development_goals>
+      <display_name>Life on land</display_name>
+      <id>https://metadata.un.org/sdg/15</id>
+      <score>0.55</score>
+   </sustainable_development_goals>
+   <title>Evolution in invasive plants: implications for biological control</title>
+   <topics>
+      <display_name>Biological Control of Invasive Species</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T12701</id>
+      <score>0.9992</score>
+      <subfield>
+         <display_name>Insect Science</display_name>
+         <id>https://openalex.org/subfields/1109</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Allelopathy and phytotoxic interactions</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T12058</id>
+      <score>0.9984</score>
+      <subfield>
+         <display_name>Plant Science</display_name>
+         <id>https://openalex.org/subfields/1110</id>
+      </subfield>
+   </topics>
+   <topics>
+      <display_name>Plant and animal studies</display_name>
+      <domain>
+         <display_name>Life Sciences</display_name>
+         <id>https://openalex.org/domains/1</id>
+      </domain>
+      <field>
+         <display_name>Agricultural and Biological Sciences</display_name>
+         <id>https://openalex.org/fields/11</id>
+      </field>
+      <id>https://openalex.org/T10487</id>
+      <score>0.9951</score>
+      <subfield>
+         <display_name>Ecology, Evolution, Behavior and Systematics</display_name>
+         <id>https://openalex.org/subfields/1105</id>
+      </subfield>
+   </topics>
+   <type>article</type>
+   <type_crossref>journal-article</type_crossref>
+   <updated_date>2025-05-19T22:05:20.696590</updated_date>
+   <versions></versions>
+</root>
