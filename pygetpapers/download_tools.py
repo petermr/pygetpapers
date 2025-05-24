@@ -18,7 +18,14 @@ from dict2xml import dict2xml
 from tqdm import tqdm
 from lxml import etree
 from pathlib import Path
-from pygetpapers.pgexceptions import PygetpapersError
+
+try:
+    from pygetpapers.pgexceptions import PygetpapersError
+except ImportError:
+    from pgexceptions import PygetpapersError
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 PYGETPAPERS = "pygetpapers"
 
@@ -690,9 +697,20 @@ class DownloadTools:
     @staticmethod
     def _make_dict_from_list(metadata_list, paper_key):
 
+        # logger.info(f"paper_key {paper_key} metadata {metadata_list[:1]}")
         paper_by_key = {}
+
         for paper in metadata_list:
-            key = paper[paper_key]
+            # logger.info(f"paper keys {paper.keys()}")
+            id = paper.get("id")
+            if id is None:
+                logger.warning(f"no id for paper ; skipped")
+                continue
+            # logger.info(f"id: {id}")
+            key = paper[paper_key] # normally doi
+            if key is None:
+                logger.warning(f"no paper_key for id={id}")
+                continue
 
             if key.startswith("https://doi.org/"):
                 key = key.replace("https://doi.org/", "")
