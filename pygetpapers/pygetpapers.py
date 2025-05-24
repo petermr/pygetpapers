@@ -12,8 +12,12 @@ import coloredlogs
 import configargparse
 from tqdm import tqdm
 
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.pgexceptions import PygetpapersError
+try:
+    from pygetpapers.download_tools import DownloadTools
+    from pygetpapers.pgexceptions import PygetpapersError
+except ImportError:
+    from download_tools import DownloadTools
+    from pgexceptions import PygetpapersError
 
 VERSION = "version"
 RESTART = "restart"
