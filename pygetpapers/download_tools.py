@@ -79,6 +79,8 @@ TERM = "term"
 
 ENTRY = "entry"
 
+HTTPS_DOI_ORG = "https://doi.org/"
+
 
 class DownloadTools:
     """Generic tools for retrieving literature. Several are called by each repository"""
@@ -697,23 +699,24 @@ class DownloadTools:
     @staticmethod
     def _make_dict_from_list(metadata_list, paper_key):
 
-        # logger.info(f"paper_key {paper_key} metadata {metadata_list[:1]}")
         paper_by_key = {}
 
         for paper in metadata_list:
-            # logger.info(f"paper keys {paper.keys()}")
             id = paper.get("id")
             if id is None:
-                logger.warning(f"no id for paper ; skipped")
+                logging.warning(f"no id for paper ; skipped")
                 continue
             # logger.info(f"id: {id}")
             key = paper[paper_key] # normally doi
             if key is None:
-                logger.warning(f"no paper_key for id={id}")
+                logging.warning(f"no paper_key for id={id}")
                 continue
 
-            if key.startswith("https://doi.org/"):
-                key = key.replace("https://doi.org/", "")
+            if key.startswith(HTTPS_DOI_ORG):
+                key = key.replace(HTTPS_DOI_ORG, "")
+            else:
+                logging.warning(f"key {key} does not start with {HTTPS_DOI_ORG}; skipped id={id}")
+                continue
             key = DownloadTools.url_encode_id(key)
             paper_by_key[key] = paper
         return paper_by_key
@@ -734,8 +737,8 @@ class DownloadTools:
                 try:
                     paper_numer += 1
                     doi_of_paper = dict_of_paper[paper_key]
-                    if doi_of_paper.startswith("https://doi.org/"):
-                        doi_of_paper = doi_of_paper.replace("https://doi.org/", "")
+                    if doi_of_paper.startswith(HTTPS_DOI_ORG):
+                        doi_of_paper = doi_of_paper.replace(HTTPS_DOI_ORG, "")
                     url_encoded_doi_of_paper = self.url_encode_id(doi_of_paper)
 
                     self.check_or_make_directory(url_encoded_doi_of_paper)
