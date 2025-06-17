@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pygetpapers"
+version = "2.0.0"
+description = "A tool for programmatically getting academic papers"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.8"
+dependencies = [
+    "requests",
+    "click",
+    "lxml",
+    # Add others as needed
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "flake8", "mypy"]
+docs = ["mkdocs", "mkdocs-material"]
+
+[tool.setuptools.packages.find]
+where = ["pygetpapers"]
+
+[tool.setuptools]
+include-package-data = true
