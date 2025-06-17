@@ -1,7 +1,9 @@
-from pathlib import Path
-
-import pytest
 import os
+import logging
+
+# import pytest
+
+logger = logging.getLogger(__name__)
 
 paper_for_references_test = "PMC8348691"
 paper_for_citations_test = "PMC7645447"
@@ -51,6 +53,11 @@ def test_eupmc_does_update_work():
 
 
 def test_does_zip_work():
+    """
+    tests the --zip option ("ftpfiles"
+    success should create a folder ("ftpfiles")
+    NOT FULLY TESTED OR DOCUMENTED
+    """
     print("checking zip")
     os.system(f'python -m pygetpapers.pygetpapers -q {paper_for_zip} -o {current_path} -k 1 --zip')
     does_zip_folder_exist = os.path.isdir(path_for_zip)
@@ -81,19 +88,21 @@ def does_citations_work():
 
 
 def test_does_crossref_work():
-    os.system(
-        f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" --api "crossref" ')
+    command = f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" --api "crossref" '
+    logger.info(f"running {command}")
+    os.system(command)
     print("Checking if query run successfully")
     does_crossref_json_file_exist = os.path.isfile(crossref_json_path)
     assert does_crossref_json_file_exist == True
 
 
 def test_does_arxiv_work():
-    os.system(
-        f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" --api "arxiv" ')
-    print("Checking if query run successfully")
-    exists_arxiv_json_path = os.path.isfile(arxiv_json_path)
-    assert exists_arxiv_json_path == True
+    logger.info(f"testing {test_does_arxiv_work}")
+    command = f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" --api "arxiv" '
+    logger.info(f"running {command}")
+    os.system(command)
+    logger.info("Checking if query run successfully")
+    assert os.path.isfile(arxiv_json_path), (f"{arxiv_json_path}  should exist")
 
 
 def test_does_logfile_work():
@@ -115,4 +124,3 @@ def test_remove_dir():
     import shutil
     shutil.rmtree(current_path)
     assert "Ran all the tests" == "Ran all the tests"
-
