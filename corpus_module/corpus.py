@@ -7,6 +7,8 @@ from pathlib import Path
 from typing import List, Dict, Optional, Any, Union
 from collections import defaultdict
 import json
+import lxml.etree as ET
+from corpus_module.query import CorpusQuery
 
 logger = logging.getLogger(__name__)
 

@@ -92,7 +92,7 @@ class CorpusSearch:
         assert infile_path.exists(), f"{infile} does not exist"
         
         try:
-            html_tree = lxml.etree.parse(str(infile), HTMLParser())
+            html_tree = ET.parse(str(infile), HTMLParser())
         except Exception as e:
             logger.error(f"Error parsing {infile}: {e}")
             return []
