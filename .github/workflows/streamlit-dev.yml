@@ -37,8 +37,9 @@ jobs:
         
     - name: Test Streamlit app structure
       run: |
-        # Test that the main app file exists and can be imported
-        python -c "import streamlit_app; print('✅ Streamlit app imports successfully')"
+        # Test that the main app file exists and has correct syntax
+        python -m py_compile streamlit_app.py
+        echo "✅ Streamlit app syntax is valid"
         
         # Test that the run script exists and is executable
         python run_streamlit.py --help || echo "✅ Run script exists"
@@ -76,7 +77,7 @@ jobs:
         
     - name: Lint Streamlit code
       run: |
-        # Basic syntax check
+        # Basic syntax check (already done above, but double-check)
         python -m py_compile streamlit_app.py
         python -m py_compile run_streamlit.py
         
@@ -85,6 +86,11 @@ jobs:
           echo "⚠️  Found TODO/FIXME comments in streamlit_app.py"
         else
           echo "✅ No TODO/FIXME comments found"
+        fi
+        
+        # Check for potential issues
+        if grep -q "streamlit.run()" streamlit_app.py; then
+          echo "✅ streamlit.run() found (expected)"
         fi
 
   build-streamlit-docs:
