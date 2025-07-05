@@ -251,7 +251,7 @@ streamlit run streamlit_app.py
 ```
 
 ### System Requirements
-- **Python 3.7+**
+- **Python 3.8+** (3.12 supported)
 - **2GB RAM minimum** (4GB recommended)
 - **1GB free disk space**
 - **Modern web browser**

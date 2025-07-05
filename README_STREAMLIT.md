@@ -6,7 +6,7 @@ A modern web interface for pygetpapers, making scholarly paper discovery and dow
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.8 or higher (3.12 supported)
 - pygetpapers installed and accessible
 - Internet connection for repository access
 

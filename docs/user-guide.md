@@ -6,7 +6,7 @@
 
 Before using the Pygetpapers Streamlit UI, ensure you have:
 
-1. **Python 3.7 or higher** installed on your system
+1. **Python 3.8 or higher** (3.12 supported) installed on your system
 2. **pygetpapers** installed and accessible from command line
 3. **Required dependencies** installed (see requirements.txt)
 

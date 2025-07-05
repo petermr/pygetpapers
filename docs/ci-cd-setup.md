@@ -27,7 +27,7 @@ The project uses GitHub Actions for CI/CD with the following workflows:
 
 **Purpose**: Test the core pygetpapers CLI functionality
 
-**Matrix Strategy**: Tests against Python 3.8, 3.9, 3.10, 3.11
+**Matrix Strategy**: Tests against Python 3.8, 3.9, 3.10, 3.11, 3.12
 
 **Steps**:
 - **Code checkout** - Clone repository
