@@ -11,3 +11,5 @@ setuptools>=60.3.1
 sphinx_rtd_theme>=1.0.0
 tqdm>=4.62.3
 xmltodict>=0.12.0
+streamlit>=1.28.0
+plotly>=5.15.0
