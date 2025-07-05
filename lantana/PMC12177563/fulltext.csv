@@ -1,0 +1,42 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,PMC12177563
+source,PMC
+pmcid,PMC12177563
+fullTextIdList,{'fullTextId': 'PMC12177563'}
+title,Sustainable Utilization of Agricultural By-Products: in vivo investigation of the antidiarrheal potential of Litchi chinensis seed extract
+authorString,"Shohel M, Kabir M, Shaker I, Siddika S, Rahman S, Siddiquea S, Mahat N, Islam T, Tang M."
+authorList,"{'author': [{'fullName': 'Shohel M', 'firstName': 'Mustakin Ahmed', 'lastName': 'Shohel', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Food & Nutrition, Faculty of Applied Science, Parul University, Waghodia,'}}}, {'fullName': 'Kabir M', 'firstName': 'Md. Humayan', 'lastName': 'Kabir', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Applied Nutrition and Food Technology, Islamic University, Kushtia,'}}}, {'fullName': 'Shaker I', 'firstName': 'Ivvala Anand', 'lastName': 'Shaker', 'initials': 'I', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biochemistry, Swaminarayan Institute of Medical Science & Research, Swaminarayan University, Gandhinagar,'}}}, {'fullName': 'Siddika S', 'firstName': 'Sumaiya', 'lastName': 'Siddika', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Applied Nutrition and Food Technology, Islamic University, Kushtia,'}}}, {'fullName': 'Rahman S', 'firstName': 'Sheikh Arafat', 'lastName': 'Rahman', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Applied Nutrition and Food Technology, Islamic University, Kushtia,'}}}, {'fullName': 'Siddiquea S', 'firstName': 'Sumaiya', 'lastName': 'Siddiquea', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Applied Nutrition and Food Technology, Islamic University, Kushtia,'}}}, {'fullName': 'Mahat N', 'firstName': 'Nirmal Chandra', 'lastName': 'Mahat', 'initials': 'N', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Applied Nutrition and Food Technology, Islamic University, Kushtia,'}}}, {'fullName': 'Islam T', 'firstName': 'Tarique Muhammad Tawabul', 'lastName': 'Islam', 'initials': 'T', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Food & Nutrition, Faculty of Applied Science, Parul University, Waghodia,'}}}, {'fullName': 'Tang M', 'firstName': 'Md. Abul Kashem', 'lastName': 'Tang', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Applied Nutrition and Food Technology, Islamic University, Kushtia,'}}}]}"
+journalInfo,"{'issue': '2', 'volume': '28', 'journalIssueId': '3968250', 'dateOfPublication': '2025 Jun', 'monthOfPublication': '6', 'yearOfPublication': '2025', 'printPublicationDate': '2025-06-01', 'journal': {'title': 'Journal of pharmacopuncture', 'ISOAbbreviation': 'J Pharmacopuncture', 'medlineAbbreviation': 'J Pharmacopuncture', 'NLMid': '101572812', 'ISSN': '2093-6966', 'ESSN': '2234-6856'}}"
+pubYear,2025
+pageInfo,127-137
+language,eng
+pubModel,Undetermined
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Litchi chinensis', 'Castor oil', 'Loperamide', 'Gastrointestinal Transit', 'Antidiarrheals']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Free', 'availabilityCode': 'F', 'documentStyle': 'html', 'site': 'PubMedCentral', 'url': 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12177563/?tool=EBI'}, {'availability': 'Free', 'availabilityCode': 'F', 'documentStyle': 'pdf', 'site': 'PubMedCentral', 'url': 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12177563/pdf/?tool=EBI'}, {'availability': 'Free', 'availabilityCode': 'F', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12177563'}, {'availability': 'Free', 'availabilityCode': 'F', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12177563?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,N
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by-nc
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-07-03
+firstIndexDate,2025-07-03
+fullTextReceivedDate,2025-07-03
+dateOfRevision,2025-07-03
+electronicPublicationDate,2025-06-30
+firstPublicationDate,2025-06-30

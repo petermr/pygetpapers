@@ -22,12 +22,22 @@ def main():
     
     # Check if pygetpapers is available
     try:
-        result = subprocess.run(["pygetpapers", "--version"], 
-                              capture_output=True, text=True, timeout=10)
-        if result.returncode == 0:
-            print("Pygetpapers is available")
+        # Try local development version first
+        if os.path.exists("pygetpapers") and os.path.exists("pygetpapers/pygetpapers.py"):
+            result = subprocess.run([sys.executable, "-m", "pygetpapers.pygetpapers", "--version"], 
+                                  capture_output=True, text=True, timeout=10)
+            if result.returncode == 0:
+                print("✅ Pygetpapers development version is available")
+            else:
+                print("Warning: Pygetpapers development version may not be properly installed")
         else:
-            print("Warning: Pygetpapers may not be properly installed")
+            # Try installed version
+            result = subprocess.run(["pygetpapers", "--version"], 
+                                  capture_output=True, text=True, timeout=10)
+            if result.returncode == 0:
+                print("✅ Pygetpapers installed version is available")
+            else:
+                print("Warning: Pygetpapers may not be properly installed")
     except FileNotFoundError:
         print("Warning: Pygetpapers command not found. Please install it with:")
         print("pip install pygetpapers")

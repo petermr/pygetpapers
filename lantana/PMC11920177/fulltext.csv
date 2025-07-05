@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40109902
+source,MED
+pmid,40109902
+pmcid,PMC11920177
+fullTextIdList,{'fullTextId': 'PMC11920177'}
+doi,10.3389/fchem.2025.1521089
+title,&lt;i&gt;Moringa oleifera&lt;/i&gt; mediated green synthesis of gold nanoparticles and their anti-cancer activity against A549 cell line of lung cancer through ROS/ mitochondrial damage.
+authorString,"Qian D, Zha D, Sang Y, Tao J, Cheng Y."
+authorList,"{'author': [{'fullName': 'Qian D', 'firstName': 'Dawei', 'lastName': 'Qian', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Department of Thoracic Surgery, Tongling Yi'an District People's Hospital, Tongling, Anhui, China.""}}}, {'fullName': 'Zha D', 'firstName': 'Dongsheng', 'lastName': 'Zha', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Department of Thoracic Surgery, Tongling Yi'an District People's Hospital, Tongling, Anhui, China.""}}}, {'fullName': 'Sang Y', 'firstName': 'Yuanyao', 'lastName': 'Sang', 'initials': 'Y', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Department of Thoracic Surgery, Tongling Yi'an District People's Hospital, Tongling, Anhui, China.""}}}, {'fullName': 'Tao J', 'firstName': 'Jiangquan', 'lastName': 'Tao', 'initials': 'J', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Department of Thoracic Surgery, Tongling Yi'an District People's Hospital, Tongling, Anhui, China.""}}}, {'fullName': 'Cheng Y', 'firstName': 'Youshuang', 'lastName': 'Cheng', 'initials': 'Y', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Department of Thoracic Surgery, Shanghai Ninth People's Hospital, Shanghai Jiaotong University, Shanghai, China.""}}}]}"
+dataLinksTagsList,"{'dataLinkstag': ['altmetrics', 'supporting_data']}"
+journalInfo,"{'volume': '13', 'journalIssueId': '3897151', 'dateOfPublication': '2025', 'monthOfPublication': '0', 'yearOfPublication': '2025', 'printPublicationDate': '2025-01-01', 'journal': {'title': 'Frontiers in chemistry', 'ISOAbbreviation': 'Front Chem', 'medlineAbbreviation': 'Front Chem', 'NLMid': '101627988', 'ISSN': '2296-2646', 'ESSN': '2296-2646'}}"
+pubYear,2025
+pageInfo,1521089
+abstractText,"<h4>Introduction</h4>Gold nanoparticles (Au-NPs) hold significant promise in lung cancer treatment due to their unique physicochemical properties, enabling targeted drug delivery, enhanced therapeutic efficacy, and reduced systemic toxicity. This study is aimed to produce the Au-NPs utilising <i>Moringa oleifera</i> and evaluate their effectiveness in the treatment of lung cancer, with a specific focus on A549 cell lines.<h4>Methods</h4>The synthesis of Au-NPs was carried out by combining 10 mL of an aqueous extract of M. oleifera with 190 mL of a 1 mM HAuCl4 solution. The synthesized Au-NPs were characterised using several microscopic and spectroscopic techniques. The evaluation of the median inhibitory concentration (IC50) of Au-NPs and its impact on apoptosis was conducted through the measurement of caspase activation and the formation of reactive oxygen species (ROS). Anti-cancer characteristics was conducted by employing DAPI staining. Furthermore, the influence on ROS production and mitochondrial membrane potential was evaluated at the IC50 concentration using fluorescence microscopy, employing DCFH-DA and Rhodamine 123 dyes.<h4>Results</h4>The synthesis of Au-NPs was confirmed through UV-Vis spectroscopy, with an absorbance peak at 540 nm. FTIR, TEM results showed that the <i>M. oleifera</i> mediated Au-NPs had a spherical morphology, and their mean size was approximately 30 nm, as determined by DLS. The Au-NPs exhibited an IC50 value of 50 μg/mL against the A549 lung cancer cells. The DAPI staining results revealed that both concentrations of AuNP, 25 μg/mL and 50 μg/mL, exhibited noteworthy anti-cancer and apoptotic properties.<h4>Discussion</h4>The study demonstrates that M. oleifera-mediated Au-NPs exhibit significant cytotoxic and apoptotic effects on A549 lung cancer cells, with an IC50 value of 50 μg/mL. Both tested concentrations showed substantial anti-cancer properties, as confirmed by DAPI staining. The unique focus on lung cancer, specifically the A549 cell line, sets this study apart from others that address a broader spectrum of cancer types. These findings suggest that M. oleifera-mediated Au-NPs hold promise for clinical applications in lung cancer treatment, providing a potential new therapeutic application."
+affiliation,"Department of Thoracic Surgery, Tongling Yi'an District People's Hospital, Tongling, Anhui, China."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Cytotoxicity', 'Anti-cancer', 'gold nanoparticles', 'Moringa Oleifera', 'Mitochondrial Damage', 'Ros Production', 'A549 Lung Cancer Cell Line']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3389/fchem.2025.1521089'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11920177'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11920177?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-03-20
+firstIndexDate,2025-03-20
+fullTextReceivedDate,2025-03-25
+dateOfRevision,2025-03-21
+electronicPublicationDate,2025-03-05
+firstPublicationDate,2025-03-05

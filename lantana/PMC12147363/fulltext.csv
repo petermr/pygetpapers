@@ -1,0 +1,50 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40490794
+source,MED
+pmid,40490794
+pmcid,PMC12147363
+fullTextIdList,{'fullTextId': 'PMC12147363'}
+doi,10.1186/s13002-025-00794-0
+title,"Honey production, an economic alternative for coastal areas with mangrove ecosystems: a case study in Sabancuy, Campeche, southeastern Mexico."
+authorString,"Laynes-Magaña C, Cetzal-Ix W, López-Castilla HMJ, Tamayo-Cen I, Martínez-Puc JF, Noguera-Savelli E, Dzib-Castillo BB, Basu SK."
+authorList,"{'author': [{'fullName': 'Laynes-Magaña C', 'firstName': 'Crhistian', 'lastName': 'Laynes-Magaña', 'initials': 'C', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México.'}}}, {'fullName': 'Cetzal-Ix W', 'firstName': 'William', 'lastName': 'Cetzal-Ix', 'initials': 'W', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México. rolito22@hotmail.com.'}}}, {'fullName': 'López-Castilla HMJ', 'firstName': 'Héctor M J', 'lastName': 'López-Castilla', 'initials': 'HMJ', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México.'}}}, {'fullName': 'Tamayo-Cen I', 'firstName': 'Iván', 'lastName': 'Tamayo-Cen', 'initials': 'I', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México.'}}}, {'fullName': 'Martínez-Puc JF', 'firstName': 'Jesús F', 'lastName': 'Martínez-Puc', 'initials': 'JF', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México.'}}}, {'fullName': 'Noguera-Savelli E', 'firstName': 'Eliana', 'lastName': 'Noguera-Savelli', 'initials': 'E', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Investigadora Por México SECIHTI, Centro de Estudios de Desarrollo Sustentable y Aprovechamiento de La Vida Silvestre (CEDESU), Universidad Autónoma de Campeche, Campeche, México.'}}}, {'fullName': 'Dzib-Castillo BB', 'firstName': 'Benito B', 'lastName': 'Dzib-Castillo', 'initials': 'BB', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México.'}}}, {'fullName': 'Basu SK', 'firstName': 'Saikat Kumar', 'lastName': 'Basu', 'initials': 'SK', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'PFS, Lethbridge, AB, Canada.'}}}]}"
+journalInfo,"{'issue': '1', 'volume': '21', 'journalIssueId': '3954914', 'dateOfPublication': '2025 Jun', 'monthOfPublication': '6', 'yearOfPublication': '2025', 'printPublicationDate': '2025-06-01', 'journal': {'title': 'Journal of ethnobiology and ethnomedicine', 'ISOAbbreviation': 'J Ethnobiol Ethnomed', 'medlineAbbreviation': 'J Ethnobiol Ethnomed', 'NLMid': '101245794', 'ISSN': '1746-4269', 'ESSN': '1746-4269'}}"
+pubYear,2025
+pageInfo,42
+abstractText,"<h4>Background</h4>Mangrove ecosystems recognized for their biodiversity and ecosystem services that offer unique opportunities for sustainable livelihoods such as honey production. This study characterizes the beekeeping practices associated with mangroves in Sabancuy, Campeche, Mexico, emphasizing their ecological and economic significance.<h4>Methods</h4>Through 28 semi-structured surveys, we have analyzed the socioeconomic and ecological perspectives of the local beekeepers operating in these coastal environments. The surveyed beekeepers, with an average age of 49 years and 23.6 years of experience, primarily engage in complementary honey production, leveraging both migratory and stationary apiary systems. Hive management practices include queen replacement, artificial feeding, colony division, and adherence to organic certification protocols.<h4>Results</h4>The study highlights an annual average honey production of 65.37 kg per colony, with peak yields occurring during the transition from dry to rainy seasons (May-June). Integrating floral phenology and phylogenetic frameworks the principal plant resources supporting honeybees, enhancing the sustainability of the mangrove-based beekeeping.<h4>Conclusion</h4>Apiculture not only produces economic opportunities for the local communities; but also contributes to conservation goals by fostering biodiversity and ecosystem restoration. These findings underscore the potential of mangrove beekeeping as a replicable model for sustainable development in other coastal regions worldwide with similar ecosystems. Furthermore, this research seeks to bridge critical knowledge gaps about Apis mellifera in mangrove ecosystems by addressing socio-ecological factors influencing honey production, evaluating its benefits for local communities, and exploring its role within broader conservation strategies."
+affiliation,"Tecnológico Nacional de México, Instituto Tecnológico de Chiná, Chiná, Campeche, México."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+meshHeadingList,"{'meshHeading': [{'majorTopic_YN': 'N', 'descriptorName': 'Animals'}, {'majorTopic_YN': 'N', 'descriptorName': 'Humans'}, {'majorTopic_YN': 'N', 'descriptorName': 'Bees'}, {'majorTopic_YN': 'N', 'descriptorName': 'Conservation of Natural Resources'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Ecosystem'}, {'majorTopic_YN': 'N', 'descriptorName': 'Biodiversity'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Honey', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'EC', 'qualifierName': 'economics', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'N', 'descriptorName': 'Adult'}, {'majorTopic_YN': 'N', 'descriptorName': 'Middle Aged'}, {'majorTopic_YN': 'N', 'descriptorName': 'Mexico'}, {'majorTopic_YN': 'N', 'descriptorName': 'Female'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Wetlands'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Beekeeping', 'meshQualifierList': {'meshQualifier': [{'abbreviation': 'EC', 'qualifierName': 'economics', 'majorTopic_YN': 'N'}, {'abbreviation': 'MT', 'qualifierName': 'methods', 'majorTopic_YN': 'N'}]}}]}"
+keywordList,"{'keyword': ['Conservation strategies', 'Beekeeping', 'Floral Phenology', 'Management Techniques', 'Sustainable Beekeeping', 'Economical Alternative', 'Mangrove Honey']}"
+subsetList,"{'subset': {'code': 'IM', 'name': 'Index Medicus'}}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1186/s13002-025-00794-0'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12147363'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12147363?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by-nc-nd
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCompletion,2025-06-10
+dateOfCreation,2025-06-09
+firstIndexDate,2025-06-12
+fullTextReceivedDate,2025-06-11
+dateOfRevision,2025-06-12
+electronicPublicationDate,2025-06-09
+firstPublicationDate,2025-06-09

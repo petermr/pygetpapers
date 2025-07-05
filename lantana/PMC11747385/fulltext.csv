@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39840330
+source,MED
+pmid,39840330
+pmcid,PMC11747385
+fullTextIdList,{'fullTextId': 'PMC11747385'}
+doi,10.3389/fvets.2024.1488960
+title,"Documentation of ethnoveterinary knowledge and alternative practices for cattle tick control in Sekhukhune District, Limpopo Province, South Africa."
+authorString,"Phaahla CS, Shai JL, Maduna V, Moropeng RC, Magano SR."
+authorList,"{'author': [{'fullName': 'Phaahla CS', 'firstName': 'Confidence Semakane', 'lastName': 'Phaahla', 'initials': 'CS', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Life and Consumer Sciences, Faculty of Agriculture and Life Sciences, University of South Africa, Pretoria, South Africa.'}}}, {'fullName': 'Shai JL', 'firstName': 'Jeremiah Leshweni', 'lastName': 'Shai', 'initials': 'JL', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biomedical Sciences, Faculty of Science, Tshwane University of Technology, Pretoria, South Africa.'}}}, {'fullName': 'Maduna V', 'firstName': 'Vincent', 'lastName': 'Maduna', 'initials': 'V', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biomedical Sciences, Faculty of Science, Tshwane University of Technology, Pretoria, South Africa.'}}}, {'fullName': 'Moropeng RC', 'firstName': 'Resoketswe Charlotte', 'lastName': 'Moropeng', 'initials': 'RC', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biomedical Sciences, Faculty of Science, Tshwane University of Technology, Pretoria, South Africa.'}}}, {'fullName': 'Magano SR', 'firstName': 'Solomon Ramagoai', 'lastName': 'Magano', 'initials': 'SR', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Life and Consumer Sciences, Faculty of Agriculture and Life Sciences, University of South Africa, Pretoria, South Africa.'}}}]}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'volume': '11', 'journalIssueId': '3703751', 'dateOfPublication': '2024', 'monthOfPublication': '0', 'yearOfPublication': '2024', 'printPublicationDate': '2024-01-01', 'journal': {'title': 'Frontiers in veterinary science', 'ISOAbbreviation': 'Front Vet Sci', 'medlineAbbreviation': 'Front Vet Sci', 'NLMid': '101666658', 'ISSN': '2297-1769', 'ESSN': '2297-1769'}}"
+pubYear,2024
+pageInfo,1488960
+abstractText,"<h4>Introduction</h4>The integration of traditional plant-based methods for controlling ectoparasites in the primary healthcare of livestock is progressively emerging as a crucial intervention to enhance livestock productivity in regions with limited resources, particularly in smallholder farming areas facing resource constraints. In Sekhukhune District, where livestock plays a vital role in rural livelihoods, cattle ticks present a significant challenge to cattle farming. This study aimed to document the ethnoveterinary practices employed by local communities to control cattle ticks, highlighting the use of alternative methods rooted in indigenous knowledge (IK).<h4>Methods</h4>Data were collected using a purposive sampling method to select traditional livestock keepers, herders, and community elders to uncover the plant-based treatments and management strategies used in tick control. In addition, a semi-structured questionnaire and a guided field survey were employed to collect data.<h4>Results</h4>A total of 250 participants, with an age range from 18 to over 60 years, were recruited. The result revealed that the elder participants, over 60 years of age, were more knowledgeable compared to the youth and adults. Furthermore, 28 plant species with potential acaricidal properties and other methods aimed at controlling cattle tick infestations were documented. <i>Cissus quadrangularis</i> was the most frequently cited species, which was widely distributed throughout the district.<h4>Conclusion</h4>In addition, these results are framed within the larger context of sustainability, promoting eco-friendly cattle farming practices in Sekhukhune District while reducing reliance on conventional acaricides. By documenting this ethnoveterinary knowledge, the study contributes to the preservation of indigenous knowledge while advocating for sustainable approaches to livestock health management in rural areas. The study concludes with valuable insights into the selected local community's traditional methods of managing tick infestations. Furthermore, the study underscores the significance of preserving and understanding indigenous knowledge in livestock health management, particularly in regions where conventional veterinary approaches may face challenges."
+affiliation,"Department of Life and Consumer Sciences, Faculty of Agriculture and Life Sciences, University of South Africa, Pretoria, South Africa."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Ticks', 'Indigenous Communities', 'Ethnoveterinary Knowledge', 'Sekhukhune District', 'Herbal Acaricides']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3389/fvets.2024.1488960'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11747385'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11747385?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-01-22
+firstIndexDate,2025-01-22
+fullTextReceivedDate,2025-01-23
+dateOfRevision,2025-01-29
+electronicPublicationDate,2025-01-07
+firstPublicationDate,2025-01-07

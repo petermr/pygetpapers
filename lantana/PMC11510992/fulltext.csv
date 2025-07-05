@@ -1,0 +1,49 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39458793
+source,MED
+pmid,39458793
+pmcid,PMC11510992
+fullTextIdList,{'fullTextId': 'PMC11510992'}
+doi,10.3390/plants13202846
+title,Predicting the Invasion Risk of the Highly Invasive <i>Acacia mearnsii</i> in Asia under Global Climate Change.
+authorString,"Poudel A, Adhikari P, Adhikari P, Choi SH, Yun JY, Lee YH, Hong SH."
+authorList,"{'author': [{'fullName': 'Poudel A', 'firstName': 'Anil', 'lastName': 'Poudel', 'initials': 'A', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-6334-8037'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Plant Resources and Landscape Architecture, College of Agriculture and Life Sciences, Hankyong National University, Anseong 17579, Republic of Korea.'}}}, {'fullName': 'Adhikari P', 'firstName': 'Pradeep', 'lastName': 'Adhikari', 'initials': 'P', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-4115-6242'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Humanities and Ecology Consensus Resilience Lab, Hankyong National University, Anseong 17579, Republic of Korea.'}}}, {'fullName': 'Adhikari P', 'firstName': 'Prabhat', 'lastName': 'Adhikari', 'initials': 'P', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Plant Resources and Landscape Architecture, College of Agriculture and Life Sciences, Hankyong National University, Anseong 17579, Republic of Korea.'}}}, {'fullName': 'Choi SH', 'firstName': 'Sue Hyuen', 'lastName': 'Choi', 'initials': 'SH', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Plant Resources and Landscape Architecture, College of Agriculture and Life Sciences, Hankyong National University, Anseong 17579, Republic of Korea.'}}}, {'fullName': 'Yun JY', 'firstName': 'Ji Yeon', 'lastName': 'Yun', 'initials': 'JY', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Plant Resources and Landscape Architecture, College of Agriculture and Life Sciences, Hankyong National University, Anseong 17579, Republic of Korea.'}}}, {'fullName': 'Lee YH', 'firstName': 'Yong Ho', 'lastName': 'Lee', 'initials': 'YH', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-8714-3746'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Institute of Humanities and Ecology Consensus Resilience Lab, Hankyong National University, Anseong 17579, Republic of Korea.'}, {'affiliation': 'OJeong Resilience Institute, Korea University, Seoul 02841, Republic of Korea.'}]}}, {'fullName': 'Hong SH', 'firstName': 'Sun Hee', 'lastName': 'Hong', 'initials': 'SH', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-7581-0604'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Plant Resources and Landscape Architecture, College of Agriculture and Life Sciences, Hankyong National University, Anseong 17579, Republic of Korea.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-6334-8037'}, {'@type': 'ORCID', '#text': '0000-0001-7581-0604'}, {'@type': 'ORCID', '#text': '0000-0002-4115-6242'}, {'@type': 'ORCID', '#text': '0000-0002-8714-3746'}]}"
+journalInfo,"{'issue': '20', 'volume': '13', 'journalIssueId': '3842790', 'dateOfPublication': '2024 Oct', 'monthOfPublication': '10', 'yearOfPublication': '2024', 'printPublicationDate': '2024-10-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2024
+pageInfo,2846
+abstractText,"<i>Acacia mearnsii</i>, among the 100 worst invasive weeds worldwide, negatively impacts native biodiversity, agriculture, and natural ecosystems. Global climate change, characterized by rising temperatures and altered precipitation patterns, enhances the risk of <i>A. mearnsii</i> invasion in Asia, making it crucial to identify high-risk areas for effective management. This study performed species distribution modeling using the maximum entropy (MaxEnt) algorithm to predict the potential introduction and spread of <i>A. mearnsii</i> under various climate scenarios based on shared socio-economic pathways (SSP2-4.5 and SSP5-8.5). Currently, only 4.35% of Asia is invaded, with a high invasion risk identified in six countries, including Bhutan, Lebanon, and Taiwan, where more than 75% of their areas are threatened. Under future climate scenarios, 21 countries face invasion risk, among which 14 countries, such as Georgia, Laos, Republic of Korea, and Turkey, are at moderate to very high risk, potentially encompassing up to 87.89% of their territories. Conversely, Northern Asian countries exhibit minimal changes in invasion risk and are considered relatively safe from invasion. These findings underscore that climate change will exacerbate invasion risks across Asia, emphasizing the urgent need for robust management strategies, including stringent quarantine measures and control efforts, to mitigate the threat of <i>A. mearnsii</i> expansion."
+affiliation,"Department of Plant Resources and Landscape Architecture, College of Agriculture and Life Sciences, Hankyong National University, Anseong 17579, Republic of Korea."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+grantsList,"{'grant': {'grantId': 'RS-2024-00400922', 'agency': 'Ministry of Agriculture, Food and Rural Affairs', 'orderIn': '0'}}"
+keywordList,"{'keyword': ['Climate change', 'Acacia mearnsii', 'invasive weed', 'Invasion Risk', 'Managing Invasive Species', 'Maxent Analysis']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants13202846'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11510992'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11510992?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,1
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-10-26
+firstIndexDate,2024-10-27
+fullTextReceivedDate,2024-11-02
+dateOfRevision,2024-10-28
+electronicPublicationDate,2024-10-11
+firstPublicationDate,2024-10-11

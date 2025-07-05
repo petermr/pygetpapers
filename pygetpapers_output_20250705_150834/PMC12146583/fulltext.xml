@@ -1,0 +1,797 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3 20210610//EN" "JATS-archivearticle1-3-mathml3.dtd"> 
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.3" id="ece371533" xml:lang="en" article-type="research-article"><?DTDIdentifier.IdentifierValue -//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.1 20151215//EN?><?DTDIdentifier.IdentifierType public?><?SourceDTD.DTDName JATS-archive-oasis-article1-mathml3.dtd?><?SourceDTD.Version 1.1?><?ConverterInfo.XSLTName jats-oasis2jats3.xsl?><?ConverterInfo.Version 1?><?properties open_access?><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Ecol Evol</journal-id><journal-id journal-id-type="iso-abbrev">Ecol Evol</journal-id><journal-id journal-id-type="doi">10.1002/(ISSN)2045-7758</journal-id><journal-id journal-id-type="publisher-id">ECE3</journal-id><journal-title-group><journal-title>Ecology and Evolution</journal-title></journal-title-group><issn pub-type="epub">2045-7758</issn><publisher><publisher-name>John Wiley and Sons Inc.</publisher-name><publisher-loc>Hoboken</publisher-loc></publisher></journal-meta>
+<article-meta><article-id pub-id-type="pmcid">12146583</article-id><article-id pub-id-type="doi">10.1002/ece3.71533</article-id><article-id pub-id-type="publisher-id">ECE371533</article-id><article-id pub-id-type="other">ECE-2024-12-02583.R1</article-id><article-categories><subj-group subj-group-type="overline"><subject>Research Article</subject></subj-group><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group></article-categories><title-group><article-title>Innate Nectar Plant Attraction Is Primarily Visually&#x02010;Guided but Olfactory&#x02010;Stimulated in North American Monarch Butterflies</article-title></title-group><contrib-group><contrib id="ece371533-cr-0001" contrib-type="author"><name><surname>Assadia</surname><given-names>Darene A. E.</given-names></name><xref rid="ece371533-aff-0001" ref-type="aff">
+<sup>1</sup>
+</xref></contrib><contrib id="ece371533-cr-0002" contrib-type="author" corresp="yes"><name><surname>Green</surname><given-names>Delbert A.</given-names><suffix>II</suffix></name><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0002-3373-8867</contrib-id><xref rid="ece371533-aff-0001" ref-type="aff">
+<sup>1</sup>
+</xref><address><email>dgreenii@umich.edu</email></address></contrib></contrib-group><aff id="ece371533-aff-0001">
+<label>
+<sup>1</sup>
+</label>
+<named-content content-type="organisation-division">Department of Ecology and Evolutionary Biology</named-content>
+<institution>University of Michigan&#x02014;Ann Arbor</institution>
+<city>Ann Arbor</city>
+<named-content content-type="country-part">Michigan</named-content>
+<country country="US">USA</country>
+</aff><author-notes><corresp id="correspondenceTo">
+<label>*</label>
+<bold>Correspondence:</bold>
+<break/>
+Delbert A. Green II (<email>dgreenii@umich.edu</email>)<break/>
+</corresp></author-notes><pub-date pub-type="epub"><day>09</day><month>6</month><year>2025</year></pub-date><pub-date pub-type="collection"><month>6</month><year>2025</year></pub-date><volume>15</volume><issue seq="830">6</issue><issue-id pub-id-type="doi">10.1002/ece3.v15.6</issue-id><elocation-id>e71533</elocation-id><history>
+<date date-type="rev-recd"><day>14</day><month>5</month><year>2025</year></date>
+<date date-type="received"><day>13</day><month>12</month><year>2024</year></date>
+<date date-type="accepted"><day>27</day><month>5</month><year>2025</year></date>
+</history><permissions><!--&#x000a9; 2025 Published by John Wiley & Sons Ltd.--><copyright-statement content-type="article-copyright">&#x000a9; 2025 The Author(s). <italic toggle="yes">Ecology and Evolution</italic> published by British Ecological Society and John Wiley &#x00026; Sons Ltd.</copyright-statement><license><ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/" specific-use="textmining" content-type="ccbylicense">https://creativecommons.org/licenses/by/4.0/</ali:license_ref><license-p>This is an open access article under the terms of the <ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</ext-link> License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited.</license-p></license></permissions><self-uri content-type="pdf" xlink:href="file:ECE3-15-e71533.pdf"/><abstract><title>ABSTRACT</title><p>In flower&#x02010;visiting insects, innate sensory preferences facilitate efficient foraging strategies in complex natural environments. Here we describe a nonforced choice assay to investigate innate attraction to a common nectar resource (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Lantana camara</italic>
+</styled-content>) in na&#x000ef;ve monarch butterflies (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content>). We find that monarch butterflies have an innate attraction to <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> in our assay. Visual cues are necessary and sufficient for sustained attraction at the tested range. However, olfactory cues increase the salience of visual cues for sustained attraction. The identities of the specific attractive visual or olfactory cues are not resolved. Altogether, this simple nonforced choice assay is suited to reveal quantitative differences in innate attraction in monarchs and, presumably, other insects.</p></abstract><abstract abstract-type="graphical"><p>In flower&#x02010;visiting insects, innate preferences facilitate efficient foraging strategies in complex natural environments. We find that na&#x000ef;ve monarch butterflies (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content>) have an innate attraction to the nectar plant <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Lantana camara</italic>
+</styled-content> that primarily utilizes visual cues but is enhanced by olfactory cues.<boxed-text position="anchor" content-type="graphic" id="ece371533-blkfxd-0001"><graphic xlink:href="ECE3-15-e71533-g004.jpg" position="anchor" id="jats-graphic-1"/></boxed-text>
+</p></abstract><kwd-group kwd-group-type="author-generated"><kwd id="ece371533-kwd-0001">migration</kwd><kwd id="ece371533-kwd-0002">monarch butterfly</kwd><kwd id="ece371533-kwd-0003">multimodal signaling</kwd><kwd id="ece371533-kwd-0004">sensory perception</kwd></kwd-group><funding-group><award-group id="funding-0001"><funding-source><institution-wrap><institution>Division of Biological Infrastructure
+</institution><institution-id institution-id-type="doi">10.13039/100000153</institution-id></institution-wrap></funding-source><award-id>2045017</award-id></award-group><award-group id="funding-0002"><funding-source>Monarch Butterfly Fund Lincoln P. Brower Award</funding-source></award-group></funding-group><counts><fig-count count="5"/><table-count count="2"/><page-count count="10"/><word-count count="8100"/></counts><custom-meta-group><custom-meta><meta-name>source-schema-version-number</meta-name><meta-value>2.0</meta-value></custom-meta><custom-meta><meta-name>cover-date</meta-name><meta-value>June 2025</meta-value></custom-meta><custom-meta><meta-name>details-of-publishers-convertor</meta-name><meta-value>Converter:WILEY_ML3GV2_TO_JATSPMC version:6.5.7 mode:remove_FC converted:09.06.2025</meta-value></custom-meta></custom-meta-group></article-meta><notes><fn-group id="ece371533-ntgp-0001"><fn fn-type="funding" id="ece371533-note-0001"><p>
+<bold>Funding:</bold> D.A.E.A. was supported by a Lincoln P. Brower award from the Monarch Butterfly Fund. Work described herein is indirectly supported by funds to D.A.G. from the Monarch Butterfly Fund Flight Challenge and NSF DBI IIBR (2045017).</p></fn></fn-group></notes></front><body id="ece371533-body-0001"><sec id="ece371533-sec-0001"><label>1</label><title>Introduction</title><p>Foraging requires complex, dynamic decision&#x02010;making that is guided by innate and learned behaviors. A major research goal is to understand how foragers will adapt to altered resource landscapes resulting from bottom&#x02010;up effects of climate change (Cuff et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0010" ref-type="bibr">2024</xref>). Learned behaviors play an important role in enabling behavioral flexibility for successfully foraging in changing environments, which can be especially important in foraging specialist species (Riffell et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0051" ref-type="bibr">2008</xref>). However, innate behaviors, or genetically controlled behaviors performed by na&#x000ef;ve individuals with no prior experience with a stimulus, may have an important role to play as well because they can influence how new foraging behaviors are learned (Gumbert&#x000a0;<xref rid="ece371533-bib-0022" ref-type="bibr">2000</xref>), or they can evolve to enable flexible behavioral strategies that are broadly adaptive across different environments (Milet&#x02010;Pinheiro et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0037" ref-type="bibr">2016</xref>). For example, innate preference for specific colors by na&#x000ef;ve animals was initially demonstrated over 100&#x02009;years ago (Ilse and Vaidya&#x000a0;<xref rid="ece371533-bib-0023" ref-type="bibr">1956</xref>) and has subsequently been described in myriad species (e.g., Ilse and Vaidya&#x000a0;<xref rid="ece371533-bib-0023" ref-type="bibr">1956</xref>; Scherer and Kolb&#x000a0;<xref rid="ece371533-bib-0055" ref-type="bibr">1987a</xref>, <xref rid="ece371533-bib-0056" ref-type="bibr">1987b</xref>).</p><p>Species are often cue&#x02010;specific in their sensory attraction, enabling adaptation to local foraging environments, particularly in specialist species (Rusman et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0054" ref-type="bibr">2024</xref>). Here we make the distinction between &#x0201c;attraction,&#x0201d; where individuals display seeking behavior in response to a stimulus, and &#x0201c;preferences,&#x0201d; where individuals show a stronger attraction among, or choose between, multiple putatively attractive stimuli. Flower&#x02010;visiting insects use a variety of cues from host plants&#x02014;colors (Giurfa et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0020" ref-type="bibr">1995</xref>; Lunau and Maier&#x000a0;<xref rid="ece371533-bib-0034" ref-type="bibr">1995</xref>), odors (reviewed in Zjacic and Scholz&#x000a0;<xref rid="ece371533-bib-0067" ref-type="bibr">2022</xref>), shapes (Rausher&#x000a0;<xref rid="ece371533-bib-0049" ref-type="bibr">1978</xref>; Kunte&#x000a0;<xref rid="ece371533-bib-0032" ref-type="bibr">2007</xref>; Tiple et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0059" ref-type="bibr">2009</xref>; Dell'Aglio et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0011" ref-type="bibr">2016</xref>; Mukherjee and Hossain&#x000a0;<xref rid="ece371533-bib-0040" ref-type="bibr">2022</xref>; Mukherjee et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0041" ref-type="bibr">2024</xref>), patterns (Kelber&#x000a0;<xref rid="ece371533-bib-0029" ref-type="bibr">2002</xref>; Vaidya&#x000a0;<xref rid="ece371533-bib-0061" ref-type="bibr">1969</xref>), or even movements (Desai et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0012" ref-type="bibr">2024</xref>)&#x02014;to facilitate foraging decisions. In some instances, specific focal cues predominate over others for foraging decisions, such as visual dominance in the red admiral butterfly (<italic toggle="yes">Vanessa indica</italic>; &#x000d4;mura and Honda&#x000a0;<xref rid="ece371533-bib-0044" ref-type="bibr">2005</xref>) or skippers (family <italic toggle="yes">Hesperiidae</italic>) (Briggs et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0005" ref-type="bibr">2018</xref>; Tang et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0057" ref-type="bibr">2013</xref>). In many cases, however, multimodal cues are integrated (reviewed in Leonard and Masek&#x000a0;<xref rid="ece371533-bib-0033" ref-type="bibr">2014</xref>). Male hawkmoths (Raguso and Willis&#x000a0;<xref rid="ece371533-bib-0047" ref-type="bibr">2005</xref>), honeybees, and bumblebees (reviewed in Leonard and Masek&#x000a0;<xref rid="ece371533-bib-0033" ref-type="bibr">2014</xref>), for example, have evolved innate preferences for integrated visual and olfactory cues from relevant nectaring or pollinator host plants. Innate foraging preferences can be context&#x02010;specific, altered by multimodal cues (e.g., Vaidya&#x000a0;<xref rid="ece371533-bib-0061" ref-type="bibr">1969</xref>; Kuenzinger et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0031" ref-type="bibr">2019</xref>), spatial context (Kelber&#x000a0;<xref rid="ece371533-bib-0028" ref-type="bibr">1997</xref>), or internal state (Buehlmann and Graham&#x000a0;<xref rid="ece371533-bib-0008" ref-type="bibr">2022</xref>; reviewed in Kadow&#x000a0;<xref rid="ece371533-bib-0027" ref-type="bibr">2019</xref>). Innate foraging preferences for color can differ depending on visual context, such as in the pipevine swallowtail (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Battus philenor</italic>
+</styled-content>; Briggs et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0005" ref-type="bibr">2018</xref>), or on olfactory environment, as in a swallowtail butterfly (<italic toggle="yes">Papiliio xuthus</italic>; Yoshida et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0063" ref-type="bibr">2015</xref>) and an obligate fruit&#x02010;feeding Satyrine butterfly (<italic toggle="yes">Mycalesis maneus</italic>; Balamurali et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0003" ref-type="bibr">2019</xref>).</p><p>Innate preferences are also important for foraging decisions in generalist species, although the task differs from that of specialist species. Generalists still must identify certain nectar resources among a varied landscape, as well as adjust choices as environments change. Honeybees (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Apis mellifera</italic>
+</styled-content>) and bumblebees (<italic toggle="yes">Bombus</italic> spp.) have long been models for how innate preferences shape foraging behaviors and cognition more broadly (Leonard and Masek&#x000a0;<xref rid="ece371533-bib-0033" ref-type="bibr">2014</xref>). Generalist hoverfly species have been an important model for understanding how innate attraction (i.e., attraction of na&#x000ef;ve individuals) changes across environments. The marmalade hoverfly (<italic toggle="yes">Episyrphus balteatus</italic>) and drone fly (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Eristalis tenax</italic>
+</styled-content>) are attracted to &#x0201c;ubiquitous&#x0201d; multimodal cue combinations that can occur across different (hemiboreal, alpine, and tropical) environments, revealing a generalized resource identification strategy (Nordstr&#x000f6;m et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0043" ref-type="bibr">2017</xref>). Less well understood is how innate preferences are utilized in species where foraging environments show strong temporal and/or spatial variation. In one example of this, Milet&#x02010;Pinheiro et&#x000a0;al.&#x000a0;(<xref rid="ece371533-bib-0037" ref-type="bibr">2016</xref>) found that the bivoltine bee <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Andrena bicolor</italic>
+</styled-content>, which switches between generalist (polylactic) and specialist (oligolectic) feeding strategies in different generations, shows similar reliance on visual and olfactory cues and does not adopt specific attraction behaviors across generations. There is a need to add to this knowledge gap by studying innate attraction in generalist forager species that experience highly temporally and spatially varying foraging environments.</p><p>Monarch butterflies (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content>) present an interesting case for studying sensory perception, attraction, and preferences because of their unique migration and life history. Each autumn, millions of monarchs migrate up to 4000&#x02009;km to reach specific overwintering sites in the Transvolcanic Belt of central Mexico (Urquhart and Urquhart&#x000a0;<xref rid="ece371533-bib-0060" ref-type="bibr">1978</xref>; Brower et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0006" ref-type="bibr">1977</xref>). Individuals spend winter in dense clusters, and in the following spring, they mate and remigrate northward, eventually repopulating their northern range over 2&#x02013;4 partially overlapping generations (Malcolm et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0035" ref-type="bibr">1993</xref>). Thus, not only do distinct generations of monarchs experience different seasons, but also individual migratory butterflies live long enough to experience the distinctive foraging environments of autumn, winter, and spring. Adult monarch butterflies are generalist nectar feeders (Adamson et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0001" ref-type="bibr">2018</xref>; Brower et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0007" ref-type="bibr">2006</xref>). Different generations of monarchs forage in different environments and thus might be expected to have different capacities to perceive and respond to nectar plants. In late summer, monarchs are nonmigratory and exhibit station&#x02010;keeping behaviors where they usually remain within restricted ranges and forage locally (Zalucki and Kitching&#x000a0;<xref rid="ece371533-bib-0065" ref-type="bibr">1982</xref>, <xref rid="ece371533-bib-0066" ref-type="bibr">1984</xref>; Grant et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0021" ref-type="bibr">2022</xref>). Autumn migrants, on the other hand, exhibit ranging behaviors, constantly encountering new foraging environments during their migration (Adamson et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0001" ref-type="bibr">2018</xref>; Grant et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0021" ref-type="bibr">2022</xref>).</p><p>Evidence of innate and learned behaviors that monarchs may employ when foraging is growing. Monarchs are attracted (presumably innately) to visual and olfactory cues from their milkweed host plants (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>). Although visual and olfactory cues alone are sufficient for perception, attraction is maximized when both cues are available together (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>). Monarch perceptual ability is likely dominated by vision at a fine scale, within 5&#x02009;m of a resource (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>; Fisher and Bradbury&#x000a0;<xref rid="ece371533-bib-0014" ref-type="bibr">2021</xref>). Field observations suggest that olfactory perceptual range is important at longer distances in natural settings (Fisher and Bradbury&#x000a0;<xref rid="ece371533-bib-0014" ref-type="bibr">2021</xref>). Monarchs have a strong innate preference for orange color, but this preference is context&#x02010;dependent (e.g., available color palette influences preference) and readily modified (Blackiston et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0004" ref-type="bibr">2011</xref>). They can learn nonpreferred colors equally as well as preferred colors and can readily learn to switch color associations with a reward (Blackiston et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0004" ref-type="bibr">2011</xref>). Male monarchs can learn visual and olfactory cues and store information in long&#x02010;term memory for at least 1&#x02009;week, while only migratory females have this ability (Gegear&#x000a0;<xref rid="ece371533-bib-0019" ref-type="bibr">2021</xref>). What these investigations leave open, however, is how monarchs use sensory cues to identify nectar resources and how these cues may differ from other fitness&#x02010;related behaviors [e.g., oviposition (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>)].</p><p>These studies represent a range of methods used to measure perception in monarchs and insects more broadly, including a range of field observations (Fisher and Bradbury&#x000a0;<xref rid="ece371533-bib-0014" ref-type="bibr">2021</xref>, <xref rid="ece371533-bib-0015" ref-type="bibr">2022</xref>; Fisher et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0013" ref-type="bibr">2020</xref>, <xref rid="ece371533-bib-0016" ref-type="bibr">2021</xref>), seminatural tests (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>), and highly controlled laboratory studies (Blackiston et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0004" ref-type="bibr">2011</xref>; Gegear&#x000a0;<xref rid="ece371533-bib-0019" ref-type="bibr">2021</xref>). Seminatural tests that combine natural elements in a controlled environment (e.g., natural flowers versus artificial flowers in a laboratory study) are especially useful experimental paradigms because they can be expected to approximate behaviors under natural conditions yet readily allow assessment of the individual or combined effects of environmental factors on behavior (Opp and Prokopy&#x000a0;<xref rid="ece371533-bib-0045" ref-type="bibr">1986</xref>). Seminatural tests have been utilized less often to study perception in monarchs but nonetheless have provided valuable insights (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>).</p><p>Here, we describe and test a seminatural nonforced choice assay to investigate &#x0201c;innate sensory perception&#x0201d; of a common nectar resource (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Lantana camara</italic>
+</styled-content>) in monarch butterflies. We emphasize the distinction that individuals are born with innate sensory perception capabilities (i.e., genetically encoded morphological and physiological mechanisms to perceive and process sensory stimuli), but exposure to and experience with stimuli can change how sensory information is both perceived (by plastically altering sensory physiology (Gadenne et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0017" ref-type="bibr">2016</xref>)) and processed (by changing how sensory information is interpreted in the brain, e.g., Minoli et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0038" ref-type="bibr">2012</xref>; Anton et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0002" ref-type="bibr">2016</xref>; Jernigan et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0026" ref-type="bibr">2019</xref>). The nonforced choice nature of this assay enables us to study temporal behavioral dynamics while butterflies remain na&#x000ef;ve to reward. <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> is native to the southern United States (Taylor et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0058" ref-type="bibr">2012</xref>), yet also occurs in other parts of North America where they are planted as ornamentals. Monarchs have been reported to nectar on <italic toggle="yes">Lantana</italic> spp. across its North American migratory range (according to citizen science observations from iNaturalist). In this assay, butterflies were not allowed to land or receive a reward, so choices in this experiment represented innate behaviors and not associative learning behaviors. We assessed innate sensory perception by testing na&#x000ef;ve monarchs (no foraging, nectar source exposure, feeding experience, or training). As an initial proof&#x02010;of&#x02010;principle of the assay, we conducted tests on individuals that were reared in an outdoor insectary in summer (nonmigratory) conditions. We tested the relative importance of composite visual and olfactory cues, and their integration, for close&#x02010;range nectar plant attraction.</p></sec><sec sec-type="materials-and-methods" id="ece371533-sec-0002"><label>2</label><title>Materials and Methods</title><sec id="ece371533-sec-0003"><label>2.1</label><title>Butterfly Collection and Husbandry</title><p>Adult monarchs of the parental generation were collected from various locations near Ann Arbor, MI, in June 2022, 2023, and 2024. No permits are currently required for collecting monarch butterflies in Michigan. Butterflies were hand&#x02010;fed daily an artificial nectar solution (Bird's Choice brand; 16.7&#x02009;g of powder per 170&#x02009;mL water) that includes a proprietary combination of glucose, fructose, calcium salt, halide salt, and amino acids. Rearing was conducted in an outdoor insectary that was isolated from flowering plants. Mating cages were established for egg collection on common milkweed, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Asclepias syriaca</italic>
+</styled-content>. Caterpillars were reared on locally collected, bleach&#x02010;cleaned cuttings of <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">A. syriaca</italic>
+</styled-content>. We monitored for infection by the protozoan parasite <italic toggle="yes">Ophryocystis elektroscirrha</italic> (OE) in all tested butterflies. All butterflies in these tests were uninfected by OE.</p></sec><sec id="ece371533-sec-0004"><label>2.2</label><title>Flight Arena</title><p>The flight arena was set up in a light&#x02010;controlled indoor classroom (Figure&#x000a0;<xref rid="ece371533-fig-0001" ref-type="fig">1a</xref>). The arena was lined with sky blue fabric in a rectangular pattern to limit visible distractions. Three full&#x02010;spectrum lights (LBW Grow Light, Full Spectrum, 150&#x02009;W) were hung in the arena, one above the tethered monarch and one 2&#x02009;m to the left and right of the monarch (above the respective treatments or controls). A monarch was tethered with thread to a tripod in the middle of the arena (Figure&#x000a0;<xref rid="ece371533-fig-0001" ref-type="fig">1a</xref>). Treatment or control setups were placed on tables covered with black fabric to the left and right of the monarch (Figure&#x000a0;<xref rid="ece371533-fig-0001" ref-type="fig">1b,c</xref>, treatment groups). Tables were moved to the respective distances of each trial (1&#x02009;m or 3&#x02009;m). Before each trial started, the space was aired out to eliminate olfactory cues from the previous trial.</p><fig position="float" fig-type="FIGURE" id="ece371533-fig-0001"><label>FIGURE 1</label><caption><p>Visual displays of the behavioral arena. (a) This image shows an example of the interior arena containing whole, uncovered plants. (b) This image shows the combination treatment, with both visual and olfactory cues. (c) This image shows the visual&#x02010;only treatment, in which plants were covered with a UV&#x02010;transmitting plexiglass box that permits visual cues only.</p></caption><graphic xlink:href="ECE3-15-e71533-g003" position="anchor" id="jats-graphic-3"/></fig><p>Potted blooming <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> plants (Proven Winners; Carleton, MI) were used as the nectar resource. <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> specifically has been used as a nectar source for rearing and experimental monarchs in previous studies (James&#x000a0;<xref rid="ece371533-bib-0025" ref-type="bibr">1986</xref>; Robertson et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0052" ref-type="bibr">2015</xref>). Each trial used the following plants: one 2.5&#x02033; pot of the Luscious Pinkberry Blend, one 2.5&#x02033; pot of the Luscious Marmalade, one 4.5&#x02033; pot of the Luscious Royale Red Zone, and three 4.5&#x02033; pots of the Luscious Citrus Blend. One hundred and ten flower buds were counted before each trial. If there were more than 110, the excess flowering buds were removed. We note that <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> does change flower color over the first few days upon first opening (Weiss&#x000a0;<xref rid="ece371533-bib-0062" ref-type="bibr">1997</xref>). Nevertheless, the plants used in this study were mature and at least 7&#x02009;days beyond flower opening.</p></sec><sec id="ece371533-sec-0005"><label>2.3</label><title>Flight Assay</title><p>Newly eclosed monarchs were kept in large pop&#x02010;up cages and separated by sex. All butterflies tested in the arena (<italic toggle="yes">n</italic>&#x02009;=&#x02009;105) were starved for 48&#x02009;h before testing. Most individuals (<italic toggle="yes">n</italic>&#x02009;=&#x02009;56/105) were tested 48&#x02009;h post&#x02010;eclosion. In cases where it was impossible to run all individuals within 1&#x02009;day, untested individuals were hand&#x02010;fed artificial nectar daily, then returned to the holding cages. When ready for testing, individuals were starved for 48&#x02009;h prior to the testing day. Throughout the study, individuals were tested up to 9&#x02009;days post&#x02010;eclosion. Altogether, no butterflies had any exposure to or experience with any nectaring plant before the trials.</p><p>At the start of each trial, monarchs were placed in a neutral position (in the center of the arena and facing orthogonally to either treatment or control) within the arena for less than 5&#x02009;s before being released. Individuals were tethered to a tripod in the center of the arena. The tether consisted of a white polyester thread (7&#x02009;cm length) glued to a 2&#x02009;cm<sup>2</sup> bandage (Band&#x02010;Aid) piece attached to the thorax (Parlin et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0046" ref-type="bibr">2021</xref>) (Figure&#x000a0;<xref rid="ece371533-fig-0001" ref-type="fig">1a</xref>). Monarch flights were recorded by an AKASO EK7000 camera placed overhead. Videos were recorded for 3&#x02009;min. If the monarch exhibited hanging behavior, was entangled within the thread, or was otherwise stuck or stopped flying during the trial, it was placed back into the neutral starting position and encouraged to fly again. If the monarch still did not fly, it was removed from the arena, and after a 3&#x02010;min break, the trial was attempted once more. All individuals that flew directionally for more than 5&#x02009;s were included within the dataset. Experiments were performed between August 3&#x02013;13, 2022, July 28&#x02013;31, 2023, and July 13&#x02013;16, 2024.</p></sec><sec id="ece371533-sec-0006"><label>2.4</label><title>Treatments</title><p>All butterflies were randomly assigned to a treatment and a distance. Butterflies were not tested again after a successful flight trial. Therefore, all groups consisted of a distinct set of individual butterflies, and there were no repeated measures. The experiment consisted of two treatments: Treatment 1 was a &#x0201c;combination&#x0201d; treatment (visual plus olfactory cues) consisting of whole, uncovered potted plants (Figure&#x000a0;<xref rid="ece371533-fig-0001" ref-type="fig">1b</xref>). The control for this treatment was an empty table with no plants. Treatment 2 was a &#x0201c;visual&#x02010;only&#x0201d; treatment consisting of the potted plants (following the same criteria as the combination treatment) covered by a UV&#x02010;transmitting plexiglass box (Figure&#x000a0;<xref rid="ece371533-fig-0001" ref-type="fig">1c</xref>). The control for treatment 2 was a UV&#x02010;transmitting plexiglass box with no plants inside. Placement of the treatment and control on either side of the room was randomized throughout the experiment using a random number generator. The combination treatment was tested at 1&#x02009;m and 3&#x02009;m distances, and the visual&#x02010;only group was tested only at 1&#x02009;m.</p></sec><sec id="ece371533-sec-0007"><label>2.5</label><title>Ethogram Construction and Analysis</title><p>Attraction behavior was assessed by summing directional flight over the length of the video. All videos were scored manually using a behavioral ethogram. Videos with less than 5&#x02009;s of flight were removed from the analysis. Videos were scored for three primary behaviors observed by the authors of this study, as indicated in Table&#x000a0;<xref rid="ece371533-tbl-0001" ref-type="table">1</xref>: directional flight, circling, and hanging. Total seconds of all behaviors were recorded and summed. The following measurements were calculated: directional flight toward plant (FP), directional flight toward control (FC), total directional flight (FP+FC), proportion of total directional flight in video ((FP+FC)/[video length]), proportion of directional flight toward plant (FP/(FP+FC)), proportion directional flight toward control FC/(FP+FC), total circling (C), total hanging (H), proportion circling in video (C/[video length]), and proportion hanging in video (H/[video length]). Note that (FP+FC+C+H) /[video length]&#x02009;=&#x02009;1.</p><table-wrap position="float" id="ece371533-tbl-0001" content-type="TABLE"><label>TABLE 1</label><caption><p>Description of the behaviors that were observed and used to score videos.</p></caption><table frame="hsides" rules="groups"><col align="left" span="1"/><col align="center" span="1"/><thead valign="bottom"><tr style="border-bottom:solid 1px #000000"><th align="left" valign="bottom" rowspan="1" colspan="1">Behavior</th><th align="center" valign="bottom" rowspan="1" colspan="1">Description</th></tr></thead><tbody valign="top"><tr><td align="left" valign="top" rowspan="1" colspan="1">Directional flight</td><td align="center" valign="top" rowspan="1" colspan="1">Flight (active wingbeat) toward the treatment or control sides of the room (the video frame was bisected); direction of flight was determined by the head direction/body axis orientation</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Circling</td><td align="center" valign="top" rowspan="1" colspan="1">Flight in quick circles; circling was not incorporated into flight time</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Hanging</td><td align="center" valign="top" rowspan="1" colspan="1">No active wingbeat in video; hanging was not incorporated into flight time</td></tr></tbody></table></table-wrap></sec><sec id="ece371533-sec-0008"><label>2.6</label><title>Data Analysis and Statistics</title><p>All statistics were calculated in R (v. 4.1.2). All videos less than 3&#x02009;min were removed from the data set, yielding 95 videos for analysis. Linear models were run in R (using <italic toggle="yes">lm</italic>) to initially investigate the dataset. The response variable was the proportion of time directed toward the plant, and treatment, sex, year, distance, age (i.e., days post&#x02010;eclosion of test) and treatment location (i.e., side of the room on which the treatment was placed, either the right or left of the monarch) were independent variables. Distance was found to be highly significant in this model (<italic toggle="yes">p</italic>&#x02009;=&#x02009;5.92e&#x02010;05; Table&#x000a0;<xref rid="ece371533-tbl-0002" ref-type="table">2</xref>). One specific age (7&#x02009;days) was found to be significant as well (<italic toggle="yes">p</italic>&#x02009;=&#x02009;0.0215). This group contained only two individuals (FP&#x02009;=&#x02009;0.9545 and 0.6153). Given the small sample of this group and the one extreme value, we consider this instance of significance to be spurious and thus interpret these data to indicate that age is not a significant factor in this experiment. We proceeded to analyze the data using a new &#x0201c;group&#x0201d; variable, which combined all individuals tested in a particular treatment at a specific distance, yielding three groups: 1&#x02009;m&#x02010;combination, 1&#x02009;m&#x02010;visual, and 3&#x02009;m&#x02010;combination. ANOVA was used to compare group means, followed by Tukey's Honestly Significant Difference (HSD) post hoc tests for pairwise group comparisons where significant differences were detected. A one&#x02010;sample <italic toggle="yes">t</italic>&#x02010;test was used to determine if each group significantly differed from random (proportion&#x02009;=&#x02009;0.5).</p><table-wrap position="float" id="ece371533-tbl-0002" content-type="TABLE"><label>TABLE 2</label><caption><p>Linear model analyzing effects of year, sex, distance, treatment location, and age on the proportion of directional flight toward treatment.</p></caption><table frame="hsides" rules="groups"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><thead valign="bottom"><tr style="border-bottom:solid 1px #000000"><th align="left" valign="bottom" rowspan="1" colspan="1"/><th align="center" valign="bottom" rowspan="1" colspan="1">Estimate</th><th align="center" valign="bottom" rowspan="1" colspan="1">Std. error</th><th align="center" valign="bottom" rowspan="1" colspan="1">
+<italic toggle="yes">t</italic> value</th><th align="center" valign="bottom" rowspan="1" colspan="1">Pr(&#x0003e;|t|)</th></tr></thead><tbody valign="top"><tr><td align="left" valign="top" rowspan="1" colspan="1">(Intercept)</td><td align="center" valign="top" rowspan="1" colspan="1">0.59333</td><td align="center" valign="top" rowspan="1" colspan="1">0.06061</td><td align="center" valign="top" rowspan="1" colspan="1">9.789</td><td align="center" valign="top" rowspan="1" colspan="1">2.21e&#x02010;15<xref rid="ece371533-note-1003" ref-type="table-fn">***</xref>
+</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Year: 2023</td><td align="center" valign="top" rowspan="1" colspan="1">0.11521</td><td align="center" valign="top" rowspan="1" colspan="1">0.08789</td><td align="center" valign="top" rowspan="1" colspan="1">1.311</td><td align="center" valign="top" rowspan="1" colspan="1">0.1936</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Year: 2024</td><td align="center" valign="top" rowspan="1" colspan="1">0.07052</td><td align="center" valign="top" rowspan="1" colspan="1">0.07197</td><td align="center" valign="top" rowspan="1" colspan="1">0.980</td><td align="center" valign="top" rowspan="1" colspan="1">0.3301</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Sex: f</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.01678</td><td align="center" valign="top" rowspan="1" colspan="1">0.03563</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.471</td><td align="center" valign="top" rowspan="1" colspan="1">0.6389</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Distance: 3&#x02009;m</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.21963</td><td align="center" valign="top" rowspan="1" colspan="1">0.05182</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;4.239</td><td align="center" valign="top" rowspan="1" colspan="1">5.92e&#x02010;05<xref rid="ece371533-note-1003" ref-type="table-fn">***</xref>
+</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Treatment: visual</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.06179</td><td align="center" valign="top" rowspan="1" colspan="1">0.05194</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;1.190</td><td align="center" valign="top" rowspan="1" colspan="1">0.2376</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Treatment location: down</td><td align="center" valign="top" rowspan="1" colspan="1">0.01373</td><td align="center" valign="top" rowspan="1" colspan="1">0.03973</td><td align="center" valign="top" rowspan="1" colspan="1">0.346</td><td align="center" valign="top" rowspan="1" colspan="1">0.7305</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Post&#x02010;eclosion test day: 3</td><td align="center" valign="top" rowspan="1" colspan="1">0.05975</td><td align="center" valign="top" rowspan="1" colspan="1">0.09028</td><td align="center" valign="top" rowspan="1" colspan="1">0.662</td><td align="center" valign="top" rowspan="1" colspan="1">0.5100</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Post&#x02010;eclosion test day: 4</td><td align="center" valign="top" rowspan="1" colspan="1">0.11478</td><td align="center" valign="top" rowspan="1" colspan="1">0.08545</td><td align="center" valign="top" rowspan="1" colspan="1">1.343</td><td align="center" valign="top" rowspan="1" colspan="1">0.1829</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Post&#x02010;eclosion test day: 5</td><td align="center" valign="top" rowspan="1" colspan="1">0.15492</td><td align="center" valign="top" rowspan="1" colspan="1">0.08619</td><td align="center" valign="top" rowspan="1" colspan="1">1.798</td><td align="center" valign="top" rowspan="1" colspan="1">0.0760</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Post&#x02010;eclosion test day: 6</td><td align="center" valign="top" rowspan="1" colspan="1">0.15123</td><td align="center" valign="top" rowspan="1" colspan="1">0.11337</td><td align="center" valign="top" rowspan="1" colspan="1">1.334</td><td align="center" valign="top" rowspan="1" colspan="1">0.1859</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Post&#x02010;eclosion test day: 7</td><td align="center" valign="top" rowspan="1" colspan="1">0.30985</td><td align="center" valign="top" rowspan="1" colspan="1">0.13212</td><td align="center" valign="top" rowspan="1" colspan="1">2.345</td><td align="center" valign="top" rowspan="1" colspan="1">0.0215<xref rid="ece371533-note-1002" ref-type="table-fn">*</xref>
+</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Post&#x02010;eclosion test day: 8</td><td align="center" valign="top" rowspan="1" colspan="1">0.13334</td><td align="center" valign="top" rowspan="1" colspan="1">0.08822</td><td align="center" valign="top" rowspan="1" colspan="1">1.511</td><td align="center" valign="top" rowspan="1" colspan="1">0.1346</td></tr></tbody></table><table-wrap-foot id="ece371533-ntgp-1001"><fn id="ece371533-note-1002"><label>*</label><p>
+<italic toggle="yes">p</italic>&#x02009;&#x02264;&#x02009;0.05.</p></fn><fn id="ece371533-note-1003"><label>***</label><p>
+<italic toggle="yes">p</italic>&#x02009;&#x02264;&#x02009;0.001.</p></fn></table-wrap-foot></table-wrap><p>Additionally, we investigated if the propensity to fly toward the plant differed over the course of the 3&#x02010;min trial. Analyzing flight data temporally, even at coarse resolution, can reveal important behavioral changes that might otherwise go unnoticed (e.g., McKenzie&#x02010;Smith et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0036" ref-type="bibr">2025</xref>). To assess this, we first removed all hanging and circling data from the ethogram to yield only directional flight, then bisected each individual's directional flight into two equal halves. We then calculated the proportion of flight directed toward the plant for each half and took the difference of these values (FP/(FP+FC)<sup>second&#x02010;half</sup>&#x02212;FP/(FP+FC)<sup>first&#x02010;half</sup>). This value ranges from &#x02212;1 to 1 with an expectation of 0 if the proportion of flight toward the plant was equal across halves, positive if attraction to the plant increased over time, and negative if attraction to the plant decreased over time. A one&#x02010;sample <italic toggle="yes">t</italic>&#x02010;test was used to determine if each group significantly differed from proportion&#x02009;=&#x02009;0.</p></sec></sec><sec sec-type="results" id="ece371533-sec-0009"><label>3</label><title>Results</title><sec id="ece371533-sec-0010"><label>3.1</label><title>Innate Attraction to <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content>
+</title><p>We first tested whether monarchs exhibited an attraction response to <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> plants in our indoor arena. We assumed, as has been done before in similar assays (Brower et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0006" ref-type="bibr">1977</xref>), that an attractive stimulus should elicit <italic toggle="yes">prolonged</italic> investigation in the direction of the stimulus (Grant et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0021" ref-type="bibr">2022</xref>; Nathan et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0042" ref-type="bibr">2008</xref>). Monarchs showed prolonged flight in the direction of the plant versus control direction when the plant was located 1&#x02009;m away (<italic toggle="yes">t</italic>&#x02009;=&#x02009;6.60, df&#x02009;=&#x02009;37, <italic toggle="yes">p</italic>&#x02009;=&#x02009;9.75e&#x02010;8; Figure&#x000a0;<xref rid="ece371533-fig-0002" ref-type="fig">2</xref>). The proportion of flight directed toward the uncovered plant in the 1&#x02009;m&#x02010;combination group was higher in the second time bin (mean&#x02009;&#x000b1;&#x02009;SEM across individuals: 0.7091&#x02009;&#x000b1;&#x02009;0.0313) compared to the first time bin (mean&#x02009;&#x000b1;&#x02009;SEM across individuals: 0.6369&#x02009;&#x000b1;&#x02009;0.0339) (<italic toggle="yes">t</italic>&#x02009;=&#x02009;2.04, df&#x02009;=&#x02009;37, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.0483; Figure&#x000a0;<xref rid="ece371533-fig-0003" ref-type="fig">3</xref>), indicating increased attraction to the plant during a trial in this assay. The side of the room on which the plant was placed did not affect directional flight toward the plant (Table&#x000a0;<xref rid="ece371533-tbl-0002" ref-type="table">2</xref>; <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.7305). Directional flight toward the plant did not differ between sexes (Table&#x000a0;<xref rid="ece371533-tbl-0002" ref-type="table">2</xref>; <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.6389).</p><fig position="float" fig-type="FIGURE" id="ece371533-fig-0002"><label>FIGURE 2</label><caption><p>Proportion of directional flight toward the treatment. Each point represents an individual. A proportion of 0.5 indicates random choice/no preference. Plots indicate median (black horizontal bar) and 25th and 75th percentiles (lower and upper box bounds, respectively) of values.</p></caption><graphic xlink:href="ECE3-15-e71533-g005" position="anchor" id="jats-graphic-5"/></fig><fig position="float" fig-type="FIGURE" id="ece371533-fig-0003"><label>FIGURE 3</label><caption><p>Proportion of directional flight toward the treatment in the second half of the video minus the first half of the video. Each point represents an individual. A value of 0 indicates that the proportion of flight toward the treatment did not change over time; a positive value indicates that attraction to the treatment increased over time; and a negative value indicates that attraction to the treatment decreased over time. Plots indicate median (black horizontal bar) and 25th and 75th percentiles (lower and upper box bounds, respectively) of values.</p></caption><graphic xlink:href="ECE3-15-e71533-g001" position="anchor" id="jats-graphic-7"/></fig><p>In order to test the limits of attraction behavior in this assay, we tested flight direction at a second distance farther from the treatment (3&#x02009;m). Distance had a significant effect on flight toward the plant (<italic toggle="yes">f</italic>&#x02009;=&#x02009;10.33, df&#x02009;=&#x02009;2, <italic toggle="yes">p</italic>&#x02009;=&#x02009;5.08e&#x02010;05; Figure&#x000a0;<xref rid="ece371533-fig-0002" ref-type="fig">2</xref>). Monarchs lost their attraction to the plant when it was moved farther away (3&#x02009;m) from tested individuals (<italic toggle="yes">t</italic>&#x02009;=&#x02009;0.2500, df&#x02009;=&#x02009;28, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.8045; Figure&#x000a0;<xref rid="ece371533-fig-0002" ref-type="fig">2</xref>). There was no difference in the proportion of flight directed toward the uncovered plant between the first half (mean&#x02009;&#x000b1;&#x02009;SEM across individuals: 0.5089&#x02009;&#x000b1;&#x02009;0.0328) and second half (mean&#x02009;&#x000b1;&#x02009;SEM across individuals: 0.5154&#x02009;&#x000b1;&#x02009;0.0380) of flight (<italic toggle="yes">t</italic>&#x02009;=&#x02009;0.1501, df&#x02009;=&#x02009;28, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.8817; Figure&#x000a0;<xref rid="ece371533-fig-0003" ref-type="fig">3</xref>) in the 3&#x02009;m&#x02010;combination group.</p><p>There were no significant differences across groups in the proportion of time spent flying directionally (<italic toggle="yes">f</italic>&#x02009;=&#x02009;1.185, df&#x02009;=&#x02009;2, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.31; Figure&#x000a0;<xref rid="ece371533-fig-0004" ref-type="fig">4a</xref>) or in the proportion of time spent hanging in the arena (<italic toggle="yes">f</italic>&#x02009;=&#x02009;0.181, df&#x02009;=&#x02009;2, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.834; Figure&#x000a0;<xref rid="ece371533-fig-0004" ref-type="fig">4b</xref>). The proportion of circling, however, significantly differed across groups (<italic toggle="yes">f</italic>&#x02009;=&#x02009;4.172, df&#x02009;=&#x02009;2, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.0185). Butterflies showed the lowest proportion of circling in the 3&#x02009;m&#x02010;combination treatment (Figure&#x000a0;<xref rid="ece371533-fig-0004" ref-type="fig">4c</xref>), which was significantly lower than in the 1&#x02009;m&#x02010;visual group (<italic toggle="yes">p</italic>&#x02009;=&#x02009;0.0178; Figure&#x000a0;<xref rid="ece371533-fig-0004" ref-type="fig">4c</xref>) and approaching significance compared to the 1&#x02009;m&#x02010;combination group (<italic toggle="yes">p</italic>&#x02009;=&#x02009;0.0929).</p><fig position="float" fig-type="FIGURE" id="ece371533-fig-0004"><label>FIGURE 4</label><caption><p>Proportion of (a) total directional flight, (b) hanging, and (c) circling in the trial per individual. Plots indicate median (black horizontal bar) and 25th and 75th percentiles (lower and upper box bounds, respectively) of values.</p></caption><graphic xlink:href="ECE3-15-e71533-g002" position="anchor" id="jats-graphic-9"/></fig></sec><sec id="ece371533-sec-0011"><label>3.2</label><title>Visual Cues Are Sufficient for Innate Plant Attraction, but Made Stronger With Olfactory Cues</title><p>We tested a &#x0201c;visual&#x02010;only&#x0201d; stimulus by obscuring olfactory cues with a transparent box to cover the plant. A similar box was placed at the same distance (1&#x02009;m) on the opposite side of the arena to control for potential reflection effects from the transparent box. Monarchs showed sustained attraction to the covered plant in the 1&#x02009;m&#x02010;visual group (<italic toggle="yes">t</italic>&#x02009;=&#x02009;3.18 df&#x02009;=&#x02009;26, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.0038; Figure&#x000a0;<xref rid="ece371533-fig-0002" ref-type="fig">2</xref>), indicating the sufficiency of visual cues for attraction behavior. The proportion of flight toward the treatment in 1&#x02009;m&#x02010;visual was slightly reduced compared to 1&#x02009;m&#x02010;combination, but the difference was not significant (<italic toggle="yes">p</italic>&#x02009;=&#x02009;0.1980; Figure&#x000a0;<xref rid="ece371533-fig-0002" ref-type="fig">2</xref>). Proportion of flight directed toward the covered plant in the 1&#x02009;m&#x02010;visual group did not significantly differ between the first time bin(mean&#x02009;&#x000b1;&#x02009;SEM across individuals: 0.5935&#x02009;&#x000b1;&#x02009;0.0436) and second time bin (mean&#x02009;&#x000b1;&#x02009;SEM across individuals: 0.6155&#x02009;&#x000b1;&#x02009;0.0376) of flight (<italic toggle="yes">t</italic>&#x02009;=&#x02009;0.4501, df&#x02009;=&#x02009;26, <italic toggle="yes">p</italic>&#x02009;=&#x02009;0.6563).</p></sec></sec><sec sec-type="discussion" id="ece371533-sec-0012"><label>4</label><title>Discussion</title><p>We show that na&#x000ef;ve monarchs have an innate attraction to <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content>, a common nectar resource. Since all tested butterflies were na&#x000ef;ve to any type of nectar plant at the time of testing and did not ever receive a reward in this experiment, attraction in this experiment represents innate behaviors and not associatively learned behaviors. We did not set out to identify the specific visual and olfactory cues that underlie attraction behaviors in this experiment. Rather, we aimed to investigate the role of composite visual and olfactory cues in innate attraction. We find that at close range (1&#x02009;m), prolonged exposure to visual cues alone from <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> is sufficient for attraction while olfactory cues are dispensable. It is likely that <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> presents a combination of visual cues that are innately attractive to monarchs. Monarchs have an innate preference for orange (primary) and yellow (secondary) color (Blackiston et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0004" ref-type="bibr">2011</xref>), which were prominent in the <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content> used in this experiment. Monarchs probably also show attraction to more general flowering plant features (green leaves, symmetric petals, etc.) as they have been shown to be attracted to visual features of other flowering plants, for example, milkweed (Garlick&#x000a0;<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>). We cannot assert if visual responses observed in this experiment reflect monarch color preference, are behaviors specific to <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content>, or are more general plant preferences. Repeating these experiments with different nectar plants and specific artificial cues will clarify these questions.</p><p>Temporal differences in behavior reveal attraction&#x02010; versus perception&#x02010;dependent behaviors. Sustained directed flight toward the plant might indirectly indicate the salience of attractive cues or motivation to pursue the plant, beyond simply the perception of attractive cues. Monarchs showed increased directional flight over time toward an uncovered plant placed 1&#x02009;m away, but no difference over time when the plant was covered. These results indicate that there is a quantitative difference in the flight toward the plant when only visual cues are present versus both visual and olfactory cues and further indicate that flight toward the plant in this assay is an attraction response when the plant is perceived within a short (1&#x02009;m) distance range. The timed difference in flight toward the uncovered plant may suggest that individuals not only perceived the plant at this distance, but they potentially grew more motivated to fly toward it over the course of the trial. This is more likely than the possibility that the first flight bin included a brief uncertainty or acclimation period since the visual&#x02010;only treatment did not show a similar difference in first versus second bin flight. Additional experiments are required to more rigorously test this idea.</p><p>When the plant was presented farther away (3&#x02009;m), individuals did not show attraction to the plant in the first or second time bins. One interpretation of no attraction in the 3&#x02009;m&#x02010;combination group is that butterflies were unable to perceive the plant at this distance. This aligns with the findings of Garlick&#x000a0;(<xref rid="ece371533-bib-0018" ref-type="bibr">2007</xref>) in which monarchs were attracted to visual plant signals at 2&#x02009;m, leading these authors to propose that monarch visual perception is short range. In contrast, however, olfactory perception extends tens of meters in the wild (Fisher and Bradbury&#x000a0;<xref rid="ece371533-bib-0014" ref-type="bibr">2021</xref>) and is suspected to extend even farther under certain weather conditions (e.g., wind speed, direction) (Grant et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0021" ref-type="bibr">2022</xref>). The lack of wind in our experiment may have reduced the salience of olfactory cues. Nevertheless, additional results are consistent with the interpretation of an inability to perceive the plant at 3&#x02009;m. Individuals in the 3&#x02009;m&#x02010;combination group spent a similar proportion of their trial flying directionally as did individuals in the 1&#x02009;m groups (Figure&#x000a0;<xref rid="ece371533-fig-0004" ref-type="fig">4a</xref>), but they did not choose to fly toward the plant. As well, individuals from the 3&#x02009;m&#x02010;combination treatment spent less time circling than did individuals in the 1&#x02009;m groups, reaching significance for the 1&#x02009;m&#x02010;visual group (Figure&#x000a0;<xref rid="ece371533-fig-0004" ref-type="fig">4c</xref>). &#x0201c;Circling&#x0201d; or &#x0201c;spiraling&#x0201d; is a behavior that is described in butterflies when individuals are in specific pursuit of objects, often other individuals (Imafuku and Ohtani&#x000a0;<xref rid="ece371533-bib-0024" ref-type="bibr">2006</xref>). We speculate that circling in this assay may be a potential escape response in which the butterflies detect a nearby attractive stimulus that they intend to reach and thus fly vigorously in circles in order to free themselves of the apparatus. An alternative idea to explain the failure of individuals to fly directionally toward the plant at 3&#x02009;m is that monarchs perceived the plant yet did not pursue it, possibly due to low salience of the presented cues. Pollinators may alter their responses when sensory cues are in conflict or are uncoupled (Riffell&#x000a0;<xref rid="ece371533-bib-0050" ref-type="bibr">2020</xref>). For example, hawkmoths (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Manduca sexta</italic>
+</styled-content>) have trouble tracking an artificial flower if visual and mechanosensory cues are mismatched (Roth et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0053" ref-type="bibr">2016</xref>). Such behavior might reflect an efficient search strategy in which only resources that are recognized with high certainty within a specific distance elicit energy&#x02010;intensive directional flight. Monarchs are efficient foragers in grass&#x02010;covered landscapes (Fisher and Bradbury&#x000a0;<xref rid="ece371533-bib-0015" ref-type="bibr">2022</xref>). They explore nectar resources in tortuous paths in high&#x02010;density resource environments (Zalucki and Kitching&#x000a0;<xref rid="ece371533-bib-0065" ref-type="bibr">1982</xref>; Zalucki&#x000a0;<xref rid="ece371533-bib-0064" ref-type="bibr">1983</xref>), suggesting an ability to respond to cue salience at short distances. The most frequent flight steps that monarchs took in a varied landscape prairie were &#x0003c;&#x02009;5&#x02009;m and were associated with foraging (Fisher et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0013" ref-type="bibr">2020</xref>). Our study suggests that visual cues are most relevant for guiding these flight movements at this spatial scale. Monarchs may use long&#x02010;term memory to refine their foraging search during periods of localized feeding (Konnerth et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0030" ref-type="bibr">2023</xref>).</p><p>The combination of multiple cue modalities enhances attraction to flowers in many insect species (Raguso and Willis&#x000a0;<xref rid="ece371533-bib-0047" ref-type="bibr">2005</xref>; Chow and Frye&#x000a0;<xref rid="ece371533-bib-0009" ref-type="bibr">2008</xref>). While we find that visual cues are primary for nectar plant attraction, olfactory cues impact the attractiveness of visual cues from <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content>. Whereas combined visual and olfactory cues elicited a sustained attraction response that grew stronger over time, attraction was unchanged between the first and second flight halves in the visual&#x02010;only treatment. This indicates that monarchs could perceive the plant using visual cues, but their motivation to pursue the plant did not grow over time when olfactory cues were missing. Olfactory cues may increase the salience of a visual cue, influence the valence timescale of a visual cue (i.e., increase the time by which an attractive cue is considered attractive with no reward or reinforcement), or specifically enhance flight tendency (i.e., visual cues are used for perception and olfactory cues are used to stimulate flight). Details of the role of olfactory cues in monarch foraging will benefit from experiments that present visual cues with olfactory cues in more specific ways [such as wind&#x02010;directed cues in a Y&#x02010;maze olfactometer (Zalucki and Kitching&#x000a0;<xref rid="ece371533-bib-0065" ref-type="bibr">1982</xref>) or wind tunnel (Zalucki and Kitching&#x000a0;<xref rid="ece371533-bib-0066" ref-type="bibr">1984</xref>)].</p><p>In the generalist hoverfly model, multimodal cues are required to effectively identify a broad array of nutritive resources (Mishra et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0039" ref-type="bibr">2024</xref>) across different environments (Nordstr&#x000f6;m et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0043" ref-type="bibr">2017</xref>). We find that visual cues are sufficient for monarchs to be attracted to <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content>, but attraction is enhanced by olfactory cues. An important difference in our experiment is that individuals chose between putatively attractive cues versus no cues at all. Therefore, our experiment does not address how cues are used to identify specific nectar resources among a range of choices. It is possible that monarchs utilize additional modalities differently when resources must be distinguished among. When milkweed plants are presented in a grass&#x02010;covered landscape, monarchs show innate attraction to visual and olfactory cues when presented separately, and they act synergistically when paired (Kelber&#x000a0;<xref rid="ece371533-bib-0028" ref-type="bibr">1997</xref>). This attraction may reflect context&#x02010;dependent cue salience, or it may reflect a difference in cue use for identifying nectar resources versus oviposition sites. In contrast to their generalist nectaring strategy, monarchs exclusively oviposit onto species of Asclepiacae (genera <italic toggle="yes">Asclepias</italic>, <italic toggle="yes">Gomphocarpus</italic>) (Grant et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0021" ref-type="bibr">2022</xref>).</p><p>Intrapopulation variation in innate sensory attraction is prevalent and can have significant consequences for species. Female pipevine swallowtails (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">B. philenor</italic>
+</styled-content>) show a bimodal distribution for leaf shape preference (Fisher et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0016" ref-type="bibr">2021</xref>). Variation in innate preference for violet color is correlated with differences in nectar foraging rate in bumblebees (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">B. terrestris</italic>
+</styled-content>; Raine and Chittka&#x000a0;<xref rid="ece371533-bib-0048" ref-type="bibr">2007</xref>), indicating the adaptive potential of innate sensory perception. We find large variation for innate nectar plant attraction among individuals within groups in our experiments (Figures&#x000a0;<xref rid="ece371533-fig-0002" ref-type="fig">2</xref> and <xref rid="ece371533-fig-0004" ref-type="fig">4</xref>). It is not yet known, but is of interest, if this behavioral variation in monarchs is determined genetically, or what specific fitness benefit this innate attraction may provide. Moreover, innate sensory attraction often shows sexual dimorphism, reflecting ecologically driven sex&#x02010;specific priorities. Males and female swallowtail butterflies (<italic toggle="yes">Papilio demoleus</italic>) have innate preferences for different cues (visual and olfactory cues, respectively) during foraging and courtship (Grant et&#x000a0;al.&#x000a0;<xref rid="ece371533-bib-0021" ref-type="bibr">2022</xref>). Females, but not males, shift color preference when presented a specific odor cue in the swallowtail <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Papilio xuthus</italic>
+</styled-content> (Kelber&#x000a0;<xref rid="ece371533-bib-0029" ref-type="bibr">2002</xref>). Despite these trends, we do not find sex&#x02010;specific perception differences (Table&#x000a0;<xref rid="ece371533-tbl-0002" ref-type="table">2</xref>). This is consistent with the finding that although male and female monarchs utilize a common resource landscape differently, they do not differ in their overall straight&#x02010;line headings and show no overall directionality (Zalucki and Kitching&#x000a0;<xref rid="ece371533-bib-0065" ref-type="bibr">1982</xref>), which is more akin to what is measured in our assay. Monarchs also have sexually monomorphic eye pigmentation (Kadow&#x000a0;<xref rid="ece371533-bib-0027" ref-type="bibr">2019</xref>), consistent with our finding that neither sex has stronger visual acuity as detected in this assay.</p></sec><sec sec-type="conclusions" id="ece371533-sec-0013"><label>5</label><title>Conclusion</title><p>We show that generalist foraging monarch butterflies have evolved an innate attraction to visual cues from specific nectar resources (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">L. camara</italic>
+</styled-content>) that control their behavior prior to learning about its reward status. Our relatively straightforward and inexpensive setup can capture different features of sensory perception in these butterflies, including distinguishing contributions of different sensory modalities and giving initial insight into the salience of these cues. This accessible assay may be useful for other researchers in a range of systems as an initial tool to study sensory perception.</p></sec><sec id="ece371533-sec-0018"><title>Author Contributions</title><p>
+<bold>Darene A. E. Assadia:</bold> conceptualization (equal), data curation (lead), formal analysis (lead), funding acquisition (supporting), investigation (equal), methodology (lead), validation (equal), visualization (lead), writing &#x02013; original draft (equal), writing &#x02013; review and editing (equal). <bold>Delbert A. Green II:</bold> conceptualization (equal), data curation (supporting), formal analysis (supporting), funding acquisition (lead), investigation (equal), methodology (supporting), project administration (lead), resources (lead), supervision (lead), validation (equal), visualization (supporting), writing &#x02013; original draft (equal), writing &#x02013; review and editing (equal).</p></sec><sec sec-type="COI-statement" id="ece371533-sec-0015"><title>Conflicts of Interest</title><p>The authors declare no conflicts of interest.</p></sec><sec sec-type="supplementary-material"><title>Supporting information</title><supplementary-material id="ece371533-supitem-0001" position="float" content-type="local-data"><caption><p>
+Data S1.
+</p></caption><media xlink:href="ECE3-15-e71533-s001.csv"/></supplementary-material></sec></body><back><ack id="ece371533-sec-0014"><title>Acknowledgments</title><p>We thank members of the Green D.E.I. lab for helpful discussions during manuscript preparation. We thank Sean Polidori, Meagan Simons, Chetanasai Ghantasala, Isabella Stroud, Sophia Rich, and Jenny Sun for assistance with behavioral flight assay design considerations and trials. D.A.E.A. was supported by a Lincoln P. Brower award from the Monarch Butterfly Fund. Work described herein is indirectly supported by funds to D.A.G. from the Monarch Butterfly Fund Flight Challenge and NSF DBI IIBR (2045017).</p></ack><sec sec-type="data-availability" id="ece371533-sec-0017"><title>Data Availability Statement</title><p>All raw data values required to repeat analyses presented in this paper are included in the Supporting Information&#x000a0;<xref rid="ece371533-supitem-0001" ref-type="supplementary-material">S1</xref> associated with this manuscript.</p></sec><ref-list content-type="cited-references" id="ece371533-bibl-0001"><title>References</title><ref id="ece371533-bib-0001"><mixed-citation publication-type="miscellaneous" id="ece371533-cit-0001">
+<string-name>
+<surname>Adamson</surname>, <given-names>N. L.</given-names>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Fallon</surname>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Vaughan</surname>
+</string-name>. <year>2018</year>. <article-title>&#x0201c;Monarch Butterfly Nectar Plant Lists for Conservation Plantings.&#x0201d;</article-title>
+</mixed-citation></ref><ref id="ece371533-bib-0002"><mixed-citation publication-type="journal" id="ece371533-cit-0002">
+<string-name>
+<surname>Anton</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>M.&#x02010;A.</given-names>
+<surname>Chabaud</surname>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Schmidt&#x02010;B&#x000fc;sser</surname>
+</string-name>, et&#x000a0;al. <year>2016</year>. &#x0201c;<article-title>Brief Sensory Experience Differentially Affects the Volume of Olfactory Brain Centres in a Moth</article-title>.&#x0201d; <source>Cell and Tissue Research</source>
+<volume>364</volume>: <fpage>59</fpage>&#x02013;<lpage>65</lpage>. <pub-id pub-id-type="doi">10.1007/s00441-015-2299-0</pub-id>.<pub-id pub-id-type="pmid">26463049</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0003"><mixed-citation publication-type="journal" id="ece371533-cit-0003">
+<string-name>
+<surname>Balamurali</surname>, <given-names>G. S.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Edison</surname>
+</string-name>, <string-name>
+<given-names>H.</given-names>
+<surname>Somanathan</surname>
+</string-name>, and <string-name>
+<given-names>U.</given-names>
+<surname>Kodandaramaiah</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>Spontaneous Colour Preferences and Colour Learning in the Fruit&#x02010;Feeding Butterfly, <italic toggle="yes">Mycalesis mineus</italic>
+</article-title>.&#x0201d; <source>Behavioral Ecology and Sociobiology</source>
+<volume>73</volume>: <fpage>39</fpage>. <pub-id pub-id-type="doi">10.1007/s00265-019-2648-1</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0004"><mixed-citation publication-type="journal" id="ece371533-cit-0004">
+<string-name>
+<surname>Blackiston</surname>, <given-names>D.</given-names>
+</string-name>, <string-name>
+<given-names>A. D.</given-names>
+<surname>Briscoe</surname>
+</string-name>, and <string-name>
+<given-names>M. R.</given-names>
+<surname>Weiss</surname>
+</string-name>. <year>2011</year>. &#x0201c;<article-title>Color Vision and Learning in the Monarch Butterfly, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content> (Nymphalidae)</article-title>.&#x0201d; <source>Journal of Experimental Biology</source>
+<volume>214</volume>: <fpage>509</fpage>&#x02013;<lpage>520</lpage>. <pub-id pub-id-type="doi">10.1242/jeb.048728</pub-id>.<pub-id pub-id-type="pmid">21228210</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0005"><mixed-citation publication-type="journal" id="ece371533-cit-0005">
+<string-name>
+<surname>Briggs</surname>, <given-names>H. M.</given-names>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Graham</surname>
+</string-name>, <string-name>
+<given-names>C. M.</given-names>
+<surname>Switzer</surname>
+</string-name>, and <string-name>
+<given-names>R.</given-names>
+<surname>Hopkins</surname>
+</string-name>. <year>2018</year>. &#x0201c;<article-title>Variation in Context&#x02010;Dependent Foraging Behavior Across Pollinators</article-title>.&#x0201d; <source>Ecology and Evolution</source>
+<volume>8</volume>: <fpage>7964</fpage>&#x02013;<lpage>7973</lpage>. <pub-id pub-id-type="doi">10.1002/ece3.4303</pub-id>.<pub-id pub-id-type="pmid">30250676</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0006"><mixed-citation publication-type="journal" id="ece371533-cit-0006">
+<string-name>
+<surname>Brower</surname>, <given-names>L. P.</given-names>
+</string-name>, <string-name>
+<given-names>W. H.</given-names>
+<surname>Calvert</surname>
+</string-name>, <string-name>
+<given-names>L. E.</given-names>
+<surname>Hedrick</surname>
+</string-name>, and <string-name>
+<given-names>J.</given-names>
+<surname>Christian</surname>
+</string-name>. <year>1977</year>. &#x0201c;<article-title>Biological Observations on an Overwintering Colony of Monarch Butterflies (<italic toggle="yes">Danaus plexippus</italic>, Danaidae) in Mexico</article-title>.&#x0201d; <source>Journal of the Lepidopterists' Society</source>
+<volume>31</volume>: <fpage>232</fpage>&#x02013;<lpage>242</lpage>.</mixed-citation></ref><ref id="ece371533-bib-0007"><mixed-citation publication-type="journal" id="ece371533-cit-0007">
+<string-name>
+<surname>Brower</surname>, <given-names>L. P.</given-names>
+</string-name>, <string-name>
+<given-names>L. S.</given-names>
+<surname>Fink</surname>
+</string-name>, and <string-name>
+<given-names>P.</given-names>
+<surname>Walford</surname>
+</string-name>. <year>2006</year>. &#x0201c;<article-title>Fueling the Fall Migration of the Monarch Butterfly</article-title>.&#x0201d; <source>Integrative and Comparative Biology</source>
+<volume>46</volume>: <fpage>1123</fpage>&#x02013;<lpage>1142</lpage>. <pub-id pub-id-type="doi">10.1093/icb/icl029</pub-id>.<pub-id pub-id-type="pmid">21672813</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0008"><mixed-citation publication-type="journal" id="ece371533-cit-0008">
+<string-name>
+<surname>Buehlmann</surname>, <given-names>C.</given-names>
+</string-name>, and <string-name>
+<given-names>P.</given-names>
+<surname>Graham</surname>
+</string-name>. <year>2022</year>. &#x0201c;<article-title>Innate Visual Attraction in Wood Ants Is a Hardwired Behavior Seen Across Different Motivational and Ecological Contexts</article-title>.&#x0201d; <source>Insectes Sociaux</source>
+<volume>69</volume>: <fpage>271</fpage>&#x02013;<lpage>277</lpage>. <pub-id pub-id-type="doi">10.1007/s00040-022-00867-3</pub-id>.<pub-id pub-id-type="pmid">35909593</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0009"><mixed-citation publication-type="journal" id="ece371533-cit-0009">
+<string-name>
+<surname>Chow</surname>, <given-names>D. M.</given-names>
+</string-name>, and <string-name>
+<given-names>M. A.</given-names>
+<surname>Frye</surname>
+</string-name>. <year>2008</year>. &#x0201c;<article-title>Context&#x02010;Dependent Olfactory Enhancement of Optomotor Flight Control in Drosophila</article-title>.&#x0201d; <source>Journal of Experimental Biology</source>
+<volume>211</volume>: <fpage>2478</fpage>&#x02013;<lpage>2485</lpage>. <pub-id pub-id-type="doi">10.1242/jeb.018879</pub-id>.<pub-id pub-id-type="pmid">18626082</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0010"><mixed-citation publication-type="journal" id="ece371533-cit-0010">
+<string-name>
+<surname>Cuff</surname>, <given-names>J. P.</given-names>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Labonte</surname>
+</string-name>, and <string-name>
+<given-names>F. M.</given-names>
+<surname>Windsor</surname>
+</string-name>. <year>2024</year>. &#x0201c;<article-title>Understanding Trophic Interactions in a Warming World by Bridging Foraging Ecology and Biomechanics With Network Science</article-title>.&#x0201d; <source>Integrative and Comparative Biology</source>
+<volume>64</volume>: <fpage>306</fpage>&#x02013;<lpage>321</lpage>. <pub-id pub-id-type="doi">10.1093/icb/icae070</pub-id>.<pub-id pub-id-type="pmid">38872009</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0011"><mixed-citation publication-type="journal" id="ece371533-cit-0011">
+<string-name>
+<surname>Dell'Aglio</surname>, <given-names>D. D.</given-names>
+</string-name>, <string-name>
+<given-names>M. E.</given-names>
+<surname>Losada</surname>
+</string-name>, and <string-name>
+<given-names>C. D.</given-names>
+<surname>Jiggins</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Butterfly Learning and the Diversification of Plant Leaf Shape</article-title>.&#x0201d; <source>Frontiers in Ecology and Evolution</source>
+<volume>4</volume>: <elocation-id>81</elocation-id>. <pub-id pub-id-type="doi">10.3389/fevo.2016.00081</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0012"><mixed-citation publication-type="journal" id="ece371533-cit-0012">
+<string-name>
+<surname>Desai</surname>, <given-names>R.</given-names>
+</string-name>, <string-name>
+<given-names>M. A.</given-names>
+<surname>Garratt</surname>
+</string-name>, <string-name>
+<given-names>M. V.</given-names>
+<surname>Srinivasan</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Ravi</surname>
+</string-name>. <year>2024</year>. &#x0201c;<article-title>Honey Bee Foraging Behaviour Can Be Influenced by Preferences for Oscillating Flowers</article-title>.&#x0201d; <source>Animal Behaviour</source>
+<volume>214</volume>: <fpage>147</fpage>&#x02013;<lpage>156</lpage>. <pub-id pub-id-type="doi">10.1016/j.anbehav.2024.06.005</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0013"><mixed-citation publication-type="journal" id="ece371533-cit-0013">
+<string-name>
+<surname>Fisher</surname>, <given-names>K. E.</given-names>
+</string-name>, <string-name>
+<given-names>J. S.</given-names>
+<surname>Adelman</surname>
+</string-name>, and <string-name>
+<given-names>S. P.</given-names>
+<surname>Bradbury</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>Employing Very High Frequency (VHF) Radio Telemetry to Recreate Monarch Butterfly Flight Paths</article-title>.&#x0201d; <source>Environmental Entomology</source>
+<volume>49</volume>: <fpage>312</fpage>&#x02013;<lpage>323</lpage>. <pub-id pub-id-type="doi">10.1093/ee/nvaa019</pub-id>.<pub-id pub-id-type="pmid">32159219</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0014"><mixed-citation publication-type="journal" id="ece371533-cit-0014">
+<string-name>
+<surname>Fisher</surname>, <given-names>K. E.</given-names>
+</string-name>, and <string-name>
+<given-names>S. P.</given-names>
+<surname>Bradbury</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Estimating Perceptual Range of Female Monarch Butterflies (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content>) to Potted Vegetative Common Milkweed (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Asclepias syriaca</italic>
+</styled-content>) and Blooming Nectar Resources</article-title>.&#x0201d; <source>Environmental Entomology</source>
+<volume>50</volume>: <fpage>1028</fpage>&#x02013;<lpage>1036</lpage>. <pub-id pub-id-type="doi">10.1093/ee/nvab058</pub-id>.<pub-id pub-id-type="pmid">34184061</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0015"><mixed-citation publication-type="journal" id="ece371533-cit-0015">
+<string-name>
+<surname>Fisher</surname>, <given-names>K. E.</given-names>
+</string-name>, and <string-name>
+<given-names>S. P.</given-names>
+<surname>Bradbury</surname>
+</string-name>. <year>2022</year>. &#x0201c;<article-title>Influence of Habitat Quality and Resource Density on Breeding&#x02010;Season Female Monarch Butterfly <italic toggle="yes">Danaus plexippus</italic> Movement and Space Use in North&#x02010;Central USA Agroecosystem Landscapes</article-title>.&#x0201d; <source>Journal of Applied Ecology</source>
+<volume>59</volume>: <fpage>431</fpage>&#x02013;<lpage>443</lpage>. <pub-id pub-id-type="doi">10.1111/1365-2664.14061</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0016"><mixed-citation publication-type="journal" id="ece371533-cit-0016">
+<string-name>
+<surname>Fisher</surname>, <given-names>K. E.</given-names>
+</string-name>, <string-name>
+<given-names>P. M.</given-names>
+<surname>Dixon</surname>
+</string-name>, <string-name>
+<given-names>G.</given-names>
+<surname>Han</surname>
+</string-name>, <string-name>
+<given-names>J. S.</given-names>
+<surname>Adelman</surname>
+</string-name>, and <string-name>
+<given-names>S. P.</given-names>
+<surname>Bradbury</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Locating Large Insects Using Automated VHF Radio Telemetry With a Multi&#x02010;Antennae Array</article-title>.&#x0201d; <source>Methods in Ecology and Evolution</source>
+<volume>12</volume>: <fpage>494</fpage>&#x02013;<lpage>506</lpage>. <pub-id pub-id-type="doi">10.1111/2041-210x.13529</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0017"><mixed-citation publication-type="journal" id="ece371533-cit-0017">
+<string-name>
+<surname>Gadenne</surname>, <given-names>C.</given-names>
+</string-name>, <string-name>
+<given-names>R. B.</given-names>
+<surname>Barrozo</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Anton</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Plasticity in Insect Olfaction: To Smell or Not to Smell?</article-title>&#x0201d; <source>Annual Review of Entomology</source>
+<volume>61</volume>: <fpage>317</fpage>&#x02013;<lpage>333</lpage>. <pub-id pub-id-type="doi">10.1146/annurev-ento-010715-023523</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0018"><mixed-citation publication-type="book" id="ece371533-cit-0018">
+<string-name>
+<surname>Garlick</surname>, <given-names>K. M.</given-names>
+</string-name>
+<year>2007</year>. <source>Visual and Olfactory Sensory Systems Employed by Monarch Butterflies (Danaus plexippus) to Locate Their Milkweed Host Plants</source>. <publisher-name>Queen's University</publisher-name>.</mixed-citation></ref><ref id="ece371533-bib-0019"><mixed-citation publication-type="journal" id="ece371533-cit-0019">
+<string-name>
+<surname>Gegear</surname>, <given-names>R. J.</given-names>
+</string-name>
+<year>2021</year>. &#x0201c;<article-title>Exploring the Role of Cognition in the Annual Fall Migration of the Monarch Butterfly (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content>)</article-title>.&#x0201d; <source>Insects</source>
+<volume>12</volume>: <elocation-id>760</elocation-id>. <pub-id pub-id-type="doi">10.3390/insects12080760</pub-id>.<pub-id pub-id-type="pmid">34442326</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0020"><mixed-citation publication-type="journal" id="ece371533-cit-0020">
+<string-name>
+<surname>Giurfa</surname>, <given-names>M.</given-names>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>N&#x000fa;&#x000f1;ez</surname>
+</string-name>, <string-name>
+<given-names>L.</given-names>
+<surname>Chittka</surname>
+</string-name>, and <string-name>
+<given-names>R.</given-names>
+<surname>Menzel</surname>
+</string-name>. <year>1995</year>. &#x0201c;<article-title>Colour Preferences of Flower&#x02010;Naive Honeybees</article-title>.&#x0201d; <source>Journal of Comparative Physiology. A, Neuroethology, Sensory, Neural, and Behavioral Physiology</source>
+<volume>177</volume>: <fpage>247</fpage>&#x02013;<lpage>259</lpage>. <pub-id pub-id-type="doi">10.1007/bf00192415</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0021"><mixed-citation publication-type="journal" id="ece371533-cit-0021">
+<string-name>
+<surname>Grant</surname>, <given-names>T. J.</given-names>
+</string-name>, <string-name>
+<given-names>K. E.</given-names>
+<surname>Fisher</surname>
+</string-name>, <string-name>
+<given-names>N.</given-names>
+<surname>Krishnan</surname>
+</string-name>, et&#x000a0;al. <year>2022</year>. &#x0201c;<article-title>Monarch Butterfly Ecology, Behavior, and Vulnerabilities in North Central United States Agricultural Landscapes</article-title>.&#x0201d; <source>Bioscience</source>
+<volume>72</volume>: <fpage>1176</fpage>&#x02013;<lpage>1203</lpage>. <pub-id pub-id-type="doi">10.1093/biosci/biac094</pub-id>.<pub-id pub-id-type="pmid">36451972</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0022"><mixed-citation publication-type="journal" id="ece371533-cit-0022">
+<string-name>
+<surname>Gumbert</surname>, <given-names>A.</given-names>
+</string-name>
+<year>2000</year>. &#x0201c;<article-title>Color Choices by Bumble Bees (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Bombus terrestris</italic>
+</styled-content>): Innate Preferences and Generalization After Learning</article-title>.&#x0201d; <source>Behavioral Ecology and Sociobiology</source>
+<volume>48</volume>: <fpage>36</fpage>&#x02013;<lpage>43</lpage>. <pub-id pub-id-type="doi">10.1007/s002650000213</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0023"><mixed-citation publication-type="journal" id="ece371533-cit-0023">
+<string-name>
+<surname>Ilse</surname>, <given-names>D.</given-names>
+</string-name>, and <string-name>
+<given-names>V. G.</given-names>
+<surname>Vaidya</surname>
+</string-name>. <year>1956</year>. &#x0201c;<article-title>Spontaneous Feeding Response to Colours in <italic toggle="yes">Papilio demoleus</italic> L</article-title>.&#x0201d; <source>Proceedings/Indian Academy of Sciences</source>
+<volume>43</volume>: <fpage>23</fpage>&#x02013;<lpage>31</lpage>. <pub-id pub-id-type="doi">10.1007/bf03050215</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0024"><mixed-citation publication-type="journal" id="ece371533-cit-0024">
+<string-name>
+<surname>Imafuku</surname>, <given-names>M.</given-names>
+</string-name>, and <string-name>
+<given-names>T.</given-names>
+<surname>Ohtani</surname>
+</string-name>. <year>2006</year>. &#x0201c;<article-title>Analysis of Coordinated Circling and Linear Flights of a Lycaenid Butterfly Species</article-title>.&#x0201d; <source>Naturwissenschaften</source>
+<volume>93</volume>: <fpage>131</fpage>&#x02013;<lpage>135</lpage>. <pub-id pub-id-type="doi">10.1007/s00114-005-0074-x</pub-id>.<pub-id pub-id-type="pmid">16404588</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0025"><mixed-citation publication-type="journal" id="ece371533-cit-0025">
+<string-name>
+<surname>James</surname>, <given-names>D.</given-names>
+</string-name>
+<year>1986</year>. &#x0201c;<article-title>Effect of Temperature Upon Energy Reserves of the Monarch Butterfly, <italic toggle="yes">Danaus plexippus</italic> (L) (Lepidoptera, Danaidae)</article-title>.&#x0201d; <source>Australian Journal of Zoology</source>
+<volume>34</volume>: <fpage>373</fpage>&#x02013;<lpage>379</lpage>. <pub-id pub-id-type="doi">10.1071/zo9860373</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0026"><mixed-citation publication-type="journal" id="ece371533-cit-0026">
+<string-name>
+<surname>Jernigan</surname>, <given-names>C. M.</given-names>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Halby</surname>
+</string-name>, <string-name>
+<given-names>R. C.</given-names>
+<surname>Gerkin</surname>
+</string-name>, <string-name>
+<given-names>I.</given-names>
+<surname>Sinakevitch</surname>
+</string-name>, <string-name>
+<given-names>F.</given-names>
+<surname>Locatelli</surname>
+</string-name>, and <string-name>
+<given-names>B. H.</given-names>
+<surname>Smith</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>Experience&#x02010;Dependent Tuning of Early Olfactory Processing in the Adult Honey Bee, <italic toggle="yes">Apis mellifera</italic>
+</article-title>.&#x0201d; <source>Journal of Experimental Biology</source>
+<volume>223</volume>: <elocation-id>jeb206748</elocation-id>. <pub-id pub-id-type="doi">10.1242/jeb.206748</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0027"><mixed-citation publication-type="journal" id="ece371533-cit-0027">
+<string-name>
+<surname>Kadow</surname>, <given-names>I. C. G.</given-names>
+</string-name>
+<year>2019</year>. &#x0201c;<article-title>State&#x02010;Dependent Plasticity of Innate Behavior in Fruit Flies</article-title>.&#x0201d; <source>Current Opinion in Neurobiology</source>
+<volume>54</volume>: <fpage>60</fpage>&#x02013;<lpage>65</lpage>. <pub-id pub-id-type="doi">10.1016/j.conb.2018.08.014</pub-id>.<pub-id pub-id-type="pmid">30219668</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0028"><mixed-citation publication-type="journal" id="ece371533-cit-0028">
+<string-name>
+<surname>Kelber</surname>, <given-names>A.</given-names>
+</string-name>
+<year>1997</year>. &#x0201c;<article-title>Innate Preferences for Flower Features in the Hawkmoth <italic toggle="yes">Macroglossum stellatarum</italic>
+</article-title>.&#x0201d; <source>Journal of Experimental Biology</source>
+<volume>200</volume>: <fpage>827</fpage>&#x02013;<lpage>836</lpage>. <pub-id pub-id-type="doi">10.1242/jeb.200.4.827</pub-id>.<pub-id pub-id-type="pmid">9318606</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0029"><mixed-citation publication-type="journal" id="ece371533-cit-0029">
+<string-name>
+<surname>Kelber</surname>, <given-names>A.</given-names>
+</string-name>
+<year>2002</year>. &#x0201c;<article-title>Pattern Discrimination in a Hawkmoth: Innate Preferences, Learning Performance and Ecology</article-title>.&#x0201d; <source>Proceedings of the Royal Society of London, Series B: Biological Sciences</source>
+<volume>269</volume>: <fpage>2573</fpage>&#x02013;<lpage>2577</lpage>. <pub-id pub-id-type="doi">10.1098/rspb.2002.2201</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0030"><mixed-citation publication-type="journal" id="ece371533-cit-0030">
+<string-name>
+<surname>Konnerth</surname>, <given-names>M. M.</given-names>
+</string-name>, <string-name>
+<given-names>J. J.</given-names>
+<surname>Foster</surname>
+</string-name>, <string-name>
+<given-names>B.</given-names>
+<surname>El Jundi</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Spaethe</surname>
+</string-name>, and <string-name>
+<given-names>M. J.</given-names>
+<surname>Beetz</surname>
+</string-name>. <year>2023</year>. &#x0201c;<article-title>Monarch Butterflies Memorize the Spatial Location of a Food Source</article-title>.&#x0201d; <source>Proceedings of the Royal Society B</source>
+<volume>290</volume>: <elocation-id>20231574</elocation-id>. <pub-id pub-id-type="doi">10.1098/rspb.2023.1574</pub-id>.<pub-id pub-id-type="pmid">38113939</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0031"><mixed-citation publication-type="journal" id="ece371533-cit-0031">
+<string-name>
+<surname>Kuenzinger</surname>, <given-names>W.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Kelber</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Weesner</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Travis</surname>
+</string-name>, <string-name>
+<given-names>R. A.</given-names>
+<surname>Raguso</surname>
+</string-name>, and <string-name>
+<given-names>J.</given-names>
+<surname>Goyret</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>Innate Colour Preferences of a Hawkmoth Depend on Visual Context</article-title>.&#x0201d; <source>Biology Letters</source>
+<volume>15</volume>: <elocation-id>20180886</elocation-id>. <pub-id pub-id-type="doi">10.1098/rsbl.2018.0886</pub-id>.<pub-id pub-id-type="pmid">30890068</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0032"><mixed-citation publication-type="journal" id="ece371533-cit-0032">
+<string-name>
+<surname>Kunte</surname>, <given-names>K.</given-names>
+</string-name>
+<year>2007</year>. &#x0201c;<article-title>Allometry and Functional Constraints on Proboscis Lengths in Butterflies</article-title>.&#x0201d; <source>Functional Ecology</source>
+<volume>21</volume>: <fpage>982</fpage>&#x02013;<lpage>987</lpage>. <pub-id pub-id-type="doi">10.1111/j.1365-2435.2007.01299.x</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0033"><mixed-citation publication-type="journal" id="ece371533-cit-0033">
+<string-name>
+<surname>Leonard</surname>, <given-names>A. S.</given-names>
+</string-name>, and <string-name>
+<given-names>P.</given-names>
+<surname>Masek</surname>
+</string-name>. <year>2014</year>. &#x0201c;<article-title>Multisensory Integration of Colors and Scents: Insights From Bees and Flowers</article-title>.&#x0201d; <source>Journal of Comparative Physiology. A</source>
+<volume>200</volume>: <fpage>463</fpage>&#x02013;<lpage>474</lpage>. <pub-id pub-id-type="doi">10.1007/s00359-014-0904-4</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0034"><mixed-citation publication-type="journal" id="ece371533-cit-0034">
+<string-name>
+<surname>Lunau</surname>, <given-names>K.</given-names>
+</string-name>, and <string-name>
+<given-names>E. J.</given-names>
+<surname>Maier</surname>
+</string-name>. <year>1995</year>. &#x0201c;<article-title>Innate Colour Preferences of Flower Visitors</article-title>.&#x0201d; <source>Journal of Comparative Physiology A</source>
+<volume>177</volume>: <fpage>1</fpage>&#x02013;<lpage>19</lpage>. <pub-id pub-id-type="doi">10.1007/bf00243394</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0035"><mixed-citation publication-type="book" id="ece371533-cit-0035">
+<string-name>
+<surname>Malcolm</surname>, <given-names>S. B.</given-names>
+</string-name>, <string-name>
+<given-names>B. J.</given-names>
+<surname>Cockrell</surname>
+</string-name>, and <string-name>
+<given-names>L. P.</given-names>
+<surname>Brower</surname>
+</string-name>. <year>1993</year>. &#x0201c;<part-title>Spring Recolonization of Eastern North America by the Monarch Butterfly: Successive Brood or Single Sweep Migration?</part-title>&#x0201d; In <source>Biology and Conservation of the Monarch Butterfly</source>, edited by <person-group person-group-type="editor">
+<string-name>
+<given-names>S. B.</given-names>
+<surname>Malcolm</surname>
+</string-name>
+</person-group> and <person-group person-group-type="editor">
+<string-name>
+<given-names>M. P.</given-names>
+<surname>Zalucki</surname>
+</string-name>
+</person-group>. <publisher-name>Natural History Museum of Los Angeles County</publisher-name>.</mixed-citation></ref><ref id="ece371533-bib-0036"><mixed-citation publication-type="journal" id="ece371533-cit-0036">
+<string-name>
+<surname>McKenzie&#x02010;Smith</surname>, <given-names>G. C.</given-names>
+</string-name>, <string-name>
+<given-names>S. W.</given-names>
+<surname>Wolf</surname>
+</string-name>, <string-name>
+<given-names>J. F.</given-names>
+<surname>Ayroles</surname>
+</string-name>, and <string-name>
+<given-names>J. W.</given-names>
+<surname>Shaevitz</surname>
+</string-name>. <year>2025</year>. &#x0201c;<article-title>Capturing Continuous, Long Timescale Behavioral Changes in <italic toggle="yes">Drosophila melanogaster</italic> Postural Data</article-title>.&#x0201d; <source>PLoS Computational Biology</source>
+<volume>21</volume>: <elocation-id>e1012753</elocation-id>. <pub-id pub-id-type="doi">10.1371/journal.pcbi.1012753</pub-id>.<pub-id pub-id-type="pmid">39899595</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0037"><mixed-citation publication-type="journal" id="ece371533-cit-0037">
+<string-name>
+<surname>Milet&#x02010;Pinheiro</surname>, <given-names>P.</given-names>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Herz</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>D&#x000f6;tterl</surname>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Ayasse</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Host Choice in a Bivoltine Bee: How Sensory Constraints Shape Innate Foraging Behaviors</article-title>.&#x0201d; <source>BMC Ecology</source>
+<volume>16</volume>: <fpage>20</fpage>. <pub-id pub-id-type="doi">10.1186/s12898-016-0074-z</pub-id>.<pub-id pub-id-type="pmid">27068328</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0038"><mixed-citation publication-type="journal" id="ece371533-cit-0038">
+<string-name>
+<surname>Minoli</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>I.</given-names>
+<surname>Kauer</surname>
+</string-name>, <string-name>
+<given-names>V.</given-names>
+<surname>Colson</surname>
+</string-name>, et&#x000a0;al. <year>2012</year>. &#x0201c;<article-title>Brief Exposure to Sensory Cues Elicits Stimulus&#x02010;Nonspecific General Sensitization in an Insect</article-title>.&#x0201d; <source>PLoS One</source>
+<volume>7</volume>: <elocation-id>e34141</elocation-id>. <pub-id pub-id-type="doi">10.1371/journal.pone.0034141</pub-id>.<pub-id pub-id-type="pmid">22457821</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0039"><mixed-citation publication-type="miscellaneous" id="ece371533-cit-0039">
+<string-name>
+<surname>Mishra</surname>, <given-names>A.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Jain</surname>
+</string-name>, <string-name>
+<given-names>P. S.</given-names>
+<surname>Iyer</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Suryanarayanan</surname>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Nordstr&#x000f6;m</surname>
+</string-name>, and <string-name>
+<given-names>S. B.</given-names>
+<surname>Olsson</surname>
+</string-name>. <year>2024</year>. <article-title>&#x0201c;Innate Floral Object Identification in the Generalist Solitary Hoverfly Pollinator <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Eristalinus aeneus</italic>
+</styled-content>.&#x0201d; Preprint, bioRxiv, 2024.02.08.579518</article-title>. <pub-id pub-id-type="doi">10.1101/2024.02.08.579518</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0040"><mixed-citation publication-type="journal" id="ece371533-cit-0040">
+<string-name>
+<surname>Mukherjee</surname>, <given-names>S. S.</given-names>
+</string-name>, and <string-name>
+<given-names>A.</given-names>
+<surname>Hossain</surname>
+</string-name>. <year>2022</year>. &#x0201c;<article-title>Role of Morphological Variables of the Visitor Butterfly Species in Relation to Their Foraging Behaviour on <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Lantana camara</italic>
+</styled-content>: Implication for Conservation</article-title>.&#x0201d; <source>Acta Ecologica Sinica</source>
+<volume>42</volume>: <fpage>143</fpage>&#x02013;<lpage>148</lpage>. <pub-id pub-id-type="doi">10.1016/j.chnaes.2020.11.003</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0041"><mixed-citation publication-type="journal" id="ece371533-cit-0041">
+<string-name>
+<surname>Mukherjee</surname>, <given-names>S. S.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Mondal</surname>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Jung</surname>
+</string-name>, and <string-name>
+<given-names>A.</given-names>
+<surname>Hossain</surname>
+</string-name>. <year>2024</year>. &#x0201c;<article-title>Morphological Variables of the Butterfly Guild and Their Functional Role in Foraging Behavior on the Visiting Plants: Optimization by Artificial Neural Network Model</article-title>.&#x0201d; <source>Food Webs</source>
+<volume>38</volume>: <elocation-id>e00329</elocation-id>. <pub-id pub-id-type="doi">10.1016/j.fooweb.2023.e00329</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0042"><mixed-citation publication-type="journal" id="ece371533-cit-0042">
+<string-name>
+<surname>Nathan</surname>, <given-names>R.</given-names>
+</string-name>, <string-name>
+<given-names>W. M.</given-names>
+<surname>Getz</surname>
+</string-name>, <string-name>
+<given-names>E.</given-names>
+<surname>Revilla</surname>
+</string-name>, et&#x000a0;al. <year>2008</year>. &#x0201c;<article-title>A Movement Ecology Paradigm for Unifying Organismal Movement Research</article-title>.&#x0201d; <source>Proceedings of the National Academy of Sciences of the United States of America</source>
+<volume>105</volume>: <fpage>19052</fpage>&#x02013;<lpage>19059</lpage>. <pub-id pub-id-type="doi">10.1073/pnas.0800375105</pub-id>.<pub-id pub-id-type="pmid">19060196</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0043"><mixed-citation publication-type="journal" id="ece371533-cit-0043">
+<string-name>
+<surname>Nordstr&#x000f6;m</surname>, <given-names>K.</given-names>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Dahlbom</surname>
+</string-name>, <string-name>
+<given-names>V. S.</given-names>
+<surname>Pragadheesh</surname>
+</string-name>, et&#x000a0;al. <year>2017</year>. &#x0201c;<article-title>In Situ Modeling of Multimodal Floral Cues Attracting Wild Pollinators Across Environments</article-title>.&#x0201d; <source>Proceedings of the National Academy of Sciences</source>
+<volume>114</volume>: <fpage>13218</fpage>&#x02013;<lpage>13223</lpage>. <pub-id pub-id-type="doi">10.1073/pnas.1714414114</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0044"><mixed-citation publication-type="journal" id="ece371533-cit-0044">
+<string-name>
+<surname>&#x000d4;mura</surname>, <given-names>H.</given-names>
+</string-name>, and <string-name>
+<given-names>K.</given-names>
+<surname>Honda</surname>
+</string-name>. <year>2005</year>. &#x0201c;<article-title>Priority of Color Over Scent During Flower Visitation by Adult <italic toggle="yes">Vanessa indica</italic> Butterflies</article-title>.&#x0201d; <source>Oecologia</source>
+<volume>142</volume>: <fpage>588</fpage>&#x02013;<lpage>596</lpage>. <pub-id pub-id-type="doi">10.1007/s00442-004-1761-6</pub-id>.<pub-id pub-id-type="pmid">15688217</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0045"><mixed-citation publication-type="book" id="ece371533-cit-0045">
+<string-name>
+<surname>Opp</surname>, <given-names>S. B.</given-names>
+</string-name>, and <string-name>
+<given-names>R. J.</given-names>
+<surname>Prokopy</surname>
+</string-name>. <year>1986</year>. &#x0201c;<part-title>Insect&#x02010;Plant Interactions</part-title>.&#x0201d; In <source>Springer Series in Experimental Entomology</source>, <fpage>1</fpage>&#x02013;<lpage>22</lpage>. <publisher-name>Springer</publisher-name>. <pub-id pub-id-type="doi">10.1007/978-1-4612-4910-8_1</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0046"><mixed-citation publication-type="journal" id="ece371533-cit-0046">
+<string-name>
+<surname>Parlin</surname>, <given-names>A. F.</given-names>
+</string-name>, <string-name>
+<given-names>S. M.</given-names>
+<surname>Stratton</surname>
+</string-name>, and <string-name>
+<given-names>P. A.</given-names>
+<surname>Guerra</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Assaying Lepidopteran Flight Directionality With Non&#x02010;Invasive Methods That Permit Repeated Use and Release After Testing</article-title>.&#x0201d; <source>Methods in Ecology and Evolution</source>
+<volume>12</volume>: <fpage>1699</fpage>&#x02013;<lpage>1704</lpage>. <pub-id pub-id-type="doi">10.1111/2041-210x.13648</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0047"><mixed-citation publication-type="journal" id="ece371533-cit-0047">
+<string-name>
+<surname>Raguso</surname>, <given-names>R. A.</given-names>
+</string-name>, and <string-name>
+<given-names>M. A.</given-names>
+<surname>Willis</surname>
+</string-name>. <year>2005</year>. &#x0201c;<article-title>Synergy Between Visual and Olfactory Cues in Nectar Feeding by Wild Hawkmoths, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Manduca sexta</italic>
+</styled-content>
+</article-title>.&#x0201d; <source>Animal Behaviour</source>
+<volume>69</volume>: <fpage>407</fpage>&#x02013;<lpage>418</lpage>. <pub-id pub-id-type="doi">10.1016/j.anbehav.2004.04.015</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0048"><mixed-citation publication-type="journal" id="ece371533-cit-0048">
+<string-name>
+<surname>Raine</surname>, <given-names>N. E.</given-names>
+</string-name>, and <string-name>
+<given-names>L.</given-names>
+<surname>Chittka</surname>
+</string-name>. <year>2007</year>. &#x0201c;<article-title>The Adaptive Significance of Sensory Bias in a Foraging Context: Floral Colour Preferences in the Bumblebee <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Bombus terrestris</italic>
+</styled-content>
+</article-title>.&#x0201d; <source>PLoS One</source>
+<volume>2</volume>: <elocation-id>e556</elocation-id>. <pub-id pub-id-type="doi">10.1371/journal.pone.0000556</pub-id>.<pub-id pub-id-type="pmid">17579727</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0049"><mixed-citation publication-type="journal" id="ece371533-cit-0049">
+<string-name>
+<surname>Rausher</surname>, <given-names>M. D.</given-names>
+</string-name>
+<year>1978</year>. &#x0201c;<article-title>Search Image for Leaf Shape in a Butterfly</article-title>.&#x0201d; <source>Science</source>
+<volume>200</volume>: <fpage>1071</fpage>&#x02013;<lpage>1073</lpage>. <pub-id pub-id-type="doi">10.1126/science.200.4345.1071</pub-id>.<pub-id pub-id-type="pmid">17740703</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0050"><mixed-citation publication-type="journal" id="ece371533-cit-0050">
+<string-name>
+<surname>Riffell</surname>, <given-names>J. A.</given-names>
+</string-name>
+<year>2020</year>. &#x0201c;<article-title>The Neuroecology of Insect&#x02010;Plant Interactions: The Importance of Physiological State and Sensory Integration</article-title>.&#x0201d; <source>Current Opinion in Insect Science</source>
+<volume>42</volume>: <fpage>118</fpage>&#x02013;<lpage>124</lpage>. <pub-id pub-id-type="doi">10.1016/j.cois.2020.10.007</pub-id>.<pub-id pub-id-type="pmid">33127509</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0051"><mixed-citation publication-type="journal" id="ece371533-cit-0051">
+<string-name>
+<surname>Riffell</surname>, <given-names>J. A.</given-names>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Alarc&#x000f3;n</surname>
+</string-name>, <string-name>
+<given-names>L.</given-names>
+<surname>Abrell</surname>
+</string-name>, <string-name>
+<given-names>G.</given-names>
+<surname>Davidowitz</surname>
+</string-name>, <string-name>
+<given-names>J. L.</given-names>
+<surname>Bronstein</surname>
+</string-name>, and <string-name>
+<given-names>J. G.</given-names>
+<surname>Hildebrand</surname>
+</string-name>. <year>2008</year>. &#x0201c;<article-title>Behavioral Consequences of Innate Preferences and Olfactory Learning in Hawkmoth&#x02013;Flower Interactions</article-title>.&#x0201d; <source>Proceedings of the National Academy of Sciences of the United States of America</source>
+<volume>105</volume>: <fpage>3404</fpage>&#x02013;<lpage>3409</lpage>. <pub-id pub-id-type="doi">10.1073/pnas.0709811105</pub-id>.<pub-id pub-id-type="pmid">18305169</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0052"><mixed-citation publication-type="journal" id="ece371533-cit-0052">
+<string-name>
+<surname>Robertson</surname>, <given-names>G. F.</given-names>
+</string-name>, <string-name>
+<given-names>M. P.</given-names>
+<surname>Zalucki</surname>
+</string-name>, and <string-name>
+<given-names>T. D.</given-names>
+<surname>Paine</surname>
+</string-name>. <year>2015</year>. &#x0201c;<article-title>Larval Host Choice of the Monarch Butterfly (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content> L.) on Four Native California Desert Milkweed Species</article-title>.&#x0201d; <source>Journal of Insect Behavior</source>
+<volume>28</volume>: <fpage>582</fpage>&#x02013;<lpage>592</lpage>. <pub-id pub-id-type="doi">10.1007/s10905-015-9524-2</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0053"><mixed-citation publication-type="journal" id="ece371533-cit-0053">
+<string-name>
+<surname>Roth</surname>, <given-names>E.</given-names>
+</string-name>, <string-name>
+<given-names>R. W.</given-names>
+<surname>Hall</surname>
+</string-name>, <string-name>
+<given-names>T. L.</given-names>
+<surname>Daniel</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Sponberg</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Integration of Parallel Mechanosensory and Visual Pathways Resolved Through Sensory Conflict</article-title>.&#x0201d; <source>Proceedings of the National Academy of Sciences</source>
+<volume>113</volume>: <fpage>12832</fpage>&#x02013;<lpage>12837</lpage>. <pub-id pub-id-type="doi">10.1073/pnas.1522419113</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0054"><mixed-citation publication-type="journal" id="ece371533-cit-0054">
+<string-name>
+<surname>Rusman</surname>, <given-names>Q.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Cusumano</surname>
+</string-name>, and <string-name>
+<given-names>I.</given-names>
+<surname>Vosteen</surname>
+</string-name>. <year>2024</year>. &#x0201c;<article-title>En Route to Resources: Foraging Strategies of Plant&#x02010;Associated Insects to Identify Resources in Complex Dynamic Environments</article-title>.&#x0201d; <source>Functional Ecology</source>
+<volume>38</volume>: <fpage>1664</fpage>&#x02013;<lpage>1682</lpage>. <pub-id pub-id-type="doi">10.1111/1365-2435.14606</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0055"><mixed-citation publication-type="journal" id="ece371533-cit-0055">
+<string-name>
+<surname>Scherer</surname>, <given-names>C.</given-names>
+</string-name>, and <string-name>
+<given-names>G.</given-names>
+<surname>Kolb</surname>
+</string-name>. <year>1987a</year>. &#x0201c;<article-title>Behavioral Experiments on the Visual Processing of Color Stimuli in <italic toggle="yes">Pieris brassicae</italic> L. (Lepidoptera)</article-title>.&#x0201d; <source>Journal of Comparative Physiology. A, Neuroethology, Sensory, Neural, and Behavioral Physiology</source>
+<volume>160</volume>: <fpage>645</fpage>&#x02013;<lpage>656</lpage>. <pub-id pub-id-type="doi">10.1007/bf00611937</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0056"><mixed-citation publication-type="journal" id="ece371533-cit-0056">
+<string-name>
+<surname>Scherer</surname>, <given-names>C.</given-names>
+</string-name>, and <string-name>
+<given-names>G.</given-names>
+<surname>Kolb</surname>
+</string-name>. <year>1987b</year>. &#x0201c;<article-title>The Influence of Color Stimuli on Visually Controlled Behavior in <italic toggle="yes">Aglais urticae</italic> L. and <italic toggle="yes">Pararge aegeria</italic> L. (Lepidoptera)</article-title>.&#x0201d; <source>Journal of Comparative Physiology. A, Neuroethology, Sensory, Neural, and Behavioral Physiology</source>
+<volume>161</volume>: <fpage>891</fpage>&#x02013;<lpage>898</lpage>. <pub-id pub-id-type="doi">10.1007/bf00610230</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0057"><mixed-citation publication-type="journal" id="ece371533-cit-0057">
+<string-name>
+<surname>Tang</surname>, <given-names>Y.&#x02010;C.</given-names>
+</string-name>, <string-name>
+<given-names>C.&#x02010;L.</given-names>
+<surname>Zhou</surname>
+</string-name>, <string-name>
+<given-names>X.&#x02010;M.</given-names>
+<surname>Chen</surname>
+</string-name>, and <string-name>
+<given-names>H.</given-names>
+<surname>Zheng</surname>
+</string-name>. <year>2013</year>. &#x0201c;<article-title>Visual and Olfactory Responses of Seven Butterfly Species During Foraging</article-title>.&#x0201d; <source>Journal of Insect Behavior</source>
+<volume>26</volume>: <fpage>387</fpage>&#x02013;<lpage>401</lpage>. <pub-id pub-id-type="doi">10.1007/s10905-012-9358-0</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0058"><mixed-citation publication-type="journal" id="ece371533-cit-0058">
+<string-name>
+<surname>Taylor</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>L.</given-names>
+<surname>Kumar</surname>
+</string-name>, <string-name>
+<given-names>N.</given-names>
+<surname>Reid</surname>
+</string-name>, and <string-name>
+<given-names>D. J.</given-names>
+<surname>Kriticos</surname>
+</string-name>. <year>2012</year>. &#x0201c;<article-title>Climate Change and the Potential Distribution of an Invasive Shrub, <italic toggle="yes">Lantana camara</italic> L</article-title>.&#x0201d; <source>PLoS One</source>
+<volume>7</volume>: <elocation-id>e35565</elocation-id>. <pub-id pub-id-type="doi">10.1371/journal.pone.0035565</pub-id>.<pub-id pub-id-type="pmid">22536408</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0059"><mixed-citation publication-type="journal" id="ece371533-cit-0059">
+<string-name>
+<surname>Tiple</surname>, <given-names>A. D.</given-names>
+</string-name>, <string-name>
+<given-names>A. M.</given-names>
+<surname>Khurad</surname>
+</string-name>, and <string-name>
+<given-names>R. L. H.</given-names>
+<surname>Dennis</surname>
+</string-name>. <year>2009</year>. &#x0201c;<article-title>Adult Butterfly Feeding&#x02013;Nectar Flower Associations: Constraints of Taxonomic Affiliation, Butterfly, and Nectar Flower Morphology</article-title>.&#x0201d; <source>Journal of Natural History</source>
+<volume>43</volume>: <fpage>855</fpage>&#x02013;<lpage>884</lpage>. <pub-id pub-id-type="doi">10.1080/00222930802610568</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0060"><mixed-citation publication-type="journal" id="ece371533-cit-0060">
+<string-name>
+<surname>Urquhart</surname>, <given-names>F. A.</given-names>
+</string-name>, and <string-name>
+<given-names>N. R.</given-names>
+<surname>Urquhart</surname>
+</string-name>. <year>1978</year>. &#x0201c;<article-title>Autumnal Migration Routes of the Eastern Population of the Monarch Butterfly (<italic toggle="yes">Danaus p. plexippus</italic> L.; Danaidae; Lepidoptera) in North America to the Overwintering Site in the Neovolcanic Plateau of Mexico</article-title>.&#x0201d; <source>Canadian Journal of Zoology</source>
+<volume>56</volume>: <fpage>1759</fpage>&#x02013;<lpage>1764</lpage>. <pub-id pub-id-type="doi">10.1139/z78-240</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0061"><mixed-citation publication-type="journal" id="ece371533-cit-0061">
+<string-name>
+<surname>Vaidya</surname>, <given-names>V. G.</given-names>
+</string-name>
+<year>1969</year>. &#x0201c;<article-title>Form Perception in <italic toggle="yes">Papilio demoleus</italic> L. (Papilionidae, Lepidoptera)</article-title>.&#x0201d; <source>Behaviour</source>
+<volume>33</volume>: <fpage>212</fpage>&#x02013;<lpage>221</lpage>. <pub-id pub-id-type="doi">10.1163/156853969x00071</pub-id>.<pub-id pub-id-type="pmid">5795200</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0062"><mixed-citation publication-type="journal" id="ece371533-cit-0062">
+<string-name>
+<surname>Weiss</surname>, <given-names>M. R.</given-names>
+</string-name>
+<year>1997</year>. &#x0201c;<article-title>Innate Colour Preferences and Flexible Colour Learning in the Pipevine Swallowtail</article-title>.&#x0201d; <source>Animal Behaviour</source>
+<volume>53</volume>: <fpage>1043</fpage>&#x02013;<lpage>1052</lpage>. <pub-id pub-id-type="doi">10.1006/anbe.1996.0357</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0063"><mixed-citation publication-type="journal" id="ece371533-cit-0063">
+<string-name>
+<surname>Yoshida</surname>, <given-names>M.</given-names>
+</string-name>, <string-name>
+<given-names>Y.</given-names>
+<surname>Itoh</surname>
+</string-name>, <string-name>
+<given-names>H.</given-names>
+<surname>&#x000d4;mura</surname>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Arikawa</surname>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Kinoshita</surname>
+</string-name>. <year>2015</year>. &#x0201c;<article-title>Plant Scents Modify Innate Colour Preference in Foraging Swallowtail Butterflies</article-title>.&#x0201d; <source>Biology Letters</source>
+<volume>11</volume>: <elocation-id>20150390</elocation-id>. <pub-id pub-id-type="doi">10.1098/rsbl.2015.0390</pub-id>.<pub-id pub-id-type="pmid">26179802</pub-id>
+</mixed-citation></ref><ref id="ece371533-bib-0064"><mixed-citation publication-type="journal" id="ece371533-cit-0064">
+<string-name>
+<surname>Zalucki</surname>, <given-names>M. P.</given-names>
+</string-name>
+<year>1983</year>. &#x0201c;<article-title>Simulation of Movement and Egg Laying in <italic toggle="yes">Danaus plexippus</italic> (Lepidoptera: Nymphalidae)</article-title>.&#x0201d; <source>Researches on Population Ecology</source>
+<volume>25</volume>: <fpage>353</fpage>&#x02013;<lpage>365</lpage>.</mixed-citation></ref><ref id="ece371533-bib-0065"><mixed-citation publication-type="journal" id="ece371533-cit-0065">
+<string-name>
+<surname>Zalucki</surname>, <given-names>M. P.</given-names>
+</string-name>, and <string-name>
+<given-names>R. L.</given-names>
+<surname>Kitching</surname>
+</string-name>. <year>1982</year>. &#x0201c;<article-title>The Analysis and Description of Movement in Adult <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Danaus plexippus</italic>
+</styled-content> L. (Lepidoptera: Danainae)</article-title>.&#x0201d; <source>Behaviour</source>
+<volume>80</volume>: <fpage>174</fpage>&#x02013;<lpage>197</lpage>. <pub-id pub-id-type="doi">10.1163/156853982x00346</pub-id>.</mixed-citation></ref><ref id="ece371533-bib-0066"><mixed-citation publication-type="journal" id="ece371533-cit-0066">
+<string-name>
+<surname>Zalucki</surname>, <given-names>M. P.</given-names>
+</string-name>, and <string-name>
+<given-names>R. L.</given-names>
+<surname>Kitching</surname>
+</string-name>. <year>1984</year>. &#x0201c;<article-title>The Dynamics of Adult <italic toggle="yes">Danaus plexippus</italic> L. (Danaidae) Within Patches of Its Food Plant, <italic toggle="yes">Asclepias</italic> spp</article-title>.&#x0201d; <source>Journal of the Lepidopterists' Society</source>
+<volume>38</volume>: <fpage>209</fpage>&#x02013;<lpage>219</lpage>.</mixed-citation></ref><ref id="ece371533-bib-0067"><mixed-citation publication-type="journal" id="ece371533-cit-0067">
+<string-name>
+<surname>Zjacic</surname>, <given-names>N.</given-names>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Scholz</surname>
+</string-name>. <year>2022</year>. &#x0201c;<article-title>The Role of Food Odor in Invertebrate Foraging</article-title>.&#x0201d; <source>Genes, Brain, and Behavior</source>
+<volume>21</volume>: <elocation-id>e12793</elocation-id>. <pub-id pub-id-type="doi">10.1111/gbb.12793</pub-id>.<pub-id pub-id-type="pmid">34978135</pub-id>
+</mixed-citation></ref></ref-list></back></article>

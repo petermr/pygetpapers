@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40547798
+source,MED
+pmid,40547798
+pmcid,PMC12179194
+fullTextIdList,{'fullTextId': 'PMC12179194'}
+doi,10.3389/fmicb.2025.1521422
+title,Key mechanisms of plant-&lt;i&gt;Ralstonia solanacearum&lt;/i&gt; interaction in bacterial wilt pathogenesis.
+authorString,"Chachar Z, Xue X, Fang J, Chen M, Jiarui C, Chen W, Ahmed N, Chachar S, Narejo MU, Ahmed N, Fan L, Lai R, Qi Y."
+authorList,"{'author': [{'fullName': 'Chachar Z', 'firstName': 'Zaid', 'lastName': 'Chachar', 'initials': 'Z', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Xue X', 'firstName': 'Xiaoming', 'lastName': 'Xue', 'initials': 'X', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Fang J', 'firstName': 'Junteng', 'lastName': 'Fang', 'initials': 'J', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Chen M', 'firstName': 'Ming', 'lastName': 'Chen', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Jiarui C', 'firstName': 'Chen', 'lastName': 'Jiarui', 'initials': 'C', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Chen W', 'firstName': 'Weiwei', 'lastName': 'Chen', 'initials': 'W', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Nanfan and Seed Industry, Guangdong Academy of Science, Guangzhou, China.'}}}, {'fullName': 'Ahmed N', 'firstName': 'Nazir', 'lastName': 'Ahmed', 'initials': 'N', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Horticulture and Landscape Architecture, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Chachar S', 'firstName': 'Sadaruddin', 'lastName': 'Chachar', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Horticulture and Landscape Architecture, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Narejo MU', 'firstName': 'Mehar-Un-Nisa', 'lastName': 'Narejo', 'initials': 'MU', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Crop Physiology, Sindh Agriculture University, Tandojam, Pakistan.'}}}, {'fullName': 'Ahmed N', 'firstName': 'Naseer', 'lastName': 'Ahmed', 'initials': 'N', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Grassland Research (IGR), Chinese Academy of Agricultural Sciences, Hohhot, China.'}}}, {'fullName': 'Fan L', 'firstName': 'Lina', 'lastName': 'Fan', 'initials': 'L', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Lai R', 'firstName': 'Ruiqiang', 'lastName': 'Lai', 'initials': 'R', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}, {'fullName': 'Qi Y', 'firstName': 'Yongwen', 'lastName': 'Qi', 'initials': 'Y', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China.'}}}]}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'volume': '16', 'journalIssueId': '3895030', 'dateOfPublication': '2025', 'monthOfPublication': '0', 'yearOfPublication': '2025', 'printPublicationDate': '2025-01-01', 'journal': {'title': 'Frontiers in microbiology', 'ISOAbbreviation': 'Front Microbiol', 'medlineAbbreviation': 'Front Microbiol', 'NLMid': '101548977', 'ISSN': '1664-302X', 'ESSN': '1664-302X'}}"
+pubYear,2025
+pageInfo,1521422
+abstractText,"<i>Ralstonia solanacearum</i>, a Gram-negative bacterium, is the causative agent of bacterial wilt, a devastating disease affecting a wide range of economically important crops worldwide. This study explores the dynamic interactions between <i>Ralstonia solanacearum</i> and its host plants, emphasizing key mechanisms underlying infection and host response. The pathogen initiates infection through root wounds or natural openings, rapidly colonizing xylem vessels where it forms biofilms that disrupt water and nutrient transport. Its virulence is driven by cell wall-degrading enzymes and effector proteins delivered via a Type III secretion system, which subvert plant immune responses and facilitate systemic spread. In turn, host plants activate hormonal and stress-related defense pathways, though these are often manipulated by the pathogen, leading to disease progression and reduced productivity. This review highlights critical gaps in our understanding of molecular host-pathogen interactions and the role of environmental conditions in disease development. Addressing these gaps is vital for improving management strategies, with breeding for resistance and advanced biotechnological tools offering promising solutions to combat bacterial wilt and support sustainable agriculture. Future research should focus on leveraging genetic insights to enhance host resistance, employing advanced biotechnological tools to develop crop varieties with enhanced resistance to <i>Ralstonia solanacearum</i>, thereby promoting sustainable agriculture and strengthening global food security."
+affiliation,"College of Agriculture and Biology, Zhongkai University of Agriculture and Engineering, Guangzhou, China."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+keywordList,"{'keyword': ['Disease resistance', 'Ralstonia solanacearum', 'Bacterial wilt', 'virulence factors', 'Plant Immune Response']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3389/fmicb.2025.1521422'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12179194'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12179194?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,N
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-06-23
+firstIndexDate,2025-06-25
+fullTextReceivedDate,2025-06-23
+dateOfRevision,2025-06-25
+electronicPublicationDate,2025-06-06
+firstPublicationDate,2025-06-06

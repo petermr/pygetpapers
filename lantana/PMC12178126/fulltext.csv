@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40538879
+source,MED
+pmid,40538879
+pmcid,PMC12178126
+fullTextIdList,{'fullTextId': 'PMC12178126'}
+doi,10.3389/fpls.2025.1602951
+title,Systematic evaluation of plant metals/metalloids accumulation efficiency: a global synthesis of bioaccumulation and translocation factors.
+authorString,"Huang W, Zhang C, Zhu B, Liu X, Xiao H, Liu S, Shao H."
+authorList,"{'author': [{'fullName': 'Huang W', 'firstName': 'Wenbin', 'lastName': 'Huang', 'initials': 'W', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'College of Ecology and Environment, Chengdu University of Technology, Chengdu, Sichuan, China.'}, {'affiliation': 'College of Earth and Planetary Sciences, Chengdu University of Technology, Chengdu, Sichuan, China.'}]}}, {'fullName': 'Zhang C', 'firstName': 'Chengnian', 'lastName': 'Zhang', 'initials': 'C', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'The 4th Geological Brigade of Jiangxi Geological Bureau, Nanchang, Jiangxi, China.'}}}, {'fullName': 'Zhu B', 'firstName': 'Bowei', 'lastName': 'Zhu', 'initials': 'B', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Ecology and Environment, Chengdu University of Technology, Chengdu, Sichuan, China.'}}}, {'fullName': 'Liu X', 'firstName': 'Xiaoying', 'lastName': 'Liu', 'initials': 'X', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Ecology and Environment, Chengdu University of Technology, Chengdu, Sichuan, China.'}}}, {'fullName': 'Xiao H', 'firstName': 'Huxuan', 'lastName': 'Xiao', 'initials': 'H', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'College of Earth and Planetary Sciences, Chengdu University of Technology, Chengdu, Sichuan, China.'}, {'affiliation': 'The 4th Geological Brigade of Sichuan, Chengdu, Sichuan, China.'}]}}, {'fullName': 'Liu S', 'firstName': 'Shibin', 'lastName': 'Liu', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'College of Ecology and Environment, Chengdu University of Technology, Chengdu, Sichuan, China.'}, {'affiliation': 'College of Earth and Planetary Sciences, Chengdu University of Technology, Chengdu, Sichuan, China.'}, {'affiliation': 'State Key Laboratory of Geohazard Prevention and Geoenvironment Protection, Chengdu University of Technology, Chengdu, Sichuan, China.'}]}}, {'fullName': 'Shao H', 'firstName': 'Huaiyong', 'lastName': 'Shao', 'initials': 'H', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Geography and Planning, Chengdu University of Technology, Chengdu, Sichuan, China.'}}}]}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'volume': '16', 'journalIssueId': '3897180', 'dateOfPublication': '2025', 'monthOfPublication': '0', 'yearOfPublication': '2025', 'printPublicationDate': '2025-01-01', 'journal': {'title': 'Frontiers in plant science', 'ISOAbbreviation': 'Front Plant Sci', 'medlineAbbreviation': 'Front Plant Sci', 'NLMid': '101568200', 'ISSN': '1664-462X', 'ESSN': '1664-462X'}}"
+pubYear,2025
+pageInfo,1602951
+abstractText,"Phytoremediation, which involves the use of plants to accumulate and translocate metals and metalloids, represents a promising strategy for environmental remediation. The efficiency of phytoremediation is influenced by many factors such as metal/metalloid types, soil properties, and plant traits. It remains unclear how these factors modulate the efficiency of phytoremediation. We synthesized 547 data pairs from 82 studies to comprehensively evaluate the ability of hyperaccumulating plants to accumulate and translocate metals/metalloids under varying environmental conditions. The results show that cadmium (Cd), the most frequently investigated heavy metal, has the highest average bioaccumulation factor (BF) (10.0 ± 1.3) but a relatively low average translocation factor (TF) (1.8 ± 0.1). Aboveground biomass (AGB) of Cd hyperaccumulators is negatively correlated with BF but positively correlated with TF. Cd hyperaccumulating plants exhibit the highest accumulation capacity (maximal BF = 191), with roots outperforming aerial parts. The lower TF is mainly due to the lower AGB of Cd hyperaccumulating plants. In contrast, nickel (Ni) hyperaccumulators exhibit the highest TF, particularly in leaves and stems, indicating that Ni primarily accumulates in the aboveground parts. As soil pH increases, the BF of Cd and Zinc (Zn) decrease, whereas the BF of lead (Pb) increases, likely due to their distinct chemical behaviors under different pH conditions. Threshold concentrations were also identified for several for metals/metalloids (e.g., Cd: 214.8 mg kg<sup>-1</sup>; Pb: 31352.3 mg kg<sup>-1</sup>), beyond which BF falls below 1.0, indicating diminished accumulation efficiency due to toxicity constraints. In sum, these findings provide insights for optimizing phytoremediation strategies, aiding in plant selection and remediation condition optimization for improved efficiency and sustainability."
+affiliation,"College of Ecology and Environment, Chengdu University of Technology, Chengdu, Sichuan, China."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+keywordList,"{'keyword': ['Translocation', 'Phytoremediation', 'Hyperaccumulator', 'soils', 'bioaccumulation', 'Metals/metalloids']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3389/fpls.2025.1602951'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12178126'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12178126?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-06-20
+firstIndexDate,2025-06-20
+fullTextReceivedDate,2025-06-21
+dateOfRevision,2025-06-24
+electronicPublicationDate,2025-06-05
+firstPublicationDate,2025-06-05

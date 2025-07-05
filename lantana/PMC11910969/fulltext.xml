@@ -1,0 +1,1346 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3 20210610//EN" "JATS-archivearticle1-3-mathml3.dtd"> 
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.3" id="pei370044" xml:lang="en" article-type="research-article"><?DTDIdentifier.IdentifierValue -//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.1 20151215//EN?><?DTDIdentifier.IdentifierType public?><?SourceDTD.DTDName JATS-archive-oasis-article1-mathml3.dtd?><?SourceDTD.Version 1.1?><?ConverterInfo.XSLTName jats-oasis2jats3.xsl?><?ConverterInfo.Version 1?><?properties open_access?><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Plant Environ Interact</journal-id><journal-id journal-id-type="iso-abbrev">Plant Environ Interact</journal-id><journal-id journal-id-type="doi">10.1002/(ISSN)2575-6265</journal-id><journal-id journal-id-type="publisher-id">PEI3</journal-id><journal-title-group><journal-title>Plant-Environment Interactions</journal-title></journal-title-group><issn pub-type="epub">2575-6265</issn><publisher><publisher-name>John Wiley and Sons Inc.</publisher-name><publisher-loc>Hoboken</publisher-loc></publisher></journal-meta>
+<article-meta><article-id pub-id-type="pmcid">11910969</article-id><article-id pub-id-type="doi">10.1002/pei3.70044</article-id><article-id pub-id-type="publisher-id">PEI370044</article-id><article-id pub-id-type="other">PEI3-2024-0169.R1</article-id><article-categories><subj-group subj-group-type="overline"><subject>Research Article</subject></subj-group><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group></article-categories><title-group><article-title>Forest Structure, Diversity, and Regeneration in a Community&#x02010;Managed Forest of Nepal: A Model for Carbon Sequestration and Sustainable Management</article-title></title-group><contrib-group><contrib id="pei370044-cr-0001" contrib-type="author"><name><surname>Poudel</surname><given-names>Tika Ram</given-names></name><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0001-9869-022X</contrib-id><xref rid="pei370044-aff-0001" ref-type="aff">
+<sup>1</sup>
+</xref><xref rid="pei370044-aff-0002" ref-type="aff">
+<sup>2</sup>
+</xref><xref rid="pei370044-aff-0003" ref-type="aff">
+<sup>3</sup>
+</xref></contrib><contrib id="pei370044-cr-0002" contrib-type="author"><name><surname>Aryal</surname><given-names>Prakash Chandra</given-names></name><xref rid="pei370044-aff-0002" ref-type="aff">
+<sup>2</sup>
+</xref><xref rid="pei370044-aff-0003" ref-type="aff">
+<sup>3</sup>
+</xref></contrib><contrib id="pei370044-cr-0003" contrib-type="author" corresp="yes"><name><surname>Khan</surname><given-names>Muhammad Tayyab</given-names></name><xref rid="pei370044-aff-0004" ref-type="aff">
+<sup>4</sup>
+</xref><address><email>muhammadtayyab.khan@studenti.unipd.it</email></address></contrib><contrib id="pei370044-cr-0004" contrib-type="author"><name><surname>Roberts</surname><given-names>Nathan James</given-names></name><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0001-8299-4499</contrib-id><xref rid="pei370044-aff-0001" ref-type="aff">
+<sup>1</sup>
+</xref></contrib><contrib id="pei370044-cr-0005" contrib-type="author"><name><surname>Poudel</surname><given-names>Manasi</given-names></name><xref rid="pei370044-aff-0005" ref-type="aff">
+<sup>5</sup>
+</xref></contrib><contrib id="pei370044-cr-0006" contrib-type="author"><name><surname>Shrestha</surname><given-names>Dam Prasad</given-names></name><xref rid="pei370044-aff-0002" ref-type="aff">
+<sup>2</sup>
+</xref></contrib></contrib-group><aff id="pei370044-aff-0001">
+<label>
+<sup>1</sup>
+</label>
+<named-content content-type="organisation-division">Feline Research Center of National Forestry and Grassland Administration, College of Wildlife and Protected Area</named-content>
+<institution>Northeast Forestry University</institution>
+<city>Harbin</city>
+<country country="CN">China</country>
+</aff><aff id="pei370044-aff-0002">
+<label>
+<sup>2</sup>
+</label>
+<institution>GoldenGate International College, Tribhuvan University</institution>
+<city>Kathmandu</city>
+<country country="NP">Nepal</country>
+</aff><aff id="pei370044-aff-0003">
+<label>
+<sup>3</sup>
+</label>
+<institution>Environment Protection and Study Center (ENPROSC)</institution>
+<city>Kathmandu</city>
+<country country="NP">Nepal</country>
+</aff><aff id="pei370044-aff-0004">
+<label>
+<sup>4</sup>
+</label>
+<institution>Department of Territory and Agro&#x02010;Forestry Systems (TESAF), University of Padua</institution>
+<city>Legnaro</city>
+<named-content content-type="country-part">PD</named-content>
+<country country="IT">Italy</country>
+</aff><aff id="pei370044-aff-0005">
+<label>
+<sup>5</sup>
+</label>
+<institution>Paklihawa Campus, Institute of Agriculture and Animal Science (IAAS)</institution>
+<city>Rupandehi</city>
+<country country="NP">Nepal</country>
+</aff><author-notes><corresp id="correspondenceTo">
+<label>*</label>
+<bold>Correspondence:</bold>
+<break/>
+Muhammad Tayyab Khan (<email>muhammadtayyab.khan@studenti.unipd.it</email>)<break/>
+</corresp></author-notes><pub-date pub-type="epub"><day>16</day><month>3</month><year>2025</year></pub-date><pub-date pub-type="collection"><month>4</month><year>2025</year></pub-date><volume>6</volume><issue seq="80">2</issue><issue-id pub-id-type="doi">10.1002/pei3.v6.2</issue-id><elocation-id>e70044</elocation-id><history>
+<date date-type="rev-recd"><day>24</day><month>2</month><year>2025</year></date>
+<date date-type="received"><day>12</day><month>12</month><year>2024</year></date>
+<date date-type="accepted"><day>05</day><month>3</month><year>2025</year></date>
+</history><permissions><!--&#x000a9; 2025 New Phytologist Trust--><copyright-statement content-type="article-copyright">&#x000a9; 2025 The Author(s). <italic toggle="yes">Plant&#x02010;Environment Interactions</italic> published by New Phytologist Foundation and John Wiley &#x00026; Sons Ltd.</copyright-statement><license><ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/" specific-use="textmining" content-type="ccbylicense">https://creativecommons.org/licenses/by/4.0/</ali:license_ref><license-p>This is an open access article under the terms of the <ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</ext-link> License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited.</license-p></license></permissions><self-uri content-type="pdf" xlink:href="file:PEI3-6-e70044.pdf"/><abstract><title>ABSTRACT</title><p>Community forestry, a participatory forest management system, encourages forest conservation, enhances carbon sequestration, and advances the Sustainable Development Goals (SDGs) by increasing community ownership of resource management. Community forestry, in terms of policies and practices, directly supports SDG&#x02010;1, SDG&#x02010;13, and SDG&#x02010;15 by promoting community ownership and empowerment as well as ecosystem health. It provides immediate benefits to local livelihoods by enhancing access to ecosystem services such as fuelwood, fodder, and non&#x02010;timber forest products. Here, we assess the forest regeneration and conservation value of a community forest in Nepal by recording seedlings, saplings, and mature trees in randomly sampled plots. The plots were structurally complex with rich tree diversity; most plots showed high diameter at breast height (DBH) differentiation and diversity. Most tree species followed an abundance distribution of seedlings &#x0003e; saplings &#x0003e; adults, suggesting &#x0201c;good&#x0201d; regeneration. Tree carbon stock was 137.6 tons per hectare and was positively associated with tree density and diversity and negatively with altitude. An increase of one standard deviation in the diversity index ~0.39 was associated with an 11.7% higher tree carbon stock per hectare. Plot&#x02010;level tree height was positively related to diversity at lower tree heights. Overall, community forestry successfully transformed a degraded forest into one of quality regeneration and conservation value within two decades, outperforming the regional average forest carbon stock and diversity. Thus, community forests can act as an effective model for sustainable forest management and are essential tools for policymakers to promote regeneration, structural diversity, carbon storage, tree growth, and sustainable resource utilization.</p></abstract><kwd-group kwd-group-type="author-generated"><kwd id="pei370044-kwd-0001">carbon stock</kwd><kwd id="pei370044-kwd-0002">forest structure</kwd><kwd id="pei370044-kwd-0003">Nepal</kwd><kwd id="pei370044-kwd-0004">regeneration status</kwd><kwd id="pei370044-kwd-0005">species diversity</kwd><kwd id="pei370044-kwd-0006">sustainable management</kwd></kwd-group><counts><fig-count count="1"/><table-count count="4"/><page-count count="12"/><word-count count="9900"/></counts><custom-meta-group><custom-meta><meta-name>source-schema-version-number</meta-name><meta-value>2.0</meta-value></custom-meta><custom-meta><meta-name>cover-date</meta-name><meta-value>April 2025</meta-value></custom-meta><custom-meta><meta-name>details-of-publishers-convertor</meta-name><meta-value>Converter:WILEY_ML3GV2_TO_JATSPMC version:6.5.4 mode:remove_FC converted:16.03.2025</meta-value></custom-meta></custom-meta-group></article-meta></front><body id="pei370044-body-0001"><sec id="pei370044-sec-0001"><label>1</label><title>Introduction</title><p>Forests are among the most productive terrestrial ecosystems (Hattenschwiler et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0052" ref-type="bibr">2005</xref>; Wang et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0114" ref-type="bibr">2005</xref>; Bommarco et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0022" ref-type="bibr">2013</xref>) with key roles in biodiversity conservation, carbon sequestration, and in sustaining rural livelihoods (Peres et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0081" ref-type="bibr">2010</xref>; Pan et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0075" ref-type="bibr">2011</xref>; Nitanan et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0072" ref-type="bibr">2020</xref>). Globally, forests contributed 861&#x02009;&#x000b1;&#x02009;66 Pg of carbon stock, with a net sink rate of 2.4&#x02009;&#x000b1;&#x02009;0.4 Pg per year (Pan et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0075" ref-type="bibr">2011</xref>), giving themselves a large say in climate change mitigation and greenhouse gas emission reduction planning (Canadell and Raupach&#x000a0;<xref rid="pei370044-bib-0025" ref-type="bibr">2008</xref>; Brockerhoff et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0023" ref-type="bibr">2017</xref>). Among all available carbon capture and storage technologies, growing trees still remain the most efficient and cost&#x02010;effective known method (Bastin et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0012" ref-type="bibr">2019</xref>). The forest's ability to sequester carbon depends on forest type (Zhou et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0120" ref-type="bibr">2013</xref>), successional stage (Chazdon et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0032" ref-type="bibr">2016</xref>), tree species diversity (Ruiz&#x02010;Benito et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0093" ref-type="bibr">2014</xref>), tree density (Rautiainen et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0092" ref-type="bibr">2011</xref>), forest structure (Forrester&#x000a0;<xref rid="pei370044-bib-0041" ref-type="bibr">2019</xref>), and forest management modalities applied (Norris et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0073" ref-type="bibr">2010</xref>; Wade et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0113" ref-type="bibr">2010</xref>), in addition to climatic and geographic factors such as temperature, rainfall, topography, altitude, and edaphic characteristics (Chaturvedi and Raghubanshi&#x000a0;<xref rid="pei370044-bib-0028" ref-type="bibr">2015</xref>; Sharma et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0097" ref-type="bibr">2016</xref>).</p><p>Climate change is a major critical threat for ecosystems, human livelihoods, and global sustainability, requiring immediate and coordinated action across all sectors (Nguyen et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0071" ref-type="bibr">2023</xref>). Forest conservation is crucial for climate change mitigation, centered on assessing the trade&#x02010;offs between forest management practices and their impacts on carbon sequestration and water cycling, along with other co&#x02010;benefits such as biodiversity conservation and microclimate regulation (Griscom et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0049" ref-type="bibr">2017</xref>). Tree species richness, along with healthy regeneration, plays an important role in increasing forest productivity, carbon storage, and resource availability for people (Pretzsch and Schutze&#x000a0;<xref rid="pei370044-bib-0089" ref-type="bibr">2016</xref>; Liu et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0064" ref-type="bibr">2018</xref>; Zeller et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0119" ref-type="bibr">2018</xref>). Plant species diversity often boosts net primary production (Karanika et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0058" ref-type="bibr">2007</xref>) by optimizing light use through functional complementarity, though low&#x02010;diversity plantations can also be highly productive depending on species traits (Gough et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0048" ref-type="bibr">2019</xref>). As a result, multilayered canopies, generally observed in species&#x02010;rich forests, sequester more carbon. Another critical variable, forest structure, has a prominent role in many forest processes such as water balance, nutrient cycling, carbon partitioning, and light absorption (Pretzsch et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0088" ref-type="bibr">2015</xref>). Proposals of using thinning to mitigate short&#x02010;term drought (Sohn et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0103" ref-type="bibr">2016</xref>) and species mixing for reducing long&#x02010;term drought susceptibility (Grossiord et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0050" ref-type="bibr">2014</xref>) highlight the importance of manipulating forest structure and diversity and its mechanism to achieve particular objectives (Saha et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0094" ref-type="bibr">2023</xref>; Sakib et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0095" ref-type="bibr">2024</xref>; Ismail et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0055" ref-type="bibr">2025</xref>). For a forest patch with a given stand density, vegetation growth increases first and then plateaus when the leaf area has peaked (Zeide&#x000a0;<xref rid="pei370044-bib-0117" ref-type="bibr">2004</xref>).</p><p>In Nepal, the Chure mountain covers 12.8% of Nepal's land area extending east to west along the north of the Ganges plains (Subedi et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0106" ref-type="bibr">2021</xref>). The Chure landscape, along with Terai landscape, is a biodiversity hotspot with several types of ecoregions, forests, Ramsar sites, and protected areas (Chaudhary and Subedi&#x000a0;<xref rid="pei370044-bib-0030" ref-type="bibr">2019</xref>); Chure alone has 14 forest ecosystem types (Uprety et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0112" ref-type="bibr">2023</xref>). On top of these biodiversity values, Chure provides various ecosystem services to locals as well as those on the southern plains (Acharya et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0003" ref-type="bibr">2019</xref>), especially watershed protection, erosion protection, ground water recharge, and water purification (Bhandari et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0016" ref-type="bibr">2016</xref>; Bishwokarma et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0020" ref-type="bibr">2016</xref>; Chaudhary and Subedi&#x000a0;<xref rid="pei370044-bib-0030" ref-type="bibr">2019</xref>). Despite its ecological importance, the region is vulnerable to degradation due to deforestation, erosion, and other anthropogenic pressures (Ghimire et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0047" ref-type="bibr">2013</xref>; DFRS&#x000a0;<xref rid="pei370044-bib-0035" ref-type="bibr">2014</xref>; PCTMCDB&#x000a0;<xref rid="pei370044-bib-0080" ref-type="bibr">2017</xref>). In recognition of Chure's importance, the Government of Nepal has implemented a 20&#x02010;year Master Plan for sustainable conservation (PCTMCDB&#x000a0;<xref rid="pei370044-bib-0080" ref-type="bibr">2017</xref>) and made it a national priority program (NPC&#x000a0;<xref rid="pei370044-bib-0074" ref-type="bibr">2020</xref>). Despite the national effort, Chure forests are disappearing at an annual rate of 0.18% (DFRS&#x000a0;<xref rid="pei370044-bib-0036" ref-type="bibr">2015</xref>). Tree species diversity and regeneration capacity in the Chure region remain lower than that in the midhills and Terai forests of Nepal (DFRS&#x000a0;<xref rid="pei370044-bib-0036" ref-type="bibr">2015</xref>) and stores less carbon (in above ground tree biomass) than the national average: 116.94&#x02009;t/ha compared to 176.95&#x02009;t/ha (DFRS&#x000a0;<xref rid="pei370044-bib-0035" ref-type="bibr">2014</xref>, <xref rid="pei370044-bib-0036" ref-type="bibr">2015</xref>).</p><p>Beyond the ecological and environmental variables, the character of forest management practices can determine what kind of forest is grown and protected. Among different forest management practices, community forests are steeped in participatory philosophy, whereby the government hands over a parcel of land to the local community to manage sustainably (Birch et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0019" ref-type="bibr">2014</xref>). Nepal's experience with community&#x02010;based forestry management in the 1970s led to becoming one of the pioneering countries in the early 1990s to devolve substantial aspects of forest management to local communities (Ghimire and Lamichhane&#x000a0;<xref rid="pei370044-bib-0046" ref-type="bibr">2020</xref>). By 2020 there were 22,266 community forest user groups (CFUGs) nationally (DFRS&#x000a0;<xref rid="pei370044-bib-0037" ref-type="bibr">2020</xref>), which covered 41% of national forests and had 2.9 million households as members. This management practice in Nepal led to positive changes in forest conditions (Libois et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0063" ref-type="bibr">2022</xref>), higher availability of forest products (Adhikari et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0004" ref-type="bibr">2007</xref>; Pandit and Bevilacqua&#x000a0;<xref rid="pei370044-bib-0078" ref-type="bibr">2011</xref>), lower forest product collection time (Pokharel and Nurse&#x000a0;<xref rid="pei370044-bib-0084" ref-type="bibr">2004</xref>), increased women's participation (Agarwal&#x000a0;<xref rid="pei370044-bib-0005" ref-type="bibr">2010</xref>), higher investment in rural public infrastructure (Paudel&#x000a0;<xref rid="pei370044-bib-0079" ref-type="bibr">2011</xref>), and availability of micro&#x02010;credit to vulnerable persons (Dev et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0034" ref-type="bibr">2003</xref>). In the current REDD+ era, diverse and healthy community&#x02010;managed forests with high carbon sequestration and climate change resilience are important goals, as these forests store approximately 21% of the total forest carbon in Nepal (Pokharel and Byrne&#x000a0;<xref rid="pei370044-bib-0083" ref-type="bibr">2009</xref>). Despite differences in the inheritance, the length of conservation&#x02014;over 30&#x02009;years of community forestry&#x02014;gives us an ample timeframe to analyze the quality and structure of regenerated community forests in the ecologically fragile Chure region. In light of the government's conservation effort and Chure region's ecological importance (MOFSC&#x000a0;<xref rid="pei370044-bib-0069" ref-type="bibr">2016</xref>), understanding the status of forests in Chure is a key step in preserving this fragile landscape while simultaneously improving local livelihoods.</p><p>To understand the effectiveness of community&#x02010;based forestry in the Chure region, we selected a study site that was highly degraded before being transferred to the community in 2001. The study site also had to be near human settlement so that we could get measurable observations of trampling, leaf littering, and fire signs within forest plots. For this, we selected a regenerated community forest in the western Chure region of Nepal. The study site, Tripureshwor Community Forest (TCF), is adjacent to the Birendranagar municipal area, a major city in western Nepal. This study aimed to investigate the carbon stock and biodiversity in the community&#x02010;managed forest. We examined the relationships between key ecological and environmental variables of the forest ecosystem, namely DBH, tree height, tree density, species richness, species diversity, elevation, slope, invasive species, and forest carbon stock. To understand ecological mechanisms, the study focused on the following questions:
+<list list-type="order" id="pei370044-list-0001"><list-item id="pei370044-li-0001"><p>How does tree carbon stock (TCS) vary with key ecological variables such as DBH, tree height, tree density, species richness, species diversity, elevation, slope, and the occurrence of invasive species?</p></list-item><list-item id="pei370044-li-0002"><p>What proportion of TCS is constituted by mature trees compared with younger trees across dominant species in the study area?</p></list-item><list-item id="pei370044-li-0003"><p>What are the potential impacts of slope, altitude, and the presence of invasive species on carbon sequestration and species diversity in the studied community&#x02010;managed forest?</p></list-item></list>
+</p></sec><sec sec-type="materials-and-methods" id="pei370044-sec-0002"><label>2</label><title>Materials and Methods</title><sec id="pei370044-sec-0003"><label>2.1</label><title>Study Area</title><p>Tripureshwor Community Forest (TCF) lies in Birendranagar municipality, in Surkhet district of Karnali Province of Nepal, bounded by 81&#x000b0;35&#x02032; to 81&#x000b0;53&#x02032; longitude and 28&#x000b0;36&#x02032; to 28&#x000b0;41&#x02032; latitude (Figure&#x000a0;<xref rid="pei370044-fig-0001" ref-type="fig">1</xref>). The forest extends from an altitude of 736&#x02013;1352&#x02009;m and has terrain with slopes of 15&#x000b0;&#x02013;80&#x000b0;. It is a dry subtropical forest with three distinct species dominance classes: <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content> C.F.Gaertn (broadleaved) dominated forest, mixed forest, and <italic toggle="yes">Pinus roxburghii</italic> Sargent (Coniferous) dominated forest. The study area experiences an average annual precipitation rate of 1609&#x02009;mm, and the average temperature ranges between 6&#x000b0;C and 36&#x000b0;C (Bhandari&#x000a0;<xref rid="pei370044-bib-0015" ref-type="bibr">2013</xref>). The forest area of 213.95&#x02009;ha is managed by the Tripureshwor Community Forest User Group (TCFUG) consisting of 830 households. Ethnicity&#x02010;wise, Birendranagar municipality's population is grouped into the Khas ethnic cluster (53.8%), followed by the indigenous cluster (18.8%) and Hill Dalits (11.2%). The cooking fuel of choice in the area is firewood (60.1%) and liquefied petroleum gas (36.9%) (Karki&#x000a0;<xref rid="pei370044-bib-0059" ref-type="bibr">2019</xref>).</p><fig position="float" fig-type="FIGURE" id="pei370044-fig-0001"><label>FIGURE 1</label><caption><p>Map of study area showing forest coverage (dark green), agriculture land (orange), settlement area (dark red) and sample plots (blue points). Insets depict the location of the study area regionally (A), within Nepal (B), within Surkhet district (C), and within Birendranagar municipality (D).</p></caption><graphic xlink:href="PEI3-6-e70044-g001" position="anchor" id="jats-graphic-1"/></fig></sec><sec id="pei370044-sec-0004"><label>2.2</label><title>Data Collection and Analysis</title><p>The forest survey was carried out in November 2019 by a team of three researchers and two community forest guards (for a total of 28 working days) based on a simple random sampling method. Altogether, 62 random points were generated using ArcGIS 10.2 (ESRI&#x000a0;<xref rid="pei370044-bib-0040" ref-type="bibr">2011</xref>) within the forest boundaries. Plots were 20&#x02009;m&#x02009;&#x000d7;&#x02009;20&#x02009;m squares, with a minimum of 100&#x02009;m distance between them. Inside a plot, two 5&#x02009;m<sup>2</sup> in opposite corners were used to sample saplings, and another four 1&#x02009;m squares in each corner were allocated for counting seedlings (Figure&#x000a0;<xref rid="pei370044-supitem-0001" ref-type="supplementary-material">S1</xref>).</p><p>Additionally, GPS location, altitude, slope, fire sign, trampling, leaf litter condition, and presence of invasive herbaceous species were recorded for all plots. The fire sign variable was dichotomous, recording any evidence of fire in the forest plot. Invasive species presence, trampling extent, and leaf littering were based on visual observation. Invasive species presence was noted by checking plant species in the plot using an invasive species checklist (Shrestha&#x000a0;<xref rid="pei370044-bib-0100" ref-type="bibr">2016</xref>). Trampling and leaf littering were recorded as one of three levels: (a) low, (b) medium, and (c) high. Specifically, if the sampled plot had less than 33% of its area trampled or covered by leaf litter, then it was classified as a low trampled or low leaf litter covered plot following Maharjan et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0065" ref-type="bibr">2006</xref>). Similarly, 66% of the area was the cutoff between medium and high values. Mathematical slope correction was applied to plots during the analysis following Abella et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0001" ref-type="bibr">2004</xref>).</p><p>A field manual of forest resource assessment (FRTC&#x000a0;<xref rid="pei370044-bib-0043" ref-type="bibr">2019</xref>) was used to classify vegetation as trees, saplings, and seedlings. Tree height and DBH (1.3&#x02009;m from ground level) were measured for individual trees inside the sample plots using a Silva Clinometer (Silva&#x02010;Clino Masters, Sweden) and DBH tape, respectively, following Aryal et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0007" ref-type="bibr">2022</xref>). Trees were categorized as woody plant species with multiple secondary branches visible above ground on a single main stem or trunk, distinct apical dominance, a DBH &#x02265;&#x02009;5&#x02009;cm, and a height &#x02265;&#x02009;1.5&#x02009;m following Tang et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0109" ref-type="bibr">2023</xref>). Plants with a DBH less than 5&#x02009;cm and a height greater than 1.3&#x02009;m were categorized as saplings; whereas, plants less than 1.3&#x02009;m in height were classified as seedlings, following Wassie et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0116" ref-type="bibr">2010</xref>). All tree (DBH &#x02265;&#x02009;5&#x02009;cm) and shrub species (i.e., woody plants with multiple stems, usually shorter than trees) were identified in the field following Shrestha et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0102" ref-type="bibr">2018</xref>). For each sampling plot, we calculated the coefficient of variation (CV&#x02009;=&#x02009;SD/mean) of DBH to evaluate DBH differentiation and classified CV following T&#x000ed;scar and Linares&#x000a0;(<xref rid="pei370044-bib-0110" ref-type="bibr">2011</xref>) as: CV &#x0003c;&#x02009;0.05: very low differentiation; 0.05 &#x0003c; CV &#x0003c;&#x02009;0.15: low differentiation; 0.15 &#x0003c; CV &#x0003c;&#x02009;0.30: moderate differentiation; 0.30 &#x0003c; CV &#x0003c;&#x02009;0.60: high differentiation; and CV &#x0003e;&#x02009;0.60: very high differentiation.</p><p>Plant species (tree) data were analyzed for species richness, density, frequency of occurrence, Shannon&#x02013;Wiener index (H&#x02032;) (Shannon and Weaver&#x000a0;<xref rid="pei370044-bib-0096" ref-type="bibr">1949</xref>), Pielou's evenness (J) (Pielou&#x000a0;<xref rid="pei370044-bib-0082" ref-type="bibr">1966</xref>), basal area, canopy cover, volume, above ground tree biomass (AGTB), and carbon stock contributed by trees in the study area following Chave et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0031" ref-type="bibr">2005</xref>) and national forest resource assessment of Chure forests (DFRS&#x000a0;<xref rid="pei370044-bib-0035" ref-type="bibr">2014</xref>). The regeneration status of species was determined based on the number of trees, saplings, and seedlings (Khan et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0061" ref-type="bibr">1987</xref>; Malik and Bhatt&#x000a0;<xref rid="pei370044-bib-0066" ref-type="bibr">2016</xref>) as follows: &#x0201c;good&#x0201d; if seedlings &#x0003e; saplings &#x0003e; adults; &#x0201c;fair&#x0201d; if seedlings &#x0003e; or &#x02264; saplings &#x02264; adults; &#x0201c;poor&#x0201d; if no seedlings but presence of saplings (saplings may be &#x0003c;, &#x0003e; or = adults); &#x0201c;no&#x0201d; if only adults are present; and &#x0201c;new&#x0201d; if no adults but only seedlings or saplings.</p><p>During the survey, the survey team leader entered observations into a plot&#x02010;wise data collection form, which was then coded and parsed using MS Excel and later analyzed in R 4.2.2 (R CoreTeam&#x000a0;<xref rid="pei370044-bib-0091" ref-type="bibr">2024</xref>) using the fixest package (Berge&#x000a0;<xref rid="pei370044-bib-0014" ref-type="bibr">2018</xref>). We employed multiple linear regression with plot&#x02010;wise TCS as the dependent variable, tree density and tree species richness as key explanatory variables, with slope, altitude, slope&#x02010;corrected plot area, trampling, leaf littering, average tree DBH, and average tree height as control variables (i.e., covariates). Before constructing the model, the auto&#x02010;correlation of the explanatory variables was tested to verify their independence. We added individual terms, interaction terms, quadratic terms, and interaction between linear and quadratic terms of average tree DBH and average tree height. The most parsimonious models with the fewest average tree DBH and average tree height&#x02010;related terms were selected using <italic toggle="yes">R</italic>
+<sup>2</sup>, <italic toggle="yes">R</italic>
+<sup>2</sup> adj., RMSE, and the statistical significance of the variables within the models (Burnham et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0024" ref-type="bibr">2011</xref>); the three most parsimonious models are presented in the results. Robust standard errors (HC5) (Cribari&#x02010;Neto et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0033" ref-type="bibr">2008</xref>), calculated using the sandwich package (Zeileis&#x000a0;<xref rid="pei370044-bib-0118" ref-type="bibr">2004</xref>), are reported in the results to account for possible heterogeneity. We also modeled the relationship between the Shannon&#x02013;Wiener diversity index and plot&#x02010;wise characteristics with multiple linear regression.</p></sec></sec><sec sec-type="results" id="pei370044-sec-0005"><label>3</label><title>Results</title><sec id="pei370044-sec-0006"><label>3.1</label><title>Forest Composition and Structure</title><p>Most of the sample plots had a south&#x02010;west aspect (88.7%), and the slope of terrain ranged from 15&#x000b0; to 80&#x000b0;. The altitudinal variation was between 736 and 1352&#x02009;m above mean sea level (msl). In the study area, 91 plant species (spp.) were identified (71 tree spp., 16 shrubs spp. and 4 climbers spp.); <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content> C.F.Gaertn was the dominant tree species (28.9%) followed by <italic toggle="yes">Pinus roxburghii Sargent</italic> (9%). Although the top seven dominant tree spp. represented 87.5% of the total basal area, they only made up 68.4% of the total tree volume (Table&#x000a0;<xref rid="pei370044-tbl-0001" ref-type="table">1</xref>). Average density was 1461 trees ha<sup>&#x02212;1</sup>, average basal area was 75.2&#x02009;m<sup>2</sup>&#x02009;ha<sup>&#x02212;1</sup>, and average volume was 324.9&#x02009;m<sup>3</sup>&#x02009;ha<sup>&#x02212;1</sup>. The tree density value ranged from 422.6 trees ha<sup>&#x02212;1</sup> (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content> C.F.Gaertn) to 0.6 trees ha<sup>&#x02212;1</sup> (<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Tamarindus indica</italic>
+</styled-content> L.) (Table&#x000a0;<xref rid="pei370044-tbl-0001" ref-type="table">1</xref>). Out of 62 plots, 72.6% of plots showed very high DBH differentiation (CV &#x0003e;&#x02009;0.6), and 25.8% of the plots showed high DBH differentiation (0.3 &#x0003c; CV &#x02264;&#x02009;0.6), while only one plot showed moderate DBH differentiation (0.15 &#x0003c; CV &#x02264;&#x02009;0.3).</p><table-wrap position="float" id="pei370044-tbl-0001" content-type="TABLE"><label>TABLE 1</label><caption><p>The seven major tree species recorded across all plots, and their respective carbon contribution.</p></caption><table frame="hsides" rules="groups"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><thead valign="bottom"><tr style="border-bottom:solid 1px #000000"><th align="left" rowspan="2" valign="bottom" colspan="1">Species</th><th align="center" rowspan="2" valign="bottom" colspan="1">% of total trees across all plots</th><th align="center" rowspan="2" valign="bottom" colspan="1">Density (trees ha<sup>&#x02212;1</sup>)</th><th align="center" colspan="3" valign="bottom" rowspan="1">Presence (%) among all plots</th><th align="center" rowspan="2" valign="bottom" colspan="1">TCS (t&#x02009;ha<sup>&#x02212;1</sup>)</th></tr><tr style="border-bottom:solid 1px #000000"><th align="center" valign="bottom" rowspan="1" colspan="1">Tree</th><th align="center" valign="bottom" rowspan="1" colspan="1">Sapling</th><th align="center" valign="bottom" rowspan="1" colspan="1">Seedling</th></tr></thead><tbody valign="top"><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content>
+</td><td align="center" valign="top" rowspan="1" colspan="1">28.9</td><td align="center" valign="top" rowspan="1" colspan="1">422.6</td><td align="center" valign="top" rowspan="1" colspan="1">85.5</td><td align="center" valign="top" rowspan="1" colspan="1">83.9</td><td align="center" valign="top" rowspan="1" colspan="1">48.4</td><td align="center" valign="top" rowspan="1" colspan="1">100.7</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Syzygium cumini</italic>
+</styled-content>
+</td><td align="center" valign="top" rowspan="1" colspan="1">9.0</td><td align="center" valign="top" rowspan="1" colspan="1">131.9</td><td align="center" valign="top" rowspan="1" colspan="1">83.9</td><td align="center" valign="top" rowspan="1" colspan="1">72.6</td><td align="center" valign="top" rowspan="1" colspan="1">93.5</td><td align="center" valign="top" rowspan="1" colspan="1">3.8</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Mallotus philippensis</italic>
+</styled-content>
+</td><td align="center" valign="top" rowspan="1" colspan="1">8.6</td><td align="center" valign="top" rowspan="1" colspan="1">126.3</td><td align="center" valign="top" rowspan="1" colspan="1">82.3</td><td align="center" valign="top" rowspan="1" colspan="1">40.3</td><td align="center" valign="top" rowspan="1" colspan="1">53.2</td><td align="center" valign="top" rowspan="1" colspan="1">2.7</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<italic toggle="yes">Catunaregam spinosa</italic>
+</td><td align="center" valign="top" rowspan="1" colspan="1">5.1</td><td align="center" valign="top" rowspan="1" colspan="1">74.6</td><td align="center" valign="top" rowspan="1" colspan="1">59.7</td><td align="center" valign="top" rowspan="1" colspan="1">30.6</td><td align="center" valign="top" rowspan="1" colspan="1">22.6</td><td align="center" valign="top" rowspan="1" colspan="1">0.8</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<italic toggle="yes">Trichilia connaroides</italic>
+</td><td align="center" valign="top" rowspan="1" colspan="1">4.6</td><td align="center" valign="top" rowspan="1" colspan="1">67.9</td><td align="center" valign="top" rowspan="1" colspan="1">50.0</td><td align="center" valign="top" rowspan="1" colspan="1">43.5</td><td align="center" valign="top" rowspan="1" colspan="1">51.6</td><td align="center" valign="top" rowspan="1" colspan="1">1.6</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<italic toggle="yes">Holoptelea integrifolia</italic>
+</td><td align="center" valign="top" rowspan="1" colspan="1">4.5</td><td align="center" valign="top" rowspan="1" colspan="1">65.7</td><td align="center" valign="top" rowspan="1" colspan="1">80.6</td><td align="center" valign="top" rowspan="1" colspan="1">25.8</td><td align="center" valign="top" rowspan="1" colspan="1">25.8</td><td align="center" valign="top" rowspan="1" colspan="1">0.7</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">
+<italic toggle="yes">Pinus roxburghii Sargent</italic>
+</td><td align="center" valign="top" rowspan="1" colspan="1">4.4</td><td align="center" valign="top" rowspan="1" colspan="1">64.5</td><td align="center" valign="top" rowspan="1" colspan="1">14.5</td><td align="center" valign="top" rowspan="1" colspan="1">1.6</td><td align="center" valign="top" rowspan="1" colspan="1">1.6</td><td align="center" valign="top" rowspan="1" colspan="1">15.0</td></tr></tbody></table><table-wrap-foot id="pei370044-ntgp-0002"><fn id="pei370044-note-0002"><p>Abbreviation: TCS, tree carbon stock.</p></fn></table-wrap-foot></table-wrap><p>The average shrub density was 57.7 ind. ha<sup>&#x02212;1</sup> (individuals per hectare). Average plot&#x02010;wise tree DBH ranged from 12.4&#x02009;cm to 29.0&#x02009;cm. Similarly, the species richness, volume, and tree density varied widely among plots (Table&#x000a0;<xref rid="pei370044-tbl-0002" ref-type="table">2</xref>). The tree diameter (DBH) distribution showed a classical inverted J&#x02010;curve (Figure&#x000a0;<xref rid="pei370044-supitem-0001" ref-type="supplementary-material">S1</xref>), except for <italic toggle="yes">Pinus roxburghii Sargent</italic> (Figure&#x000a0;<xref rid="pei370044-supitem-0001" ref-type="supplementary-material">S2</xref>).</p><table-wrap position="float" id="pei370044-tbl-0002" content-type="TABLE"><label>TABLE 2</label><caption><p>Plot&#x02010;wise summary of structural, geographical, and species richness variables.</p></caption><table frame="hsides" rules="groups"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><thead valign="bottom"><tr style="border-bottom:solid 1px #000000"><th align="left" valign="bottom" rowspan="1" colspan="1">Parameters</th><th align="center" valign="bottom" rowspan="1" colspan="1">Mean</th><th align="center" valign="bottom" rowspan="1" colspan="1">SD</th><th align="center" valign="bottom" rowspan="1" colspan="1">Minimum</th><th align="center" valign="bottom" rowspan="1" colspan="1">Maximum</th></tr></thead><tbody valign="top"><tr><td align="left" valign="top" rowspan="1" colspan="1">Tree carbon stock (t&#x02009;ha<sup>&#x02212;1</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">137.6</td><td align="center" valign="top" rowspan="1" colspan="1">148.4</td><td align="center" valign="top" rowspan="1" colspan="1">23</td><td align="center" valign="top" rowspan="1" colspan="1">864.8</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Basal area (m<sup>2</sup>&#x02009;ha<sup>&#x02212;1</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">75.2</td><td align="center" valign="top" rowspan="1" colspan="1">68.6</td><td align="center" valign="top" rowspan="1" colspan="1">16.2</td><td align="center" valign="top" rowspan="1" colspan="1">367.9</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Volume (m<sup>3</sup>&#x02009;ha<sup>&#x02212;1</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">325.0</td><td align="center" valign="top" rowspan="1" colspan="1">392.2</td><td align="center" valign="top" rowspan="1" colspan="1">38.1</td><td align="center" valign="top" rowspan="1" colspan="1">2088.8</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Species richness (species plot<sup>&#x02212;1</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">12.0</td><td align="center" valign="top" rowspan="1" colspan="1">3.0</td><td align="center" valign="top" rowspan="1" colspan="1">6.0</td><td align="center" valign="top" rowspan="1" colspan="1">19.0</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Shannon&#x02013;Wiener diversity index (H&#x02032;)</td><td align="center" valign="top" rowspan="1" colspan="1">2.0</td><td align="center" valign="top" rowspan="1" colspan="1">0.4</td><td align="center" valign="top" rowspan="1" colspan="1">0.9</td><td align="center" valign="top" rowspan="1" colspan="1">2.7</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Evenness (E)</td><td align="center" valign="top" rowspan="1" colspan="1">0.8</td><td align="center" valign="top" rowspan="1" colspan="1">0.1</td><td align="center" valign="top" rowspan="1" colspan="1">0.5</td><td align="center" valign="top" rowspan="1" colspan="1">1.0</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Density (trees plot<sup>&#x02212;1</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">44.3</td><td align="center" valign="top" rowspan="1" colspan="1">17.7</td><td align="center" valign="top" rowspan="1" colspan="1">18.0</td><td align="center" valign="top" rowspan="1" colspan="1">111.0</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Average DBH (cm)</td><td align="center" valign="top" rowspan="1" colspan="1">18.4</td><td align="center" valign="top" rowspan="1" colspan="1">4.0</td><td align="center" valign="top" rowspan="1" colspan="1">12.4</td><td align="center" valign="top" rowspan="1" colspan="1">29.0</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Slope (&#x000b0;)</td><td align="center" valign="top" rowspan="1" colspan="1">34.3</td><td align="center" valign="top" rowspan="1" colspan="1">19.5</td><td align="center" valign="top" rowspan="1" colspan="1">15.0</td><td align="center" valign="top" rowspan="1" colspan="1">80.0</td></tr></tbody></table></table-wrap></sec><sec id="pei370044-sec-0007"><label>3.2</label><title>Forest Diversity, Regeneration and Carbon Stock</title><p>Overall, saplings of 61 spp. and seedlings of 56 spp. were identified in the study forest. <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content> C.F.Gaertn had the highest sapling frequency (83.9%) (Table&#x000a0;<xref rid="pei370044-tbl-0001" ref-type="table">1</xref>), whereas saplings of 12 species were present in single plots only. Among seedlings, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Syzygium cumini</italic>
+</styled-content> (L.) Skeels was the most dominant in terms of frequency, being present in 58 plots out of 62. We did not find seedlings for 21 tree spp., and for 9 spp., seedlings were present only in individual plots. Among tree spp., the total sapling and seedling densities were 6842 and 86,764 ind. ha<sup>&#x02212;1</sup>, respectively. The Shannon&#x02013;Wiener diversity index (H&#x02032;) and evenness (E) for tree species, across all the plots, were 2.9 and 0.7, respectively. Regeneration&#x02010;wise, most of the species (52.1%) showed good regeneration while the rest had fair regeneration (12.7%), poor regeneration (9.9%), no regeneration (19.7%), and new regeneration (5.6%).</p><p>Carbon stock differed substantially between the plots from 23 to 864.8&#x02009;t&#x02009;ha<sup>&#x02212;1</sup> (Table&#x000a0;<xref rid="pei370044-tbl-0002" ref-type="table">2</xref>). The biggest contributors, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content> C.F.Gaertn (214.2&#x02009;t&#x02009;ha<sup>&#x02212;1</sup>), <italic toggle="yes">Pinus roxburghii Sargent</italic> (31.9&#x02009;t&#x02009;ha<sup>&#x02212;1</sup>), and <italic toggle="yes">
+<styled-content style="fixed-case" toggle="no">Syzygium cumini</styled-content>
+</italic> (L.) Skeels (8.2&#x02009;t&#x02009;ha<sup>&#x02212;1</sup>), accounted for 86.8% of the total biomass.</p><p>The TCS was found to be positively associated with tree density (<italic toggle="yes">p</italic>&#x02009;&#x0003c;&#x02009;0.01) and the Shannon&#x02013;Wiener diversity index (<italic toggle="yes">p</italic>&#x02009;&#x0003c;&#x02009;0.05), but negatively associated with altitude (<italic toggle="yes">p</italic>&#x02009;&#x0003c;&#x02009;0.05). On average, an increase of one standard deviation in the diversity index ~0.39 is related to an increase of 100&#x02009;&#x000d7;&#x02009;((0.248&#x02009;&#x000d7;&#x02009;0.39)&#x02009;&#x02212;&#x02009;1)&#x02009;&#x02248;&#x02009;11.7% in TCS. The slope of the plot is significant in the model. Adding interaction terms of DBH and heigh, and DBHsquared, improves the model's predictive power (<italic toggle="yes">R</italic>
+<sup>2</sup>) and significance of diversity's impact on TCS (Table&#x000a0;<xref rid="pei370044-tbl-0003" ref-type="table">3</xref>).</p><table-wrap position="float" id="pei370044-tbl-0003" content-type="TABLE"><label>TABLE 3</label><caption><p>OLS model of tree carbon stock and plot characteristics.</p></caption><table frame="hsides" rules="groups"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><thead valign="bottom"><tr style="border-bottom:solid 1px #000000"><th align="left" colspan="2" valign="bottom" rowspan="1">Dependent variable</th><th align="center" colspan="3" valign="bottom" rowspan="1">Log (Tree carbon stock t ha<sup>&#x02212;1</sup>)</th></tr><tr style="border-bottom:solid 1px #000000"><th align="left" colspan="2" valign="bottom" rowspan="1">Model</th><th align="center" valign="bottom" rowspan="1" colspan="1">(1)</th><th align="center" valign="bottom" rowspan="1" colspan="1">(2)</th><th align="center" valign="bottom" rowspan="1" colspan="1">(3)</th></tr></thead><tbody valign="top"><tr><td align="left" colspan="2" valign="top" rowspan="1">Variables</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Slope (degree)</td><td align="center" valign="top" rowspan="1" colspan="1">0.020<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.003)</td><td align="center" valign="top" rowspan="1" colspan="1">0.020<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.003)</td><td align="center" valign="top" rowspan="1" colspan="1">0.018<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.003)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Altitude (m)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.001 (0.0005)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.001<xref rid="pei370044-note-0005" ref-type="table-fn">*</xref> (0.0005)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.001<xref rid="pei370044-note-0006" ref-type="table-fn">**</xref> (0.0004)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Shannon&#x02013;Wiener diversity index (H&#x02032;)</td><td align="center" valign="top" rowspan="1" colspan="1">0.193<xref rid="pei370044-note-0005" ref-type="table-fn">*</xref> (0.117)</td><td align="center" valign="top" rowspan="1" colspan="1">0.151 (0.115)</td><td align="center" valign="top" rowspan="1" colspan="1">0.284<xref rid="pei370044-note-0006" ref-type="table-fn">**</xref> (0.114)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Tree density</td><td align="center" valign="top" rowspan="1" colspan="1">0.017<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.005)</td><td align="center" valign="top" rowspan="1" colspan="1">0.019<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.004)</td><td align="center" valign="top" rowspan="1" colspan="1">0.018<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.004)</td></tr><tr><td align="left" style="padding-left:10%" rowspan="2" valign="top" colspan="1">Trampling (b.c: Low)</td><td align="center" valign="top" rowspan="1" colspan="1">Medium</td><td align="center" valign="top" rowspan="1" colspan="1">0.060 (0.126)</td><td align="center" valign="top" rowspan="1" colspan="1">0.048 (0.120)</td><td align="center" valign="top" rowspan="1" colspan="1">0.105 (0.111)</td></tr><tr><td align="center" valign="top" rowspan="1" colspan="1">High</td><td align="center" valign="top" rowspan="1" colspan="1">0.056 (0.178)</td><td align="center" valign="top" rowspan="1" colspan="1">0.034 (0.176)</td><td align="center" valign="top" rowspan="1" colspan="1">0.070 (0.161)</td></tr><tr><td align="left" style="padding-left:10%" rowspan="2" valign="top" colspan="1">Litter Condition (b.c: Low)</td><td align="center" valign="top" rowspan="1" colspan="1">Medium</td><td align="center" valign="top" rowspan="1" colspan="1">0.258 (0.201)</td><td align="center" valign="top" rowspan="1" colspan="1">0.289<xref rid="pei370044-note-0005" ref-type="table-fn">*</xref> (0.170)</td><td align="center" valign="top" rowspan="1" colspan="1">0.284<xref rid="pei370044-note-0005" ref-type="table-fn">*</xref> (0.152)</td></tr><tr><td align="center" valign="top" rowspan="1" colspan="1">High</td><td align="center" valign="top" rowspan="1" colspan="1">0.173 (0.281)</td><td align="center" valign="top" rowspan="1" colspan="1">0.291 (0.267)</td><td align="center" valign="top" rowspan="1" colspan="1">0.287 (0.274)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Average tree DBH</td><td align="center" valign="top" rowspan="1" colspan="1">0.186<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.019)</td><td align="center" valign="top" rowspan="1" colspan="1">0.317<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.111)</td><td align="center" valign="top" rowspan="1" colspan="1">0.553<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.102)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Average tree height</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.136<xref rid="pei370044-note-0005" ref-type="table-fn">*</xref> (0.074)</td><td align="center" valign="top" rowspan="1" colspan="1">0.340 (0.365)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.614 (0.451)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Average tree DBH&#x02009;&#x000d7;&#x02009;Average tree height</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.025 (0.019)</td><td align="center" valign="top" rowspan="1" colspan="1">0.023 (0.024)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Square of average tree DBH</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.012<xref rid="pei370044-note-0007" ref-type="table-fn">***</xref> (0.004)</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">(Intercept)</td><td align="center" valign="top" rowspan="1" colspan="1">0.572 (0.702)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;1.853 (2.114)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;1.691 (1.740)</td></tr><tr><td align="left" colspan="2" valign="top" rowspan="1">Fit statistics</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">Observations</td><td align="center" valign="top" rowspan="1" colspan="1">62</td><td align="center" valign="top" rowspan="1" colspan="1">62</td><td align="center" valign="top" rowspan="1" colspan="1">62</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">
+<italic toggle="yes">R</italic>
+<sup>2</sup>
+</td><td align="center" valign="top" rowspan="1" colspan="1">0.781</td><td align="center" valign="top" rowspan="1" colspan="1">0.789</td><td align="center" valign="top" rowspan="1" colspan="1">0.822</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">
+<italic toggle="yes">R</italic>
+<sup>2</sup> adj.</td><td align="center" valign="top" rowspan="1" colspan="1">0.738</td><td align="center" valign="top" rowspan="1" colspan="1">0.742</td><td align="center" valign="top" rowspan="1" colspan="1">0.778</td></tr><tr><td align="left" style="padding-left:10%" colspan="2" valign="top" rowspan="1">RMSE</td><td align="center" valign="top" rowspan="1" colspan="1">0.38</td><td align="center" valign="top" rowspan="1" colspan="1">0.37</td><td align="center" valign="top" rowspan="1" colspan="1">0.34</td></tr></tbody></table><table-wrap-foot id="pei370044-ntgp-0003"><fn id="pei370044-note-0003"><p>
+<italic toggle="yes">Note:</italic> Robust standard errors (HC5) in parentheses.</p></fn><fn id="pei370044-note-0004"><p>Abbreviations: b.c, base category; RMSE, root mean square error.</p></fn><fn id="pei370044-note-0005"><label>*</label><p>
+<italic toggle="yes">p</italic> &#x0003c;&#x02009;0.1.</p></fn><fn id="pei370044-note-0006"><label>**</label><p>
+<italic toggle="yes">p</italic> &#x0003c;&#x02009;0.05.</p></fn><fn id="pei370044-note-0007"><label>***</label><p>
+<italic toggle="yes">p</italic> &#x0003c;&#x02009;0.01.</p></fn></table-wrap-foot></table-wrap><p>The plot&#x02010;level Shannon&#x02013;Wiener diversity index was not significantly related with plot altitude. However, diversity was significantly correlated with sapling abundance (<italic toggle="yes">p</italic>&#x02009;&#x0003c;&#x02009;0.05), slope (<italic toggle="yes">p</italic>&#x02009;&#x0003c;&#x02009;0.05), and tree height (<italic toggle="yes">p</italic>&#x02009;&#x0003c;&#x02009;0.05) (Table&#x000a0;<xref rid="pei370044-tbl-0004" ref-type="table">4</xref>). The average marginal effect of plot&#x02010;level tree height on diversity showed positive relationship at lower tree heights, whereas negative relationship at higher tree heights (Figure&#x000a0;<xref rid="pei370044-supitem-0001" ref-type="supplementary-material">S2</xref>), indicating a nuanced relationship between tree height and diversity across plots.</p><table-wrap position="float" id="pei370044-tbl-0004" content-type="TABLE"><label>TABLE 4</label><caption><p>OLS model of tree Shannon&#x02013;Wiener diversity index (H&#x02032;).</p></caption><table frame="hsides" rules="groups"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><thead valign="bottom"><tr style="border-bottom:solid 1px #000000"><th align="left" valign="bottom" rowspan="1" colspan="1">Dependent variable</th><th align="center" colspan="3" valign="bottom" rowspan="1">Shannon&#x02013;Wiener diversity index (H&#x02032;)</th></tr><tr style="border-bottom:solid 1px #000000"><th align="left" valign="bottom" rowspan="1" colspan="1">Model</th><th align="center" valign="bottom" rowspan="1" colspan="1">(1)</th><th align="center" valign="bottom" rowspan="1" colspan="1">(2)</th><th align="center" valign="bottom" rowspan="1" colspan="1">(3)</th></tr></thead><tbody valign="top"><tr><td align="left" valign="top" rowspan="1" colspan="1">Variables</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Number of seedling</td><td align="center" valign="top" rowspan="1" colspan="1">0.001 (0.004)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.001 (0.004)</td><td align="center" valign="top" rowspan="1" colspan="1">0.000 (0.004)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Number of sapling</td><td align="center" valign="top" rowspan="1" colspan="1">0.015<xref rid="pei370044-note-0012" ref-type="table-fn">***</xref> (0.006)</td><td align="center" valign="top" rowspan="1" colspan="1">0.012<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.005)</td><td align="center" valign="top" rowspan="1" colspan="1">0.078<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.037)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Altitude (m)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.004 (0.005)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.006<xref rid="pei370044-note-0010" ref-type="table-fn">*</xref> (0.004)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.006 (0.004)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Square of altitude</td><td align="center" valign="top" rowspan="1" colspan="1">2.11e<sup>&#x02212;6</sup> (2.12e<sup>&#x02212;6</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">3.04e<sup>&#x02212;6</sup>
+<xref rid="pei370044-note-0010" ref-type="table-fn">*</xref> (1.74e<sup>&#x02212;6</sup>)</td><td align="center" valign="top" rowspan="1" colspan="1">2.83e<sup>&#x02212;6</sup> (1.76e<sup>&#x02212;6</sup>)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Slope (degree)</td><td align="center" valign="top" rowspan="1" colspan="1">0.006<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.003)</td><td align="center" valign="top" rowspan="1" colspan="1">0.006<xref rid="pei370044-note-0010" ref-type="table-fn">*</xref> (0.003)</td><td align="center" valign="top" rowspan="1" colspan="1">0.006<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.003)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Average tree height</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.130<xref rid="pei370044-note-0010" ref-type="table-fn">*</xref> (0.077)</td><td align="center" valign="top" rowspan="1" colspan="1">1.364<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.658)</td><td align="center" valign="top" rowspan="1" colspan="1">1.302<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.576)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Square of average tree height</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.135<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.056)</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.097<xref rid="pei370044-note-0011" ref-type="table-fn">**</xref> (0.046)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Number of sapling &#x000d7; average tree height</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1">&#x02212;0.012<xref rid="pei370044-note-0010" ref-type="table-fn">*</xref> (0.007)</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">(Intercept)</td><td align="center" valign="top" rowspan="1" colspan="1">3.871 (2.364)</td><td align="center" valign="top" rowspan="1" colspan="1">1.108 (2.508)</td><td align="center" valign="top" rowspan="1" colspan="1">0.109 (2.533)</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Fit statistics</td><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/><td align="center" valign="top" rowspan="1" colspan="1"/></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">Observations</td><td align="center" valign="top" rowspan="1" colspan="1">62</td><td align="center" valign="top" rowspan="1" colspan="1">62</td><td align="center" valign="top" rowspan="1" colspan="1">62</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">
+<italic toggle="yes">R</italic>
+<sup>2</sup>
+</td><td align="center" valign="top" rowspan="1" colspan="1">0.196</td><td align="center" valign="top" rowspan="1" colspan="1">0.319</td><td align="center" valign="top" rowspan="1" colspan="1">0.363</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">
+<italic toggle="yes">R</italic>
+<sup>2</sup> adj.</td><td align="center" valign="top" rowspan="1" colspan="1">0.108</td><td align="center" valign="top" rowspan="1" colspan="1">0.230</td><td align="center" valign="top" rowspan="1" colspan="1">0.267</td></tr><tr><td align="left" style="padding-left:10%" valign="top" rowspan="1" colspan="1">RMSE</td><td align="center" valign="top" rowspan="1" colspan="1">0.34</td><td align="center" valign="top" rowspan="1" colspan="1">0.32</td><td align="center" valign="top" rowspan="1" colspan="1">0.31</td></tr><tr><td align="left" valign="top" rowspan="1" colspan="1">Estimated turning point</td><td align="center" valign="top" rowspan="1" colspan="1">&#x02014;</td><td align="center" valign="top" rowspan="1" colspan="1">5.051</td><td align="center" valign="top" rowspan="1" colspan="1">4.839</td></tr></tbody></table><table-wrap-foot id="pei370044-ntgp-0004"><fn id="pei370044-note-0008"><p>
+<italic toggle="yes">Note:</italic> Robust standard errors (HC5) in parentheses.</p></fn><fn id="pei370044-note-0009"><p>Abbreviation: RMSE, root mean square error.</p></fn><fn id="pei370044-note-0010"><label>*</label><p>
+<italic toggle="yes">p</italic> &#x0003c;&#x02009;0.1.</p></fn><fn id="pei370044-note-0011"><label>**</label><p>
+<italic toggle="yes">p</italic> &#x0003c;&#x02009;0.05.</p></fn><fn id="pei370044-note-0012"><label>***</label><p>
+<italic toggle="yes">p</italic> &#x0003c;&#x02009;0.01.</p></fn></table-wrap-foot></table-wrap></sec><sec id="pei370044-sec-0008"><label>3.3</label><title>Trampling, Leaf Littering and Invasive Species</title><p>The trampling and leaf litter conditions were generally medium (61.29% and 77.19%, respectively); whereas, fire signs in plots were low (6.45%). All plots had invasive species. Major invasive species in the forest were <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Ageratum conyzoides</italic>
+</styled-content>, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Ageratum houstonianum</italic>
+</styled-content>, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Bidens pilosa</italic>
+</styled-content>, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Lantana camara</italic>
+</styled-content>, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Parthenium hysterophorus</italic>
+</styled-content>, and <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Xanthium strumarium</italic>
+</styled-content>. During the field survey, it was noted that in plots with a higher density of invasive species, seedling density was lower.</p></sec></sec><sec sec-type="discussion" id="pei370044-sec-0009"><label>4</label><title>Discussion</title><p>The Forest Regulations 2022 of Nepal (MOFE&#x000a0;<xref rid="pei370044-bib-0068" ref-type="bibr">2022</xref>) enable community forestry groups, in consultation with the divisional forest office, to implement forest management plans of their choice under the constraints according to sustainable harvesting rates. Further, harvested timber is sold in accordance with a predefined priority, i.e., members are preferred over the district forest product supply committee and outsiders. Community forest user group members are sold timber at a nominal fee for their personal use, and it is illegal for them to arbitrage timber in open markets (Sunam and McCarthy&#x000a0;<xref rid="pei370044-bib-0107" ref-type="bibr">2010</xref>). This focus of regulation on sustainability and meeting local needs, and TCF's dominantly conservative management plan over the years, selecting dead, dying, deformed, and over&#x02010;mature trees for local usage means that the study area had ample time to regenerate from its degraded state at the time of acquisition by the local community, which is reflected by the inverted J&#x02010;shaped DBH distribution curve. Similar inverted J&#x02010;shaped relationships in several community forests in different parts of Nepal have been reported by Ayer et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0010" ref-type="bibr">2022</xref>), Pandey and Pokhrel&#x000a0;(<xref rid="pei370044-bib-0076" ref-type="bibr">2021</xref>), Poudel and Devkota&#x000a0;(<xref rid="pei370044-bib-0085" ref-type="bibr">2021</xref>), Suwal et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0108" ref-type="bibr">2015</xref>), and Shrestha&#x000a0;(<xref rid="pei370044-bib-0099" ref-type="bibr">2005</xref>). Our results of a non&#x02010;J&#x02010;shaped curve are consistent with prior studies (Sharma et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0098" ref-type="bibr">2020</xref>; Pandey and Pokhrel&#x000a0;<xref rid="pei370044-bib-0076" ref-type="bibr">2021</xref>).</p><p>Large older trees are a valuable resource for biodiversity (Franklin et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0042" ref-type="bibr">2002</xref>). For instance, veteran individuals of <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content>, <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Syzygium cumini</italic>
+</styled-content> (L.) and <italic toggle="yes">Pinus roxburghii</italic> show a distinctive architecture that supports a higher diversity of plants and animals with varied types of habitat different from those offered by younger trees (Bhattarai et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0017" ref-type="bibr">2021</xref>). Since there were no reports of major forest fires and other natural disasters in the last decade, we found some stands with large trees (DBH&#x02009;&#x0003e;&#x02009;200&#x02009;cm) of <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content>. This result is in contrast with Acharya&#x000a0;(<xref rid="pei370044-bib-0002" ref-type="bibr">2004</xref>), who found no such DBH distribution due to burnings, and Ghimire and Lekhak&#x000a0;(<xref rid="pei370044-bib-0045" ref-type="bibr">2007</xref>), who reported the absence of <italic toggle="yes">Abies spectabilis</italic> (D. Don) Mirb with larger diameter (DBH&#x02009;&#x0003e;&#x02009;45&#x02009;cm) due to locals' harvesting. The presence of stands with large trees suggests that TCF has managed to protect them from illegal logging, considering the high economic valuation of wide <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content> boles. In fact, most of the carbon in the forest was stored by <styled-content style="fixed-case" toggle="no">
+<italic toggle="no">Shorea robusta</italic>
+</styled-content>, since mature trees of other species were less abundant. But overall, the CV of DBH was generally in the very high category, which is a sign of a complex forest structure. This structure, plus the normal inverted J&#x02010;shaped DBH&#x02010;tree frequency curve, indicated the stable population with good potential for regeneration and recruitment, as the successful regeneration of a given forest requires the occurrence of a sufficient number of young trees, saplings, and seedlings within the population (Hanief et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0051" ref-type="bibr">2016</xref>). The density of trees (ha<sup>&#x02212;1</sup>) too reflects good regeneration. The soils of the Chure region, formed from limestone, sandstone, and parent materials, are slightly basic and rich in organic matter, which supports the growth of seedlings and saplings (Puget and Lal&#x000a0;<xref rid="pei370044-bib-0090" ref-type="bibr">2005</xref>).</p><p>In the last decade, TCS has been increasing in the Chure region (Subedi et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0105" ref-type="bibr">2022</xref>); we also report higher tree carbon stock (TCS) (137.6&#x02009;t&#x02009;ha<sup>&#x02212;1</sup>) compared to the average national value (84.73&#x02009;t&#x02009;ha<sup>&#x02212;1</sup>) for the Chure region, which includes community forest and national forest (DFRS&#x000a0;<xref rid="pei370044-bib-0035" ref-type="bibr">2014</xref>). Direct comparison with other study sites in the Chure region will often be biased as there are several important factors that affect TCS, e.g., slope (Bohara et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0021" ref-type="bibr">2021</xref>), aspect (Mandal et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0067" ref-type="bibr">2017</xref>), species diversity (Aryal et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0008" ref-type="bibr">2018</xref>), dominant species (Pandey et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0077" ref-type="bibr">2014</xref>), invasion (Ulak et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0111" ref-type="bibr">2016</xref>), altitude and geographical factors (Baral et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0011" ref-type="bibr">2009</xref>), climatic factors (KC et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0060" ref-type="bibr">2013</xref>), and edaphic factors (Wang et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0115" ref-type="bibr">2001</xref>).</p><p>Another important component while comparing TCS across studies is methodological. Our TCS result is corrected for slope, and as a result, it is higher than if left without correction. Despite these factors, a simple TCS comparison across other results in western Chure puts our TCS result at a higher end of the spectrum of reported TCS (DFRS&#x000a0;<xref rid="pei370044-bib-0035" ref-type="bibr">2014</xref>; Bhusal and Bhattarai&#x000a0;<xref rid="pei370044-bib-0018" ref-type="bibr">2020</xref>; Charmakar et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0027" ref-type="bibr">2021</xref>; Lamichhane et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0062" ref-type="bibr">2021</xref>; Subedi et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0105" ref-type="bibr">2022</xref>). Our species diversity (H&#x02032;&#x02009;=&#x02009;2.91) is also higher than the national average (1.93) for the Chure region, including community and national forests (DFRS&#x000a0;<xref rid="pei370044-bib-0035" ref-type="bibr">2014</xref>). This higher diversity refutes the concern that CFUG's potential focus on yielding economically valued timber species has led to lower species diversity.</p><p>In the literature, species richness is hypothesized to alter the rate of carbon sequestration through complementarity effects; individuals in species&#x02010;rich communities optimize resources by niche partitioning, leading to higher carbon storage (Cardinale et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0026" ref-type="bibr">2009</xref>; D&#x000ed;az et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0038" ref-type="bibr">2009</xref>). The general consensus is the existence of a positive relationship between plant species richness and productivity (Hector et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0053" ref-type="bibr">1999</xref>; Huang et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0054" ref-type="bibr">2018</xref>), through efficient use of soil nutrients and sunlight, leading to increased carbon sequestration. We find a statistically significant and positive relationship between tree carbon storage and species richness, similar to earlier results (Pragasan&#x000a0;<xref rid="pei370044-bib-0087" ref-type="bibr">2020</xref>; Charmakar et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0027" ref-type="bibr">2021</xref>; Joshi et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0057" ref-type="bibr">2021</xref>). The altitudinal variation was negatively related to carbon storage, which, too, is supported by the literature (Zhu et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0121" ref-type="bibr">2010</xref>; Nath et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0070" ref-type="bibr">2021</xref>).</p><p>We also found a positive relationship between tree density and carbon stock, when we control for average plot tree DBH, average plot tree height, and their interaction terms. This result corroborates earlier positive relation of tree density with carbon stock (Pragasan&#x000a0;<xref rid="pei370044-bib-0086" ref-type="bibr">2014</xref>; Behera et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0013" ref-type="bibr">2017</xref>). In contrast with earlier studies (Aryal et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0008" ref-type="bibr">2018</xref>), we did not find decline of species richness with altitude. Rather, tree height and number of saplings were the strongest predictors of plot&#x02010;wise species richness. This result is similar to Pandey et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0077" ref-type="bibr">2014</xref>) who found that forests were moving toward fewer species as the tree matured. The total marginal effect of average tree height on species diversity supports this observation; at lower heights, the relationship was positive, and vice versa. A possible explanation might be that as the average tree height gets larger, the crown cover of the faster growing larger trees provide competition against the slow growing species. The relationship between canopy width and tree height is, generally, linear and stable (Arzai and Aliyu&#x000a0;<xref rid="pei370044-bib-0009" ref-type="bibr">2010</xref>), mainly because of natural selection pressure forced by photosynthesis in favor of maximum light interception (Anten&#x000a0;<xref rid="pei370044-bib-0006" ref-type="bibr">2005</xref>). With increased height, trees' metabolic and growth requirements increase and trees are more likely to evolve to have wider canopies in order to maximize light interception and increase their photosynthetic rates (Jahnke and Lawrence&#x000a0;<xref rid="pei370044-bib-0056" ref-type="bibr">1965</xref>). Thus, in regenerating forests, plots with lower average tree height are likely to have more species since competitive species are yet to dominate less competitive species and drive them off from the plot. The importance of slope in the species richness regression model is also likely derived from the photosynthetic factor as plants having lower heights are more likely to receive sunlight in sloped plots vis&#x02010;&#x000e0;&#x02010;vis flat plots resulting in more plot&#x02010;wise species. Further, an inverted J&#x02010;curve characteristic of our study area, i.e., dominant density of trees with low crown cover, supports sunlight reaching to the ground level helping photosynthesis mechanism of understory vegetation such as saplings, seedlings, and shrubs, allowing the forest to maintain higher vegetation diversity and density.</p><p>In all forest plots, we found the presence of invasive species. Similar widespread presence has been reported in the Terai region of Nepal (Gaudel et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0044" ref-type="bibr">2016</xref>; Chaudhary et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0029" ref-type="bibr">2020</xref>), central midhills (Dyola et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0039" ref-type="bibr">2020</xref>), and Chitwan &#x02013;Annapurna Landscape (Shrestha et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0101" ref-type="bibr">2019</xref>). While we did not do a quantitative analysis relating to invasive species, our observations indicated that plots with a higher abundance of invasive species tended to have lower seedling density, in line with Gaudel et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0044" ref-type="bibr">2016</xref>), Chaudhary et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0029" ref-type="bibr">2020</xref>) and Dyola et&#x000a0;al.&#x000a0;(<xref rid="pei370044-bib-0039" ref-type="bibr">2020</xref>). Since we only collected presence &#x02013;absence data, the collected data had no variation by virtue of invasive species being present in all plots, so we could not conduct empirical tests to validate our observational results. A better strategy would have been to collect plot&#x02010; and species&#x02010;wise invasive species density, which could then be used to understand the effect of invasion on carbon storage, species diversity, and the distribution of invasive species with plot characteristics. Similarly, leaf littering and trampling were present in about two&#x02010;thirds of the plots. The data generation of both of these variables were by researchers' observations and, as a result, they lack scientific rigor and variation; thus, they were not influential in our models as we had originally envisioned.</p><p>Furthermore, future research should expand on our findings to explore how community&#x02010;managed forests enhance biodiversity and carbon sequestration capacity under the cumulative impacts of climate change and anthropogenic disturbance. Since it has been identified that large trees have significant roles in carbon sequestration (Stephenson et&#x000a0;al.&#x000a0;<xref rid="pei370044-bib-0104" ref-type="bibr">2014</xref>), it is crucial to identify appropriate strategies to protect mature tree individuals or stands in regions with high deforestation and degradation. Future studies should concentrate on identifying the long&#x02010;term effects of selective tree thinning and management strategies used to control invasive species on the dynamics of forest structure, carbon sequestration capacity, and the influence on the resilience and productivity capacity of forests. The identification of advanced modern technologies for long&#x02010;term ecological monitoring is essential for tracking forest changes and refining management practices. Incorporating socio&#x02010;economic research on community engagement in forest governance will serve to ensure beneficial and sustainable conservation plans, driving community&#x02010;based forest management models worldwide and supporting the mitigation of climate change, preservation of biodiversity, and sustainable development.</p></sec><sec sec-type="conclusions" id="pei370044-sec-0010"><label>5</label><title>Conclusion</title><p>Our analyses of forest measurements relevant to forest regeneration and carbon storage in a site in western Chure Hills, Nepal, around two decades after it was handed over&#x02014;in a degraded state&#x02014;to a community for community management in 2001 suggest a number of main findings. First, the claims that the TCFUG's interest in growing high&#x02010;valued timber species to the detriment of forest species richness appear to be unfounded; in fact, species diversity in the studied community forest was higher than the average for the Chure region. Second, forest structure in most cases followed seedlings&#x0003e;saplings &#x0003e; adult trees by number of individuals per species, typically regarded as favorable signs of forest regeneration. Tree carbon stock (TCS) highly varied across plots, and the aggregate value was higher than the average for the region. Invasive species were present in all plots. Hence, we recommend going beyond the presence/absence of invasive species during future research in the region. Overall, the results of forest composition, structure, diversity, and carbon stock suggest that this community&#x02010;managed forest has good regeneration characteristics and demonstrates the importance of community&#x02010;managed forests more broadly as an important policy tool for promoting forest restoration and carbon storage. Overall, in this study, community forestry is found to enhance resilience to climate change by restoring degraded forests, supporting biodiversity, and promoting carbon storage, aligning with multiple Sustainable Development Goals (SDGs). These findings affirm that community&#x02010;managed forests could be a vital policy tool for advancing forest restoration, climate resilience, and sustainable development at local to regional scales.</p></sec><sec id="pei370044-sec-0015"><title>Ethics Statement</title><p>TCFUG reviewed the research proposal and provided permission for the fieldwork inside the community forest.</p></sec><sec sec-type="COI-statement" id="pei370044-sec-0013"><title>Conflicts of Interest</title><p>The authors declare no conflicts of interest.</p></sec><sec sec-type="supplementary-material"><title>Supporting information</title><supplementary-material id="pei370044-supitem-0001" position="float" content-type="local-data"><caption><p>
+Figure S1.
+</p><p>
+Figure S2.
+</p></caption><media xlink:href="PEI3-6-e70044-s001.docx"/></supplementary-material></sec></body><back><ack id="pei370044-sec-0014"><title>Acknowledgments</title><p>The authors are grateful to two anonymous reviewers, the handling editor, and the editor&#x02010;in&#x02010;chief whose comments were critical in finalizing the manuscript. Further, the authors are thankful to the Tripureshwor community forest user group for facilitating the fieldwork; specifically, TCF staff, Khum Bahadur Thapa and Lal Bahadur Gaha Magar, for field assistance. We are filled with gratitude to Prof. Guangshun Jiang, the late Dr. Man Kumar Dhamala, Manab Prakash, Divas Sapkota, Sudipta Saha, Muhammad Junaid, Resham Thapa&#x02010;Parajuli, Pramananda Rajbanshi, Chandramani Aryal, Dipak Khadka, Sandesh Neupane, Tilak Kshetri, Sanjeet Singh Thapa, and Sijar Bhatta for their help at various stages. The usual disclaimer applies, and all mistakes remain the author&#x02019;s responsibility. Open access publishing facilitated by Universita degli Studi di Padova, as part of the Wiley &#x02010; CRUI&#x02010;CARE agreement.</p></ack><sec sec-type="data-availability" id="pei370044-sec-0012"><title>Data Availability Statement</title><p>Data are available on request from the authors.</p></sec><ref-list content-type="cited-references" id="pei370044-bibl-0001"><title>References</title><ref id="pei370044-bib-0001"><mixed-citation publication-type="journal" id="pei370044-cit-0001">
+<string-name>
+<surname>Abella</surname>, <given-names>S. R.</given-names>
+</string-name>, <string-name>
+<given-names>L. R.</given-names>
+<surname>Gering</surname>
+</string-name>, and <string-name>
+<given-names>V. B.</given-names>
+<surname>Shelburne</surname>
+</string-name>. <year>2004</year>. &#x0201c;<article-title>Slope Correction of Plot Dimensions for Vegetation Sampling in Mountainous Terrain</article-title>.&#x0201d; <source>Natural Areas Journal</source>
+<volume>24</volume>, no. <issue>4</issue>: <fpage>358</fpage>&#x02013;<lpage>360</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0002"><mixed-citation publication-type="miscellaneous" id="pei370044-cit-0002">
+<string-name>
+<surname>Acharya</surname>, <given-names>K.</given-names>
+</string-name>
+<year>2004</year>. <article-title>&#x0201c;Post Fire Natural Regeneration of Dominant Tree Species in Pisang, Manang, Nepal.&#x0201d;</article-title> M. Sc. Dissertation, Central Department of Botany, Tribhuvan University, Nepal.</mixed-citation></ref><ref id="pei370044-bib-0003"><mixed-citation publication-type="journal" id="pei370044-cit-0003">
+<string-name>
+<surname>Acharya</surname>, <given-names>R. P.</given-names>
+</string-name>, <string-name>
+<given-names>T. N.</given-names>
+<surname>Maraseni</surname>
+</string-name>, and <string-name>
+<given-names>G.</given-names>
+<surname>Cockfield</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>Local Users and Other Stakeholders' Perceptions of the Identification and Prioritization of Ecosystem Services in Fragile Mountains: A Case Study of Chure Region of Nepal</article-title>.&#x0201d; <source>Forests</source>
+<volume>10</volume>, no. <issue>5</issue>: <elocation-id>421</elocation-id>. <pub-id pub-id-type="doi">10.3390/f10050421</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0004"><mixed-citation publication-type="journal" id="pei370044-cit-0004">
+<string-name>
+<surname>Adhikari</surname>, <given-names>B.</given-names>
+</string-name>, <string-name>
+<given-names>F.</given-names>
+<surname>Williams</surname>
+</string-name>, and <string-name>
+<given-names>J. C.</given-names>
+<surname>Lovett</surname>
+</string-name>. <year>2007</year>. &#x0201c;<article-title>Local Benefits From Community Forests in the Middle Hills of Nepal</article-title>.&#x0201d; <source>Forest Policy and Economics</source>
+<volume>9</volume>, no. <issue>5</issue>: <fpage>464</fpage>&#x02013;<lpage>478</lpage>. <pub-id pub-id-type="doi">10.1016/j.forpol.2005.11.002</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0005"><mixed-citation publication-type="miscellaneous" id="pei370044-cit-0005">
+<string-name>
+<surname>Agarwal</surname>, <given-names>B.</given-names>
+</string-name>
+<year>2010</year>. <article-title>&#x0201c;The Impact of Women in Nepal's Community Forestry Management.&#x0201d;</article-title> Sustainable Mountain Development No. 57, International Center for Integrated Mountain Development, Nepal.</mixed-citation></ref><ref id="pei370044-bib-0006"><mixed-citation publication-type="journal" id="pei370044-cit-0006">
+<string-name>
+<surname>Anten</surname>, <given-names>N. P.</given-names>
+</string-name>
+<year>2005</year>. &#x0201c;<article-title>Optimal Photosynthetic Characteristics of Individual Plants in Vegetation Stands and Implications for Species Coexistence</article-title>.&#x0201d; <source>Annals of Botany</source>
+<volume>95</volume>, no. <issue>3</issue>: <fpage>495</fpage>&#x02013;<lpage>506</lpage>. <pub-id pub-id-type="doi">10.1093/aob/mci048</pub-id>.<pub-id pub-id-type="pmid">15585543</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0007"><mixed-citation publication-type="journal" id="pei370044-cit-0007">
+<string-name>
+<surname>Aryal</surname>, <given-names>P. C.</given-names>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Aryal</surname>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Bhusal</surname>
+</string-name>, et&#x000a0;al. <year>2022</year>. &#x0201c;<article-title>Forest Structure and Anthropogenic Disturbances Regulate Plant Invasion in Urban Forests</article-title>.&#x0201d; <source>Urban Ecosystems</source>
+<volume>25</volume>, no. <issue>2</issue>: <fpage>367</fpage>&#x02013;<lpage>377</lpage>. <pub-id pub-id-type="doi">10.1007/s11252-021-01159-7</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0008"><mixed-citation publication-type="journal" id="pei370044-cit-0008">
+<string-name>
+<surname>Aryal</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Shrestha</surname>
+</string-name>, <string-name>
+<given-names>T.</given-names>
+<surname>Maraseni</surname>
+</string-name>, <string-name>
+<given-names>P.</given-names>
+<surname>Wagle</surname>
+</string-name>, and <string-name>
+<given-names>N.</given-names>
+<surname>Gaire</surname>
+</string-name>. <year>2018</year>. &#x0201c;<article-title>Carbon Stock and Its Relationships With Tree Diversity and Density in Community Forests in Nepal</article-title>.&#x0201d; <source>International Forestry Review</source>
+<volume>20</volume>, no. <issue>3</issue>: <fpage>263</fpage>&#x02013;<lpage>273</lpage>. <pub-id pub-id-type="doi">10.1505/146554818824063069</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0009"><mixed-citation publication-type="journal" id="pei370044-cit-0009">
+<string-name>
+<surname>Arzai</surname>, <given-names>A.</given-names>
+</string-name>, and <string-name>
+<given-names>B.</given-names>
+<surname>Aliyu</surname>
+</string-name>. <year>2010</year>. &#x0201c;<article-title>The Relationship Between Canopy Width, Height and Trunk Size in Some Tree Species Growing in the Savana Zone of Nigeria</article-title>.&#x0201d; <source>Bayero Journal of Pure and Applied Sciences</source>
+<volume>3</volume>, no. <issue>1</issue>. <pub-id pub-id-type="doi">10.4314/bajopas.v3i1.58808</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0010"><mixed-citation publication-type="journal" id="pei370044-cit-0010">
+<string-name>
+<surname>Ayer</surname>, <given-names>K.</given-names>
+</string-name>, <string-name>
+<given-names>P.</given-names>
+<surname>Kandel</surname>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Gautam</surname>
+</string-name>, <string-name>
+<given-names>P.</given-names>
+<surname>Khadka</surname>
+</string-name>, and <string-name>
+<given-names>M. S.</given-names>
+<surname>Miya</surname>
+</string-name>. <year>2022</year>. &#x0201c;<article-title>Comparative Study of Carbon Stock and Tree Diversity Between Scientifically and Conventionally Managed Community Forests of Kanchanpur District, Nepal</article-title>.&#x0201d; <source>Environment and Natural Resources Journal</source>
+<volume>20</volume>, no. <issue>5</issue>: <fpage>494</fpage>&#x02013;<lpage>504</lpage>. <pub-id pub-id-type="doi">10.32526/ennrj/20/202200010</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0011"><mixed-citation publication-type="journal" id="pei370044-cit-0011">
+<string-name>
+<surname>Baral</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Malla</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Ranabhat</surname>
+</string-name>. <year>2009</year>. &#x0201c;<article-title>Above&#x02010;Ground Carbon Stock Assessment in Different Forest Types of Nepal</article-title>.&#x0201d; <source>Banko Janakari</source>
+<volume>19</volume>, no. <issue>2</issue>: <fpage>10</fpage>&#x02013;<lpage>14</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0012"><mixed-citation publication-type="journal" id="pei370044-cit-0012">
+<string-name>
+<surname>Bastin</surname>, <given-names>J.&#x02010;F.</given-names>
+</string-name>, <string-name>
+<given-names>Y.</given-names>
+<surname>Finegold</surname>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Garcia</surname>
+</string-name>, et&#x000a0;al. <year>2019</year>. &#x0201c;<article-title>The Global Tree Restoration Potential</article-title>.&#x0201d; <source>Science</source>
+<volume>365</volume>, no. <issue>6448</issue>: <fpage>76</fpage>&#x02013;<lpage>79</lpage>. <pub-id pub-id-type="doi">10.1126/science.aay810</pub-id>.<pub-id pub-id-type="pmid">31273120</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0013"><mixed-citation publication-type="journal" id="pei370044-cit-0013">
+<string-name>
+<surname>Behera</surname>, <given-names>S. K.</given-names>
+</string-name>, <string-name>
+<given-names>N.</given-names>
+<surname>Sahu</surname>
+</string-name>, <string-name>
+<given-names>A. K.</given-names>
+<surname>Mishra</surname>
+</string-name>, <string-name>
+<given-names>S. S.</given-names>
+<surname>Bargali</surname>
+</string-name>, <string-name>
+<given-names>M. D.</given-names>
+<surname>Behera</surname>
+</string-name>, and <string-name>
+<given-names>R.</given-names>
+<surname>Tuli</surname>
+</string-name>. <year>2017</year>. &#x0201c;<article-title>Aboveground Biomass and Carbon Stock Assessment in Indian Tropical Deciduous Forest and Relationship With Stand Structural Attributes</article-title>.&#x0201d; <source>Ecological Engineering</source>
+<volume>99</volume>: <fpage>513</fpage>&#x02013;<lpage>524</lpage>. <pub-id pub-id-type="doi">10.1016/j.ecoleng.2016.11.046</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0014"><mixed-citation publication-type="miscellaneous" id="pei370044-cit-0014">
+<string-name>
+<surname>Berge</surname>, <given-names>L.</given-names>
+</string-name>
+<year>2018</year>. <article-title>&#x0201c;Efficient Estimation of Maximum Likelihood Models With Multiple Fixed&#x02010;Effects: The R Package FENmlm.&#x0201d;</article-title> CREA Discussion Papers, 13.</mixed-citation></ref><ref id="pei370044-bib-0015"><mixed-citation publication-type="journal" id="pei370044-cit-0015">
+<string-name>
+<surname>Bhandari</surname>, <given-names>G.</given-names>
+</string-name>
+<year>2013</year>. &#x0201c;<article-title>Trends in Seasonal Precipitation and Temperature&#x02013;A Review in Doti and Surkhet Districts of Nepal</article-title>.&#x0201d; <source>International Journal of Environment</source>
+<volume>2</volume>, no. <issue>1</issue>: <fpage>269</fpage>&#x02013;<lpage>279</lpage>. <pub-id pub-id-type="doi">10.3126/ije.v2i1.9227</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0016"><mixed-citation publication-type="journal" id="pei370044-cit-0016">
+<string-name>
+<surname>Bhandari</surname>, <given-names>P.</given-names>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Mohan</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Shrestha</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Aryal</surname>
+</string-name>, and <string-name>
+<given-names>U. B.</given-names>
+<surname>Shrestha</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Assessments of Ecosystem Service Indicators and Stakeholder's Willingness to Pay for Selected Ecosystem Services in the Chure Region of Nepal</article-title>.&#x0201d; <source>Applied Geography</source>
+<volume>69</volume>, no. <issue>25 34</issue>: <fpage>25</fpage>&#x02013;<lpage>34</lpage>. <pub-id pub-id-type="doi">10.1016/j.apgeog.2016.02.003</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0017"><mixed-citation publication-type="book" id="pei370044-cit-0017">
+<string-name>
+<surname>Bhattarai</surname>, <given-names>K.</given-names>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Conway</surname>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Bhattarai</surname>
+</string-name>, and <string-name>
+<given-names>D.</given-names>
+<surname>Conway</surname>
+</string-name>. <year>2021</year>. &#x0201c;<part-title>Forestry and Environment</part-title>.&#x0201d; In <source>Contemporary Environmental Problems in Nepal: Geographic Perspectives</source>, <fpage>663</fpage>&#x02013;<lpage>754</lpage>. <publisher-name>Springer</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0018"><mixed-citation publication-type="journal" id="pei370044-cit-0018">
+<string-name>
+<surname>Bhusal</surname>, <given-names>S.</given-names>
+</string-name>, and <string-name>
+<given-names>A.</given-names>
+<surname>Bhattarai</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>An Assessment of Carbon Stock Variation in Chure Area of Arghakhanchi District, Nepal (A Case Study From Different CFs of Sitganga Municipality)</article-title>.&#x0201d; <source>International Journal of Advanced Research in Biological Sciences</source>
+<volume>7</volume>, no. <issue>7</issue>: <fpage>15</fpage>&#x02013;<lpage>31</lpage>. <pub-id pub-id-type="doi">10.22192/ijarbs</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0019"><mixed-citation publication-type="journal" id="pei370044-cit-0019">
+<string-name>
+<surname>Birch</surname>, <given-names>J. C.</given-names>
+</string-name>, <string-name>
+<given-names>I.</given-names>
+<surname>Thapa</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Balmford</surname>
+</string-name>, et&#x000a0;al. <year>2014</year>. &#x0201c;<article-title>What Benefits Do Community Forests Provide, and to Whom? A Rapid Assessment of Ecosystem Services From a Himalayan Forest, Nepal</article-title>.&#x0201d; <source>Ecosystem Services</source>
+<volume>8</volume>, no. <issue>118 127</issue>: <fpage>118</fpage>&#x02013;<lpage>127</lpage>. <pub-id pub-id-type="doi">10.1016/j.ecoser.2014.03.005</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0020"><mixed-citation publication-type="journal" id="pei370044-cit-0020">
+<string-name>
+<surname>Bishwokarma</surname>, <given-names>D.</given-names>
+</string-name>, <string-name>
+<given-names>S. J.</given-names>
+<surname>Thing</surname>
+</string-name>, and <string-name>
+<given-names>N. S.</given-names>
+<surname>Paudel</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Political Ecology of the Chure Region in Nepal</article-title>.&#x0201d; <source>Journal of Forest and Livelihood</source>
+<volume>14</volume>, no. <issue>1</issue>: <fpage>84</fpage>&#x02013;<lpage>96</lpage>. <pub-id pub-id-type="doi">10.3126/jfl.v14i1.23164</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0021"><mixed-citation publication-type="journal" id="pei370044-cit-0021">
+<string-name>
+<surname>Bohara</surname>, <given-names>B.</given-names>
+</string-name>, <string-name>
+<given-names>M. S.</given-names>
+<surname>Miya</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Timilsina</surname>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Gautam</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Regmi</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Biomass and Carbon Stock Variation Along Slopes in Tropical Forest of Nepal: A Case of Depard Community Forest, Makwanpur, Nepal</article-title>.&#x0201d; <source>Journal of Multidisciplinary Applied Natural Science</source>
+<volume>1</volume>, no. <issue>2</issue>: <fpage>89</fpage>&#x02013;<lpage>99</lpage>. <pub-id pub-id-type="doi">10.47352/jmans.v1i2.85</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0022"><mixed-citation publication-type="journal" id="pei370044-cit-0022">
+<string-name>
+<surname>Bommarco</surname>, <given-names>R.</given-names>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Kleijn</surname>
+</string-name>, and <string-name>
+<given-names>S. G.</given-names>
+<surname>Potts</surname>
+</string-name>. <year>2013</year>. &#x0201c;<article-title>Ecological Intensification: Harnessing Ecosystem Services for Food Security</article-title>.&#x0201d; <source>Trends in Ecology &#x00026; Evolution</source>
+<volume>28</volume>, no. <issue>4</issue>: <fpage>230</fpage>&#x02013;<lpage>238</lpage>. <pub-id pub-id-type="doi">10.1016/j.tree.2012.10.012</pub-id>.<pub-id pub-id-type="pmid">23153724</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0023"><mixed-citation publication-type="journal" id="pei370044-cit-0023">
+<string-name>
+<surname>Brockerhoff</surname>, <given-names>E. G.</given-names>
+</string-name>, <string-name>
+<given-names>L.</given-names>
+<surname>Barbaro</surname>
+</string-name>, <string-name>
+<given-names>B.</given-names>
+<surname>Castagneyrol</surname>
+</string-name>, et&#x000a0;al. <year>2017</year>. &#x0201c;<article-title>Forest Biodiversity, Ecosystem Functioning and the Provision of Ecosystem Services</article-title>.&#x0201d; <source>Biodiversity and Conservation</source>
+<volume>26</volume>, no. <issue>13</issue>: <fpage>3005</fpage>&#x02013;<lpage>3035</lpage>. <pub-id pub-id-type="doi">10.1007/s10531-017-1453-2</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0024"><mixed-citation publication-type="journal" id="pei370044-cit-0024">
+<string-name>
+<surname>Burnham</surname>, <given-names>K. P.</given-names>
+</string-name>, <string-name>
+<given-names>D. R.</given-names>
+<surname>Anderson</surname>
+</string-name>, and <string-name>
+<given-names>K. P.</given-names>
+<surname>Huyvaert</surname>
+</string-name>. <year>2011</year>. &#x0201c;<article-title>AIC Model Selection and Multimodel Inference in Behavioral Ecology: Some Background, Observations, and Comparisons</article-title>.&#x0201d; <source>Behavioral Ecology and Sociobiology</source>
+<volume>65</volume>, no. <issue>1</issue>: <fpage>23</fpage>&#x02013;<lpage>35</lpage>. <pub-id pub-id-type="doi">10.1007/s00265-010-1029-6</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0025"><mixed-citation publication-type="journal" id="pei370044-cit-0025">
+<string-name>
+<surname>Canadell</surname>, <given-names>J. G.</given-names>
+</string-name>, and <string-name>
+<given-names>M. R.</given-names>
+<surname>Raupach</surname>
+</string-name>. <year>2008</year>. &#x0201c;<article-title>Managing Forests for Climate Change Mitigation</article-title>.&#x0201d; <source>Science</source>
+<volume>320</volume>, no. <issue>5882</issue>: <fpage>1456</fpage>&#x02013;<lpage>1457</lpage>. <pub-id pub-id-type="doi">10.1126/science.1155458</pub-id>.<pub-id pub-id-type="pmid">18556550</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0026"><mixed-citation publication-type="journal" id="pei370044-cit-0026">
+<string-name>
+<surname>Cardinale</surname>, <given-names>B. J.</given-names>
+</string-name>, <string-name>
+<given-names>H.</given-names>
+<surname>Hillebrand</surname>
+</string-name>, <string-name>
+<given-names>W.</given-names>
+<surname>Harpole</surname>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Gross</surname>
+</string-name>, and <string-name>
+<given-names>R.</given-names>
+<surname>Ptacnik</surname>
+</string-name>. <year>2009</year>. &#x0201c;<article-title>Separating the Influence of Resource &#x02018;Availability&#x02019; From Resource &#x02018;Imbalance&#x02019; on Productivity&#x02013;Diversity Relationships</article-title>.&#x0201d; <source>Ecology Letters</source>
+<volume>12</volume>, no. <issue>6</issue>: <fpage>475</fpage>&#x02013;<lpage>487</lpage>. <pub-id pub-id-type="doi">10.1111/j.1461-0248.2009.01317.x</pub-id>.<pub-id pub-id-type="pmid">19490011</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0027"><mixed-citation publication-type="journal" id="pei370044-cit-0027">
+<string-name>
+<surname>Charmakar</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>B. N.</given-names>
+<surname>Oli</surname>
+</string-name>, <string-name>
+<given-names>N. R.</given-names>
+<surname>Joshi</surname>
+</string-name>, <string-name>
+<given-names>T. N.</given-names>
+<surname>Maraseni</surname>
+</string-name>, and <string-name>
+<given-names>K.</given-names>
+<surname>Atreya</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Forest Carbon Storage and Species Richness in FSC Certified and Non&#x02010;Certified Community Forests in Nepal</article-title>.&#x0201d; <source>Small&#x02010;Scale Forestry</source>
+<volume>20</volume>, no. <issue>2</issue>: <fpage>199</fpage>&#x02013;<lpage>219</lpage>. <pub-id pub-id-type="doi">10.1007/s11842-020-09464-3</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0028"><mixed-citation publication-type="journal" id="pei370044-cit-0028">
+<string-name>
+<surname>Chaturvedi</surname>, <given-names>R.</given-names>
+</string-name>, and <string-name>
+<given-names>A.</given-names>
+<surname>Raghubanshi</surname>
+</string-name>. <year>2015</year>. &#x0201c;<article-title>Assessment of Carbon Density and Accumulation in Mono&#x02010; and Multi&#x02010;Specific Stands in Teak and Sal Forests of a Tropical Dry Region in India</article-title>.&#x0201d; <source>Forest Ecology and Management</source>
+<volume>339</volume>: <fpage>11</fpage>&#x02013;<lpage>21</lpage>. <pub-id pub-id-type="doi">10.1016/j.foreco.2014.12.002</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0029"><mixed-citation publication-type="journal" id="pei370044-cit-0029">
+<string-name>
+<surname>Chaudhary</surname>, <given-names>R.</given-names>
+</string-name>, <string-name>
+<given-names>B. B.</given-names>
+<surname>Shrestha</surname>
+</string-name>, <string-name>
+<given-names>H.</given-names>
+<surname>Thapa</surname>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Siwakoti</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>Status and Impacts of Invasive Alien Plantspecies in Parsa National Park, Central Nepal</article-title>.&#x0201d; <source>Banko Janakari</source>
+<volume>30</volume>, no. <issue>1</issue>: <fpage>21</fpage>&#x02013;<lpage>31</lpage>. <pub-id pub-id-type="doi">10.3126/banko.v30i1.29179</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0030"><mixed-citation publication-type="journal" id="pei370044-cit-0030">
+<string-name>
+<surname>Chaudhary</surname>, <given-names>R. P.</given-names>
+</string-name>, and <string-name>
+<given-names>C. K.</given-names>
+<surname>Subedi</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>Chure&#x02010;Tarai Madhes Landscape, Nepal From Biodiversity Research Perspective</article-title>.&#x0201d; <source>Plant Arch</source>
+<volume>19</volume>, no. <issue>3</issue>: <fpage>351</fpage>&#x02013;<lpage>359</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0031"><mixed-citation publication-type="journal" id="pei370044-cit-0031">
+<string-name>
+<surname>Chave</surname>, <given-names>J.</given-names>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Andalo</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Brown</surname>
+</string-name>, et&#x000a0;al. <year>2005</year>. &#x0201c;<article-title>Tree Allometry and Improved Estimation of Carbon Stocks and Balance in Tropical Forests</article-title>.&#x0201d; <source>Oecologia</source>
+<volume>145</volume>, no. <issue>1</issue>: <fpage>87</fpage>&#x02013;<lpage>99</lpage>. <pub-id pub-id-type="doi">10.1007/s00442-005-0100-x</pub-id>.<pub-id pub-id-type="pmid">15971085</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0032"><mixed-citation publication-type="journal" id="pei370044-cit-0032">
+<string-name>
+<surname>Chazdon</surname>, <given-names>R. L.</given-names>
+</string-name>, <string-name>
+<given-names>E. N.</given-names>
+<surname>Broadbent</surname>
+</string-name>, <string-name>
+<given-names>D. M.</given-names>
+<surname>Rozendaal</surname>
+</string-name>, et&#x000a0;al. <year>2016</year>. &#x0201c;<article-title>Carbon Sequestration Potential of Second&#x02010;Growth Forest Regeneration in the Latin American Tropics</article-title>.&#x0201d; <source>Science Advances</source>
+<volume>2</volume>, no. <issue>5</issue>: <elocation-id>e1501639</elocation-id>. <pub-id pub-id-type="doi">10.1126/sciadv.1501639</pub-id>.<pub-id pub-id-type="pmid">27386528</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0033"><mixed-citation publication-type="journal" id="pei370044-cit-0033">
+<string-name>
+<surname>Cribari&#x02010;Neto</surname>, <given-names>F.</given-names>
+</string-name>, <string-name>
+<given-names>T. C.</given-names>
+<surname>Souza</surname>
+</string-name>, and <string-name>
+<given-names>K. L. P.</given-names>
+<surname>Vasconcellos</surname>
+</string-name>. <year>2008</year>. &#x0201c;<article-title>Errata: Inference Under Heteroskedasticity and Leveraged Data, <italic toggle="yes">Communications in Statistics, Theory and Methods</italic>, 36, 1877&#x02013;1888, 2007</article-title>.&#x0201d; <source>Communications in Statistics &#x02010; Theory and Methods</source>
+<volume>37</volume>: <fpage>1877</fpage>&#x02013;<lpage>1888</lpage>. <pub-id pub-id-type="doi">10.1080/03610920802109210</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0034"><mixed-citation publication-type="journal" id="pei370044-cit-0034">
+<string-name>
+<surname>Dev</surname>, <given-names>O. P.</given-names>
+</string-name>, <string-name>
+<given-names>N. P.</given-names>
+<surname>Yadav</surname>
+</string-name>, <string-name>
+<given-names>O.</given-names>
+<surname>Springate&#x02010;Baginski</surname>
+</string-name>, and <string-name>
+<given-names>J.</given-names>
+<surname>Soussan</surname>
+</string-name>. <year>2003</year>. &#x0201c;<article-title>Impacts of Community Forestry on Livelihoods in the Middle Hills of Nepal</article-title>.&#x0201d; <source>Journal of Forest and Livelihood</source>
+<volume>3</volume>, no. <issue>1</issue>: <fpage>64</fpage>&#x02013;<lpage>77</lpage>. <pub-id pub-id-type="doi">10.3126/jfl.v3i1.59735</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0035"><mixed-citation publication-type="book" id="pei370044-cit-0035">
+<collab collab-type="authors">DFRS</collab>
+. <year>2014</year>. <source>Churia Forests of Nepal</source>. <publisher-name>Forest Resource Assessment Nepal Project/Department of Forest Research and Survey</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0036"><mixed-citation publication-type="book" id="pei370044-cit-0036">
+<collab collab-type="authors">DFRS</collab>
+. <year>2015</year>. <source>State of Nepal's Forests</source>. <publisher-name>Forest Resource Assessment (FRA) Nepal, Department of Forest Research and Survey (DFRS)</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0037"><mixed-citation publication-type="book" id="pei370044-cit-0037">
+<collab collab-type="authors">DFRS</collab>
+. <year>2020</year>. <source>Community Forestry Bulletin</source>. <publisher-name>Department of Forest and Soil Conservation</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0038"><mixed-citation publication-type="journal" id="pei370044-cit-0038">
+<string-name>
+<surname>D&#x000ed;az</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Hector</surname>
+</string-name>, and <string-name>
+<given-names>D. A.</given-names>
+<surname>Wardle</surname>
+</string-name>. <year>2009</year>. &#x0201c;<article-title>Biodiversity in Forest Carbon Sequestration Initiatives: Not Just a Side Benefit</article-title>.&#x0201d; <source>Current Opinion in Environmental Sustainability</source>
+<volume>1</volume>, no. <issue>1</issue>: <fpage>55</fpage>&#x02013;<lpage>60</lpage>. <pub-id pub-id-type="doi">10.1016/j.cosust.2009.08.001</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0039"><mixed-citation publication-type="journal" id="pei370044-cit-0039">
+<string-name>
+<surname>Dyola</surname>, <given-names>N.</given-names>
+</string-name>, <string-name>
+<given-names>D. R.</given-names>
+<surname>Bhuju</surname>
+</string-name>, <string-name>
+<given-names>D. K.</given-names>
+<surname>Kharal</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Aryal</surname>
+</string-name>, <string-name>
+<given-names>N. P.</given-names>
+<surname>Gaire</surname>
+</string-name>, and <string-name>
+<given-names>L.</given-names>
+<surname>Hitler</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>Growth Pattern of <italic toggle="yes">Pinus roxburghii</italic> Under Different Regimes of Invasive Species in Panchase, Nepal Himalayas</article-title>.&#x0201d; <source>Pakistan Journal of Botany</source>
+<volume>52</volume>, no. <issue>1</issue>: <fpage>261</fpage>&#x02013;<lpage>270</lpage>. <pub-id pub-id-type="doi">10.30848/PJB2020-1(33)</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0040"><mixed-citation publication-type="book" id="pei370044-cit-0040">
+<collab collab-type="authors">ESRI</collab>
+. <year>2011</year>. <source>ArcGIS Desktop: Release 10</source>. <publisher-name>Environmental Systems Research Institute, CA</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0041"><mixed-citation publication-type="journal" id="pei370044-cit-0041">
+<string-name>
+<surname>Forrester</surname>, <given-names>D. I.</given-names>
+</string-name>
+<year>2019</year>. &#x0201c;<article-title>Linking Forest Growth With Stand Structure: Tree Size Inequality, Tree Growth or Resource Partitioning and the Asymmetry of Competition</article-title>.&#x0201d; <source>Forest Ecology and Management</source>
+<volume>447</volume>, no. <issue>1</issue>: <fpage>139</fpage>&#x02013;<lpage>157</lpage>. <pub-id pub-id-type="doi">10.1016/j.foreco.2019.05.053</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0042"><mixed-citation publication-type="journal" id="pei370044-cit-0042">
+<string-name>
+<surname>Franklin</surname>, <given-names>J. F.</given-names>
+</string-name>, <string-name>
+<given-names>T. A.</given-names>
+<surname>Spies</surname>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Van Pelt</surname>
+</string-name>, et&#x000a0;al. <year>2002</year>. &#x0201c;<article-title>Disturbances and Structural Development of Natural Forest Ecosystems With Silvicultural Implications, Using Douglas&#x02010;Fir Forests as an Example</article-title>.&#x0201d; <source>Forest Ecology and Management</source>
+<volume>155</volume>, no. <issue>1&#x02013;3</issue>: <fpage>399</fpage>&#x02013;<lpage>423</lpage>. <pub-id pub-id-type="doi">10.1016/S0378-1127(01)00575-8</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0043"><mixed-citation publication-type="book" id="pei370044-cit-0043">
+<collab collab-type="authors">FRTC</collab>
+. <year>2019</year>. <source>Field Manual, 2019 (Remeasurement of Permanent Sample Plot), Forest Resource Assessment (FRA)</source>. <publisher-name>FRTC</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0044"><mixed-citation publication-type="journal" id="pei370044-cit-0044">
+<string-name>
+<surname>Gaudel</surname>, <given-names>G.</given-names>
+</string-name>, <string-name>
+<given-names>Z. W.</given-names>
+<surname>Hui</surname>
+</string-name>, <string-name>
+<given-names>D. Q.</given-names>
+<surname>Hung</surname>
+</string-name>, <string-name>
+<given-names>L. T.</given-names>
+<surname>Hien</surname>
+</string-name>, and <string-name>
+<given-names>L.</given-names>
+<surname>Xiao</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Assessment of Invasive Alien Plant Species: Impact on Carbon Sequestration</article-title>.&#x0201d; <source>Research Journal of Agriculture and Forestry Sciences</source>
+<volume>2</volume>, no. <issue>10</issue>: <fpage>51</fpage>&#x02013;<lpage>65</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0045"><mixed-citation publication-type="book" id="pei370044-cit-0045">
+<string-name>
+<surname>Ghimire</surname>, <given-names>B.</given-names>
+</string-name>, and <string-name>
+<given-names>H. D.</given-names>
+<surname>Lekhak</surname>
+</string-name>. <year>2007</year>. &#x0201c;<part-title>Regeneration of <italic toggle="yes">Abies spectabilis</italic> (D. Don) Mirb. in Subalpine Forest of Upper Manang, North&#x02010;Central Nepal</part-title>.&#x0201d; In <source>Local Effects of Global Changes in the Himalayas: Manang, Nepal</source>, edited by <person-group person-group-type="editor">
+<string-name>
+<given-names>R. P.</given-names>
+<surname>Chaudhary</surname>
+</string-name>
+</person-group>, <person-group person-group-type="editor">
+<string-name>
+<given-names>T. H.</given-names>
+<surname>Aase</surname>
+</string-name>
+</person-group>, <person-group person-group-type="editor">
+<string-name>
+<given-names>O. R.</given-names>
+<surname>Vetaas</surname>
+</string-name>
+</person-group>, and <person-group person-group-type="editor">
+<string-name>
+<given-names>B. P.</given-names>
+<surname>Subedi</surname>
+</string-name>
+</person-group>, <fpage>139</fpage>&#x02013;<lpage>149</lpage>. <publisher-name>Tribhuvan University and University of Bergen</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0046"><mixed-citation publication-type="journal" id="pei370044-cit-0046">
+<string-name>
+<surname>Ghimire</surname>, <given-names>P.</given-names>
+</string-name>, and <string-name>
+<given-names>U.</given-names>
+<surname>Lamichhane</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>Community Based Forest Management in Nepal: Current Status, Successes and Challenges</article-title>.&#x0201d; <source>Grassroots Journal of Natural Resources</source>
+<volume>3</volume>, no. <issue>2</issue>: <fpage>16</fpage>&#x02013;<lpage>29</lpage>. <pub-id pub-id-type="doi">10.33002/nr2581.6853.03022</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0047"><mixed-citation publication-type="journal" id="pei370044-cit-0047">
+<string-name>
+<surname>Ghimire</surname>, <given-names>S. K.</given-names>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Higaki</surname>
+</string-name>, and <string-name>
+<given-names>T. P.</given-names>
+<surname>Bhattarai</surname>
+</string-name>. <year>2013</year>. &#x0201c;<article-title>Estimation of Soil Erosion Rates and Eroded Sediment in a Degraded Catchment of the Siwalik Hills, Nepal</article-title>.&#x0201d; <source>Land</source>
+<volume>2</volume>, no. <issue>3</issue>: <fpage>370</fpage>&#x02013;<lpage>391</lpage>. <pub-id pub-id-type="doi">10.3390/land2030370</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0048"><mixed-citation publication-type="journal" id="pei370044-cit-0048">
+<string-name>
+<surname>Gough</surname>, <given-names>C. M.</given-names>
+</string-name>, <string-name>
+<given-names>J. W.</given-names>
+<surname>Atkins</surname>
+</string-name>, <string-name>
+<given-names>R. T.</given-names>
+<surname>Fahey</surname>
+</string-name>, and <string-name>
+<given-names>B. S.</given-names>
+<surname>Hardiman</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>High Rates of Primary Production in Structurally Complex Forests</article-title>.&#x0201d; <source>Ecology</source>
+<volume>100</volume>, no. <issue>10</issue>: <fpage>1</fpage>&#x02013;<lpage>6</lpage>. <pub-id pub-id-type="doi">10.1002/ecy.2864</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0049"><mixed-citation publication-type="journal" id="pei370044-cit-0049">
+<string-name>
+<surname>Griscom</surname>, <given-names>B. W.</given-names>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Adams</surname>
+</string-name>, <string-name>
+<given-names>P. W.</given-names>
+<surname>Ellis</surname>
+</string-name>, et&#x000a0;al. <year>2017</year>. &#x0201c;<article-title>Natural Climate Solutions</article-title>.&#x0201d; <source>Proceedings of the National Academy of Sciences of the United States of America</source>
+<volume>114</volume>, no. <issue>44</issue>: <fpage>11645</fpage>&#x02013;<lpage>11650</lpage>. <pub-id pub-id-type="doi">10.1073/pnas.1710465114</pub-id>.<pub-id pub-id-type="pmid">29078344</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0050"><mixed-citation publication-type="journal" id="pei370044-cit-0050">
+<string-name>
+<surname>Grossiord</surname>, <given-names>C.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Granier</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Ratcliffe</surname>
+</string-name>, et&#x000a0;al. <year>2014</year>. &#x0201c;<article-title>Tree Diversity Does Not Always Improve Resistance of Forest Ecosystems to Drought</article-title>.&#x0201d; <source>Proceedings of the National Academy of Sciences of the United States of America</source>
+<volume>111</volume>, no. <issue>41</issue>: <fpage>14812</fpage>&#x02013;<lpage>14815</lpage>. <pub-id pub-id-type="doi">10.1073/pnas.1411970111</pub-id>.<pub-id pub-id-type="pmid">25267642</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0051"><mixed-citation publication-type="journal" id="pei370044-cit-0051">
+<string-name>
+<surname>Hanief</surname>, <given-names>M.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Bidalia</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Meena</surname>
+</string-name>, and <string-name>
+<given-names>K.</given-names>
+<surname>Rao</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Natural Regeneration Dynamics of Dominant Tree Species Along an Altitudinal Gradient in Three Different Forest Covers of Darhal Watershed in North Western Himalaya (Kashmir), India</article-title>.&#x0201d; <source>Tropical Plant Research Journal</source>
+<volume>3</volume>, no. <issue>2</issue>: <fpage>253</fpage>&#x02013;<lpage>262</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0052"><mixed-citation publication-type="journal" id="pei370044-cit-0052">
+<string-name>
+<surname>Hattenschwiler</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>A. V.</given-names>
+<surname>Tiunov</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Scheu</surname>
+</string-name>. <year>2005</year>. &#x0201c;<article-title>Biodiversity and Litter Decomposition in Terrestrial Ecosystems</article-title>.&#x0201d; <source>Annual Review of Ecology, Evolution, and Systematics</source>
+<volume>36</volume>, no. <issue>1</issue>: <fpage>191</fpage>&#x02013;<lpage>218</lpage>. <pub-id pub-id-type="doi">10.1146/annurev.ecolsys.36.112904.151932</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0053"><mixed-citation publication-type="journal" id="pei370044-cit-0053">
+<string-name>
+<surname>Hector</surname>, <given-names>A.</given-names>
+</string-name>, <string-name>
+<given-names>B.</given-names>
+<surname>Schmid</surname>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Beierkuhnlein</surname>
+</string-name>, et&#x000a0;al. <year>1999</year>. &#x0201c;<article-title>Plant Diversity and Productivity Experiments in European Grasslands</article-title>.&#x0201d; <source>Science</source>
+<volume>286</volume>, no. <issue>5442</issue>: <fpage>1123</fpage>&#x02013;<lpage>1127</lpage>. <pub-id pub-id-type="doi">10.1126/science.286.5442.1123</pub-id>.<pub-id pub-id-type="pmid">10550043</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0054"><mixed-citation publication-type="journal" id="pei370044-cit-0054">
+<string-name>
+<surname>Huang</surname>, <given-names>Y.</given-names>
+</string-name>, <string-name>
+<given-names>Y.</given-names>
+<surname>Chen</surname>
+</string-name>, <string-name>
+<given-names>N.</given-names>
+<surname>Castro&#x02010;Izaguirre</surname>
+</string-name>, et&#x000a0;al. <year>2018</year>. &#x0201c;<article-title>Impacts of Species Richness on Productivity in a Large&#x02010;Scale Subtropical Forest Experiment</article-title>.&#x0201d; <source>Science</source>
+<volume>362</volume>, no. <issue>6410</issue>: <fpage>80</fpage>&#x02013;<lpage>83</lpage>. <pub-id pub-id-type="doi">10.1126/science.aat6405</pub-id>.<pub-id pub-id-type="pmid">30287660</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0055"><mixed-citation publication-type="journal" id="pei370044-cit-0055">
+<string-name>
+<surname>Ismail</surname>, <given-names>M. J.</given-names>
+</string-name>, <string-name>
+<given-names>T. R.</given-names>
+<surname>Poudel</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Ali</surname>
+</string-name>, and <string-name>
+<given-names>L.</given-names>
+<surname>Dong</surname>
+</string-name>. <year>2025</year>. &#x0201c;<article-title>Incorporating Stand Parameters in Nonlinear Height&#x02010;Diameter Mixed&#x02010;Effects Model for Uneven&#x02010;Aged <italic toggle="yes">Larix gmelinii</italic> Forests</article-title>.&#x0201d; <source>Frontiers in Forests and Global Change</source>
+<volume>7</volume>: <elocation-id>1491648</elocation-id>. <pub-id pub-id-type="doi">10.3389/ffgc.2024.1491648</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0056"><mixed-citation publication-type="journal" id="pei370044-cit-0056">
+<string-name>
+<surname>Jahnke</surname>, <given-names>L. S.</given-names>
+</string-name>, and <string-name>
+<given-names>D. B.</given-names>
+<surname>Lawrence</surname>
+</string-name>. <year>1965</year>. &#x0201c;<article-title>Influence of Photosynthetic Crown Structure on Potential Productivity of Vegetation, Based Primarily on Mathematical Models</article-title>.&#x0201d; <source>Ecology</source>
+<volume>46</volume>, no. <issue>3</issue>: <fpage>319</fpage>&#x02013;<lpage>326</lpage>. <pub-id pub-id-type="doi">10.2307/1936335</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0057"><mixed-citation publication-type="journal" id="pei370044-cit-0057">
+<string-name>
+<surname>Joshi</surname>, <given-names>G.</given-names>
+</string-name>, <string-name>
+<given-names>K. P.</given-names>
+<surname>Sharma</surname>
+</string-name>, and <string-name>
+<given-names>M. K.</given-names>
+<surname>Chettri</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Vegetation Structure and Carbon Stock of Two Community Managed <italic toggle="yes">Shorea robusta</italic> Forests of Dhangadhi, Nepal</article-title>.&#x0201d; <source>Amrit Research Journal</source>
+<volume>2</volume>, no. <issue>1</issue>: <fpage>11</fpage>&#x02013;<lpage>18</lpage>. <pub-id pub-id-type="doi">10.3126/arj.v2i01.39883</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0058"><mixed-citation publication-type="journal" id="pei370044-cit-0058">
+<string-name>
+<surname>Karanika</surname>, <given-names>E. D.</given-names>
+</string-name>, <string-name>
+<given-names>D. A.</given-names>
+<surname>Alifragis</surname>
+</string-name>, <string-name>
+<given-names>A. P.</given-names>
+<surname>Mamolos</surname>
+</string-name>, and <string-name>
+<given-names>D. S.</given-names>
+<surname>Veresoglou</surname>
+</string-name>. <year>2007</year>. &#x0201c;<article-title>Differentiation Between Responses of Primary Productivity and Phosphorus Exploitation to Species Richness</article-title>.&#x0201d; <source>Plant and Soil</source>
+<volume>297</volume>, no. <issue>1</issue>: <fpage>69</fpage>&#x02013;<lpage>81</lpage>. <pub-id pub-id-type="doi">10.1007/s11104-007-9320-7</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0059"><mixed-citation publication-type="book" id="pei370044-cit-0059">
+<string-name>
+<surname>Karki</surname>, <given-names>M.</given-names>
+</string-name>
+<year>2019</year>. <source>Birendranagar Municipality Profile/Facts &#x00026; Statistics</source>. <publisher-name>Nepal Archives</publisher-name>. <ext-link xlink:href="https://www.nepalarchives.com/content/birendranagar-municipality-surkhet-profile/" ext-link-type="uri">https://www.nepalarchives.com/content/birendranagar&#x02010;municipality&#x02010;surkhet&#x02010;profile/</ext-link>.</mixed-citation></ref><ref id="pei370044-bib-0060"><mixed-citation publication-type="journal" id="pei370044-cit-0060">
+<string-name>
+<surname>KC</surname>, <given-names>A.</given-names>
+</string-name>, <string-name>
+<given-names>G.</given-names>
+<surname>Bhandari</surname>
+</string-name>, <string-name>
+<given-names>G. R.</given-names>
+<surname>Joshi</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Aryal</surname>
+</string-name>. <year>2013</year>. &#x0201c;<article-title>Climate Change Mitigation Potential From Carbon Sequestration of Community Forest in Mid Hill Region of Nepal</article-title>.&#x0201d; <source>International Journal of Environmental Protection</source>
+<volume>3</volume>, no. <issue>7</issue>: <fpage>33</fpage>.</mixed-citation></ref><ref id="pei370044-bib-0061"><mixed-citation publication-type="journal" id="pei370044-cit-0061">
+<string-name>
+<surname>Khan</surname>, <given-names>M.</given-names>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Rai</surname>
+</string-name>, and <string-name>
+<given-names>R.</given-names>
+<surname>Tripathi</surname>
+</string-name>. <year>1987</year>. &#x0201c;<article-title>Population Structure of Some Tree Species in Disturbed and Protected Subtropical Forests of North&#x02010;East India</article-title>.&#x0201d; <source>Acta Oecologica</source>
+<volume>8</volume>, no. <issue>3</issue>: <fpage>247</fpage>&#x02013;<lpage>255</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0062"><mixed-citation publication-type="journal" id="pei370044-cit-0062">
+<string-name>
+<surname>Lamichhane</surname>, <given-names>A.</given-names>
+</string-name>, <string-name>
+<given-names>R. A.</given-names>
+<surname>Mandal</surname>
+</string-name>, and <string-name>
+<given-names>P.</given-names>
+<surname>Kandel</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Carbon Dynamics in Protected Area and Community Managed Forest: A Study From Banke, Nepal</article-title>.&#x0201d; <source>International Journal of Geography, Geology and Environment</source>
+<volume>3</volume>: <fpage>55</fpage>&#x02013;<lpage>68</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0063"><mixed-citation publication-type="book" id="pei370044-cit-0063">
+<string-name>
+<surname>Libois</surname>, <given-names>F.</given-names>
+</string-name>, <string-name>
+<given-names>J.&#x02010;M.</given-names>
+<surname>Baland</surname>
+</string-name>, <string-name>
+<given-names>N.</given-names>
+<surname>Delbart</surname>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Pattanayak</surname>
+</string-name>. <year>2022</year>. <source>Community Forest Management: The Story Behind a Success Story in Nepal</source>. <publisher-name>CEPREMAP</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0064"><mixed-citation publication-type="journal" id="pei370044-cit-0064">
+<string-name>
+<surname>Liu</surname>, <given-names>X.</given-names>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Trogisch</surname>
+</string-name>, <string-name>
+<given-names>J.&#x02010;S.</given-names>
+<surname>He</surname>
+</string-name>, et&#x000a0;al. <year>2018</year>. &#x0201c;<article-title>Tree Species Richness Increases Ecosystem Carbon Storage in Subtropical Forests</article-title>.&#x0201d; <source>Proceedings of the Royal Society B: Biological Sciences</source>
+<volume>285</volume>, no. <issue>1885</issue>: <elocation-id>20181240</elocation-id>. <pub-id pub-id-type="doi">10.1098/rspb.2018.1240</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0065"><mixed-citation publication-type="journal" id="pei370044-cit-0065">
+<string-name>
+<surname>Maharjan</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>D.</given-names>
+<surname>Bhuju</surname>
+</string-name>, and <string-name>
+<given-names>C.</given-names>
+<surname>Khadka</surname>
+</string-name>. <year>2006</year>. &#x0201c;<article-title>Plant Community Structure and Species Diversity in Ranibari Forest, Kathmandu</article-title>.&#x0201d; <source>Nepal Journal of Science and Technology</source>
+<volume>7</volume>, no. <issue>7</issue>: <fpage>35</fpage>&#x02013;<lpage>44</lpage>. <pub-id pub-id-type="doi">10.3126/njst.v7i0.569</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0066"><mixed-citation publication-type="journal" id="pei370044-cit-0066">
+<string-name>
+<surname>Malik</surname>, <given-names>Z. A.</given-names>
+</string-name>, and <string-name>
+<given-names>A.</given-names>
+<surname>Bhatt</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Regeneration Status of Tree Species and Survival of Their Seedlings in Kedarnath Wildlife Sanctuary and Its Adjoining Areas in Western Himalaya, India</article-title>.&#x0201d; <source>Tropical Ecology</source>
+<volume>57</volume>, no. <issue>4</issue>: <fpage>677</fpage>&#x02013;<lpage>690</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0067"><mixed-citation publication-type="journal" id="pei370044-cit-0067">
+<string-name>
+<surname>Mandal</surname>, <given-names>R. A.</given-names>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Aryal</surname>
+</string-name>, <string-name>
+<given-names>J. P.</given-names>
+<surname>Gupta</surname>
+</string-name>, and <string-name>
+<given-names>P. K.</given-names>
+<surname>Jha</surname>
+</string-name>. <year>2017</year>. &#x0201c;<article-title>Effects of Hilly Aspects on Carbon Stock of Pinus Roxburghii Plantations in Kaleri, Salyan Salleri and Barahpakho Community Forests, Nepal</article-title>.&#x0201d; <source>Journal of Climate Change Research</source>
+<volume>3</volume>: <fpage>816</fpage>&#x02013;<lpage>824</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0068"><mixed-citation publication-type="book" id="pei370044-cit-0068">
+<collab collab-type="authors">MOFE</collab>
+. <year>2022</year>. <source>Forest Regulations, 2079</source>. <publisher-name>Ministry of Forests and Environment, Government of Nepal</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0069"><mixed-citation publication-type="book" id="pei370044-cit-0069">
+<collab collab-type="authors">MOFSC</collab>
+. <year>2016</year>. <source>Conservation Landscapes of Nepal</source>. <publisher-name>Ministry of Forests and Soil Conservation</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0070"><mixed-citation publication-type="journal" id="pei370044-cit-0070">
+<string-name>
+<surname>Nath</surname>, <given-names>P. C.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Ahmed</surname>
+</string-name>, <string-name>
+<given-names>J. K.</given-names>
+<surname>Bania</surname>
+</string-name>, <string-name>
+<given-names>K.</given-names>
+<surname>Majumdar</surname>
+</string-name>, <string-name>
+<given-names>A. J.</given-names>
+<surname>Nath</surname>
+</string-name>, and <string-name>
+<given-names>A. K.</given-names>
+<surname>Das</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Tree Diversity and Biomass Carbon Stock Along an Altitudinal Gradient in Old&#x02010;Growth Secondary Semi&#x02010;Evergreen Forests in North East India</article-title>.&#x0201d; <source>Tropical Ecology</source>
+<volume>63</volume>, no. <issue>1</issue>: <fpage>1</fpage>&#x02013;<lpage>10</lpage>. <pub-id pub-id-type="doi">10.1007/s42965-021-00185-y</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0071"><mixed-citation publication-type="journal" id="pei370044-cit-0071">
+<string-name>
+<surname>Nguyen</surname>, <given-names>T. T.</given-names>
+</string-name>, <string-name>
+<given-names>U.</given-names>
+<surname>Grote</surname>
+</string-name>, <string-name>
+<given-names>F.</given-names>
+<surname>Neubacher</surname>
+</string-name>, <string-name>
+<given-names>M. H.</given-names>
+<surname>Do</surname>
+</string-name>, and <string-name>
+<given-names>G. P.</given-names>
+<surname>Paudel</surname>
+</string-name>. <year>2023</year>. &#x0201c;<article-title>Security Risks From Climate Change and Environmental Degradation: Implications for Sustainable Land Use Transformation in the Global South</article-title>.&#x0201d; <source>Current Opinion in Environmental Sustainability</source>
+<volume>63</volume>: <elocation-id>101322</elocation-id>. <pub-id pub-id-type="doi">10.1016/j.cosust.2023.101322</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0072"><mixed-citation publication-type="journal" id="pei370044-cit-0072">
+<string-name>
+<surname>Nitanan</surname>, <given-names>K.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Shuib</surname>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Sridar</surname>
+</string-name>, <string-name>
+<given-names>V.</given-names>
+<surname>Kunjuraman</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Zaiton</surname>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Herman</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>The Total Economic Value of Forest Ecosystem Services in the Tropical Forests of Malaysia</article-title>.&#x0201d; <source>International Forestry Review</source>
+<volume>22</volume>, no. <issue>4</issue>: <fpage>485</fpage>&#x02013;<lpage>503</lpage>. <pub-id pub-id-type="doi">10.1505/146554820831255551</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0073"><mixed-citation publication-type="journal" id="pei370044-cit-0073">
+<string-name>
+<surname>Norris</surname>, <given-names>K.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Asase</surname>
+</string-name>, <string-name>
+<given-names>B.</given-names>
+<surname>Collen</surname>
+</string-name>, et&#x000a0;al. <year>2010</year>. &#x0201c;<article-title>Biodiversity in a Forest&#x02010;Agriculture Mosaic&#x02013;the Changing Face of West African Rainforests</article-title>.&#x0201d; <source>Biological Conservation</source>
+<volume>143</volume>, no. <issue>10</issue>: <fpage>2341</fpage>&#x02013;<lpage>2350</lpage>. <pub-id pub-id-type="doi">10.1016/j.biocon.2009.12.032</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0074"><mixed-citation publication-type="book" id="pei370044-cit-0074">
+<collab collab-type="authors">NPC</collab>
+. <year>2020</year>. <source>The Fifteenth Plan (Fiscal Year 2019/20&#x02013;2023/24)</source>. <publisher-name>Government of Nepal, National Planning Commission</publisher-name>. <ext-link xlink:href="https://npc.gov.np/images/category/15th_plan_English_Version.pdf" ext-link-type="uri">https://npc.gov.np/images/category/15th_plan_English_Version.pdf</ext-link>.</mixed-citation></ref><ref id="pei370044-bib-0075"><mixed-citation publication-type="journal" id="pei370044-cit-0075">
+<string-name>
+<surname>Pan</surname>, <given-names>Y.</given-names>
+</string-name>, <string-name>
+<given-names>R. A.</given-names>
+<surname>Birdsey</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Fang</surname>
+</string-name>, et&#x000a0;al. <year>2011</year>. &#x0201c;<article-title>A Large and Persistent Carbon Sink in the World's Forests</article-title>.&#x0201d; <source>Science</source>
+<volume>333</volume>, no. <issue>6045</issue>: <fpage>988</fpage>&#x02013;<lpage>993</lpage>. <pub-id pub-id-type="doi">10.1126/science.1201609</pub-id>.<pub-id pub-id-type="pmid">21764754</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0076"><mixed-citation publication-type="journal" id="pei370044-cit-0076">
+<string-name>
+<surname>Pandey</surname>, <given-names>H. P.</given-names>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Pokhrel</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Stocking Density and DBH Distribution of Community Forests in Nepal</article-title>.&#x0201d; <source>Small&#x02010;Scale Forestry</source>
+<volume>20</volume>, no. <issue>1</issue>: <fpage>145</fpage>&#x02013;<lpage>159</lpage>. <pub-id pub-id-type="doi">10.1007/s11842-020-09461-6</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0077"><mixed-citation publication-type="journal" id="pei370044-cit-0077">
+<string-name>
+<surname>Pandey</surname>, <given-names>S. S.</given-names>
+</string-name>, <string-name>
+<given-names>T. N.</given-names>
+<surname>Maraseni</surname>
+</string-name>, and <string-name>
+<given-names>G.</given-names>
+<surname>Cockfield</surname>
+</string-name>. <year>2014</year>. &#x0201c;<article-title>Carbon Stock Dynamics in Different Vegetation Dominated Community Forests Under REDD+: A Case From Nepal</article-title>.&#x0201d; <source>Forest Ecology and Management</source>
+<volume>327</volume>: <fpage>40</fpage>&#x02013;<lpage>47</lpage>. <pub-id pub-id-type="doi">10.1016/j.foreco.2014.04.028</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0078"><mixed-citation publication-type="journal" id="pei370044-cit-0078">
+<string-name>
+<surname>Pandit</surname>, <given-names>R.</given-names>
+</string-name>, and <string-name>
+<given-names>E.</given-names>
+<surname>Bevilacqua</surname>
+</string-name>. <year>2011</year>. &#x0201c;<article-title>Forest Users and Environmental Impacts of Community Forestry in the Hills of Nepal</article-title>.&#x0201d; <source>Forest Policy and Economics</source>
+<volume>13</volume>, no. <issue>5</issue>: <fpage>345</fpage>&#x02013;<lpage>352</lpage>. <pub-id pub-id-type="doi">10.1016/j.forpol.2011.03.009</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0079"><mixed-citation publication-type="journal" id="pei370044-cit-0079">
+<string-name>
+<surname>Paudel</surname>, <given-names>D. P.</given-names>
+</string-name>
+<year>2011</year>. &#x0201c;<article-title>Community Forests Ensuring Local Governance and Livelihood: A Case Study in Sunwal VDC, Nawalparasi, Nepal</article-title>.&#x0201d; <source>Geographical Journal of Nepal</source>
+<volume>8</volume>, no. <issue>9</issue>: <fpage>33</fpage>&#x02013;<lpage>42</lpage>. <pub-id pub-id-type="doi">10.3126/gjn.v9i0.17469</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0080"><mixed-citation publication-type="book" id="pei370044-cit-0080">
+<collab collab-type="authors">PCTMCDB</collab>
+. <year>2017</year>. <source>President Chure&#x02010;Terai Madhesh Conservation and Management Master Plan</source>. <publisher-name>President Chure&#x02010;Terai Madhesh Conservation Development Board</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0081"><mixed-citation publication-type="journal" id="pei370044-cit-0081">
+<string-name>
+<surname>Peres</surname>, <given-names>C. A.</given-names>
+</string-name>, <string-name>
+<given-names>T. A.</given-names>
+<surname>Gardner</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Barlow</surname>
+</string-name>, et&#x000a0;al. <year>2010</year>. &#x0201c;<article-title>Biodiversity Conservation in Human&#x02010;Modified Amazonian Forest Landscapes</article-title>.&#x0201d; <source>Biological Conservation</source>
+<volume>143</volume>, no. <issue>10</issue>: <fpage>2314</fpage>&#x02013;<lpage>2327</lpage>. <pub-id pub-id-type="doi">10.1016/j.biocon.2010.01.021</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0082"><mixed-citation publication-type="journal" id="pei370044-cit-0082">
+<string-name>
+<surname>Pielou</surname>, <given-names>E. C.</given-names>
+</string-name>
+<year>1966</year>. &#x0201c;<article-title>The Measurement of Diversity in Different Types of Biological Collections</article-title>.&#x0201d; <source>Journal of Theoretical Biology</source>
+<volume>13</volume>: <fpage>131</fpage>&#x02013;<lpage>144</lpage>. <pub-id pub-id-type="doi">10.1016/0022-5193(66)90013-0</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0083"><mixed-citation publication-type="miscellaneous" id="pei370044-cit-0083">
+<string-name>
+<surname>Pokharel</surname>, <given-names>B.</given-names>
+</string-name>, and <string-name>
+<given-names>S.</given-names>
+<surname>Byrne</surname>
+</string-name>. <year>2009</year>. <article-title>&#x0201c;Climate Change Mitigation and Adaptation Strategies in Nepal's Forest Sector: How Can Rural Communities Benefit?&#x0201d;</article-title> Discussion Paper 7, Nepal Swiss Community Forestry Project. Kathmandu.</mixed-citation></ref><ref id="pei370044-bib-0084"><mixed-citation publication-type="journal" id="pei370044-cit-0084">
+<string-name>
+<surname>Pokharel</surname>, <given-names>B. K.</given-names>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Nurse</surname>
+</string-name>. <year>2004</year>. &#x0201c;<article-title>Forests and People's Livelihood: Benefiting the Poor From Community Forestry</article-title>.&#x0201d; <source>Journal of Forest and Livelihood</source>
+<volume>4</volume>, no. <issue>1</issue>: <fpage>19</fpage>&#x02013;<lpage>29</lpage>. <pub-id pub-id-type="doi">10.3126/jfl.v4i1.59768</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0085"><mixed-citation publication-type="journal" id="pei370044-cit-0085">
+<string-name>
+<surname>Poudel</surname>, <given-names>P.</given-names>
+</string-name>, and <string-name>
+<given-names>A.</given-names>
+<surname>Devkota</surname>
+</string-name>. <year>2021</year>. &#x0201c;<article-title>Regeneration Status of Sal (<italic toggle="yes">Shorea robusta</italic> Gaertn.) in Community Managed Forests, Tanahun District, Nepal</article-title>.&#x0201d; <source>Journal of Institute of Science and Technology</source>
+<volume>26</volume>, no. <issue>2</issue>: <fpage>23</fpage>&#x02013;<lpage>30</lpage>. <pub-id pub-id-type="doi">10.3126/jist.v26i2.41297</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0086"><mixed-citation publication-type="journal" id="pei370044-cit-0086">
+<string-name>
+<surname>Pragasan</surname>, <given-names>L.</given-names>
+</string-name>
+<year>2014</year>. &#x0201c;<article-title>Carbon Stock Assessment in the Vegetation of the Chitteri Reserve Forest of the Eastern Ghats in India Based on Non&#x02010;Destructive Method Using Tree Inventory Data</article-title>.&#x0201d; <source>Journal of Earth Science &#x00026; Climatic Change</source>
+<volume>5</volume>, no. <issue>Special Issue</issue>: <fpage>1</fpage>&#x02013;<lpage>9</lpage>. <pub-id pub-id-type="doi">10.4172/2157-7617.S11-001</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0087"><mixed-citation publication-type="journal" id="pei370044-cit-0087">
+<string-name>
+<surname>Pragasan</surname>, <given-names>L. A.</given-names>
+</string-name>
+<year>2020</year>. &#x0201c;<article-title>Tree Carbon Stock and Its Relationship to Key Factors From a Tropical Hill Forest of Tamil Nadu, India</article-title>.&#x0201d; <source>Geology, Ecology, and Landscapes</source>
+<volume>6</volume>, no. <issue>1</issue>: <fpage>1</fpage>&#x02013;<lpage>8</lpage>. <pub-id pub-id-type="doi">10.1080/24749508.2020.1742510</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0088"><mixed-citation publication-type="journal" id="pei370044-cit-0088">
+<string-name>
+<surname>Pretzsch</surname>, <given-names>H.</given-names>
+</string-name>, <string-name>
+<given-names>D. I.</given-names>
+<surname>Forrester</surname>
+</string-name>, and <string-name>
+<given-names>T.</given-names>
+<surname>R&#x000f6;tzer</surname>
+</string-name>. <year>2015</year>. &#x0201c;<article-title>Representation of Species Mixing in Forest Growth Models. A Review and Perspective</article-title>.&#x0201d; <source>Ecological Modelling</source>
+<volume>313</volume>, no. <issue>276 292</issue>: <fpage>276</fpage>&#x02013;<lpage>292</lpage>. <pub-id pub-id-type="doi">10.1016/j.ecolmodel.2015.06.044</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0089"><mixed-citation publication-type="journal" id="pei370044-cit-0089">
+<string-name>
+<surname>Pretzsch</surname>, <given-names>H.</given-names>
+</string-name>, and <string-name>
+<given-names>G.</given-names>
+<surname>Schutze</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Effect of Tree Species Mixing on the Size Structure, Density, and Yield of Forest Stands</article-title>.&#x0201d; <source>European Journal of Forest Research</source>
+<volume>135</volume>, no. <issue>1</issue>: <fpage>1</fpage>&#x02013;<lpage>22</lpage>. <pub-id pub-id-type="doi">10.1007/s10342-015-0913-z</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0090"><mixed-citation publication-type="journal" id="pei370044-cit-0090">
+<string-name>
+<surname>Puget</surname>, <given-names>P.</given-names>
+</string-name>, and <string-name>
+<given-names>R.</given-names>
+<surname>Lal</surname>
+</string-name>. <year>2005</year>. &#x0201c;<article-title>Soil Organic Carbon and Nitrogen in a Mollisol in Central Ohio as Affected by Tillage and Land Use</article-title>.&#x0201d; <source>Soil and Tillage Research</source>
+<volume>80</volume>, no. <issue>1&#x02013;2</issue>: <fpage>201</fpage>&#x02013;<lpage>213</lpage>. <pub-id pub-id-type="doi">10.1016/j.still.2004.03.018</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0091"><mixed-citation publication-type="book" id="pei370044-cit-0091">
+<collab collab-type="authors">R CoreTeam</collab>
+. <year>2024</year>. <source>R: A Language and Environment for Statistical Computing</source>. <publisher-name>R Foundation for Statistical Computing</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0092"><mixed-citation publication-type="journal" id="pei370044-cit-0092">
+<string-name>
+<surname>Rautiainen</surname>, <given-names>A.</given-names>
+</string-name>, <string-name>
+<given-names>I.</given-names>
+<surname>Wernick</surname>
+</string-name>, <string-name>
+<given-names>P. E.</given-names>
+<surname>Waggoner</surname>
+</string-name>, <string-name>
+<given-names>J. H.</given-names>
+<surname>Ausubel</surname>
+</string-name>, and <string-name>
+<given-names>P. E.</given-names>
+<surname>Kauppi</surname>
+</string-name>. <year>2011</year>. &#x0201c;<article-title>A National and International Analysis of Changing Forest Density</article-title>.&#x0201d; <source>PLoS One</source>
+<volume>6</volume>, no. <issue>5</issue>: <elocation-id>e19577</elocation-id>. <pub-id pub-id-type="doi">10.1371/journal.pone.0019577</pub-id>.<pub-id pub-id-type="pmid">21573125</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0093"><mixed-citation publication-type="journal" id="pei370044-cit-0093">
+<string-name>
+<surname>Ruiz&#x02010;Benito</surname>, <given-names>P.</given-names>
+</string-name>, <string-name>
+<given-names>L.</given-names>
+<surname>G&#x000f3;mez&#x02010;Aparicio</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Paquette</surname>
+</string-name>, <string-name>
+<given-names>C.</given-names>
+<surname>Messier</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Kattge</surname>
+</string-name>, and <string-name>
+<given-names>M. A.</given-names>
+<surname>Zavala</surname>
+</string-name>. <year>2014</year>. &#x0201c;<article-title>Diversity Increases Carbon Storage and Tree Productivity in Spanish Forests</article-title>.&#x0201d; <source>Global Ecology and Biogeography</source>
+<volume>23</volume>, no. <issue>3</issue>: <fpage>311</fpage>&#x02013;<lpage>322</lpage>. <pub-id pub-id-type="doi">10.1111/geb.12126</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0094"><mixed-citation publication-type="journal" id="pei370044-cit-0094">
+<string-name>
+<surname>Saha</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>L.</given-names>
+<surname>Huang</surname>
+</string-name>, <string-name>
+<given-names>M. A.</given-names>
+<surname>Khoso</surname>
+</string-name>, et&#x000a0;al. <year>2023</year>. &#x0201c;<article-title>Fine Root Decomposition in Forest Ecosystems: An Ecological Perspective</article-title>.&#x0201d; <source>Frontiers in Plant Science</source>
+<volume>14</volume>: <elocation-id>1277510</elocation-id>. <pub-id pub-id-type="doi">10.3389/fpls.2023.1277510</pub-id>.<pub-id pub-id-type="pmid">38023858</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0095"><mixed-citation publication-type="journal" id="pei370044-cit-0095">
+<string-name>
+<surname>Sakib</surname>, <given-names>N.</given-names>
+</string-name>, <string-name>
+<given-names>T. R.</given-names>
+<surname>Poudel</surname>
+</string-name>, <string-name>
+<given-names>Y.</given-names>
+<surname>Hao</surname>
+</string-name>, et&#x000a0;al. <year>2024</year>. &#x0201c;<article-title>Effects of Different Thinning Intensities on Carbon Storage in <italic toggle="yes">Pinus koraiensis</italic> Middle&#x02010;Aged Plantations in Northeast China</article-title>.&#x0201d; <source>Forests</source>
+<volume>15</volume>, no. <issue>5</issue>: <elocation-id>738</elocation-id>. <pub-id pub-id-type="doi">10.3390/f15050738</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0096"><mixed-citation publication-type="book" id="pei370044-cit-0096">
+<string-name>
+<surname>Shannon</surname>, <given-names>C. E.</given-names>
+</string-name>, and <string-name>
+<given-names>W.</given-names>
+<surname>Weaver</surname>
+</string-name>. <year>1949</year>. <source>The Mathematical Theory of Communication</source>. <publisher-name>University of Illinois</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0097"><mixed-citation publication-type="journal" id="pei370044-cit-0097">
+<string-name>
+<surname>Sharma</surname>, <given-names>C.</given-names>
+</string-name>, <string-name>
+<given-names>A. K.</given-names>
+<surname>Mishra</surname>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Krishan</surname>
+</string-name>, <string-name>
+<given-names>O.</given-names>
+<surname>Tiwari</surname>
+</string-name>, and <string-name>
+<given-names>Y.</given-names>
+<surname>Rana</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Variation in Vegetation Composition, Biomass Production, and Carbon Storage in Ridge Top Forests of High Mountains of Garhwal Himalaya</article-title>.&#x0201d; <source>Journal of Sustainable Forestry</source>
+<volume>35</volume>, no. <issue>2</issue>: <fpage>119</fpage>&#x02013;<lpage>132</lpage>. <pub-id pub-id-type="doi">10.1080/10549811.2015.1118387</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0098"><mixed-citation publication-type="journal" id="pei370044-cit-0098">
+<string-name>
+<surname>Sharma</surname>, <given-names>K. P.</given-names>
+</string-name>, <string-name>
+<given-names>S. P.</given-names>
+<surname>Bhatta</surname>
+</string-name>, and <string-name>
+<given-names>S. K.</given-names>
+<surname>Lamsal</surname>
+</string-name>. <year>2020</year>. &#x0201c;<article-title>Species Diversity and Regeneration Status of Community&#x02010;Managed Hill Sal (<italic toggle="yes">Shorea robusta</italic>) Forest in Central Nepal</article-title>.&#x0201d; <source>Current Science</source>
+<volume>119</volume>, no. <issue>1</issue>: <fpage>83</fpage>&#x02013;<lpage>92</lpage>. <pub-id pub-id-type="doi">10.18520/cs/v119/i1/83-92</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0099"><mixed-citation publication-type="journal" id="pei370044-cit-0099">
+<string-name>
+<surname>Shrestha</surname>, <given-names>B. B.</given-names>
+</string-name>
+<year>2005</year>. &#x0201c;<article-title>Fuelwood Harvest, Management and Regeneration of Two Community Forests in Central Nepal</article-title>.&#x0201d; <source>Himalayan Journal of Sciences</source>
+<volume>3</volume>, no. <issue>5</issue>: <fpage>75</fpage>&#x02013;<lpage>80</lpage>. <pub-id pub-id-type="doi">10.3126/hjs.v3i5.465</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0100"><mixed-citation publication-type="journal" id="pei370044-cit-0100">
+<string-name>
+<surname>Shrestha</surname>, <given-names>B. B.</given-names>
+</string-name>
+<year>2016</year>. &#x0201c;<article-title>Invasive Alien Plant Species in Nepal</article-title>.&#x0201d; <source>Frontiers of Botany</source>
+<volume>2016</volume>: <fpage>269</fpage>&#x02013;<lpage>284</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0101"><mixed-citation publication-type="journal" id="pei370044-cit-0101">
+<string-name>
+<surname>Shrestha</surname>, <given-names>B. B.</given-names>
+</string-name>, <string-name>
+<given-names>U. B.</given-names>
+<surname>Shrestha</surname>
+</string-name>, <string-name>
+<given-names>K. P.</given-names>
+<surname>Sharma</surname>
+</string-name>, <string-name>
+<given-names>R. B.</given-names>
+<surname>Thapa&#x02010;Parajuli</surname>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Devkota</surname>
+</string-name>, and <string-name>
+<given-names>M.</given-names>
+<surname>Siwakoti</surname>
+</string-name>. <year>2019</year>. &#x0201c;<article-title>Community Perception and Prioritization of Invasive Alien Plants in Chitwan&#x02010;Annapurna Landscape, Nepal</article-title>.&#x0201d; <source>Journal of Environmental Management</source>
+<volume>229</volume>, no. <issue>38 47</issue>: <fpage>38</fpage>&#x02013;<lpage>47</lpage>. <pub-id pub-id-type="doi">10.1016/j.jenvman.2018.06.034</pub-id>.<pub-id pub-id-type="pmid">30032998</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0102"><mixed-citation publication-type="book" id="pei370044-cit-0102">
+<string-name>
+<surname>Shrestha</surname>, <given-names>K.</given-names>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Bhattarai</surname>
+</string-name>, and <string-name>
+<given-names>P.</given-names>
+<surname>Bhandari</surname>
+</string-name>. <year>2018</year>. <source>Handbook of Flowering Plants of Nepal (1 Gymnosperms and Angiosperms: Cycadaceae&#x02010;Betulaceae)</source>. <publisher-name>Scientific Publishers</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0103"><mixed-citation publication-type="journal" id="pei370044-cit-0103">
+<string-name>
+<surname>Sohn</surname>, <given-names>J. A.</given-names>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Saha</surname>
+</string-name>, and <string-name>
+<given-names>J.</given-names>
+<surname>Bauhus</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Potential of Forest Thinning to Mitigate Drought Stress: A Meta&#x02010;Analysis</article-title>.&#x0201d; <source>Forest Ecology and Management</source>
+<volume>380</volume>, no. <issue>261 273</issue>: <fpage>261</fpage>&#x02013;<lpage>273</lpage>. <pub-id pub-id-type="doi">10.1016/j.foreco.2016.07.046</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0104"><mixed-citation publication-type="journal" id="pei370044-cit-0104">
+<string-name>
+<surname>Stephenson</surname>, <given-names>N. L.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Das</surname>
+</string-name>, <string-name>
+<given-names>R.</given-names>
+<surname>Condit</surname>
+</string-name>, et&#x000a0;al. <year>2014</year>. &#x0201c;<article-title>Rate of Tree Carbon Accumulation Increases Continuously With Tree Size</article-title>.&#x0201d; <source>Nature</source>
+<volume>507</volume>, no. <issue>7490</issue>: <fpage>90</fpage>&#x02013;<lpage>93</lpage>. <pub-id pub-id-type="doi">10.1038/nature12914</pub-id>.<pub-id pub-id-type="pmid">24429523</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0105"><mixed-citation publication-type="journal" id="pei370044-cit-0105">
+<string-name>
+<surname>Subedi</surname>, <given-names>B.</given-names>
+</string-name>, <string-name>
+<given-names>P.</given-names>
+<surname>Lamichhane</surname>
+</string-name>, <string-name>
+<given-names>L. K.</given-names>
+<surname>Magar</surname>
+</string-name>, and <string-name>
+<given-names>T.</given-names>
+<surname>Subedi</surname>
+</string-name>. <year>2022</year>. &#x0201c;<article-title>Aboveground Carbon Stocks and Sequestration Rates of Forests Under Different Management Regimes in Churia Region of Nepal</article-title>.&#x0201d; <source>Banko Janakari</source>
+<volume>32</volume>, no. <issue>1</issue>: <fpage>15</fpage>&#x02013;<lpage>24</lpage>. <pub-id pub-id-type="doi">10.3126/banko.v32i1.45442</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0106"><mixed-citation publication-type="book" id="pei370044-cit-0106">
+<string-name>
+<surname>Subedi</surname>, <given-names>N.</given-names>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Bhattarai</surname>
+</string-name>, <string-name>
+<given-names>M.</given-names>
+<surname>Pandey</surname>
+</string-name>, et&#x000a0;al. <year>2021</year>. <source>Report on Faunal Diversity in Chure Region of Nepal</source>. <publisher-name>President Chure&#x02010;Terai Madhesh Conservation Development Board and National Trust for Nature Conservation</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0107"><mixed-citation publication-type="journal" id="pei370044-cit-0107">
+<string-name>
+<surname>Sunam</surname>, <given-names>R. K.</given-names>
+</string-name>, and <string-name>
+<given-names>J. F.</given-names>
+<surname>McCarthy</surname>
+</string-name>. <year>2010</year>. &#x0201c;<article-title>Advancing Equity in Community Forestry: Recognition of the Poor Matters</article-title>.&#x0201d; <source>International Forestry Review</source>
+<volume>12</volume>, no. <issue>4</issue>: <fpage>370</fpage>&#x02013;<lpage>382</lpage>. <pub-id pub-id-type="doi">10.1505/ifor.12.4.370</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0108"><mixed-citation publication-type="journal" id="pei370044-cit-0108">
+<string-name>
+<surname>Suwal</surname>, <given-names>A. L.</given-names>
+</string-name>, <string-name>
+<given-names>D. R.</given-names>
+<surname>Bhuju</surname>
+</string-name>, and <string-name>
+<given-names>I. E.</given-names>
+<surname>M&#x000e5;ren</surname>
+</string-name>. <year>2015</year>. &#x0201c;<article-title>Assessment of Forest Carbon Stocks in the Himalayas: Does Legal Protection Matter?</article-title>&#x0201d; <source>Small&#x02010;Scale Forestry</source>
+<volume>14</volume>, no. <issue>1</issue>: <fpage>103</fpage>&#x02013;<lpage>120</lpage>. <pub-id pub-id-type="doi">10.1007/s11842-014-9276-4</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0109"><mixed-citation publication-type="journal" id="pei370044-cit-0109">
+<string-name>
+<surname>Tang</surname>, <given-names>C. Q.</given-names>
+</string-name>, <string-name>
+<given-names>S.&#x02010;Q.</given-names>
+<surname>Yao</surname>
+</string-name>, <string-name>
+<given-names>P.&#x02010;B.</given-names>
+<surname>Han</surname>
+</string-name>, et&#x000a0;al. <year>2023</year>. &#x0201c;<article-title>Forest Characteristics, Population Structure and Growth Trends of Threatened Relict <italic toggle="yes">Pseudotsuga forrestii</italic> in China</article-title>.&#x0201d; <source>Plant Diversity</source>
+<volume>45</volume>, no. <issue>4</issue>: <fpage>422</fpage>&#x02013;<lpage>433</lpage>. <pub-id pub-id-type="doi">10.1016/j.pld.2022.10.005</pub-id>.<pub-id pub-id-type="pmid">37601542</pub-id>
+</mixed-citation></ref><ref id="pei370044-bib-0110"><mixed-citation publication-type="journal" id="pei370044-cit-0110">
+<string-name>
+<surname>T&#x000ed;scar</surname>, <given-names>P. A.</given-names>
+</string-name>, and <string-name>
+<given-names>J. C.</given-names>
+<surname>Linares</surname>
+</string-name>. <year>2011</year>. &#x0201c;<article-title>Structure and Regeneration Patterns of <italic toggle="yes">Pinus nigra</italic> subsp. <italic toggle="yes">salzmannii</italic> Natural Forests: A Basic Knowledge for Adaptive Management in a Changing Climate</article-title>.&#x0201d; <source>Forests</source>
+<volume>2</volume>, no. <issue>4</issue>: <fpage>1013</fpage>&#x02013;<lpage>1030</lpage>. <pub-id pub-id-type="doi">10.3390/f2041013</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0111"><mixed-citation publication-type="journal" id="pei370044-cit-0111">
+<string-name>
+<surname>Ulak</surname>, <given-names>S.</given-names>
+</string-name>, <string-name>
+<given-names>K. D.</given-names>
+<surname>Awasthi</surname>
+</string-name>, and <string-name>
+<given-names>D. K.</given-names>
+<surname>Pradhan</surname>
+</string-name>. <year>2016</year>. &#x0201c;<article-title>Effect of Invasive <italic toggle="yes">Mikania micrantha</italic> in Regeneration Diversity and Biological Sequestration in Kumrose Buffer Zone Community Forest: A Study From Central Nepal</article-title>.&#x0201d; <source>Community Forestry in Nepal</source>
+<volume>2016</volume>: <fpage>89</fpage>&#x02013;<lpage>94</lpage>.</mixed-citation></ref><ref id="pei370044-bib-0112"><mixed-citation publication-type="journal" id="pei370044-cit-0112">
+<string-name>
+<surname>Uprety</surname>, <given-names>Y.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Tiwari</surname>
+</string-name>, <string-name>
+<given-names>S.</given-names>
+<surname>Karki</surname>
+</string-name>, et&#x000a0;al. <year>2023</year>. &#x0201c;<article-title>Characterization of Forest Ecosystems in the Chure (Siwalik Hills) Landscape of Nepal Himalaya and Their Conservation Need</article-title>.&#x0201d; <source>Forests</source>
+<volume>14</volume>, no. <issue>1</issue>: <elocation-id>100</elocation-id>. <pub-id pub-id-type="doi">10.3390/f14010100</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0113"><mixed-citation publication-type="journal" id="pei370044-cit-0113">
+<string-name>
+<surname>Wade</surname>, <given-names>A. S.</given-names>
+</string-name>, <string-name>
+<given-names>A.</given-names>
+<surname>Asase</surname>
+</string-name>, <string-name>
+<given-names>P.</given-names>
+<surname>Hadley</surname>
+</string-name>, et&#x000a0;al. <year>2010</year>. &#x0201c;<article-title>Management Strategies for Maximizing Carbon Storage and Tree Species Diversity in Cocoa&#x02010;Growing Landscapes</article-title>.&#x0201d; <source>Agriculture, Ecosystems &#x00026; Environment</source>
+<volume>138</volume>, no. <issue>3&#x02013;4</issue>: <fpage>324</fpage>&#x02013;<lpage>334</lpage>. <pub-id pub-id-type="doi">10.1016/j.agee.2010.06.007</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0114"><mixed-citation publication-type="journal" id="pei370044-cit-0114">
+<string-name>
+<surname>Wang</surname>, <given-names>Q.</given-names>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Ni</surname>
+</string-name>, and <string-name>
+<given-names>J.</given-names>
+<surname>Tenhunen</surname>
+</string-name>. <year>2005</year>. &#x0201c;<article-title>Application of a Geographically&#x02010;Weighted Regression Analysis to Estimate Net Primary Production of Chinese Forest Ecosystems</article-title>.&#x0201d; <source>Global Ecology and Biogeography</source>
+<volume>14</volume>, no. <issue>4</issue>: <fpage>379</fpage>&#x02013;<lpage>393</lpage>. <pub-id pub-id-type="doi">10.1111/j.1466-822X.2005.00153.x</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0115"><mixed-citation publication-type="journal" id="pei370044-cit-0115">
+<string-name>
+<surname>Wang</surname>, <given-names>X.</given-names>
+</string-name>, <string-name>
+<given-names>Z.</given-names>
+<surname>Feng</surname>
+</string-name>, and <string-name>
+<given-names>Z.</given-names>
+<surname>Ouyang</surname>
+</string-name>. <year>2001</year>. &#x0201c;<article-title>The Impact of Human Disturbance on Vegetative Carbon Storage in Forest Ecosystems in China</article-title>.&#x0201d; <source>Forest Ecology and Management</source>
+<volume>148</volume>, no. <issue>1&#x02013;3</issue>: <fpage>117</fpage>&#x02013;<lpage>123</lpage>. <pub-id pub-id-type="doi">10.1016/S0378-1127(00)00482-5</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0116"><mixed-citation publication-type="book" id="pei370044-cit-0116">
+<string-name>
+<surname>Wassie</surname>, <given-names>A.</given-names>
+</string-name>, <string-name>
+<given-names>F.</given-names>
+<surname>Bongers</surname>
+</string-name>, <string-name>
+<given-names>F. J.</given-names>
+<surname>Sterck</surname>
+</string-name>, and <string-name>
+<given-names>D.</given-names>
+<surname>Teketay</surname>
+</string-name>. <year>2010</year>. &#x0201c;<part-title>Church Forests&#x02013;Relics of Dry Afromontane Forests of Northern Ethiopia: Opportunities and Challenges for Conservation and Restoration</part-title>.&#x0201d; In <source>Degraded Forests in Eastern Africa</source>, edited by <person-group person-group-type="editor">
+<string-name>
+<given-names>F.</given-names>
+<surname>Bongers</surname>
+</string-name>
+</person-group> and <person-group person-group-type="editor">
+<string-name>
+<given-names>T.</given-names>
+<surname>Tennigkeit</surname>
+</string-name>
+</person-group>, <fpage>123</fpage>&#x02013;<lpage>132</lpage>. <publisher-name>Earthscan</publisher-name>.</mixed-citation></ref><ref id="pei370044-bib-0117"><mixed-citation publication-type="journal" id="pei370044-cit-0117">
+<string-name>
+<surname>Zeide</surname>, <given-names>B.</given-names>
+</string-name>
+<year>2004</year>. &#x0201c;<article-title>Optimal Stand Density: A Solution</article-title>.&#x0201d; <source>Canadian Journal of Forest Research</source>
+<volume>34</volume>, no. <issue>4</issue>: <fpage>846</fpage>&#x02013;<lpage>854</lpage>. <pub-id pub-id-type="doi">10.1139/x03-258</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0118"><mixed-citation publication-type="journal" id="pei370044-cit-0118">
+<string-name>
+<surname>Zeileis</surname>, <given-names>A.</given-names>
+</string-name>
+<year>2004</year>. &#x0201c;<article-title>Econometric Computing With HC and HAC Covariance Matrix Estimators</article-title>.&#x0201d; <source>Journal of Statistical Software</source>
+<volume>11</volume>, no. <issue>10</issue>: <fpage>1</fpage>&#x02013;<lpage>17</lpage>. <pub-id pub-id-type="doi">10.18637/jss.v011.i10</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0119"><mixed-citation publication-type="journal" id="pei370044-cit-0119">
+<string-name>
+<surname>Zeller</surname>, <given-names>L.</given-names>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Liang</surname>
+</string-name>, and <string-name>
+<given-names>H.</given-names>
+<surname>Pretzsch</surname>
+</string-name>. <year>2018</year>. &#x0201c;<article-title>Tree Species Richness Enhances Stand Productivity While Stand Structure Can Have Opposite Effects, Based on Forest Inventory Data From Germany and the United States of America</article-title>.&#x0201d; <source>Forest Ecosystems</source>
+<volume>5</volume>, no. <issue>1</issue>: <fpage>1</fpage>&#x02013;<lpage>17</lpage>. <pub-id pub-id-type="doi">10.1186/s40663-017-0127-6</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0120"><mixed-citation publication-type="journal" id="pei370044-cit-0120">
+<string-name>
+<surname>Zhou</surname>, <given-names>Z.</given-names>
+</string-name>, <string-name>
+<given-names>Z.</given-names>
+<surname>Zhang</surname>
+</string-name>, <string-name>
+<given-names>T.</given-names>
+<surname>Zha</surname>
+</string-name>, <string-name>
+<given-names>Z.</given-names>
+<surname>Luo</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Zheng</surname>
+</string-name>, and <string-name>
+<given-names>O. J.</given-names>
+<surname>Sun</surname>
+</string-name>. <year>2013</year>. &#x0201c;<article-title>Predicting Soil Respiration Using Carbon Stock in Roots, Litter and Soil Organic Matter in Forests of Loess Plateau in China</article-title>.&#x0201d; <source>Soil Biology and Biochemistry</source>
+<volume>57</volume>, no. <issue>135 143</issue>: <fpage>135</fpage>&#x02013;<lpage>143</lpage>. <pub-id pub-id-type="doi">10.1016/j.soilbio.2012.08.010</pub-id>.</mixed-citation></ref><ref id="pei370044-bib-0121"><mixed-citation publication-type="journal" id="pei370044-cit-0121">
+<string-name>
+<surname>Zhu</surname>, <given-names>B.</given-names>
+</string-name>, <string-name>
+<given-names>X.</given-names>
+<surname>Wang</surname>
+</string-name>, <string-name>
+<given-names>J.</given-names>
+<surname>Fang</surname>
+</string-name>, et&#x000a0;al. <year>2010</year>. &#x0201c;<article-title>Altitudinal Changes in Carbon Storage of Temperate Forests on Mt Changbai, Northeast China</article-title>.&#x0201d; <source>Journal of Plant Research</source>
+<volume>123</volume>, no. <issue>4</issue>: <fpage>439</fpage>&#x02013;<lpage>452</lpage>. <pub-id pub-id-type="doi">10.1007/s10265-009-0301-1</pub-id>.<pub-id pub-id-type="pmid">20127501</pub-id>
+</mixed-citation></ref></ref-list></back></article>

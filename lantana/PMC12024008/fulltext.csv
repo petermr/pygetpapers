@@ -1,0 +1,51 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40298647
+source,MED
+pmid,40298647
+pmcid,PMC12024008
+fullTextIdList,{'fullTextId': 'PMC12024008'}
+doi,10.3390/antiox14040399
+title,"Occurrence, Pharmacological Properties, Toxic Effects, and Possibilities of Using Berries from Selected Invasive Plants."
+authorString,Oancea S.
+authorList,"{'author': {'fullName': 'Oancea S', 'firstName': 'Simona', 'lastName': 'Oancea', 'initials': 'S', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-3832-6041'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Agricultural Sciences and Food Engineering, Lucian Blaga University of Sibiu, 7-9 Dr. Ion Ratiu Street, 550024 Sibiu, Romania.'}}}}"
+authorIdList,"{'authorId': {'@type': 'ORCID', '#text': '0000-0003-3832-6041'}}"
+dataLinksTagsList,{'dataLinkstag': 'supporting_data'}
+journalInfo,"{'issue': '4', 'volume': '14', 'journalIssueId': '3933408', 'dateOfPublication': '2025 Mar', 'monthOfPublication': '3', 'yearOfPublication': '2025', 'printPublicationDate': '2025-03-01', 'journal': {'title': 'Antioxidants (Basel, Switzerland)', 'ISOAbbreviation': 'Antioxidants (Basel)', 'medlineAbbreviation': 'Antioxidants (Basel)', 'NLMid': '101668981', 'ISSN': '2076-3921', 'ESSN': '2076-3921'}}"
+pubYear,2025
+pageInfo,399
+abstractText,"Invasive alien plants are typically associated with negative impacts on ecosystems and sometimes on health, but studies also describe their ethnomedicinal usage, particularly by indigenous communities. Given the existing limitations regarding a critical study on the berry-producing invasive plants, this study aims to provide scientific evidence and much-needed updated knowledge on the pharmacologically significant fruits of several berry-producing invasive alien plants. A list of 35 species from 16 families is provided, along with their characteristics, historical medicinal uses, updated biological activities, and available toxicity data. The definitions, terminology, and classification criteria used to describe alien species, specifically the invasive types, are also provided. Most of the berries of the described species exhibit remarkable antioxidant properties due to their abundance of highly reactive molecules, mainly polyphenols and carotenoids. Other biological activities, ranging from antimicrobial, anti-inflammatory, and anti-diabetic to anticancer and neuroprotective activities, have been identified. In contrast, quantitative toxicity issues have been poorly studied for berries from invasive plants. Hopefully, this work will serve as a starting point for further exploration of the molecules from berries of these plants in terms of drug discovery to advance various therapies or other applications."
+affiliation,"Department of Agricultural Sciences and Food Engineering, Lucian Blaga University of Sibiu, 7-9 Dr. Ion Ratiu Street, 550024 Sibiu, Romania."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+grantsList,"{'grant': {'grantId': 'LBUS-IRG-2024', 'agency': 'Lucian Blaga University of Sibiu, Romania', 'orderIn': '0'}}"
+keywordList,"{'keyword': ['Toxicity', 'Antioxidant', 'Pharmacological activity', 'Berries', 'Traditional Use', 'Invasive Alien Plants']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/antiox14040399'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12024008'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12024008?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,Y
+tmAccessionTypeList,{'accessionType': 'doi'}
+dateOfCreation,2025-04-29
+firstIndexDate,2025-04-30
+fullTextReceivedDate,2025-04-28
+dateOfRevision,2025-05-14
+electronicPublicationDate,2025-03-27
+firstPublicationDate,2025-03-27

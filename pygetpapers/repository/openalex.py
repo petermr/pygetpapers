@@ -239,5 +239,6 @@ class OpenAlex(RepositoryInterface):
         result_dict = self.openalex(query_namespace["query"], size=10)
 
         results = result_dict[NEW_RESULTS]
-        totalhits = result_dict["meta"]["count"]
+        # Get total hits from the metadata in NEW_RESULTS
+        totalhits = results.get("total_hits", "Unknown")
         logging.info("Total number of hits for the query are %s", totalhits)

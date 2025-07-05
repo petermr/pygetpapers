@@ -1,0 +1,47 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39359907
+source,MED
+pmid,39359907
+pmcid,PMC11446621
+fullTextIdList,{'fullTextId': 'PMC11446621'}
+doi,10.1155/2024/1374346
+title,Phytochemical Characterization and Assessment of Crude Extracts from <i>Justicia adhatoda</i> for Phytotoxic and Cytotoxic Activity.
+authorString,"Nasir M, Ramash R, Fatima H, Ashraf S, Munir I, Asghar S, Adnan M, Masood A, Chaudhari SK."
+authorList,"{'author': [{'fullName': 'Nasir M', 'firstName': 'Muhammad', 'lastName': 'Nasir', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Ramash R', 'firstName': 'Roha', 'lastName': 'Ramash', 'initials': 'R', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Fatima H', 'firstName': 'Hira', 'lastName': 'Fatima', 'initials': 'H', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Ashraf S', 'firstName': 'Sana', 'lastName': 'Ashraf', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Zoology The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Munir I', 'firstName': 'Iqra', 'lastName': 'Munir', 'initials': 'I', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Asghar S', 'firstName': 'Sundas', 'lastName': 'Asghar', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Zoology The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Adnan M', 'firstName': 'Muhammad', 'lastName': 'Adnan', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Masood A', 'firstName': 'Atifa', 'lastName': 'Masood', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}, {'fullName': 'Chaudhari SK', 'firstName': 'Sunbal Khalil', 'lastName': 'Chaudhari', 'initials': 'SK', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-9590-3514'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan.'}}}]}"
+authorIdList,"{'authorId': {'@type': 'ORCID', '#text': '0000-0002-9590-3514'}}"
+journalInfo,"{'volume': '2024', 'journalIssueId': '3697837', 'dateOfPublication': '2024', 'monthOfPublication': '0', 'yearOfPublication': '2024', 'printPublicationDate': '2024-01-01', 'journal': {'title': 'Scientifica', 'ISOAbbreviation': 'Scientifica (Cairo)', 'medlineAbbreviation': 'Scientifica (Cairo)', 'NLMid': '101589932', 'ISSN': '2090-908X', 'ESSN': '2090-908X'}}"
+pubYear,2024
+pageInfo,1374346
+abstractText,"<h4>Background</h4>The aim of the study was to investigate the cytotoxicity, phytotoxicity, and proximate and phytochemical analysis of methanolic extracts of the leaves of <i>Justicia adhatoda</i>.<h4>Methods</h4>Methanolic leaf extract of <i>J. adhatoda</i> was screened for phytotoxic activity by using root length inhibition and seed germination assays. Cytotoxic activity was calculated using brine shrimp lethality bioassay. Plant extracts were also investigated for their proximate composition. The presence of several phytochemicals was tested by employing different methods.<h4>Results</h4>Decrease in seed germination and root length, 62.67% and 83.11%, was proportional to the increasing concentration of the methanolic extract of the plant. Cytotoxicity assay results indicated that the methanolic extract possessed significant cytotoxic potential with an LC-50 of 217 <i>µ</i>g/ml. Proximate analysis revealed that the leaves of <i>J. adhatoda</i> contain 9.4% moisture, 90.6% dry matter, 19.25% crude protein, 4.5% crude fat, 8.0% crude fiber, and 11.5% total ash.<h4>Conclusion</h4>Methanolic extracts of <i>J. adhatoda</i> leaves showed significant cytotoxic effects and may have potential use in medicine. The <i>J. adhatoda</i> foliar extract shows good inhibitory effects against seed germination and root growth. Therefore, it might be used as soil additive in crops to control weeds. Further research is required to detect and isolate phytotoxins from the plant that might replace synthetic herbicides with eco-friendly herbicides."
+affiliation,"Department of Botany The University of Lahore, Sargodha Campus, Sargodha, Pakistan."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1155/2024/1374346'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11446621'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11446621?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,1
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-10-03
+firstIndexDate,2024-10-09
+fullTextReceivedDate,2024-10-29
+dateOfRevision,2024-10-04
+electronicPublicationDate,2024-09-25
+firstPublicationDate,2024-09-25

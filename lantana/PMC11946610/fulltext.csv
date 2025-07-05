@@ -1,0 +1,50 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40265773
+source,MED
+pmid,40265773
+pmcid,PMC11946610
+fullTextIdList,{'fullTextId': 'PMC11946610'}
+doi,10.3390/plants14060835
+title,The Relationship Between Phenological Characteristics and Life Forms Within Temperate Semi-Natural Grassland Ecosystems in the Central Himalaya Region of India.
+authorString,"Fartyal A, Chaturvedi RK, Bargali SS, Bargali K."
+authorList,"{'author': [{'fullName': 'Fartyal A', 'firstName': 'Archana', 'lastName': 'Fartyal', 'initials': 'A', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-2634-9118'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany, D.S.B Campus, Kumaun University, Nainital 263002, Uttarakhand, India.'}}}, {'fullName': 'Chaturvedi RK', 'firstName': 'Ravi Kant', 'lastName': 'Chaturvedi', 'initials': 'RK', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-2863-9714'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Yunnan Key Laboratory for Conservation of Tropical Rainforests & Asian Elephant, Center for Integrative Conservation, Xishuangbanna Tropical Botanical Garden, Chinese Academy of Sciences, Menglun, Mengla 666303, China.'}}}, {'fullName': 'Bargali SS', 'firstName': 'Surendra Singh', 'lastName': 'Bargali', 'initials': 'SS', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-6341-0945'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany, D.S.B Campus, Kumaun University, Nainital 263002, Uttarakhand, India.'}}}, {'fullName': 'Bargali K', 'firstName': 'Kiran', 'lastName': 'Bargali', 'initials': 'K', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-8554-8803'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany, D.S.B Campus, Kumaun University, Nainital 263002, Uttarakhand, India.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-6341-0945'}, {'@type': 'ORCID', '#text': '0000-0002-2634-9118'}, {'@type': 'ORCID', '#text': '0000-0002-8554-8803'}, {'@type': 'ORCID', '#text': '0000-0003-2863-9714'}]}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'issue': '6', 'volume': '14', 'journalIssueId': '3919737', 'dateOfPublication': '2025 Mar', 'monthOfPublication': '3', 'yearOfPublication': '2025', 'printPublicationDate': '2025-03-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2025
+pageInfo,835
+abstractText,"The seasonal phenological segregation observed among various species within a plant community can be interpreted as a form of niche differentiation that facilitates the coexistence of these species. In the present study, life forms and phenological attributes of dominant plant species in temperate semi-natural grasslands of Central Himalaya, India, were assessed between January 2022 and December 2022. This study was carried out in three sites in different forest zones, viz. oak, cypress and pine. In each site, plots measuring 0.5 hectares were established and phenological assessments were conducted within each of these plots. A total of 50, 36, and 49 herbaceous species were identified in the grasslands of oak, cypress and pine zones, respectively, with these species categorized into five distinct life form classes. In the grasslands of both oak and pine zones, hemicryptophytes emerged as the predominant life form, whereas in the cypress zone grasslands, it was found that chamaephytes take precedence. The differences observed in the classifications of life forms can be ascribed to the geographical distribution and the biotic interactions present in these sites. The three grasslands exhibit comparable climatic conditions and day lengths, resulting in no significant variations in soil temperature, light intensity or overall climatic factors. The majority of species commenced their flowering phase during the monsoon season, attributed to the favorable conditions characterized by warm, humid weather and adequate soil moisture. Various phenological events, including germination, growth, and senescence, are significantly affected by weather and climate, and their timing subsequently influences ecosystem processes in a reciprocal manner. This study provides valuable foundational data for ecological and environmental research, aiding in the comparison and distinction of plant compositions across the Himalayas and its ecosystems."
+affiliation,"Department of Botany, D.S.B Campus, Kumaun University, Nainital 263002, Uttarakhand, India."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+grantsList,"{'grant': [{'grantId': '31750110466', 'agency': 'National Natural Science Foundation of China', 'orderIn': '0'}, {'grantId': 'NTA Ref No.: 191620050282', 'agency': 'University Grants Commission', 'orderIn': '0'}, {'grantId': '191620050282', 'agency': 'University Grants Commission', 'orderIn': '0'}]}"
+keywordList,"{'keyword': ['Phenology', 'Growth form', 'Biological Spectrum', 'Degraded Land', 'Climatic Condition']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants14060835'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11946610'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11946610?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-04-23
+firstIndexDate,2025-04-24
+fullTextReceivedDate,2025-04-01
+dateOfRevision,2025-04-25
+electronicPublicationDate,2025-03-07
+firstPublicationDate,2025-03-07

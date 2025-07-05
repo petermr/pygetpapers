@@ -1,0 +1,49 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39273921
+source,MED
+pmid,39273921
+pmcid,PMC11397202
+fullTextIdList,{'fullTextId': 'PMC11397202'}
+doi,10.3390/plants13172437
+title,"Landscape, Human Disturbance, and Climate Factors Drive the Species Richness of Alien Invasive Plants on Subtropical Islands."
+authorString,"Xie Y, Huang H, Xie X, Ou J, Chen Z, Lu X, Kong D, Nong L, Lin M, Qian Z, Mao Y, Chen Y, Wang Y, Chen Z, Deng C."
+authorList,"{'author': [{'fullName': 'Xie Y', 'firstName': 'Yanqiu', 'lastName': 'Xie', 'initials': 'Y', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-4493-2366'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Huang H', 'firstName': 'Hui', 'lastName': 'Huang', 'initials': 'H', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-2735-7862'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Architecture and Civil Engineering, Fujian College of Water Conservancy and Electric Power, Sanming 365000, China.'}}}, {'fullName': 'Xie X', 'firstName': 'Xinran', 'lastName': 'Xie', 'initials': 'X', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Ou J', 'firstName': 'Jingyao', 'lastName': 'Ou', 'initials': 'J', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Chen Z', 'firstName': 'Zhen', 'lastName': 'Chen', 'initials': 'Z', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Lu X', 'firstName': 'Xiaoxue', 'lastName': 'Lu', 'initials': 'X', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Kong D', 'firstName': 'Deyi', 'lastName': 'Kong', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Nong L', 'firstName': 'Liebo', 'lastName': 'Nong', 'initials': 'L', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Lin M', 'firstName': 'Manni', 'lastName': 'Lin', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Qian Z', 'firstName': 'Zhijun', 'lastName': 'Qian', 'initials': 'Z', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Mao Y', 'firstName': 'Yue', 'lastName': 'Mao', 'initials': 'Y', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Chen Y', 'firstName': 'Ying', 'lastName': 'Chen', 'initials': 'Y', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Wang Y', 'firstName': 'Yingxue', 'lastName': 'Wang', 'initials': 'Y', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Chen Z', 'firstName': 'Zujian', 'lastName': 'Chen', 'initials': 'Z', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}, {'fullName': 'Deng C', 'firstName': 'Chuanyuan', 'lastName': 'Deng', 'initials': 'C', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0002-4493-2366'}, {'@type': 'ORCID', '#text': '0000-0003-2735-7862'}]}"
+journalInfo,"{'issue': '17', 'volume': '13', 'journalIssueId': '3828956', 'dateOfPublication': '2024 Aug', 'monthOfPublication': '8', 'yearOfPublication': '2024', 'printPublicationDate': '2024-08-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2024
+pageInfo,2437
+abstractText,"Invasive alien plants (IAPs) pose a significant threat to island biodiversity and severely impact ecosystems. Understanding the species-area relationship and environmental determinants of growth forms for IAP species on subtropical islands is crucial for establishing an IAP's early warning mechanism, enhancing island ecological management, and protecting the ecosystems of Fujian and other subtropical islands. The study identified significant species-area relationships for IAPs and different life-form plants (trees, shrubs, and herbs), with slopes of 0.27, 0.16, 0.15, and 0.24, respectively. The small island effect does not apply to all species. Isolation has little effect on species richness, and the IAPs on Fujian islands do not conform to the isolation effect in island biogeography. Landscape factors are the main determinants of IAPs and different life-form species richness, with area, shape index, and perimeter-area ratio being the three primary landscape factors. These environmental factors are closely related to habitat heterogeneity. Besides landscape factors, different life forms respond differently to environmental factors. Climate drives the species richness distribution of shrubs and herbs, while trees are mainly influenced by human activities. Overall, landscape, human disturbance, and climate jointly drive the distribution of IAPs, with landscape factors being the most significant."
+affiliation,"College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, Fuzhou 350100, China."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+grantsList,"{'grant': [{'grantId': 'CXZX2019086', 'agency': 'Fujian A&F University Science and Technology Innovation Special Fund', 'orderIn': '0'}, {'grantId': '2018Y3006', 'agency': 'Fujian Province Regional Development Science and Technology Plan', 'orderIn': '0'}, {'grantId': 'YSYLbdpy3', 'agency': 'Discipline and Professional Construction of the School of Landscape Architecture, School of Art, Fujian A&F University', 'orderIn': '0'}, {'grantId': '115/KH230123A', 'agency': 'Introduction and application of suitable species in abandoned sandy land', 'orderIn': '0'}, {'grantId': '115/KH230123A', 'agency': 'Introduction and application of suitable species in abandoned sandy land, Science and Technology Development Center of Changle District, Fuzhou', 'orderIn': '0'}, {'grantId': 'CXZX2019086', 'agency': 'Fujian A&amp;amp;F University Science and Technology Innovation Special Fund', 'orderIn': '0'}, {'grantId': 'YSYLbdpy3', 'agency': 'Discipline and Professional Construction of the School of Landscape Architecture, School of Art, Fujian A&amp;amp;F University', 'orderIn': '0'}]}"
+keywordList,"{'keyword': ['Fujian', 'Island biogeography', 'Life form', 'Species–area Relationship', 'Small Island Effect']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants13172437'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11397202'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11397202?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,1
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-09-14
+firstIndexDate,2024-09-15
+fullTextReceivedDate,2024-10-28
+dateOfRevision,2024-09-16
+electronicPublicationDate,2024-08-31
+firstPublicationDate,2024-08-31

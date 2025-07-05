@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39771142
+source,MED
+pmid,39771142
+pmcid,PMC11728737
+fullTextIdList,{'fullTextId': 'PMC11728737'}
+doi,10.3390/toxics12120927
+title,"Toxic Effects of Lead Exposure on Freshwater Climbing Perch, <i>Anabas testudineus</i>, and Bioremediation Using <i>Ocimum sanctum</i> Leaf Powder."
+authorString,"Saha NC, Chatterjee A, Banerjee P, Bhattacharya R, Sadhu A, Pastorino P, Saha S."
+authorList,"{'author': [{'fullName': 'Saha NC', 'firstName': 'Nimai Chandra', 'lastName': 'Saha', 'initials': 'NC', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Zoology, Bidhannagar College, Bidhannagar, Kolkata 700064, West Bengal, India.'}}}, {'fullName': 'Chatterjee A', 'firstName': 'Arnab', 'lastName': 'Chatterjee', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Ecotoxicology Research Laboratory, Department of Zoology, The University of Burdwan, Burdwan 713104, West Bengal, India.'}}}, {'fullName': 'Banerjee P', 'firstName': 'Priyajit', 'lastName': 'Banerjee', 'initials': 'P', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology, Swami Vivekananda University, West Bengal 700121, India.'}}}, {'fullName': 'Bhattacharya R', 'firstName': 'Ritwick', 'lastName': 'Bhattacharya', 'initials': 'R', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-3168-5546'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Ecotoxicology Research Laboratory, Department of Zoology, The University of Burdwan, Burdwan 713104, West Bengal, India.'}}}, {'fullName': 'Sadhu A', 'firstName': 'Auroshree', 'lastName': 'Sadhu', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Ecotoxicology Research Laboratory, Department of Zoology, The University of Burdwan, Burdwan 713104, West Bengal, India.'}}}, {'fullName': 'Pastorino P', 'firstName': 'Paolo', 'lastName': 'Pastorino', 'initials': 'P', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-0585-1168'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Istituto Zooprofilattico Sperimentale del Piemonte, Liguria e Valle d'Aosta, 10154 Torino, Italy.""}}}, {'fullName': 'Saha S', 'firstName': 'Shubhajit', 'lastName': 'Saha', 'initials': 'S', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-5041-658X'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Ecotoxicology Research Laboratory, Department of Zoology, The University of Burdwan, Burdwan 713104, West Bengal, India.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-5041-658X'}, {'@type': 'ORCID', '#text': '0000-0002-0585-1168'}, {'@type': 'ORCID', '#text': '0000-0002-3168-5546'}]}"
+journalInfo,"{'issue': '12', 'volume': '12', 'journalIssueId': '3876541', 'dateOfPublication': '2024 Dec', 'monthOfPublication': '12', 'yearOfPublication': '2024', 'printPublicationDate': '2024-12-01', 'journal': {'title': 'Toxics', 'ISOAbbreviation': 'Toxics', 'medlineAbbreviation': 'Toxics', 'NLMid': '101639637', 'ISSN': '2305-6304', 'ESSN': '2305-6304'}}"
+pubYear,2024
+pageInfo,927
+abstractText,"The acute and chronic toxicity of lead to <i>Anabas testudineus</i> was determined in this study using static replacement bioassay testing. During the chronic toxicity studies, an experiment on the bioremediation of lead toxicity using <i>Ocimum sanctum</i> leaf powder was conducted. The 96 h LC<sub>50</sub> values of lead for <i>Anabas testudineus</i> was 1.08 mg/L. Different biomarkers, such as the hepatosomatic index, gonadosomatic index, and fecundity, were significantly lower in fish subjected to 10% and 20% of the 96 h LC<sub>50</sub> values of lead, compared to controls. The 45-day chronic exposure of fish to lead concentrations of 0.2 mg/L and above significantly lowered the number of total RBC, hemoglobin content, HCT (%), plasma protein, and cholesterol while decreasing the level of total WBC, plasma glucose, creatinine, serum AST and serum ALT. The leaf powder of <i>Ocimum sanctum</i> plays a significant role in ameliorating lead toxicity."
+affiliation,"Department of Zoology, Bidhannagar College, Bidhannagar, Kolkata 700064, West Bengal, India."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Growth', 'Lead Toxicity', 'Hepatosomatic Index', 'Oxidative Stress Enzymes', 'Haematological Biomarkers']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/toxics12120927'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11728737'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11728737?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-01-08
+firstIndexDate,2025-01-15
+fullTextReceivedDate,2025-01-15
+dateOfRevision,2025-01-15
+electronicPublicationDate,2024-12-20
+firstPublicationDate,2024-12-20

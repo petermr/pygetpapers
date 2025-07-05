@@ -1,0 +1,50 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40431075
+source,MED
+pmid,40431075
+pmcid,PMC12114904
+fullTextIdList,{'fullTextId': 'PMC12114904'}
+doi,10.3390/plants14101510
+title,Smart Chip Technology for the Control and Management of Invasive Plant Species: A Review.
+authorString,"Javed Q, Bouhadi M, Ban SG, Ban D, Heath D, Iqbal B, Sun J, Černe M."
+authorList,"{'author': [{'fullName': 'Javed Q', 'firstName': 'Qaiser', 'lastName': 'Javed', 'initials': 'Q', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Agriculture and Tourism, Karla Huguesa 8, 52440 Poreč, Croatia.'}}}, {'fullName': 'Bouhadi M', 'firstName': 'Mohammed', 'lastName': 'Bouhadi', 'initials': 'M', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-1887-9768'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Agriculture and Tourism, Karla Huguesa 8, 52440 Poreč, Croatia.'}}}, {'fullName': 'Ban SG', 'firstName': 'Smiljana Goreta', 'lastName': 'Ban', 'initials': 'SG', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-0350-5074'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Agriculture and Tourism, Karla Huguesa 8, 52440 Poreč, Croatia.'}}}, {'fullName': 'Ban D', 'firstName': 'Dean', 'lastName': 'Ban', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Agriculture and Tourism, Karla Huguesa 8, 52440 Poreč, Croatia.'}}}, {'fullName': 'Heath D', 'firstName': 'David', 'lastName': 'Heath', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Jožef Stefan Institute, Jamova Cesta 39, 1000 Ljubljana, Slovenia.'}}}, {'fullName': 'Iqbal B', 'firstName': 'Babar', 'lastName': 'Iqbal', 'initials': 'B', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-2115-8494'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'School of the Environment and Safety Engineering, Jiangsu University, Zhenjiang 212013, China.'}}}, {'fullName': 'Sun J', 'firstName': 'Jianfan', 'lastName': 'Sun', 'initials': 'J', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-8361-1848'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'School of the Environment and Safety Engineering, Jiangsu University, Zhenjiang 212013, China.'}}}, {'fullName': 'Černe M', 'firstName': 'Marko', 'lastName': 'Černe', 'initials': 'M', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-0949-0638'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Agriculture and Tourism, Karla Huguesa 8, 52440 Poreč, Croatia.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0002-0949-0638'}, {'@type': 'ORCID', '#text': '0000-0002-1887-9768'}, {'@type': 'ORCID', '#text': '0000-0002-2115-8494'}, {'@type': 'ORCID', '#text': '0000-0002-8361-1848'}, {'@type': 'ORCID', '#text': '0000-0003-0350-5074'}]}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'issue': '10', 'volume': '14', 'journalIssueId': '3948206', 'dateOfPublication': '2025 May', 'monthOfPublication': '5', 'yearOfPublication': '2025', 'printPublicationDate': '2025-05-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2025
+pageInfo,1510
+abstractText,"Invasive plant species threaten biodiversity, disrupt ecosystems, and are costly to manage. Standard control methods, such as mechanical and chemical (herbicides), are usually ineffective and time-consuming and negatively affect the environment, especially in the latter case. This review explores the potential of smart chip technology (SCT) as a sustainable, precision approach tool for invasive species management. Integrating microchip sensors with artificial intelligence (AI) into the Internet of Things (IoT) and remote sensing technology allows for real-time monitoring, predictive modelling, and focused action, significantly improving management effectiveness. As one of many examples discussed herein, AI-driven decision-making systems can process real-time data from IoT-enabled environmental sensors to optimize invasive species detection. Smart chip technology also offers real-time monitoring of invasive species' life processes, spread, and environmental effects, enabling artificial intelligence-powered eco-friendly control strategies that minimize herbicide usage and lessen collateral ecosystem damage. Despite the potential of SCT, challenges remain, including cost, biodegradability, and regulatory constraints. However, recent advances in biodegradable electronics and AI-driven automation offer promising solutions to many identified obstacles. Future research should focus on scalable deployment, improved predictive analytics, and interdisciplinary collaboration to drive innovation. Using SCT can help make invasive species control more sustainable while supporting biodiversity and strengthening agricultural systems."
+affiliation,"Institute of Agriculture and Tourism, Karla Huguesa 8, 52440 Poreč, Croatia."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+grantsList,"{'grant': {'grantId': 'HRZZ- IPS-2022-02-2099', 'agency': 'Croatian Science Foundation', 'orderIn': '0'}}"
+keywordList,"{'keyword': ['Remote sensing', 'Biosensors', 'Artificial intelligence', 'Precision agriculture', 'Internet Of Things', 'Invasive Plant Control', 'Sustainable Ecosystem Management']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants14101510'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12114904'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12114904?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-05-28
+firstIndexDate,2025-05-28
+fullTextReceivedDate,2025-05-31
+dateOfRevision,2025-05-31
+electronicPublicationDate,2025-05-18
+firstPublicationDate,2025-05-18

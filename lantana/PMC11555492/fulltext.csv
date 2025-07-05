@@ -1,0 +1,50 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39534048
+source,MED
+pmid,39534048
+pmcid,PMC11555492
+fullTextIdList,{'fullTextId': 'PMC11555492'}
+doi,10.1039/d4ra06890d
+title,"<i>In silico</i> molecular docking and ADMET prediction of biogenic zinc oxide nanoparticles: characterization, and <i>in vitro</i> antimicrobial and photocatalytic activity."
+authorString,"Akhter H, Ritu SS, Siddique S, Chowdhury F, Chowdhury RT, Akhter S, Hakim M."
+authorList,"{'author': [{'fullName': 'Akhter H', 'firstName': 'Hajara', 'lastName': 'Akhter', 'initials': 'H', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-5046-7635'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd.'}}}, {'fullName': 'Ritu SS', 'firstName': 'Susmita Sarker', 'lastName': 'Ritu', 'initials': 'SS', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd.'}}}, {'fullName': 'Siddique S', 'firstName': 'Shahariar', 'lastName': 'Siddique', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Food Science and Technology (IFST), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh.'}}}, {'fullName': 'Chowdhury F', 'firstName': 'Fariha', 'lastName': 'Chowdhury', 'initials': 'F', 'authorId': {'@type': 'ORCID', '#text': '0009-0007-5756-4834'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd.'}}}, {'fullName': 'Chowdhury RT', 'firstName': 'Rehnuma Tasmiyah', 'lastName': 'Chowdhury', 'initials': 'RT', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd.'}}}, {'fullName': 'Akhter S', 'firstName': 'Samina', 'lastName': 'Akhter', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd.'}}}, {'fullName': 'Hakim M', 'firstName': 'Mahmuda', 'lastName': 'Hakim', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-5046-7635'}, {'@type': 'ORCID', '#text': '0009-0007-5756-4834'}]}"
+dataLinksTagsList,"{'dataLinkstag': ['altmetrics', 'supporting_data']}"
+journalInfo,"{'issue': '49', 'volume': '14', 'journalIssueId': '3851043', 'dateOfPublication': '2024 Nov', 'monthOfPublication': '11', 'yearOfPublication': '2024', 'printPublicationDate': '2024-11-01', 'journal': {'title': 'RSC advances', 'ISOAbbreviation': 'RSC Adv', 'medlineAbbreviation': 'RSC Adv', 'NLMid': '101581657', 'ISSN': '2046-2069', 'ESSN': '2046-2069'}}"
+pubYear,2024
+pageInfo,36209-36225
+abstractText,"Biogenic synthesis of metal oxide nanoparticles is a rapidly growing research area in the field of nanotechnology owing to their immense potential in multifaceted biomedical and environmental applications. In this study, zinc oxide (ZnO) nanoparticles (NPs) were biosynthesized from the <i>Citrullus lanatus</i> rind extract to elucidate their potential antimicrobial and dye degradation activity. The structural, morphological, and optical properties of the NPs were examined using various analytical techniques. UV-vis spectra showed a <i>λ</i> <sub>max</sub> at 370 nm and the optical band gap was determined to be 3.2 eV for the ZnO nanocomposite. The FTIR spectrum denoted the functional groups responsible for the reduction of zinc acetate precursor to ZnO NPs. XRD demonstrated that the mean crystalline size of the nanocomposites was 20.36 nm while DLS, ζ-potential, FE-SEM, and EDX analysis of synthesized NPs confirmed their hydrodynamic size distribution, stability, morphological features, and elemental compositions, respectively. Biogenic ZnO NPs unveiled potent antimicrobial activity against <i>S. aureus</i>, <i>L. monocytogenes</i>, <i>E. coli</i>, <i>P. aeruginosa</i>, and <i>C. albicans</i>, showing 13 to 22 mm ZOI. This bactericidal activity of ZnO NPs was further elucidated using molecular docking analysis. The results showed a favorable lowest binding energy between ZnO NPs and microbial proteins (AusA for <i>S. aureus</i>, and CAT III for <i>E. coli</i>), which led to a possible mechanistic approach for ZnO NPs. Furthermore, the remarkable photocatalytic activity of ZnO NPs was revealed by the degradation of 99.02% of methylene blue (MB) dye within 120 min. Therefore, the above findings suggest that green synthesized ZnO NPs can be exploited as an eco-friendly alternative to synthetic substances and a unique promising candidate for therapeutic applications and environmental remediation."
+affiliation,"Biomedical and Toxicological Research Institute (BTRI), Bangladesh Council of Scientific and Industrial Research (BCSIR) Dhaka 1205 Bangladesh hajaragebcu@gmail.com hajara@bcsir.gov.bd."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+grantsList,"{'grant': {'grantId': '39.02.0000.011.14.169.2023/877; 17.09.2023', 'agency': 'Bangladesh Council of Scientific and Industrial Research', 'orderIn': '0'}}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1039/d4ra06890d'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11555492'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11555492?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,2
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,Y
+tmAccessionTypeList,{'accessionType': 'pdb'}
+dateOfCreation,2024-11-13
+firstIndexDate,2024-11-16
+fullTextReceivedDate,2024-11-14
+dateOfRevision,2024-11-23
+electronicPublicationDate,2024-11-12
+firstPublicationDate,2024-11-12

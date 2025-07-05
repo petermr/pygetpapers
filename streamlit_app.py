@@ -11,6 +11,7 @@ import shutil
 from pathlib import Path
 import threading
 import time
+from datatables_integration import PygetpapersDatatables
 
 # Page configuration
 st.set_page_config(
@@ -106,11 +107,25 @@ class PygetpapersUI:
                 "references": False, "citations": False, "supplementary": False
             }
         }
+        
+        # Initialize datatables integration
+        self.datatables = PygetpapersDatatables()
 
     def run_pygetpapers_command(self, args):
         """Run pygetpapers command and return results"""
         try:
-            cmd = ["pygetpapers"] + args
+            # Try to use local development version first, fallback to installed version
+            import sys
+            import os
+            
+            # Check if we're in the development directory
+            if os.path.exists("pygetpapers") and os.path.exists("pygetpapers/pygetpapers.py"):
+                # Use local development version
+                cmd = [sys.executable, "-m", "pygetpapers.pygetpapers"] + args
+            else:
+                # Use installed version
+                cmd = ["pygetpapers"] + args
+                
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             
             # Check if the command was successful
@@ -185,7 +200,7 @@ class PygetpapersUI:
         
         page = st.sidebar.selectbox(
             "Choose a page:",
-            ["Search Papers", "Query Builder", "Corpus Manager", "Settings", "Help"]
+            ["Search Papers", "Query Builder", "Corpus Manager", "Data Tables", "Settings", "Help"]
         )
         
         st.sidebar.markdown("---")
@@ -469,7 +484,7 @@ class PygetpapersUI:
             st.warning("No corpora found. Download some papers first!")
             return
         
-        # Corpus list
+        # Corpus list with datatables integration
         st.markdown("### Your Corpora")
         
         for i, corpus in enumerate(st.session_state.corpora):
@@ -480,11 +495,20 @@ class PygetpapersUI:
                     st.markdown(f"**Repository:** {self.supported_apis.get(corpus['api'], corpus['api'])}")
                     st.markdown(f"**Query:** {corpus['query'] or 'Date-based search'}")
                     st.markdown(f"**Created:** {corpus['date_created']}")
+                    
+                    # Add datatables view button
+                    if st.button(f"📊 View Papers Table {i+1}", key=f"view_table_{i}"):
+                        st.session_state.selected_corpus = corpus['name']
+                        st.session_state.show_datatable = True
                 
                 with col2:
                     if st.button(f"🗑️ Delete Corpus {i+1}", key=f"delete_corpus_{i}"):
                         st.session_state.corpora.pop(i)
                         st.rerun()
+        
+        # Show datatables if requested
+        if st.session_state.get("show_datatable", False) and st.session_state.get("selected_corpus"):
+            self._render_corpus_datatables(st.session_state.selected_corpus)
         
         # Corpus statistics
         st.markdown("### Corpus Statistics")
@@ -511,6 +535,179 @@ class PygetpapersUI:
                 title='Papers Downloaded Over Time'
             )
             st.plotly_chart(fig2, use_container_width=True)
+
+    def _render_corpus_datatables(self, corpus_name: str):
+        """Render datatables for a specific corpus"""
+        st.markdown(f"### 📊 Papers Table: {corpus_name}")
+        
+        try:
+            # Read the corpus data
+            output_data = self.datatables.read_pygetpapers_output(corpus_name)
+            
+            # Create tabs for different views
+            tab1, tab2, tab3, tab4 = st.tabs(["📄 Papers", "📋 Metadata", "📊 Summary", "💾 Export"])
+            
+            with tab1:
+                st.markdown("#### Papers Overview")
+                papers_html = self.datatables.create_papers_table(output_data, "papers_table")
+                st.components.v1.html(papers_html, height=600, scrolling=True)
+                
+                # Paper details on selection
+                if st.button("🔍 Show Paper Details"):
+                    st.session_state.show_paper_details = True
+            
+            with tab2:
+                st.markdown("#### Metadata Files")
+                metadata_html = self.datatables.create_metadata_table(output_data, "metadata_table")
+                st.components.v1.html(metadata_html, height=400, scrolling=True)
+            
+            with tab3:
+                st.markdown("#### Corpus Summary")
+                summary_html = self.datatables.create_summary_table(output_data, "summary_table")
+                st.components.v1.html(summary_html, height=300, scrolling=True)
+                
+                # Show summary statistics
+                summary = output_data["summary"]
+                col1, col2, col3, col4 = st.columns(4)
+                with col1:
+                    st.metric("Total Papers", summary["total_papers"])
+                with col2:
+                    st.metric("Metadata Files", len(summary["metadata_files_found"]))
+                with col3:
+                    st.metric("XML Files", "✅" if summary["has_xml"] else "❌")
+                with col4:
+                    st.metric("PDF Files", "✅" if summary["has_pdf"] else "❌")
+            
+            with tab4:
+                st.markdown("#### Export Options")
+                
+                # Export to CSV
+                if st.button("📄 Export Papers to CSV"):
+                    csv_filename = f"{corpus_name}_papers.csv"
+                    if self.datatables.export_table_to_csv(output_data, csv_filename):
+                        st.success(f"✅ Exported to {csv_filename}")
+                        
+                        # Provide download link
+                        with open(csv_filename, 'r') as f:
+                            csv_data = f.read()
+                        st.download_button(
+                            label="📥 Download CSV",
+                            data=csv_data,
+                            file_name=csv_filename,
+                            mime="text/csv"
+                        )
+                    else:
+                        st.error("❌ Export failed")
+                
+                # Show file structure
+                st.markdown("#### File Structure")
+                if output_data["paper_directories"]:
+                    file_tree = self._generate_file_tree(output_data)
+                    st.code(file_tree)
+            
+            # Show paper details if requested
+            if st.session_state.get("show_paper_details", False):
+                self._render_paper_details(output_data)
+                
+        except FileNotFoundError:
+            st.error(f"❌ Corpus directory not found: {corpus_name}")
+        except Exception as e:
+            st.error(f"❌ Error loading corpus: {str(e)}")
+    
+    def _generate_file_tree(self, output_data: dict) -> str:
+        """Generate a file tree representation of the corpus"""
+        tree = []
+        tree.append(output_data["output_dir"])
+        
+        for paper in output_data["paper_directories"][:10]:  # Show first 10 papers
+            tree.append(f"├── {paper['directory']}")
+            for file_path in paper["files"][:5]:  # Show first 5 files per paper
+                tree.append(f"│   ├── {file_path}")
+            if len(paper["files"]) > 5:
+                tree.append(f"│   └── ... ({len(paper['files']) - 5} more files)")
+        
+        if len(output_data["paper_directories"]) > 10:
+            tree.append(f"└── ... ({len(output_data['paper_directories']) - 10} more papers)")
+        
+        return "\n".join(tree)
+    
+    def _render_paper_details(self, output_data: dict):
+        """Render detailed view of papers"""
+        st.markdown("### 📖 Paper Details")
+        
+        # Create a selectbox for paper selection
+        paper_ids = [paper["directory"] for paper in output_data["paper_directories"]]
+        selected_paper_id = st.selectbox("Select a paper:", paper_ids)
+        
+        if selected_paper_id:
+            paper_details = self.datatables.get_paper_details(output_data, selected_paper_id)
+            if paper_details:
+                metadata = paper_details.get("metadata", {})
+                
+                col1, col2 = st.columns([2, 1])
+                
+                with col1:
+                    st.markdown(f"**Title:** {metadata.get('title', 'N/A')}")
+                    st.markdown(f"**Authors:** {metadata.get('authorString', 'N/A')}")
+                    st.markdown(f"**Journal:** {metadata.get('journalTitle', 'N/A')}")
+                    st.markdown(f"**DOI:** {metadata.get('doi', 'N/A')}")
+                    st.markdown(f"**PMID:** {metadata.get('pmid', 'N/A')}")
+                    st.markdown(f"**PMCID:** {metadata.get('pmcid', 'N/A')}")
+                    st.markdown(f"**Publication Date:** {metadata.get('firstPublicationDate', 'N/A')}")
+                    
+                    # Abstract
+                    abstract = metadata.get('abstractText', '')
+                    if abstract:
+                        st.markdown("**Abstract:**")
+                        st.text(abstract)
+                
+                with col2:
+                    st.markdown("**Files:**")
+                    for file_path in paper_details["files"]:
+                        st.markdown(f"- {file_path}")
+                    
+                    st.markdown(f"**Total Files:** {len(paper_details['files'])}")
+
+    def render_data_tables(self):
+        """Render the data tables page"""
+        st.markdown('<h2 class="section-header">📊 Data Tables</h2>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="info-box">
+            <strong>Interactive Data Tables:</strong> View and explore your downloaded papers using 
+            interactive HTML tables with sorting, searching, and pagination capabilities.
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Corpus selection
+        if "corpora" not in st.session_state or not st.session_state.corpora:
+            st.warning("No corpora found. Download some papers first!")
+            return
+        
+        st.markdown("### Select Corpus to View")
+        
+        corpus_names = [corpus['name'] for corpus in st.session_state.corpora]
+        selected_corpus = st.selectbox(
+            "Choose a corpus:",
+            corpus_names,
+            format_func=lambda x: f"{x} ({next(c['papers_count'] for c in st.session_state.corpora if c['name'] == x)} papers)"
+        )
+        
+        if selected_corpus:
+            # Check if corpus directory exists
+            if not os.path.exists(selected_corpus):
+                st.error(f"❌ Corpus directory not found: {selected_corpus}")
+                st.info("The corpus may have been moved or deleted. Please re-download the papers.")
+                return
+            
+            # Render the datatables for the selected corpus
+            self._render_corpus_datatables(selected_corpus)
+            
+            # Add a button to close the view
+            if st.button("❌ Close Table View"):
+                st.session_state.show_datatable = False
+                st.session_state.selected_corpus = None
+                st.rerun()
 
     def render_settings(self):
         """Render the settings page"""
@@ -636,6 +833,20 @@ class PygetpapersUI:
 
     def run(self):
         """Main application runner"""
+        # Initialize session state for datatables
+        if "total_papers" not in st.session_state:
+            st.session_state.total_papers = 0
+        if "total_corpora" not in st.session_state:
+            st.session_state.total_corpora = 0
+        if "corpora" not in st.session_state:
+            st.session_state.corpora = []
+        if "show_datatable" not in st.session_state:
+            st.session_state.show_datatable = False
+        if "selected_corpus" not in st.session_state:
+            st.session_state.selected_corpus = None
+        if "show_paper_details" not in st.session_state:
+            st.session_state.show_paper_details = False
+        
         self.render_header()
         page = self.render_sidebar()
         
@@ -645,6 +856,8 @@ class PygetpapersUI:
             self.render_query_builder()
         elif page == "Corpus Manager":
             self.render_corpus_manager()
+        elif page == "Data Tables":
+            self.render_data_tables()
         elif page == "Settings":
             self.render_settings()
         elif page == "Help":

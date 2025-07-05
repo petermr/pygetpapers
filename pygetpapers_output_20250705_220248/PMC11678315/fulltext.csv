@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39771214
+source,MED
+pmid,39771214
+pmcid,PMC11678315
+fullTextIdList,{'fullTextId': 'PMC11678315'}
+doi,10.3390/plants13243516
+title,"Harnessing the Antibacterial, Anti-Diabetic and Anti-Carcinogenic Properties of <i>Ocimum sanctum</i> Linn (Tulsi)."
+authorString,"Arya R, Faruquee HM, Shakya H, Rahman SA, Begum MM, Biswas SK, Apu MAI, Islam MA, Sheikh MMI, Kim JJ."
+authorList,"{'author': [{'fullName': 'Arya R', 'firstName': 'Rakesh', 'lastName': 'Arya', 'initials': 'R', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-2089-0891'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology, Yeungnam University, Gyeongsan 38541, Republic of Korea.'}}}, {'fullName': 'Faruquee HM', 'firstName': 'Hossain Md', 'lastName': 'Faruquee', 'initials': 'HM', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-7596-8441'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology and Genetic Engineering, Faculty of Biological Science, Islamic University, Kushtia 7003, Bangladesh.'}}}, {'fullName': 'Shakya H', 'firstName': 'Hemlata', 'lastName': 'Shakya', 'initials': 'H', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-7314-7148'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biomedical Engineering, Shri G. S. Institute of Technology and Science, Indore 452003, India.'}}}, {'fullName': 'Rahman SA', 'firstName': 'Sheikh Atikur', 'lastName': 'Rahman', 'initials': 'SA', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology and Genetic Engineering, Faculty of Biological Science, Islamic University, Kushtia 7003, Bangladesh.'}}}, {'fullName': 'Begum MM', 'firstName': 'Most Morium', 'lastName': 'Begum', 'initials': 'MM', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Agriculture, Rabindra Maitree University, Kushtia 7000, Bangladesh.'}}}, {'fullName': 'Biswas SK', 'firstName': 'Sudhangshu Kumar', 'lastName': 'Biswas', 'initials': 'SK', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology and Genetic Engineering, Faculty of Biological Science, Islamic University, Kushtia 7003, Bangladesh.'}}}, {'fullName': 'Apu MAI', 'firstName': 'Md Aminul Islam', 'lastName': 'Apu', 'initials': 'MAI', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-9131-1482'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Nutrition and Hospitality Management, The University of Mississippi, Oxford, MS 38677, USA.'}}}, {'fullName': 'Islam MA', 'firstName': 'Md Azizul', 'lastName': 'Islam', 'initials': 'MA', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology and Genetic Engineering, Faculty of Biological Science, Islamic University, Kushtia 7003, Bangladesh.'}}}, {'fullName': 'Sheikh MMI', 'firstName': 'Md Mominul Islam', 'lastName': 'Sheikh', 'initials': 'MMI', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Nano Project Group, Research & Development Institute, Moorim P&P Co., Ltd., Ulju-gun, Ulsan 45011, Republic of Korea.'}}}, {'fullName': 'Kim JJ', 'firstName': 'Jong-Joo', 'lastName': 'Kim', 'initials': 'JJ', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology, Yeungnam University, Gyeongsan 38541, Republic of Korea.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0002-7314-7148'}, {'@type': 'ORCID', '#text': '0000-0002-7596-8441'}, {'@type': 'ORCID', '#text': '0000-0002-9131-1482'}, {'@type': 'ORCID', '#text': '0000-0003-2089-0891'}]}"
+journalInfo,"{'issue': '24', 'volume': '13', 'journalIssueId': '3876499', 'dateOfPublication': '2024 Dec', 'monthOfPublication': '12', 'yearOfPublication': '2024', 'printPublicationDate': '2024-12-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2024
+pageInfo,3516
+abstractText,"<i>Ocimum sanctum</i> Linn (<i>O. sanctum</i> L.), commonly known as Holy Basil or Tulsi, is a fragrant herbaceous plant belonging to the Lamiaceae family. This plant is widely cultivated and found in north-central parts of India, several Arab countries, West Africa and tropical regions of the Eastern World. Tulsi is known to be an adaptogen, aiding the body in adapting to stress by harmonizing various bodily systems. Revered in Ayurveda as the ""Elixir of Life"", Tulsi is believed to enhance lifespan and foster longevity. Eugenol, the active ingredient present in Tulsi, is a l-hydroxy-2-methoxy-4-allylbenzene compound with diverse therapeutic applications. As concerns over the adverse effects of conventional antibacterial agents continue to grow, alternative therapies have gained prominence. Essential oils (EOs) containing antioxidants have a long history of utilization in traditional medicine and have gained increasing popularity over time. Numerous in vitro, in vivo and clinical studies have provided compelling evidence supporting the safety and efficacy of antioxidant EOs derived from medicinal plants for promoting health. This comprehensive review aims to highlight the scientific knowledge regarding the therapeutic properties of <i>O. sanctum</i>, focusing on its antibacterial, anti-diabetic, anti-carcinogenic, radioprotective, immunomodulatory, anti-inflammatory, cardioprotective, neurogenesis, anti-depressant and other beneficial characteristics. Also, the extracts of <i>O. sanctum</i> L. have the ability to reduce chronic inflammation linked to neurological disorders such as Parkinson's and Alzheimer's disease. The information presented in this review shed light on the multifaceted potential of Tulsi and its derivatives in maintaining and promoting health. This knowledge may pave the way for the development of novel therapeutic interventions and natural remedies that harness the immense therapeutic potential of Tulsi in combating various health conditions, while also providing valuable insights for further research and exploration in this field."
+affiliation,"Department of Biotechnology, Yeungnam University, Gyeongsan 38541, Republic of Korea."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+keywordList,"{'keyword': ['Antioxidants', 'Eugenol', 'Anti-inflammatory', 'Radioprotective', 'Ocimum Sanctum Linn']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants13243516'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11678315'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11678315?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-01-08
+firstIndexDate,2025-01-11
+fullTextReceivedDate,2024-12-30
+dateOfRevision,2025-01-08
+electronicPublicationDate,2024-12-16
+firstPublicationDate,2024-12-16
