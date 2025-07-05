@@ -311,7 +311,7 @@ streamlit run streamlit_app.py
 
 ### Configuration
 
-- **Port configuration**: Default Streamlit port (8501)
+- **Port configuration**: Default Streamlit port (8502) - avoids conflict with other projects
 - **Host binding**: Configure for production deployment
 - **Environment variables**: Set for different environments
 

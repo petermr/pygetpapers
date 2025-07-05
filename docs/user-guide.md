@@ -24,11 +24,15 @@ Before using the Pygetpapers Streamlit UI, ensure you have:
 
 3. **Run the Streamlit application**:
    ```bash
-   streamlit run streamlit_app.py
+   # Option 1: Use the convenience script (recommended)
+   python run_streamlit.py
+   
+   # Option 2: Run directly with streamlit
+   streamlit run streamlit_app.py --server.port 8502
    ```
 
 4. **Access the web interface**:
-   Open your browser and navigate to `http://localhost:8501`
+   Open your browser and navigate to `http://localhost:8502`
 
 ## Interface Overview
 
