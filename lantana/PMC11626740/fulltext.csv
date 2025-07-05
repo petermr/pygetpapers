@@ -1,0 +1,47 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39654760
+source,MED
+pmid,39654760
+pmcid,PMC11626740
+fullTextIdList,{'fullTextId': 'PMC11626740'}
+doi,10.1016/j.heliyon.2024.e40636
+title,Unveiling the insecticidal efficiency of <i>Viola ignobilis</i> against <i>Macrosiphum rosae</i> and <i>Agonoscena pistaciae</i>: From chemical composition to cytotoxicity analysis.
+authorString,"Taghizadeh MS, Niazi A, Retzl B, Gruber CW."
+authorList,"{'author': [{'fullName': 'Taghizadeh MS', 'firstName': 'Mohammad Sadegh', 'lastName': 'Taghizadeh', 'initials': 'MS', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Biotechnology, School of Agriculture, Shiraz University, Shiraz, Iran.'}}}, {'fullName': 'Niazi A', 'firstName': 'Ali', 'lastName': 'Niazi', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Institute of Biotechnology, School of Agriculture, Shiraz University, Shiraz, Iran.'}}}, {'fullName': 'Retzl B', 'firstName': 'Bernhard', 'lastName': 'Retzl', 'initials': 'B', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Center for Physiology and Pharmacology, Medical University of Vienna, 1090, Vienna, Austria.'}}}, {'fullName': 'Gruber CW', 'firstName': 'Christian W', 'lastName': 'Gruber', 'initials': 'CW', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Center for Physiology and Pharmacology, Medical University of Vienna, 1090, Vienna, Austria.'}}}]}"
+journalInfo,"{'issue': '23', 'volume': '10', 'journalIssueId': '3868553', 'dateOfPublication': '2024 Dec', 'monthOfPublication': '12', 'yearOfPublication': '2024', 'printPublicationDate': '2024-12-01', 'journal': {'title': 'Heliyon', 'ISOAbbreviation': 'Heliyon', 'medlineAbbreviation': 'Heliyon', 'NLMid': '101672560', 'ISSN': '2405-8440', 'ESSN': '2405-8440'}}"
+pubYear,2024
+pageInfo,e40636
+abstractText,"Currently, there is a growing preference for eco-friendly bioinsecticides over chemical insecticides due to their safety. Plant extracts have emerged as a promising solution for this purpose. Therefore, this study aimed to evaluate the insecticidal effectiveness of <i>Viola ignobilis</i> extract against two key pests of rose aphid (<i>Macrosiphum rosae</i>) and pistachio psylla (<i>Agonoscena pistaciae</i>). Significant compounds were identified using GC-MS and MALDI-TOF MS. Three bioassay methods were employed to assess the extract's insecticidal potential, and its cytotoxicity was tested on HEK293 cells. Results revealed that the highest insecticidal efficacy occurred at a concentration of 20 mg/mL after a 72 h exposure. The contact bioassay method displayed greater efficiency against <i>M. rosae</i> than <i>A. pistaciae</i>, while the oral bioassay demonstrated the highest efficiency against <i>A. pistaciae</i>. The extract also acted as a feeding deterrent, with indices of 77.47 ± 7.98 % and 87.98 ± 3.84 % for <i>A. pistaciae</i> and <i>M. rosae</i>, respectively. Furthermore, the insecticidal potency of the extract was assessed, resulting in LC<sub>50</sub> values of 3.58 mg/mL and 6.77 mg/mL for the contact bioassay, and 0.87 mg/mL and 0.61 mg/mL for the oral bioassay against <i>M. rosae</i> and <i>A. pistaciae</i>, respectively. Importantly, the extract showed no detrimental cytotoxic effects on the HEK293 cell line within the tested concentration range, indicating its potential safety as a bioinsecticide. Overall, these findings highlight the potential of <i>V. ignobilis</i> extract as a promising candidate for further development in pest control."
+affiliation,"Institute of Biotechnology, School of Agriculture, Shiraz University, Shiraz, Iran."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['GC-MS', 'Cyclic peptide', 'Plant extract', 'MALDI-TOF MS', 'Violaceae', 'Small molecules']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'doi', 'site': 'Unpaywall', 'url': 'https://doi.org/10.1016/j.heliyon.2024.e40636'}, {'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1016/j.heliyon.2024.e40636'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11626740'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11626740?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,2
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-12-10
+firstIndexDate,2024-12-10
+fullTextReceivedDate,2024-12-11
+dateOfRevision,2024-12-11
+electronicPublicationDate,2024-11-22
+firstPublicationDate,2024-11-22

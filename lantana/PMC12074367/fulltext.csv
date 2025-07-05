@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40364392
+source,MED
+pmid,40364392
+pmcid,PMC12074367
+fullTextIdList,{'fullTextId': 'PMC12074367'}
+doi,10.3390/plants14091361
+title,The Ecological Risks and Invasive Potential of Introduced Ornamental Plants in China.
+authorString,"Wang H, Yang M, Ma X, Hu Q, Feng L, Hu Y, He J, Zhang X, Zheng J."
+authorList,"{'author': [{'fullName': 'Wang H', 'firstName': 'Haoyu', 'lastName': 'Wang', 'initials': 'H', 'authorId': {'@type': 'ORCID', '#text': '0009-0007-6059-3708'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'College of Forestry and Biotechnology, Zhejiang A&F University, Hangzhou 311300, China.'}, {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}]}}, {'fullName': 'Yang M', 'firstName': 'Min', 'lastName': 'Yang', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}, {'affiliation': 'College of Life and Environmental Science, Wenzhou University, Wenzhou 325035, China.'}]}}, {'fullName': 'Ma X', 'firstName': 'Xiaohua', 'lastName': 'Ma', 'initials': 'X', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}}}, {'fullName': 'Hu Q', 'firstName': 'Qingdi', 'lastName': 'Hu', 'initials': 'Q', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-9797-0649'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}}}, {'fullName': 'Feng L', 'firstName': 'Lei', 'lastName': 'Feng', 'initials': 'L', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}}}, {'fullName': 'Hu Y', 'firstName': 'Yaping', 'lastName': 'Hu', 'initials': 'Y', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-3496-0600'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}}}, {'fullName': 'He J', 'firstName': 'Jiehui', 'lastName': 'He', 'initials': 'J', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'College of Forestry and Biotechnology, Zhejiang A&F University, Hangzhou 311300, China.'}, {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}]}}, {'fullName': 'Zhang X', 'firstName': 'Xule', 'lastName': 'Zhang', 'initials': 'X', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}}}, {'fullName': 'Zheng J', 'firstName': 'Jian', 'lastName': 'Zheng', 'initials': 'J', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Key Laboratory of Plant Innovation and Utilization, Institute of Subtropical Crops of Zhejiang Province, Wenzhou 325005, China.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0002-9797-0649'}, {'@type': 'ORCID', '#text': '0000-0003-3496-0600'}, {'@type': 'ORCID', '#text': '0009-0007-6059-3708'}]}"
+journalInfo,"{'issue': '9', 'volume': '14', 'journalIssueId': '3942008', 'dateOfPublication': '2025 Apr', 'monthOfPublication': '4', 'yearOfPublication': '2025', 'printPublicationDate': '2025-04-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2025
+pageInfo,1361
+abstractText,"The import of ornamental plants has become a major source of alien invasive plants in China, posing threats to local ecosystems. However, research on their invasive potential and management strategies remains limited. This study evaluated the invasion risks of nine representative introduced ornamental plants (including naturalized and invasive species) in China (IOPCs). Using <i>ecospat</i> to perform climatic niche comparisons, we found significant unfilling and expansion (>50%) in most introduced ornamental plants, indicating strong invasiveness. Species distribution models (SDMs) were applied to predict the current and future distributions of these IOPCs under four shared socioeconomic pathways (SSPs: SSP1-2.6, SSP2-4.5, SSP3-7.0, and SSP5-8.5) across four time periods (2021-2040, 2041-2060, 2061-2080, and 2081-2100). The SDM results showed that the current high-risk areas are concentrated in southern China. Under future climate change, moderate- and high-risk zones are projected to shift northward, with the total areas increasing significantly, namely moderate-risk areas by 106.10% and high-risk areas by 64.35%, particularly in the border regions of Jiangxi, Fujian, and Zhejiang. We recommend establishing restricted introduction lists for non-native ornamental plants, enhancing monitoring and management in high-risk regions, and implementing early eradication measures. This study quantified the invasion risks and potential distributions of representative invasive ornamental plants, providing a scientific basis for effective control strategies."
+affiliation,"College of Forestry and Biotechnology, Zhejiang A&F University, Hangzhou 311300, China."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Ornamental plants', 'Climate change', 'Alien invasive plants', 'Species Distribution Model', 'Niche Comparison']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants14091361'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12074367'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12074367?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-05-14
+firstIndexDate,2025-05-21
+fullTextReceivedDate,2025-05-16
+dateOfRevision,2025-05-17
+electronicPublicationDate,2025-04-30
+firstPublicationDate,2025-04-30

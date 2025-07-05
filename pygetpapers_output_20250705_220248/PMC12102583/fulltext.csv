@@ -1,0 +1,47 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40416098
+source,MED
+pmid,40416098
+pmcid,PMC12102583
+fullTextIdList,{'fullTextId': 'PMC12102583'}
+doi,10.7759/cureus.82876
+title,Antibiotic Paste as an Intracanal Medicament in Infected Primary Teeth: A Systematic Review.
+authorString,"Barve A, Lakade L, Shah P, Chaudhary S, Jajoo S, Joshi G."
+authorList,"{'author': [{'fullName': 'Barve A', 'firstName': 'Archita', 'lastName': 'Barve', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND.'}}}, {'fullName': 'Lakade L', 'firstName': 'Laxmi', 'lastName': 'Lakade', 'initials': 'L', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND.'}}}, {'fullName': 'Shah P', 'firstName': 'Preetam', 'lastName': 'Shah', 'initials': 'P', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND.'}}}, {'fullName': 'Chaudhary S', 'firstName': 'Shweta', 'lastName': 'Chaudhary', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND.'}}}, {'fullName': 'Jajoo S', 'firstName': 'Shweta', 'lastName': 'Jajoo', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND.'}}}, {'fullName': 'Joshi G', 'firstName': 'Gandhali', 'lastName': 'Joshi', 'initials': 'G', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND.'}}}]}"
+journalInfo,"{'issue': '4', 'volume': '17', 'journalIssueId': '3923659', 'dateOfPublication': '2025 Apr', 'monthOfPublication': '4', 'yearOfPublication': '2025', 'printPublicationDate': '2025-04-01', 'journal': {'title': 'Cureus', 'ISOAbbreviation': 'Cureus', 'medlineAbbreviation': 'Cureus', 'NLMid': '101596737', 'ISSN': '2168-8184', 'ESSN': '2168-8184'}}"
+pubYear,2025
+pageInfo,e82876
+abstractText,"Intracanal medicaments, such as antibiotic pastes, in infected primary teeth have been evaluated to treat persistent polymicrobial infections, especially with resistant species like <i>Enterococcus faecalis</i> and <i>Candida albicans</i>. Advanced formulations such as triple antibiotic paste (TAP), calcium hydroxide (Ca(OH)₂), clindamycin-modified TAP, and nanoparticle-based medicaments have been studied for microbial reduction and clinical outcomes. This systematic review included studies that had evaluated antibiotic pastes for intracanal use in primary teeth. A comprehensive electronic database search was conducted following the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines, and studies were evaluated for eligibility on a population, exposure, comparator, outcome, and study design (PECOS) framework. A comprehensive search was conducted across seven electronic databases that included PubMed, Scopus, Web of Science, ScienceDirect, Cochrane Library, Embase, and Google Scholar. Risk of bias was evaluated using RoB 2.0 and QUIN tools. Out of 381 studies, 11 studies met the inclusion criteria, which evaluated medicaments such as TAP, Ca(OH)₂, clindamycin-modified TAP, 3C paste, chitosan chlorhexidine (CS-CHX) nanoparticles, and herbal alternatives. Results showed that TAP and its modified forms showed better antimicrobial efficacy, with reductions of up to 99.95% for aerobes and 99.78% for anaerobes. New formulations like nanoparticle-based drugs and 3C paste are promising but need clinical validation. This study suggests the potential of tailored intracanal medicaments in pediatric endodontics."
+affiliation,"Pediatric Dentistry, Bharati Vidyapeeth (Deemed to be University) Dental College and Hospital, Pune, IND."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+keywordList,"{'keyword': ['C. albicans', 'Intracanal Medicaments', 'E. Faecalis', 'Primary Teeth', 'Antibiotic Paste']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.7759/cureus.82876'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12102583'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC12102583?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-05-26
+firstIndexDate,2025-05-26
+fullTextReceivedDate,2025-05-26
+dateOfRevision,2025-05-27
+electronicPublicationDate,2025-04-23
+firstPublicationDate,2025-04-23

@@ -1,0 +1,49 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40002867
+source,MED
+pmid,40002867
+pmcid,PMC11853317
+fullTextIdList,{'fullTextId': 'PMC11853317'}
+doi,10.3390/biomedicines13020454
+title,"Therapeutic Potential of Medicinal Plants and Their Phytoconstituents in Diabetes, Cancer, Infections, Cardiovascular Diseases, Inflammation and Gastrointestinal Disorders."
+authorString,"Ansari P, Reberio AD, Ansari NJ, Kumar S, Khan JT, Chowdhury S, Abd El-Mordy FM, Hannan JMA, Flatt PR, Abdel-Wahab YHA, Seidel V."
+authorList,"{'author': [{'fullName': 'Ansari P', 'firstName': 'Prawej', 'lastName': 'Ansari', 'initials': 'P', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-9474-2766'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Department of Pharmacology, National Medical College and Teaching Hospital, Parsa, Birgunj 44300, Nepal.'}, {'affiliation': 'Comprehensive Diabetes Center, Department of Genetics, Heersink School of Medicine, University of Alabama, Birmingham (UAB), Birmingham, AL 35233, USA.'}, {'affiliation': 'Department of Pharmacy, School of Pharmacy and Public Health, Independent University, Bangladesh (IUB), Dhaka 1229, Bangladesh.'}, {'affiliation': 'Centre for Diabetes Research, School of Biomedical Sciences, Ulster University, Coleraine BT52 1SA, UK.'}]}}, {'fullName': 'Reberio AD', 'firstName': 'Alexa D', 'lastName': 'Reberio', 'initials': 'AD', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Pharmacy, School of Pharmacy and Public Health, Independent University, Bangladesh (IUB), Dhaka 1229, Bangladesh.'}}}, {'fullName': 'Ansari NJ', 'firstName': 'Nushrat J', 'lastName': 'Ansari', 'initials': 'NJ', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Radiology, National Medical College and Teaching Hospital, Parsa, Birgunj 44300, Nepal.'}}}, {'fullName': 'Kumar S', 'firstName': 'Sandeep', 'lastName': 'Kumar', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Comprehensive Diabetes Center, Department of Genetics, Heersink School of Medicine, University of Alabama, Birmingham (UAB), Birmingham, AL 35233, USA.'}}}, {'fullName': 'Khan JT', 'firstName': 'Joyeeta T', 'lastName': 'Khan', 'initials': 'JT', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-4905-6465'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Department of Pharmacy, School of Pharmacy and Public Health, Independent University, Bangladesh (IUB), Dhaka 1229, Bangladesh.'}, {'affiliation': 'Department of Pharmaceutical Sciences, College of Pharmacy, University of Arkansas for Medical Sciences (UAMS), Little Rock, AR 72205, USA.'}]}}, {'fullName': 'Chowdhury S', 'firstName': 'Suraiya', 'lastName': 'Chowdhury', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Pharmacy, School of Pharmacy and Public Health, Independent University, Bangladesh (IUB), Dhaka 1229, Bangladesh.'}}}, {'fullName': 'Abd El-Mordy FM', 'firstName': 'Fatma Mohamed', 'lastName': 'Abd El-Mordy', 'initials': 'FM', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-5554-2064'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Pharmacognosy and Medicinal Plants, Faculty of Pharmacy, Al-Azhar University, Cairo 11754, Egypt.'}}}, {'fullName': 'Hannan JMA', 'firstName': 'J M A', 'lastName': 'Hannan', 'initials': 'JMA', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Pharmacy, School of Pharmacy and Public Health, Independent University, Bangladesh (IUB), Dhaka 1229, Bangladesh.'}}}, {'fullName': 'Flatt PR', 'firstName': 'Peter R', 'lastName': 'Flatt', 'initials': 'PR', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Centre for Diabetes Research, School of Biomedical Sciences, Ulster University, Coleraine BT52 1SA, UK.'}}}, {'fullName': 'Abdel-Wahab YHA', 'firstName': 'Yasser H A', 'lastName': 'Abdel-Wahab', 'initials': 'YHA', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-3991-3419'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Centre for Diabetes Research, School of Biomedical Sciences, Ulster University, Coleraine BT52 1SA, UK.'}}}, {'fullName': 'Seidel V', 'firstName': 'Veronique', 'lastName': 'Seidel', 'initials': 'V', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-3880-5261'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Natural Products Research Laboratory, Strathclyde Institute of Pharmacy and Biomedical Sciences, University of Strathclyde, Glasgow G4 0RE, UK.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-9474-2766'}, {'@type': 'ORCID', '#text': '0000-0002-3991-3419'}, {'@type': 'ORCID', '#text': '0000-0002-4905-6465'}, {'@type': 'ORCID', '#text': '0000-0002-5554-2064'}, {'@type': 'ORCID', '#text': '0000-0003-3880-5261'}]}"
+journalInfo,"{'issue': '2', 'volume': '13', 'journalIssueId': '3905542', 'dateOfPublication': '2025 Feb', 'monthOfPublication': '2', 'yearOfPublication': '2025', 'printPublicationDate': '2025-02-01', 'journal': {'title': 'Biomedicines', 'ISOAbbreviation': 'Biomedicines', 'medlineAbbreviation': 'Biomedicines', 'NLMid': '101691304', 'ISSN': '2227-9059', 'ESSN': '2227-9059'}}"
+pubYear,2025
+pageInfo,454
+abstractText,"Conditions like diabetes mellitus (DM), cancer, infections, inflammation, cardiovascular diseases (CVDs), and gastrointestinal (GI) disorders continue to have a major global impact on mortality and morbidity. Medicinal plants have been used since ancient times in ethnomedicine (e.g., Ayurveda, Unani, Traditional Chinese Medicine, and European Traditional Medicine) for the treatment of a wide range of disorders. Plants are a rich source of diverse phytoconstituents with antidiabetic, anticancer, antimicrobial, antihypertensive, antioxidant, antihyperlipidemic, cardioprotective, immunomodulatory, and/or anti-inflammatory activities. This review focuses on the 35 plants most commonly reported for the treatment of these major disorders, with a particular emphasis on their traditional uses, phytoconstituent contents, pharmacological properties, and modes of action. Active phytomolecules with therapeutic potential include cucurbitane triterpenoids, diosgenin, and limonoids (azadiradione and gedunin), which exhibit antidiabetic properties, with cucurbitane triterpenoids specifically activating Glucose Transporter Type 4 (GLUT4) translocation. Capsaicin and curcumin demonstrate anticancer activity by deactivating NF-κB and arresting the cell cycle in the G2 phase. Antimicrobial activities have been observed for piperine, reserpine, berberine, dictamnine, chelerythrine, and allitridin, with the latter two triggering bacterial cell lysis. Quercetin, catechin, and genistein exhibit anti-inflammatory properties, with genistein specifically suppressing CD8+ cytotoxic T cell function. Ginsenoside Rg1 and ginsenoside Rg3 demonstrate potential for treating cardiovascular diseases, with ginsenoside Rg1 activating PPARα promoter, and the PI3K/Akt pathway. In contrast, ternatin, tannins, and quercitrin exhibit potential in gastrointestinal disorders, with quercitrin regulating arachidonic acid metabolism by suppressing cyclooxygenase (COX) and lipoxygenase activity. Further studies are warranted to fully investigate the clinical therapeutic benefits of these plants and their phytoconstituents, as well as to elucidate their underlying molecular mechanisms of action."
+affiliation,"Department of Pharmacology, National Medical College and Teaching Hospital, Parsa, Birgunj 44300, Nepal."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['review-article', 'Review', 'Journal Article']}"
+keywordList,"{'keyword': ['Infection', 'Medicinal plants', 'Cancer', 'Cardiovascular diseases', 'Inflammation', 'Diabetes', 'Ethnomedicine', 'Gastrointestinal Disorders', 'Phytoconstituents']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/biomedicines13020454'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11853317'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11853317?pdf=render'}]}"
+commentCorrectionList,"{'commentCorrection': {'id': 'PPR961843', 'source': 'PPR', 'type': 'Preprint in', 'note': 'CrossRef Pre-print loader', 'orderIn': '10002'}}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,1
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-02-26
+firstIndexDate,2025-02-26
+fullTextReceivedDate,2025-03-07
+dateOfRevision,2025-02-28
+electronicPublicationDate,2025-02-12
+firstPublicationDate,2025-02-12

@@ -1,0 +1,47 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39583496
+source,MED
+pmid,39583496
+pmcid,PMC11584205
+fullTextIdList,{'fullTextId': 'PMC11584205'}
+doi,10.7759/cureus.72167
+title,Comparison of Antimicrobial Efficacy of Ocimum sanctum (Tulsi) Extract and Chlorhexidine Against Tannerella forsythia: An In Vitro Study.
+authorString,"R M, V K, K G, Pl R, Vinayachandran D, Siluvai S, S R, Esther V."
+authorList,"{'author': [{'fullName': 'R M', 'firstName': 'Mithra', 'lastName': 'R', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Periodontology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'V K', 'firstName': 'Kalaivani', 'lastName': 'V', 'initials': 'K', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Periodontology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'K G', 'firstName': 'Gayathri', 'lastName': 'K', 'initials': 'G', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Periodontology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'Pl R', 'firstName': 'Ravishankar', 'lastName': 'Pl', 'initials': 'R', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Periodontology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'Vinayachandran D', 'firstName': 'Divya', 'lastName': 'Vinayachandran', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Oral Medicine and Radiology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'Siluvai S', 'firstName': 'Sibyl', 'lastName': 'Siluvai', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Public Health Dentistry, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'S R', 'firstName': 'Rajakumar', 'lastName': 'S', 'initials': 'R', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Pediatric and Preventive Dentistry, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}, {'fullName': 'Esther V', 'firstName': 'Viola', 'lastName': 'Esther', 'initials': 'V', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Periodontology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND.'}}}]}"
+journalInfo,"{'issue': '10', 'volume': '16', 'journalIssueId': '3835444', 'dateOfPublication': '2024 Oct', 'monthOfPublication': '10', 'yearOfPublication': '2024', 'printPublicationDate': '2024-10-01', 'journal': {'title': 'Cureus', 'ISOAbbreviation': 'Cureus', 'medlineAbbreviation': 'Cureus', 'NLMid': '101596737', 'ISSN': '2168-8184', 'ESSN': '2168-8184'}}"
+pubYear,2024
+pageInfo,e72167
+abstractText,"<h4>Context</h4>Periodontitis, a chronic inflammatory disease affecting the periodontium, is primarily caused by gram-negative anaerobic bacteria. Conventional periodontal therapy aims to eradicate pathogenic microflora through mechanical debridement, often supplemented with chemical agents. However, the use of these chemical adjuvants is frequently associated with adverse drug reactions and the development of antimicrobial resistance. Consequently, researchers are increasingly exploring herbal antibacterial agents, such as <i>Ocimum sanctum</i> (Tulsi), as viable alternatives due to their broad-spectrum antimicrobial properties and reduced side effect profile.<h4>Aim</h4> This study aims to analyze the antibacterial efficacy of the ethanolic extract of <i>O. sanctum</i> (Tulsi) against <i>Tannerella forsythia</i>, a key bacterium of the red complex, using chlorhexidine as a reference standard. Traditionally, chlorhexidine has been utilized as an adjunct to nonsurgical therapy in the treatment of patients with periodontal disease.<h4>Materials and methods</h4>The cold extraction method was used to prepare the ethanolic extract of <i>O. sanctum</i> leaves. The resultant substance was mixed into five different concentrations (3.13%, 6.25%, 12.5%, 25%, and 50%) using dimethylformamide as the solvent. The antimicrobial activity of these varying concentrations was assessed against <i>T. forsythia</i> in culture plates employing the agar well diffusion method, with 0.2% chlorhexidine serving as the positive reference. The zone of inhibition of bacterial growth has been determined and compared with that of 0.2% chlorhexidine.<h4>Results</h4>The ethanolic extract of <i>O. sanctum</i> exhibited highly statistically significant antibacterial activity against <i>T. forsythia</i> (p < 0.001). At a dosage of 25 mg/mL, the extract created a zone of inhibition measuring 17 mm, while at 50 mg/mL, the zone of inhibition increased to 25 mm. However, when compared to 0.2% chlorhexidine, which had a zone of inhibition of 32 mm, <i>O. sanctum</i> showed a slightly smaller inhibitory effect.<h4>Conclusion</h4>The extract of <i>Tulsi</i> showed notable antibacterial activity against <i>T. forsythia</i>, with the antibacterial impact observed at the 50 mg/mL dilution."
+affiliation,"Periodontology, Sri Ramaswamy Memorial (SRM) Kattankulathur Dental College and Hospital, Sri Ramaswamy Memorial Institute of Science and Technology (SRMIST), Chennai, IND."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Antimicrobial activity', 'Natural products', 'Periodontal Diseases', 'Ocimum Sanctum', 'Tannerella Forsythia']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.7759/cureus.72167'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11584205'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11584205?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-11-25
+firstIndexDate,2024-11-25
+fullTextReceivedDate,2024-11-25
+dateOfRevision,2024-11-26
+electronicPublicationDate,2024-10-22
+firstPublicationDate,2024-10-22

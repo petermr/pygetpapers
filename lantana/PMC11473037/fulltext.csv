@@ -1,0 +1,53 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39121383
+source,MED
+pmid,39121383
+pmcid,PMC11473037
+fullTextIdList,{'fullTextId': 'PMC11473037'}
+doi,10.1093/jee/toae175
+title,'The Garlic Gambit': an alternative strategy for controlling vine weevil (Otiorhynchus sulcatus F.; Coleoptera: Curculionidae).
+authorString,"Fezza E, Roberts JM, Bruce TJA, Walsh LE, Gaffney MT, Pope TW."
+authorList,"{'author': [{'fullName': 'Fezza E', 'firstName': 'Eugenia', 'lastName': 'Fezza', 'initials': 'E', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-5819-7801'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Entomology Group, Centre for Crop and Environmental Science, Harper Adams University, Newport, UK.'}, {'affiliation': 'Horticulture Development Department, Teagasc, Ashtown Research Centre, Dublin, Ireland.'}]}}, {'fullName': 'Roberts JM', 'firstName': 'Joe M', 'lastName': 'Roberts', 'initials': 'JM', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-9576-9239'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Entomology Group, Centre for Crop and Environmental Science, Harper Adams University, Newport, UK.'}}}, {'fullName': 'Bruce TJA', 'firstName': 'Toby J A', 'lastName': 'Bruce', 'initials': 'TJA', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-9912-0605'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Centre for Applied Entomology and Parasitology, School of Life Sciences, Huxley Building, Keele University, Staffordshire, UK.'}}}, {'fullName': 'Walsh LE', 'firstName': 'Lael E', 'lastName': 'Walsh', 'initials': 'LE', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-4163-171X'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Horticulture Development Department, Teagasc, Ashtown Research Centre, Dublin, Ireland.'}}}, {'fullName': 'Gaffney MT', 'firstName': 'Michael T', 'lastName': 'Gaffney', 'initials': 'MT', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-2961-2599'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Horticulture Development Department, Teagasc, Ashtown Research Centre, Dublin, Ireland.'}}}, {'fullName': 'Pope TW', 'firstName': 'Tom W', 'lastName': 'Pope', 'initials': 'TW', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-3678-2943'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Entomology Group, Centre for Crop and Environmental Science, Harper Adams University, Newport, UK.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-5819-7801'}, {'@type': 'ORCID', '#text': '0000-0002-3678-2943'}, {'@type': 'ORCID', '#text': '0000-0002-4163-171X'}, {'@type': 'ORCID', '#text': '0000-0002-9576-9239'}, {'@type': 'ORCID', '#text': '0000-0002-9912-0605'}, {'@type': 'ORCID', '#text': '0000-0003-2961-2599'}]}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'issue': '5', 'volume': '117', 'journalIssueId': '3839884', 'dateOfPublication': '2024 Oct', 'monthOfPublication': '10', 'yearOfPublication': '2024', 'printPublicationDate': '2024-10-01', 'journal': {'title': 'Journal of economic entomology', 'ISOAbbreviation': 'J Econ Entomol', 'medlineAbbreviation': 'J Econ Entomol', 'NLMid': '2985127R', 'ISSN': '0022-0493', 'ESSN': '1938-291X'}}"
+pubYear,2024
+pageInfo,1968-1976
+abstractText,"Plant protection products derived from plant material are proposed to be a sustainable alternative to conventional synthetic chemical pesticides. This study determines the efficacy of a commercially available bioinsecticide based on garlic (Allium sativum L.; Asparagales: Amaryllidaceae) extract against vine weevil (Otiorhynchus sulcatus F.; Coleoptera: Curculionidae) eggs and larvae in contact, fumigation and a combination of contact and fumigation bioassays under laboratory conditions. Results showed that garlic significantly reduced egg hatch rate compared to the control group when applied as a fumigant. Similarly, the egg hatch rate was reduced compared to the control group when garlic was applied as combined contact and fumigant applications. No effect was observed when the garlic product was applied as a contact application. The bioinsecticide significantly reduced larval survival when either contact or fumigant applications were used. A combined contact and fumigant effect was shown also when vine weevil eggs were exposed to the bioinsecticide for 30 days in plastic containers containing growing media. The number of larvae recovered after this period was significantly reduced compared to the control group. This study demonstrates the potential of garlic-based bioinsecticides, such as Pitcher GR, for vine weevil control. Further studies are, however, needed to determine the efficacy of such bioinsecticides under field conditions and investigate how these products can be most effectively used as a part of a wider vine weevil integrated pest management program."
+affiliation,"Entomology Group, Centre for Crop and Environmental Science, Harper Adams University, Newport, UK."
+publicationStatus,ppublish
+language,eng
+pubModel,Print
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+grantsList,"{'grant': {'grantId': '2020034', 'agency': 'Teagasc Walsh Scholarships Programme', 'orderIn': '0'}}"
+meshHeadingList,"{'meshHeading': [{'majorTopic_YN': 'Y', 'descriptorName': 'Ovum'}, {'majorTopic_YN': 'N', 'descriptorName': 'Animals'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Weevils'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Garlic'}, {'majorTopic_YN': 'N', 'descriptorName': 'Plant Extracts', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'PD', 'qualifierName': 'pharmacology', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Insecticides'}, {'majorTopic_YN': 'N', 'descriptorName': 'Fumigation'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Insect Control', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'MT', 'qualifierName': 'methods', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Larva', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'GD', 'qualifierName': 'growth & development', 'majorTopic_YN': 'N'}}}]}"
+keywordList,"{'keyword': ['egg hatchability', 'Larval Survival', 'Contact Test', 'Botanical Bioinsecticide', 'Fumigant Test']}"
+chemicalList,"{'chemical': [{'name': 'Plant Extracts', 'registryNumber': '0'}, {'name': 'Insecticides', 'registryNumber': '0'}]}"
+subsetList,"{'subset': {'code': 'IM', 'name': 'Index Medicus'}}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1093/jee/toae175'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11473037'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11473037?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by-nc-nd
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCompletion,2024-10-14
+dateOfCreation,2024-08-09
+firstIndexDate,2024-08-09
+fullTextReceivedDate,2024-10-30
+dateOfRevision,2024-10-16
+firstPublicationDate,2024-10-01

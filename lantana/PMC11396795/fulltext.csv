@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39273867
+source,MED
+pmid,39273867
+pmcid,PMC11396795
+fullTextIdList,{'fullTextId': 'PMC11396795'}
+doi,10.3390/plants13172383
+title,"Survey on the Traditional Use of Medicinal Herbs in Haiti: A Study on Knowledge, Practices, and Efficacy Prevention."
+authorString,"Thesnor V, Cheremond Y, Sylvestre M, Meffre P, Cebrián-Torrejón G, Benfodda Z."
+authorList,"{'author': [{'fullName': 'Thesnor V', 'firstName': 'Valendy', 'lastName': 'Thesnor', 'initials': 'V', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-9918-9218'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'COVACHIM-M2E Laboratory EA 3592, Department of Chemistry, Université des Antilles, UFR SEN, Fouillole Campus, Cedex, 97157 Pointe-a-Pitre, France.'}, {'affiliation': ""URE, Université d'État d'Haïti, Port-au-Prince HT6110, Haiti.""}, {'affiliation': 'UPR CHROME, University Nimes, cedex 1, 30021 Nimes, France.'}]}}, {'fullName': 'Cheremond Y', 'firstName': 'Yvens', 'lastName': 'Cheremond', 'initials': 'Y', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-8508-9654'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""URE, Université d'État d'Haïti, Port-au-Prince HT6110, Haiti.""}}}, {'fullName': 'Sylvestre M', 'firstName': 'Muriel', 'lastName': 'Sylvestre', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'COVACHIM-M2E Laboratory EA 3592, Department of Chemistry, Université des Antilles, UFR SEN, Fouillole Campus, Cedex, 97157 Pointe-a-Pitre, France.'}}}, {'fullName': 'Meffre P', 'firstName': 'Patrick', 'lastName': 'Meffre', 'initials': 'P', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-6189-9860'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'UPR CHROME, University Nimes, cedex 1, 30021 Nimes, France.'}}}, {'fullName': 'Cebrián-Torrejón G', 'firstName': 'Gerardo', 'lastName': 'Cebrián-Torrejón', 'initials': 'G', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-5776-922X'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'COVACHIM-M2E Laboratory EA 3592, Department of Chemistry, Université des Antilles, UFR SEN, Fouillole Campus, Cedex, 97157 Pointe-a-Pitre, France.'}}}, {'fullName': 'Benfodda Z', 'firstName': 'Zohra', 'lastName': 'Benfodda', 'initials': 'Z', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-7574-4977'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'UPR CHROME, University Nimes, cedex 1, 30021 Nimes, France.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-7574-4977'}, {'@type': 'ORCID', '#text': '0000-0001-8508-9654'}, {'@type': 'ORCID', '#text': '0000-0001-9918-9218'}, {'@type': 'ORCID', '#text': '0000-0002-5776-922X'}, {'@type': 'ORCID', '#text': '0000-0002-6189-9860'}]}"
+journalInfo,"{'issue': '17', 'volume': '13', 'journalIssueId': '3828956', 'dateOfPublication': '2024 Aug', 'monthOfPublication': '8', 'yearOfPublication': '2024', 'printPublicationDate': '2024-08-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2024
+pageInfo,2383
+abstractText,"The use of medicinal herbs is highly developed in Haiti. However, there is a significant lack of knowledge in the literature on medicinal plants and their uses. The objective of this study was to determine the knowledge and practices of Haitian families for the prevention/treatment of COVID-19, influenza, and respiratory diseases, as well as the mode of preparation and administration of the plants. Individuals were interviewed using the TRAMIL questionnaire as the information holder. The data obtained were analyzed by calculating 5 indices (relative frequency of citation, use value, the family use value, informant consensus factor, and fidelity level). The study surveyed 120 Haitians and collected 75 plants from 43 botanical families. The botanical family most used for all these preventions and remedies is the Lamiaceae. The highest ranked species with a relative frequency of citation value > 0.3. Infusion, decoction, and in the form of punch are the methods used for the remedies. The study found that the use of herbal remedies is still prevalent in the study area, and many of the commonly used plants have been scientifically validated. However, some plants, such as <i>Samyda rosea</i> Sims, lack sufficient research and are recommended for further investigation."
+affiliation,"COVACHIM-M2E Laboratory EA 3592, Department of Chemistry, Université des Antilles, UFR SEN, Fouillole Campus, Cedex, 97157 Pointe-a-Pitre, France."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Respiratory diseases', 'Flu', 'Tramil', 'Colds', 'Covid-19']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants13172383'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11396795'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11396795?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-09-14
+firstIndexDate,2024-09-15
+fullTextReceivedDate,2024-10-28
+dateOfRevision,2024-09-16
+electronicPublicationDate,2024-08-26
+firstPublicationDate,2024-08-26

@@ -1,0 +1,54 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40061225
+source,MED
+pmid,40061225
+pmcid,PMC11890036
+fullTextIdList,{'fullTextId': 'PMC11890036'}
+doi,10.7717/peerj.19074
+title,Antibacterial activity of the endophytic fungal extracts and synergistic effects of combinations of ethylenediaminetetraacetic acid (EDTA) against &lt;i&gt;Pseudomonas aeruginosa&lt;/i&gt; and &lt;i&gt;Escherichia coli&lt;/i&gt;.
+authorString,"Rosdee S, Wisessombat S, Tayeh M, Malakul R, Phanaksri T, Sianglum W."
+authorList,"{'author': [{'fullName': 'Rosdee S', 'firstName': 'Sirirak', 'lastName': 'Rosdee', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Division of Biological Science, Faculty of Science, Prince of Songkla University, Hat Yai, Songkhla, Thailand.'}}}, {'fullName': 'Wisessombat S', 'firstName': 'Sueptrakool', 'lastName': 'Wisessombat', 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Department of Medical Technology, School of Allied Health Sciences, Walailak University, Nakhon Si Thammarat, Thailand.'}, {'affiliation': 'Center of Excellence Research for Melioidosis and Microorganisms (CERMM), Walailak University, Nakhon Si Thammarat, Thailand.'}]}}, {'fullName': 'Tayeh M', 'firstName': 'Malatee', 'lastName': 'Tayeh', 'initials': 'M', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Department of Medical Technology, School of Allied Health Sciences, Walailak University, Nakhon Si Thammarat, Thailand.'}, {'affiliation': 'Hematology and Transfusion Science Research Center, Walailak University, Nakhon Si Thammarat, Thailand.'}]}}, {'fullName': 'Malakul R', 'firstName': 'Ramitanun', 'lastName': 'Malakul', 'initials': 'R', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Division of Biological Science, Faculty of Science, Prince of Songkla University, Hat Yai, Songkhla, Thailand.'}}}, {'fullName': 'Phanaksri T', 'firstName': 'Teva', 'lastName': 'Phanaksri', 'initials': 'T', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Chulabhorn International College of Medicine, Thammasat University, Pathumthani, Thailand.'}}}, {'fullName': 'Sianglum W', 'firstName': 'Wipawadee', 'lastName': 'Sianglum', 'initials': 'W', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Division of Biological Science, Faculty of Science, Prince of Songkla University, Hat Yai, Songkhla, Thailand.'}}}]}"
+dataLinksTagsList,{'dataLinkstag': 'supporting_data'}
+journalInfo,"{'volume': '13', 'journalIssueId': '3884597', 'dateOfPublication': '2025', 'monthOfPublication': '0', 'yearOfPublication': '2025', 'printPublicationDate': '2025-01-01', 'journal': {'title': 'PeerJ', 'ISOAbbreviation': 'PeerJ', 'medlineAbbreviation': 'PeerJ', 'NLMid': '101603425', 'ISSN': '2167-8359', 'ESSN': '2167-8359'}}"
+pubYear,2025
+pageInfo,e19074
+abstractText,"The growing threat of antibiotic resistance in bacteria is a critical public health concern. Combining natural compounds with antimicrobial agents is an alternative approach to improve the antibacterial efficacy and safety of these agents. The strategy is to restore the effectiveness of existing antibiotics while minimizing the required concentrations of antibiotics or antimicrobial agents. This study aimed to isolate the endophytic fungi from medicinal plants, including <i>Lantana camara</i>, <i>Orthosiphon aristatus</i>, <i>Mansonia gagei</i>, <i>Terminalia bellirica</i>, <i>Oroxylum indicum</i>, <i>Elaeagnus latifolia</i>, <i>Talinum paniculatum</i>, and <i>Capsicum annuum</i>, and evaluate the combined antibacterial efficacy with selected antibiotics or ethylenediaminetetraacetic acid (EDTA) against <i>Pseudomonas aeruginosa</i>. The antimicrobial activity of the extracts was assessed using agar well diffusion and broth microdilution methods. The minimum inhibitory concentration (MIC) values of the extracts were 32-64 µg/mL against <i>Escherichia coli</i>, and 512-2,048 µg/mL against <i>P. aeruginosa</i>, respectively. Time-kill assays demonstrated the bacteriostatic effect of the extracts. The checkerboard microbroth dilution method was performed to determine the synergistic effect between endophytic fungal extracts and antibiotics or EDTA. The synergistic effect was observed in the extractions of endophytic fungi isolated from <i>M. gagei</i>, <i>T. bellirica</i>, <i>O. indicum</i>, <i>E. latifolia</i>, <i>T. paniculatum</i>, and <i>C. annuum</i> combined with EDTA against <i>P. aeruginosa</i>. Combinations of endophytic fungi with EDTA, which exhibited a synergistic effect, demonstrated bactericidal action against Gram-negative bacteria. The present study suggests that combining endophytic fungal extracts and EDTA could be an essential strategy for combating pathogenic Gram-negative bacteria."
+affiliation,"Division of Biological Science, Faculty of Science, Prince of Songkla University, Hat Yai, Songkhla, Thailand."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+grantsList,"{'grant': [{'grantId': '1-2565-02-020', 'agency': 'Graduate Fellowship (Research Assistant), Faculty of Science, Prince of Songkla University', 'orderIn': '0'}, {'grantId': 'SCI6601289S', 'agency': 'Prince of Songkla University', 'orderIn': '0'}, {'agency': 'National Science, Research, and Innovation Fund', 'orderIn': '0'}]}"
+meshHeadingList,"{'meshHeading': [{'majorTopic_YN': 'Y', 'descriptorName': 'Pseudomonas aeruginosa', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'DE', 'qualifierName': 'drug effects', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Escherichia coli', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'DE', 'qualifierName': 'drug effects', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Fungi', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'N', 'descriptorName': 'Plants, Medicinal', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'MI', 'qualifierName': 'microbiology', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Edetic Acid', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'PD', 'qualifierName': 'pharmacology', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Anti-Bacterial Agents', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'PD', 'qualifierName': 'pharmacology', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'N', 'descriptorName': 'Microbial Sensitivity Tests'}, {'majorTopic_YN': 'N', 'descriptorName': 'Drug Synergism'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Endophytes', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}}}]}"
+keywordList,"{'keyword': ['Pseudomonas aeruginosa', 'Medicinal plants', 'Synergism', 'Antibacterial', 'Endophytic fungi', 'Combination', 'Escherichia Coli', 'Ethylenediaminetetraacetic Acid', 'Checkerboard Assay']}"
+chemicalList,"{'chemical': [{'name': 'Anti-Bacterial Agents', 'registryNumber': '0'}, {'name': 'Edetic Acid', 'registryNumber': '9G34HU7RV0'}]}"
+subsetList,"{'subset': {'code': 'IM', 'name': 'Index Medicus'}}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.7717/peerj.19074'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11890036'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11890036?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by-nc
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,Y
+tmAccessionTypeList,{'accessionType': 'gen'}
+dateOfCompletion,2025-05-12
+dateOfCreation,2025-03-10
+firstIndexDate,2025-03-11
+fullTextReceivedDate,2025-03-13
+dateOfRevision,2025-05-12
+electronicPublicationDate,2025-03-05
+firstPublicationDate,2025-03-05

@@ -1,0 +1,965 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3 20210610//EN" "JATS-archivearticle1-3-mathml3.dtd"> 
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.3" xml:lang="en" article-type="research-article"><?DTDIdentifier.IdentifierValue -//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.2 20190208//EN?><?DTDIdentifier.IdentifierType public?><?SourceDTD.DTDName JATS-journalpublishing1.dtd?><?SourceDTD.Version 1.2?><?ConverterInfo.XSLTName jats2jats3.xsl?><?ConverterInfo.Version 1?><?properties open_access?><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">RSC Adv</journal-id><journal-id journal-id-type="iso-abbrev">RSC Adv</journal-id><journal-id journal-id-type="publisher-id">RA</journal-id><journal-id journal-id-type="coden">RSCACL</journal-id><journal-title-group><journal-title>RSC Advances</journal-title></journal-title-group><issn pub-type="epub">2046-2069</issn><publisher><publisher-name>The Royal Society of Chemistry</publisher-name></publisher></journal-meta>
+<article-meta><article-id pub-id-type="pmcid">11962719</article-id><article-id pub-id-type="publisher-id">d5ra01733e</article-id><article-id pub-id-type="doi">10.1039/d5ra01733e</article-id><article-categories><subj-group subj-group-type="heading"><subject>Chemistry</subject></subj-group></article-categories><title-group><article-title>A highly selective colorimetric sensor of mercury(<sc>ii</sc>) ions and hydrogen peroxide by biosynthesized silver nanoparticles in water and investigations of the interaction between silver and mercury<xref rid="fn1" ref-type="fn">&#x02020;</xref></article-title><fn-group><fn id="fn1"><label>&#x02020;</label><p>Electronic supplementary information (ESI) available. See DOI: <uri xlink:href="https://doi.org/10.1039/d5ra01733e">https://doi.org/10.1039/d5ra01733e</uri></p></fn></fn-group></title-group><contrib-group><contrib contrib-type="author"><name><surname>Islam</surname><given-names>Md. Toufiqul</given-names></name><xref rid="affa" ref-type="aff">a</xref></contrib><contrib contrib-type="author"><name><surname>Das</surname><given-names>Saurav Kumar</given-names></name><xref rid="affa" ref-type="aff">a</xref></contrib><contrib contrib-type="author"><name><surname>Nahim</surname><given-names>Md. Ahad Mahamud</given-names></name><xref rid="affa" ref-type="aff">a</xref></contrib><contrib contrib-type="author"><name><surname>Karim</surname><given-names>Md. Rabiul</given-names></name><xref rid="affb" ref-type="aff">b</xref></contrib><contrib contrib-type="author"><name><surname>Kundu</surname><given-names>Rumpa</given-names></name><xref rid="affc" ref-type="aff">c</xref></contrib><contrib contrib-type="author"><name><surname>Khan</surname><given-names>Md. Abu Rayhan</given-names></name><xref rid="affd" ref-type="aff">d</xref></contrib><contrib contrib-type="author" corresp="yes"><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0003-4219-4758</contrib-id><contrib-id contrib-id-type="resid" authenticated="false">O-8960-2018</contrib-id><name><surname>Rahman</surname><given-names>Shofiur</given-names></name><xref rid="affe" ref-type="aff">e</xref><xref rid="afff" ref-type="aff">f</xref></contrib><contrib contrib-type="author"><name><surname>Al-Gawati</surname><given-names>Mahmoud</given-names></name><xref rid="affe" ref-type="aff">e</xref><xref rid="afff" ref-type="aff">f</xref></contrib><contrib contrib-type="author"><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0003-0202-8712</contrib-id><name><surname>Alodhayb</surname><given-names>Abdullah N.</given-names></name><xref rid="affe" ref-type="aff">e</xref><xref rid="afff" ref-type="aff">f</xref><xref rid="affg" ref-type="aff">g</xref></contrib><contrib contrib-type="author" corresp="yes"><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0003-0311-425X</contrib-id><contrib-id contrib-id-type="resid" authenticated="false">E-7485-2018</contrib-id><name><surname>Ahsan</surname><given-names>Habib Md.</given-names></name><xref rid="affa" ref-type="aff">a</xref></contrib><aff id="affa">
+<label>a</label>
+<institution>Chemistry Discipline, Khulna University</institution>
+<city>Khulna-9208</city>
+<country>Bangladesh</country>
+<email>ahsanhru@chem.ku.ac.bd</email>
+</aff><aff id="affb">
+<label>b</label>
+<institution>Department of Chemistry, University of Rajshahi</institution>
+<city>Rajshahi-6205</city>
+<country>Bangladesh</country>
+</aff><aff id="affc">
+<label>c</label>
+<institution>Department of Environmental Studies for Advanced Society, Graduate School of Environmental Studies, Tohoku University</institution>
+<city>Sendai</city>
+<country>Japan</country>
+</aff><aff id="affd">
+<label>d</label>
+<institution>Department of Chemistry, Mississippi State University</institution>
+<addr-line>310 President Cir</addr-line>
+<city>Mississippi State</city>
+<country>USA</country>
+</aff><aff id="affe">
+<label>e</label>
+<institution>Biological and Environmental Sensing Research Unit, King Abdullah Institute for Nanotechnology, King Saud University</institution>
+<city>Riyadh 11451</city>
+<country>Saudi Arabia</country>
+<email>mrahman1@ksu.edu.sa</email>
+</aff><aff id="afff">
+<label>f</label>
+<institution>King Salman Center for Disability Research</institution>
+<city>Riyadh 11614</city>
+<country>Saudi Arabia</country>
+</aff><aff id="affg">
+<label>g</label>
+<institution>Department of Physics and Astronomy, College of Science, King Saud University</institution>
+<city>Riyadh 11451</city>
+<country>Saudi Arabia</country>
+</aff></contrib-group><pub-date publication-format="electronic" date-type="pub" iso-8601-date="2025-04-02"><day>2</day><month>4</month><year>2025</year></pub-date><pub-date publication-format="electronic" date-type="collection" iso-8601-date="2025-03-28"><day>28</day><month>3</month><year>2025</year></pub-date><pub-date pub-type="pmc-release"><day>2</day><month>4</month><year>2025</year></pub-date><!--PMC Release delay is 0 months and 0 days and was based on the <pub-date pub-type="epub"/>.--><volume>15</volume><issue>13</issue><fpage>10074</fpage><lpage>10084</lpage><history><date date-type="received" iso-8601-date="2025-03-10"><day>10</day><month>3</month><year>2025</year></date><date date-type="accepted" iso-8601-date="2025-03-24"><day>24</day><month>3</month><year>2025</year></date></history><permissions><copyright-statement>This journal is &#x000a9; The Royal Society of Chemistry</copyright-statement><copyright-year>2025</copyright-year><copyright-holder>The Royal Society of Chemistry</copyright-holder><ali:free_to_read xmlns:ali="http://www.niso.org/schemas/ali/1.0/"/><license><ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/" specific-use="textmining" content-type="ccbynclicense" start_date="2025-04-02">https://creativecommons.org/licenses/by-nc/3.0/</ali:license_ref><license-p>This article is licensed under a <ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-Non Commercial 3.0 Unported Licence</ext-link>. You can use material from this article in other publications without requesting further permissions from the RSC, provided that the correct acknowledgement is given and it is not used for commercial purposes.</license-p></license></permissions><abstract><p>Silver nanoparticles (AgNPs) are promising for their exceptional properties for various applications. This study applied a facile and green method to synthesize AgNPs in an aqueous medium using <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract as a reducing and stabilizing agent. The formation of AgNPs was confirmed by using UV-visible spectroscopy, X-ray diffraction pattern (XRD), and High-resolution transmission electron microscopy (HRTEM). The synthesized AgNPs consist of face-centered cubic crystals and exhibit homogeneous spherical morphology with an average size of 11 nm. Heavy metals like mercury contamination in water and food pose global health risks, leading to disability issues, even at trace levels. Beside, H<sub>2</sub>O<sub>2</sub> is a reactive oxygen species. Thus, elevated H<sub>2</sub>O<sub>2</sub> levels can harm cell membranes, proteins, and DNA in aquatic creatures, resulting in oxidative stress that may affect physiological processes. Therefore, there is an urgent need for effective monitoring and prevention. The synthesized AgNPs were utilized as a colorimetric probe for the detection of mercury (Hg<sup>2+</sup>) ions in water at room temperature and found to be highly sensitive and selective with a limit of detection (LOD) of 1.58 &#x003bc;M and a limit of quantification (LOQ) of 5.27 &#x003bc;M. Furthermore, the detection of Hg<sup>2+</sup> was unaffected in the presence of other pertinent metal ions. The prepared AgNPs probe can also enable detection of Hg<sup>2+</sup> with the naked eye. In addition, the AgNPs probe was investigated for detecting Hg<sup>2+</sup> ions in real water samples, which offered satisfying recovery rates ranging from 90.60 &#x000b1; 2.60 to 96.73 &#x000b1; 2.83%, confirming the probe's practicability. The capping agent stabilized on the surface of AgNPs can effectively pre-concentrate Hg<sup>2+</sup> ions through the chemical interaction between AgNPs and Hg<sup>2+</sup> ions to form Ag&#x02013;Hg amalgam. This leads to a decrease in the SPR peak from AgNPs. The interaction between Ag and Hg was investigated using synchrotron radiation-induced X-ray photoelectron spectroscopy (SR-XPS). In addition, the AgNPs probe effectively detected hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) in an aqueous medium with a LOD of 3.21 &#x003bc;M and LOQ of 10.70 &#x003bc;M. This study aimed to develop a rapid, easy-to-use, eco-friendly, and reliable colorimetric sensor that may quickly identify dangerous pollutants in aqueous samples.</p></abstract><abstract abstract-type="toc"><p>Green synthesized silver nanoparticles demonstrated colorimetric and spectroscopic detection of mercury and hydrogen peroxide in an aqueous medium and evidence of silver&#x02013;mercury interaction.<graphic xlink:href="d5ra01733e-ga.jpg" id="ga" position="float"/></p></abstract><funding-group><award-group><funding-source>
+<institution-wrap><institution>King Salman Center for Disability Research</institution><institution-id institution-id-type="doi">10.13039/501100019345</institution-id></institution-wrap>
+</funding-source><award-id>KSRG-2024-448</award-id></award-group></funding-group><counts><page-count count="11"/></counts><custom-meta-group><custom-meta><meta-name>pubstatus</meta-name><meta-value>Paginated Article</meta-value></custom-meta></custom-meta-group></article-meta></front><body><sec><title>Introduction</title><p>Nanoparticles (NPs) are an incredible material due to their ultra-small size, greater surface area-to-volume ratio, and unique thermal, physiochemical, and biological properties, leading to potential applications in many scientific fields.<sup><xref rid="cit1" ref-type="bibr">1&#x02013;5</xref></sup> In this regard, metal nanoparticles such as gold nanoparticles (AuNPs) and AgNPs have received great attention recently due to their application in sensing various analytes.<sup><xref rid="cit6" ref-type="bibr">6&#x02013;8</xref></sup> SPR has unique optical properties, which have led to the development of nanoparticle-based sensing devices to measure the concentration of ions and biomolecules in environmental and biological samples.<sup><xref rid="cit9" ref-type="bibr">9</xref></sup> The particle size, shape, and inter-particle spacing significantly influence the SPR band. In the presence of any form of ions, this SPR band may interact with the NPs efficiently. There might be a color change from dispersion to aggregation due to the coupling of plasmon absorbance.<sup><xref rid="cit10" ref-type="bibr">10</xref></sup> Metal NPs are becoming important colorimetric sensors for different cations and anions because they can monitor ion recognition events through color change and shifting of the absorption spectrum.<sup><xref rid="cit7" ref-type="bibr">7,11&#x02013;13</xref></sup> To employ a metal sensing probe, NPs are usually functionalized with a capping agent, which may interact with the incoming metal ions by forming a covalent connection in the surface of NPs.<sup><xref rid="cit14" ref-type="bibr">14</xref></sup> The electrostatic repulsion of the negative capping agent opposes the van der Waals attraction between the NPs, keeping the nanoparticles stable. As a result, when sufficient foreign cations are added, the repulsion between nanoparticles is reduced, causing the nanoparticle to aggregate and change color accordingly.<sup><xref rid="cit15" ref-type="bibr">15&#x02013;17</xref></sup> Functionalized nanoparticle-based sensors can identify environmentally harmful ions that threaten human health.<sup><xref rid="cit18" ref-type="bibr">18</xref></sup></p><p>Heavy metals like lead, mercury, and arsenic pose serious risks to both the environment and human health, leading to disability issues, even in small amounts. Long-term exposure to these metals through water and food can result in bioaccumulation in the body, leading to developmental delays, organ damage, cognitive decline, neurological disorders, cancer, and mental health issues.<sup><xref rid="cit19" ref-type="bibr">19&#x02013;23</xref></sup> Among various toxic metal ions, mercury (Hg<sup>2+</sup>) is known to be extremely dangerous to humans and other living things, even at low concentrations. Because mercury is not biodegradable, it may accumulate in the food chain and become the most hazardous element.<sup><xref rid="cit24" ref-type="bibr">24,25</xref></sup> Mercury is usually released into the different environmental segments <italic toggle="yes">via</italic> various natural phenomena, including earthquakes, volcanic eruptions, and crustal leakage.<sup><xref rid="cit26" ref-type="bibr">26</xref></sup> Mercury compounds prepared for industrial uses are present almost everywhere in the environment. Even at low concentrations, mercury is extremely harmful to human health, leading to major illnesses of the heart, liver, kidneys, endocrine, brain, and neurological systems.<sup><xref rid="cit27" ref-type="bibr">27,28</xref></sup> Therefore, mercury is recognized as a hazardous pollutant for the environment and human health. Thus, developing a low-cost, high-selectivity, and sensitive mercury detection probe is essential to protecting both. A variety of detection methods, including surface-enhanced Raman scattering (SERS),<sup><xref rid="cit29" ref-type="bibr">29</xref></sup> atomic absorption/emission spectrometry (AAS/AES),<sup><xref rid="cit30" ref-type="bibr">30,31</xref></sup> inductively coupled plasma atomic emission spectroscopy (ICP-AES),<sup><xref rid="cit32" ref-type="bibr">32</xref></sup> high-performance liquid chromatography (HPLC),<sup><xref rid="cit33" ref-type="bibr">33</xref></sup> electrochemical sensors,<sup><xref rid="cit34" ref-type="bibr">34</xref></sup> chemiluminescent (CL) immune chromatographic assay strip (ICAS),<sup><xref rid="cit35" ref-type="bibr">35</xref></sup> have been used. Although these techniques offer exceptional sensitivity and selectivity for detecting Hg<sup>2+</sup>, they are expensive, sophisticated, and non-portable.</p><p>Therefore, it isn't easy to use in field applications. To address the problems mentioned earlier, additional test techniques should be quick, accurate, visible, and reasonably priced.<sup><xref rid="cit36" ref-type="bibr">36&#x02013;38</xref></sup> Therefore, colorimetric probes offer a significant benefit in that real-time detection may be achieved using a basic spectrophotometer or the naked eye.<sup><xref rid="cit39" ref-type="bibr">39&#x02013;41</xref></sup></p><p>On the other hand, hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) is a crucial biological material and mediator employed in many areas, including biology, environmental protection, medicine, diagnostics, and food security.<sup><xref rid="cit42" ref-type="bibr">42&#x02013;45</xref></sup> The use of H<sub>2</sub>O<sub>2</sub> has tremendously increased due to the advancement of civilization. However, the mishandling of H<sub>2</sub>O<sub>2</sub> might negatively affect the environment and public health. H<sub>2</sub>O<sub>2</sub> can induce mild mucosal irritation, vomiting, and significant gastrointestinal discomfort at small concentrations (about 3% solution) as well as biological harm such as cancer, aging, and neurodegeneration.<sup><xref rid="cit46" ref-type="bibr">46&#x02013;50</xref></sup> As a result, extremely sensitive H<sub>2</sub>O<sub>2</sub> determination is essential for safeguarding the environment and public health. Numerous analytical techniques, including colorimetry, fluorescence, chromatography, chemiluminescence, and electrochemistry, have been used to investigate several H<sub>2</sub>O<sub>2</sub> sensors.<sup><xref rid="cit51" ref-type="bibr">51&#x02013;54</xref></sup></p><p>The goal of the study is colorimetric and spectroscopic detection of Hg<sup>2+</sup> and H<sub>2</sub>O<sub>2</sub> using green synthesized AgNPs. Many researchers are interested in the green synthesis of AgNPs since they are environmentally safe, convenient to use, and eco-friendly.<sup><xref rid="cit55" ref-type="bibr">55,56</xref></sup> Various plant extracts, such as <italic toggle="yes">Piper chiba</italic>, <italic toggle="yes">Citrus macroptera</italic>, <italic toggle="yes">Cinnamon zeylanicum</italic>, <italic toggle="yes">Lantana camara</italic> leaf, have been applied as reducing and capping agents for the green synthesis of AgNPs.<sup><xref rid="cit57" ref-type="bibr">57&#x02013;61</xref></sup> The current work used fruit extract from <italic toggle="yes">Averrhoa bilimbi</italic> and employed the green synthesis approach to synthesize AgNPs. While several studies have been conducted on the green synthesis of AgNPs using <italic toggle="yes">Averrhoa bilimbi</italic> fruit and leaf extract, colorimetric probes utilizing AgNPs have not been examined.<sup><xref rid="cit62" ref-type="bibr">62&#x02013;67</xref></sup> A phytochemical study has shown that <italic toggle="yes">Averrhoa bilimbi</italic> contains various bioactive compounds, such as ascorbic phenolic compounds, alkaloids, flavonoids, saponins, terpenoids, and tannins, which are eco-friendly reducing and stabilizing agents for nanoparticle synthesis.<sup><xref rid="cit68" ref-type="bibr">68</xref></sup> Using conventional chemicals like sodium borohydride (NaBH<sub>4</sub>) as reducing agents to synthesize AgNPs could be harmful to health and the environment due to their toxicity. On the other hand, the fruit extract from <italic toggle="yes">Averrhoa bilimbi</italic> is environmentally friendly. The fruit extract, a natural, biodegradable substance, reduces the risk associated with harmful chemicals and provides a far safer substitute. Additionally, the fruit is easily accessible in Bangladesh, which lowers the total cost. In this work, we investigated the colorimetric detection of Hg<sup>2+</sup> and H<sub>2</sub>O<sub>2</sub> for theoretical simplicity and low technical demands. AgNPs have an advantage over other metal nanoparticles in colorimetric assays because of their greater extinction coefficients.<sup><xref rid="cit14" ref-type="bibr">14</xref></sup> Furthermore, Ag is more readily available and less expensive than other metals, but it also exhibits strong SPR performance, making it a viable option for use as a colorimetric probe.</p><p>Hence, this study aimed to utilize an environment-friendly and simple synthetic route to prepare AgNPs using <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract for colorimetric and spectroscopic detection of Hg<sup>2+</sup> ions and H<sub>2</sub>O<sub>2</sub>.</p></sec><sec><title>Results and discussion</title><p>In this study, <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract was utilized with an aqueous silver nitrate solution at 60 &#x000b0;C to swiftly and safely synthesize AgNPs in an eco-friendly manner. After 30 minutes of mixing the two solutions, the color changed from colorless to brownish, signifying the formation of AgNPs. It was believed that the phytochemicals included in the <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract led to color changes in the solution by reducing the silver ions (Ag<sup>+</sup>) to silver nanoparticles (Ag<sup>0</sup>)<sup><xref rid="cit63" ref-type="bibr">63,65</xref></sup> followed by AgNPs growth and stabilized by phytochemicals shown in <xref rid="fig1" ref-type="fig">Fig. 1(a)</xref> shows the UV-vis spectra of AgNPs and <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract. The result showed two absorption peaks at 276 nm and 330 nm attributed to the &#x003c0; to &#x003c0;* electronic transition in phytochemicals in the <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract. These absorption bands may be due to phytochemicals such as ascorbic acid, phenols, alkaloids, saponins, flavonoids, and terpenoids, as mentioned in previous studies.<sup><xref rid="cit65" ref-type="bibr">65</xref></sup> However, the UV-vis spectrum of AgNPs shows a strong absorption peak at 400 nm, which may be assigned to the SPR peak of AgNPs, and a shoulder appears at 276 nm due to the <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract.<sup><xref rid="cit67" ref-type="bibr">67</xref></sup> The disappearance of the peak at &#x0223c;330 nm from the spectrum of AgNPs indicates that phytochemicals functioned as a capping agent to prevent the aggregation of AgNPs. In addition, a lower SPR band was observed for AgNPs compared to the previous report, suggesting a reduced particle size. The advantage of sensing is emphasized by the fact that small particles positively affect sensing resolution.<sup><xref rid="cit10" ref-type="bibr">10</xref></sup></p><fig position="float" id="fig1"><label>Fig. 1</label><caption><title>(a) Schematic representation AgNPs formation using <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract as reducing and stabilizing agents. (b) UV-visible spectra for <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract and AgNPs. (c) FT-IR spectra for <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract and AgNPs and (d) X-ray Diffraction (XRD) pattern of AgNPs synthesized using AgNO<sub>3</sub> (1 mM, 40 mL) and <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract (200 g L<sup>&#x02212;1</sup>, 1 mL) at 60 &#x000b0;C and pH = 10 for 30 min.</title></caption><graphic xlink:href="d5ra01733e-f1" position="float"/></fig><p>The FT-IR spectra of <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract and AgNPs are presented in <xref rid="fig1" ref-type="fig">Fig. 1c</xref>. It is clear from <xref rid="fig1" ref-type="fig">Fig. 1c</xref> that the <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract exhibits well-defined vibrational peaks at 3158, 2998, 1556, 1401, 1247, 1087, 761, and 553 cm<sup>&#x02212;1</sup>. These bands are attributed to the O&#x02013;H stretching, aliphatic C&#x02013;H stretching, C<private-char name="DOUBLE BOND, LENGTH AS M-DASH" description="double bond, length as m-dash"><!-- PBM data was replaced with SVG by xgml2pxml:
+<glyph-data id="z.dbd" format="PBM" resolution="300" x-size="8" y-size="10" xml:space="preserve">
+00000000
+00000000
+00000000
+00000000
+11111111
+00000000
+11111111
+00000000
+00000000
+00000000
+</glyph-data>
+-->
+<glyph-data id="z.dbd" format="SVG" resolution="300" x-size="8" y-size="10" xml:space="preserve">
+<![CDATA[
+<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="13.200000pt" height="16.000000pt" viewBox="0 0 13.200000 16.000000" preserveAspectRatio="xMidYMid meet"><metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata><g transform="translate(1.000000,15.000000) scale(0.017500,-0.017500)" fill="currentColor" stroke="none"><path d="M0 440 l0 -40 320 0 320 0 0 40 0 40 -320 0 -320 0 0 -40z M0 280 l0 -40 320 0 320 0 0 40 0 40 -320 0 -320 0 0 -40z"/></g></svg>
+]]>
+</glyph-data></private-char>O stretching, C<private-char name="DOUBLE BOND, LENGTH AS M-DASH" description="double bond, length as m-dash"><glyph-ref glyph-data="z.dbd"/></private-char>C stretching, C&#x02013;H bending, C&#x02013;O carboxylic acid, C&#x02013;O esters, and aromatic rings.<sup><xref rid="cit65" ref-type="bibr">65</xref></sup> A comparison of FT-IR spectra of AgNPs and <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract reveals crucial information on the stabilization of AgNPs by phytochemicals in the fruit extract.</p><p>The <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract exhibited two distinct peaks at 553 and 761 cm<sup>&#x02212;1</sup>, which shifted to 540 and 758 cm<sup>&#x02212;1</sup>, respectively, for stable AgNPs. Similarly, stretching vibrational bands for the C&#x02013;O group in carbohydrate and carboxylic acid of fruit extract were observed at 1081 and 1287 cm<sup>&#x02212;1</sup>, respectively. However, these peaks were shifted at 1087 and 1247 cm<sup>&#x02212;1</sup>, respectively, in the spectrum of stabilized AgNPs. Additionally, the broadband appeared for the stretching vibration of the &#x02013;OH group in carbohydrates and polyphenols of fruit extract at 3158 cm<sup>&#x02212;1</sup>, which shifted to a shorter wavelength in the capped AgNPs at 3124 cm<sup>&#x02212;1</sup>. All these changes demonstrated that phytochemicals stabilized the NPs and polyphenolic compounds reduced the Ag<sup>+</sup> ions into AgNPs.<sup><xref rid="cit61" ref-type="bibr">61</xref></sup> Thus, the FT-IR investigations indicate that <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract and the functional groups present in AgNPs provide compelling evidence for the capping agent action of phytochemicals in preventing AgNPs from aggregating.</p><p>The crystallinity of the produced AgNPs was examined using XRD spectroscopy; the findings are shown in <xref rid="fig1" ref-type="fig">Fig. 1d</xref>. Sharp XRD peaks at 2<italic toggle="yes">&#x003b8;</italic> values of 38.19&#x000b0;, 44.33&#x000b0;, 64.54&#x000b0;, and 77.46&#x000b0; in the spectrum, which correspond to reflections of the (111), (200, (220), and (311) planes from a face-cantered cubic structure, clearly demonstrate the crystallinity of the AgNPs. The XRD profile data of AgNPs matched with the standard JCPDS file no. 04-0783 and was compatible with the crystal planes. The average size of the crystallites was estimated to be 10.55 nm, which is smaller than reported AgNPs using <italic toggle="yes">Averrhoa bilimbi</italic> fruit and leaf extract.<sup><xref rid="cit62" ref-type="bibr">62&#x02013;67</xref></sup></p><p>The thermal stability of the AgNPs was examined using TGA (see ESI Fig. S1<xref rid="fn1" ref-type="fn">&#x02020;</xref>). The thermogram shows two thermal degradation steps in the temperature range from 40 to 160 &#x000b0;C and 160 to 410 &#x000b0;C, with corresponding weight losses of 1.4% and 8.1%, respectively.<sup><xref rid="cit69" ref-type="bibr">69</xref></sup> The losses of surface water, volatile molecules, organic biomolecules, and heat-resistant aromatic compounds can be connected to these degradations. Consequently, the TGA findings suggest that the phytochemicals functioned as a capping agent, which agrees well with the FT-IR, UV-vis, and XRD results.</p><p>The synthesized AgNPs were examined using SEM and TEM microscopes to determine their sizes and morphologies. The AgNPs have a uniformly spherical structure in a highly aggregated state, as seen by the FE-SEM images in <xref rid="fig2" ref-type="fig">Fig. 2a</xref>. The phytochemicals serve as capping agents, covering the surface of the particles with an organic layer. The approximate size of the particles was estimated to be between 26 to 60 nm, even though strong aggregation makes it impossible to assess the sizes of the particles from SEM images. In addition, the HR-TEM image in <xref rid="fig2" ref-type="fig">Fig. 2c</xref> and TEM images in <xref rid="fig2" ref-type="fig">Fig. 2b</xref> help to clarify the shape and size of the synthesized AgNPs. The AgNPs were found to have a spherical shape and an average size of 11 nm, as revealed by the TEM images. Small clusters of particles were also identified, likely the result of accumulation during sample preparation. Furthermore, the size of AgNPs was determined using the Debye&#x02013;Scherrer equation and TEM image. The findings demonstrated that the particle sizes were almost identical. The elemental composition of the AgNPs was investigated by EDX analysis (please see ESI Fig. S2<xref rid="fn1" ref-type="fn">&#x02020;</xref>) and the study revealed 78.05% silver, 14.76% O, and 6.35% C in the sample.</p><fig position="float" id="fig2"><label>Fig. 2</label><caption><title>(a) SEM, (b) TEM, (c) HR-TEM images of AgNPs and (d) size distribution plot of AgNPs obtained from TEM result.</title></caption><graphic xlink:href="d5ra01733e-f2" position="float"/></fig><p>The maximum weight percentage of Ag in the sample and the lowest levels of other elements indicate that phytochemicals are likely involved as capping agents. Therefore, it can be concluded from every characterization that AgNPs capped with phytochemicals are present in the fruit extract of <italic toggle="yes">Averrhoa bilimbi</italic>.</p><sec><title>Proposed mechanism for Hg<sup>2+</sup> and Ag&#x02013;Hg interaction investigation</title><p>In this work, synthesized AgNPs exhibit a dark brown color with an average particle size of 11 nm and act as promising colorimetric probes to establish a visual approach for Hg<sup>2+</sup> detection in environmental water. AgNPs-based colorimetric detection of Hg<sup>2+</sup> ions is a practical and understandable strategic approach as it is straightforward, fast, and gives visible results (<xref rid="fig3" ref-type="fig">Fig. 3</xref>).</p><fig position="float" id="fig3"><label>Fig. 3</label><caption><title>Schematic representation of Ag and Hg interaction during Hg<sup>2+</sup> detection using AgNPs due to oxidation reduction reaction.</title></caption><graphic xlink:href="d5ra01733e-f3" position="float"/></fig><p>When Hg<sup>2+</sup> was introduced, the originally generated AgNPs underwent a significant color shift. The solution's color changed from brownish to transparent, showing that AgNPs were a unique indication of Hg<sup>2+</sup> detection. As a result, Hg<sup>2+</sup> ions are visible to the unaided eye, and AgNPs offer a viable colorimetric sensor for Hg<sup>2+</sup> detection. This observation was further supported by UV-vis spectral analysis, in which the presence of Hg<sup>2+</sup> eliminated the absorption peak at 400 nm (see <xref rid="fig4" ref-type="fig">Fig. 4a</xref>), a characteristic SPR peak of AgNPs. The disappearance of the SPR peak of AgNPs may be due to the interaction of AgNPs and Hg<sup>2+</sup>, where NPs' oxidation occurred.<sup><xref rid="cit70" ref-type="bibr">70</xref></sup> As previously reported, Hg<sup>2+</sup> can interact with the capping agent stabilizers on the surface of AgNPs.<sup><xref rid="cit71" ref-type="bibr">71&#x02013;73</xref></sup> Therefore, the proposed mechanism can explain the colour change from brown to colourless AgNPs-Hg<sup>+</sup>. First, the Hg<sup>2+</sup> interacts with the capping agents bound to AgNPs. Then, Hg<sup>2+</sup> reacts with Ag atoms and a redox reaction occurs due to the standard potential of Ag being lower than that of Hg (<italic toggle="yes">E</italic><sup>0</sup> of Ag<sup>+</sup>/Ag = 0.80 V and <italic toggle="yes">E</italic><sup>0</sup> of Hg<sup>2+</sup>/Hg = 0.85 V).<sup><xref rid="cit74" ref-type="bibr">74</xref></sup> Therefore, an Ag&#x02013;Hg amalgam alloy is formed in the solution that can no longer absorb light, making the AgNPs and the solution colourless. Furthermore, AgNPs and Hg<sup>2+</sup> ions interactions were investigated employing synchrotron radiation-induced X-ray photoelectron spectroscopy (SR-XPS) measurements (<xref rid="fig4" ref-type="fig">Fig. 4b</xref>). The suggested signal assignments, relative intensity values, binding energy (BE) (eV), full width at half maximum (FWHM), and core-level spectrum collection findings for C 1s, O 1s, Ag 3d, and Hg 4f are provided. C 1s, O 1s, Ag 3d, and Hg 4f core level spectra were collected on AgNPs stabilized by <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract. The stability of AgNPs was improved by the stabilizing agent of <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract's capping efficacy.<sup><xref rid="cit75" ref-type="bibr">75,76</xref></sup> The major element at 285.0 eV, is attributed to the C&#x02013;C group. The contamination of samples always occurs in an aqueous solution and during drying in the air (286.6, 288.3, and 289.8 eV are associated with aliphatic carbon) (see ESI Fig. S3<xref rid="fn1" ref-type="fn">&#x02020;</xref>).<sup><xref rid="cit77" ref-type="bibr">77</xref></sup></p><fig position="float" id="fig4"><label>Fig. 4</label><caption><title>Absorption spectra showing (a) SPR bands of AgNPs and AgNPs-Hg<sup>2+</sup>. Inset image showing colorimetric picture AgNPs (brown colour solution) and AgNPs-Hg<sup>2+</sup> (colourless). (b) SR-XPS survey spectra of AgNPs-Hg. (c) XPS Ag 3d core level spectra (d) XPS Hg 4f spectra.</title></caption><graphic xlink:href="d5ra01733e-f4" position="float"/></fig><p>O 1s spectra also reveal the presence of four different kinds of oxygen atoms with increasing BE. Along with the C<private-char name="DOUBLE BOND, LENGTH AS M-DASH" description="double bond, length as m-dash"><glyph-ref glyph-data="z.dbd"/></private-char>O contaminants at 531.99 eV, C&#x02013;O groups contaminants at 533.04 eV, and physisorbed water, a small contribution at about 534.6 eV BE.<sup><xref rid="cit75" ref-type="bibr">75</xref></sup> After interaction with Hg<sup>2+</sup> ions, the C 1s, and O 1s curve-fitting results confirm the stability of the <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract on the surface of AgNPs Ag 3d spectra are asymmetric at high BE, which is a characteristic of capped NPs, indicating that the NPs are composed of at least two distinct types of Ag atoms.<sup><xref rid="cit77" ref-type="bibr">77,78</xref></sup> The smallest signal at a higher BE is often linked to positively charged silver atoms at the NPs surface interacting with the capping molecule. The spin&#x02013;orbit pair at lower BE (Ag 3d<sub>5/2</sub> = 368.09 eV BE) is ascribed to metallic silver atoms of the nanoparticle core (<xref rid="fig4" ref-type="fig">Fig. 4c</xref>).<sup><xref rid="cit75" ref-type="bibr">75,77,78</xref></sup> The presence of Hg<sup>2+</sup> was detected in both samples, and the interaction between mercury and AgNP-capping molecule was measured at the Hg4f core level. The spectra of Hg 4f are shown in <xref rid="fig4" ref-type="fig">Fig. 4d</xref>. Notably, two distinct pairings of spin&#x02013;orbit components result from the asymmetry of the Hg4f spectra in each sample. The primary element (Hg 4f<sub>7/2</sub> BE = 99.9 eV) is consistent with Hg<sup>0</sup> atoms, as in amalgams; for example, Hg<sup>2+</sup> ions in oxides or coordination compounds are responsible for the lesser intensity signal (about 10% of the total Hg 4f signal) at a higher BE (around 101 eV).<sup><xref rid="cit78" ref-type="bibr">78&#x02013;80</xref></sup> This behaviour is expected for Hg<sup>2+</sup> ions interacting with silver nanoparticles; in fact, Hg<sup>2+</sup> ions tend to react with silver atoms at the NPs surface, giving rise to Ag&#x02013;Hg alloys.<sup><xref rid="cit78" ref-type="bibr">78,79</xref></sup> even though other heavy metals, like Ni(<sc>ii</sc>) and Co(<sc>ii</sc>), interact with silver nanoparticles by coordinating them through the ligands, giving rise to complex agglomerates with different shapes induced by the metals. It has been proposed that this kind of interaction may result in smaller AgNPs or core&#x02013;shell nanoparticles with a metallic silver core encircled by an Ag&#x02013;Hg alloy shell.<sup><xref rid="cit79" ref-type="bibr">79</xref></sup></p></sec><sec><title>Selectivity of the detection system for Hg<sup>2+</sup></title><p>The selectivity is one important element that has to be examined. Therefore, to assess the selectivity of the detection system for Hg<sup>2+</sup> under optimal experimental conditions, the sensor responses to Hg<sup>2+</sup> were compared with those of 14 other metal ions, such as Zn<sup>2+</sup>, Pb<sup>2+</sup>, Ni<sup>2+</sup>, Na<sup>+</sup>, Mn<sup>2+</sup>, K<sup>+</sup>, Fe<sup>3+</sup>, Fe<sup>2+</sup>, Cu<sup>2+</sup>, Cr<sup>3+</sup>, Co<sup>2+</sup>, Cd<sup>2+</sup>, Ca<sup>2+</sup>, Ba<sup>2+</sup>. The analytical performance of AgNPs as a colorimetric probe was investigated with those metal ions, and the result showed that only Hg<sup>2+</sup> ions could change the colors of AgNPs solution from brown to colorless (see ESI S4<xref rid="fn1" ref-type="fn">&#x02020;</xref>). By measuring SPR absorbance, the reactions of AgNPs with different metal ions were investigated independently. The distinctive peak of AgNPs is located at 400 nm, as shown in <xref rid="fig5" ref-type="fig">Fig. 5a</xref>, and a detailed comparison of the SPR of AgNPs with all samples was conducted. The majority of the 50 &#x003bc;M cations combined with equal AgNPs individually had a little change in absorbance intensity. Still, the peak position remained constant, indicating that the AgNPs condition was unaffected. However, AgNPs SPR seemed to alter upon exposure to Hg<sup>2+</sup>, and in sharp contrast to other ions, their absorbance completely disappeared.<sup><xref rid="cit81" ref-type="bibr">81</xref></sup> The colorimetric response and the absorbance intensity of AgNPs with all other ions both intuitively showed a strong contrast to the Hg<sup>2+</sup> sample, suggesting significant Hg<sup>2+</sup> aggregation.<sup><xref rid="cit74" ref-type="bibr">74</xref></sup> These data indicated that the AgNPs colorimetric probe provided specificity for Hg<sup>2+</sup> detection.</p><fig position="float" id="fig5"><label>Fig. 5</label><caption><title>(a) UV-vis absorption spectra of AgNPs solutions incubated with Hg<sup>2+</sup> and other 14 metal ions at the same concentration (50 &#x003bc;M) (b) UV-vis absorption spectra AgNPs solution adding various concentrations of Hg<sup>2+</sup> ions in the range 0 to 200 &#x003bc;M. The inset image showed the linear relationship between the absorbance ratios (<italic toggle="yes">A</italic>/<italic toggle="yes">A</italic><sub>0</sub>) <italic toggle="yes">versus</italic> Hg<sup>2+</sup> ion concentration.</title></caption><graphic xlink:href="d5ra01733e-f5" position="float"/></fig></sec><sec><title>Anti-interference of the detection system for Hg<sup>2+</sup></title><p>Optical AgNPs sensors demonstrated both a strong anti-interference to other ions and a high selectivity for detecting Hg<sup>2+</sup> following the various criteria of practical detection. As a result, experiments were conducted to determine if other ions may interfere with detecting Hg<sup>2+</sup> Fig. S5<xref rid="fn1" ref-type="fn">&#x02020;</xref> displays the colorimetric image of the AgNPs solution including Hg<sup>2+</sup> and other ions. It was found that when Hg<sup>2+</sup> was present with other ions, the colors of the AgNPs solutions changed from brown to colorless.<sup><xref rid="cit72" ref-type="bibr">72</xref></sup> However, AgNPs solution color does not change with other ions. Fig. S5<xref rid="fn1" ref-type="fn">&#x02020;</xref> shows the UV-vis absorbance of AgNPs in the presence of Hg<sup>2+</sup> and interfering ions, which distinctly disappeared. Furthermore, the UV-vis absorbance ratios of AgNPs with Hg<sup>2+</sup> and other interfering ions showed that AgNPs solution with Hg<sup>2+</sup> had more excellent absorbance ratios than other ions. In addition, AgNPs can be recognized even in the presence of 14 different ions (see ESI Fig. S6<xref rid="fn1" ref-type="fn">&#x02020;</xref>).<sup><xref rid="cit82" ref-type="bibr">82</xref></sup> The results demonstrate that the AgNPs colorimetric sensor held good anti-interference performance for the detection of Hg<sup>2+</sup>.</p></sec><sec><title>Sensitivity of the detection system for Hg<sup>2+</sup></title><p>To assess the sensitivity of AgNPs toward Hg<sup>2+</sup> ions, a series of solutions with varying Hg<sup>2+</sup> concentrations were added to the AgNPs solutions under optimal experimental conditions. Then, the absorbance of the solutions was recorded. The SPR absorbance spectra of AgNPs at various Hg<sup>2+</sup> concentrations are displayed in <xref rid="fig5" ref-type="fig">Fig. 5b</xref>. The SPR peak of AgNPs drastically reduced when the quantity of Hg<sup>2+</sup> increased from 0 to 200 &#x003bc;M. The associated image is shown in ESI Fig. S7<xref rid="fn1" ref-type="fn">&#x02020;</xref> that when the concentration of Hg<sup>2+</sup> increased, the color of the AgNPs changed from brown to colorless. This observation illustrated the concentration-dependent colorimetric behaviour of AgNPs and confirmed the SPR spectra. AgNPs can be utilized as a colorimetric probe for quantitative detection of Hg<sup>2+</sup> because of the strong relationship between the absorbance ratio and the Hg<sup>2+</sup> concentration. A strong linear association (<italic toggle="yes">R</italic><sup>2</sup> = 0.9965) was found between the absorbance change ratio at 400 nm (<italic toggle="yes">A</italic><sub>0</sub>/<italic toggle="yes">A</italic>) and Hg<sup>2+</sup> concentrations (0&#x02013;50 &#x003bc;mol L<sup>&#x02212;1</sup>). According to 3<italic toggle="yes">&#x003c3;</italic>/<italic toggle="yes">k</italic>, where <italic toggle="yes">&#x003c3;</italic> is the standard deviation of the blank specimens and <italic toggle="yes">k</italic> represents the slope of the linear fitting curve.<sup><xref rid="cit74" ref-type="bibr">74</xref></sup> The limit of detection (LOD) of AgNPs colorimetric probe toward Hg<sup>2+</sup> ions was 1.58 &#x003bc;M within the concentration range of 0.1 &#x003bc;M to 50 &#x003bc;M. The colorimetric probe was also used in the Hg<sup>2+</sup> quantification. The limit of quantification (LOQ) was found to be 5.27 &#x003bc;M.</p></sec><sec><title>Detection of Hg<sup>2+</sup> in real water sample</title><p>First, the feasibility and environmental tolerance of AgNPs colorimetric probes were assessed. The absorbance ratio (<italic toggle="yes">A</italic>/<italic toggle="yes">A</italic><sub>0</sub>) of AgNPs demonstrates remarkable stability on a large scale, with minimal fluctuation. Next, the detection performance of AgNPs toward Hg<sup>2+</sup> in water samples was investigated. The standard addition method was employed to calculate the concentration and recovery percentages of Hg<sup>2+</sup> using known concentrations (20, 30, 40, and 50 &#x003bc;M) of Hg<sup>2+</sup> and other pertinent ions.<sup><xref rid="cit82" ref-type="bibr">82</xref></sup> Commercial drinking water was used to obtain the real water samples. AgNPs SPR absorbance in drinking water with all metal ions dropped noticeably. AgNPs strong anti-interference capacity for Hg<sup>2+</sup> detection is demonstrated by their proven specificity for Hg<sup>2+</sup> drinking water. The probe's relative standard deviation (RSD) was 1.21&#x02013;2.93%, and recovery rate ranged from 90.60 &#x000b1; 2.60 to 96.73 &#x000b1; 2.83%, as shown in <xref rid="tab1" ref-type="table">Table 1</xref>. These findings support the appropriateness of the probe for Hg<sup>2+</sup> detection.</p><table-wrap position="float" id="tab1"><label>Table 1</label><caption><title>Detection of Hg<sup>2+</sup> in commercial drinking water</title></caption><table frame="hsides" rules="groups"><colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup><thead><tr><th rowspan="1" colspan="1">Water sample</th><th rowspan="1" colspan="1">Hg<sup>2+</sup> added (&#x003bc;M)</th><th rowspan="1" colspan="1">Hg<sup>2+</sup> found (&#x003bc;M)</th><th rowspan="1" colspan="1">% recovery &#x000b1; SD</th><th rowspan="1" colspan="1">RSD (%)</th></tr></thead><tbody><tr><td rowspan="4" colspan="1">Commercial drinking water</td><td align="char" char="." rowspan="1" colspan="1">20</td><td align="char" char="xb1" rowspan="1" colspan="1">18.12 &#x000b1; 0.52</td><td align="char" char="xb1" rowspan="1" colspan="1">90.60 &#x000b1; 2.60</td><td align="char" char="." rowspan="1" colspan="1">2.87</td></tr><tr><td align="char" char="." rowspan="1" colspan="1">30</td><td align="char" char="xb1" rowspan="1" colspan="1">29.02 &#x000b1; 0.85</td><td align="char" char="xb1" rowspan="1" colspan="1">96.73 &#x000b1; 2.83</td><td align="char" char="." rowspan="1" colspan="1">2.93</td></tr><tr><td align="char" char="." rowspan="1" colspan="1">40</td><td align="char" char="xb1" rowspan="1" colspan="1">38.52 &#x000b1; 0.47</td><td align="char" char="xb1" rowspan="1" colspan="1">96.30 &#x000b1; 1.17</td><td align="char" char="." rowspan="1" colspan="1">1.21</td></tr><tr><td align="char" char="." rowspan="1" colspan="1">50</td><td align="char" char="xb1" rowspan="1" colspan="1">48.21 &#x000b1; 1.19</td><td align="char" char="xb1" rowspan="1" colspan="1">96.42 &#x000b1; 2.38</td><td align="char" char="." rowspan="1" colspan="1">2.46</td></tr></tbody></table></table-wrap></sec><sec><title>H<sub>2</sub>O<sub>2</sub> detection</title><p>AgNPs-based colorimetric detection is a clear and realistic strategic approach as it is straightforward to apply, gives results quickly, and is visible to the naked eye. Therefore, the synthesized AgNPs probe was used for the colorimetric visual detection of H<sub>2</sub>O<sub>2</sub> in water. Adding the H<sub>2</sub>O<sub>2</sub> into the AgNPs solution caused visual color changes from brownish to transparent, indicating AgNPs acted as a unique probe for H<sub>2</sub>O<sub>2</sub> detection. This observation was further validated by UV-vis spectra analysis, in which the presence of H<sub>2</sub>O<sub>2</sub> eliminated the SPR absorption peak at 400 nm (see <xref rid="fig6" ref-type="fig">Fig. 6a</xref>) of AgNPs due to the interaction of AgNPs and H<sub>2</sub>O<sub>2</sub>.<sup><xref rid="cit83" ref-type="bibr">83</xref></sup> A catalytic redox reaction between H<sub>2</sub>O<sub>2</sub> and AgNPs may have occurred through the phytochemical capping layer around the NPs. When H<sub>2</sub>O<sub>2</sub> was added to the reaction mixture, a reactive radical was produced that initiated the breakdown of AgNPs. In the presence of H<sub>2</sub>O<sub>2</sub>, the following oxidation process of AgNPs occurred: Ag<sup>0</sup> + H<sub>2</sub>O<sub>2</sub> &#x02192; Ag<sup>+</sup> + 2HO<sup>&#x02212;</sup>.<sup><xref rid="cit84" ref-type="bibr">84</xref></sup> The concentration of AgNPs was diminished as H<sub>2</sub>O<sub>2</sub> concentration increased through oxidation from Ag<sup>0</sup> to Ag<sup>+</sup>. As a result, the intensity of the SPR band of AgNPs was reduced, suggesting that AgNPs were likely involved in the breakdown process of H<sub>2</sub>O<sub>2</sub>.<sup><xref rid="cit83" ref-type="bibr">83,85,86</xref></sup></p><fig position="float" id="fig6"><label>Fig. 6</label><caption><title>(a) Absorption spectra showing (a) SPR bands of AgNPs and after addition of H<sub>2</sub>O<sub>2</sub> solution; inside showing the colorimetric image. (b) UV-vis absorption spectra AgNPs solution adding various concentrations of H<sub>2</sub>O<sub>2</sub> ions in the range o to 250 &#x003bc;M. The inset image showed the linear relationship between the absorbance ratios (<italic toggle="yes">A</italic>/<italic toggle="yes">A</italic><sub>0</sub>) <italic toggle="yes">versus</italic> H<sub>2</sub>O<sub>2</sub> ion concentration.</title></caption><graphic xlink:href="d5ra01733e-f6" position="float"/></fig><p>Furthermore, the sensitivity of the AgNPs probe was investigated for the detection of H<sub>2</sub>O<sub>2</sub>. The AgNP solution was mixed with a series of H<sub>2</sub>O<sub>2</sub> solutions at varying concentrations, and the mixture was incubated for 30 minutes at room temperature. <xref rid="fig6" ref-type="fig">Fig. 6b</xref> shows how the SPR band of AgNPs decreases with increasing H<sub>2</sub>O<sub>2</sub> concentration. In the control AgNPs solution, the 400 nm SPR peak gradually decreased and reached a saturation value at 250 &#x003bc;M H<sub>2</sub>O<sub>2</sub>. A good linear relationship (<italic toggle="yes">R</italic><sup>2</sup> = 0.9967) was observed between the absorbance ratio (<italic toggle="yes">A</italic>/<italic toggle="yes">A</italic><sub>0</sub>) and the concentration of H<sub>2</sub>O<sub>2</sub> ranging from 0 &#x003bc;M to 100 &#x003bc;M. The LOD and LOQ of AgNPs colorimetric probe toward H<sub>2</sub>O<sub>2</sub> was found to be 3.21 &#x003bc;M and 10.70 &#x003bc;M, respectively, within the concentration range from 0 &#x003bc;M to 100 &#x003bc;M.</p></sec></sec><sec><title>Experimental</title><sec><title>Materials and reagents</title><p>Silver nitrate (AgNO<sub>3</sub>) (ACS reagent, &#x02265;99.0%), mercury(<sc>ii</sc>) chloride (HgCl<sub>2</sub>) (ACS reagent, &#x02265;99.0%) were purchased from Merck India, zinc chloride (ZnCl<sub>2</sub>) (&#x02265;98%), lead(<sc>ii</sc>) chloride (PbCl<sub>2</sub>) (&#x02265;98%), nickel chloride hexahydrate (NiCl<sub>2</sub>&#x000b7;6H<sub>2</sub>O), sodium chloride (NaCl) (&#x02265;99.5%), manganese(<sc>ii</sc>) chloride tetrahydrate (MnCl<sub>2</sub>&#x000b7;4H<sub>2</sub>O) (&#x02265;97%), potassium chloride (KCl) (&#x02265;99.5%), ferrous (<sc>ii</sc>) chloride (FeCl<sub>2</sub>) (&#x02265;98%), ferric (<sc>iii</sc>) chloride (FeCl<sub>3</sub>) (&#x02265;99%), cupric chloride dihydrate(<sc>ii</sc>) chloride (CuCl<sub>2</sub>&#x000b7;2H<sub>2</sub>O) (&#x02265;99%), chromium(<sc>iii</sc>) chloride hexahydrate (<sc>iii</sc>) (CrCl<sub>3</sub>&#x000b7;6H<sub>2</sub>O) (&#x02265;93%), cobalt(<sc>ii</sc>) chloride hexahydrate (CoCl<sub>2</sub>&#x000b7;6H<sub>2</sub>O) (&#x02265;98%), cadmium(<sc>ii</sc>)chloride monohydrate (CdCl<sub>2</sub>&#x000b7;H<sub>2</sub>O) (&#x02265;99%), calcium(<sc>ii</sc>) chloride dihydrate (CaCl<sub>2</sub>&#x000b7;2H<sub>2</sub>O) (&#x02265;99%), barium(<sc>ii</sc>) chloride dihydrate (BaCl<sub>2</sub>&#x000b7;2H<sub>2</sub>O) (&#x02265;99%), sodium hydroxide (NaOH) (&#x02265;97%) were obtained from LOBA Chemicals, India. Analytical-grade chemical reagents were all utilized without further purification. Deionized water was used throughout the study.</p></sec><sec><title>Measurements</title><p>The resulting <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract capped AgNPs solution was analyzed by UV-vis absorption spectrophotometer (Model: UV-1900I, SHIMADZU, Japan) in the range of 200&#x02013;800 nm. FT-IR spectra were collected at 25 &#x000b0;C using an IRSpirit Fourier transform infrared spectrophotometer manufactured by SHIMADZU (Tokyo, Japan) using a KBr pellet at a scan rate of about four cm<sup>&#x02212;1</sup> s<sup>&#x02212;1</sup>. The XRD analysis was conducted with a Rigaku SmartLab spectrometer and Cu-K&#x003b1; radiation. The Scherrer equation and the XRD pattern may be used to calculate the average crystallite size of AgNPs using <xref rid="eqn1" ref-type="disp-formula">eqn (1)</xref>.<disp-formula id="eqn1"><label>1</label><graphic xlink:href="d5ra01733e-t1.jpg" id="ugt1" position="float"/></disp-formula>where <italic toggle="yes">D</italic> is the crystallite size (nm), <italic toggle="yes">k</italic> is the Debye&#x02013;Scherrer constant (0.89), <italic toggle="yes">&#x003bb;</italic> is the X-ray wavelength, <italic toggle="yes">&#x003b2;</italic> is the line broadening in radians obtained from the full width at half maximum, and <italic toggle="yes">&#x003b8;</italic> is the Bragg angle or peak position (radians).</p><p>A SHIMADZU (Tokyo, Japan) TGA-50 was used for TGA, heated at a rate of 10 &#x000b0;C min<sup>&#x02212;1</sup> under N<sub>2</sub>. SEM measurements and EDX analysis were conducted on a Hitachi SU-8000 microscope at accelerating voltages of 10 and 15 kV. TEM measurements were conducted on a TEM-2100F (JEOL, Tokyo, Japan) field emission electron microscope. SR-XPS.</p></sec><sec><title>Preparation of fruit extract</title><p>The fresh <italic toggle="yes">Averrhoa bilimbi</italic> fruit was collected from Khulna, Bangladesh. The collected fruit was washed and chopped into small pieces. <italic toggle="yes">Averrhoa bilimbi</italic> fruit extracts used in the present study were prepared as follows. Briefly, 10 g of the chopped fruit was added into a round bottom flask containing 50 mL of ultra-pure water and heated at 80 &#x000b0;C for 45 minutes and the solution was left to cool down. The <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract was then separated from the solid part and collected after filtration using filter paper. Finally, the fruit extracts were centrifuged at 10&#x02009;000 rpm, and the liquid phase was recovered and then stored in a freezer at 4 &#x000b0;C for further use.</p></sec><sec><title>Green synthesis of AgNPs</title><p>The AgNPs were prepared according to the previously reported literature with slight modifications.<sup><xref rid="cit65" ref-type="bibr">65</xref></sup> 1 mL of <italic toggle="yes">Averrhoa bilimbi</italic> fruit extract was added to 50 mL of an aqueous solution of 1 mM AgNO<sub>3</sub>. Then the solution mixture pH was adjusted to 10 using NaOH (0.5 M) solution. Initially, the solution mixture was colorless. The solution mixture was heated at 60 &#x000b0;C for about 30 minutes and its color turned brownish, indicating the formation of AgNPs. The obtained AgNPs suspension was stored at 4 &#x000b0;C.</p></sec><sec><title>Visual colorimetric detection for Hg<sup>2+</sup> ions using AgNPs probe</title><p>AgNPs were used as detection probes for the colorimetric sensing of Hg<sup>2+</sup> at room temperature. First, 1 mL of AgNPs was added to a clear glass vial, followed by the addition of 1 mL of different concentrations of Hg<sup>2+</sup> solution. Finally, the color change was observed in AgNPs probe with the naked eye.</p></sec><sec><title>Selectivity studies</title><p>Stock solutions of different metal ions (Zn<sup>2+</sup>, Pb<sup>2+</sup>, Ni<sup>2+</sup>, Na<sup>+</sup>, Mn<sup>2+</sup>, K<sup>+</sup>, Fe<sup>3+</sup>, Fe<sup>2+</sup>, Cu<sup>2+</sup>, Cr<sup>3+</sup>, Co<sup>2+</sup>, Cd<sup>2+</sup>, Ca<sup>2+</sup>, Ba<sup>2+</sup>, and Hg<sup>2+</sup>) with a concentration of 1.0 mM were prepared by using the corresponding salts in a vial. AgNPs solution added individually with different metal ions (Zn<sup>2+</sup>, Pb<sup>2+</sup>, Ni<sup>2+</sup>, Na<sup>+</sup>, Mn<sup>2+</sup>, K<sup>+</sup>, Fe<sup>3+</sup>, Fe<sup>2+</sup>, Cu<sup>2+</sup>, Cr<sup>3+</sup>, Co<sup>2+</sup>, Cd<sup>2+</sup>, Ca<sup>2+</sup>, Ba<sup>2+</sup>, and Hg<sup>2+</sup>) and the absorption spectra were recorded using a UV-vis spectrophotometer.</p></sec><sec><title>Anti-interference studies</title><p>AgNPs probe demonstrated a strong anti-interference to other ions and a high selectivity for the detection of Hg<sup>2+</sup> ions. Therefore, Hg<sup>2+</sup> ion detection was conducted in the presence of various metal ions. AgNPs solution was added individually with each metal ion along with the Hg<sup>2+</sup> ion equivalently, and the absorbance spectra were recorded using a UV-vis spectrophotometer. Also, absorbance spectra were recorded by adding all metal ions including Hg<sup>2+</sup> ions, equivalently in AgNPs probe.</p></sec><sec><title>Sensitivity studies</title><p>To evaluate the sensitivity of the Hg<sup>2+</sup> assay process, a series of solutions with varying Hg<sup>2+</sup> concentrations from 0 to 200 &#x003bc;M were added to the AgNPs solutions under optimal experimental conditions successively, and the absorbance was recorded successively.</p></sec><sec><title>Detection of Hg<sup>2+</sup> in real water sample</title><p>To calculate the concentration of Hg<sup>2+</sup> and the recovery percentages, the real water sample, commercial drinking water was spiked with 20, 30, 40, and 50 &#x003bc;M of Hg<sup>2+</sup> solution. The standard addition method used known spiked samples of 20, 30, 40, and 50 &#x003bc;M of Hg<sup>2+</sup> solution. The detection process was conducted to develop a standard curve for estimating Hg<sup>2+</sup> ions in unknown samples.</p></sec><sec><title>Colorimetric sensors for H<sub>2</sub>O<sub>2</sub></title><p>H<sub>2</sub>O<sub>2</sub> colorimetric detection was investigated using a synthesized AgNPs probe for visual detection in water using the naked eye at room temperature. First, 1 mL of AgNPs was added to a clear glass vial, followed by the addition of 1 mL of different concentrations of H<sub>2</sub>O<sub>2</sub> solution, and the observed color change of the solution mixture was with the naked eye.</p><p>The sensitivity of the AgNPs probe for H<sub>2</sub>O<sub>2</sub> detection was conducted by adding a series of solutions with varying concentrations of H<sub>2</sub>O<sub>2</sub> solution from 0 to 250 &#x003bc;M to the AgNPs solutions under optimal experimental conditions, and the absorbance was recorded successively.</p></sec></sec><sec><title>Conclusions</title><p>In this study, the AgNPs colorimetric probe was successfully synthesized using green approaches and employed to detect Hg<sup>2+</sup> and H<sub>2</sub>O<sub>2</sub>. The fabricated probe quickly and preciously sensed Hg<sup>2+</sup> and H<sub>2</sub>O<sub>2</sub> by changing colour from brownish to colourless, which was observed with the naked eye, and the intensity of the colour change depended on the concentration of Hg<sup>2+</sup> and H<sub>2</sub>O<sub>2</sub>. The LOD and LOQ of Hg<sup>2+</sup> were determined throughout a linear range of concentration 0&#x02013;50 &#x003bc;M, and the estimated results were 1.58 and 5.27 &#x003bc;M, respectively. Similarly, LOD and LOQ of H<sub>2</sub>O<sub>2</sub> were found to be 3.21 and 10.70 &#x003bc;M, respectively, throughout a linear range of 0&#x02013;100 &#x003bc;M. The AgNPs probe preferentially detected Hg<sup>2+</sup> by competing with Zn<sup>2+</sup>, Pb<sup>2+</sup>, Ni<sup>2+</sup>, Na<sup>+</sup>, Mn<sup>2+</sup>, K<sup>+</sup>, Fe<sup>3+</sup>, Fe<sup>2+</sup>, Cu<sup>2+</sup>, Cr<sup>3+</sup>, Co<sup>2+</sup>, Cd<sup>2+</sup>, Ca<sup>2+</sup>, Ba<sup>2+</sup> ions. The presence of Hg<sup>2+</sup> was easily quantified with the probe in real water samples, and the results were acceptable. More importantly, SR-XPS analysis confirmed the interactions between AgNPs and Hg<sup>2+</sup> ions and demonstrated the partial reduction of Hg<sup>2+</sup> ions to metallic Hg<sup>0</sup> as well as the partial oxidation of Ag<sup>0</sup> to Ag<sup><italic toggle="yes">&#x003b4;</italic>+</sup> and the overall stability of the capping agents in AgNPs surface. Thus, the analysis revealed a direct interaction between mercury and silver, indicating the possibility of a mixed AgNP-Ag/Hg amalgam system. Therefore, the prepared AgNPs probe could be an environmentally benign, cost-effective, and easy detector for Hg<sup>2+</sup> and H<sub>2</sub>O<sub>2</sub> in water samples. This investigation enhances the early detection of heavy metal contamination, such as Hg<sup>2+</sup> ion in water, helping prevent health disabilities and reducing the risks of pathogens associated with various diseases.</p></sec><sec sec-type="data-availability"><title>Data availability</title><p>The data supporting this article have been included as part of the ESI.<xref rid="fn1" ref-type="fn">&#x02020;</xref></p></sec><sec><title>Author contributions</title><p>Md. Toufiqul Islam, Saurav Kumar Das, Md. Ahad Mahmud: validation formal analysis and data collection. Md. Rabiul Karim: writing &#x02013; review &#x00026; editing, Rumpa Kundu and Md. Abu Rayhan Khan: data analysis and methodology. Shofiur Rahman: writing &#x02013; review &#x00026; editing, writing original draft, funding acquisition, validation, investigation, Mahmoud Al-Gawati and Abdullah N. Alodhayb, data analysis and Habib Md. Ahsan: review &#x00026; editing, writing &#x02013; original draft, supervision, methodology, investigation, conceptualization.</p></sec><sec sec-type="COI-statement"><title>Conflicts of interest</title><p>There are no conflicts to declare.</p></sec><sec sec-type="supplementary-material"><title>Supplementary Material</title><supplementary-material id="RA-015-D5RA01733E-s001" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s001</label><media xlink:href="RA-015-D5RA01733E-s001.txt" id="d67e1669" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s002" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s002</label><media xlink:href="RA-015-D5RA01733E-s002.pdf" id="d67e1672" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s003" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s003</label><media xlink:href="RA-015-D5RA01733E-s003.pdf" id="d67e1675" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s004" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s004</label><media xlink:href="RA-015-D5RA01733E-s004.pdf" id="d67e1678" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s005" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s005</label><media xlink:href="RA-015-D5RA01733E-s005.pdf" id="d67e1681" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s006" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s006</label><media xlink:href="RA-015-D5RA01733E-s006.pdf" id="d67e1684" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s007" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s007</label><media xlink:href="RA-015-D5RA01733E-s007.pdf" id="d67e1687" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s008" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s008</label><media xlink:href="RA-015-D5RA01733E-s008.pdf" id="d67e1690" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s009" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s009</label><media xlink:href="RA-015-D5RA01733E-s009.pdf" id="d67e1693" position="anchor"/></supplementary-material><supplementary-material id="RA-015-D5RA01733E-s010" position="float" content-type="local-data"><label>RA-015-D5RA01733E-s010</label><media xlink:href="RA-015-D5RA01733E-s010.pdf" id="d67e1696" position="anchor"/></supplementary-material></sec></body><back><ack><p>The authors extend their appreciation to the King Salman Center for Disability Research for funding this work through Research Group No. KSRG-2024-448. Furthermore, we acknowledge with thanks to the Chemistry Discipline, Khulna University, Bangladesh for conducting this research.</p></ack><ref-list><title>Notes and references</title><ref id="cit1"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Joudeh</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Linke</surname><given-names>D.</given-names></name>
+</person-group><source>J. Nanobiotechnol.</source><year>2022</year><volume>20</volume><fpage>262</fpage></element-citation></ref><ref id="cit2"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Khan</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sadia</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ali Shah</surname><given-names>S. Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Khan</surname><given-names>M. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Shah</surname><given-names>A. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ullah</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ullah</surname><given-names>M. F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bibi</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bafakeeh</surname><given-names>O. T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ben Khedher</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Eldin</surname><given-names>S. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Fadhl</surname><given-names>B. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Khan</surname><given-names>M. I.</given-names></name>
+</person-group><source>Catalysts</source><year>2022</year><volume>12</volume><fpage>1386</fpage></element-citation></ref><ref id="cit3"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Hawar</surname><given-names>S. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Al-Shmgani</surname><given-names>H. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Al-Kubaisi</surname><given-names>Z. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sulaiman</surname><given-names>G. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Dewir</surname><given-names>Y. H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Rikisahedew</surname><given-names>J. J.</given-names></name>
+</person-group><source>J. Nanomater.</source><year>2022</year><fpage>1058119</fpage></element-citation></ref><ref id="cit4"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Salem</surname><given-names>S. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hammad</surname><given-names>E. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mohamed</surname><given-names>A. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>El-Dougdoug</surname><given-names>W.</given-names></name>
+</person-group><source>Biointerface Res. Appl. Chem.</source><year>2023</year><volume>13</volume><fpage>41</fpage></element-citation></ref><ref id="cit5"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Yao</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ong'Achwa Machuki</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yang</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yu</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tang</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tian</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Gao</surname><given-names>F.</given-names></name>
+</person-group><source>ACS Appl. Mater. Interfaces</source><year>2019</year><volume>11</volume><fpage>13991</fpage><lpage>14003</lpage><pub-id pub-id-type="pmid">30901195</pub-id>
+</element-citation></ref><ref id="cit6"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Che Sulaiman</surname><given-names>I. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chieng</surname><given-names>B. W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Osman</surname><given-names>M. J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ong</surname><given-names>K. K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Rashid</surname><given-names>J. I. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wan Yunus</surname><given-names>W. M. Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Noor</surname><given-names>S. A. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kasim</surname><given-names>N. A. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Halim</surname><given-names>N. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mohamad</surname><given-names>A.</given-names></name>
+</person-group><source>Microchim. Acta</source><year>2020</year><volume>187</volume><fpage>131</fpage></element-citation></ref><ref id="cit7"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Liu</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Liu</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Han</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hao</surname><given-names>T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sun</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Du</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>X.</given-names></name>
+</person-group><source>ChemNanoMat</source><year>2023</year><volume>9</volume><fpage>e202300203</fpage></element-citation></ref><ref id="cit8"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>L.</given-names></name>
+</person-group><source>Anal. Methods</source><year>2016</year><volume>8</volume><fpage>6691</fpage><lpage>6695</lpage></element-citation></ref><ref id="cit9"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Tu</surname><given-names>M. H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sun</surname><given-names>T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Grattan</surname><given-names>K. T. V.</given-names></name>
+</person-group><source>Sens. Actuators, B</source><year>2012</year><volume>164</volume><fpage>43</fpage><lpage>53</lpage></element-citation></ref><ref id="cit10"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Lee</surname><given-names>K. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>El-Sayed</surname><given-names>M. A.</given-names></name>
+</person-group><source>J. Phys. Chem. B</source><year>2006</year><volume>110</volume><fpage>19220</fpage><lpage>19225</lpage><pub-id pub-id-type="pmid">17004772</pub-id>
+</element-citation></ref><ref id="cit11"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Krajczewski</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ko&#x00142;&#x00105;taj</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kudelski</surname><given-names>A.</given-names></name>
+</person-group><source>RSC Adv.</source><year>2017</year><volume>7</volume><fpage>17559</fpage><lpage>17576</lpage></element-citation></ref><ref id="cit12"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Gao</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lei</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ju</surname><given-names>H.</given-names></name>
+</person-group><source>Anal. Chem.</source><year>2013</year><volume>85</volume><fpage>11788</fpage><lpage>11793</lpage><pub-id pub-id-type="pmid">24171654</pub-id>
+</element-citation></ref><ref id="cit13"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Zannotti</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Piras</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Remia</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Appignanesi</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Giovannetti</surname><given-names>R.</given-names></name>
+</person-group><source>Chemosensors</source><year>2024</year><volume>12</volume><fpage>33</fpage></element-citation></ref><ref id="cit14"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yang</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yang</surname><given-names>X.</given-names></name>
+</person-group><source>ACS Appl. Mater. Interfaces</source><year>2010</year><volume>2</volume><fpage>339</fpage><lpage>342</lpage><pub-id pub-id-type="pmid">20356177</pub-id>
+</element-citation></ref><ref id="cit15"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Solomon</surname><given-names>S. D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bahadory</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jeyarajasingam</surname><given-names>A. V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Rutkowsky</surname><given-names>S. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Boritz</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mulfinger</surname><given-names>L.</given-names></name>
+</person-group><source>J. Chem. Educ.</source><year>2007</year><volume>84</volume><fpage>322</fpage><lpage>325</lpage></element-citation></ref><ref id="cit16"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Yu</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hu</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Guan</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Gu</surname><given-names>J.</given-names></name>
+</person-group><source>ACS Sustain. Chem. Eng.</source><year>2020</year><volume>8</volume><fpage>12713</fpage><lpage>12721</lpage></element-citation></ref><ref id="cit17"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Duan</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yin</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wei</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>W.</given-names></name>
+</person-group><source>Biosens. Bioelectron.</source><year>2014</year><volume>57</volume><fpage>139</fpage><lpage>142</lpage><pub-id pub-id-type="pmid">24583318</pub-id>
+</element-citation></ref><ref id="cit18"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Dave</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Pandey</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jain</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kshtriya</surname><given-names>V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sengupta</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kumar Verma</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Gour</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bhatia</surname><given-names>D.</given-names></name>
+</person-group><source>ChemistrySelect</source><year>2024</year><volume>9</volume><fpage>e202402477</fpage></element-citation></ref><ref id="cit19"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Rahman</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Singh</surname><given-names>V. P.</given-names></name>
+</person-group><source>Environ. Monit. Assess.</source><year>2019</year><volume>191</volume><fpage>419</fpage><pub-id pub-id-type="pmid">31177337</pub-id>
+</element-citation></ref><ref id="cit20"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Jan</surname><given-names>A. T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Azam</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Siddiqui</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ali</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Choi</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Haq</surname><given-names>Q. M. R.</given-names></name>
+</person-group><source>Int. J. Mol. Sci.</source><year>2015</year><volume>16</volume><fpage>29592</fpage><lpage>29630</lpage><pub-id pub-id-type="pmid">26690422</pub-id>
+</element-citation></ref><ref id="cit21"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Parida</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Patel</surname><given-names>T. N.</given-names></name>
+</person-group><source>Environ. Monit. Assess.</source><year>2023</year><volume>195</volume><fpage>766</fpage><pub-id pub-id-type="pmid">37249740</pub-id>
+</element-citation></ref><ref id="cit22"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Sonone</surname><given-names>S. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jadhav</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sankhla</surname><given-names>M. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kumar</surname><given-names>R.</given-names></name>
+</person-group><source>Lett. Appl. NanoBioScience.</source><year>2021</year><volume>10</volume><fpage>2148</fpage><lpage>2166</lpage></element-citation></ref><ref id="cit23"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Akinleye</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Oremade</surname><given-names>O.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Xu</surname><given-names>X.</given-names></name>
+</person-group><source>PLoS One</source><year>2024</year><volume>19</volume><fpage>e0288190</fpage><pub-id pub-id-type="pmid">38625896</pub-id>
+</element-citation></ref><ref id="cit24"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Yan</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yuen</surname><given-names>M. F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hu</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sun</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lee</surname><given-names>C. S.</given-names></name>
+</person-group><source>RSC Adv.</source><year>2014</year><volume>4</volume><fpage>48373</fpage><lpage>48388</lpage></element-citation></ref><ref id="cit25"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Bansod</surname><given-names>B. K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kumar</surname><given-names>T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Thakur</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Rana</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Singh</surname><given-names>I.</given-names></name>
+</person-group><source>Biosens. Bioelectron.</source><year>2017</year><volume>94</volume><fpage>443</fpage><lpage>455</lpage><pub-id pub-id-type="pmid">28340464</pub-id>
+</element-citation></ref><ref id="cit26"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Magos</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Clarkson</surname><given-names>T. W.</given-names></name>
+</person-group><article-title>Overview of the clinical toxicity of mercury</article-title><source>Ann. Clin. Biochem.</source><year>2006</year><volume>43</volume><fpage>257</fpage><lpage>268</lpage><pub-id pub-id-type="pmid">16824275</pub-id>
+</element-citation></ref><ref id="cit27"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Wells</surname><given-names>E. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Herbstman</surname><given-names>J. B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lin</surname><given-names>Y. H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hibbeln</surname><given-names>J. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Halden</surname><given-names>R. U.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Witter</surname><given-names>F. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Goldman</surname><given-names>L. R.</given-names></name>
+</person-group><source>Environ. Res.</source><year>2017</year><volume>154</volume><fpage>247</fpage><lpage>252</lpage><pub-id pub-id-type="pmid">28110211</pub-id>
+</element-citation></ref><ref id="cit28"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Aaseth</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hilt</surname><given-names>B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bj&#x000f8;rklund</surname><given-names>G.</given-names></name>
+</person-group><source>Environ. Res.</source><year>2018</year><volume>164</volume><fpage>65</fpage><lpage>69</lpage><pub-id pub-id-type="pmid">29482185</pub-id>
+</element-citation></ref><ref id="cit29"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Qi</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Fu</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Xu</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Xu</surname><given-names>W.</given-names></name>
+</person-group><source>RSC Adv.</source><year>2015</year><volume>5</volume><fpage>49759</fpage><lpage>49764</lpage></element-citation></ref><ref id="cit30"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Liu</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ding</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jin</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tian</surname><given-names>Y.</given-names></name>
+</person-group><source>Analyst</source><year>2015</year><volume>140</volume><fpage>3285</fpage><lpage>3289</lpage><pub-id pub-id-type="pmid">25800684</pub-id>
+</element-citation></ref><ref id="cit31"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>&#x00160;vehla</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>&#x0017d;&#x000ed;dek</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ru&#x0017e;ovi&#x0010d;</surname><given-names>T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Svoboda</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kratzer</surname><given-names>J.</given-names></name>
+</person-group><source>Spectrochim. Acta, Part B</source><year>2019</year><volume>156</volume><fpage>51</fpage><lpage>58</lpage></element-citation></ref><ref id="cit32"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Shoaee</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Roshdi</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Khanlarzadeh</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Beiraghi</surname><given-names>A.</given-names></name>
+</person-group><source>Spectrochim. Acta, Part A</source><year>2012</year><volume>98</volume><fpage>70</fpage><lpage>75</lpage></element-citation></ref><ref id="cit33"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Pena-Pereira</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lavilla</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bendicho</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Vidal</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Canals</surname><given-names>A.</given-names></name>
+</person-group><source>Talanta</source><year>2009</year><volume>78</volume><fpage>537</fpage><lpage>541</lpage><pub-id pub-id-type="pmid">19203620</pub-id>
+</element-citation></ref><ref id="cit34"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Mahmoudian</surname><given-names>M. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Alias</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Meng Woi</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yousefi</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Basirun</surname><given-names>W. J.</given-names></name>
+</person-group><source>Adv. Powder Technol.</source><year>2020</year><volume>31</volume><fpage>3372</fpage><lpage>3380</lpage></element-citation></ref><ref id="cit35"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Liu</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Shao</surname><given-names>Q.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yin</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Fu</surname><given-names>Z.</given-names></name>
+</person-group><source>Anal. Methods</source><year>2017</year><volume>9</volume><fpage>2401</fpage><lpage>2406</lpage></element-citation></ref><ref id="cit36"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Malik</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Singh</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Saini</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chaudhary</surname><given-names>V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Umar</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ibrahim</surname><given-names>A. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Akbar</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Baskoutas</surname><given-names>S.</given-names></name>
+</person-group><source>Anal. Methods</source><year>2024</year><volume>16</volume><fpage>2777</fpage><lpage>2809</lpage><pub-id pub-id-type="pmid">38639474</pub-id>
+</element-citation></ref><ref id="cit37"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Dhawale</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Trivedi</surname><given-names>D. R.</given-names></name>
+</person-group><source>ChemistrySelect</source><year>2024</year><volume>9</volume><fpage>e202403774</fpage></element-citation></ref><ref id="cit38"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Soda</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bakker</surname><given-names>E.</given-names></name>
+</person-group><source>ACS Sens.</source><year>2019</year><volume>4</volume><issue>12</issue><fpage>3093</fpage><lpage>3101</lpage><pub-id pub-id-type="pmid">31744290</pub-id>
+</element-citation></ref><ref id="cit39"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Srivastava</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Srivastava</surname><given-names>S. K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ojha</surname><given-names>R. P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Prakash</surname><given-names>R.</given-names></name>
+</person-group><source>Microchem. J.</source><year>2022</year><volume>182</volume><fpage>107850</fpage></element-citation></ref><ref id="cit40"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Han</surname><given-names>K. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Choi</surname><given-names>J. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kwon</surname><given-names>J.</given-names></name>
+</person-group><source>Sci. Rep.</source><year>2017</year><volume>7</volume><fpage>2806</fpage><pub-id pub-id-type="pmid">28584238</pub-id>
+</element-citation></ref><ref id="cit41"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sun</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mo</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Gao</surname><given-names>Q.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Deng</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hu</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zou</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Nie</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>Y.</given-names></name>
+</person-group><source>RSC Adv.</source><year>2021</year><volume>11</volume><fpage>36859</fpage><lpage>36865</lpage><pub-id pub-id-type="pmid">35494369</pub-id>
+</element-citation></ref><ref id="cit42"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Stone</surname><given-names>J. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yang</surname><given-names>S.</given-names></name>
+</person-group><source>Antioxid. Redox Signaling</source><year>2006</year><volume>8</volume><fpage>243</fpage><lpage>270</lpage></element-citation></ref><ref id="cit43"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>DiMauro</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Schon</surname><given-names>E. A.</given-names></name>
+</person-group><source>Annu. Rev. Neurosci.</source><year>2008</year><volume>31</volume><fpage>91</fpage><lpage>123</lpage><pub-id pub-id-type="pmid">18333761</pub-id>
+</element-citation></ref><ref id="cit44"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Buffenstein</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Edrey</surname><given-names>Y. H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yang</surname><given-names>T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mele</surname><given-names>J.</given-names></name>
+</person-group><source>Age</source><year>2008</year><volume>30</volume><fpage>99</fpage><lpage>109</lpage><pub-id pub-id-type="pmid">19424860</pub-id>
+</element-citation></ref><ref id="cit45"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Rossi</surname><given-names>D. J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jamieson</surname><given-names>C. H. M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Weissman</surname><given-names>I. L.</given-names></name>
+</person-group><source>Cell</source><year>2008</year><volume>132</volume><issue>4</issue><fpage>681</fpage><lpage>696</lpage><pub-id pub-id-type="pmid">18295583</pub-id>
+</element-citation></ref><ref id="cit46"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Jia</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Huang</surname><given-names>B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tan</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yao</surname><given-names>S.</given-names></name>
+</person-group><source>Sens. Actuators, B</source><year>2014</year><volume>195</volume><fpage>165</fpage><lpage>170</lpage></element-citation></ref><ref id="cit47"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Yang</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Verdaguer-Casadevall</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Arnarson</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Silvioli</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>&#x0010c;oli&#x00107;</surname><given-names>V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Frydendal</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Rossmeisl</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chorkendorff</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Stephens</surname><given-names>I. E. L.</given-names></name>
+</person-group><source>ACS Catal.</source><year>2018</year><volume>8</volume><issue>5</issue><fpage>4064</fpage><lpage>4081</lpage></element-citation></ref><ref id="cit48"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Ciriminna</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Albanese</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Meneguzzo</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Pagliaro</surname><given-names>M.</given-names></name>
+</person-group><source>ChemSusChem</source><year>2016</year><volume>9</volume><fpage>3374</fpage><lpage>3381</lpage><pub-id pub-id-type="pmid">27813285</pub-id>
+</element-citation></ref><ref id="cit49"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>&#x0015e;en</surname><given-names>F. B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bener</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bekde&#x0015f;er</surname><given-names>B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Apak</surname><given-names>R.</given-names></name>
+</person-group><source>Spectrochim. Acta, Part A</source><year>2021</year><volume>248</volume><fpage>119266</fpage></element-citation></ref><ref id="cit50"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Ghafoor</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Khan</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Khan</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ualiyeva</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zaman</surname><given-names>N.</given-names></name>
+</person-group><source>Curr. Res. Toxicol.</source><year>2021</year><volume>2</volume><fpage>159</fpage><lpage>168</lpage><pub-id pub-id-type="pmid">33688633</pub-id>
+</element-citation></ref><ref id="cit51"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Lu</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ding</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zheng</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zeng</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wen</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Liu</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Aldalbahi</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Shi</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Song</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zuo</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>L.</given-names></name>
+</person-group><source>Nanoscale</source><year>2017</year><volume>9</volume><fpage>4508</fpage><lpage>4515</lpage><pub-id pub-id-type="pmid">28317969</pub-id>
+</element-citation></ref><ref id="cit52"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Su</surname><given-names>B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Cai</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Oyama</surname><given-names>M.</given-names></name>
+</person-group><source>Sens. Actuators, B</source><year>2014</year><volume>201</volume><fpage>286</fpage><lpage>292</lpage></element-citation></ref><ref id="cit53"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Lan</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Di</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhu</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ng</surname><given-names>T. W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Xia</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Liu</surname><given-names>W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Meng</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lee</surname><given-names>C. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>W.</given-names></name>
+</person-group><source>Chem. Commun.</source><year>2015</year><volume>51</volume><fpage>15574</fpage><lpage>15577</lpage></element-citation></ref><ref id="cit54"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Bai</surname><given-names>Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Dong</surname><given-names>W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ren</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>Q.</given-names></name>
+</person-group><source>Langmuir</source><year>2018</year><volume>34</volume><fpage>2235</fpage><lpage>2244</lpage><pub-id pub-id-type="pmid">29337577</pub-id>
+</element-citation></ref><ref id="cit55"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Lee</surname><given-names>J. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lytton-Jean</surname><given-names>A. K. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hurst</surname><given-names>S. J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mirkin</surname><given-names>C. A.</given-names></name>
+</person-group><source>Nano Lett.</source><year>2007</year><volume>7</volume><fpage>2112</fpage><lpage>2115</lpage><pub-id pub-id-type="pmid">17571909</pub-id>
+</element-citation></ref><ref id="cit56"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Yassin</surname><given-names>M. T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Al-Otibi</surname><given-names>F. O.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mostafa</surname><given-names>A. A. F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Al-Askar</surname><given-names>A. A.</given-names></name>
+</person-group><source>Crystals</source><year>2022</year><volume>12</volume><fpage>603</fpage></element-citation></ref><ref id="cit57"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Kumar</surname><given-names>B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Smita</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Cumbal</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Debut</surname><given-names>A.</given-names></name>
+</person-group><source>Asian Pac. J. Trop. Biomed.</source><year>2015</year><volume>5</volume><issue>3</issue><fpage>192</fpage><lpage>195</lpage></element-citation></ref><ref id="cit58"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Saha</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mahiuddin</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Islam</surname><given-names>A. B. M. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ochiai</surname><given-names>B.</given-names></name>
+</person-group><source>ACS Omega</source><year>2021</year><volume>6</volume><fpage>18260</fpage><lpage>18268</lpage><pub-id pub-id-type="pmid">34308057</pub-id>
+</element-citation></ref><ref id="cit59"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Mahiuddin</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Saha</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ochiai</surname><given-names>B.</given-names></name>
+</person-group><source>Nanomaterials</source><year>2020</year><volume>10</volume><fpage>1</fpage><lpage>15</lpage></element-citation></ref><ref id="cit60"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Sathishkumar</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sneha</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Won</surname><given-names>S. W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Cho</surname><given-names>C. W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kim</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Yun</surname><given-names>Y. S.</given-names></name>
+</person-group><source>Colloids Surf., B</source><year>2009</year><volume>73</volume><fpage>332</fpage><lpage>338</lpage></element-citation></ref><ref id="cit61"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Khalil</surname><given-names>M. M. H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ismail</surname><given-names>E. H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>El-Baghdady</surname><given-names>K. Z.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mohamed</surname><given-names>D.</given-names></name>
+</person-group><source>Arabian J. Chem.</source><year>2014</year><volume>7</volume><fpage>1131</fpage><lpage>1139</lpage></element-citation></ref><ref id="cit62"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Dhanya</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jayaprabha</surname><given-names>K. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Anupama</surname><given-names>S. J.</given-names></name>
+</person-group><source>J. Propuls. Technol.</source><year>2023</year><volume>44</volume><fpage>2014</fpage><lpage>2020</lpage></element-citation></ref><ref id="cit63"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Jayawardane</surname><given-names>K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hettiarachchi</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Gunathilake</surname><given-names>K.</given-names></name>
+</person-group><source>J. Med. Plants Stud.</source><year>2022</year><volume>10</volume><fpage>05</fpage><lpage>12</lpage></element-citation></ref><ref id="cit64"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Sagadevan</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Vennila</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Singh</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lett</surname><given-names>J. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Johan</surname><given-names>M. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Marlinda</surname><given-names>A. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Muthiah</surname><given-names>B.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lakshmipathy</surname><given-names>M.</given-names></name>
+</person-group><source>Green Process. Synth.</source><year>2019</year><volume>8</volume><fpage>873</fpage><lpage>884</lpage></element-citation></ref><ref id="cit65"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Isaac</surname><given-names>R. S. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sakthivel</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Murthy</surname><given-names>C.</given-names></name>
+</person-group><source>J. Nanotechnol.</source><year>2013</year><fpage>906592</fpage></element-citation></ref><ref id="cit66"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Hublikar</surname><given-names>L. V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Ganachari</surname><given-names>S. V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Patil</surname><given-names>V. B.</given-names></name>
+</person-group><source>Nanoscale Adv.</source><year>2023</year><volume>5</volume><fpage>4149</fpage><lpage>4157</lpage><pub-id pub-id-type="pmid">37560425</pub-id>
+</element-citation></ref><ref id="cit67"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Mendhulkar</surname><given-names>V. D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kharat</surname><given-names>S. N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mahadik</surname><given-names>S. R.</given-names></name>
+</person-group><source>Pharma Chem.</source><year>2018</year><volume>10</volume><fpage>24</fpage><lpage>33</lpage></element-citation></ref><ref id="cit68"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Widiastuti</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Elisahbet Sinaga</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Warnasih</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Syahputri</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bella Saputri</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Eka Putra</surname><given-names>W.</given-names></name>
+</person-group><source>Indones. J. Pharm.</source><year>2024</year><volume>35</volume><fpage>282</fpage><lpage>291</lpage></element-citation></ref><ref id="cit69"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Sampaio</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Viana</surname><given-names>J. C.</given-names></name>
+</person-group><source>Adv. Nat. Sci.:Nanosci. Nanotechnol.</source><year>2018</year><volume>9</volume><fpage>045002</fpage></element-citation></ref><ref id="cit70"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Murugan</surname><given-names>E.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Santhoshkumar</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Govindaraju</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Palanichamy</surname><given-names>M.</given-names></name>
+</person-group><source>Spectrochim. Acta, Part A</source><year>2021</year><volume>5</volume><issue>246</issue><fpage>119036</fpage></element-citation></ref><ref id="cit71"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Chen</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Qi</surname><given-names>N.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>X.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chan</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>You</surname><given-names>H.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>J.</given-names></name>
+</person-group><source>RSC Adv.</source><year>2014</year><volume>4</volume><fpage>15055</fpage><lpage>15060</lpage></element-citation></ref><ref id="cit72"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Sharaf Zeebaree</surname><given-names>S. Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Haji</surname><given-names>O. I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zeebaree</surname><given-names>A. Y. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hussein</surname><given-names>D. A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hanna</surname><given-names>E. H.</given-names></name>
+</person-group><source>Catalysts</source><year>2022</year><volume>12</volume><fpage>1464</fpage></element-citation></ref><ref id="cit73"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Ren</surname><given-names>W.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhu</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Wang</surname><given-names>E.</given-names></name>
+</person-group><source>Nanoscale</source><year>2012</year><volume>4</volume><fpage>5902</fpage><lpage>5909</lpage><pub-id pub-id-type="pmid">22899096</pub-id>
+</element-citation></ref><ref id="cit74"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Talodthaisong</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sangiamkittikul</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chongwichai</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Saenchoopa</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Thammawithan</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Patramanon</surname><given-names>R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kosolwattana</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kulchat</surname><given-names>S.</given-names></name>
+</person-group><source>ACS Omega</source><year>2023</year><volume>8</volume><fpage>41134</fpage><lpage>41144</lpage><pub-id pub-id-type="pmid">37970038</pub-id>
+</element-citation></ref><ref id="cit75"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Schiesaro</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Burratti</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Meneghini</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Fratoddi</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Prosposito</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Lim</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Scheu</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Venditti</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Iucci</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Battocchio</surname><given-names>C.</given-names></name>
+</person-group><source>J. Phys. Chem. C</source><year>2020</year><volume>124</volume><fpage>25975</fpage><lpage>25983</lpage></element-citation></ref><ref id="cit76"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Burratti</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bertel&#x000e0;</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Sisani</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Di Guida</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Battocchio</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Iucci</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Prosposito</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Venditti</surname><given-names>I.</given-names></name>
+</person-group><source>Polymers</source><year>2024</year><volume>16</volume><fpage>1034</fpage><pub-id pub-id-type="pmid">38674954</pub-id>
+</element-citation></ref><ref id="cit77"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Prosposito</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Burratti</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bellingeri</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Protano</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Faleri</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Corsi</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Battocchio</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Iucci</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tortora</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Secchi</surname><given-names>V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Franchi</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Venditti</surname><given-names>I.</given-names></name>
+</person-group><source>Nanomaterials</source><year>2019</year><volume>9</volume><fpage>1353</fpage><pub-id pub-id-type="pmid">31547209</pub-id>
+</element-citation></ref><ref id="cit78"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Mochi</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Burratti</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Fratoddi</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Venditti</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Battocchio</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Carlini</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Iucci</surname><given-names>G.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Casalboni</surname><given-names>M.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>De Matteis</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Casciardi</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Nappini</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Pis</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Prosposito</surname><given-names>P.</given-names></name>
+</person-group><source>Nanomaterials</source><year>2018</year><volume>8</volume><fpage>488</fpage><pub-id pub-id-type="pmid">30004404</pub-id>
+</element-citation></ref><ref id="cit79"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Manivannan</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Seo</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kang</surname><given-names>D. K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Kim</surname><given-names>K.</given-names></name>
+</person-group><source>New J. Chem.</source><year>2018</year><volume>42</volume><fpage>20007</fpage><lpage>20014</lpage></element-citation></ref><ref id="cit80"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Schiesaro</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Battocchio</surname><given-names>C.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Venditti</surname><given-names>I.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Prosposito</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Burratti</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Centomo</surname><given-names>P.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Meneghini</surname><given-names>C.</given-names></name>
+</person-group><source>Phys. E</source><year>2020</year><volume>123</volume><fpage>114162</fpage></element-citation></ref><ref id="cit81"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Kumar</surname><given-names>V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Singh</surname><given-names>D. K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Mohan</surname><given-names>S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Bano</surname><given-names>D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Gundampati</surname><given-names>R. K.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Hasan</surname><given-names>S. H.</given-names></name>
+</person-group><source>J. Photochem. Photobiol., B</source><year>2017</year><volume>168</volume><fpage>67</fpage><lpage>77</lpage><pub-id pub-id-type="pmid">28187403</pub-id>
+</element-citation></ref><ref id="cit82"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Zou</surname><given-names>Y.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Pang</surname><given-names>J.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>F.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chai</surname><given-names>F.</given-names></name>
+</person-group><source>ChemistrySelect</source><year>2021</year><volume>6</volume><fpage>6077</fpage><lpage>6082</lpage></element-citation></ref><ref id="cit83"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Zhang</surname><given-names>L.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Li</surname><given-names>L.</given-names></name>
+</person-group><source>Anal. Methods</source><year>2016</year><volume>8</volume><fpage>6691</fpage><lpage>6695</lpage></element-citation></ref><ref id="cit84"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Nguyen</surname><given-names>N. D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Van Nguyen</surname><given-names>T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Chu</surname><given-names>A. D.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tran</surname><given-names>H. V.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Tran</surname><given-names>L. T.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Huynh</surname><given-names>C. D.</given-names></name>
+</person-group><source>Arabian J. Chem.</source><year>2018</year><volume>11</volume><fpage>1134</fpage><lpage>1143</lpage></element-citation></ref><ref id="cit85"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Aadil</surname><given-names>K. R.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Barapatre</surname><given-names>A.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Meena</surname><given-names>A. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Jha</surname><given-names>H.</given-names></name>
+</person-group><source>Int. J. Biol. Macromol.</source><year>2016</year><volume>82</volume><fpage>39</fpage><lpage>47</lpage><pub-id pub-id-type="pmid">26434518</pub-id>
+</element-citation></ref><ref id="cit86"><element-citation publication-type="journal"><person-group person-group-type="author">
+<name><surname>Mehata</surname><given-names>M. S.</given-names></name>
+</person-group><person-group person-group-type="author">
+<name><surname>Biswas</surname><given-names>S.</given-names></name>
+</person-group><source>Ceram. Int.</source><year>2021</year><volume>47</volume><fpage>19063</fpage><lpage>19072</lpage></element-citation></ref></ref-list></back></article>

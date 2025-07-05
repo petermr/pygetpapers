@@ -1,0 +1,49 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39416715
+source,MED
+pmid,39416715
+pmcid,PMC11481612
+fullTextIdList,{'fullTextId': 'PMC11481612'}
+doi,10.1016/j.dib.2024.110937
+title,"Experimental dataset on leaf-based extracted antidandruff shampoo derived from Aloe Vera, Ocimum Sanctum, and Withania Somnifera: Advancing Ethiopian local herbs via formulation."
+authorString,"Tessema TD, Wendante YS, Teffera B."
+authorList,"{'author': [{'fullName': 'Tessema TD', 'firstName': 'Tegen Dagnew', 'lastName': 'Tessema', 'initials': 'TD', 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Faculty of Chemical and Food Engineering, Department of Chemical Engineering, Bahir Dar Institute of Technology, Bahir Dar University, PO Box 26, Bahir Dar, Ethiopia.'}, {'affiliation': 'Department of Mechanical Engineering, Universitat Rovira i Virgili, Av. Països Catalans 26, 43007 Tarragona, Spain.'}]}}, {'fullName': 'Wendante YS', 'firstName': 'Yohannes Shetawn', 'lastName': 'Wendante', 'initials': 'YS', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Faculty of Chemical and Food Engineering, Department of Chemical Engineering, Bahir Dar Institute of Technology, Bahir Dar University, PO Box 26, Bahir Dar, Ethiopia.'}}}, {'fullName': 'Teffera B', 'firstName': 'Belay', 'lastName': 'Teffera', 'initials': 'B', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Faculty of Chemical and Food Engineering, Department of Chemical Engineering, Bahir Dar Institute of Technology, Bahir Dar University, PO Box 26, Bahir Dar, Ethiopia.'}}}]}"
+dataLinksTagsList,{'dataLinkstag': 'supporting_data'}
+journalInfo,"{'volume': '57', 'journalIssueId': '3829882', 'dateOfPublication': '2024 Dec', 'monthOfPublication': '12', 'yearOfPublication': '2024', 'printPublicationDate': '2024-12-01', 'journal': {'title': 'Data in brief', 'ISOAbbreviation': 'Data Brief', 'medlineAbbreviation': 'Data Brief', 'NLMid': '101654995', 'ISSN': '2352-3409', 'ESSN': '2352-3409'}}"
+pubYear,2024
+pageInfo,110937
+abstractText,"Dandruff is a common fungal infection caused by the fungus Malassezia furfur. It is a big issue of concern in the human skin health system, as it is characterized by chronic non-inflammatory scalp conditions. These conditions include excessive scaling, itching, and redness. The fungus Malassezia is responsible for causing dandruff. Hence, this research dataset contains data related to the extraction and formulation of shampoo that cures dandruff by using extracts from the herbal leaves of Aloe Vera, Ocimum Sanctum, and Withania Somnifera herbs as an advancement of Ethiopian local herbs via formulation. The presented data provides an information on the optimal formulation process of herbal-based antidandruff shampoo against ketoconazole (KTC) as a control of the experiment. Ethanol-extracted oil from Aloe Vera, Ocimum Sanctum, and Withania Somnifera leaves was used to create three different formulation codes of F1, F2, and F3. The formulated antidandruff shampoo was evaluated in terms of its solid content, foamability, viscosity, dirt dispersion, pH, wetting time, and organoleptic properties. Moreover, the dataset includes information on the antifungal activity of the antidandruff shampoo against Malassezia furfur, as determined by disc diffusion and colony count testing method. The active chemical components responsible for the antidandruff activity of the leaf-extracted oil were also measured using FTIR."
+affiliation,"Faculty of Chemical and Food Engineering, Department of Chemical Engineering, Bahir Dar Institute of Technology, Bahir Dar University, PO Box 26, Bahir Dar, Ethiopia."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['data-paper', 'Journal Article']}"
+keywordList,"{'keyword': ['FTIR', 'formulation', 'Anova', 'Malassezia Furfur', 'Herbal Extracts', 'Antidandruff']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'doi', 'site': 'Unpaywall', 'url': 'https://doi.org/10.1016/j.dib.2024.110937'}, {'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1016/j.dib.2024.110937'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11481612'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11481612?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,Y
+tmAccessionTypeList,{'accessionType': 'doi'}
+dateOfCreation,2024-10-17
+firstIndexDate,2024-10-18
+fullTextReceivedDate,2024-10-31
+dateOfRevision,2024-10-18
+electronicPublicationDate,2024-09-17
+firstPublicationDate,2024-09-17

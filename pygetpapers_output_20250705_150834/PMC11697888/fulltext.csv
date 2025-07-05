@@ -1,0 +1,46 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39748234
+source,MED
+pmid,39748234
+pmcid,PMC11697888
+fullTextIdList,{'fullTextId': 'PMC11697888'}
+doi,10.1186/s13223-024-00946-z
+title,Retraction Note: Clinical and immuno-proteomic approach on lantana camara pollen allergy-a major health hazard.
+authorString,"Ghosal K, Saha B, Bhattacharya SG."
+authorList,"{'author': [{'fullName': 'Ghosal K', 'firstName': 'Kavita', 'lastName': 'Ghosal', 'initials': 'K', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Division of Plant Biology, Bose Institute, Main Campus, 93/1, A.P.C. Road, 700009, Kolkata, West Bengal, India.'}}}, {'fullName': 'Saha B', 'firstName': 'Bodhisattwa', 'lastName': 'Saha', 'initials': 'B', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Division of Plant Biology, Bose Institute, Main Campus, 93/1, A.P.C. Road, 700009, Kolkata, West Bengal, India.'}}}, {'fullName': 'Bhattacharya SG', 'firstName': 'Swati Gupta', 'lastName': 'Bhattacharya', 'initials': 'SG', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Division of Plant Biology, Bose Institute, Main Campus, 93/1, A.P.C. Road, 700009, Kolkata, West Bengal, India. swati@jcbose.ac.in.'}}}]}"
+journalInfo,"{'issue': '1', 'volume': '21', 'journalIssueId': '3878921', 'dateOfPublication': '2025 Jan', 'monthOfPublication': '1', 'yearOfPublication': '2025', 'printPublicationDate': '2025-01-01', 'journal': {'title': 'Allergy, asthma, and clinical immunology : official journal of the Canadian Society of Allergy and Clinical Immunology', 'ISOAbbreviation': 'Allergy Asthma Clin Immunol', 'medlineAbbreviation': 'Allergy Asthma Clin Immunol', 'NLMid': '101244313', 'ISSN': '1710-1484', 'ESSN': '1710-1492'}}"
+pubYear,2025
+pageInfo,1
+affiliation,"Division of Plant Biology, Bose Institute, Main Campus, 93/1, A.P.C. Road, 700009, Kolkata, West Bengal, India."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,{'pubType': 'Retraction of Publication'}
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1186/s13223-024-00946-z'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11697888'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11697888?pdf=render'}]}"
+commentCorrectionList,"{'commentCorrection': {'id': '27471520', 'source': 'MED', 'reference': 'Allergy Asthma Clin Immunol. 2016 Jul 28;12:33. doi: 10.1186/s13223-016-0135-z', 'type': 'Retraction of', 'orderIn': '1'}}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,N
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-01-03
+firstIndexDate,2025-01-03
+fullTextReceivedDate,2025-01-06
+dateOfRevision,2025-01-05
+electronicPublicationDate,2025-01-02
+firstPublicationDate,2025-01-02

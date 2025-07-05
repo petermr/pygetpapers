@@ -1,0 +1,52 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39688784
+source,MED
+pmid,39688784
+pmcid,PMC11652650
+fullTextIdList,{'fullTextId': 'PMC11652650'}
+doi,10.1007/s13744-024-01220-y
+title,Habitat Suitability Modelling for the Red Dwarf Honeybee (Apis florea (Linnaeus)) and Its Distribution Prediction Using Machine Learning and Cloud Computing.
+authorString,"Ma'moun S, Farag R, Abutaleb K, Metwally A, Ali A, Yones M."
+authorList,"{'author': [{'fullName': ""Ma'moun S"", 'firstName': 'Shireen', 'lastName': ""Ma'moun"", 'initials': 'S', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Entomology Dept, Faculty of Science, Ain Shams Univ, Cairo, Egypt.'}}}, {'fullName': 'Farag R', 'firstName': 'Rasha', 'lastName': 'Farag', 'initials': 'R', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Bee Research Dept, Agricultural Research Centre, Plant Protection Research Institute, Ministry of Agricultural, Giza, Egypt.'}}}, {'fullName': 'Abutaleb K', 'firstName': 'Khaled', 'lastName': 'Abutaleb', 'initials': 'K', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'National Authority for Remote Sensing and Space Sciences (NARSS), Cairo, Egypt.'}}}, {'fullName': 'Metwally A', 'firstName': 'Amr', 'lastName': 'Metwally', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Bee Research Dept, Agricultural Research Centre, Plant Protection Research Institute, Ministry of Agricultural, Giza, Egypt.'}}}, {'fullName': 'Ali A', 'firstName': 'Abdelraouf', 'lastName': 'Ali', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'National Authority for Remote Sensing and Space Sciences (NARSS), Cairo, Egypt.'}}}, {'fullName': 'Yones M', 'firstName': 'Mona', 'lastName': 'Yones', 'initials': 'M', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-5278-4877'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'National Authority for Remote Sensing and Space Sciences (NARSS), Cairo, Egypt. monayones@yahoo.com.'}}}]}"
+authorIdList,"{'authorId': {'@type': 'ORCID', '#text': '0000-0002-5278-4877'}}"
+dataLinksTagsList,{'dataLinkstag': 'altmetrics'}
+journalInfo,"{'issue': '1', 'volume': '54', 'journalIssueId': '3866184', 'dateOfPublication': '2024 Dec', 'monthOfPublication': '12', 'yearOfPublication': '2024', 'printPublicationDate': '2024-12-01', 'journal': {'title': 'Neotropical entomology', 'ISOAbbreviation': 'Neotrop Entomol', 'medlineAbbreviation': 'Neotrop Entomol', 'NLMid': '101189728', 'ISSN': '1519-566X', 'ESSN': '1678-8052'}}"
+pubYear,2024
+pageInfo,18
+abstractText,"Apis florea bees were recently identified in Egypt, marking the second occurrence of this species on the African continent. The objective of this study was to track the distribution of A. florea in Egypt and evaluate its potential for invasive behaviour. Field surveys were conducted over a 2-year period, resulting in the collection of data on the spatial distribution of the red dwarf honeybees. A comprehensive analysis was performed utilizing long-term monthly temperature and rainfall data to generate spatially interpolated climate surfaces with a 1-km resolution. Vegetation variables derived from Terra MODIS were also incorporated. Furthermore, elevation data obtained from the Shuttle Radar Topography Mission were utilized to derive slope, aspect, and hillshade based on the digital elevation model. The collected data were subject to resampling for optimal data smoothing. Subsequently, a random forest model was applied, followed by an accuracy assessment to evaluate the classification output. The results indicated the selection of the mean temperature of coldest quarter (bio11), annual mean temperature (bio01), and minimum temperature of coldest month (bio06) as temperature-derived parameters are the most important parameters. Annual precipitation (bio12) and precipitation of wettest quarter (bio16) as precipitation parameters, and non-tree vegetation parameter as well as the elevation. The calculation of the Habitat Suitability Index revealed that the most suitable areas, covering a total of 200131.9 km<sup>2</sup>, were predominantly situated in the eastern and northern regions of Egypt, including the Nile Delta characterized by its fertile agricultural lands and the presence of the river Nile. In contrast, the western and southern parts exhibited low habitat suitability due to the absence of significant green vegetation and low relative humidity."
+affiliation,"Entomology Dept, Faculty of Science, Ain Shams Univ, Cairo, Egypt."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+meshHeadingList,"{'meshHeading': [{'majorTopic_YN': 'N', 'descriptorName': 'Animals'}, {'majorTopic_YN': 'N', 'descriptorName': 'Bees', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'PH', 'qualifierName': 'physiology', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Ecosystem'}, {'majorTopic_YN': 'N', 'descriptorName': 'Temperature'}, {'majorTopic_YN': 'N', 'descriptorName': 'Egypt'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Animal Distribution'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Machine Learning'}]}"
+keywordList,"{'keyword': ['Satellite', 'Habitat suitability', 'MODIS', 'Modelling', 'Apis Florea', 'Google Earth Engine', 'Absence-only Data']}"
+subsetList,"{'subset': {'code': 'IM', 'name': 'Index Medicus'}}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1007/s13744-024-01220-y'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11652650'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11652650?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,0
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCompletion,2024-12-17
+dateOfCreation,2024-12-17
+firstIndexDate,2024-12-17
+fullTextReceivedDate,2024-12-23
+dateOfRevision,2025-01-04
+electronicPublicationDate,2024-12-17
+firstPublicationDate,2024-12-17

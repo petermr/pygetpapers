@@ -1,0 +1,47 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39224640
+source,MED
+pmid,39224640
+pmcid,PMC11367626
+fullTextIdList,{'fullTextId': 'PMC11367626'}
+doi,10.1039/d4ra04807e
+title,Amelioration of gold nanoparticles mediated through <i>Ocimum</i> oil extracts induces reactive oxygen species and mitochondrial instability against MCF-7 breast carcinoma.
+authorString,"Mohanta YK, Biswas K, Mishra AK, Patra B, Mishra B, Panda J, Avula SK, Varma RS, Panda BP, Nayak D."
+authorList,"{'author': [{'fullName': 'Mohanta YK', 'firstName': 'Yugal Kishore', 'lastName': 'Mohanta', 'initials': 'YK', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-6547-7227'}, 'authorAffiliationDetailsList': {'authorAffiliation': [{'affiliation': 'Nano-biotechnology and Translational Knowledge Laboratory, Department of Applied Biology, School of Biological Sciences, University of Science and Technology Meghalaya Techno City, 9th Mile, Baridua, Ri-Bhoi 793101 Meghalaya India.'}, {'affiliation': 'Centre for Herbal Pharmacology and Environmental Sustainability, Chettinad Hospital and Research Institute, Chettinad Academy of Research and Education Kelambakkam 603103 Tamil Nadu India.'}]}}, {'fullName': 'Biswas K', 'firstName': 'Kunal', 'lastName': 'Biswas', 'initials': 'K', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Centre for Nanoscience & Nanotechnology International Research Centre, Sathyabama Institute of Science and Technology Jeppiaar Nagar, Rajiv Gandhi Salai Chennai 600119 India.'}}}, {'fullName': 'Mishra AK', 'firstName': 'Awdhesh Kumar', 'lastName': 'Mishra', 'initials': 'AK', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology, Yeungnam University Gyeongsan 38541 South Korea.'}}}, {'fullName': 'Patra B', 'firstName': 'Biswajit', 'lastName': 'Patra', 'initials': 'B', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Botany, Fakir Mohan University Balasore 756020 Odisha India.'}}}, {'fullName': 'Mishra B', 'firstName': 'Bishwambhar', 'lastName': 'Mishra', 'initials': 'B', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-6648-0575'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Biotechnology, Chaitanya Bharathi Institute of Technology (CBIT) Gandipet Hyderabad 500075 Telangana India.'}}}, {'fullName': 'Panda J', 'firstName': 'Jibanjyoti', 'lastName': 'Panda', 'initials': 'J', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Nano-biotechnology and Translational Knowledge Laboratory, Department of Applied Biology, School of Biological Sciences, University of Science and Technology Meghalaya Techno City, 9th Mile, Baridua, Ri-Bhoi 793101 Meghalaya India.'}}}, {'fullName': 'Avula SK', 'firstName': 'Satya Kumar', 'lastName': 'Avula', 'initials': 'SK', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-3941-7164'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Natural and Medical Sciences Research Centre, University of Nizwa Nizwa 616 Oman.'}}}, {'fullName': 'Varma RS', 'firstName': 'Rajender S', 'lastName': 'Varma', 'initials': 'RS', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-9731-6228'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Centre of Excellence for Research in Sustainable Chemistry, Department of Chemistry, 20 Federal University of São Carlos 13565-905 São Carlos SP Brazil.'}}}, {'fullName': 'Panda BP', 'firstName': 'Bibhu Prasad', 'lastName': 'Panda', 'initials': 'BP', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-1087-0080'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Environmental Sciences, Department of Chemistry, ITER, Siksha ""O"" Anusandhan (Deemed to be University) Bhubaneswar 751030 Odisha India bibhuprasadpanda@soa.ac.in.'}}}, {'fullName': 'Nayak D', 'firstName': 'Debasis', 'lastName': 'Nayak', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Bioresources and Traditional Knowledge Laboratory, Department of Wildlife and Biodiversity Conservation, Maharaja Sriram Chandra Bhanja Deo University Sriram Chandra Vihar, Takatpur Baripada 757003 India deb63nayak@gmail.com.'}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-9731-6228'}, {'@type': 'ORCID', '#text': '0000-0002-1087-0080'}, {'@type': 'ORCID', '#text': '0000-0002-6547-7227'}, {'@type': 'ORCID', '#text': '0000-0002-6648-0575'}, {'@type': 'ORCID', '#text': '0000-0003-3941-7164'}]}"
+journalInfo,"{'issue': '38', 'volume': '14', 'journalIssueId': '3821474', 'dateOfPublication': '2024 Aug', 'monthOfPublication': '8', 'yearOfPublication': '2024', 'printPublicationDate': '2024-08-01', 'journal': {'title': 'RSC advances', 'ISOAbbreviation': 'RSC Adv', 'medlineAbbreviation': 'RSC Adv', 'NLMid': '101581657', 'ISSN': '2046-2069', 'ESSN': '2046-2069'}}"
+pubYear,2024
+pageInfo,27816-27830
+abstractText,"Phytomedicines are potential immunity-boosting components with effective anticystic properties, minimal side effects, and biomedical applications, making them valuable for combating various diseases. India is renowned globally for Ayurveda, an ancient treatment methodology known for its holistic approach in identifying the root cause of diseases. Tulsi (<i>Ocimum sanctum</i>) is a common household medicine in India. While essential oils from plants like Tulsi have long been recognized for their medicinal properties, there is a gap in understanding their potential in synthesizing gold nanoparticles (AuNPs) and their efficacy against breast carcinoma, particularly in the context of immunosuppressive conditions. We investigated the potential application of essential oils isolated from <i>O. sanctum</i> in the synthesis of AuNPs and their efficacy against MCF-7 breast carcinoma. Gas chromatography-mass spectroscopy identified compounds with potential anticancer effects against breast cancer cells. Synthesised AuNPs displayed high hemocompatibility and antimicrobial activity against nosocomial <i>Pseudomonas aeruginosa</i>, <i>Escherichia coli</i>, <i>Vibrio cholerae</i>, and <i>Bacillus subtilis</i> strains. Os-AuNPs induced chromosomal instability and mitotic arrest in the G2/M cell cycle phase. Subsequent fluorescence and cell cytometry studies demonstrated the systemic release of ROS, depolarisation of mitochondrial membrane potential, and production of apoptotic bodies. DNA damage and comet assays confirmed the anticancer potential of synthesised AuNPs. This study illuminates the potential of <i>O. sanctum</i>-derived AuNPs in breast carcinoma treatment, paving the way for future AuNP-based therapies in biomedicine."
+affiliation,"Nano-biotechnology and Translational Knowledge Laboratory, Department of Applied Biology, School of Biological Sciences, University of Science and Technology Meghalaya Techno City, 9th Mile, Baridua, Ri-Bhoi 793101 Meghalaya India."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic-eCollection
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1039/d4ra04807e'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11367626'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11367626?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,N
+citedByCount,2
+hasData,N
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by-nc
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2024-09-03
+firstIndexDate,2024-09-03
+fullTextReceivedDate,2024-09-04
+dateOfRevision,2024-09-04
+electronicPublicationDate,2024-09-02
+firstPublicationDate,2024-08-01

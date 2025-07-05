@@ -1,0 +1,53 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,39870801
+source,MED
+pmid,39870801
+pmcid,PMC11772576
+fullTextIdList,{'fullTextId': 'PMC11772576'}
+doi,10.1038/s41598-025-87727-9
+title,Nano-biopesticide formulation comprising of silver nanoparticles anchored to Ocimum sanctum: a sustainable approach to pest control in jute farming.
+authorString,"Ghosh A, Majumdar D, Biswas H, Chowdhury A, Podder S."
+authorList,"{'author': [{'fullName': 'Ghosh A', 'firstName': 'Avirup', 'lastName': 'Ghosh', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Ecology and Allergology Lab, Department of Zoology, Golapbag Campus, The University of Burdwan, Burdwan, 713104, West Bengal, India.'}}}, {'fullName': 'Majumdar D', 'firstName': 'Dipanwita', 'lastName': 'Majumdar', 'initials': 'D', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Department of Chemistry, Chandernagore College, Hooghly, Chandannagar, 712136, West Bengal, India.'}}}, {'fullName': 'Biswas H', 'firstName': 'Himani', 'lastName': 'Biswas', 'initials': 'H', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Post Graduate Department of Zoology, Krishnagar Govt. College, Krishnagar, 741101, West Bengal, India.'}}}, {'fullName': 'Chowdhury A', 'firstName': 'Anupam', 'lastName': 'Chowdhury', 'initials': 'A', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Physical Chemistry Section, Department of Chemistry, Jadavpur University, Kolkata, 700032, West Bengal, India.'}}}, {'fullName': 'Podder S', 'firstName': 'Sanjoy', 'lastName': 'Podder', 'initials': 'S', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-1316-164X'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Ecology and Allergology Lab, Department of Zoology, Golapbag Campus, The University of Burdwan, Burdwan, 713104, West Bengal, India. skpzoo2@rediffmail.com.'}}}]}"
+authorIdList,"{'authorId': {'@type': 'ORCID', '#text': '0000-0003-1316-164X'}}"
+dataLinksTagsList,{'dataLinkstag': 'supporting_data'}
+journalInfo,"{'issue': '1', 'volume': '15', 'journalIssueId': '3878777', 'dateOfPublication': '2025 Jan', 'monthOfPublication': '1', 'yearOfPublication': '2025', 'printPublicationDate': '2025-01-01', 'journal': {'title': 'Scientific reports', 'ISOAbbreviation': 'Sci Rep', 'medlineAbbreviation': 'Sci Rep', 'NLMid': '101563288', 'ISSN': '2045-2322', 'ESSN': '2045-2322'}}"
+pubYear,2025
+pageInfo,3414
+abstractText,"The jute hairy caterpillar, Spilosoma obliqua (Lepidoptera: Erebidae) is considered as one of the major threats to jute cultivation. The best eco-friendly methods to combat these jute pests involve administration of nano-biopesticides, as a successful alternative to the toxic chemicals. In this study, a nano-biopesticide formulation containing green synthesized silver nanoparticles (Ag NPs) using Ocimum sanctum leaf extract has been proposed. The characterization studies confirmed significant interactions between the Ag NPs and bioactive components in the nano-biopesticide formulation. The comparative analysis of the aforementioned larval mortality showed better responses in the nano-biopesticide formulation rather than the crude (pure) leaf extract. The LC<sub>50</sub> values were calculated both for the nano-biopesticide formulation and pure extract after 24, 48 and 72 h of treatment. The nano-biopesticide formulation was found to exhibit the lowest and much promising LC<sub>50</sub> value of 93.21 ppm, 23.38 ppm, 5.96 ppm relative to that of LC<sub>50</sub> values of 1590.74 ppm, 459.30 ppm, 102.68 ppm respectively for the crude leaf extract. The synergistic interactions between the components in the nano-biopesticide formulation can be associated with its greater effectiveness as a promising toxicant to the larvae of the jute caterpillar compared to the mere leaf extract, thereby, demonstrating a greener and safer method for effective pest management."
+affiliation,"Ecology and Allergology Lab, Department of Zoology, Golapbag Campus, The University of Burdwan, Burdwan, 713104, West Bengal, India."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+meshHeadingList,"{'meshHeading': [{'majorTopic_YN': 'N', 'descriptorName': 'Animals'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Moths', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'DE', 'qualifierName': 'drug effects', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'N', 'descriptorName': 'Corchorus'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Silver', 'meshQualifierList': {'meshQualifier': [{'abbreviation': 'TO', 'qualifierName': 'toxicity', 'majorTopic_YN': 'N'}, {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}]}}, {'majorTopic_YN': 'N', 'descriptorName': 'Plant Extracts', 'meshQualifierList': {'meshQualifier': [{'abbreviation': 'TO', 'qualifierName': 'toxicity', 'majorTopic_YN': 'N'}, {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}]}}, {'majorTopic_YN': 'N', 'descriptorName': 'X-Ray Diffraction'}, {'majorTopic_YN': 'N', 'descriptorName': 'Lethal Dose 50'}, {'majorTopic_YN': 'N', 'descriptorName': 'Larva'}, {'majorTopic_YN': 'N', 'descriptorName': 'Particle Size'}, {'majorTopic_YN': 'Y', 'descriptorName': 'Agriculture', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'MT', 'qualifierName': 'methods', 'majorTopic_YN': 'N'}}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Metal Nanoparticles', 'meshQualifierList': {'meshQualifier': [{'abbreviation': 'TO', 'qualifierName': 'toxicity', 'majorTopic_YN': 'N'}, {'abbreviation': 'UL', 'qualifierName': 'ultrastructure', 'majorTopic_YN': 'N'}, {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}]}}, {'majorTopic_YN': 'Y', 'descriptorName': 'Biological Control Agents', 'meshQualifierList': {'meshQualifier': [{'abbreviation': 'TO', 'qualifierName': 'toxicity', 'majorTopic_YN': 'N'}, {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}]}}, {'majorTopic_YN': 'N', 'descriptorName': 'Ocimum sanctum', 'meshQualifierList': {'meshQualifier': {'abbreviation': 'CH', 'qualifierName': 'chemistry', 'majorTopic_YN': 'N'}}}]}"
+keywordList,"{'keyword': ['Sustainable pest management', 'Environmental friendly', 'Ocimum Sanctum', 'Jute', 'Ag Nanoparticles', 'Bio-active Components', 'Spilosoma Obliqua', 'Crude Tulsi Extract', 'Lc50 Analysis', 'Nano-biopesticide']}"
+chemicalList,"{'chemical': [{'name': 'Plant Extracts', 'registryNumber': '0'}, {'name': 'Biological Control Agents', 'registryNumber': '0'}, {'name': 'Silver', 'registryNumber': '3M4G523W1G'}]}"
+subsetList,"{'subset': {'code': 'IM', 'name': 'Index Medicus'}}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'doi', 'site': 'Unpaywall', 'url': 'https://doi.org/10.1038/s41598-025-87727-9'}, {'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.1038/s41598-025-87727-9'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11772576'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11772576?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,Y
+license,cc by-nc-nd
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCompletion,2025-01-30
+dateOfCreation,2025-01-27
+firstIndexDate,2025-01-28
+fullTextReceivedDate,2025-02-03
+dateOfRevision,2025-04-10
+electronicPublicationDate,2025-01-27
+firstPublicationDate,2025-01-27

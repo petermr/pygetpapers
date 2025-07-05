@@ -1,0 +1,48 @@
+,Info_By_EuropePMC_Api
+downloaded,True
+htmlmade,False
+id,40219171
+source,MED
+pmid,40219171
+pmcid,PMC11991398
+fullTextIdList,{'fullTextId': 'PMC11991398'}
+doi,10.3390/plants14071102
+title,"Floristic Inventory and Diversity of Urban Green Spaces in the Municipality of Assemini (Sardinia, Italy)."
+authorString,"Sarigu M, Podda L, Calvia G, Lallai A, Bacchetta G."
+authorList,"{'author': [{'fullName': 'Sarigu M', 'firstName': 'Marco', 'lastName': 'Sarigu', 'initials': 'M', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-1448-3096'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Center for Conservation of Biodiversity (CCB), Department of Life and Environmental Sciences, University of Cagliari, Viale Sant'Ignazio da Laconi, 13, 09123 Cagliari, Italy.""}}}, {'fullName': 'Podda L', 'firstName': 'Lina', 'lastName': 'Podda', 'initials': 'L', 'authorId': {'@type': 'ORCID', '#text': '0000-0001-6737-737X'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Center for Conservation of Biodiversity (CCB), Department of Life and Environmental Sciences, University of Cagliari, Viale Sant'Ignazio da Laconi, 13, 09123 Cagliari, Italy.""}}}, {'fullName': 'Calvia G', 'firstName': 'Giacomo', 'lastName': 'Calvia', 'initials': 'G', 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': 'Faculty of Agricultural, Environmental and Food Sciences, Free University of Bozen-Bolzano, Piazza Università, 5, 39100 Bozen-Bolzano, Italy.'}}}, {'fullName': 'Lallai A', 'firstName': 'Andrea', 'lastName': 'Lallai', 'initials': 'A', 'authorId': {'@type': 'ORCID', '#text': '0000-0003-4810-7096'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Center for Conservation of Biodiversity (CCB), Department of Life and Environmental Sciences, University of Cagliari, Viale Sant'Ignazio da Laconi, 13, 09123 Cagliari, Italy.""}}}, {'fullName': 'Bacchetta G', 'firstName': 'Gianluigi', 'lastName': 'Bacchetta', 'initials': 'G', 'authorId': {'@type': 'ORCID', '#text': '0000-0002-1714-3978'}, 'authorAffiliationDetailsList': {'authorAffiliation': {'affiliation': ""Center for Conservation of Biodiversity (CCB), Department of Life and Environmental Sciences, University of Cagliari, Viale Sant'Ignazio da Laconi, 13, 09123 Cagliari, Italy.""}}}]}"
+authorIdList,"{'authorId': [{'@type': 'ORCID', '#text': '0000-0001-6737-737X'}, {'@type': 'ORCID', '#text': '0000-0002-1448-3096'}, {'@type': 'ORCID', '#text': '0000-0002-1714-3978'}, {'@type': 'ORCID', '#text': '0000-0003-4810-7096'}]}"
+journalInfo,"{'issue': '7', 'volume': '14', 'journalIssueId': '3929103', 'dateOfPublication': '2025 Apr', 'monthOfPublication': '4', 'yearOfPublication': '2025', 'printPublicationDate': '2025-04-01', 'journal': {'title': 'Plants (Basel, Switzerland)', 'ISOAbbreviation': 'Plants (Basel)', 'medlineAbbreviation': 'Plants (Basel)', 'NLMid': '101596181', 'ISSN': '2223-7747', 'ESSN': '2223-7747'}}"
+pubYear,2025
+pageInfo,1102
+abstractText,"Urban greenery is a key component of green infrastructure, contributing to environmental sustainability and urban well-being. Between 2019 and 2020, a comprehensive inventory of ornamental flora was conducted in Assemini (Sardinia, Italy), documenting 198 vascular plant taxa, including 155 exotic, 41 native, and 2 cryptogenic species from 65 families. Among the exotic species, most were neophytes (63%), and 14% were archaeophytes. In terms of life forms, scapose phanerophytes, with a tree-like growth habit, dominated (45%), while Mediterranean and American chorotypes were the most represented, each accounting for 21%. A total of 7356 plants were recorded, comprising trees (61.3%), shrubs (32.3%), and climbers (5.7%), belonging to 90 shrub, 89 tree, and 19 climber taxa. The highest number of plants was found in ""Green Areas"" and ""Schools"", which also exhibited the greatest biodiversity, with 136 different taxa each. The most planted species were <i>Quercus ilex</i>, <i>Nerium oleander</i>, and <i>Olea europaea</i>. The survey also identified 21 allergenic, 36 toxic, and 35 mechanically harmful species, primarily located in ""Green Areas"" and ""Schools"". Biodiversity analysis using the Shannon Index revealed significant diversity, with Fabaceae, Apocynaceae, and Fagaceae emerging as the most represented families. These findings highlight the importance of plant inventories in urban green space management for sustainable planning. Well-maintained green spaces can enhance ecological resilience, improve public health, and promote social cohesion in future urban developments."
+affiliation,"Center for Conservation of Biodiversity (CCB), Department of Life and Environmental Sciences, University of Cagliari, Viale Sant'Ignazio da Laconi, 13, 09123 Cagliari, Italy."
+publicationStatus,epublish
+language,eng
+pubModel,Electronic
+pubTypeList,"{'pubType': ['research-article', 'Journal Article']}"
+keywordList,"{'keyword': ['Biodiversity', 'Sustainability', 'Invasive species', 'Green Cities', 'Public Green', 'Inventory Ornamental Plants']}"
+fullTextUrlList,"{'fullTextUrl': [{'availability': 'Subscription required', 'availabilityCode': 'S', 'documentStyle': 'doi', 'site': 'DOI', 'url': 'https://doi.org/10.3390/plants14071102'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'html', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11991398'}, {'availability': 'Open access', 'availabilityCode': 'OA', 'documentStyle': 'pdf', 'site': 'Europe_PMC', 'url': 'https://europepmc.org/articles/PMC11991398?pdf=render'}]}"
+isOpenAccess,Y
+inEPMC,Y
+inPMC,Y
+hasPDF,Y
+hasBook,N
+hasSuppl,Y
+citedByCount,0
+hasData,Y
+hasReferences,Y
+hasTextMinedTerms,Y
+hasDbCrossReferences,N
+hasLabsLinks,N
+license,cc by
+hasEvaluations,N
+authMan,N
+epmcAuthMan,N
+nihAuthMan,N
+hasTMAccessionNumbers,N
+dateOfCreation,2025-04-12
+firstIndexDate,2025-04-13
+fullTextReceivedDate,2025-04-14
+dateOfRevision,2025-04-14
+electronicPublicationDate,2025-04-02
+firstPublicationDate,2025-04-02
