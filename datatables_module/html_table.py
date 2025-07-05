@@ -150,9 +150,34 @@ class HtmlTable:
             if transform_dict and key in transform_dict:
                 # Apply transformation if available
                 transformed_value = transform_dict[key](value)
-                td.text = str(transformed_value)
+                cls._set_cell_content(td, transformed_value)
             else:
-                td.text = str(value)
+                cls._set_cell_content(td, value)
+    
+    @classmethod
+    def _set_cell_content(cls, cell, value):
+        """
+        Set cell content, handling both text and HTML content.
+        
+        Args:
+            cell: Cell element (td or th)
+            value: Content to set (string or HTML string)
+        """
+        value_str = str(value)
+        
+        # Check if the value contains HTML tags
+        if '<' in value_str and '>' in value_str:
+            try:
+                # Parse HTML content and append to cell
+                html_content = ET.fromstring(f"<div>{value_str}</div>")
+                for child in html_content:
+                    cell.append(child)
+            except ET.XMLSyntaxError:
+                # If HTML parsing fails, treat as plain text
+                cell.text = value_str
+        else:
+            # Plain text content
+            cell.text = value_str
 
     @classmethod
     def make_skeleton_table(cls, colheads: List[str]):
