@@ -24,10 +24,14 @@ A modern web interface for pygetpapers, making scholarly paper discovery and dow
 
 3. **Run the Streamlit application**:
    ```bash
-   streamlit run streamlit_app.py
+   # Option 1: Use the convenience script (recommended)
+   python run_streamlit.py
+   
+   # Option 2: Run directly with streamlit
+   streamlit run streamlit_app.py --server.port 8502
    ```
 
-4. **Open your browser** and navigate to `http://localhost:8501`
+4. **Open your browser** and navigate to `http://localhost:8502`
 
 ## 🎯 Features
 
@@ -194,7 +198,7 @@ git checkout v20
 pip install -r requirements.txt
 
 # Run in development mode
-streamlit run streamlit_app.py --server.port 8501 --server.address localhost
+streamlit run streamlit_app.py --server.port 8502 --server.address localhost
 ```
 
 ### Testing
@@ -203,7 +207,7 @@ streamlit run streamlit_app.py --server.port 8501 --server.address localhost
 pygetpapers --help
 
 # Test Streamlit UI
-streamlit run streamlit_app.py
+python run_streamlit.py
 ```
 
 ### Customization

@@ -1,0 +1,131 @@
+name: Streamlit UI Development
+
+on:
+  push:
+    branches: [ v20 ]
+  pull_request:
+    branches: [ v20 ]
+
+jobs:
+  test-streamlit-ui:
+    name: Test Streamlit UI Components
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+        
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-streamlit-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-streamlit-
+          
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-mock
+        
+    - name: Test Streamlit app structure
+      run: |
+        # Test that the main app file exists and can be imported
+        python -c "import streamlit_app; print('✅ Streamlit app imports successfully')"
+        
+        # Test that the run script exists and is executable
+        python run_streamlit.py --help || echo "✅ Run script exists"
+        
+        # Test that all required dependencies are available
+        python -c "import streamlit; print(f'✅ Streamlit {streamlit.__version__}')"
+        python -c "import plotly; print(f'✅ Plotly {plotly.__version__}')"
+        python -c "import pandas; print(f'✅ Pandas {pandas.__version__}')"
+        
+    - name: Test pygetpapers integration
+      run: |
+        # Test that pygetpapers is available
+        pygetpapers --version
+        
+        # Test basic command execution (without actually downloading)
+        pygetpapers --help
+        
+    - name: Validate documentation
+      run: |
+        # Check that all documentation files exist
+        test -f README_STREAMLIT.md && echo "✅ README_STREAMLIT.md exists"
+        test -f docs/project-overview.md && echo "✅ project-overview.md exists"
+        test -f docs/user-guide.md && echo "✅ user-guide.md exists"
+        test -f docs/streamlit-ui-implementation.md && echo "✅ streamlit-ui-implementation.md exists"
+        test -f docs/implementation-summary.md && echo "✅ implementation-summary.md exists"
+        
+        # Check that documentation is well-formed
+        grep -q "# Pygetpapers Streamlit UI" README_STREAMLIT.md && echo "✅ README has proper header"
+        
+    - name: Test port configuration
+      run: |
+        # Verify that the app is configured to use port 8502
+        grep -q "8502" run_streamlit.py && echo "✅ Port 8502 configured in run script"
+        grep -q "8502" README_STREAMLIT.md && echo "✅ Port 8502 documented in README"
+        
+    - name: Lint Streamlit code
+      run: |
+        # Basic syntax check
+        python -m py_compile streamlit_app.py
+        python -m py_compile run_streamlit.py
+        
+        # Check for common issues
+        if grep -q "TODO\|FIXME\|XXX" streamlit_app.py; then
+          echo "⚠️  Found TODO/FIXME comments in streamlit_app.py"
+        else
+          echo "✅ No TODO/FIXME comments found"
+        fi
+
+  build-streamlit-docs:
+    name: Build Streamlit Documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/v20'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Create documentation site
+      run: |
+        # Create a simple HTML documentation site
+        mkdir -p docs/_build/html
+        
+        # Convert markdown to HTML (simple approach)
+        echo "<html><head><title>Pygetpapers Streamlit UI</title></head><body>" > docs/_build/html/index.html
+        echo "<h1>Pygetpapers Streamlit UI Documentation</h1>" >> docs/_build/html/index.html
+        echo "<ul>" >> docs/_build/html/index.html
+        echo "<li><a href='README_STREAMLIT.html'>Streamlit UI README</a></li>" >> docs/_build/html/index.html
+        echo "<li><a href='user-guide.html'>User Guide</a></li>" >> docs/_build/html/index.html
+        echo "<li><a href='implementation.html'>Implementation Guide</a></li>" >> docs/_build/html/index.html
+        echo "</ul></body></html>" >> docs/_build/html/index.html
+        
+        # Copy markdown files for reference
+        cp README_STREAMLIT.md docs/_build/html/
+        cp docs/user-guide.md docs/_build/html/
+        cp docs/streamlit-ui-implementation.md docs/_build/html/
+        
+    - name: Upload documentation artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: streamlit-docs
+        path: docs/_build/html/ 

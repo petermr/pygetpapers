@@ -1,28 +1,194 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=60.3.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygetpapers"
-version = "2.0.0"
-description = "A tool for programmatically getting academic papers"
+version = "1.2.5a2"
+description = "A tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits, and systematically downloads the articles without further interaction."
 readme = "README.md"
-license = { text = "MIT" }
-authors = [{ name = "Your Name", email = "you@example.com" }]
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Ayush Garg", email = "ayushgarg@outlook.com"},
+    {name = "Peter Murray-Rust", email = "pm286@cam.ac.uk"}
+]
+maintainers = [
+    {name = "Peter Murray-Rust", email = "pm286@cam.ac.uk"}
+]
+keywords = ["text-mining", "scientific-papers", "research", "download", "api"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 requires-python = ">=3.8"
 dependencies = [
-    "requests",
-    "click",
-    "lxml",
-    # Add others as needed
+    "arxiv>=2.1.0",
+    "coloredlogs>=15.0.1",
+    "ConfigArgParse>=1.5.3",
+    "dict2xml>=1.7.0",
+    "habanero>=1.0.0",
+    "lxml>=4.7.1",
+    "pandas>=1.3.5",
+    "requests>=2.27.1",
+    "tqdm>=4.62.3",
+    "xmltodict>=0.12.0",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "black", "flake8", "mypy"]
-docs = ["mkdocs", "mkdocs-material"]
+streamlit = [
+    "streamlit>=1.28.0",
+    "plotly>=5.15.0",
+]
+dev = [
+    "pytest>=6.2.5",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+    "flake8>=5.0.0",
+    "black>=22.0.0",
+    "isort>=5.10.0",
+    "bandit>=1.7.0",
+    "safety>=2.0.0",
+    "sphinx>=5.0.0",
+    "sphinx-rtd-theme>=1.0.0",
+]
+test = [
+    "pytest>=6.2.5",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+]
+
+[project.scripts]
+pygetpapers = "pygetpapers.pygetpapers:main"
+
+[project.urls]
+Homepage = "https://github.com/petermr/pygetpapers"
+Documentation = "https://pygetpapers.readthedocs.io/"
+Repository = "https://github.com/petermr/pygetpapers"
+"Bug Tracker" = "https://github.com/petermr/pygetpapers/issues"
+"Streamlit UI" = "https://github.com/petermr/pygetpapers/tree/v20#streamlit-ui"
 
 [tool.setuptools.packages.find]
-where = ["pygetpapers"]
+where = ["."]
+include = ["pygetpapers*"]
 
-[tool.setuptools]
-include-package-data = true
+[tool.black]
+line-length = 127
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 127
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+[tool.flake8]
+max-line-length = 127
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    ".eggs",
+    "*.egg-info",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--tb=short",
+    "--cov=pygetpapers",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "streamlit: marks tests as Streamlit UI tests",
+]
+
+[tool.coverage.run]
+source = ["pygetpapers"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/env/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "docs"]
+skips = ["B101", "B601"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "streamlit.*",
+    "plotly.*",
+    "pandas.*",
+    "numpy.*",
+]
+ignore_missing_imports = true
