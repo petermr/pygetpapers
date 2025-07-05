@@ -112,25 +112,37 @@ class PygetpapersUI:
         try:
             cmd = ["pygetpapers"] + args
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+            
+            # Check if the command was successful
+            success = result.returncode == 0
+            
+            # If successful but no stdout, create a summary
+            if success and not result.stdout.strip():
+                result.stdout = f"Successfully executed: pygetpapers {' '.join(args)}\n"
+                result.stdout += "Check the output directory for downloaded files."
+            
             return {
-                "success": result.returncode == 0,
+                "success": success,
                 "stdout": result.stdout,
                 "stderr": result.stderr,
-                "returncode": result.returncode
+                "returncode": result.returncode,
+                "command": " ".join(cmd)
             }
         except subprocess.TimeoutExpired:
             return {
                 "success": False,
                 "stdout": "",
                 "stderr": "Command timed out after 5 minutes",
-                "returncode": -1
+                "returncode": -1,
+                "command": " ".join(cmd)
             }
         except Exception as e:
             return {
                 "success": False,
                 "stdout": "",
                 "stderr": str(e),
-                "returncode": -1
+                "returncode": -1,
+                "command": " ".join(cmd)
             }
 
     def build_query_string(self, query_parts):
@@ -213,8 +225,17 @@ class PygetpapersUI:
         
         with col2:
             # Query input
+            # Check if there's a generated query from Query Builder
+            if "generated_query" in st.session_state and st.session_state.generated_query:
+                default_query = st.session_state.generated_query
+                # Clear the generated query after using it
+                del st.session_state.generated_query
+            else:
+                default_query = ""
+            
             query = st.text_area(
                 "Search Query:",
+                value=default_query,
                 placeholder="Enter your search query (e.g., 'artificial intelligence' OR 'machine learning')",
                 height=100
             )
@@ -251,10 +272,18 @@ class PygetpapersUI:
             save_query = st.checkbox("Save Query Configuration", value=False)
         
         # Output directory
+        if "output_dir" not in st.session_state:
+            st.session_state.output_dir = f"pygetpapers_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        
         output_dir = st.text_input(
             "Output Directory:",
-            value=f"pygetpapers_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            value=st.session_state.output_dir,
+            key="output_dir_input"
         )
+        
+        # Update session state when user changes the value
+        if output_dir != st.session_state.output_dir:
+            st.session_state.output_dir = output_dir
         
         # Search button
         if st.button("🔍 Search and Download", type="primary", use_container_width=True):
@@ -302,7 +331,21 @@ class PygetpapersUI:
                 
                 # Show results summary
                 st.markdown("### Results Summary")
-                st.code(result["stdout"])
+                
+                # Display command that was executed
+                st.markdown("**Command executed:**")
+                st.code(f"pygetpapers {' '.join(args)}")
+                
+                # Display output
+                if result["stdout"].strip():
+                    st.markdown("**Output:**")
+                    st.code(result["stdout"])
+                else:
+                    st.info("📝 Command completed successfully. Check the output directory for downloaded files.")
+                
+                # Show output directory info
+                st.markdown("**Output Directory:**")
+                st.code(output_dir)
                 
                 # Store output directory for corpus management
                 if "corpora" not in st.session_state:
@@ -314,9 +357,26 @@ class PygetpapersUI:
                     "date_created": datetime.now().isoformat(),
                     "papers_count": limit
                 })
+                
+                # Show next steps
+                st.markdown("**Next Steps:**")
+                st.markdown("- Check the output directory for downloaded papers")
+                st.markdown("- Use the Corpus Manager to view and analyze your papers")
+                st.markdown("- The corpus has been added to your corpus list")
+                
             else:
                 st.error("❌ Error occurred during download")
+                st.markdown("**Command executed:**")
+                st.code(f"pygetpapers {' '.join(args)}")
+                st.markdown("**Error output:**")
                 st.code(result["stderr"])
+                
+                # Provide troubleshooting suggestions
+                st.markdown("**Troubleshooting:**")
+                st.markdown("- Check your internet connection")
+                st.markdown("- Verify the query syntax")
+                st.markdown("- Try reducing the result limit")
+                st.markdown("- Check if the repository is available")
 
     def render_query_builder(self):
         """Render the advanced query builder"""
