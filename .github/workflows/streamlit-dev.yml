@@ -10,6 +10,7 @@ jobs:
   test-streamlit-ui:
     name: Test Streamlit UI Components
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     
     steps:
     - name: Checkout code
@@ -21,7 +22,7 @@ jobs:
         python-version: "3.9"
         
     - name: Cache pip dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-streamlit-${{ hashFiles('**/requirements.txt') }}
@@ -90,6 +91,7 @@ jobs:
     name: Build Streamlit Documentation
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/v20'
+    timeout-minutes: 15
     
     steps:
     - name: Checkout code
@@ -120,12 +122,12 @@ jobs:
         echo "</ul></body></html>" >> docs/_build/html/index.html
         
         # Copy markdown files for reference
-        cp README_STREAMLIT.md docs/_build/html/
-        cp docs/user-guide.md docs/_build/html/
-        cp docs/streamlit-ui-implementation.md docs/_build/html/
+        cp README_STREAMLIT.md docs/_build/html/ || echo "README_STREAMLIT.md not found"
+        cp docs/user-guide.md docs/_build/html/ || echo "user-guide.md not found"
+        cp docs/streamlit-ui-implementation.md docs/_build/html/ || echo "streamlit-ui-implementation.md not found"
         
     - name: Upload documentation artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: streamlit-docs
         path: docs/_build/html/ 
