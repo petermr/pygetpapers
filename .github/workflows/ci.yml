@@ -57,9 +57,17 @@ jobs:
       run: |
         isort --check-only --diff .
         
-    - name: Run tests
+    - name: Run fast CI tests
       run: |
-        pytest tests/ -v --cov=pygetpapers --cov-report=xml --cov-report=term-missing --timeout=300
+        # Run fast tests that don't make real API calls
+        python tests/test_ci.py
+        
+        # Run unit tests only (skip integration tests that make API calls)
+        pytest tests/test_extensions.py -v
+        pytest tests/test_streamlit_ui.py -v
+        
+        # Skip test_core.py as it makes real API calls and is slow
+        echo "Skipping test_core.py (integration tests) for CI speed"
         
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
