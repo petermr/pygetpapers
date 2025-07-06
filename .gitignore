@@ -10,5 +10,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.coverage
 .flake8
 .Python
