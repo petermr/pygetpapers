@@ -35,6 +35,10 @@ jobs:
         pip install -r requirements.txt
         pip install pytest pytest-mock
         
+    - name: Install pygetpapers in development mode
+      run: |
+        pip install -e .
+        
     - name: Test Streamlit app structure
       run: |
         # Test that the main app file exists and has correct syntax
