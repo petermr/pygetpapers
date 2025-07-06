@@ -41,8 +41,12 @@ jobs:
         python -m py_compile streamlit_app.py
         echo "✅ Streamlit app syntax is valid"
         
-        # Test that the run script exists and is executable
-        python run_streamlit.py --help || echo "✅ Run script exists"
+        # Test that the run script exists and has valid syntax
+        python -m py_compile run_streamlit.py
+        echo "✅ Run script syntax is valid"
+        
+        # Test that the script can be imported (without running it - with 30-second timeout)
+        python -c "import signal; import sys; signal.alarm(30); import run_streamlit; print('✅ Run script imported successfully')"
         
         # Test that all required dependencies are available
         python -c "import streamlit; print(f'✅ Streamlit {streamlit.__version__}')"
