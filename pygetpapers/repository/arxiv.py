@@ -1,11 +1,10 @@
 import logging
 import os
 
+import arxiv as arxiv_wrapper
 from tqdm import tqdm
 
-import arxiv as arxiv_wrapper
 from pygetpapers.download_tools import DownloadTools
-from pygetpapers.pgexceptions import PygetpapersError
 
 PDFDOWNLOADED = "pdfdownloaded"
 

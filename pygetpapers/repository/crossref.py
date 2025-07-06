@@ -4,7 +4,6 @@ import os
 from habanero import Crossref
 
 from pygetpapers.download_tools import DownloadTools
-from pygetpapers.pgexceptions import PygetpapersError
 from pygetpapers.repositoryinterface import RepositoryInterface
 
 crossref_file_name = "crossref_result"

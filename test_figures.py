@@ -3,8 +3,8 @@
 Test script for figures extraction functionality
 """
 
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Add the current directory to Python path

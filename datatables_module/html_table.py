@@ -4,7 +4,8 @@ HTML table utilities for working with DataTables.
 
 import collections
 import logging
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional
+
 import lxml.etree as ET
 
 logger = logging.getLogger(__name__)

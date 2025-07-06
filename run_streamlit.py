@@ -4,9 +4,9 @@ Script to run the Pygetpapers Streamlit UI on port 8502
 This avoids conflicts with other Streamlit applications running on port 8501
 """
 
+import os
 import subprocess
 import sys
-import os
 
 
 def main():

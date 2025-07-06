@@ -2,12 +2,13 @@
 Core corpus management functionality.
 """
 
+import json
 import logging
 from pathlib import Path
-from typing import List, Dict, Optional, Any, Union
-from collections import defaultdict
-import json
+from typing import Any, Dict, List, Optional, Union
+
 import lxml.etree as ET
+
 from corpus_module.query import CorpusQuery
 
 logger = logging.getLogger(__name__)
@@ -39,9 +40,11 @@ class AmiCorpus:
         Create new corpus with optional input data.
 
         Args:
-            topdir: Input directory with files/subdirs as possible corpus components
+            topdir: Input directory with files/subdirs as possible corpus
+                components
             infiles: List of files to use (alternative to globstr)
-            globstr: Create infiles using globbing under topdir (requires topdir)
+            globstr: Create infiles using globbing under topdir (requires
+                topdir)
             outfile: Output file path
             mkdir: Make topdir if doesn't exist (default=False)
             make_descendants: Makes AmiCorpusContainers for directories on tree
@@ -49,11 +52,15 @@ class AmiCorpus:
         """
         self.topdir = Path(topdir) if topdir else None
         if self.topdir and not self.topdir.is_dir():
-            raise ValueError(f"AmiCorpus() requires valid directory {self.topdir}")
+            raise ValueError(
+                f"AmiCorpus() requires valid directory {self.topdir}"
+            )
 
         self.container_by_file = dict()
         # rootnode
-        self.ami_container = self.create_corpus_container(self.topdir, make_descendants=make_descendants, mkdir=mkdir)
+        self.ami_container = self.create_corpus_container(
+            self.topdir, make_descendants=make_descendants, mkdir=mkdir
+        )
         self.infiles = infiles
         self.outfile = Path(outfile) if outfile else None
         self.globstr = globstr
@@ -89,18 +96,24 @@ outfile: {self.outfile}
     def _make_infiles(self):
         """Create infiles list from globstr if not provided."""
         if self.infiles:
-            logger.info(f"taking infiles from list")
+            logger.info("taking infiles from list")
         else:
             if self.topdir and self.globstr:
-                self.infiles = self._posix_glob(f"{self.topdir}/{self.globstr}", recursive=True)
+                self.infiles = self._posix_glob(
+                    f"{self.topdir}/{self.globstr}", recursive=True
+                )
         if self.infiles is None:
-            logger.error(f"self.infiles is None")
+            logger.error("self.infiles is None")
             return
         logger.info(f"inputting {len(self.infiles)} files")
         return self.infiles
 
     def create_corpus_container(
-        self, file: Optional[Union[str, Path]], bib_type: str = "None", make_descendants: bool = False, mkdir: bool = False
+        self,
+        file: Optional[Union[str, Path]],
+        bib_type: str = "None",
+        make_descendants: bool = False,
+        mkdir: bool = False,
     ):
         """
         Create container as child of self.
@@ -141,7 +154,9 @@ outfile: {self.outfile}
         if file is None:
             file = self.root_dir
         if file is None or not Path(file).is_dir():
-            logger.error(f"Cannot make file children for {file}")
+            logger.error(
+                f"Cannot make file children for {file}"
+            )
             return
         files = self._get_children(file)
         for f in files:
@@ -155,7 +170,10 @@ outfile: {self.outfile}
 
     @classmethod
     def make_datatables(
-        cls, indir: Union[str, Path], outdir: Optional[Union[str, Path]] = None, outfile_h: Optional[Union[str, Path]] = None
+        cls,
+        indir: Union[str, Path],
+        outdir: Optional[Union[str, Path]] = None,
+        outfile_h: Optional[Union[str, Path]] = None,
     ):
         """
         Create a JQuery DataTables HTML file from an AmiCorpus.
@@ -180,7 +198,12 @@ outfile: {self.outfile}
 
         if epmc_infile.exists():
             cls.read_json_create_write_html_table(
-                epmc_infile, outfile_h, wanted_keys=None, datatables=datatables, table_id=None, config_ini=config_ini
+                epmc_infile,
+                outfile_h,
+                wanted_keys=None,
+                datatables=datatables,
+                table_id=None,
+                config_ini=config_ini,
             )
             return
 
@@ -188,7 +211,12 @@ outfile: {self.outfile}
         infile = Path(indir) / EUPMC_RESULTS_JSON
         if infile.exists():
             cls.read_json_create_write_html_table(
-                infile, outfile_h, wanted_keys=None, datatables=datatables, table_id=None, config_ini=config_ini
+                infile,
+                outfile_h,
+                wanted_keys=None,
+                datatables=datatables,
+                table_id=None,
+                config_ini=config_ini,
             )
             return
 
@@ -226,7 +254,8 @@ outfile: {self.outfile}
             from datatables_module import Datatables
 
             htmlx, tbody = Datatables.create_table(
-                labels=list(data[0].keys()) if data else [], table_id=table_id or "corpus_table"
+                labels=list(data[0].keys()) if data else [],
+                table_id=table_id or "corpus_table",
             )
 
             # Add data rows
@@ -240,7 +269,9 @@ outfile: {self.outfile}
 
             # Write to file
             with open(outfile_h, "w", encoding="utf-8") as f:
-                f.write(ET.tostring(htmlx, encoding="unicode", pretty_print=True))
+                f.write(
+                    ET.tostring(htmlx, encoding="unicode", pretty_print=True)
+                )
 
     def list_files(self, globstr: str) -> List[Path]:
         """
@@ -253,11 +284,18 @@ outfile: {self.outfile}
             List of matching file paths
         """
         if globstr and self.root_dir:
-            return self._posix_glob(str(self.root_dir / globstr), recursive=True)
+            return self._posix_glob(
+                str(self.root_dir / globstr), recursive=True
+            )
         return []
 
     def create_datatables_html_with_filenames(
-        self, html_glob: str, labels: List[str], table_id: str, outpath: Optional[Union[str, Path]] = None, debug: bool = True
+        self,
+        html_glob: str,
+        labels: List[str],
+        table_id: str,
+        outpath: Optional[Union[str, Path]] = None,
+        debug: bool = True,
     ):
         """
         Create DataTables HTML with filenames.
@@ -276,11 +314,15 @@ outfile: {self.outfile}
 
         from datatables_module import Datatables
 
-        self.datables_html, tbody = Datatables._create_html_for_datatables(labels, table_id)
+        self.datables_html, tbody = Datatables._create_html_for_datatables(
+            labels, table_id
+        )
 
         for html_file in html_files:
             if outpath:
-                offset = self._get_relative_path(html_file, Path(outpath).parent, walk_up=True)
+                offset = self._get_relative_path(
+                    html_file, Path(outpath).parent, walk_up=True
+                )
             else:
                 offset = html_file.name
 
@@ -295,7 +337,13 @@ outfile: {self.outfile}
 
         if outpath:
             with open(outpath, "w", encoding="utf-8") as f:
-                f.write(ET.tostring(self.datables_html, encoding="unicode", pretty_print=True))
+                f.write(
+                    ET.tostring(
+                        self.datables_html,
+                        encoding="unicode",
+                        pretty_print=True,
+                    )
+                )
 
         return self.datables_html
 
@@ -310,7 +358,9 @@ outfile: {self.outfile}
             List of file paths
         """
         if self.globstr:
-            self.infiles = self._posix_glob(self.globstr, recursive=True)[:maxfiles]
+            self.infiles = self._posix_glob(
+                self.globstr, recursive=True
+            )[:maxfiles]
         return self.infiles
 
     def _make_outfile(self):
@@ -339,13 +389,20 @@ outfile: {self.outfile}
         """
         corpus_query = self.corpus_queries.get(query_id)
         if not corpus_query:
-            corpus_query = CorpusQuery(query_id=query_id, phrasefile=phrasefile, phrases=phrases, outfile=outfile)
+            corpus_query = CorpusQuery(
+                query_id=query_id,
+                phrasefile=phrasefile,
+                phrases=phrases,
+                outfile=outfile,
+            )
             self.corpus_queries[query_id] = corpus_query
             corpus_query.corpus = self
 
         return corpus_query
 
-    def search_files_with_queries(self, query_ids: Union[str, List[str]], debug: bool = True) -> Dict[str, Any]:
+    def search_files_with_queries(
+        self, query_ids: Union[str, List[str]], debug: bool = True
+    ) -> Dict[str, Any]:
         """
         Run queries. Assumes queries have been loaded and are recallable by ID.
 
@@ -360,18 +417,30 @@ outfile: {self.outfile}
         if isinstance(query_ids, str):
             query_ids = [query_ids]
         elif not isinstance(query_ids, list):
-            raise ValueError(f"queries requires id/s as list or str, found {type(query_ids)}")
+            raise ValueError(
+                f"queries requires id/s as list or str, found {type(query_ids)}"
+            )
 
         for query_id in query_ids:
             query = self.corpus_queries.get(query_id)
             if query is None:
-                logger.error(f"cannot find query: {query_id}")
+                err_msg = (
+                    "cannot find query: "
+                    + str(query_id)
+                )
+                logger.error(err_msg)
                 continue
-            logger.debug(f"outfile==> {query.outfile}")
+            dbg_msg = (
+                "outfile==> "
+                + str(query.outfile)
+            )
+            logger.debug(dbg_msg)
 
             # This would need to be implemented based on the search functionality
             # For now, we'll create a placeholder
-            logger.info(f"Running query: {query_id}")
+            logger.info(
+                f"Running query: {query_id}"
+            )
 
         return html_by_query_id
 
@@ -384,7 +453,9 @@ outfile: {self.outfile}
         """Get child files/directories of a directory."""
         return list(Path(directory).iterdir())
 
-    def _get_relative_path(self, file_path: Path, base_path: Path, walk_up: bool = False) -> str:
+    def _get_relative_path(
+        self, file_path: Path, base_path: Path, walk_up: bool = False
+    ) -> str:
         """Get relative path from base path."""
         try:
             return str(file_path.relative_to(base_path))
@@ -416,14 +487,16 @@ class AmiCorpusContainer:
             exist_ok: Whether to allow existing directory
         """
         if not isinstance(ami_corpus, AmiCorpus):
-            raise ValueError(f"ami_corpus has wrong type {type(ami_corpus)}")
+            raise ValueError(
+                f"ami_corpus has wrong type {type(ami_corpus)}"
+            )
 
         self.ami_corpus = ami_corpus
         self.file = Path(file)
         self.ami_corpus.container_by_file[self.file] = self
 
         if not file:
-            logger.error(f"No file argument")
+            logger.error("No file argument")
             return None
 
         self.bib_type = bib_type
@@ -437,13 +510,21 @@ class AmiCorpusContainer:
         if self.ami_corpus and self.file and self.file.is_dir():
             child_nodes = self.ami_corpus._get_children(self.file)
             for child_node in child_nodes:
-                child_container = AmiCorpusContainer(self.ami_corpus, child_node)
-                child_container.bib_type = "" if child_node.is_dir() else "file"
+                child_container = AmiCorpusContainer(
+                    self.ami_corpus, child_node
+                )
+                child_container.bib_type = (
+                    "" if child_node.is_dir() else "file"
+                )
                 child_containers.append(child_container)
         return child_containers
 
     def create_corpus_container(
-        self, filename: str, bib_type: str = "unknown", make_descendants: bool = False, mkdir: bool = False
+        self,
+        filename: str,
+        bib_type: str = "unknown",
+        make_descendants: bool = False,
+        mkdir: bool = False,
     ):
         """
         Create a child container and optionally its actual directory.
@@ -469,11 +550,18 @@ class AmiCorpusContainer:
                 logger.error(f"{path} exists but is not a directory")
                 return None
 
-        corpus_container = AmiCorpusContainer(self.ami_corpus, path, bib_type=bib_type, mkdir=mkdir)
+        corpus_container = AmiCorpusContainer(
+            self.ami_corpus, path, bib_type=bib_type, mkdir=mkdir
+        )
         self.child_container_list.append(corpus_container)
         return corpus_container
 
-    def create_document(self, filename: str, text: Optional[str] = None, type: str = "unknown") -> Path:
+    def create_document(
+        self,
+        filename: str,
+        text: Optional[str] = None,
+        type: str = "unknown",
+    ) -> Path:
         """
         Create document file with name and self as parent.
 

@@ -7,17 +7,15 @@ import logging
 import ntpath
 import os
 import time
-from urllib import request
-import xml.etree.ElementTree as ET
 import zipfile
-from time import gmtime, strftime
+from pathlib import Path
+
 import pandas as pd
 import requests
 import xmltodict
 from dict2xml import dict2xml
-from tqdm import tqdm
 from lxml import etree
-from pathlib import Path
+from tqdm import tqdm
 
 try:
     from pygetpapers.pgexceptions import PygetpapersError

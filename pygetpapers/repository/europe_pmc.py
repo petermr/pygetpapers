@@ -1,14 +1,11 @@
-import json
 import logging
 import os
 import time
-from numpy import True_
 
 import pandas as pd
 from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools
-from pygetpapers.pgexceptions import PygetpapersError
 from pygetpapers.repositoryinterface import RepositoryInterface
 
 FULLTEXT_XML = "fulltext.xml"

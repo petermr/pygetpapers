@@ -1,9 +1,7 @@
 import json
 import logging
 import os
-import time
 
-import requests
 from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools

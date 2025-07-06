@@ -3,10 +3,11 @@
 Test script for datatables integration with pygetpapers output.
 """
 
-import os
 import json
+import os
 import tempfile
 from pathlib import Path
+
 from datatables_integration import PygetpapersDatatables
 
 
