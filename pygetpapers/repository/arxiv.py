@@ -96,7 +96,7 @@ class Arxiv(RepositoryInterface):
         )
 
         logging.info("Got request result from Arxiv through pygetpapers")
-        search_results = search.get()
+        search_results = list(search.results())
         metadata_dictionary = self._make_metadata_dict_from_arxiv_output(search_results)
 
         for paper in metadata_dictionary:
