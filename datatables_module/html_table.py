@@ -47,10 +47,12 @@ class HtmlTable:
 
         row_keys = list(dict_by_id.keys())
         if len(row_keys) == 0:
-            logger.warning(f"empty JSON table")
+            logger.warning("empty JSON table")
             return None
 
-        body, htmlx = cls.create_html_with_body(styles=styles, datatables=datatables, table_id=table_id)
+        body, htmlx = cls.create_html_with_body(
+            styles=styles, datatables=datatables, table_id=table_id
+        )
         table = ET.SubElement(body, "table")
         table.attrib["id"] = table_id
 
@@ -68,7 +70,10 @@ class HtmlTable:
 
     @classmethod
     def create_html_with_body(
-        cls, styles: Optional[List[str]] = None, datatables: bool = False, table_id: Optional[str] = None
+        cls,
+        styles: Optional[List[str]] = None,
+        datatables: bool = False,
+        table_id: Optional[str] = None,
     ):
         """
         Create HTML document with body and optional styles/DataTables.
@@ -82,20 +87,20 @@ class HtmlTable:
             tuple: (body_element, html_document)
         """
         htmlx = cls.create_html_with_empty_head_body()
-        head = cls.get_or_create_head(htmlx)
+        _head = cls.get_or_create_head(htmlx)
 
         if datatables:
             from .datatables import Datatables
 
-            Datatables.add_head_info(head, htmlx)
+            Datatables.add_head_info(_head, htmlx)
 
         if styles and len(styles) > 0:
             for style_t in styles:
-                style = ET.SubElement(cls.get_head(htmlx), "style")
+                style = ET.SubElement(_head, "style")
                 style.text = style_t
 
-        body = cls.get_body(htmlx)
-        return body, htmlx
+        _body = cls.get_body(htmlx)
+        return _body, htmlx
 
     @classmethod
     def add_column_headings(cls, row0: Dict, table):
@@ -120,7 +125,9 @@ class HtmlTable:
         logger.setLevel(effective)
 
     @classmethod
-    def add_rows(cls, dict_by_id: Dict, row_keys: List, table, transform_dict: Optional[Dict]):
+    def add_rows(
+        cls, dict_by_id: Dict, row_keys: List, table, transform_dict: Optional[Dict]
+    ):
         """
         Add rows to table from dictionary data.
 
@@ -139,7 +146,9 @@ class HtmlTable:
         logger.setLevel(effective)
 
     @classmethod
-    def _add_row(cls, dict_by_id: Dict, row_key: str, tbody, transform_dict: Optional[Dict]):
+    def _add_row(
+        cls, dict_by_id: Dict, row_key: str, tbody, transform_dict: Optional[Dict]
+    ):
         """
         Add a single row to table.
 
@@ -200,8 +209,8 @@ class HtmlTable:
             tuple: (html_document, tbody_element)
         """
         htmlx = cls.create_html_with_empty_head_body()
-        body = cls.get_body(htmlx)
-        table = ET.SubElement(body, "table")
+        _body = cls.get_body(htmlx)
+        table = ET.SubElement(_body, "table")
         thead = ET.SubElement(table, "thead")
         tr = ET.SubElement(thead, "tr")
 
@@ -213,7 +222,9 @@ class HtmlTable:
         return htmlx, tbody
 
     @classmethod
-    def add_cell_content(cls, tr, cell_type: str = "td", text: str = None, href: str = None):
+    def add_cell_content(
+        cls, tr, cell_type: str = "td", text: str = None, href: str = None
+    ):
         """
         Add cell content to table row.
 
@@ -240,8 +251,8 @@ class HtmlTable:
     def create_html_with_empty_head_body():
         """Create basic HTML document structure."""
         html = ET.Element("html")
-        head = ET.SubElement(html, "head")
-        body = ET.SubElement(html, "body")
+        ET.SubElement(html, "head")
+        ET.SubElement(html, "body")
         return html
 
     @staticmethod

@@ -1,6 +1,7 @@
 """
 Fast CI tests that don't make real API calls.
-These tests validate the CLI interface and basic functionality without downloading papers.
+These tests validate the CLI interface and basic functionality without 
+downloading papers.
 """
 
 import subprocess
@@ -11,7 +12,10 @@ from pathlib import Path
 def test_cli_help():
     """Test that the CLI help command works"""
     result = subprocess.run(
-        [sys.executable, "-m", "pygetpapers.pygetpapers", "--help"], capture_output=True, text=True, timeout=30
+        [sys.executable, "-m", "pygetpapers.pygetpapers", "--help"],
+        capture_output=True,
+        text=True,
+        timeout=30,
     )
     assert result.returncode == 0
     assert "usage:" in result.stdout.lower()
@@ -21,7 +25,10 @@ def test_cli_help():
 def test_cli_version():
     """Test that the CLI version command works"""
     result = subprocess.run(
-        [sys.executable, "-m", "pygetpapers.pygetpapers", "--version"], capture_output=True, text=True, timeout=30
+        [sys.executable, "-m", "pygetpapers.pygetpapers", "--version"],
+        capture_output=True,
+        text=True,
+        timeout=30,
     )
     assert result.returncode == 0
     assert "pygetpapers" in result.stdout.lower()
@@ -30,7 +37,16 @@ def test_cli_version():
 def test_cli_noexecute():
     """Test the --noexecute flag (should not download anything)"""
     result = subprocess.run(
-        [sys.executable, "-m", "pygetpapers.pygetpapers", "-q", "test query", "--noexecute", "-k", "1"],
+        [
+            sys.executable,
+            "-m",
+            "pygetpapers.pygetpapers",
+            "-q",
+            "test query",
+            "--noexecute",
+            "-k",
+            "1",
+        ],
         capture_output=True,
         text=True,
         timeout=60,
@@ -45,7 +61,16 @@ def test_cli_syntax():
     """Test that basic CLI syntax is valid"""
     # Test with invalid API (should fail gracefully)
     result = subprocess.run(
-        [sys.executable, "-m", "pygetpapers.pygetpapers", "--api", "invalid_api", "-q", "test", "--noexecute"],
+        [
+            sys.executable,
+            "-m",
+            "pygetpapers.pygetpapers",
+            "--api",
+            "invalid_api",
+            "-q",
+            "test",
+            "--noexecute",
+        ],
         capture_output=True,
         text=True,
         timeout=30,

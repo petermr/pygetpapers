@@ -74,13 +74,17 @@ def create_sample_pygetpapers_output():
             json.dump(paper, f, indent=2)
 
         # Create sample files
-        (paper_dir / "fulltext.xml").write_text(f"<xml>Sample XML content for {paper['title']}</xml>")
+        (paper_dir / "fulltext.xml").write_text(
+            f"<xml>Sample XML content for {paper['title']}</xml>"
+        )
         (paper_dir / "fulltext.pdf").write_text(f"PDF content for {paper['title']}")
 
         # Add supplementary files for some papers
         if i < 2:
             (paper_dir / "supplementary" / "data.csv").parent.mkdir(exist_ok=True)
-            (paper_dir / "supplementary" / "data.csv").write_text("sample,data\n1,2\n3,4")
+            (paper_dir / "supplementary" / "data.csv").write_text(
+                "sample,data\n1,2\n3,4"
+            )
 
     return temp_dir
 
@@ -133,7 +137,10 @@ def test_datatables_integration():
         print("🔍 Testing paper details...")
         paper_details = dt.get_paper_details(output_data, "PMC123456")
         if paper_details:
-            print(f"✅ Found paper details for PMC123456: {paper_details['metadata']['title']}")
+            print(
+                f"✅ Found paper details for PMC123456: "
+                f"{paper_details['metadata']['title']}"
+            )
         else:
             print("❌ Paper details not found")
 
@@ -160,7 +167,7 @@ def test_datatables_integration():
 
     finally:
         # Clean up
-        print(f"\n🧹 Cleaning up test data...")
+        print("\n🧹 Cleaning up test data...")
         import shutil
 
         shutil.rmtree(sample_dir, ignore_errors=True)

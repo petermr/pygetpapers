@@ -38,7 +38,8 @@ PDF_URL = "pdf_url"
 class OpenAlex(RepositoryInterface):
     """OpenAlex wrapper for accessing OpenAlex API
 
-    OpenAlex is a free and open catalog of the world's scholarly papers, researchers, journals, and institutions.
+    OpenAlex is a free and open catalog of the world's scholarly papers, 
+    researchers, journals, and institutions.
     """
 
     def __init__(self):
@@ -65,13 +66,15 @@ class OpenAlex(RepositoryInterface):
         total_papers_list = []
         logging.info("Making Request to OpenAlex")
         while len(total_papers_list) < size:
-            total_number_of_results, total_papers_list, papers_list, metadata_list = self.make_request_add_papers(
-                query,
-                cursor_mark,
-                total_number_of_results,
-                total_papers_list,
-                startdate,
-                enddate,
+            total_number_of_results, total_papers_list, papers_list, metadata_list = (
+                self.make_request_add_papers(
+                    query,
+                    cursor_mark,
+                    total_number_of_results,
+                    total_papers_list,
+                    startdate,
+                    enddate,
+                )
             )
 
             cursor_mark = metadata_list["next_cursor"]
@@ -80,7 +83,9 @@ class OpenAlex(RepositoryInterface):
                 break
 
         total_result_list = total_papers_list[:size]
-        json_return_dict = self.download_tools._make_dict_from_list(total_result_list, paper_key=DOI)
+        json_return_dict = self.download_tools._make_dict_from_list(
+            total_result_list, paper_key=DOI
+        )
         for paper in json_return_dict:
             self.download_tools._add_download_status_keys(paper, json_return_dict)
         if getpdf:
@@ -99,9 +104,15 @@ class OpenAlex(RepositoryInterface):
         )
         return result_dict
 
-    def send_post_request(self, query, cursor_mark="*", page_size=20, startdate=None, enddate=None):
+    def send_post_request(
+        self, query, cursor_mark="*", page_size=20, startdate=None, enddate=None
+    ):
 
-        url_to_request = self.get_url.format(query=query, cursor=cursor_mark, page_size=page_size)
+        url_to_request = self.get_url.format(
+            query=query,
+            cursor=cursor_mark,
+            page_size=page_size
+        )
         if startdate or enddate:
             if startdate:
                 url_to_request += "&filter=from_publication_date:{}".format(startdate)
@@ -154,9 +165,13 @@ class OpenAlex(RepositoryInterface):
             pdf_url = best_oa_location.get(PDF_URL, None)
             if pdf_url is None:
                 continue
-            self.download_tools.check_or_make_directory(os.path.join(os.getcwd(), result))
+            self.download_tools.check_or_make_directory(
+                os.path.join(os.getcwd(), result)
+            )
             pdf_path = os.path.join(os.getcwd(), result, FULLTEXT_PDF)
-            self.download_tools.queries_the_url_and_writes_response_to_destination(pdf_url, pdf_path)
+            self.download_tools.queries_the_url_and_writes_response_to_destination(
+                pdf_url, pdf_path
+            )
             metadata_dictionary[result][PDFDOWNLOADED] = True
 
     def download_and_save_results(
@@ -207,7 +222,10 @@ class OpenAlex(RepositoryInterface):
     def update(self, query_namespace):
 
         update_file_path = self.download_tools.get_metadata_results_file()
-        logging.info("Please ensure that you are providing the same --api as the one in the corpus or you " "may get errors")
+        logging.info(
+            "Please ensure that you are providing the same --api as the one in the "
+            "corpus or you may get errors"
+        )
         os.chdir(os.path.dirname(update_file_path))
         logging.info("Reading old json metadata file")
         self.download_and_save_results(

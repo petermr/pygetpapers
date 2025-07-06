@@ -21,8 +21,14 @@ JSDTable = JQ217
 if JSDTable == JQ182:
     # Legacy CDN links - proven stable
     JQUERY_JS = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
-    DATATABLES_JS = "http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"
-    DATATABLES_CSS = "http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
+    DATATABLES_JS = (
+        "http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/"
+        "jquery.dataTables.min.js"
+    )
+    DATATABLES_CSS = (
+        "http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/"
+        "jquery.dataTables.css"
+    )
 
 if JSDTable == JQ217:
     # Current CDN links - maintained for stability
@@ -62,15 +68,24 @@ class Datatables:
         """
         if JQUERY_JS is not None:
             script = cls._add_element(
-                body, "script", {"charset": "UTF-8", "type": "text/javascript", "src": JQUERY_JS}, text=" "
+                body,
+                "script",
+                {"charset": "UTF-8", "type": "text/javascript", "src": JQUERY_JS},
+                text=" ",
             )
 
-        script = cls._add_element(
-            body, "script", {"charset": "UTF-8", "type": "text/javascript", "src": DATATABLES_JS}, text=" "
+        cls._add_element(
+            body,
+            "script",
+            {"charset": "UTF-8", "type": "text/javascript", "src": DATATABLES_JS},
+            text=" ",
         )
 
-        script = cls._add_element(
-            body, "script", {"charset": "UTF-8", "type": "text/javascript"}, text=PRE_TEXT + table_id + POST_TEXT
+        cls._add_element(
+            body,
+            "script",
+            {"charset": "UTF-8", "type": "text/javascript"},
+            text=PRE_TEXT + table_id + POST_TEXT,
         )
 
     @classmethod
@@ -89,7 +104,11 @@ class Datatables:
         title = ET.SubElement(head, "title")
         title.text = "DataTable"
 
-        cls._add_element(head, "link", {"rel": "stylesheet", "type": "text/css", "href": DATATABLES_CSS})
+        cls._add_element(
+            head,
+            "link",
+            {"rel": "stylesheet", "type": "text/css", "href": DATATABLES_CSS},
+        )
 
     @classmethod
     def create_table(cls, labels: List[str], table_id: str):
@@ -179,7 +198,13 @@ class Datatables:
         return col_content
 
     @classmethod
-    def insert_column(cls, datatables_html, column: List, title: str, before: Optional[Union[int, str]] = None):
+    def insert_column(
+        cls,
+        datatables_html,
+        column: List,
+        title: str,
+        before: Optional[Union[int, str]] = None,
+    ):
         """
         Insert a column into a DataTable.
         Core functionality for dynamic table manipulation.
@@ -190,7 +215,9 @@ class Datatables:
             title: Column title
             before: Index or title of existing column to insert before
         """
-        head_tr0, ncols, rows = cls._read_tables_get_row_column_count(column, datatables_html)
+        head_tr0, ncols, rows = cls._read_tables_get_row_column_count(
+            column, datatables_html
+        )
 
         if before is None:
             before = ncols
@@ -213,7 +240,6 @@ class Datatables:
             head_tr0.insert(before, th)
 
         for i, tr in enumerate(rows):
-            cells = tr.xpath("td")
             colval = column[i]
             if not isinstance(colval, ET._Element):
                 td = ET.SubElement(tr, "td")
@@ -249,8 +275,8 @@ class Datatables:
     def _create_html_with_empty_head_body():
         """Create basic HTML document structure."""
         html = ET.Element("html")
-        head = ET.SubElement(html, "head")
-        body = ET.SubElement(html, "body")
+        ET.SubElement(html, "head")
+        ET.SubElement(html, "body")
         return html
 
     @staticmethod
@@ -274,7 +300,9 @@ class Datatables:
         return element
 
     @staticmethod
-    def _add_cell_content(parent, cell_type: str = "td", text: str = None, href: str = None):
+    def _add_cell_content(
+        parent, cell_type: str = "td", text: str = None, href: str = None
+    ):
         """Add cell content to table row."""
         cell = ET.SubElement(parent, cell_type)
         if href:
@@ -292,7 +320,12 @@ class DataTable:
     Provides direct file output for filestore integration.
     """
 
-    def __init__(self, title: str, colheads: Optional[List[str]] = None, rowdata: Optional[List[List[str]]] = None):
+    def __init__(
+        self,
+        title: str,
+        colheads: Optional[List[str]] = None,
+        rowdata: Optional[List[List[str]]] = None,
+    ):
         """
         Create a DataTable.
         Core constructor for table creation.

@@ -25,17 +25,27 @@ def main():
     # Check if pygetpapers is available
     try:
         # Try local development version first
-        if os.path.exists("pygetpapers") and os.path.exists("pygetpapers/pygetpapers.py"):
+        if os.path.exists("pygetpapers") and os.path.exists(
+            "pygetpapers/pygetpapers.py"
+        ):
             result = subprocess.run(
-                [sys.executable, "-m", "pygetpapers.pygetpapers", "--version"], capture_output=True, text=True, timeout=10
+                [sys.executable, "-m", "pygetpapers.pygetpapers", "--version"],
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
             if result.returncode == 0:
                 print("✅ Pygetpapers development version is available")
             else:
-                print("Warning: Pygetpapers development version may not be properly installed")
+                print(
+                    "Warning: Pygetpapers development version may not be properly "
+                    "installed"
+                )
         else:
             # Try installed version
-            result = subprocess.run(["pygetpapers", "--version"], capture_output=True, text=True, timeout=10)
+            result = subprocess.run(
+                ["pygetpapers", "--version"], capture_output=True, text=True, timeout=10
+            )
             if result.returncode == 0:
                 print("✅ Pygetpapers installed version is available")
             else:

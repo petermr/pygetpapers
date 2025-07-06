@@ -34,7 +34,8 @@ CROSSREF = "crossref"
 
 
 class CrossRef(RepositoryInterface):
-    """CrossRef class which handles crossref repository. It uses habanero repository wrapper to make its query"""
+    """CrossRef class which handles crossref repository. It uses habanero repository 
+    wrapper to make its query"""
 
     def __init__(self):
 
@@ -77,14 +78,26 @@ class CrossRef(RepositoryInterface):
         else:
             cursor = "*"
         # Submits a request to crossref
-        # raw_crossref_metadata is a dictionary containing bibliographic metadata for each paper
-        raw_crossref_metadata = crossref_client.works(query={query}, filter=filter_dict, cursor_max=cutoff_size, cursor=cursor)
+        # raw_crossref_metadata is a dictionary containing bibliographic metadata 
+        # for each paper
+        raw_crossref_metadata = crossref_client.works(
+            query={query},
+            filter=filter_dict,
+            cursor_max=cutoff_size,
+            cursor=cursor
+        )
         metadata_count = raw_crossref_metadata[MESSAGE][TOTAL_RESULTS]
         cursor_mark = raw_crossref_metadata[MESSAGE][NEXT_CURSOR]
-        cutoff_metadata_list = self._make_metadata_subset(raw_crossref_metadata, cutoff_size)
-        cutoff_metadata_dictionary = self.download_tools._make_dict_from_list(cutoff_metadata_list, paper_key=DOI)
+        cutoff_metadata_list = self._make_metadata_subset(
+            raw_crossref_metadata, cutoff_size
+        )
+        cutoff_metadata_dictionary = self.download_tools._make_dict_from_list(
+            cutoff_metadata_list, paper_key=DOI
+        )
         for paper in cutoff_metadata_dictionary:
-            self.download_tools._add_download_status_keys(paper, cutoff_metadata_dictionary)
+            self.download_tools._add_download_status_keys(
+                paper, cutoff_metadata_dictionary
+            )
         result_dict = self.download_tools._adds_new_results_to_metadata_dictionary(
             cursor_mark, cutoff_metadata_dictionary, metadata_count, update
         )
@@ -127,7 +140,10 @@ class CrossRef(RepositoryInterface):
             makehtml=query_namespace["makehtml"],
         )
         self.download_tools._make_metadata_json_files_for_paper(
-            result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=crossref_file_name
+            result_dict[NEW_RESULTS],
+            updated_dict=result_dict[UPDATED_DICT],
+            paper_key=DOI,
+            name_of_file=crossref_file_name,
         )
 
     def noexecute(self, query_namespace):
@@ -150,5 +166,8 @@ class CrossRef(RepositoryInterface):
             makehtml=query_namespace["makehtml"],
         )
         self.download_tools._make_metadata_json_files_for_paper(
-            result_dict[NEW_RESULTS], updated_dict=result_dict[UPDATED_DICT], paper_key=DOI, name_of_file=crossref_file_name
+            result_dict[NEW_RESULTS],
+            updated_dict=result_dict[UPDATED_DICT],
+            paper_key=DOI,
+            name_of_file=crossref_file_name,
         )

@@ -82,7 +82,7 @@ where = ["."]
 include = ["pygetpapers*"]
 
 [tool.black]
-line-length = 127
+line-length = 88
 target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 include = '\.pyi?$'
 extend-exclude = '''
@@ -101,7 +101,7 @@ extend-exclude = '''
 
 [tool.isort]
 profile = "black"
-line_length = 127
+line_length = 88
 multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0
@@ -109,7 +109,7 @@ use_parentheses = true
 ensure_newline_before_comments = true
 
 [tool.flake8]
-max-line-length = 127
+max-line-length = 88
 extend-ignore = ["E203", "W503"]
 exclude = [
     ".git",
@@ -119,6 +119,7 @@ exclude = [
     ".venv",
     ".eggs",
     "*.egg-info",
+    "venv_p312",
 ]
 
 [tool.pytest.ini_options]
