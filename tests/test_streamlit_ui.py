@@ -19,7 +19,9 @@ def test_streamlit_app_import():
             timeout=30,
             cwd=".",  # Run from current directory (root)
         )
-        assert result.returncode == 0, f"Failed to import streamlit_app: {result.stderr}"
+        assert (
+            result.returncode == 0
+        ), f"Failed to import streamlit_app: {result.stderr}"
     except Exception as e:
         assert False, f"Failed to import streamlit_app: {e}"
 
@@ -35,7 +37,9 @@ def test_run_streamlit_import():
             timeout=30,
             cwd=".",  # Run from current directory (root)
         )
-        assert result.returncode == 0, f"Failed to import run_streamlit: {result.stderr}"
+        assert (
+            result.returncode == 0
+        ), f"Failed to import run_streamlit: {result.stderr}"
     except Exception as e:
         assert False, f"Failed to import run_streamlit: {e}"
 
@@ -61,7 +65,9 @@ def test_streamlit_app_syntax():
             text=True,
             timeout=30,
         )
-        assert result.returncode == 0, f"streamlit_app.py has syntax errors: {result.stderr}"
+        assert (
+            result.returncode == 0
+        ), f"streamlit_app.py has syntax errors: {result.stderr}"
     except Exception as e:
         assert False, f"Failed to compile streamlit_app.py: {e}"
 
@@ -75,7 +81,9 @@ def test_run_streamlit_syntax():
             text=True,
             timeout=30,
         )
-        assert result.returncode == 0, f"run_streamlit.py has syntax errors: {result.stderr}"
+        assert (
+            result.returncode == 0
+        ), f"run_streamlit.py has syntax errors: {result.stderr}"
     except Exception as e:
         assert False, f"Failed to compile run_streamlit.py: {e}"
 
