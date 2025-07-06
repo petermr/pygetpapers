@@ -25,15 +25,21 @@ class TestStreamlitUI:
         try:
             import streamlit_app
 
-            assert hasattr(streamlit_app, "PygetpapersUI"), "PygetpapersUI class should exist"
+            assert hasattr(
+                streamlit_app, "PygetpapersUI"
+            ), "PygetpapersUI class should exist"
 
             # Test that the class can be instantiated
             ui = streamlit_app.PygetpapersUI()
             assert ui is not None, "PygetpapersUI should be instantiable"
 
             # Test that required methods exist
-            assert hasattr(ui, "run_pygetpapers_command"), "run_pygetpapers_command method should exist"
-            assert hasattr(ui, "build_query_string"), "build_query_string method should exist"
+            assert hasattr(
+                ui, "run_pygetpapers_command"
+            ), "run_pygetpapers_command method should exist"
+            assert hasattr(
+                ui, "build_query_string"
+            ), "build_query_string method should exist"
             assert hasattr(ui, "render_header"), "render_header method should exist"
 
         except ImportError as e:
@@ -71,7 +77,15 @@ class TestStreamlitUI:
             ui = streamlit_app.PygetpapersUI()
 
             # Test that all expected APIs are present
-            expected_apis = ["europe_pmc", "arxiv", "crossref", "openalex", "biorxiv", "medrxiv", "rxivist"]
+            expected_apis = [
+                "europe_pmc",
+                "arxiv",
+                "crossref",
+                "openalex",
+                "biorxiv",
+                "medrxiv",
+                "rxivist",
+            ]
             for api in expected_apis:
                 assert api in ui.supported_apis, f"API {api} should be supported"
                 assert api in ui.api_features, f"API {api} should have features defined"
@@ -79,8 +93,12 @@ class TestStreamlitUI:
             # Test that Europe PMC has full features
             eupmc_features = ui.api_features["europe_pmc"]
             assert eupmc_features["query"] is True, "Europe PMC should support queries"
-            assert eupmc_features["date_range"] is True, "Europe PMC should support date ranges"
-            assert eupmc_features["pdf"] is True, "Europe PMC should support PDF downloads"
+            assert (
+                eupmc_features["date_range"] is True
+            ), "Europe PMC should support date ranges"
+            assert (
+                eupmc_features["pdf"] is True
+            ), "Europe PMC should support PDF downloads"
 
         except ImportError as e:
             pytest.fail(f"Failed to import streamlit_app: {e}")
@@ -118,7 +136,9 @@ class TestStreamlitUI:
         try:
             import run_streamlit
 
-            assert hasattr(run_streamlit, "main"), "run_streamlit should have main function"
+            assert hasattr(
+                run_streamlit, "main"
+            ), "run_streamlit should have main function"
         except ImportError as e:
             pytest.fail(f"Failed to import run_streamlit: {e}")
 
@@ -133,7 +153,9 @@ class TestStreamlitUI:
         ]
 
         for file_path in required_files:
-            assert os.path.exists(file_path), f"Documentation file {file_path} should exist"
+            assert os.path.exists(
+                file_path
+            ), f"Documentation file {file_path} should exist"
 
     def test_port_configuration(self):
         """Test that the app is configured to use port 8502"""
@@ -153,7 +175,9 @@ class TestStreamlitUI:
         try:
             import subprocess
 
-            result = subprocess.run(["pygetpapers", "--version"], capture_output=True, text=True, timeout=10)
+            result = subprocess.run(
+                ["pygetpapers", "--version"], capture_output=True, text=True, timeout=10
+            )
             assert result.returncode == 0, "pygetpapers should be available"
         except (subprocess.TimeoutExpired, FileNotFoundError):
             pytest.skip("pygetpapers not available or timed out")

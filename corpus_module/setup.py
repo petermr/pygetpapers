@@ -51,9 +51,7 @@ setup(
             "requests>=2.25.0",
         ],
     },
-    keywords=(
-        "corpus, text-analysis, document-management, search, linguistics"
-    ),
+    keywords=("corpus, text-analysis, document-management, search, linguistics"),
     project_urls={
         "Bug Reports": "https://github.com/amilib/corpus-module/issues",
         "Source": "https://github.com/amilib/corpus-module",

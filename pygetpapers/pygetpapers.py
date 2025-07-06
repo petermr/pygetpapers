@@ -62,7 +62,9 @@ class ApiPlugger:
         """Helps run query for given api in the query_namespace"""
         self.download_tools = DownloadTools(query_namespace[API])
         self.query_namespace = query_namespace
-        self.setup_api_support_variables(self.download_tools.config, query_namespace[API])
+        self.setup_api_support_variables(
+            self.download_tools.config, query_namespace[API]
+        )
         api_class = getattr(
             importlib.import_module(f"{PYGETPAPERS}.repository.{self.library_name}"),
             self.class_name,
@@ -73,10 +75,15 @@ class ApiPlugger:
         """Raises error if feature not supported for api but given in query_namespace"""
         for feature in self.features_not_supported_by_api:
             if self.query_namespace[feature]:
-                logging.warning(f"{feature} is not supported by {self.query_namespace[API]}")
-        if self.query_namespace[QUERY] and (self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV):
+                logging.warning(
+                    f"{feature} is not supported by {self.query_namespace[API]}"
+                )
+        if self.query_namespace[QUERY] and (
+            self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
+        ):
             raise PygetpapersError(
-                "*rxiv doesnt support giving a query. Please provide a date interval or number of " "results to get instead"
+                "*rxiv doesnt support giving a query. Please provide a date interval "
+                "or number of results to get instead"
             )
         if (
             not self.query_namespace[QUERY]
@@ -89,7 +96,8 @@ class ApiPlugger:
             raise PygetpapersError("Please specify a query")
 
     def setup_api_support_variables(self, config, api):
-        """Reads in the configuration file namespace object and sets up class variable for the given api
+        """Reads in the configuration file namespace object and sets up class variable 
+        for the given api
         :param config: Configparser configured configuration file
         :type config: configparser object
         :param api: the repository to get the variables for
@@ -101,12 +109,15 @@ class ApiPlugger:
         self.term = config.get(api, TERM) == SUPPORTED
         self.update = config.get(api, UPDATE) == SUPPORTED
         self.restart = config.get(api, RESTART) == SUPPORTED
-        self.features_not_supported_by_api = ast.literal_eval(config.get(api, FEATURESNOTSUPPORTED))
+        self.features_not_supported_by_api = ast.literal_eval(
+            config.get(api, FEATURESNOTSUPPORTED)
+        )
 
     def _add_date_to_query(self):
-        """Builds query from simple dates in --startdate and --enddate. (See https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)
+        """Builds query from simple dates in --startdate and --enddate. (See 
+        https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)  # noqa: E501
         Edits the namespace object's query flag.
-        :param query_namespace: namespace object from argparse (using --startdate and --enddate)
+        :param query_namespace: namespace object from argparse (using --startdate and --enddate)  # noqa: E501
         """
 
         if self.query_namespace[STARTDATE] and not self.query_namespace[ENDDATE]:
@@ -116,24 +127,36 @@ class ApiPlugger:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = self.query_namespace[LIMIT]
         else:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = (
-                f"{self.query_namespace[STARTDATE]}/{self.query_namespace[ENDDATE]}"
+                f"{self.query_namespace[STARTDATE]}/"
+                f"{self.query_namespace[ENDDATE]}"
             )
-        if self.query_namespace[STARTDATE] and self.query_namespace[ENDDATE] and self.query_namespace[API] == EUROPEPMC:
+        if (
+            self.query_namespace[STARTDATE]
+            and self.query_namespace[ENDDATE]
+            and self.query_namespace[API] == EUROPEPMC
+        ):
             self.query_namespace[QUERY] = (
-                f"({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO {self.query_namespace[ENDDATE]}])"
+                f"({self.query_namespace[QUERY]}) AND "
+                f"(FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO "
+                f"{self.query_namespace[ENDDATE]}])"
             )
-        elif self.query_namespace[ENDDATE] and self.query_namespace[API] == EUROPEPMC:
+        elif (
+            self.query_namespace[ENDDATE]
+            and self.query_namespace[API] == EUROPEPMC
+        ):
             self.query_namespace[QUERY] = (
-                f"({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[TO {self.query_namespace[ENDDATE]}])"
+                f"({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[TO "
+                f"{self.query_namespace[ENDDATE]}])"
             )
 
         if self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV:
             self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
 
     def add_terms_from_file(self):
-        """Builds query from terms mentioned in a text file described in the argparse namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)
+        """Builds query from terms mentioned in a text file described in the argparse 
+        namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)  # noqa: E501
         Edits the namespace object's query flag.
-        :param query_namespace: namespace object from argparse (using --terms and --notterms)
+        :param query_namespace: namespace object from argparse (using --terms and --notterms)  # noqa: E501
         """
         if self.query_namespace[TERMS]:
             terms_path = self.query_namespace[TERMS]
@@ -155,7 +178,10 @@ class ApiPlugger:
         or_ed_terms = " OR ".join(terms_list)
         # modify query in namespace object
         if self.query_namespace[QUERY]:
-            self.query_namespace[QUERY] = f"({self.query_namespace[QUERY]} {separator} ({or_ed_terms}))"
+            self.query_namespace[QUERY] = (
+                f"({self.query_namespace[QUERY]} {separator} "
+                f"({or_ed_terms}))"
+            )
         else:
             if self.query_namespace[TERMS]:
                 self.query_namespace[QUERY] = f"({or_ed_terms})"
@@ -163,7 +189,7 @@ class ApiPlugger:
                 raise PygetpapersError("Please provide a query with not")
 
     def check_query_logic_and_run(self):
-        """Checks the logic in query_namespace and runs pygetpapers for the given query"""
+        """Checks the logic in query_namespace and runs pygetpapers for the given query"""  # noqa: E501
         try:
             self._assist_warning_api()
         except PygetpapersError as err:
@@ -201,7 +227,8 @@ class ApiPlugger:
                 return
         elif self.query_namespace[UPDATE] and self.update:
             logging.info(
-                "Please ensure that you are providing the same --api as the one in the corpus or " "you may get errors"
+                "Please ensure that you are providing the same --api as the one in the "
+                "corpus or you may get errors"
             )
             try:
                 self.api.update(self.query_namespace)
@@ -246,22 +273,32 @@ class Pygetpapers:
     def write_logfile(self, query_namespace, level):
         """This functions stores logs to a logfile
         :param query_namespace: argparse namespace object
-        :param level: level of logger (See https://docs.python.org/3/library/logging.html#logging-levels)
+        :param level: level of logger (See https://docs.python.org/3/library/logging.html#logging-levels)  # noqa: E501
         """
-        location_to_store_logs = os.path.join(query_namespace[OUTPUT], query_namespace[LOGFILE])
+        location_to_store_logs = os.path.join(
+            query_namespace[OUTPUT],
+            query_namespace[LOGFILE],
+        )
         self.download_tools.check_or_make_directory(query_namespace[OUTPUT])
-        logging.basicConfig(filename=location_to_store_logs, level=level, filemode="a")
+        logging.basicConfig(
+            filename=location_to_store_logs,
+            level=level,
+            filemode="a",
+        )
         console = logging.StreamHandler()
         console.setLevel(level)
         formatter = logging.Formatter("%(levelname)s: %(message)s")
         console.setFormatter(formatter)
         logging.getLogger().addHandler(console)
-        logging.info("Making log file at %s", location_to_store_logs)
+        logging.info(
+            "Making log file at %s",
+            location_to_store_logs,
+        )
 
     @staticmethod
     def makes_output_directory(query_namespace):
         """Makes the output directory for the given output in query_namespace
-        :param query_namespace: pygetpaper's name space object
+        :param query_namespace: pygetpaper's name space object  # noqa: E501
         :type query_namespace: dict
         """
         if os.path.exists(query_namespace[OUTPUT]):
@@ -277,7 +314,7 @@ class Pygetpapers:
 
     def generate_logger(self, query_namespace):
         """Creates logger for the given loglevel
-        :param query_namespace: pygetpaper's name space object
+        :param query_namespace: pygetpaper's name space object  # noqa: E501
         :type query_namespace: dict
         """
         levels = {
@@ -291,7 +328,9 @@ class Pygetpapers:
         level = levels.get(query_namespace[LOGLEVEL].lower())
 
         if level == logging.DEBUG:
-            tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
+            tqdm.__init__ = partialmethod(
+                tqdm.__init__, disable=True
+            )
 
         if query_namespace[LOGFILE]:
             self.write_logfile(query_namespace, level)
@@ -329,13 +368,13 @@ class Pygetpapers:
     ):
         """Runs pygetpapers for the given parameters"""
         got_parameters = locals()
-        if output == False:
+        if output is False:
             got_parameters[OUTPUT] = self.default_path
         self.runs_pygetpapers_for_given_args(got_parameters)
 
     def runs_pygetpapers_for_given_args(self, query_namespace):
         """Runs pygetpapers for flags described in a dictionary
-        :param query_namespace: pygetpaper's namespace object
+        :param query_namespace: pygetpaper's namespace object  # noqa: E501
         :type query_namespace: dict
         """
         self.generate_logger(query_namespace)
@@ -356,7 +395,9 @@ class Pygetpapers:
         version = self.version
 
         parser = configargparse.ArgParser(
-            description=f"Welcome to Pygetpapers version {version}. -h or --help for help",
+            description=(
+                f"Welcome to Pygetpapers version {version}. -h or --help for help"
+            ),
             add_config_file_help=False,
         )
         parser.add_argument(
@@ -377,22 +418,26 @@ class Pygetpapers:
             "--query",
             type=str,
             default=False,
-            help="query string transmitted to repository API. "
-            'Eg. "Artificial Intelligence" or "Plant Parts". '
-            "To escape special characters within the quotes, use backslash. "
-            "Incase of nested quotes, ensure that the initial "
-            "quotes are double and the qutoes inside are single. "
-            'For eg: `\'(LICENSE:"cc by" OR LICENSE:"cc-by") '
-            'AND METHODS:"transcriptome assembly"\' ` '
-            "is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') "
-            "AND METHODS:'transcriptome assembly'\"` ",
+            help=(
+                'Eg. "Artificial Intelligence" or "Plant Parts". '
+                "To escape special characters within the quotes, use backslash. "
+                "Incase of nested quotes, ensure that the initial "
+                "quotes are double and the qutoes inside are single. "
+                'For eg: `\'(LICENSE:"cc by" OR LICENSE:"cc-by") '
+                'AND METHODS:"transcriptome assembly"\' ` '
+                "is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') "  # noqa: E501
+                "AND METHODS:'transcriptome assembly'\"` "
+            ),
         )
 
         parser.add_argument(
             "-o",
             "--output",
             type=str,
-            help="output directory (Default: Folder inside current working directory named )",
+            help=(
+                "output directory (Default: Folder inside current working "
+                "directory named )"
+            ),
             default=self.default_path,
         )
         parser.add_argument(
@@ -413,57 +458,75 @@ class Pygetpapers:
             "--pdf",
             default=False,
             action="store_true",
-            help="[E][A] download fulltext PDFs if available (only eupmc, arxiv, and some papers from openalex supported)",
+            help=(
+                "[E][A] download fulltext PDFs if available (only eupmc, arxiv, and some "  # noqa: E501
+                "papers from openalex supported)"
+            ),
         )
         parser.add_argument(
             "-s",
             "--supp",
             default=False,
             action="store_true",
-            help="[E] download supplementary files if available (only eupmc supported)	",
+            help=(
+                "[E] download supplementary files if available (only eupmc supported)\t"
+            ),
         )
         parser.add_argument(
             "-z",
             "--zip",
             default=False,
             action="store_true",
-            help="[E] download files from ftp endpoint if available (only eupmc supported)	",
+            help=(
+                "[E] download files from ftp endpoint if available (only eupmc supported)\t"  # noqa: E501
+            ),
         )
         parser.add_argument(
             "--references",
             type=str,
             default=False,
-            help="[E] Download references if available. (only eupmc supported)"
-            "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
+            help=(
+                "[E] Download references if available. (only eupmc supported)"
+                "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)."
+            ),
         )
         parser.add_argument(
             "-n",
             "--noexecute",
             default=False,
             action="store_true",
-            help="[ALL] report how many results match the query, but don't actually download " "anything",
+            help=(
+                "[ALL] report how many results match the query, but don't actually download "  # noqa: E501
+                "anything"
+            ),
         )
-
         parser.add_argument(
             "--citations",
             type=str,
             default=False,
-            help="[E] Download citations if available (only eupmc supported). "
-            "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR).",
+            help=(
+                "[E] Download citations if available (only eupmc supported). "
+                "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)."
+            ),
         )
         parser.add_argument(
             "-l",
             "--loglevel",
             default="info",
-            help="[All] Provide logging level.  "
-            "Example --log warning <<info,warning,debug,error,critical>>, default='info'",
+            help=(
+                "[All] Provide logging level.  "
+                "Example --log warning <<info,warning,debug,error,critical>>, default='info'"  # noqa: E501
+            ),
         )
         parser.add_argument(
             "-f",
             "--logfile",
             default=False,
             type=str,
-            help="[All] save log to specified file in output directory as well as printing to " "terminal",
+            help=(
+                "[All] save log to specified file in output directory as well as printing to "  # noqa: E501
+                "terminal"
+            ),
         )
         parser.add_argument(
             "-k",
@@ -472,31 +535,35 @@ class Pygetpapers:
             type=int,
             help="[All] maximum number of hits (default: 100)",
         )
-
         parser.add_argument(
             "-r",
             "--restart",
             action="store_true",
-            help="[E] Downloads the missing flags for the corpus."
-            "Searches for already existing corpus in the output directory",
+            help=(
+                "[E] Downloads the missing flags for the corpus."
+                "Searches for already existing corpus in the output directory"
+            ),
         )
-
         parser.add_argument(
             "-u",
             "--update",
             action="store_true",
-            help="[E][B][M][C] Updates the corpus by downloading new papers. "
-            "Requires -k or --limit "
-            "(If not provided, default will be used) and -q or --query "
-            "(must be provided) to be given. "
-            "Searches for already existing corpus in the output directory",
+            help=(
+                "[E][B][M][C] Updates the corpus by downloading new papers. "
+                "Requires -k or --limit "
+                "(If not provided, default will be used) and -q or --query "
+                "(must be provided) to be given. "
+                "Searches for already existing corpus in the output directory"
+            ),
         )
         parser.add_argument(
             "--onlyquery",
             action="store_true",
-            help="[E] Saves json file containing the result of the query in storage. (only eupmc "
-            "supported) "
-            "The json file can be given to --restart to download the papers later.",
+            help=(
+                "[E] Saves json file containing the result of the query in storage. (only eupmc "  # noqa: E501
+                "supported) "
+                "The json file can be given to --restart to download the papers later."
+            ),
         )
         parser.add_argument(
             "-c",
@@ -509,7 +576,9 @@ class Pygetpapers:
             "--makehtml",
             default=False,
             action="store_true",
-            help="[All] Stores the per-document metadata as html.",
+            help=(
+                "[All] Stores the per-document metadata as html."
+            ),
         )
         parser.add_argument(
             "--synonym",
@@ -533,23 +602,30 @@ class Pygetpapers:
             "--terms",
             default=False,
             type=str,
-            help="[All] Location of the file which contains terms serperated by a comma or an ami "
-            "dict which will be "
-            "OR'ed among themselves and AND'ed with the query",
+            help=(
+                "[All] Location of the file which contains terms serperated by a comma or an ami "  # noqa: E501
+                "dict which will be "
+                "OR'ed among themselves and AND'ed with the query"
+            ),
         )
         parser.add_argument(
             "--notterms",
             default=False,
             type=str,
-            help="[All] Location of the txt file which contains terms separated by a comma or an "
-            "ami dict which will be "
-            "OR'ed among themselves and NOT'ed with the query",
+            help=(
+                "[All] Location of the txt file which contains terms separated by a comma or an "  # noqa: E501
+                "ami dict which will be "
+                "OR'ed among themselves and NOT'ed with the query"
+            ),
         )
         parser.add_argument(
             "--api",
             default="europe_pmc",
             type=str,
-            help="API to search [europe_pmc, crossref,arxiv,biorxiv,medrxiv,rxivist,openalex] (default: europe_pmc)",
+            help=(
+                "API to search [europe_pmc, crossref,arxiv,biorxiv,medrxiv,rxivist,openalex] "  # noqa: E501
+                "(default: europe_pmc)"
+            ),
         )
         parser.add_argument(
             "--filter",

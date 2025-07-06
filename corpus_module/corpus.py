@@ -52,9 +52,7 @@ class AmiCorpus:
         """
         self.topdir = Path(topdir) if topdir else None
         if self.topdir and not self.topdir.is_dir():
-            raise ValueError(
-                f"AmiCorpus() requires valid directory {self.topdir}"
-            )
+            raise ValueError(f"AmiCorpus() requires valid directory {self.topdir}")
 
         self.container_by_file = dict()
         # rootnode
@@ -154,9 +152,7 @@ outfile: {self.outfile}
         if file is None:
             file = self.root_dir
         if file is None or not Path(file).is_dir():
-            logger.error(
-                f"Cannot make file children for {file}"
-            )
+            logger.error(f"Cannot make file children for {file}")
             return
         files = self._get_children(file)
         for f in files:
@@ -269,9 +265,7 @@ outfile: {self.outfile}
 
             # Write to file
             with open(outfile_h, "w", encoding="utf-8") as f:
-                f.write(
-                    ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-                )
+                f.write(ET.tostring(htmlx, encoding="unicode", pretty_print=True))
 
     def list_files(self, globstr: str) -> List[Path]:
         """
@@ -284,9 +278,7 @@ outfile: {self.outfile}
             List of matching file paths
         """
         if globstr and self.root_dir:
-            return self._posix_glob(
-                str(self.root_dir / globstr), recursive=True
-            )
+            return self._posix_glob(str(self.root_dir / globstr), recursive=True)
         return []
 
     def create_datatables_html_with_filenames(
@@ -358,9 +350,7 @@ outfile: {self.outfile}
             List of file paths
         """
         if self.globstr:
-            self.infiles = self._posix_glob(
-                self.globstr, recursive=True
-            )[:maxfiles]
+            self.infiles = self._posix_glob(self.globstr, recursive=True)[:maxfiles]
         return self.infiles
 
     def _make_outfile(self):
@@ -424,23 +414,15 @@ outfile: {self.outfile}
         for query_id in query_ids:
             query = self.corpus_queries.get(query_id)
             if query is None:
-                err_msg = (
-                    "cannot find query: "
-                    + str(query_id)
-                )
+                err_msg = "cannot find query: " + str(query_id)
                 logger.error(err_msg)
                 continue
-            dbg_msg = (
-                "outfile==> "
-                + str(query.outfile)
-            )
+            dbg_msg = "outfile==> " + str(query.outfile)
             logger.debug(dbg_msg)
 
             # This would need to be implemented based on the search functionality
             # For now, we'll create a placeholder
-            logger.info(
-                f"Running query: {query_id}"
-            )
+            logger.info(f"Running query: {query_id}")
 
         return html_by_query_id
 
@@ -487,9 +469,7 @@ class AmiCorpusContainer:
             exist_ok: Whether to allow existing directory
         """
         if not isinstance(ami_corpus, AmiCorpus):
-            raise ValueError(
-                f"ami_corpus has wrong type {type(ami_corpus)}"
-            )
+            raise ValueError(f"ami_corpus has wrong type {type(ami_corpus)}")
 
         self.ami_corpus = ami_corpus
         self.file = Path(file)
@@ -510,12 +490,8 @@ class AmiCorpusContainer:
         if self.ami_corpus and self.file and self.file.is_dir():
             child_nodes = self.ami_corpus._get_children(self.file)
             for child_node in child_nodes:
-                child_container = AmiCorpusContainer(
-                    self.ami_corpus, child_node
-                )
-                child_container.bib_type = (
-                    "" if child_node.is_dir() else "file"
-                )
+                child_container = AmiCorpusContainer(self.ami_corpus, child_node)
+                child_container.bib_type = "" if child_node.is_dir() else "file"
                 child_containers.append(child_container)
         return child_containers
 

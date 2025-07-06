@@ -49,7 +49,12 @@ class PygetpapersDatatables:
         if not output_path.exists():
             raise FileNotFoundError(f"Output directory not found: {output_dir}")
 
-        result = {"output_dir": output_dir, "metadata_files": {}, "paper_directories": [], "summary": {}}
+        result = {
+            "output_dir": output_dir,
+            "metadata_files": {},
+            "paper_directories": [],
+            "summary": {},
+        }
 
         # Read metadata files
         for filename in self.supported_metadata_files:
@@ -78,9 +83,15 @@ class PygetpapersDatatables:
         result["summary"] = {
             "total_papers": len(result["paper_directories"]),
             "metadata_files_found": list(result["metadata_files"].keys()),
-            "has_xml": any("fulltext.xml" in str(p) for p in result["paper_directories"]),
-            "has_pdf": any("fulltext.pdf" in str(p) for p in result["paper_directories"]),
-            "has_supplementary": any("supplementary" in str(p) for p in result["paper_directories"]),
+            "has_xml": any(
+                "fulltext.xml" in str(p) for p in result["paper_directories"]
+            ),
+            "has_pdf": any(
+                "fulltext.pdf" in str(p) for p in result["paper_directories"]
+            ),
+            "has_supplementary": any(
+                "supplementary" in str(p) for p in result["paper_directories"]
+            ),
         }
 
         return result
@@ -95,10 +106,19 @@ class PygetpapersDatatables:
         Returns:
             Dictionary with paper information or None if not a valid paper directory
         """
-        paper_info = {"directory": paper_dir.name, "path": str(paper_dir), "files": [], "metadata": {}}
+        paper_info = {
+            "directory": paper_dir.name,
+            "path": str(paper_dir),
+            "files": [],
+            "metadata": {},
+        }
 
         # Check for metadata files
-        metadata_files = ["eupmc_result.json", "crossref_result.json", "arxiv_result.json"]
+        metadata_files = [
+            "eupmc_result.json",
+            "crossref_result.json",
+            "arxiv_result.json",
+        ]
         for metadata_file in metadata_files:
             metadata_path = paper_dir / metadata_file
             if metadata_path.exists():
@@ -161,12 +181,15 @@ class PygetpapersDatatables:
             # Create hyperlinks
             doi_link = f"https://doi.org/{doi}" if doi else ""
             pmid_link = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/" if pmid else ""
-            pmcid_link = f"https://www.ncbi.nlm.nih.gov/pmc/articles/{pmcid}/" if pmcid else ""
+            pmcid_link = (
+                f"https://www.ncbi.nlm.nih.gov/pmc/articles/{pmcid}/" if pmcid else ""
+            )
 
             # Create row data with hyperlinks
             row = {
                 "Select": (
-                    f'<input type="checkbox" class="paper-checkbox" data-paper-id="{paper["directory"]}">'
+                    f'<input type="checkbox" class="paper-checkbox" '
+                    f'data-paper-id="{paper["directory"]}">'
                     if include_checkboxes
                     else ""
                 ),
@@ -174,9 +197,21 @@ class PygetpapersDatatables:
                 "Title": title[:100] + "..." if len(title) > 100 else title,
                 "Authors": authors[:50] + "..." if len(authors) > 50 else authors,
                 "Journal": journal,
-                "DOI": f'<a href="{doi_link}" target="_blank">{doi}</a>' if doi_link else doi,
-                "PMID": f'<a href="{pmid_link}" target="_blank">{pmid}</a>' if pmid_link else pmid,
-                "PMCID": f'<a href="{pmcid_link}" target="_blank">{pmcid}</a>' if pmcid_link else pmcid,
+                "DOI": (
+                    f'<a href="{doi_link}" target="_blank">{doi}</a>'
+                    if doi_link
+                    else doi
+                ),
+                "PMID": (
+                    f'<a href="{pmid_link}" target="_blank">{pmid}</a>'
+                    if pmid_link
+                    else pmid
+                ),
+                "PMCID": (
+                    f'<a href="{pmcid_link}" target="_blank">{pmcid}</a>'
+                    if pmcid_link
+                    else pmcid
+                ),
                 "Date": pub_date,
                 "XML": "✅" if has_xml else "❌",
                 "PDF": "✅" if has_pdf else "❌",
@@ -188,7 +223,9 @@ class PygetpapersDatatables:
         # Create HTML table using datatables
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["ID"]: row for row in table_data}), datatables=True, table_id=table_id
+                dict_by_id=OrderedDict({row["ID"]: row for row in table_data}),
+                datatables=True,
+                table_id=table_id,
             )
 
             # Convert to string
@@ -200,7 +237,9 @@ class PygetpapersDatatables:
             # Fallback to simple HTML table
             return self._create_simple_table(table_data)
 
-    def create_metadata_table(self, output_data: Dict[str, Any], table_id: str = "metadata_table") -> str:
+    def create_metadata_table(
+        self, output_data: Dict[str, Any], table_id: str = "metadata_table"
+    ) -> str:
         """
         Create a table showing metadata file information.
 
@@ -245,18 +284,32 @@ class PygetpapersDatatables:
             elif isinstance(data, pd.DataFrame):
                 # CSV metadata
                 metadata_data.append(
-                    {"File": filename, "Type": "CSV", "Records": len(data), "Total Hits": len(data), "Format": "CSV"}
+                    {
+                        "File": filename,
+                        "Type": "CSV",
+                        "Records": len(data),
+                        "Total Hits": len(data),
+                        "Format": "CSV",
+                    }
                 )
             else:
                 # HTML or other format
                 metadata_data.append(
-                    {"File": filename, "Type": "HTML", "Records": "Unknown", "Total Hits": "Unknown", "Format": "HTML"}
+                    {
+                        "File": filename,
+                        "Type": "HTML",
+                        "Records": "Unknown",
+                        "Total Hits": "Unknown",
+                        "Format": "HTML",
+                    }
                 )
 
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["File"]: row for row in metadata_data}), datatables=True, table_id=table_id
+                dict_by_id=OrderedDict({row["File"]: row for row in metadata_data}),
+                datatables=True,
+                table_id=table_id,
             )
 
             html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
@@ -266,7 +319,9 @@ class PygetpapersDatatables:
             logger.error(f"Error creating metadata table: {e}")
             return self._create_simple_table(metadata_data)
 
-    def create_summary_table(self, output_data: Dict[str, Any], table_id: str = "summary_table") -> str:
+    def create_summary_table(
+        self, output_data: Dict[str, Any], table_id: str = "summary_table"
+    ) -> str:
         """
         Create a summary table with corpus statistics.
 
@@ -280,14 +335,26 @@ class PygetpapersDatatables:
         summary = output_data["summary"]
 
         summary_data = [
-            {"Metric": "Total Papers", "Value": summary["total_papers"], "Description": "Number of papers downloaded"},
+            {
+                "Metric": "Total Papers",
+                "Value": summary["total_papers"],
+                "Description": "Number of papers downloaded",
+            },
             {
                 "Metric": "Metadata Files",
                 "Value": len(summary["metadata_files_found"]),
                 "Description": "Number of metadata files found",
             },
-            {"Metric": "XML Files", "Value": "✅" if summary["has_xml"] else "❌", "Description": "Full-text XML available"},
-            {"Metric": "PDF Files", "Value": "✅" if summary["has_pdf"] else "❌", "Description": "Full-text PDF available"},
+            {
+                "Metric": "XML Files",
+                "Value": "✅" if summary["has_xml"] else "❌",
+                "Description": "Full-text XML available",
+            },
+            {
+                "Metric": "PDF Files",
+                "Value": "✅" if summary["has_pdf"] else "❌",
+                "Description": "Full-text PDF available",
+            },
             {
                 "Metric": "Supplementary Files",
                 "Value": "✅" if summary["has_supplementary"] else "❌",
@@ -298,7 +365,9 @@ class PygetpapersDatatables:
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Metric"]: row for row in summary_data}), datatables=True, table_id=table_id
+                dict_by_id=OrderedDict({row["Metric"]: row for row in summary_data}),
+                datatables=True,
+                table_id=table_id,
             )
 
             html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
@@ -345,7 +414,9 @@ class PygetpapersDatatables:
         html += "</table>"
         return html
 
-    def export_table_to_csv(self, output_data: Dict[str, Any], output_file: str) -> bool:
+    def export_table_to_csv(
+        self, output_data: Dict[str, Any], output_file: str
+    ) -> bool:
         """
         Export papers data to CSV file.
 
@@ -378,7 +449,9 @@ class PygetpapersDatatables:
                     "Keywords": metadata.get("keywordList", ""),
                     "Has_XML": any("fulltext.xml" in f for f in paper["files"]),
                     "Has_PDF": any("fulltext.pdf" in f for f in paper["files"]),
-                    "Has_Supplementary": any("supplementary" in f for f in paper["files"]),
+                    "Has_Supplementary": any(
+                        "supplementary" in f for f in paper["files"]
+                    ),
                     "File_Count": len(paper["files"]),
                 }
                 csv_data.append(row)
@@ -392,7 +465,9 @@ class PygetpapersDatatables:
             logger.error(f"Error exporting to CSV: {e}")
             return False
 
-    def get_paper_details(self, output_data: Dict[str, Any], paper_id: str) -> Optional[Dict[str, Any]]:
+    def get_paper_details(
+        self, output_data: Dict[str, Any], paper_id: str
+    ) -> Optional[Dict[str, Any]]:
         """
         Get detailed information about a specific paper.
 
@@ -408,7 +483,9 @@ class PygetpapersDatatables:
                 return paper
         return None
 
-    def merge_corpora(self, corpora_data: List[Dict[str, Any]], merged_name: str = "merged_corpus") -> Dict[str, Any]:
+    def merge_corpora(
+        self, corpora_data: List[Dict[str, Any]], merged_name: str = "merged_corpus"
+    ) -> Dict[str, Any]:
         """
         Merge multiple corpora into a single dataset.
 
@@ -419,7 +496,12 @@ class PygetpapersDatatables:
         Returns:
             Merged corpus data
         """
-        merged_data = {"output_dir": merged_name, "metadata_files": {}, "paper_directories": [], "summary": {}}
+        merged_data = {
+            "output_dir": merged_name,
+            "metadata_files": {},
+            "paper_directories": [],
+            "summary": {},
+        }
 
         # Merge paper directories
         seen_papers = set()
@@ -439,9 +521,15 @@ class PygetpapersDatatables:
         merged_data["summary"] = {
             "total_papers": len(merged_data["paper_directories"]),
             "metadata_files_found": list(merged_data["metadata_files"].keys()),
-            "has_xml": any("fulltext.xml" in str(p) for p in merged_data["paper_directories"]),
-            "has_pdf": any("fulltext.pdf" in str(p) for p in merged_data["paper_directories"]),
-            "has_supplementary": any("supplementary" in str(p) for p in merged_data["paper_directories"]),
+            "has_xml": any(
+                "fulltext.xml" in str(p) for p in merged_data["paper_directories"]
+            ),
+            "has_pdf": any(
+                "fulltext.pdf" in str(p) for p in merged_data["paper_directories"]
+            ),
+            "has_supplementary": any(
+                "supplementary" in str(p) for p in merged_data["paper_directories"]
+            ),
             "source_corpora": len(corpora_data),
         }
 
@@ -467,7 +555,9 @@ class PygetpapersDatatables:
                 "has_xml": corpus_data["summary"]["has_xml"],
                 "has_pdf": corpus_data["summary"]["has_pdf"],
                 "has_supplementary": corpus_data["summary"]["has_supplementary"],
-                "paper_ids": set(paper["directory"] for paper in corpus_data["paper_directories"]),
+                "paper_ids": set(
+                    paper["directory"] for paper in corpus_data["paper_directories"]
+                ),
             }
             comparison["corpora"].append(corpus_info)
 
@@ -479,7 +569,10 @@ class PygetpapersDatatables:
             comparison["overlap_analysis"] = {
                 "common_papers": len(common_papers),
                 "common_paper_ids": list(common_papers),
-                "unique_papers_per_corpus": [len(corpus["paper_ids"] - common_papers) for corpus in comparison["corpora"]],
+                "unique_papers_per_corpus": [
+                    len(corpus["paper_ids"] - common_papers)
+                    for corpus in comparison["corpora"]
+                ],
             }
 
         # Summary statistics
@@ -487,10 +580,18 @@ class PygetpapersDatatables:
         comparison["summary_stats"] = {
             "total_corpora": len(corpora_data),
             "total_papers": total_papers,
-            "average_papers_per_corpus": total_papers / len(corpora_data) if corpora_data else 0,
-            "corpora_with_xml": sum(1 for corpus in comparison["corpora"] if corpus["has_xml"]),
-            "corpora_with_pdf": sum(1 for corpus in comparison["corpora"] if corpus["has_pdf"]),
-            "corpora_with_supplementary": sum(1 for corpus in comparison["corpora"] if corpus["has_supplementary"]),
+            "average_papers_per_corpus": (
+                total_papers / len(corpora_data) if corpora_data else 0
+            ),
+            "corpora_with_xml": sum(
+                1 for corpus in comparison["corpora"] if corpus["has_xml"]
+            ),
+            "corpora_with_pdf": sum(
+                1 for corpus in comparison["corpora"] if corpus["has_pdf"]
+            ),
+            "corpora_with_supplementary": sum(
+                1 for corpus in comparison["corpora"] if corpus["has_supplementary"]
+            ),
         }
 
         return comparison
@@ -537,9 +638,13 @@ class PygetpapersDatatables:
                 xml_files = list(paper_path.glob("*.xml"))
                 for xml_file in xml_files:
                     try:
-                        with open(xml_file, "r", encoding="utf-8", errors="ignore") as f:
+                        with open(
+                            xml_file, "r", encoding="utf-8", errors="ignore"
+                        ) as f:
                             content = f.read()
-                            matches = self._search_in_content(content, search_terms, case_sensitive, "XML")
+                            matches = self._search_in_content(
+                                content, search_terms, case_sensitive, "XML"
+                            )
                             for match in matches:
                                 match["file"] = str(xml_file.relative_to(paper_path))
                                 match["paper_id"] = paper["directory"]
@@ -552,12 +657,17 @@ class PygetpapersDatatables:
                 pdf_files = list(paper_path.glob("*.pdf"))
                 for pdf_file in pdf_files:
                     try:
-                        # Basic PDF text extraction (could be enhanced with PyPDF2 or similar)
+                        # Basic PDF text extraction (could be enhanced with PyPDF2 or 
+                        # similar)
                         content = self._extract_pdf_text(pdf_file)
                         if content:
-                            matches = self._search_in_content(content, search_terms, case_sensitive, "PDF")
+                            matches = self._search_in_content(
+                                content, search_terms, case_sensitive, "PDF"
+                            )
                             for match in matches:
-                                match["file"] = str(pdf_file.relative_to(paper_path))
+                                match["file"] = str(
+                                    pdf_file.relative_to(paper_path)
+                                )
                                 match["paper_id"] = paper["directory"]
                                 paper_matches.append(match)
                     except Exception as e:
@@ -569,21 +679,34 @@ class PygetpapersDatatables:
                 for supp_file in supp_files:
                     if supp_file.is_file():
                         try:
-                            with open(supp_file, "r", encoding="utf-8", errors="ignore") as f:
+                            with open(
+                                supp_file, "r", encoding="utf-8", errors="ignore"
+                            ) as f:
                                 content = f.read()
-                                matches = self._search_in_content(content, search_terms, case_sensitive, "Supplementary")
+                                matches = self._search_in_content(
+                                    content,
+                                    search_terms,
+                                    case_sensitive,
+                                    "Supplementary",
+                                )
                                 for match in matches:
-                                    match["file"] = str(supp_file.relative_to(paper_path))
+                                    match["file"] = str(
+                                        supp_file.relative_to(paper_path)
+                                    )
                                     match["paper_id"] = paper["directory"]
                                     paper_matches.append(match)
                         except Exception as e:
-                            logger.warning(f"Error reading supplementary file {supp_file}: {e}")
+                            logger.warning(
+                                f"Error reading supplementary file {supp_file}: {e}"
+                            )
 
             # Search in metadata
             if "metadata" in search_fields:
                 metadata = paper.get("metadata", {})
                 metadata_text = json.dumps(metadata, ensure_ascii=False)
-                matches = self._search_in_content(metadata_text, search_terms, case_sensitive, "Metadata")
+                matches = self._search_in_content(
+                    metadata_text, search_terms, case_sensitive, "Metadata"
+                )
                 for match in matches:
                     match["file"] = "metadata"
                     match["paper_id"] = paper["directory"]
@@ -600,14 +723,20 @@ class PygetpapersDatatables:
             "papers_with_matches": papers_with_matches,
             "total_papers_searched": len(output_data["paper_directories"]),
             "match_rate": (
-                papers_with_matches / len(output_data["paper_directories"]) if output_data["paper_directories"] else 0
+                papers_with_matches / len(output_data["paper_directories"])
+                if output_data["paper_directories"]
+                else 0
             ),
         }
 
         return search_results
 
     def _search_in_content(
-        self, content: str, search_terms: List[str], case_sensitive: bool, content_type: str
+        self,
+        content: str,
+        search_terms: List[str],
+        case_sensitive: bool,
+        content_type: str,
     ) -> List[Dict[str, Any]]:
         """
         Search for terms in content and return matches with context.
@@ -698,7 +827,12 @@ class PygetpapersDatatables:
                 import subprocess
 
                 try:
-                    result = subprocess.run(["pdftotext", str(pdf_file), "-"], capture_output=True, text=True, timeout=30)
+                    result = subprocess.run(
+                        ["pdftotext", str(pdf_file), "-"],
+                        capture_output=True,
+                        text=True,
+                        timeout=30,
+                    )
                     if result.returncode == 0:
                         return result.stdout
                 except (subprocess.TimeoutExpired, FileNotFoundError):
@@ -710,7 +844,9 @@ class PygetpapersDatatables:
             logger.warning(f"Error extracting text from PDF {pdf_file}: {e}")
             return None
 
-    def create_search_results_table(self, search_results: Dict[str, Any], table_id: str = "search_results_table") -> str:
+    def create_search_results_table(
+        self, search_results: Dict[str, Any], table_id: str = "search_results_table"
+    ) -> str:
         """
         Create a table showing fulltext search results.
 
@@ -728,14 +864,22 @@ class PygetpapersDatatables:
         table_data = []
         for match in search_results["matches"]:
             # Create hyperlink to paper
-            paper_link = f'<a href="#paper_{match["paper_id"]}" onclick="showPaperDetails(\'{match["paper_id"]}\')">{match["paper_id"]}</a>'
+            paper_link = (
+                f'<a href="#paper_{match["paper_id"]}" '
+                f'onclick="showPaperDetails(\'{match["paper_id"]}\')">'
+                f'{match["paper_id"]}</a>'
+            )
 
             row = {
                 "Paper ID": paper_link,
                 "Term": match["term"],
                 "File": match["file"],
                 "Line": match["line_number"],
-                "Context": match["context"][:100] + "..." if len(match["context"]) > 100 else match["context"],
+                "Context": (
+                    match["context"][:100] + "..."
+                    if len(match["context"]) > 100
+                    else match["context"]
+                ),
                 "Content Type": match["content_type"],
             }
             table_data.append(row)
@@ -743,7 +887,9 @@ class PygetpapersDatatables:
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({f"{row['Paper ID']}_{i}": row for i, row in enumerate(table_data)}),
+                dict_by_id=OrderedDict(
+                    {f"{row['Paper ID']}_{i}": row for i, row in enumerate(table_data)}
+                ),
                 datatables=True,
                 table_id=table_id,
             )
@@ -767,7 +913,9 @@ class PygetpapersDatatables:
         """
         return list(set(match["paper_id"] for match in search_results["matches"]))
 
-    def filter_papers_by_search(self, output_data: Dict[str, Any], search_results: Dict[str, Any]) -> Dict[str, Any]:
+    def filter_papers_by_search(
+        self, output_data: Dict[str, Any], search_results: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """
         Filter papers to only include those with search matches.
 
@@ -784,7 +932,9 @@ class PygetpapersDatatables:
             "output_dir": f"{output_data['output_dir']}_filtered",
             "metadata_files": output_data["metadata_files"],
             "paper_directories": [
-                paper for paper in output_data["paper_directories"] if paper["directory"] in papers_with_matches
+                paper
+                for paper in output_data["paper_directories"]
+                if paper["directory"] in papers_with_matches
             ],
             "summary": {},
         }
@@ -793,9 +943,15 @@ class PygetpapersDatatables:
         filtered_data["summary"] = {
             "total_papers": len(filtered_data["paper_directories"]),
             "metadata_files_found": list(filtered_data["metadata_files"].keys()),
-            "has_xml": any("fulltext.xml" in str(p) for p in filtered_data["paper_directories"]),
-            "has_pdf": any("fulltext.pdf" in str(p) for p in filtered_data["paper_directories"]),
-            "has_supplementary": any("supplementary" in str(p) for p in filtered_data["paper_directories"]),
+            "has_xml": any(
+                "fulltext.xml" in str(p) for p in filtered_data["paper_directories"]
+            ),
+            "has_pdf": any(
+                "fulltext.pdf" in str(p) for p in filtered_data["paper_directories"]
+            ),
+            "has_supplementary": any(
+                "supplementary" in str(p) for p in filtered_data["paper_directories"]
+            ),
             "search_matches": search_results["summary"]["total_matches"],
         }
 
@@ -811,14 +967,23 @@ class PygetpapersDatatables:
         Returns:
             Dictionary containing figure information for each paper
         """
-        figures_data = {"papers": {}, "summary": {"total_figures": 0, "papers_with_figures": 0, "figure_types": {}}}
+        figures_data = {
+            "papers": {},
+            "summary": {
+                "total_figures": 0,
+                "papers_with_figures": 0,
+                "figure_types": {},
+            },
+        }
 
         for paper in output_data["paper_directories"]:
             paper_figures = self._extract_paper_figures(paper)
             if paper_figures:
                 figures_data["papers"][paper["directory"]] = paper_figures
                 figures_data["summary"]["papers_with_figures"] += 1
-                figures_data["summary"]["total_figures"] += len(paper_figures["figures"])
+                figures_data["summary"]["total_figures"] += len(
+                    paper_figures["figures"]
+                )
 
         return figures_data
 
@@ -839,7 +1004,9 @@ class PygetpapersDatatables:
         xml_files = list(paper_path.glob("*.xml"))
         for xml_file in xml_files:
             try:
-                xml_figures = self._extract_figures_from_xml(xml_file, paper["directory"])
+                xml_figures = self._extract_figures_from_xml(
+                    xml_file, paper["directory"]
+                )
                 figures.extend(xml_figures)
             except Exception as e:
                 logger.warning(f"Error extracting figures from XML {xml_file}: {e}")
@@ -849,10 +1016,14 @@ class PygetpapersDatatables:
         for supp_file in supp_files:
             if supp_file.is_file() and supp_file.suffix.lower() in [".xml", ".html"]:
                 try:
-                    supp_figures = self._extract_figures_from_supplementary(supp_file, paper["directory"])
+                    supp_figures = self._extract_figures_from_supplementary(
+                        supp_file, paper["directory"]
+                    )
                     figures.extend(supp_figures)
                 except Exception as e:
-                    logger.warning(f"Error extracting figures from supplementary {supp_file}: {e}")
+                    logger.warning(
+                        f"Error extracting figures from supplementary {supp_file}: {e}"
+                    )
 
         # Look for image files
         image_files = (
@@ -866,7 +1037,9 @@ class PygetpapersDatatables:
 
         for image_file in image_files:
             try:
-                image_figure = self._extract_image_figure(image_file, paper["directory"])
+                image_figure = self._extract_image_figure(
+                    image_file, paper["directory"]
+                )
                 if image_figure:
                     figures.append(image_figure)
             except Exception as e:
@@ -875,14 +1048,18 @@ class PygetpapersDatatables:
         if figures:
             return {
                 "paper_id": paper["directory"],
-                "paper_title": paper.get("metadata", {}).get("title", paper["directory"]),
+                "paper_title": paper.get("metadata", {}).get(
+                    "title", paper["directory"]
+                ),
                 "figures": figures,
                 "total_figures": len(figures),
             }
 
         return None
 
-    def _extract_figures_from_xml(self, xml_file: Path, paper_id: str) -> List[Dict[str, Any]]:
+    def _extract_figures_from_xml(
+        self, xml_file: Path, paper_id: str
+    ) -> List[Dict[str, Any]]:
         """
         Extract figures from XML content.
 
@@ -918,7 +1095,9 @@ class PygetpapersDatatables:
                 try:
                     elements = root.xpath(f"//*[local-name()='{tag}']")
                     for i, element in enumerate(elements):
-                        figure_info = self._parse_figure_element(element, paper_id, f"{xml_file.stem}_fig_{i+1}")
+                        figure_info = self._parse_figure_element(
+                            element, paper_id, f"{xml_file.stem}_fig_{i + 1}"
+                        )
                         if figure_info:
                             figures.append(figure_info)
                 except Exception as e:
@@ -930,7 +1109,9 @@ class PygetpapersDatatables:
                 try:
                     elements = root.xpath(f"//*[local-name()='{tag}']")
                     for i, element in enumerate(elements):
-                        caption_info = self._parse_caption_element(element, paper_id, f"{xml_file.stem}_caption_{i+1}")
+                        caption_info = self._parse_caption_element(
+                            element, paper_id, f"{xml_file.stem}_caption_{i + 1}"
+                        )
                         if caption_info:
                             figures.append(caption_info)
                 except Exception as e:
@@ -941,7 +1122,9 @@ class PygetpapersDatatables:
 
         return figures
 
-    def _parse_figure_element(self, element, paper_id: str, figure_id: str) -> Optional[Dict[str, Any]]:
+    def _parse_figure_element(
+        self, element, paper_id: str, figure_id: str
+    ) -> Optional[Dict[str, Any]]:
         """
         Parse a figure element and extract information.
 
@@ -1007,7 +1190,9 @@ class PygetpapersDatatables:
 
         return None
 
-    def _parse_caption_element(self, element, paper_id: str, caption_id: str) -> Optional[Dict[str, Any]]:
+    def _parse_caption_element(
+        self, element, paper_id: str, caption_id: str
+    ) -> Optional[Dict[str, Any]]:
         """
         Parse a caption element and extract information.
 
@@ -1038,7 +1223,9 @@ class PygetpapersDatatables:
 
         return None
 
-    def _extract_figures_from_supplementary(self, supp_file: Path, paper_id: str) -> List[Dict[str, Any]]:
+    def _extract_figures_from_supplementary(
+        self, supp_file: Path, paper_id: str
+    ) -> List[Dict[str, Any]]:
         """
         Extract figures from supplementary files.
 
@@ -1058,11 +1245,15 @@ class PygetpapersDatatables:
                 figures = self._extract_figures_from_html(supp_file, paper_id)
 
         except Exception as e:
-            logger.warning(f"Error extracting figures from supplementary {supp_file}: {e}")
+            logger.warning(
+                f"Error extracting figures from supplementary {supp_file}: {e}"
+            )
 
         return figures
 
-    def _extract_figures_from_html(self, html_file: Path, paper_id: str) -> List[Dict[str, Any]]:
+    def _extract_figures_from_html(
+        self, html_file: Path, paper_id: str
+    ) -> List[Dict[str, Any]]:
         """
         Extract figures from HTML content.
 
@@ -1099,7 +1290,7 @@ class PygetpapersDatatables:
                 if caption or img_src:
                     figures.append(
                         {
-                            "figure_id": f"{html_file.stem}_fig_{i+1}",
+                            "figure_id": f"{html_file.stem}_fig_{i + 1}",
                             "paper_id": paper_id,
                             "caption": caption,
                             "label": "",
@@ -1115,7 +1306,9 @@ class PygetpapersDatatables:
 
         return figures
 
-    def _extract_image_figure(self, image_file: Path, paper_id: str) -> Optional[Dict[str, Any]]:
+    def _extract_image_figure(
+        self, image_file: Path, paper_id: str
+    ) -> Optional[Dict[str, Any]]:
         """
         Extract figure information from an image file.
 
@@ -1184,7 +1377,9 @@ class PygetpapersDatatables:
             logger.warning(f"Error creating thumbnail for {image_file}: {e}")
             return None
 
-    def create_figures_table(self, figures_data: Dict[str, Any], table_id: str = "figures_table") -> str:
+    def create_figures_table(
+        self, figures_data: Dict[str, Any], table_id: str = "figures_table"
+    ) -> str:
         """
         Create a table showing figures with thumbnails.
 
@@ -1206,21 +1401,32 @@ class PygetpapersDatatables:
                 thumbnail_html = ""
                 if figure.get("thumbnail"):
                     thumbnail_html = (
-                        f'<img src="{figure["thumbnail"]}" alt="Thumbnail" style="max-width: 100px; max-height: 100px;">'
+                        f'<img src="{figure["thumbnail"]}" alt="Thumbnail" '
+                        'style="max-width: 100px; max-height: 100px;">'
                     )
                 elif figure.get("image_src"):
-                    thumbnail_html = f'<span style="color: #666;">📷 Image available</span>'
+                    thumbnail_html = (
+                        '<span style="color: #666;">📷 Image available</span>'
+                    )
                 else:
-                    thumbnail_html = f'<span style="color: #999;">No image</span>'
+                    thumbnail_html = '<span style="color: #999;">No image</span>'
 
                 # Create paper link
-                paper_link = f'<a href="#paper_{figure["paper_id"]}" onclick="showPaperDetails(\'{figure["paper_id"]}\')">{figure["paper_id"]}</a>'
+                paper_link = (
+                    f'<a href="#paper_{figure["paper_id"]}" '
+                    f'onclick="showPaperDetails(\'{figure["paper_id"]}\')">'
+                    f'{figure["paper_id"]}</a>'
+                )
 
                 row = {
                     "Paper ID": paper_link,
                     "Figure ID": figure["figure_id"],
                     "Thumbnail": thumbnail_html,
-                    "Caption": figure["caption"][:100] + "..." if len(figure["caption"]) > 100 else figure["caption"],
+                    "Caption": (
+                        figure["caption"][:100] + "..."
+                        if len(figure["caption"]) > 100
+                        else figure["caption"]
+                    ),
                     "Label": figure["label"],
                     "Title": figure["title"],
                     "Type": figure["figure_type"],
@@ -1230,7 +1436,9 @@ class PygetpapersDatatables:
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({f"{row['Paper ID']}_{row['Figure ID']}": row for row in table_data}),
+                dict_by_id=OrderedDict(
+                    {f"{row['Paper ID']}_{row['Figure ID']}": row for row in table_data}
+                ),
                 datatables=True,
                 table_id=table_id,
             )
@@ -1242,39 +1450,9 @@ class PygetpapersDatatables:
             logger.error(f"Error creating figures table: {e}")
             return self._create_simple_table(table_data)
 
-    def _create_simple_table(self, table_data: List[Dict[str, Any]]) -> str:
-        """
-        Create a simple HTML table as fallback.
-
-        Args:
-            table_data: List of row dictionaries
-
-        Returns:
-            HTML string with simple table
-        """
-        if not table_data:
-            return "<p>No data available.</p>"
-
-        html = "<table border='1' style='border-collapse: collapse; width: 100%;'>"
-
-        # Header
-        html += "<thead><tr>"
-        for key in table_data[0].keys():
-            html += f"<th style='padding: 8px; text-align: left;'>{key}</th>"
-        html += "</tr></thead>"
-
-        # Body
-        html += "<tbody>"
-        for row in table_data:
-            html += "<tr>"
-            for value in row.values():
-                html += f"<td style='padding: 8px;'>{value}</td>"
-            html += "</tr>"
-        html += "</tbody></table>"
-
-        return html
-
-    def create_figures_summary_table(self, figures_data: Dict[str, Any], table_id: str = "figures_summary_table") -> str:
+    def create_figures_summary_table(
+        self, figures_data: Dict[str, Any], table_id: str = "figures_summary_table"
+    ) -> str:
         """
         Create a summary table of figures by paper.
 
@@ -1314,7 +1492,9 @@ class PygetpapersDatatables:
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Paper ID"]: row for row in summary_data}), datatables=True, table_id=table_id
+                dict_by_id=OrderedDict({row["Paper ID"]: row for row in summary_data}),
+                datatables=True,
+                table_id=table_id,
             )
 
             html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
@@ -1324,7 +1504,9 @@ class PygetpapersDatatables:
             logger.error(f"Error creating figures summary table: {e}")
             return self._create_simple_table(summary_data)
 
-    def create_comparison_table(self, comparison_data: Dict[str, Any], table_id: str = "comparison_table") -> str:
+    def create_comparison_table(
+        self, comparison_data: Dict[str, Any], table_id: str = "comparison_table"
+    ) -> str:
         """
         Create a comparison table for multiple corpora.
 
@@ -1353,7 +1535,9 @@ class PygetpapersDatatables:
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Corpus"]: row for row in comparison_rows}), datatables=True, table_id=table_id
+                dict_by_id=OrderedDict({row["Corpus"]: row for row in comparison_rows}),
+                datatables=True,
+                table_id=table_id,
             )
 
             html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
@@ -1363,7 +1547,9 @@ class PygetpapersDatatables:
             logger.error(f"Error creating comparison table: {e}")
             return self._create_simple_table(comparison_rows)
 
-    def create_overlap_table(self, comparison_data: Dict[str, Any], table_id: str = "overlap_table") -> str:
+    def create_overlap_table(
+        self, comparison_data: Dict[str, Any], table_id: str = "overlap_table"
+    ) -> str:
         """
         Create an overlap analysis table.
 
@@ -1381,8 +1567,16 @@ class PygetpapersDatatables:
         summary = comparison_data["summary_stats"]
 
         overlap_data = [
-            {"Metric": "Total Corpora", "Value": summary["total_corpora"], "Description": "Number of corpora compared"},
-            {"Metric": "Common Papers", "Value": overlap["common_papers"], "Description": "Papers found in all corpora"},
+            {
+                "Metric": "Total Corpora",
+                "Value": summary["total_corpora"],
+                "Description": "Number of corpora compared",
+            },
+            {
+                "Metric": "Common Papers",
+                "Value": overlap["common_papers"],
+                "Description": "Papers found in all corpora",
+            },
             {
                 "Metric": "Average Papers per Corpus",
                 "Value": f"{summary['average_papers_per_corpus']:.1f}",
@@ -1392,15 +1586,25 @@ class PygetpapersDatatables:
 
         # Add unique papers per corpus
         for i, unique_count in enumerate(overlap.get("unique_papers_per_corpus", [])):
-            corpus_name = comparison_data["corpora"][i]["name"] if i < len(comparison_data["corpora"]) else f"Corpus {i+1}"
+            corpus_name = (
+                comparison_data["corpora"][i]["name"]
+                if i < len(comparison_data["corpora"])
+                else f"Corpus {i + 1}"
+            )
             overlap_data.append(
-                {"Metric": f"Unique in {corpus_name}", "Value": unique_count, "Description": f"Papers unique to {corpus_name}"}
+                {
+                    "Metric": f"Unique in {corpus_name}",
+                    "Value": unique_count,
+                    "Description": f"Papers unique to {corpus_name}",
+                }
             )
 
         # Create HTML table
         try:
             htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Metric"]: row for row in overlap_data}), datatables=True, table_id=table_id
+                dict_by_id=OrderedDict({row["Metric"]: row for row in overlap_data}),
+                datatables=True,
+                table_id=table_id,
             )
 
             html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
@@ -1409,7 +1613,3 @@ class PygetpapersDatatables:
         except Exception as e:
             logger.error(f"Error creating overlap table: {e}")
             return self._create_simple_table(overlap_data)
-
-
-# Import ET for HTML generation
-import lxml.etree as ET

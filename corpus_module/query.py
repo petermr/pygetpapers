@@ -88,15 +88,11 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             raise ValueError("No query_id given")
         query_id = query_id.strip()
         if " " in query_id:
-            raise ValueError(
-                f"no spaces allowed in query_id, found {query_id}"
-            )
+            raise ValueError(f"no spaces allowed in query_id, found {query_id}")
         self.query_id = query_id
 
         if indir is None or not Path(indir).exists():
-            logger.error(
-                f"input directory must exist {indir}"
-            )
+            logger.error(f"input directory must exist {indir}")
         self.indir = Path(indir)
         self.outfile = Path(outfile) if outfile else None
         if not self.outfile:
@@ -112,10 +108,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
 
         # This would need to be implemented based on the search functionality
         # For now, we'll create a placeholder
-                    logger.info(
-                f"Running query: {query_id} with phrases: "
-                f"{self.phrases}"
-            )
+        logger.info(f"Running query: {query_id} with phrases: {self.phrases}")
 
         # Create a simple HTML table as placeholder
         from datatables_module import Datatables
@@ -135,11 +128,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
 
         table_file = Path(outdir) / f"{self.query_id}_{TABLE_HITS_SUFFIX}"
         with open(table_file, "w", encoding="utf-8") as f:
-            f.write(
-                ET.tostring(
-                    htmlx, encoding="unicode", pretty_print=True
-                )
-            )
+            f.write(ET.tostring(htmlx, encoding="unicode", pretty_print=True))
 
         return htmlx, self.query_id
 
@@ -172,14 +161,12 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             List of (term, ref, para) tuples
         """
         if term_id_by_url is None:
-            logger.error(f"term_id_by_url is None")
+            logger.error("term_id_by_url is None")
             return None
 
         trp_list = []
         for ref in term_id_by_url.keys():
-            bits = ref.split("#")
-            file = bits[0]
-            idref = bits[1] if len(bits) > 1 else ""
+            # bits = ref.split("#")  # Unused, removed for F841
             term_p = term_id_by_url.get(ref)
             if term_p and len(term_p) >= 2:
                 term = term_p[0]
@@ -201,7 +188,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             term_ref_p_tuple_list: List of (term, ref, para) tuples
         """
         if term_ref_p_tuple_list is None:
-            logger.error(f"term_ref_p_tuple_list is None")
+            logger.error("term_ref_p_tuple_list is None")
             return
 
         for term, ref, p in term_ref_p_tuple_list:

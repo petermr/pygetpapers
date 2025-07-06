@@ -7,10 +7,10 @@ import os
 import sys
 from pathlib import Path
 
+from datatables_integration import PygetpapersDatatables
+
 # Add the current directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-from datatables_integration import PygetpapersDatatables
 
 
 def test_figures_extraction():
@@ -42,20 +42,29 @@ def test_figures_extraction():
 
         if figures_data["papers"]:
             summary = figures_data["summary"]
-            print(f"✅ Found {summary['total_figures']} figures across {summary['papers_with_figures']} papers")
+            print(
+                f"✅ Found {summary['total_figures']} figures across "
+                f"{summary['papers_with_figures']} papers"
+            )
 
             # Show some sample figures
             print("\n📊 Sample Figures:")
-            for i, (paper_id, paper_figures) in enumerate(figures_data["papers"].items()):
+            for i, (paper_id, paper_figures) in enumerate(
+                figures_data["papers"].items()
+            ):
                 if i >= 3:  # Show first 3 papers
                     break
                 print(f"  📄 {paper_id}: {paper_figures['total_figures']} figures")
-                for j, figure in enumerate(paper_figures["figures"][:2]):  # Show first 2 figures per paper
+                for j, figure in enumerate(
+                    paper_figures["figures"][:2]
+                ):  # Show first 2 figures per paper
                     print(f"    🖼️  {figure['figure_id']}: {figure['caption'][:50]}...")
 
             # Test table creation
             print("\n📋 Testing table creation...")
-            figures_html = datatables.create_figures_table(figures_data, "test_figures_table")
+            figures_html = datatables.create_figures_table(
+                figures_data, "test_figures_table"
+            )
             if figures_html and "table" in figures_html.lower():
                 print("✅ Figures table created successfully")
             else:
@@ -63,7 +72,9 @@ def test_figures_extraction():
                 return False
 
             # Test summary table
-            summary_html = datatables.create_figures_summary_table(figures_data, "test_summary_table")
+            summary_html = datatables.create_figures_summary_table(
+                figures_data, "test_summary_table"
+            )
             if summary_html and "table" in summary_html.lower():
                 print("✅ Summary table created successfully")
             else:
@@ -75,7 +86,10 @@ def test_figures_extraction():
 
         else:
             print("ℹ️  No figures found in the test corpus")
-            print("This is normal if the papers don't contain figures or if XML parsing didn't find them")
+            print(
+                "This is normal if the papers don't contain figures or if XML "
+                "parsing didn't find them"
+            )
             return True
 
     except Exception as e:
@@ -116,7 +130,7 @@ def test_thumbnail_creation():
             if thumbnail:
                 print(f"    ✅ Thumbnail created ({len(thumbnail)} chars)")
             else:
-                print(f"    ⚠️  No thumbnail created (PIL may not be available)")
+                print("    ⚠️  No thumbnail created (PIL may not be available)")
         except Exception as e:
             print(f"    ❌ Error creating thumbnail: {str(e)}")
 

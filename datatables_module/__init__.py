@@ -1,7 +1,8 @@
 """
 Standalone Datatables Module
 
-This module provides functionality for creating interactive HTML tables using jQuery DataTables.
+This module provides functionality for creating interactive HTML tables using
+jQuery DataTables.
 Extracted from amilib for use in pygetpapers Streamlit UI and other projects.
 
 Features:

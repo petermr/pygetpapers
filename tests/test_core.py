@@ -29,20 +29,23 @@ os.system(f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_pat
 def test_directory_creation():
     print("Checking if directory exists")
     does_directory_exist = os.path.exists(current_path)
-    assert does_directory_exist == True
+    assert does_directory_exist is True
 
 
 def test_does_europepmc_json_file_exists():
     print("Checking if query run successfully")
     does_europepmc_json_file_exist = os.path.isfile(eupmc_json_path)
-    assert does_europepmc_json_file_exist == True
+    assert does_europepmc_json_file_exist is True
 
 
 def test_eupmc_does_update_work():
     print("Checking Update")
     path, dirs, files = next(os.walk(current_path))
     old_file_count = len(dirs)
-    os.system(f'python -m pygetpapers.pygetpapers -q "lantana" -k 10 --update -o {current_path}')
+    os.system(
+        f'python -m pygetpapers.pygetpapers -q "lantana" -k 10 --update '
+        f'-o {current_path}'
+    )
     path, dirs, files = next(os.walk(current_path))
     new_file_count = len(dirs)
     print(new_file_count)
@@ -56,44 +59,62 @@ def test_does_zip_work():
     NOT FULLY TESTED OR DOCUMENTED
     """
     print("checking zip")
-    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_zip} -o {current_path} -k 1 --zip")
+    os.system(
+        f"python -m pygetpapers.pygetpapers -q {paper_for_zip} -o {current_path} "
+        f"-k 1 --zip"
+    )
     does_zip_folder_exist = os.path.isdir(path_for_zip)
     assert does_zip_folder_exist
 
 
 def test_does_supplementary_work():
     print("checking supp")
-    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_supp} -o {current_path} -k 1 --supp")
+    os.system(
+        f"python -m pygetpapers.pygetpapers -q {paper_for_supp} -o {current_path} "
+        f"-k 1 --supp"
+    )
     does_supp_folder_exist = os.path.isdir(path_for_supp)
     assert does_supp_folder_exist
 
 
 def does_references_work():
     print("Checking references")
-    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_references_test} -o {current_path} -k 1 --supp")
+    os.system(
+        f"python -m pygetpapers.pygetpapers -q {paper_for_references_test} "
+        f"-o {current_path} -k 1 --supp"
+    )
     does_references_exist = os.path.isfile(references_path)
     assert does_references_exist
 
 
 def does_citations_work():
     print("Checking citations")
-    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_citations_test} -o {current_path} -k 1 --supp")
+    os.system(
+        f"python -m pygetpapers.pygetpapers -q {paper_for_citations_test} "
+        f"-o {current_path} -k 1 --supp"
+    )
     does_citations_exist = os.path.isfile(citation_path)
     assert does_citations_exist
 
 
 def test_does_crossref_work():
-    command = f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" --api "crossref" '
+    command = (
+        f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" '
+        f'--api "crossref" '
+    )
     logger.info(f"running {command}")
     os.system(command)
     print("Checking if query run successfully")
     does_crossref_json_file_exist = os.path.isfile(crossref_json_path)
-    assert does_crossref_json_file_exist == True
+    assert does_crossref_json_file_exist is True
 
 
 def test_does_arxiv_work():
     logger.info(f"testing {test_does_arxiv_work}")
-    command = f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" --api "arxiv" '
+    command = (
+        f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" '
+        f'--api "arxiv" '
+    )
     logger.info(f"running {command}")
     os.system(command)
     logger.info("Checking if query run successfully")
@@ -101,16 +122,22 @@ def test_does_arxiv_work():
 
 
 def test_does_logfile_work():
-    os.system(f'python -m pygetpapers.pygetpapers -q lantana -o "{current_path}" -k 1 --logfile {logfile_name}')
+    os.system(
+        f'python -m pygetpapers.pygetpapers -q lantana -o "{current_path}" -k 1 '
+        f'--logfile {logfile_name}'
+    )
     does_logfile_exist = os.path.isfile(path_for_logfile)
     assert does_logfile_exist
 
 
 def test_does_biorxiv_work():
-    os.system(f'python -m pygetpapers.pygetpapers -k 5 -o "{current_path}" --api "biorxiv" ')
+    os.system(
+        f'python -m pygetpapers.pygetpapers -k 5 -o "{current_path}" '
+        f'--api "biorxiv" '
+    )
     print("Checking if query run successfully")
     exists_rxiv_json_path = os.path.isfile(rxiv_json_path)
-    assert exists_rxiv_json_path == True
+    assert exists_rxiv_json_path is True
 
 
 def test_remove_dir():

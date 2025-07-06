@@ -73,7 +73,7 @@ class CorpusSearch:
         if outfile:
             outfile = Path(outfile)
             outfile.parent.mkdir(exist_ok=True, parents=True)
-            with open(outfile, "w", encoding="UTF-8") as f:
+            with open(outfile, "w", encoding="UTF-8"):
                 if debug:
                     print(f" hitdict {url_list_by_phrase_dict}")
                 cls.write_html_file(html1, outfile, debug=True)
@@ -103,14 +103,12 @@ class CorpusSearch:
             List of paragraph elements
         """
         infile_path = Path(infile)
-        assert infile_path.exists(), (
-            f"{infile} does not exist"
-        )
+        assert infile_path.exists(), f"{infile} does not exist"
 
         try:
             html_tree = ET.parse(str(infile), HTMLParser())
-        except Exception as e:
-            logger.error(f"Error parsing {infile}: {e}")
+        except Exception:
+            logger.error(f"Error parsing {infile}")
             return []
 
         paras = cls.find_paras_with_ids(html_tree, para_xpath=para_xpath)
@@ -121,9 +119,7 @@ class CorpusSearch:
             paras, phrases
         )
 
-        if para_id_by_phrase_dict is not None and len(
-            para_id_by_phrase_dict
-        ) > 0:
+        if para_id_by_phrase_dict is not None and len(para_id_by_phrase_dict) > 0:
             cls.add_hit_with_filename_and_para_id(
                 all_hits_dict,
                 url_list_by_phrase_dict,
@@ -206,18 +202,18 @@ class CorpusSearch:
                 ss = "ipcc/"
                 try:
                     idx = a.text.index(ss)
-                except Exception as e:
-                    print(
-                        f"cannot find substring {ss} in {a.text}"
-                    )
+                except Exception:
+                    print(f"cannot find substring {ss} in {a.text}")
                     continue
-                a.text = a.text[idx + len(ss):]
+                a.text = a.text[idx + len(ss) :]
                 a.attrib["href"] = hit
 
         return html
 
     @classmethod
-    def find_paras_with_ids(cls, html_tree, para_xpath: Optional[str] = None) -> List[Any]:
+    def find_paras_with_ids(
+        cls, html_tree, para_xpath: Optional[str] = None
+    ) -> List[Any]:
         """
         Find paragraphs with IDs in HTML tree.
 
@@ -255,8 +251,8 @@ class CorpusSearch:
     def create_html_with_empty_head_body():
         """Create basic HTML document structure."""
         html = ET.Element("html")
-        head = ET.SubElement(html, "head")
-        body = ET.SubElement(html, "body")
+        ET.SubElement(html, "head")
+        ET.SubElement(html, "body")
         return html
 
     @staticmethod
@@ -277,10 +273,10 @@ class CorpusSearch:
         if debug:
             logger.info(f"writing HTML to {outfile}")
 
-        with open(outfile, "w", encoding="UTF-8") as f:
+        with open(outfile, "w", encoding="UTF-8") as _f:
             text = ET.tostring(
                 htmlx,
                 encoding="unicode",
                 pretty_print=True,
             )
-            f.write(text)
+            _f.write(text)

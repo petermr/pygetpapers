@@ -81,7 +81,9 @@ def test_pygetpapers():
     try:
         import subprocess
 
-        result = subprocess.run(["pygetpapers", "--version"], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["pygetpapers", "--version"], capture_output=True, text=True, timeout=10
+        )
         if result.returncode == 0:
             print(f"✅ pygetpapers CLI available: {result.stdout.strip()}")
             return True
@@ -97,7 +99,12 @@ def test_files_exist():
     """Test that required files exist"""
     print("\n🧪 Testing file existence...")
 
-    required_files = ["streamlit_app.py", "run_streamlit.py", "datatables_integration.py", "requirements.txt"]
+    required_files = [
+        "streamlit_app.py",
+        "run_streamlit.py",
+        "datatables_integration.py",
+        "requirements.txt",
+    ]
 
     all_exist = True
     for file in required_files:
@@ -115,7 +122,13 @@ def main():
     print("🚀 Starting CI/CD Tests")
     print("=" * 50)
 
-    tests = [test_imports, test_streamlit_app, test_datatables, test_pygetpapers, test_files_exist]
+    tests = [
+        test_imports,
+        test_streamlit_app,
+        test_datatables,
+        test_pygetpapers,
+        test_files_exist,
+    ]
 
     passed = 0
     total = len(tests)

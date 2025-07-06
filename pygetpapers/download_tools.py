@@ -123,7 +123,8 @@ class DownloadTools:
         return config
 
     def gets_result_dict_for_query(self, headers, data):
-        """Queries query_url provided in configuration file for the given headers and payload and returns result in the form of a python dictionary
+        """Queries query_url provided in configuration file for the given headers and 
+        payload and returns result in the form of a python dictionary
 
         :param headers: headers given to the request
         :type headers: dict
@@ -132,7 +133,9 @@ class DownloadTools:
         :return: result in the form of a python dictionary
         :rtype: dictionary
         """
-        logging.debug("*/RESTful request for fulltext.xml (D)*/")
+        logging.debug(
+            "*/RESTful request for fulltext.xml (D)*/"
+        )
         request_handler = self.post_query(self.query_url, data=data, headers=headers)
         dict_to_return = self.parse_request_handler(request_handler)
         return dict_to_return
@@ -202,13 +205,17 @@ class DownloadTools:
 
     @staticmethod
     def removing_added_attributes_from_dictionary(resultant_dict):
-        """pygetpapers adds some attributes like "pdfdownloaded" to track the progress of downloads for a particular corpus. When we are exporting data to a csv file, we dont want these terms to appear.
-        So this funtion makes a copy of the given dictionary, removes the added attributes from dictionaries inside the given dict and returns the new dictionary.
+        """pygetpapers adds some attributes like "pdfdownloaded" to track the progress 
+        of downloads for a particular corpus. When we are exporting data to a csv file, 
+        we dont want these terms to appear. So this funtion makes a copy of the given 
+        dictionary, removes the added attributes from dictionaries inside the given dict 
+        and returns the new dictionary.
 
 
         :param resultant_dict: given parent dictionary
         :type resultant_dict: dictionary
-        :return: dictionary with additional attributes removed from the child dictionaries
+        :return: dictionary with additional attributes removed from the child 
+        dictionaries
         :rtype: dictionary
         """
         resultant_dict_for_csv = copy.deepcopy(resultant_dict)
@@ -313,7 +320,9 @@ class DownloadTools:
         :return: request_handler.content
         :rtype: bytes
         """
-        request_handler = requests.get(self.citationurl.format(source=source, identifier=identifier))
+        request_handler = requests.get(
+            self.citationurl.format(source=source, identifier=identifier)
+        )
         return request_handler.content
 
     def get_request_endpoint_for_references(self, identifier, source):
@@ -326,7 +335,9 @@ class DownloadTools:
         :return: request_handler.content
         :rtype: bytes
         """
-        request_handler = requests.get(self.referencesurl.format(source=source, identifier=identifier))
+        request_handler = requests.get(
+            self.referencesurl.format(source=source, identifier=identifier)
+        )
         return request_handler.content
 
     @staticmethod
@@ -343,28 +354,35 @@ class DownloadTools:
         """
         dataframe = dataframe.T
 
-        base_html = """
-    <!doctype html>
-    <html>
-      <head>
-          <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js">
+        base_html = (
+            """
+        <!doctype html>
+        <html>
+          <head>
+              <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\">
+              <script type=\"text/javascript\" 
+                src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js\">
+              </script>
+              <link rel=\"stylesheet\" type=\"text/css\" 
+                href=\"https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css\">
+              <script type=\"text/javascript\" 
+                src=\"https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js\">
+              </script>
+              <style>
+              # table {
+                  height: 250px;
+                  overflow-y:scroll;
+              }
+              </style>
+          </head>
+          <body>%s<script type=\"text/javascript\">
+            $(document).ready(function(){$('table').DataTable({\n      "
+            "\"pageLength\": 20\n      });});
           </script>
-          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-          <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-          <style>
-          # table {
-              height: 250px;
-              overflow-y:scroll;
-          }
-          </style>
-      </head>
-      <body>%s<script type="text/javascript">$(document).ready(function(){$('table').DataTable({
-      "pageLength": 20
-      });});</script>
-      </body>
-    </html>
-    """
+          </body>
+        </html>
+        """
+        )
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html
         with open(path_to_save, "w", encoding="utf-8") as file_handler:
@@ -384,7 +402,8 @@ class DownloadTools:
         self.writexml(path_to_save, getreferences)
 
     def make_citations(self, source, citationurl, identifier):
-        """Retreives URL for the citations for the given paperid, gets the xml, writes to citationurl
+        """Retreives URL for the citations for the given paperid, gets the xml, 
+        writes to citationurl
 
         :param source: which repository to get the citations from
         :type source: which repository to get the citations from
@@ -406,7 +425,9 @@ class DownloadTools:
     @staticmethod
     def _log_making_xml():
         logging.debug("*/saving xml to per-document directories (CTrees) (D)*/")
-        loggingurl = os.path.join(str(os.getcwd()), "*", "fulltext.xml")
+        loggingurl = os.path.join(
+            str(os.getcwd()), "*", "fulltext.xml"
+        )
         logging.info("Saving XML files to %s", loggingurl)
         logging.debug("*/Making the Request to get full text xml*/")
 
@@ -433,13 +454,16 @@ class DownloadTools:
         return path.parent.absolute()
 
     def getsupplementaryfiles(self, identifier, path_to_save, from_ftp_end_point=False):
-        """Retrieves supplementary files for the given paper (according to identifier) and saves to path_to_save
+        """Retrieves supplementary files for the given paper (according to 
+        identifier) and saves to path_to_save
 
-        :param identifier: unique identifier present in the url for the particular paper
+        :param identifier: unique identifier present in the url for the 
+        particular paper
         :type identifier: string
         :param path_to_save: path to save the supplementary files to
         :type path_to_save: string
-        :param from_ftp_end_point: to get the results from eupmc ftp endpoint
+        :param from_ftp_end_point: to get the results from eupmc ftp 
+        endpoint
         :type from_ftp_end_point: bool, optional
         """
         url, log_key = self._get_url_for_zip_file(identifier, from_ftp_end_point)
@@ -508,21 +532,28 @@ class DownloadTools:
         resultant_dict[key_for_dict][CSVMADE] = False
         resultant_dict[key_for_dict][HTMLMADE] = False
 
-    def make_csv_for_dict(self, metadata_dictionary, name_main_result_file, name_result_file_for_paper):
+    def make_csv_for_dict(
+        self, metadata_dictionary, name_main_result_file, name_result_file_for_paper
+    ):
         """
         Writes csv content for the given dictionary to disk
 
         :param metadata_dictionary: dictionary to write the content for
         :type metadata_dictionary: dict
-        :param name_main_result_file: name of the main result file (eg. eupmc-results.xml)
+        :param name_main_result_file: name of the main result file 
+        (eg. eupmc-results.xml)
         :type name_main_result_file: string
         :param name_result_file_for_paper: name of the result file for a paper
         :type name_result_file_for_paper: string
         """
         logging.info("Making csv files for metadata at %s", os.getcwd())
-        df = self._get_dataframe_without_additional_pygetpapers_attributes(metadata_dictionary)
+        df = self._get_dataframe_without_additional_pygetpapers_attributes(
+            metadata_dictionary
+        )
         self.write_or_append_to_csv(df, name_main_result_file)
-        self._make_csv_xml_or_html(name_result_file_for_paper, metadata_dictionary, makecsv=True)
+        self._make_csv_xml_or_html(
+            name_result_file_for_paper, metadata_dictionary, makecsv=True
+        )
 
     def _make_csv_xml_or_html(
         self,
@@ -546,7 +577,9 @@ class DownloadTools:
         :type makexml: bool
         """
         paper = 0
-        dict_to_use = self.removing_added_attributes_from_dictionary(metadata_dictionary)
+        dict_to_use = self.removing_added_attributes_from_dictionary(
+            metadata_dictionary
+        )
         for result in tqdm(dict_to_use):
             paper += 1
             result_encoded = self.url_encode_id(result)
@@ -562,53 +595,81 @@ class DownloadTools:
                 metadata_dictionary[result][HTMLMADE] = True
                 logging.debug("Wrote html files for paper %s", paper)
             if makexml:
-                total_xml_of_paper = dict2xml(dict_to_use[result], wrap="root", indent="   ")
-                xmlurl_of_paper = os.path.join(os.getcwd(), result_encoded, name_result_file_for_paper)
+                total_xml_of_paper = dict2xml(
+                    dict_to_use[result], wrap="root", indent="   "
+                )
+                xmlurl_of_paper = os.path.join(
+                    os.getcwd(), result_encoded, name_result_file_for_paper
+                )
                 with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
                     file_handler.write(total_xml_of_paper)
                 logging.debug("Wrote xml files for paper %s", paper)
 
-    def make_html_for_dict(self, metadata_dictionary, name_main_result_file, name_result_file_for_paper):
+    def make_html_for_dict(
+        self, metadata_dictionary, name_main_result_file, name_result_file_for_paper
+    ):
         """Writes html content for the given dictionary to disk
 
         :param metadata_dictionary: dictionary to write the content for
         :type metadata_dictionary: dict
-        :param name_main_result_file: name of the main result file (eg. eupmc-results.xml)
+        :param name_main_result_file: name of the main result file 
+        (eg. eupmc-results.xml)
         :type name_main_result_file: string
         :param name_result_file_for_paper: name of the result file for a paper
         :type name_result_file_for_paper: string
         """
         logging.info("Making html files for metadata at %s", os.getcwd())
         htmlurl = os.path.join(os.getcwd(), name_main_result_file)
-        df = self._get_dataframe_without_additional_pygetpapers_attributes(metadata_dictionary)
+        df = self._get_dataframe_without_additional_pygetpapers_attributes(
+            metadata_dictionary
+        )
         self.make_html_from_dataframe(df, htmlurl)
-        self._make_csv_xml_or_html(name_result_file_for_paper, metadata_dictionary, makehtml=True)
+        self._make_csv_xml_or_html(
+            name_result_file_for_paper, metadata_dictionary, makehtml=True
+        )
 
-    def _get_dataframe_without_additional_pygetpapers_attributes(self, metadata_dictionary):
-        dict_to_use = self.removing_added_attributes_from_dictionary(metadata_dictionary)
+    def _get_dataframe_without_additional_pygetpapers_attributes(
+        self, metadata_dictionary
+    ):
+        dict_to_use = self.removing_added_attributes_from_dictionary(
+            metadata_dictionary
+        )
         df = pd.DataFrame.from_dict(dict_to_use)
         return df
 
-    def make_xml_for_dict(self, metadata_dictionary, name_main_result_file, name_result_file_for_paper):
+    def make_xml_for_dict(
+        self, metadata_dictionary, name_main_result_file, name_result_file_for_paper
+    ):
         """Writes xml content for the given dictionary to disk
 
         :param metadata_dictionary: dictionary to write the content for
         :type metadata_dictionary: dict
-        :param name_main_result_file: name of the main result file (eg. eupmc-results.xml)
+        :param name_main_result_file: name of the main result file 
+        (eg. eupmc-results.xml)
         :type name_main_result_file: string
         :param name_result_file_for_paper: name of the result file for a paper
         :type name_result_file_for_paper: string
         """
-        dict_to_use = self.removing_added_attributes_from_dictionary(metadata_dictionary)
-        total_xml = dict2xml(dict_to_use, wrap="root", indent="   ")
+        dict_to_use = self.removing_added_attributes_from_dictionary(
+            metadata_dictionary
+        )
+        total_xml = dict2xml(
+            dict_to_use, wrap="root", indent="   "
+        )
         logging.info("Making xml files for metadata at %s", os.getcwd())
-        xmlurl = os.path.join(os.getcwd(), name_main_result_file)
+        xmlurl = os.path.join(
+            os.getcwd(), name_main_result_file
+        )
         with open(xmlurl, "w", encoding="utf-8") as file_handler:
             file_handler.write(total_xml)
         paper = 0
-        self._make_csv_xml_or_html(name_result_file_for_paper, metadata_dictionary, paper, makexml=True)
+        self._make_csv_xml_or_html(
+            name_result_file_for_paper, metadata_dictionary, paper, makexml=True
+        )
 
-    def handle_creation_of_csv_html_xml(self, makecsv, makehtml, makexml, metadata_dictionary, name):
+    def handle_creation_of_csv_html_xml(
+        self, makecsv, makehtml, makexml, metadata_dictionary, name
+    ):
         """Writes csv, html, xml for given conditions
 
         :param makecsv: whether to get csv
@@ -626,7 +687,9 @@ class DownloadTools:
         if makecsv:
             self.make_csv_for_dict(metadata_dictionary, f"{name}s.csv", f"{name}.csv")
         if makehtml:
-            self.make_html_for_dict(metadata_dictionary, f"{name}s.html", f"{name}.html")
+            self.make_html_for_dict(
+                metadata_dictionary, f"{name}s.html", f"{name}.html"
+            )
         if makexml:
             self.make_xml_for_dict(metadata_dictionary, f"{name}s.xml", f"{name}.xml")
 
@@ -649,7 +712,9 @@ class DownloadTools:
         :return: version of pygetpapers as described in the configuration file
         :rtype: string
         """
-        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as file_handler:
+        with open(
+            os.path.join(os.path.dirname(__file__), "config.ini")
+        ) as file_handler:
             config_file = file_handler.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
@@ -664,7 +729,7 @@ class DownloadTools:
         for paper in metadata_list:
             id = paper.get("id")
             if id is None:
-                logging.warning(f"no id for paper ; skipped")
+                logging.warning("no id for paper ; skipped")
                 continue
             # logger.info(f"id: {id}")
             key = paper[paper_key]  # normally doi
@@ -675,13 +740,18 @@ class DownloadTools:
             if key.startswith(HTTPS_DOI_ORG):
                 key = key.replace(HTTPS_DOI_ORG, "")
             else:
-                logging.warning(f"key {key} does not start with {HTTPS_DOI_ORG}; skipped id={id}")
+                logging.warning(
+                    f"key {key} does not start with {HTTPS_DOI_ORG}; "
+                    f"skipped id={id}"
+                )
                 continue
             key = DownloadTools.url_encode_id(key)
             paper_by_key[key] = paper
         return paper_by_key
 
-    def _make_metadata_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
+    def _make_metadata_json_files_for_paper(
+        self, returned_dict, updated_dict, paper_key, name_of_file
+    ):
 
         self.dumps_json_to_given_path(f"{name_of_file}s.json", updated_dict)
         logging.info("Wrote metadata file for the query")
@@ -709,7 +779,9 @@ class DownloadTools:
                     self.dumps_json_to_given_path(path_to_save_metadata, dict_of_paper)
                     logging.debug("Wrote metadata file for the paper %s", paper_numer)
                 except Exception as exception:
-                    logging.warning("Could not write metadata file for the paper %s", paper_numer)
+                    logging.warning(
+                        "Could not write metadata file for the paper %s", paper_numer
+                    )
                     logging.debug(exception)
 
     def _adds_new_results_to_metadata_dictionary(
@@ -729,14 +801,17 @@ class DownloadTools:
         dict_to_return_with_previous = copy.deepcopy(new_dict_to_return)
         if update:
 
-            dict_to_return_with_previous[TOTAL_JSON_OUTPUT].update(update[TOTAL_JSON_OUTPUT])
+            dict_to_return_with_previous[TOTAL_JSON_OUTPUT].update(
+                update[TOTAL_JSON_OUTPUT]
+            )
         return {
             UPDATED_DICT: dict_to_return_with_previous,
             NEW_RESULTS: new_dict_to_return,
         }
 
     def get_metadata_results_file(self):
-        """Gets the url of metadata file (eg. eupmc-results.json) from the current working directory
+        """Gets the url of metadata file (eg. eupmc-results.json) from the 
+        current working directory
 
         :return: path of the master metadata file
         :rtype: string
@@ -749,6 +824,7 @@ class DownloadTools:
                 meta_data_results_file_path = file
         if not meta_data_results_file_path:
             raise PygetpapersError(
-                "Corpus not existing in this directory. Please rerun the query without --update or --restart"
+                "Corpus not existing in this directory. Please rerun the query "
+                "without --update or --restart"
             )
         return meta_data_results_file_path
