@@ -5,9 +5,9 @@ Proven technology used for many years in production environments.
 
 import logging
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Union
+from typing import Dict, List, Optional, Union
+
 import lxml.etree as ET
-from lxml.html import HTMLParser
 
 logger = logging.getLogger(__name__)
 

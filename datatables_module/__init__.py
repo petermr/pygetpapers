@@ -13,7 +13,7 @@ Features:
 - JSON to HTML table conversion
 """
 
-from .datatables import Datatables, DataTable
+from .datatables import DataTable, Datatables
 from .html_table import HtmlTable
 
 __version__ = "0.1.0"

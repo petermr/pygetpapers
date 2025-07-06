@@ -2,7 +2,7 @@
 Setup script for corpus_module.
 """
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -51,10 +51,14 @@ setup(
             "requests>=2.25.0",
         ],
     },
-    keywords="corpus, text-analysis, document-management, search, linguistics",
+    keywords=(
+        "corpus, text-analysis, document-management, search, linguistics"
+    ),
     project_urls={
         "Bug Reports": "https://github.com/amilib/corpus-module/issues",
         "Source": "https://github.com/amilib/corpus-module",
-        "Documentation": "https://github.com/amilib/corpus-module/blob/main/README.md",
+        "Documentation": (
+            "https://github.com/amilib/corpus-module/blob/main/README.md"
+        ),
     },
 )

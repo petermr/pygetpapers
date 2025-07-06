@@ -3,9 +3,10 @@ Corpus search functionality.
 """
 
 import logging
-from pathlib import Path
-from typing import List, Dict, Optional, Union, Any
 from collections import defaultdict
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
 import lxml.etree as ET
 from lxml.html import HTMLParser
 
@@ -55,7 +56,11 @@ class CorpusSearch:
         all_paras = []
         for infile in infiles:
             paras = cls.search_paras_with_id_and_create_dict(
-                all_hits_dict, infile, para_xpath, phrases, url_list_by_phrase_dict
+                all_hits_dict,
+                infile,
+                para_xpath,
+                phrases,
+                url_list_by_phrase_dict,
             )
             all_paras.extend(paras)
 
@@ -98,7 +103,9 @@ class CorpusSearch:
             List of paragraph elements
         """
         infile_path = Path(infile)
-        assert infile_path.exists(), f"{infile} does not exist"
+        assert infile_path.exists(), (
+            f"{infile} does not exist"
+        )
 
         try:
             html_tree = ET.parse(str(infile), HTMLParser())
@@ -110,15 +117,28 @@ class CorpusSearch:
 
         # This would need to be implemented based on the original functionality
         # For now, we'll create a placeholder
-        para_id_by_phrase_dict = cls.create_search_results_para_phrase_dict(paras, phrases)
+        para_id_by_phrase_dict = cls.create_search_results_para_phrase_dict(
+            paras, phrases
+        )
 
-        if para_id_by_phrase_dict is not None and len(para_id_by_phrase_dict) > 0:
-            cls.add_hit_with_filename_and_para_id(all_hits_dict, url_list_by_phrase_dict, infile, para_id_by_phrase_dict)
+        if para_id_by_phrase_dict is not None and len(
+            para_id_by_phrase_dict
+        ) > 0:
+            cls.add_hit_with_filename_and_para_id(
+                all_hits_dict,
+                url_list_by_phrase_dict,
+                infile,
+                para_id_by_phrase_dict,
+            )
         return paras
 
     @classmethod
     def add_hit_with_filename_and_para_id(
-        cls, all_hits_dict: Dict, hit_dict: Dict, infile: Union[str, Path], phrase_by_para_id_dict: Dict[str, List[str]]
+        cls,
+        all_hits_dict: Dict,
+        hit_dict: Dict,
+        infile: Union[str, Path],
+        phrase_by_para_id_dict: Dict[str, List[str]],
     ):
         """
         Add non-empty hits in hit_dict to all_dict.
@@ -131,7 +151,9 @@ class CorpusSearch:
         """
         infile_s = cls.create_url_from_filename(infile)
 
-        item_paras = [item for item in phrase_by_para_id_dict.items() if len(item[1]) > 0]
+        item_paras = [
+            item for item in phrase_by_para_id_dict.items() if len(item[1]) > 0
+        ]
         if len(item_paras) > 0:
             all_hits_dict[infile] = phrase_by_para_id_dict
             for para_id, hits in phrase_by_para_id_dict.items():
@@ -185,9 +207,11 @@ class CorpusSearch:
                 try:
                     idx = a.text.index(ss)
                 except Exception as e:
-                    print(f"cannot find substring {ss} in {a.text}")
+                    print(
+                        f"cannot find substring {ss} in {a.text}"
+                    )
                     continue
-                a.text = a.text[idx + len(ss) :]
+                a.text = a.text[idx + len(ss):]
                 a.attrib["href"] = hit
 
         return html
@@ -209,7 +233,9 @@ class CorpusSearch:
         return []
 
     @classmethod
-    def create_search_results_para_phrase_dict(cls, paras: List[Any], phrases: List[str]) -> Dict[str, List[str]]:
+    def create_search_results_para_phrase_dict(
+        cls, paras: List[Any], phrases: List[str]
+    ) -> Dict[str, List[str]]:
         """
         Create search results dictionary mapping paragraph IDs to phrases.
 
@@ -252,5 +278,9 @@ class CorpusSearch:
             logger.info(f"writing HTML to {outfile}")
 
         with open(outfile, "w", encoding="UTF-8") as f:
-            text = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
+            text = ET.tostring(
+                htmlx,
+                encoding="unicode",
+                pretty_print=True,
+            )
             f.write(text)

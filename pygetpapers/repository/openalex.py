@@ -4,10 +4,10 @@ import os
 import time
 
 import requests
+from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.repositoryinterface import RepositoryInterface
-from tqdm import tqdm
 
 TOTAL_HITS = "total_hits"
 

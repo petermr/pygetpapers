@@ -5,17 +5,17 @@ This module provides functionality to read and display pygetpapers output
 using the datatables module for interactive HTML tables.
 """
 
+import base64
 import json
-import os
-import pandas as pd
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
 import logging
 from collections import OrderedDict
-import re
-import base64
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
 import lxml.etree as ET
-from datatables_module import Datatables, HtmlTable, DataTable
+import pandas as pd
+
+from datatables_module import HtmlTable
 
 logger = logging.getLogger(__name__)
 
@@ -1157,8 +1157,9 @@ class PygetpapersDatatables:
             Base64 encoded thumbnail or None
         """
         try:
-            from PIL import Image
             import io
+
+            from PIL import Image
 
             # Open and resize image
             with Image.open(image_file) as img:

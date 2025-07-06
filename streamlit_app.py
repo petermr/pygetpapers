@@ -1,16 +1,11 @@
-import streamlit as st
-import subprocess
-import json
 import os
+import subprocess
+from datetime import datetime, timedelta
+
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-from datetime import datetime, timedelta
-import tempfile
-import shutil
-from pathlib import Path
-import threading
-import time
+import streamlit as st
+
 from datatables_integration import PygetpapersDatatables
 
 # Page configuration
@@ -149,8 +144,8 @@ class PygetpapersUI:
         """Run pygetpapers command and return results"""
         try:
             # Try to use local development version first, fallback to installed version
-            import sys
             import os
+            import sys
 
             # Check if we're in the development directory
             if os.path.exists("pygetpapers") and os.path.exists("pygetpapers/pygetpapers.py"):

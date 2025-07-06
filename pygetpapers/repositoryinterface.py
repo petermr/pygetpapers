@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-import logging
-from pygetpapers.download_tools import DownloadTools
+
 
 TOTAL_HITS = "total_hits"
 NEW_RESULTS = "new_results"
@@ -31,7 +30,6 @@ class RepositoryInterface(ABC):
         :param query_namespace: pygetpaper's namespace object containing the queries from argparse
         :type query_namespace: dict
         """
-        pass
 
     @abstractmethod
     def update(self, query_namespace):
@@ -40,7 +38,6 @@ class RepositoryInterface(ABC):
         :param query_namespace: pygetpaper's namespace object containing the queries from argparse
         :type query_namespace: dict
         """
-        pass
 
     @abstractmethod
     def apipaperdownload(self, query_namespace):
@@ -49,4 +46,3 @@ class RepositoryInterface(ABC):
         :param query_namespace: pygetpaper's namespace object containing the queries from argparse
         :type query_namespace: dict
         """
-        pass

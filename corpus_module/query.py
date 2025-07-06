@@ -4,7 +4,8 @@ Corpus query management functionality.
 
 import logging
 from pathlib import Path
-from typing import List, Dict, Optional, Union, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple, Union
+
 import lxml.etree as ET
 
 logger = logging.getLogger(__name__)
@@ -87,11 +88,15 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             raise ValueError("No query_id given")
         query_id = query_id.strip()
         if " " in query_id:
-            raise ValueError(f"no spaces allowed in query_id, found {query_id}")
+            raise ValueError(
+                f"no spaces allowed in query_id, found {query_id}"
+            )
         self.query_id = query_id
 
         if indir is None or not Path(indir).exists():
-            logger.error(f"input directory must exist {indir}")
+            logger.error(
+                f"input directory must exist {indir}"
+            )
         self.indir = Path(indir)
         self.outfile = Path(outfile) if outfile else None
         if not self.outfile:
@@ -107,12 +112,18 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
 
         # This would need to be implemented based on the search functionality
         # For now, we'll create a placeholder
-        logger.info(f"Running query: {query_id} with phrases: {self.phrases}")
+                    logger.info(
+                f"Running query: {query_id} with phrases: "
+                f"{self.phrases}"
+            )
 
         # Create a simple HTML table as placeholder
         from datatables_module import Datatables
 
-        htmlx, table_body = Datatables.create_table(colheads=self.colheads, table_id=f"{query_id}_table")
+        htmlx, table_body = Datatables.create_table(
+            colheads=self.colheads,
+            table_id=f"{query_id}_table",
+        )
 
         # Add some placeholder data
         tr = table_body.makeelement("tr")
@@ -124,7 +135,11 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
 
         table_file = Path(outdir) / f"{self.query_id}_{TABLE_HITS_SUFFIX}"
         with open(table_file, "w", encoding="utf-8") as f:
-            f.write(ET.tostring(htmlx, encoding="unicode", pretty_print=True))
+            f.write(
+                ET.tostring(
+                    htmlx, encoding="unicode", pretty_print=True
+                )
+            )
 
         return htmlx, self.query_id
 
@@ -144,7 +159,9 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
         return {}
 
     @classmethod
-    def get_hits_as_term_ref_p_tuple_list(cls, term_id_by_url: Dict[str, List[str]]) -> List[Tuple[str, str, Any]]:
+    def get_hits_as_term_ref_p_tuple_list(
+        cls, term_id_by_url: Dict[str, List[str]]
+    ) -> List[Tuple[str, str, Any]]:
         """
         Get hits as list of (term, ref, para) tuples.
 
@@ -173,7 +190,9 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
         return trp_list
 
     @classmethod
-    def _add_hits_to_table(cls, tbody, term_ref_p_tuple_list: List[Tuple[str, str, Any]]):
+    def _add_hits_to_table(
+        cls, tbody, term_ref_p_tuple_list: List[Tuple[str, str, Any]]
+    ):
         """
         Add hits to table body.
 
