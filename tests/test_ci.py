@@ -31,7 +31,8 @@ def test_cli_version():
         timeout=30,
     )
     assert result.returncode == 0
-    assert "pygetpapers" in result.stdout.lower()
+    # Version output goes to stderr, not stdout
+    assert "pygetpapers" in (result.stdout + result.stderr).lower()
 
 
 def test_cli_noexecute():
@@ -54,7 +55,8 @@ def test_cli_noexecute():
 
     # Should complete without error (even if no results found)
     assert result.returncode in [0, 1]  # 0 = success, 1 = no results found
-    assert "Total" in result.stdout or "hits" in result.stdout.lower()
+    # Output goes to stderr, not stdout
+    assert "Total" in (result.stdout + result.stderr) or "hits" in (result.stdout + result.stderr).lower()
 
 
 def test_cli_syntax():
