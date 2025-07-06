@@ -25,17 +25,19 @@ class AmiCorpus:
     Main corpus management class supporting hierarchical directory structures.
     """
 
-    def __init__(self,
-                 topdir: Optional[Union[str, Path]] = None,
-                 infiles: Optional[List[Union[str, Path]]] = None,
-                 globstr: Optional[str] = None,
-                 outfile: Optional[Union[str, Path]] = None,
-                 make_descendants: bool = False,
-                 mkdir: bool = False,
-                 **kwargs):
+    def __init__(
+        self,
+        topdir: Optional[Union[str, Path]] = None,
+        infiles: Optional[List[Union[str, Path]]] = None,
+        globstr: Optional[str] = None,
+        outfile: Optional[Union[str, Path]] = None,
+        make_descendants: bool = False,
+        mkdir: bool = False,
+        **kwargs,
+    ):
         """
         Create new corpus with optional input data.
-        
+
         Args:
             topdir: Input directory with files/subdirs as possible corpus components
             infiles: List of files to use (alternative to globstr)
@@ -51,8 +53,7 @@ class AmiCorpus:
 
         self.container_by_file = dict()
         # rootnode
-        self.ami_container = self.create_corpus_container(
-            self.topdir, make_descendants=make_descendants, mkdir=mkdir)
+        self.ami_container = self.create_corpus_container(self.topdir, make_descendants=make_descendants, mkdir=mkdir)
         self.infiles = infiles
         self.outfile = Path(outfile) if outfile else None
         self.globstr = globstr
@@ -78,7 +79,7 @@ infiles: {len(self.infiles) if self.infiles else 0}
 outfile: {self.outfile}
 """
         s += "QUERIES"
-        for (key, value) in self.corpus_queries.items():
+        for key, value in self.corpus_queries.items():
             s += f"""
             {key}:
             {value.__str__()}
@@ -98,18 +99,18 @@ outfile: {self.outfile}
         logger.info(f"inputting {len(self.infiles)} files")
         return self.infiles
 
-    def create_corpus_container(self, file: Optional[Union[str, Path]], 
-                               bib_type: str = "None", make_descendants: bool = False, 
-                               mkdir: bool = False):
+    def create_corpus_container(
+        self, file: Optional[Union[str, Path]], bib_type: str = "None", make_descendants: bool = False, mkdir: bool = False
+    ):
         """
         Create container as child of self.
-        
+
         Args:
             file: File or dir contained by container
             bib_type: Type of container
             make_descendants: Whether to create descendant containers
             mkdir: Whether to create directory if it doesn't exist
-            
+
         Returns:
             AmiCorpusContainer instance
         """
@@ -133,7 +134,7 @@ outfile: {self.outfile}
     def make_descendants(self, file: Optional[Union[str, Path]] = None):
         """
         Creates AmiCorpusContainers for directory tree.
-        
+
         Args:
             file: Directory to process (defaults to root_dir)
         """
@@ -153,11 +154,12 @@ outfile: {self.outfile}
             self.eupmc_results = kwargs["eupmc"]
 
     @classmethod
-    def make_datatables(cls, indir: Union[str, Path], outdir: Optional[Union[str, Path]] = None, 
-                       outfile_h: Optional[Union[str, Path]] = None):
+    def make_datatables(
+        cls, indir: Union[str, Path], outdir: Optional[Union[str, Path]] = None, outfile_h: Optional[Union[str, Path]] = None
+    ):
         """
         Create a JQuery DataTables HTML file from an AmiCorpus.
-        
+
         Args:
             indir: Directory with corpus (normally created by pygetpapers)
             outdir: Output directory for datatables (if omitted uses indir)
@@ -170,33 +172,39 @@ outfile: {self.outfile}
             outdir = indir
         if outfile_h is None:
             outfile_h = Path(outdir) / DATATABLES_HTML
-            
+
         config_ini = Path(indir) / SAVED_CONFIG_INI
         Path(outdir).mkdir(parents=True, exist_ok=True)
         datatables = True
         epmc_infile = Path(indir) / EUPMC_RESULTS_JSON
-        
+
         if epmc_infile.exists():
             cls.read_json_create_write_html_table(
-                epmc_infile, outfile_h, wanted_keys=None, datatables=datatables,
-                table_id=None, config_ini=config_ini)
+                epmc_infile, outfile_h, wanted_keys=None, datatables=datatables, table_id=None, config_ini=config_ini
+            )
             return
-            
+
         # Try alternative filename
         infile = Path(indir) / EUPMC_RESULTS_JSON
         if infile.exists():
             cls.read_json_create_write_html_table(
-                infile, outfile_h, wanted_keys=None, datatables=datatables, 
-                table_id=None, config_ini=config_ini)
+                infile, outfile_h, wanted_keys=None, datatables=datatables, table_id=None, config_ini=config_ini
+            )
             return
 
     @classmethod
-    def read_json_create_write_html_table(cls, infile: Union[str, Path], outfile_h: Union[str, Path],
-                                         wanted_keys: Optional[List[str]] = None, datatables: bool = True,
-                                         table_id: Optional[str] = None, config_ini: Optional[Union[str, Path]] = None):
+    def read_json_create_write_html_table(
+        cls,
+        infile: Union[str, Path],
+        outfile_h: Union[str, Path],
+        wanted_keys: Optional[List[str]] = None,
+        datatables: bool = True,
+        table_id: Optional[str] = None,
+        config_ini: Optional[Union[str, Path]] = None,
+    ):
         """
         Read JSON data and create HTML table.
-        
+
         Args:
             infile: Input JSON file
             outfile_h: Output HTML file
@@ -208,19 +216,19 @@ outfile: {self.outfile}
         # This would need to be implemented based on the original functionality
         # For now, we'll create a basic implementation
         logger.info(f"Creating HTML table from {infile} to {outfile_h}")
-        
+
         # Read JSON data
-        with open(infile, 'r', encoding='utf-8') as f:
+        with open(infile, "r", encoding="utf-8") as f:
             data = json.load(f)
-            
+
         # Create simple HTML table
         if datatables:
             from datatables_module import Datatables
+
             htmlx, tbody = Datatables.create_table(
-                labels=list(data[0].keys()) if data else [], 
-                table_id=table_id or "corpus_table"
+                labels=list(data[0].keys()) if data else [], table_id=table_id or "corpus_table"
             )
-            
+
             # Add data rows
             for row in data:
                 tr = tbody.makeelement("tr")
@@ -229,18 +237,18 @@ outfile: {self.outfile}
                     td.text = str(value)
                     tr.append(td)
                 tbody.append(tr)
-                
+
             # Write to file
-            with open(outfile_h, 'w', encoding='utf-8') as f:
-                f.write(ET.tostring(htmlx, encoding='unicode', pretty_print=True))
+            with open(outfile_h, "w", encoding="utf-8") as f:
+                f.write(ET.tostring(htmlx, encoding="unicode", pretty_print=True))
 
     def list_files(self, globstr: str) -> List[Path]:
         """
         Find files in corpus starting at root_dir.
-        
+
         Args:
             globstr: Glob pattern to match files
-            
+
         Returns:
             List of matching file paths
         """
@@ -248,25 +256,26 @@ outfile: {self.outfile}
             return self._posix_glob(str(self.root_dir / globstr), recursive=True)
         return []
 
-    def create_datatables_html_with_filenames(self, html_glob: str, labels: List[str], 
-                                            table_id: str, outpath: Optional[Union[str, Path]] = None, 
-                                            debug: bool = True):
+    def create_datatables_html_with_filenames(
+        self, html_glob: str, labels: List[str], table_id: str, outpath: Optional[Union[str, Path]] = None, debug: bool = True
+    ):
         """
         Create DataTables HTML with filenames.
-        
+
         Args:
             html_glob: Glob string to find HTML files
             labels: Column labels
             table_id: Table ID
             outpath: Output path
             debug: Enable debug logging
-            
+
         Returns:
             HTML document
         """
         html_files = sorted(self.list_files(globstr=html_glob))
-        
+
         from datatables_module import Datatables
+
         self.datables_html, tbody = Datatables._create_html_for_datatables(labels, table_id)
 
         for html_file in html_files:
@@ -274,7 +283,7 @@ outfile: {self.outfile}
                 offset = self._get_relative_path(html_file, Path(outpath).parent, walk_up=True)
             else:
                 offset = html_file.name
-                
+
             tr = tbody.makeelement("tr")
             td = tr.makeelement("td")
             a = td.makeelement("a")
@@ -285,18 +294,18 @@ outfile: {self.outfile}
             tbody.append(tr)
 
         if outpath:
-            with open(outpath, 'w', encoding='utf-8') as f:
-                f.write(ET.tostring(self.datables_html, encoding='unicode', pretty_print=True))
+            with open(outpath, "w", encoding="utf-8") as f:
+                f.write(ET.tostring(self.datables_html, encoding="unicode", pretty_print=True))
 
         return self.datables_html
 
     def make_infiles(self, maxfiles: int = 999999999) -> List[Path]:
         """
         Create infiles list from globstr.
-        
+
         Args:
             maxfiles: Maximum number of files to include
-            
+
         Returns:
             List of file paths
         """
@@ -309,27 +318,28 @@ outfile: {self.outfile}
         if not self.outfile:
             pass  # Implementation depends on specific requirements
 
-    def get_or_create_corpus_query(self, query_id: str, phrasefile: Optional[Union[str, Path]] = None,
-                                  phrases: Optional[List[str]] = None, outfile: Optional[Union[str, Path]] = None):
+    def get_or_create_corpus_query(
+        self,
+        query_id: str,
+        phrasefile: Optional[Union[str, Path]] = None,
+        phrases: Optional[List[str]] = None,
+        outfile: Optional[Union[str, Path]] = None,
+    ):
         """
         Retrieve query by query_id. If not found, create new one.
-        
+
         Args:
             query_id: Unique ID of query
             phrasefile: File containing phrases
             phrases: List of phrases
             outfile: Output file for results
-            
+
         Returns:
             CorpusQuery instance
         """
         corpus_query = self.corpus_queries.get(query_id)
         if not corpus_query:
-            corpus_query = CorpusQuery(
-                query_id=query_id,
-                phrasefile=phrasefile,
-                phrases=phrases,
-                outfile=outfile)
+            corpus_query = CorpusQuery(query_id=query_id, phrasefile=phrasefile, phrases=phrases, outfile=outfile)
             self.corpus_queries[query_id] = corpus_query
             corpus_query.corpus = self
 
@@ -338,11 +348,11 @@ outfile: {self.outfile}
     def search_files_with_queries(self, query_ids: Union[str, List[str]], debug: bool = True) -> Dict[str, Any]:
         """
         Run queries. Assumes queries have been loaded and are recallable by ID.
-        
+
         Args:
             query_ids: Single or list of query IDs
             debug: Enable debug logging
-            
+
         Returns:
             Dictionary mapping query IDs to HTML results
         """
@@ -351,18 +361,18 @@ outfile: {self.outfile}
             query_ids = [query_ids]
         elif not isinstance(query_ids, list):
             raise ValueError(f"queries requires id/s as list or str, found {type(query_ids)}")
-            
+
         for query_id in query_ids:
             query = self.corpus_queries.get(query_id)
             if query is None:
                 logger.error(f"cannot find query: {query_id}")
                 continue
             logger.debug(f"outfile==> {query.outfile}")
-            
+
             # This would need to be implemented based on the search functionality
             # For now, we'll create a placeholder
             logger.info(f"Running query: {query_id}")
-            
+
         return html_by_query_id
 
     # Utility methods
@@ -387,11 +397,17 @@ class AmiCorpusContainer:
     Container for corpus components (files or directories).
     """
 
-    def __init__(self, ami_corpus: AmiCorpus, file: Union[str, Path], 
-                 bib_type: str = "unknown", mkdir: bool = False, exist_ok: bool = True):
+    def __init__(
+        self,
+        ami_corpus: AmiCorpus,
+        file: Union[str, Path],
+        bib_type: str = "unknown",
+        mkdir: bool = False,
+        exist_ok: bool = True,
+    ):
         """
         Create corpus container for directory-structured corpus.
-        
+
         Args:
             ami_corpus: Corpus to which this belongs
             file: File/directory on filesystem
@@ -401,21 +417,21 @@ class AmiCorpusContainer:
         """
         if not isinstance(ami_corpus, AmiCorpus):
             raise ValueError(f"ami_corpus has wrong type {type(ami_corpus)}")
-            
+
         self.ami_corpus = ami_corpus
         self.file = Path(file)
         self.ami_corpus.container_by_file[self.file] = self
-        
+
         if not file:
             logger.error(f"No file argument")
             return None
-            
+
         self.bib_type = bib_type
         self.child_container_list = []
         self.child_document_list = []
 
     @property
-    def child_containers(self) -> List['AmiCorpusContainer']:
+    def child_containers(self) -> List["AmiCorpusContainer"]:
         """Get child containers."""
         child_containers = []
         if self.ami_corpus and self.file and self.file.is_dir():
@@ -426,24 +442,25 @@ class AmiCorpusContainer:
                 child_containers.append(child_container)
         return child_containers
 
-    def create_corpus_container(self, filename: str, bib_type: str = "unknown", 
-                               make_descendants: bool = False, mkdir: bool = False):
+    def create_corpus_container(
+        self, filename: str, bib_type: str = "unknown", make_descendants: bool = False, mkdir: bool = False
+    ):
         """
         Create a child container and optionally its actual directory.
-        
+
         Args:
             filename: Name of the container
             bib_type: Type of container
             make_descendants: Whether to create descendants
             mkdir: Whether to create directory
-            
+
         Returns:
             AmiCorpusContainer instance
         """
         if not filename:
             logger.error("filename is None")
             return None
-            
+
         path = self.file / filename
         if mkdir and not path.exists():
             path.mkdir(parents=True, exist_ok=True)
@@ -451,7 +468,7 @@ class AmiCorpusContainer:
             if not path.is_dir():
                 logger.error(f"{path} exists but is not a directory")
                 return None
-                
+
         corpus_container = AmiCorpusContainer(self.ami_corpus, path, bib_type=bib_type, mkdir=mkdir)
         self.child_container_list.append(corpus_container)
         return corpus_container
@@ -459,12 +476,12 @@ class AmiCorpusContainer:
     def create_document(self, filename: str, text: Optional[str] = None, type: str = "unknown") -> Path:
         """
         Create document file with name and self as parent.
-        
+
         Args:
             filename: Name of the document
             text: Content of the document
             type: Type of document
-            
+
         Returns:
             Path to created document
         """
@@ -480,4 +497,4 @@ class AmiCorpusContainer:
     def make_descendants(self):
         """Create descendant containers if this is a directory."""
         if self.file and self.file.is_dir():
-            self.ami_corpus.make_descendants(self.file) 
+            self.ami_corpus.make_descendants(self.file)

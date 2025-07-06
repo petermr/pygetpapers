@@ -16,13 +16,10 @@ eupmc_json_path = os.path.join(current_path, "eupmc_results.json")
 crossref_json_path = os.path.join(current_path, "crossref_results.json")
 arxiv_json_path = os.path.join(current_path, "arxiv_results.json")
 rxiv_json_path = os.path.join(current_path, "rxiv_results.json")
-citation_path = os.path.join(
-    current_path, paper_for_citations_test, "citation.xml")
-references_path = os.path.join(
-    current_path, paper_for_citations_test, "citation.xml")
-path_for_zip = os.path.join(current_path, paper_for_zip, 'ftpfiles')
-path_for_supp = os.path.join(
-    current_path, paper_for_supp, "supplementaryfiles")
+citation_path = os.path.join(current_path, paper_for_citations_test, "citation.xml")
+references_path = os.path.join(current_path, paper_for_citations_test, "citation.xml")
+path_for_zip = os.path.join(current_path, paper_for_zip, "ftpfiles")
+path_for_supp = os.path.join(current_path, paper_for_supp, "supplementaryfiles")
 logfile_name = "abc.txt"
 path_for_logfile = os.path.join(current_path, logfile_name)
 
@@ -49,7 +46,7 @@ def test_eupmc_does_update_work():
     path, dirs, files = next(os.walk(current_path))
     new_file_count = len(dirs)
     print(new_file_count)
-    assert (old_file_count+10) == new_file_count
+    assert (old_file_count + 10) == new_file_count
 
 
 def test_does_zip_work():
@@ -59,30 +56,28 @@ def test_does_zip_work():
     NOT FULLY TESTED OR DOCUMENTED
     """
     print("checking zip")
-    os.system(f'python -m pygetpapers.pygetpapers -q {paper_for_zip} -o {current_path} -k 1 --zip')
+    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_zip} -o {current_path} -k 1 --zip")
     does_zip_folder_exist = os.path.isdir(path_for_zip)
     assert does_zip_folder_exist
 
 
 def test_does_supplementary_work():
     print("checking supp")
-    os.system(f'python -m pygetpapers.pygetpapers -q {paper_for_supp} -o {current_path} -k 1 --supp')
+    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_supp} -o {current_path} -k 1 --supp")
     does_supp_folder_exist = os.path.isdir(path_for_supp)
     assert does_supp_folder_exist
 
 
 def does_references_work():
     print("Checking references")
-    os.system(
-        f'python -m pygetpapers.pygetpapers -q {paper_for_references_test} -o {current_path} -k 1 --supp')
+    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_references_test} -o {current_path} -k 1 --supp")
     does_references_exist = os.path.isfile(references_path)
     assert does_references_exist
 
 
 def does_citations_work():
     print("Checking citations")
-    os.system(
-        f'python -m pygetpapers.pygetpapers -q {paper_for_citations_test} -o {current_path} -k 1 --supp')
+    os.system(f"python -m pygetpapers.pygetpapers -q {paper_for_citations_test} -o {current_path} -k 1 --supp")
     does_citations_exist = os.path.isfile(citation_path)
     assert does_citations_exist
 
@@ -102,19 +97,17 @@ def test_does_arxiv_work():
     logger.info(f"running {command}")
     os.system(command)
     logger.info("Checking if query run successfully")
-    assert os.path.isfile(arxiv_json_path), (f"{arxiv_json_path}  should exist")
+    assert os.path.isfile(arxiv_json_path), f"{arxiv_json_path}  should exist"
 
 
 def test_does_logfile_work():
-    os.system(
-        f'python -m pygetpapers.pygetpapers -q lantana -o "{current_path}" -k 1 --logfile {logfile_name}')
+    os.system(f'python -m pygetpapers.pygetpapers -q lantana -o "{current_path}" -k 1 --logfile {logfile_name}')
     does_logfile_exist = os.path.isfile(path_for_logfile)
     assert does_logfile_exist
 
 
 def test_does_biorxiv_work():
-    os.system(
-        f'python -m pygetpapers.pygetpapers -k 5 -o "{current_path}" --api "biorxiv" ')
+    os.system(f'python -m pygetpapers.pygetpapers -k 5 -o "{current_path}" --api "biorxiv" ')
     print("Checking if query run successfully")
     exists_rxiv_json_path = os.path.isfile(rxiv_json_path)
     assert exists_rxiv_json_path == True
@@ -122,5 +115,6 @@ def test_does_biorxiv_work():
 
 def test_remove_dir():
     import shutil
+
     shutil.rmtree(current_path)
     assert "Ran all the tests" == "Ran all the tests"
