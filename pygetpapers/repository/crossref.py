@@ -34,7 +34,7 @@ CROSSREF = "crossref"
 
 
 class CrossRef(RepositoryInterface):
-    """CrossRef class which handles crossref repository. It uses habanero repository 
+    """CrossRef class which handles crossref repository. It uses habanero repository
     wrapper to make its query"""
 
     def __init__(self):
@@ -78,13 +78,10 @@ class CrossRef(RepositoryInterface):
         else:
             cursor = "*"
         # Submits a request to crossref
-        # raw_crossref_metadata is a dictionary containing bibliographic metadata 
+        # raw_crossref_metadata is a dictionary containing bibliographic metadata
         # for each paper
         raw_crossref_metadata = crossref_client.works(
-            query={query},
-            filter=filter_dict,
-            cursor_max=cutoff_size,
-            cursor=cursor
+            query={query}, filter=filter_dict, cursor_max=cutoff_size, cursor=cursor
         )
         metadata_count = raw_crossref_metadata[MESSAGE][TOTAL_RESULTS]
         cursor_mark = raw_crossref_metadata[MESSAGE][NEXT_CURSOR]

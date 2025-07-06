@@ -657,7 +657,7 @@ class PygetpapersDatatables:
                 pdf_files = list(paper_path.glob("*.pdf"))
                 for pdf_file in pdf_files:
                     try:
-                        # Basic PDF text extraction (could be enhanced with PyPDF2 or 
+                        # Basic PDF text extraction (could be enhanced with PyPDF2 or
                         # similar)
                         content = self._extract_pdf_text(pdf_file)
                         if content:
@@ -665,9 +665,7 @@ class PygetpapersDatatables:
                                 content, search_terms, case_sensitive, "PDF"
                             )
                             for match in matches:
-                                match["file"] = str(
-                                    pdf_file.relative_to(paper_path)
-                                )
+                                match["file"] = str(pdf_file.relative_to(paper_path))
                                 match["paper_id"] = paper["directory"]
                                 paper_matches.append(match)
                     except Exception as e:

@@ -44,7 +44,7 @@ def test_eupmc_does_update_work():
     old_file_count = len(dirs)
     os.system(
         f'python -m pygetpapers.pygetpapers -q "lantana" -k 10 --update '
-        f'-o {current_path}'
+        f"-o {current_path}"
     )
     path, dirs, files = next(os.walk(current_path))
     new_file_count = len(dirs)
@@ -124,7 +124,7 @@ def test_does_arxiv_work():
 def test_does_logfile_work():
     os.system(
         f'python -m pygetpapers.pygetpapers -q lantana -o "{current_path}" -k 1 '
-        f'--logfile {logfile_name}'
+        f"--logfile {logfile_name}"
     )
     does_logfile_exist = os.path.isfile(path_for_logfile)
     assert does_logfile_exist

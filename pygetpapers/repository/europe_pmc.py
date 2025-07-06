@@ -68,11 +68,11 @@ class EuropePmc(RepositoryInterface):
 
     Can optionally download supplemental author data, the content of which is irregular and
     not weell specified.
-    For articles with figures, the links to the figures on the EPMC site are included in the 
-    fulltext.xml but the figures are NOT included. (We have are adding this functionality to 
+    For articles with figures, the links to the figures on the EPMC site are included in the
+    fulltext.xml but the figures are NOT included. (We have are adding this functionality to
     our `docanalysis` and `pyamiimage` codes.
 
-    In some cases a "zip" file is provided by EPMC which does contain figures in the paper and 
+    In some cases a "zip" file is provided by EPMC which does contain figures in the paper and
     supplemntal author data; this can be downloaded.
 
     EPMC has a number of additional services including:
@@ -139,9 +139,7 @@ class EuropePmc(RepositoryInterface):
 
     def _remove_extra_papers_from_list(self, cutoff_size, list_of_paper_metadata):
         if len(list_of_paper_metadata) > cutoff_size:
-            list_of_paper_metadata = list_of_paper_metadata[
-                0:cutoff_size
-            ]
+            list_of_paper_metadata = list_of_paper_metadata[0:cutoff_size]
         return list_of_paper_metadata
 
     def _metadata_dictionary_to_list_of_dictionaries_for_each_paper(
@@ -599,8 +597,7 @@ class EuropePmc(RepositoryInterface):
                             and paper_links["documentStyle"] == "pdf"
                         ):
                             self.download_tools.queries_the_url_and_writes_response_to_destination(
-                                paper_links["url"],
-                                pdf_destination
+                                paper_links["url"], pdf_destination
                             )
                             metadata_dictionary[PDF_DOWNLOADED] = True
                             logging.info(
