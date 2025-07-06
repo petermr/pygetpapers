@@ -21,46 +21,50 @@ class CorpusSearch:
     """
 
     @classmethod
-    def search_files_with_phrases_write_results(cls, infiles: List[Union[str, Path]], 
-                                               phrases: Optional[List[str]] = None, 
-                                               para_xpath: Optional[str] = None, 
-                                               outfile: Optional[Union[str, Path]] = None, 
-                                               debug: bool = False):
+    def search_files_with_phrases_write_results(
+        cls,
+        infiles: List[Union[str, Path]],
+        phrases: Optional[List[str]] = None,
+        para_xpath: Optional[str] = None,
+        outfile: Optional[Union[str, Path]] = None,
+        debug: bool = False,
+    ):
         """
         Iterate over files in corpus and search for phrases.
-        
+
         Args:
             infiles: List of input files to search
             phrases: List of phrases to search for
             para_xpath: XPath for paragraph elements
             outfile: Output file for results
             debug: Enable debug logging
-            
+
         Returns:
             HTML document with search results
         """
         if phrases is None:
             logger.error("no phrases")
             return None
-            
+
         all_hits_dict = dict()
         url_list_by_phrase_dict = defaultdict(list)
-        
+
         if not isinstance(phrases, list):
             phrases = [phrases]
-            
+
         all_paras = []
         for infile in infiles:
-            paras = cls.search_paras_with_id_and_create_dict(all_hits_dict, infile, para_xpath, phrases,
-                                                     url_list_by_phrase_dict)
+            paras = cls.search_paras_with_id_and_create_dict(
+                all_hits_dict, infile, para_xpath, phrases, url_list_by_phrase_dict
+            )
             all_paras.extend(paras)
 
         if debug:
             print(f"para count: {len(all_paras)}")
-            
+
         html1 = cls.create_html_from_hit_dict(url_list_by_phrase_dict)
         assert html1 is not None
-        
+
         if outfile:
             outfile = Path(outfile)
             outfile.parent.mkdir(exist_ok=True, parents=True)
@@ -68,52 +72,57 @@ class CorpusSearch:
                 if debug:
                     print(f" hitdict {url_list_by_phrase_dict}")
                 cls.write_html_file(html1, outfile, debug=True)
-                
+
         return html1
 
     @classmethod
-    def search_paras_with_id_and_create_dict(cls, all_hits_dict: Dict, infile: Union[str, Path], 
-                                            para_xpath: Optional[str], phrases: List[str],
-                                            url_list_by_phrase_dict: Dict[str, List[str]]):
+    def search_paras_with_id_and_create_dict(
+        cls,
+        all_hits_dict: Dict,
+        infile: Union[str, Path],
+        para_xpath: Optional[str],
+        phrases: List[str],
+        url_list_by_phrase_dict: Dict[str, List[str]],
+    ):
         """
         Read file, create HTML, find paras_with_id, and search for phrases.
-        
+
         Args:
             all_hits_dict: Dictionary to accumulate hits
             infile: Input file path
             para_xpath: XPath for paragraph elements
             phrases: List of phrases to search for
             url_list_by_phrase_dict: Dictionary to accumulate URLs by phrase
-            
+
         Returns:
             List of paragraph elements
         """
         infile_path = Path(infile)
         assert infile_path.exists(), f"{infile} does not exist"
-        
+
         try:
             html_tree = ET.parse(str(infile), HTMLParser())
         except Exception as e:
             logger.error(f"Error parsing {infile}: {e}")
             return []
-            
+
         paras = cls.find_paras_with_ids(html_tree, para_xpath=para_xpath)
-        
+
         # This would need to be implemented based on the original functionality
         # For now, we'll create a placeholder
         para_id_by_phrase_dict = cls.create_search_results_para_phrase_dict(paras, phrases)
-        
+
         if para_id_by_phrase_dict is not None and len(para_id_by_phrase_dict) > 0:
-            cls.add_hit_with_filename_and_para_id(all_hits_dict, url_list_by_phrase_dict, infile,
-                                                  para_id_by_phrase_dict)
+            cls.add_hit_with_filename_and_para_id(all_hits_dict, url_list_by_phrase_dict, infile, para_id_by_phrase_dict)
         return paras
 
     @classmethod
-    def add_hit_with_filename_and_para_id(cls, all_hits_dict: Dict, hit_dict: Dict, 
-                                         infile: Union[str, Path], phrase_by_para_id_dict: Dict[str, List[str]]):
+    def add_hit_with_filename_and_para_id(
+        cls, all_hits_dict: Dict, hit_dict: Dict, infile: Union[str, Path], phrase_by_para_id_dict: Dict[str, List[str]]
+    ):
         """
         Add non-empty hits in hit_dict to all_dict.
-        
+
         Args:
             all_hits_dict: Accumulates para_phrase_dict by infile
             hit_dict: Accumulates URL by hit
@@ -134,10 +143,10 @@ class CorpusSearch:
     def create_url_from_filename(cls, infile: Union[str, Path]) -> str:
         """
         Create URL from filename.
-        
+
         Args:
             infile: Input file path
-            
+
         Returns:
             URL string
         """
@@ -150,23 +159,23 @@ class CorpusSearch:
     def create_html_from_hit_dict(cls, hit_dict: Dict[str, List[str]]):
         """
         Create HTML from hit dictionary.
-        
+
         Args:
             hit_dict: Dictionary mapping terms to URLs
-            
+
         Returns:
             HTML document
         """
         html = cls.create_html_with_empty_head_body()
         body = cls.get_body(html)
         ul = ET.SubElement(body, "ul")
-        
+
         for term, hits in hit_dict.items():
             li = ET.SubElement(ul, "li")
             p = ET.SubElement(li, "p")
             p.text = f"term: {term}"
             ul1 = ET.SubElement(li, "ul")
-            
+
             for hit in hits:
                 hit = str(hit).replace("%5C", "/")
                 li1 = ET.SubElement(ul1, "li")
@@ -178,20 +187,20 @@ class CorpusSearch:
                 except Exception as e:
                     print(f"cannot find substring {ss} in {a.text}")
                     continue
-                a.text = a.text[idx + len(ss):]
+                a.text = a.text[idx + len(ss) :]
                 a.attrib["href"] = hit
-                
+
         return html
 
     @classmethod
     def find_paras_with_ids(cls, html_tree, para_xpath: Optional[str] = None) -> List[Any]:
         """
         Find paragraphs with IDs in HTML tree.
-        
+
         Args:
             html_tree: HTML document tree
             para_xpath: XPath for paragraph elements
-            
+
         Returns:
             List of paragraph elements
         """
@@ -203,11 +212,11 @@ class CorpusSearch:
     def create_search_results_para_phrase_dict(cls, paras: List[Any], phrases: List[str]) -> Dict[str, List[str]]:
         """
         Create search results dictionary mapping paragraph IDs to phrases.
-        
+
         Args:
             paras: List of paragraph elements
             phrases: List of phrases to search for
-            
+
         Returns:
             Dictionary mapping paragraph IDs to matching phrases
         """
@@ -233,7 +242,7 @@ class CorpusSearch:
     def write_html_file(htmlx, outfile: Union[str, Path], debug: bool = False):
         """
         Write HTML document to file.
-        
+
         Args:
             htmlx: HTML document
             outfile: Output file path
@@ -241,7 +250,7 @@ class CorpusSearch:
         """
         if debug:
             logger.info(f"writing HTML to {outfile}")
-            
+
         with open(outfile, "w", encoding="UTF-8") as f:
-            text = ET.tostring(htmlx, encoding='unicode', pretty_print=True)
-            f.write(text) 
+            text = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
+            f.write(text)

@@ -57,4 +57,4 @@ setup(
         "Source": "https://github.com/amilib/corpus-module",
         "Documentation": "https://github.com/amilib/corpus-module/blob/main/README.md",
     },
-) 
+)

@@ -49,23 +49,22 @@ ARXIV = "arxiv"
 
 from pygetpapers.repositoryinterface import RepositoryInterface
 
+
 class Arxiv(RepositoryInterface):
     """arxiv.org repository
-    
-    This uses a PyPI code `arxiv` to download metadata. It is not clear whether this is 
-    created by the `arXiv` project or layered on top of the public API. 
-    
-    `arXiv` current practice for bulk data download (e.g. PDFs) is described in
-https://arxiv.org/help/bulk_data. Please be considerate and also include a rate limit.
-    
+
+        This uses a PyPI code `arxiv` to download metadata. It is not clear whether this is
+        created by the `arXiv` project or layered on top of the public API.
+
+        `arXiv` current practice for bulk data download (e.g. PDFs) is described in
+    https://arxiv.org/help/bulk_data. Please be considerate and also include a rate limit.
+
     """
 
     def __init__(self):
         self.download_tools = DownloadTools(ARXIV)
 
-    def arxiv(
-            self, query, cutoff_size, getpdf=False, makecsv=False, makexml=False, makehtml=False
-    ):
+    def arxiv(self, query, cutoff_size, getpdf=False, makecsv=False, makexml=False, makehtml=False):
         """Builds the arxiv searcher and writes the xml, pdf, csv and html
 
         :param query: query given to arxiv
@@ -74,19 +73,17 @@ https://arxiv.org/help/bulk_data. Please be considerate and also include a rate 
         :type cutoff_size: int
         :param getpdf: whether to get pdf
         :type getpdf: bool, optional
-        :param makecsv: whether to get csv 
+        :param makecsv: whether to get csv
         :type makecsv: bool
-        :param makehtml: whether to get html 
+        :param makehtml: whether to get html
         :type makehtml: bool
-        :param makexml: whether to get xml 
+        :param makexml: whether to get xml
         :type makexml: bool
         :return: dictionary of results retrieved from arxiv
         :rtype: dict
         """
         logging.info("Making request to Arxiv through pygetpapers")
-        search = arxiv_wrapper.Search(
-            query=query, max_results=cutoff_size, sort_by=arxiv_wrapper.SortCriterion.Relevance
-        )
+        search = arxiv_wrapper.Search(query=query, max_results=cutoff_size, sort_by=arxiv_wrapper.SortCriterion.Relevance)
 
         logging.info("Got request result from Arxiv through pygetpapers")
         search_results = search.get()
@@ -96,9 +93,7 @@ https://arxiv.org/help/bulk_data. Please be considerate and also include a rate 
             self.download_tools._add_download_status_keys(paper, metadata_dictionary)
         if getpdf:
             self.download_pdf(metadata_dictionary)
-        self.download_tools.handle_creation_of_csv_html_xml(
-            makecsv, makehtml, makexml, metadata_dictionary, ARXIV_RESULT
-        )
+        self.download_tools.handle_creation_of_csv_html_xml(makecsv, makehtml, makexml, metadata_dictionary, ARXIV_RESULT)
         self.write_metadata_json_from_arxiv_dict(metadata_dictionary)
 
         return metadata_dictionary
@@ -125,32 +120,19 @@ https://arxiv.org/help/bulk_data. Please be considerate and also include a rate 
 
             metadata_dictionary[url_encoded_id_of_paper] = {}
             paper_dict = metadata_dictionary[url_encoded_id_of_paper]
-            paper_dict[DATE_UPDATED] = str(
-                result.updated)
-            paper_dict[DATE_PUBLISHED] = str(
-                result.published
-            )
+            paper_dict[DATE_UPDATED] = str(result.updated)
+            paper_dict[DATE_PUBLISHED] = str(result.published)
             paper_dict[TITLE] = str(result.title)
-            paper_dict[AUTHORS] = str(
-                result.authors)
-            paper_dict[SUMMARY] = str(
-                result.summary)
-            paper_dict[COMMENT] = str(
-                result.comment)
-            paper_dict[JOURNAL_REF] = str(
-                result.journal_ref
-            )
+            paper_dict[AUTHORS] = str(result.authors)
+            paper_dict[SUMMARY] = str(result.summary)
+            paper_dict[COMMENT] = str(result.comment)
+            paper_dict[JOURNAL_REF] = str(result.journal_ref)
             paper_dict[DOI] = str(result.doi)
-            paper_dict[PRIMARY_CATEGORY] = str(
-                result.primary_category
-            )
-            paper_dict[CATEGORIES] = str(
-                result.categories)
+            paper_dict[PRIMARY_CATEGORY] = str(result.primary_category)
+            paper_dict[CATEGORIES] = str(result.categories)
             paper_dict[LINKS] = str(result.links)
-            paper_dict[PDF_URL] = str(
-                result.pdf_url)
-            paper_dict[ENTRY_ID] = str(
-                result.entry_id)
+            paper_dict[PDF_URL] = str(result.pdf_url)
+            paper_dict[ENTRY_ID] = str(result.entry_id)
         return metadata_dictionary
 
     def download_pdf(self, metadata_dictionary):
@@ -161,9 +143,7 @@ https://arxiv.org/help/bulk_data. Please be considerate and also include a rate 
         """
         logging.info("Downloading Pdfs for papers")
         for result in tqdm(metadata_dictionary):
-            self.download_tools.check_or_make_directory(
-                os.path.join(os.getcwd(), result)
-            )
+            self.download_tools.check_or_make_directory(os.path.join(os.getcwd(), result))
             pdf_url = os.path.join(os.getcwd(), result, FULLTEXT_PDF)
             self.download_tools.queries_the_url_and_writes_response_to_destination(
                 metadata_dictionary[result][PDF_URL], pdf_url
@@ -186,4 +166,4 @@ https://arxiv.org/help/bulk_data. Please be considerate and also include a rate 
             makecsv=query_namespace["makecsv"],
             makexml=query_namespace["xml"],
             makehtml=query_namespace["makehtml"],
-        )   
+        )

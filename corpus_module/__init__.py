@@ -18,4 +18,4 @@ from .query import CorpusQuery
 from .search import CorpusSearch
 
 __version__ = "0.1.0"
-__all__ = ["AmiCorpus", "AmiCorpusContainer", "CorpusQuery", "CorpusSearch"] 
+__all__ = ["AmiCorpus", "AmiCorpusContainer", "CorpusQuery", "CorpusSearch"]

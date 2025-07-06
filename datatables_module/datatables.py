@@ -55,61 +55,52 @@ class Datatables:
         """
         Add jQuery and DataTables scripts to HTML body.
         Core functionality for interactive tables.
-        
+
         Args:
             body: HTML body element
             table_id: ID of the table to initialize
         """
         if JQUERY_JS is not None:
-            script = cls._add_element(body, "script", {
-                "charset": "UTF-8", 
-                "type": "text/javascript",
-                "src": JQUERY_JS
-            }, text=" ")
+            script = cls._add_element(
+                body, "script", {"charset": "UTF-8", "type": "text/javascript", "src": JQUERY_JS}, text=" "
+            )
 
-        script = cls._add_element(body, "script", {
-            "charset": "UTF-8", 
-            "type": "text/javascript",
-            "src": DATATABLES_JS
-        }, text=" ")
+        script = cls._add_element(
+            body, "script", {"charset": "UTF-8", "type": "text/javascript", "src": DATATABLES_JS}, text=" "
+        )
 
-        script = cls._add_element(body, "script", {
-            "charset": "UTF-8", 
-            "type": "text/javascript"
-        }, text=PRE_TEXT + table_id + POST_TEXT)
+        script = cls._add_element(
+            body, "script", {"charset": "UTF-8", "type": "text/javascript"}, text=PRE_TEXT + table_id + POST_TEXT
+        )
 
     @classmethod
     def add_head_info(cls, head, htmlx):
         """
         Add DataTables CSS and meta information to HTML head.
         Essential for proper table styling and functionality.
-        
+
         Args:
             head: HTML head element
             htmlx: HTML document
         """
         meta = ET.SubElement(head, "meta")
         meta.attrib["charset"] = "UTF-8"
-        
+
         title = ET.SubElement(head, "title")
         title.text = "DataTable"
-        
-        cls._add_element(head, "link", {
-            "rel": "stylesheet", 
-            "type": "text/css",
-            "href": DATATABLES_CSS
-        })
+
+        cls._add_element(head, "link", {"rel": "stylesheet", "type": "text/css", "href": DATATABLES_CSS})
 
     @classmethod
     def create_table(cls, labels: List[str], table_id: str):
         """
         Create a basic HTML table structure with DataTables support.
         Core method for table creation - used extensively in production.
-        
+
         Args:
             labels: Column headers
             table_id: Unique ID for the table
-            
+
         Returns:
             tuple: (html_document, tbody_element)
         """
@@ -126,11 +117,11 @@ class Datatables:
         """
         Create complete HTML document with DataTables support.
         Used for standalone table files in filestore.
-        
+
         Args:
             labels: Column headers
             table_id: Unique ID for the table
-            
+
         Returns:
             tuple: (html_document, tbody_element)
         """
@@ -144,7 +135,7 @@ class Datatables:
         """
         Create table header with column labels.
         Core functionality for table structure.
-        
+
         Args:
             labels: Column headers
             table: Table element
@@ -159,18 +150,18 @@ class Datatables:
         """
         Extract a column from a DataTable.
         Essential for data analysis and filestore operations.
-        
+
         Args:
             datatables_html: DataTable HTML element
             colindex: Column index or title
-            
+
         Returns:
             List of column elements
         """
         table = datatables_html.xpath("/html/body/table")[0]
         h_rows = table.xpath("thead/tr")
         colheads = [t.text for t in h_rows[0].xpath("th")]
-        
+
         if isinstance(colindex, str):
             if colindex not in colheads:
                 raise ValueError(f"column index '{colindex}' not in {colheads}")
@@ -178,7 +169,7 @@ class Datatables:
             logger.info(f"column index for {colindex} is: {colnum}")
         else:
             colnum = colindex
-            
+
         b_rows = table.xpath("tbody/tr")
         col_content = []
         for row in b_rows:
@@ -192,7 +183,7 @@ class Datatables:
         """
         Insert a column into a DataTable.
         Core functionality for dynamic table manipulation.
-        
+
         Args:
             datatables_html: DataTable HTML object
             column: List of values to add as column
@@ -200,7 +191,7 @@ class Datatables:
             before: Index or title of existing column to insert before
         """
         head_tr0, ncols, rows = cls._read_tables_get_row_column_count(column, datatables_html)
-        
+
         if before is None:
             before = ncols
         elif isinstance(before, str):
@@ -210,7 +201,7 @@ class Datatables:
                 before = colheads.index(before)
             else:
                 before = ncols
-                
+
         if before < 0 or before > ncols:
             raise ValueError(f"bad before {before}")
 
@@ -236,11 +227,11 @@ class Datatables:
         """
         Get table structure information.
         Internal method for table manipulation.
-        
+
         Args:
             column: Column data
             datatables_html: DataTable HTML
-            
+
         Returns:
             tuple: (header_row, column_count, table_rows)
         """
@@ -305,7 +296,7 @@ class DataTable:
         """
         Create a DataTable.
         Core constructor for table creation.
-        
+
         Args:
             title: Table title
             colheads: Column headers
@@ -330,13 +321,13 @@ class DataTable:
         link.attrib["rel"] = "stylesheet"
         link.attrib["type"] = "text/css"
         link.attrib["href"] = DATATABLES_CSS
-        link.text = '.'
+        link.text = "."
 
         script = ET.SubElement(self.head, "script")
         script.attrib["src"] = JQUERY_JS
         script.attrib["charset"] = "UTF-8"
         script.attrib["type"] = "text/javascript"
-        script.text = '.'
+        script.text = "."
 
         script = ET.SubElement(self.head, "script")
         script.attrib["src"] = DATATABLES_JS
@@ -347,7 +338,7 @@ class DataTable:
         script = ET.SubElement(self.head, "script")
         script.attrib["charset"] = "UTF-8"
         script.attrib["type"] = "text/javascript"
-        script.text = "$(function() { $(\"#results\").dataTable(); }) "
+        script.text = '$(function() { $("#results").dataTable(); }) '
 
     def create_table_thead_tbody(self):
         """Create table structure with thead and tbody."""
@@ -386,7 +377,7 @@ class DataTable:
         """
         Write DataTable to HTML file.
         Core method for filestore integration - all data exposed as files.
-        
+
         Args:
             output_dir: Directory to write the HTML file
         """
@@ -395,10 +386,10 @@ class DataTable:
             output_path.mkdir(parents=True, exist_ok=True)
         data_table_file = output_path / "full_data_table.html"
         with open(data_table_file, "w", encoding="UTF-8") as f:
-            text = ET.tostring(self.html, encoding='unicode')
+            text = ET.tostring(self.html, encoding="unicode")
             f.write(text)
             logger.info(f"WROTE {data_table_file}")
 
     def __str__(self):
         """Return HTML as string."""
-        return ET.tostring(self.html, encoding='unicode') 
+        return ET.tostring(self.html, encoding="unicode")

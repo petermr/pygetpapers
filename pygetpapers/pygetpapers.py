@@ -62,9 +62,7 @@ class ApiPlugger:
         """Helps run query for given api in the query_namespace"""
         self.download_tools = DownloadTools(query_namespace[API])
         self.query_namespace = query_namespace
-        self.setup_api_support_variables(
-            self.download_tools.config, query_namespace[API]
-        )
+        self.setup_api_support_variables(self.download_tools.config, query_namespace[API])
         api_class = getattr(
             importlib.import_module(f"{PYGETPAPERS}.repository.{self.library_name}"),
             self.class_name,
@@ -75,15 +73,10 @@ class ApiPlugger:
         """Raises error if feature not supported for api but given in query_namespace"""
         for feature in self.features_not_supported_by_api:
             if self.query_namespace[feature]:
-                logging.warning(
-                    f"{feature} is not supported by {self.query_namespace[API]}"
-                )
-        if self.query_namespace[QUERY] and (
-            self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
-        ):
+                logging.warning(f"{feature} is not supported by {self.query_namespace[API]}")
+        if self.query_namespace[QUERY] and (self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV):
             raise PygetpapersError(
-                "*rxiv doesnt support giving a query. Please provide a date interval or number of "
-                "results to get instead"
+                "*rxiv doesnt support giving a query. Please provide a date interval or number of " "results to get instead"
             )
         if (
             not self.query_namespace[QUERY]
@@ -108,9 +101,7 @@ class ApiPlugger:
         self.term = config.get(api, TERM) == SUPPORTED
         self.update = config.get(api, UPDATE) == SUPPORTED
         self.restart = config.get(api, RESTART) == SUPPORTED
-        self.features_not_supported_by_api = ast.literal_eval(
-            config.get(api, FEATURESNOTSUPPORTED)
-        )
+        self.features_not_supported_by_api = ast.literal_eval(config.get(api, FEATURESNOTSUPPORTED))
 
     def _add_date_to_query(self):
         """Builds query from simple dates in --startdate and --enddate. (See https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)
@@ -127,11 +118,7 @@ class ApiPlugger:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = (
                 f"{self.query_namespace[STARTDATE]}/{self.query_namespace[ENDDATE]}"
             )
-        if (
-            self.query_namespace[STARTDATE]
-            and self.query_namespace[ENDDATE]
-            and self.query_namespace[API] == EUROPEPMC
-        ):
+        if self.query_namespace[STARTDATE] and self.query_namespace[ENDDATE] and self.query_namespace[API] == EUROPEPMC:
             self.query_namespace[QUERY] = (
                 f"({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO {self.query_namespace[ENDDATE]}])"
             )
@@ -168,9 +155,7 @@ class ApiPlugger:
         or_ed_terms = " OR ".join(terms_list)
         # modify query in namespace object
         if self.query_namespace[QUERY]:
-            self.query_namespace[QUERY] = (
-                f"({self.query_namespace[QUERY]} {separator} ({or_ed_terms}))"
-            )
+            self.query_namespace[QUERY] = f"({self.query_namespace[QUERY]} {separator} ({or_ed_terms}))"
         else:
             if self.query_namespace[TERMS]:
                 self.query_namespace[QUERY] = f"({or_ed_terms})"
@@ -216,8 +201,7 @@ class ApiPlugger:
                 return
         elif self.query_namespace[UPDATE] and self.update:
             logging.info(
-                "Please ensure that you are providing the same --api as the one in the corpus or "
-                "you may get errors"
+                "Please ensure that you are providing the same --api as the one in the corpus or " "you may get errors"
             )
             try:
                 self.api.update(self.query_namespace)
@@ -264,9 +248,7 @@ class Pygetpapers:
         :param query_namespace: argparse namespace object
         :param level: level of logger (See https://docs.python.org/3/library/logging.html#logging-levels)
         """
-        location_to_store_logs = os.path.join(
-            query_namespace[OUTPUT], query_namespace[LOGFILE]
-        )
+        location_to_store_logs = os.path.join(query_namespace[OUTPUT], query_namespace[LOGFILE])
         self.download_tools.check_or_make_directory(query_namespace[OUTPUT])
         logging.basicConfig(filename=location_to_store_logs, level=level, filemode="a")
         console = logging.StreamHandler()
@@ -459,8 +441,7 @@ class Pygetpapers:
             "--noexecute",
             default=False,
             action="store_true",
-            help="[ALL] report how many results match the query, but don't actually download "
-            "anything",
+            help="[ALL] report how many results match the query, but don't actually download " "anything",
         )
 
         parser.add_argument(
@@ -482,8 +463,7 @@ class Pygetpapers:
             "--logfile",
             default=False,
             type=str,
-            help="[All] save log to specified file in output directory as well as printing to "
-            "terminal",
+            help="[All] save log to specified file in output directory as well as printing to " "terminal",
         )
         parser.add_argument(
             "-k",

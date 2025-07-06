@@ -17,4 +17,4 @@ from .datatables import Datatables, DataTable
 from .html_table import HtmlTable
 
 __version__ = "0.1.0"
-__all__ = ["Datatables", "DataTable", "HtmlTable"] 
+__all__ = ["Datatables", "DataTable", "HtmlTable"]

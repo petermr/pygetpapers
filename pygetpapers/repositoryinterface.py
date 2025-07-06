@@ -16,11 +16,13 @@ TOTAL = "total"
 COLLECTION = "collection"
 CURSOR_MARK = "cursor_mark"
 RXIV = "rxiv"
+
+
 class RepositoryInterface(ABC):
-    
+
     def __init__(self) -> None:
         super().__init__()
-        self.metadata_dictionary=dict()
+        self.metadata_dictionary = dict()
 
     @abstractmethod
     def noexecute(self, query_namespace):
@@ -30,8 +32,8 @@ class RepositoryInterface(ABC):
         :type query_namespace: dict
         """
         pass
-        
-    @abstractmethod        
+
+    @abstractmethod
     def update(self, query_namespace):
         """If there is a previously existing corpus, this function reads in the 'cursor mark' from the previous run, increments in, and adds new papers for the given parameters to the existing corpus.
 
@@ -39,7 +41,7 @@ class RepositoryInterface(ABC):
         :type query_namespace: dict
         """
         pass
-    
+
     @abstractmethod
     def apipaperdownload(self, query_namespace):
         """Takes in the query_namespace object as the parameter and runs the query search for given search parameters.
@@ -48,5 +50,3 @@ class RepositoryInterface(ABC):
         :type query_namespace: dict
         """
         pass
-
- 

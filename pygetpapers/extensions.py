@@ -1,13 +1,14 @@
-
 import configparser
 import logging
 
 logger = logging.getLogger(__name__)
 
-class ConfigReader():
+
+class ConfigReader:
     """
     reads the config file and extracts data
     """
+
     def __init__(self):
         pass
 

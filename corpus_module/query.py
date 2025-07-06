@@ -19,11 +19,16 @@ class CorpusQuery:
     Holds query and related info (hits, files).
     """
 
-    def __init__(self, query_id: Optional[str] = None, phrasefile: Optional[Union[str, Path]] = None,
-                 phrases: Optional[List[str]] = None, outfile: Optional[Union[str, Path]] = None):
+    def __init__(
+        self,
+        query_id: Optional[str] = None,
+        phrasefile: Optional[Union[str, Path]] = None,
+        phrases: Optional[List[str]] = None,
+        outfile: Optional[Union[str, Path]] = None,
+    ):
         """
         Initialize corpus query.
-        
+
         Args:
             query_id: Unique ID of query
             phrasefile: File containing phrases
@@ -51,20 +56,25 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
 """
         return s
 
-    def run_query_make_table_TUTORIAL(self, query: Union[str, List[str]], query_id: str, 
-                                     indir: Union[str, Path], outdir: Union[str, Path], 
-                                     outfile: Optional[Union[str, Path]] = None):
+    def run_query_make_table_TUTORIAL(
+        self,
+        query: Union[str, List[str]],
+        query_id: str,
+        indir: Union[str, Path],
+        outdir: Union[str, Path],
+        outfile: Optional[Union[str, Path]] = None,
+    ):
         """
         Take query string and query_id, create input and output filenames,
         run query, create table of results.
-        
+
         Args:
             query: Query string or list of query strings
             query_id: String without spaces to uniquely identify the query
             indir: Top directory of corpus
             outdir: Output top directory
             outfile: Output HTML file with tables
-            
+
         Returns:
             tuple: (html_document, query_id)
         """
@@ -90,7 +100,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
         self.para_xpath = None
         self.globstr = f"{str(self.indir)}/**/{HTML_WITH_IDS}.html"
         self.infiles = self._posix_glob(self.globstr, recursive=True)
-        
+
         # For tutorial, use a simple phrase
         self.phrases = ["methane emissions"]
         self.colheads = ["term", "ref", "para"]
@@ -98,11 +108,12 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
         # This would need to be implemented based on the search functionality
         # For now, we'll create a placeholder
         logger.info(f"Running query: {query_id} with phrases: {self.phrases}")
-        
+
         # Create a simple HTML table as placeholder
         from datatables_module import Datatables
+
         htmlx, table_body = Datatables.create_table(colheads=self.colheads, table_id=f"{query_id}_table")
-        
+
         # Add some placeholder data
         tr = table_body.makeelement("tr")
         for col in self.colheads:
@@ -110,21 +121,21 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             td.text = f"placeholder_{col}"
             tr.append(td)
         table_body.append(tr)
-        
+
         table_file = Path(outdir) / f"{self.query_id}_{TABLE_HITS_SUFFIX}"
-        with open(table_file, 'w', encoding='utf-8') as f:
-            f.write(ET.tostring(htmlx, encoding='unicode', pretty_print=True))
-            
+        with open(table_file, "w", encoding="utf-8") as f:
+            f.write(ET.tostring(htmlx, encoding="unicode", pretty_print=True))
+
         return htmlx, self.query_id
 
     @classmethod
     def extract_hits_by_url_from_nested_lists(cls, html_markup) -> Dict[str, List[str]]:
         """
         Extract hits by URL from nested lists in HTML markup.
-        
+
         Args:
             html_markup: HTML document with search results
-            
+
         Returns:
             Dictionary mapping URLs to hit terms
         """
@@ -136,17 +147,17 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
     def get_hits_as_term_ref_p_tuple_list(cls, term_id_by_url: Dict[str, List[str]]) -> List[Tuple[str, str, Any]]:
         """
         Get hits as list of (term, ref, para) tuples.
-        
+
         Args:
             term_id_by_url: Dictionary mapping URLs to hit terms
-            
+
         Returns:
             List of (term, ref, para) tuples
         """
         if term_id_by_url is None:
             logger.error(f"term_id_by_url is None")
             return None
-            
+
         trp_list = []
         for ref in term_id_by_url.keys():
             bits = ref.split("#")
@@ -165,7 +176,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
     def _add_hits_to_table(cls, tbody, term_ref_p_tuple_list: List[Tuple[str, str, Any]]):
         """
         Add hits to table body.
-        
+
         Args:
             tbody: Table body element
             term_ref_p_tuple_list: List of (term, ref, para) tuples
@@ -173,7 +184,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
         if term_ref_p_tuple_list is None:
             logger.error(f"term_ref_p_tuple_list is None")
             return
-            
+
         for term, ref, p in term_ref_p_tuple_list:
             if not isinstance(term, str):
                 logger.warning(f"term is not string: {type(term)}")
@@ -181,14 +192,14 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             if not isinstance(ref, str):
                 logger.warning(f"ref is not string: {type(ref)}")
                 continue
-                
+
             tr = tbody.makeelement("tr")
             tds = []
             for item in [term, ref, p]:
                 tds.append(tr.makeelement("td"))
-                
+
             tds[0].text = term
-            
+
             # Create link for reference
             a = tds[1].makeelement("a")
             a.attrib["href"] = ref
@@ -196,11 +207,11 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
             tds[1].append(a)
 
             # Add paragraph content
-            if hasattr(p, 'itertext'):
-                tds[2].text = ''.join(p.itertext())
+            if hasattr(p, "itertext"):
+                tds[2].text = "".join(p.itertext())
             else:
                 tds[2].text = str(p)
-                
+
             for td in tds:
                 tr.append(td)
             tbody.append(tr)
@@ -209,10 +220,10 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
     def make_hits_by_url(cls, search_html) -> Dict[str, List[str]]:
         """
         Make hits by URL from search HTML.
-        
+
         Args:
             search_html: HTML document with search results
-            
+
         Returns:
             Dictionary mapping URLs to hit terms
         """
@@ -224,7 +235,7 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
     def _read_strings_from_path(self, path: Path) -> List[str]:
         """Read strings from file path."""
         try:
-            with open(path, 'r', encoding='utf-8') as f:
+            with open(path, "r", encoding="utf-8") as f:
                 return [line.strip() for line in f if line.strip()]
         except Exception as e:
             logger.error(f"Error reading file {path}: {e}")
@@ -232,4 +243,4 @@ corpus:    {None if self.corpus is None else self.corpus.__hash__()}
 
     def _posix_glob(self, pattern: str, recursive: bool = False) -> List[Path]:
         """Glob files using POSIX-style patterns."""
-        return list(Path(".").glob(pattern)) 
+        return list(Path(".").glob(pattern))

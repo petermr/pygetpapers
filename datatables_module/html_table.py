@@ -16,34 +16,39 @@ class HtmlTable:
     """
 
     @classmethod
-    def create_html_table(cls, dict_by_id: Dict, transform_dict: Optional[Dict] = None, 
-                         styles: Optional[List[str]] = None, datatables: bool = True, 
-                         table_id: Optional[str] = None):
+    def create_html_table(
+        cls,
+        dict_by_id: Dict,
+        transform_dict: Optional[Dict] = None,
+        styles: Optional[List[str]] = None,
+        datatables: bool = True,
+        table_id: Optional[str] = None,
+    ):
         """
         Create HTML table from JSON data.
-        
+
         Args:
             dict_by_id: Dictionary with data organized by ID
             transform_dict: Optional transformation dictionary
             styles: Optional CSS styles
             datatables: Whether to enable DataTables
             table_id: Unique table ID
-            
+
         Returns:
             tuple: (html_document, table_element)
         """
         if table_id is None:
             table_id = "table999"
-            
+
         if not isinstance(dict_by_id, collections.OrderedDict):
             logger.warning(f"not an OrderedDict {type(dict_by_id)}")
             return None
-            
+
         row_keys = list(dict_by_id.keys())
         if len(row_keys) == 0:
             logger.warning(f"empty JSON table")
             return None
-            
+
         body, htmlx = cls.create_html_with_body(styles=styles, datatables=datatables, table_id=table_id)
         table = ET.SubElement(body, "table")
         table.attrib["id"] = table_id
@@ -52,39 +57,42 @@ class HtmlTable:
         cls.add_column_headings(row0, table)
 
         cls.add_rows(dict_by_id, row_keys, table, transform_dict)
-        
+
         if datatables:
             from .datatables import Datatables
+
             Datatables.add_body_scripts(body, table_id)
-            
+
         return htmlx, table
 
     @classmethod
-    def create_html_with_body(cls, styles: Optional[List[str]] = None, 
-                             datatables: bool = False, table_id: Optional[str] = None):
+    def create_html_with_body(
+        cls, styles: Optional[List[str]] = None, datatables: bool = False, table_id: Optional[str] = None
+    ):
         """
         Create HTML document with body and optional styles/DataTables.
-        
+
         Args:
             styles: Optional CSS styles
             datatables: Whether to enable DataTables
             table_id: Table ID for DataTables
-            
+
         Returns:
             tuple: (body_element, html_document)
         """
         htmlx = cls.create_html_with_empty_head_body()
         head = cls.get_or_create_head(htmlx)
-        
+
         if datatables:
             from .datatables import Datatables
+
             Datatables.add_head_info(head, htmlx)
 
         if styles and len(styles) > 0:
             for style_t in styles:
                 style = ET.SubElement(cls.get_head(htmlx), "style")
                 style.text = style_t
-                
+
         body = cls.get_body(htmlx)
         return body, htmlx
 
@@ -92,7 +100,7 @@ class HtmlTable:
     def add_column_headings(cls, row0: Dict, table):
         """
         Add column headings to table.
-        
+
         Args:
             row0: First row data (used for column names)
             table: Table element
@@ -114,7 +122,7 @@ class HtmlTable:
     def add_rows(cls, dict_by_id: Dict, row_keys: List, table, transform_dict: Optional[Dict]):
         """
         Add rows to table from dictionary data.
-        
+
         Args:
             dict_by_id: Data dictionary
             row_keys: Row keys
@@ -133,7 +141,7 @@ class HtmlTable:
     def _add_row(cls, dict_by_id: Dict, row_key: str, tbody, transform_dict: Optional[Dict]):
         """
         Add a single row to table.
-        
+
         Args:
             dict_by_id: Data dictionary
             row_key: Key for this row
@@ -143,7 +151,7 @@ class HtmlTable:
         row_data = dict_by_id.get(row_key)
         if row_data is None:
             return
-            
+
         tr = ET.SubElement(tbody, "tr")
         for key, value in row_data.items():
             td = ET.SubElement(tr, "td")
@@ -153,20 +161,20 @@ class HtmlTable:
                 cls._set_cell_content(td, transformed_value)
             else:
                 cls._set_cell_content(td, value)
-    
+
     @classmethod
     def _set_cell_content(cls, cell, value):
         """
         Set cell content, handling both text and HTML content.
-        
+
         Args:
             cell: Cell element (td or th)
             value: Content to set (string or HTML string)
         """
         value_str = str(value)
-        
+
         # Check if the value contains HTML tags
-        if '<' in value_str and '>' in value_str:
+        if "<" in value_str and ">" in value_str:
             try:
                 # Parse HTML content and append to cell
                 html_content = ET.fromstring(f"<div>{value_str}</div>")
@@ -183,10 +191,10 @@ class HtmlTable:
     def make_skeleton_table(cls, colheads: List[str]):
         """
         Create a skeleton table with headers.
-        
+
         Args:
             colheads: Column headers
-            
+
         Returns:
             tuple: (html_document, tbody_element)
         """
@@ -195,11 +203,11 @@ class HtmlTable:
         table = ET.SubElement(body, "table")
         thead = ET.SubElement(table, "thead")
         tr = ET.SubElement(thead, "tr")
-        
+
         for colhead in colheads:
             th = ET.SubElement(tr, "th")
             th.text = colhead
-            
+
         tbody = ET.SubElement(table, "tbody")
         return htmlx, tbody
 
@@ -207,13 +215,13 @@ class HtmlTable:
     def add_cell_content(cls, tr, cell_type: str = "td", text: str = None, href: str = None):
         """
         Add cell content to table row.
-        
+
         Args:
             tr: Table row element
             cell_type: Cell type (td or th)
             text: Cell text content
             href: Optional link URL
-            
+
         Returns:
             Cell element
         """
@@ -258,7 +266,7 @@ class HtmlTable:
     def write_html_file(htmlx, outfile, debug: bool = False):
         """
         Write HTML document to file.
-        
+
         Args:
             htmlx: HTML document
             outfile: Output file path
@@ -266,7 +274,7 @@ class HtmlTable:
         """
         if debug:
             logger.info(f"writing HTML to {outfile}")
-            
+
         with open(outfile, "w", encoding="UTF-8") as f:
-            text = ET.tostring(htmlx, encoding='unicode', pretty_print=True)
-            f.write(text) 
+            text = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
+            f.write(text)

@@ -315,9 +315,7 @@ class DownloadTools:
         :return: request_handler.content
         :rtype: bytes
         """
-        request_handler = requests.get(
-            self.citationurl.format(source=source, identifier=identifier)
-        )
+        request_handler = requests.get(self.citationurl.format(source=source, identifier=identifier))
         return request_handler.content
 
     def get_request_endpoint_for_references(self, identifier, source):
@@ -330,9 +328,7 @@ class DownloadTools:
         :return: request_handler.content
         :rtype: bytes
         """
-        request_handler = requests.get(
-            self.referencesurl.format(source=source, identifier=identifier)
-        )
+        request_handler = requests.get(self.referencesurl.format(source=source, identifier=identifier))
         return request_handler.content
 
     @staticmethod
@@ -514,9 +510,7 @@ class DownloadTools:
         resultant_dict[key_for_dict][CSVMADE] = False
         resultant_dict[key_for_dict][HTMLMADE] = False
 
-    def make_csv_for_dict(
-        self, metadata_dictionary, name_main_result_file, name_result_file_for_paper
-    ):
+    def make_csv_for_dict(self, metadata_dictionary, name_main_result_file, name_result_file_for_paper):
         """
         Writes csv content for the given dictionary to disk
 
@@ -528,13 +522,9 @@ class DownloadTools:
         :type name_result_file_for_paper: string
         """
         logging.info("Making csv files for metadata at %s", os.getcwd())
-        df = self._get_dataframe_without_additional_pygetpapers_attributes(
-            metadata_dictionary
-        )
+        df = self._get_dataframe_without_additional_pygetpapers_attributes(metadata_dictionary)
         self.write_or_append_to_csv(df, name_main_result_file)
-        self._make_csv_xml_or_html(
-            name_result_file_for_paper, metadata_dictionary, makecsv=True
-        )
+        self._make_csv_xml_or_html(name_result_file_for_paper, metadata_dictionary, makecsv=True)
 
     def _make_csv_xml_or_html(
         self,
@@ -558,9 +548,7 @@ class DownloadTools:
         :type makexml: bool
         """
         paper = 0
-        dict_to_use = self.removing_added_attributes_from_dictionary(
-            metadata_dictionary
-        )
+        dict_to_use = self.removing_added_attributes_from_dictionary(metadata_dictionary)
         for result in tqdm(dict_to_use):
             paper += 1
             result_encoded = self.url_encode_id(result)
@@ -576,19 +564,13 @@ class DownloadTools:
                 metadata_dictionary[result][HTMLMADE] = True
                 logging.debug("Wrote html files for paper %s", paper)
             if makexml:
-                total_xml_of_paper = dict2xml(
-                    dict_to_use[result], wrap="root", indent="   "
-                )
-                xmlurl_of_paper = os.path.join(
-                    os.getcwd(), result_encoded, name_result_file_for_paper
-                )
+                total_xml_of_paper = dict2xml(dict_to_use[result], wrap="root", indent="   ")
+                xmlurl_of_paper = os.path.join(os.getcwd(), result_encoded, name_result_file_for_paper)
                 with open(xmlurl_of_paper, "w", encoding="utf-8") as file_handler:
                     file_handler.write(total_xml_of_paper)
                 logging.debug("Wrote xml files for paper %s", paper)
 
-    def make_html_for_dict(
-        self, metadata_dictionary, name_main_result_file, name_result_file_for_paper
-    ):
+    def make_html_for_dict(self, metadata_dictionary, name_main_result_file, name_result_file_for_paper):
         """Writes html content for the given dictionary to disk
 
         :param metadata_dictionary: dictionary to write the content for
@@ -600,26 +582,16 @@ class DownloadTools:
         """
         logging.info("Making html files for metadata at %s", os.getcwd())
         htmlurl = os.path.join(os.getcwd(), name_main_result_file)
-        df = self._get_dataframe_without_additional_pygetpapers_attributes(
-            metadata_dictionary
-        )
+        df = self._get_dataframe_without_additional_pygetpapers_attributes(metadata_dictionary)
         self.make_html_from_dataframe(df, htmlurl)
-        self._make_csv_xml_or_html(
-            name_result_file_for_paper, metadata_dictionary, makehtml=True
-        )
+        self._make_csv_xml_or_html(name_result_file_for_paper, metadata_dictionary, makehtml=True)
 
-    def _get_dataframe_without_additional_pygetpapers_attributes(
-        self, metadata_dictionary
-    ):
-        dict_to_use = self.removing_added_attributes_from_dictionary(
-            metadata_dictionary
-        )
+    def _get_dataframe_without_additional_pygetpapers_attributes(self, metadata_dictionary):
+        dict_to_use = self.removing_added_attributes_from_dictionary(metadata_dictionary)
         df = pd.DataFrame.from_dict(dict_to_use)
         return df
 
-    def make_xml_for_dict(
-        self, metadata_dictionary, name_main_result_file, name_result_file_for_paper
-    ):
+    def make_xml_for_dict(self, metadata_dictionary, name_main_result_file, name_result_file_for_paper):
         """Writes xml content for the given dictionary to disk
 
         :param metadata_dictionary: dictionary to write the content for
@@ -629,22 +601,16 @@ class DownloadTools:
         :param name_result_file_for_paper: name of the result file for a paper
         :type name_result_file_for_paper: string
         """
-        dict_to_use = self.removing_added_attributes_from_dictionary(
-            metadata_dictionary
-        )
+        dict_to_use = self.removing_added_attributes_from_dictionary(metadata_dictionary)
         total_xml = dict2xml(dict_to_use, wrap="root", indent="   ")
         logging.info("Making xml files for metadata at %s", os.getcwd())
         xmlurl = os.path.join(os.getcwd(), name_main_result_file)
         with open(xmlurl, "w", encoding="utf-8") as file_handler:
             file_handler.write(total_xml)
         paper = 0
-        self._make_csv_xml_or_html(
-            name_result_file_for_paper, metadata_dictionary, paper, makexml=True
-        )
+        self._make_csv_xml_or_html(name_result_file_for_paper, metadata_dictionary, paper, makexml=True)
 
-    def handle_creation_of_csv_html_xml(
-        self, makecsv, makehtml, makexml, metadata_dictionary, name
-    ):
+    def handle_creation_of_csv_html_xml(self, makecsv, makehtml, makexml, metadata_dictionary, name):
         """Writes csv, html, xml for given conditions
 
         :param makecsv: whether to get csv
@@ -662,9 +628,7 @@ class DownloadTools:
         if makecsv:
             self.make_csv_for_dict(metadata_dictionary, f"{name}s.csv", f"{name}.csv")
         if makehtml:
-            self.make_html_for_dict(
-                metadata_dictionary, f"{name}s.html", f"{name}.html"
-            )
+            self.make_html_for_dict(metadata_dictionary, f"{name}s.html", f"{name}.html")
         if makexml:
             self.make_xml_for_dict(metadata_dictionary, f"{name}s.xml", f"{name}.xml")
 
@@ -687,9 +651,7 @@ class DownloadTools:
         :return: version of pygetpapers as described in the configuration file
         :rtype: string
         """
-        with open(
-            os.path.join(os.path.dirname(__file__), "config.ini")
-        ) as file_handler:
+        with open(os.path.join(os.path.dirname(__file__), "config.ini")) as file_handler:
             config_file = file_handler.read()
         config = configparser.RawConfigParser(allow_no_value=True)
         config.read_string(config_file)
@@ -707,7 +669,7 @@ class DownloadTools:
                 logging.warning(f"no id for paper ; skipped")
                 continue
             # logger.info(f"id: {id}")
-            key = paper[paper_key] # normally doi
+            key = paper[paper_key]  # normally doi
             if key is None:
                 logging.warning(f"no paper_key for id={id}")
                 continue
@@ -721,9 +683,7 @@ class DownloadTools:
             paper_by_key[key] = paper
         return paper_by_key
 
-    def _make_metadata_json_files_for_paper(
-        self, returned_dict, updated_dict, paper_key, name_of_file
-    ):
+    def _make_metadata_json_files_for_paper(self, returned_dict, updated_dict, paper_key, name_of_file):
 
         self.dumps_json_to_given_path(f"{name_of_file}s.json", updated_dict)
         logging.info("Wrote metadata file for the query")
@@ -751,9 +711,7 @@ class DownloadTools:
                     self.dumps_json_to_given_path(path_to_save_metadata, dict_of_paper)
                     logging.debug("Wrote metadata file for the paper %s", paper_numer)
                 except Exception as exception:
-                    logging.warning(
-                        "Could not write metadata file for the paper %s", paper_numer
-                    )
+                    logging.warning("Could not write metadata file for the paper %s", paper_numer)
                     logging.debug(exception)
 
     def _adds_new_results_to_metadata_dictionary(
@@ -773,9 +731,7 @@ class DownloadTools:
         dict_to_return_with_previous = copy.deepcopy(new_dict_to_return)
         if update:
 
-            dict_to_return_with_previous[TOTAL_JSON_OUTPUT].update(
-                update[TOTAL_JSON_OUTPUT]
-            )
+            dict_to_return_with_previous[TOTAL_JSON_OUTPUT].update(update[TOTAL_JSON_OUTPUT])
         return {
             UPDATED_DICT: dict_to_return_with_previous,
             NEW_RESULTS: new_dict_to_return,
