@@ -4,4 +4,11 @@ pygetpapers.egg-info/
 .vscode/
 .pytest_cache/
 venv/
+venv_*/
 .idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.flake8
+.Python

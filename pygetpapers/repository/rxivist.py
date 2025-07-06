@@ -38,7 +38,7 @@ class Rxivist(RepositoryInterface):
     "Rxivist combines biology preprints from bioRxiv and medRxiv with data from Twitter
     to help you find the papers being discussed in your field."
 
-    Appears to be metadata-only. To get full-text you may have to submit the IDs to 
+    Appears to be metadata-only. To get full-text you may have to submit the IDs to
     biorxiv or medrxiv or EPMC as this aggregates preprints.
     """
 

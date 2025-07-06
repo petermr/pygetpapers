@@ -96,7 +96,7 @@ class ApiPlugger:
             raise PygetpapersError("Please specify a query")
 
     def setup_api_support_variables(self, config, api):
-        """Reads in the configuration file namespace object and sets up class variable 
+        """Reads in the configuration file namespace object and sets up class variable
         for the given api
         :param config: Configparser configured configuration file
         :type config: configparser object
@@ -114,7 +114,7 @@ class ApiPlugger:
         )
 
     def _add_date_to_query(self):
-        """Builds query from simple dates in --startdate and --enddate. (See 
+        """Builds query from simple dates in --startdate and --enddate. (See
         https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)  # noqa: E501
         Edits the namespace object's query flag.
         :param query_namespace: namespace object from argparse (using --startdate and --enddate)  # noqa: E501
@@ -127,8 +127,7 @@ class ApiPlugger:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = self.query_namespace[LIMIT]
         else:
             self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = (
-                f"{self.query_namespace[STARTDATE]}/"
-                f"{self.query_namespace[ENDDATE]}"
+                f"{self.query_namespace[STARTDATE]}/" f"{self.query_namespace[ENDDATE]}"
             )
         if (
             self.query_namespace[STARTDATE]
@@ -140,10 +139,7 @@ class ApiPlugger:
                 f"(FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO "
                 f"{self.query_namespace[ENDDATE]}])"
             )
-        elif (
-            self.query_namespace[ENDDATE]
-            and self.query_namespace[API] == EUROPEPMC
-        ):
+        elif self.query_namespace[ENDDATE] and self.query_namespace[API] == EUROPEPMC:
             self.query_namespace[QUERY] = (
                 f"({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[TO "
                 f"{self.query_namespace[ENDDATE]}])"
@@ -153,7 +149,7 @@ class ApiPlugger:
             self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
 
     def add_terms_from_file(self):
-        """Builds query from terms mentioned in a text file described in the argparse 
+        """Builds query from terms mentioned in a text file described in the argparse
         namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)  # noqa: E501
         Edits the namespace object's query flag.
         :param query_namespace: namespace object from argparse (using --terms and --notterms)  # noqa: E501
@@ -179,8 +175,7 @@ class ApiPlugger:
         # modify query in namespace object
         if self.query_namespace[QUERY]:
             self.query_namespace[QUERY] = (
-                f"({self.query_namespace[QUERY]} {separator} "
-                f"({or_ed_terms}))"
+                f"({self.query_namespace[QUERY]} {separator} " f"({or_ed_terms}))"
             )
         else:
             if self.query_namespace[TERMS]:
@@ -328,9 +323,7 @@ class Pygetpapers:
         level = levels.get(query_namespace[LOGLEVEL].lower())
 
         if level == logging.DEBUG:
-            tqdm.__init__ = partialmethod(
-                tqdm.__init__, disable=True
-            )
+            tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
 
         if query_namespace[LOGFILE]:
             self.write_logfile(query_namespace, level)
@@ -576,9 +569,7 @@ class Pygetpapers:
             "--makehtml",
             default=False,
             action="store_true",
-            help=(
-                "[All] Stores the per-document metadata as html."
-            ),
+            help=("[All] Stores the per-document metadata as html."),
         )
         parser.add_argument(
             "--synonym",

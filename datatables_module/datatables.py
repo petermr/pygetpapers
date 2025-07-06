@@ -67,7 +67,7 @@ class Datatables:
             table_id: ID of the table to initialize
         """
         if JQUERY_JS is not None:
-            script = cls._add_element(
+            cls._add_element(
                 body,
                 "script",
                 {"charset": "UTF-8", "type": "text/javascript", "src": JQUERY_JS},

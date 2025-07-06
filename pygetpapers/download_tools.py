@@ -123,7 +123,7 @@ class DownloadTools:
         return config
 
     def gets_result_dict_for_query(self, headers, data):
-        """Queries query_url provided in configuration file for the given headers and 
+        """Queries query_url provided in configuration file for the given headers and
         payload and returns result in the form of a python dictionary
 
         :param headers: headers given to the request
@@ -133,9 +133,7 @@ class DownloadTools:
         :return: result in the form of a python dictionary
         :rtype: dictionary
         """
-        logging.debug(
-            "*/RESTful request for fulltext.xml (D)*/"
-        )
+        logging.debug("*/RESTful request for fulltext.xml (D)*/")
         request_handler = self.post_query(self.query_url, data=data, headers=headers)
         dict_to_return = self.parse_request_handler(request_handler)
         return dict_to_return
@@ -205,16 +203,16 @@ class DownloadTools:
 
     @staticmethod
     def removing_added_attributes_from_dictionary(resultant_dict):
-        """pygetpapers adds some attributes like "pdfdownloaded" to track the progress 
-        of downloads for a particular corpus. When we are exporting data to a csv file, 
-        we dont want these terms to appear. So this funtion makes a copy of the given 
-        dictionary, removes the added attributes from dictionaries inside the given dict 
+        """pygetpapers adds some attributes like "pdfdownloaded" to track the progress
+        of downloads for a particular corpus. When we are exporting data to a csv file,
+        we dont want these terms to appear. So this funtion makes a copy of the given
+        dictionary, removes the added attributes from dictionaries inside the given dict
         and returns the new dictionary.
 
 
         :param resultant_dict: given parent dictionary
         :type resultant_dict: dictionary
-        :return: dictionary with additional attributes removed from the child 
+        :return: dictionary with additional attributes removed from the child
         dictionaries
         :rtype: dictionary
         """
@@ -354,18 +352,17 @@ class DownloadTools:
         """
         dataframe = dataframe.T
 
-        base_html = (
-            """
+        base_html = """
         <!doctype html>
         <html>
           <head>
               <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\">
-              <script type=\"text/javascript\" 
+              <script type=\"text/javascript\"
                 src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js\">
               </script>
-              <link rel=\"stylesheet\" type=\"text/css\" 
+              <link rel=\"stylesheet\" type=\"text/css\"
                 href=\"https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css\">
-              <script type=\"text/javascript\" 
+              <script type=\"text/javascript\"
                 src=\"https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js\">
               </script>
               <style>
@@ -382,7 +379,6 @@ class DownloadTools:
           </body>
         </html>
         """
-        )
         html = dataframe.to_html(escape=False)
         html_with_pagination = base_html % html
         with open(path_to_save, "w", encoding="utf-8") as file_handler:
@@ -402,7 +398,7 @@ class DownloadTools:
         self.writexml(path_to_save, getreferences)
 
     def make_citations(self, source, citationurl, identifier):
-        """Retreives URL for the citations for the given paperid, gets the xml, 
+        """Retreives URL for the citations for the given paperid, gets the xml,
         writes to citationurl
 
         :param source: which repository to get the citations from
@@ -425,9 +421,7 @@ class DownloadTools:
     @staticmethod
     def _log_making_xml():
         logging.debug("*/saving xml to per-document directories (CTrees) (D)*/")
-        loggingurl = os.path.join(
-            str(os.getcwd()), "*", "fulltext.xml"
-        )
+        loggingurl = os.path.join(str(os.getcwd()), "*", "fulltext.xml")
         logging.info("Saving XML files to %s", loggingurl)
         logging.debug("*/Making the Request to get full text xml*/")
 
@@ -454,15 +448,15 @@ class DownloadTools:
         return path.parent.absolute()
 
     def getsupplementaryfiles(self, identifier, path_to_save, from_ftp_end_point=False):
-        """Retrieves supplementary files for the given paper (according to 
+        """Retrieves supplementary files for the given paper (according to
         identifier) and saves to path_to_save
 
-        :param identifier: unique identifier present in the url for the 
+        :param identifier: unique identifier present in the url for the
         particular paper
         :type identifier: string
         :param path_to_save: path to save the supplementary files to
         :type path_to_save: string
-        :param from_ftp_end_point: to get the results from eupmc ftp 
+        :param from_ftp_end_point: to get the results from eupmc ftp
         endpoint
         :type from_ftp_end_point: bool, optional
         """
@@ -540,7 +534,7 @@ class DownloadTools:
 
         :param metadata_dictionary: dictionary to write the content for
         :type metadata_dictionary: dict
-        :param name_main_result_file: name of the main result file 
+        :param name_main_result_file: name of the main result file
         (eg. eupmc-results.xml)
         :type name_main_result_file: string
         :param name_result_file_for_paper: name of the result file for a paper
@@ -612,7 +606,7 @@ class DownloadTools:
 
         :param metadata_dictionary: dictionary to write the content for
         :type metadata_dictionary: dict
-        :param name_main_result_file: name of the main result file 
+        :param name_main_result_file: name of the main result file
         (eg. eupmc-results.xml)
         :type name_main_result_file: string
         :param name_result_file_for_paper: name of the result file for a paper
@@ -644,7 +638,7 @@ class DownloadTools:
 
         :param metadata_dictionary: dictionary to write the content for
         :type metadata_dictionary: dict
-        :param name_main_result_file: name of the main result file 
+        :param name_main_result_file: name of the main result file
         (eg. eupmc-results.xml)
         :type name_main_result_file: string
         :param name_result_file_for_paper: name of the result file for a paper
@@ -653,13 +647,9 @@ class DownloadTools:
         dict_to_use = self.removing_added_attributes_from_dictionary(
             metadata_dictionary
         )
-        total_xml = dict2xml(
-            dict_to_use, wrap="root", indent="   "
-        )
+        total_xml = dict2xml(dict_to_use, wrap="root", indent="   ")
         logging.info("Making xml files for metadata at %s", os.getcwd())
-        xmlurl = os.path.join(
-            os.getcwd(), name_main_result_file
-        )
+        xmlurl = os.path.join(os.getcwd(), name_main_result_file)
         with open(xmlurl, "w", encoding="utf-8") as file_handler:
             file_handler.write(total_xml)
         paper = 0
@@ -810,7 +800,7 @@ class DownloadTools:
         }
 
     def get_metadata_results_file(self):
-        """Gets the url of metadata file (eg. eupmc-results.json) from the 
+        """Gets the url of metadata file (eg. eupmc-results.json) from the
         current working directory
 
         :return: path of the master metadata file

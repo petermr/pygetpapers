@@ -38,7 +38,7 @@ PDF_URL = "pdf_url"
 class OpenAlex(RepositoryInterface):
     """OpenAlex wrapper for accessing OpenAlex API
 
-    OpenAlex is a free and open catalog of the world's scholarly papers, 
+    OpenAlex is a free and open catalog of the world's scholarly papers,
     researchers, journals, and institutions.
     """
 
@@ -109,9 +109,7 @@ class OpenAlex(RepositoryInterface):
     ):
 
         url_to_request = self.get_url.format(
-            query=query,
-            cursor=cursor_mark,
-            page_size=page_size
+            query=query, cursor=cursor_mark, page_size=page_size
         )
         if startdate or enddate:
             if startdate:

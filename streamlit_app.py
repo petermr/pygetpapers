@@ -228,9 +228,9 @@ class PygetpapersUI:
         st.markdown(
             """
         <div class="info-box">
-            <strong>Welcome to Pygetpapers!</strong> This web interface makes it easy to 
-            search and download scholarly papers from multiple repositories. Build complex  # noqa: E501 
-            queries, manage your corpus, and explore research papers with an intuitive 
+            <strong>Welcome to Pygetpapers!</strong> This web interface makes it easy to
+            search and download scholarly papers from multiple repositories. Build complex  # noqa: E501
+            queries, manage your corpus, and explore research papers with an intuitive
             interface.
         </div>
         """,
@@ -492,8 +492,8 @@ class PygetpapersUI:
         st.markdown(
             """
         <div class="info-box">
-            <strong>Build Complex Queries:</strong> Use this tool to create sophisticated  # noqa: E501 
-            Boolean queries with field-specific searches, nested conditions, and proper 
+            <strong>Build Complex Queries:</strong> Use this tool to create sophisticated  # noqa: E501
+            Boolean queries with field-specific searches, nested conditions, and proper
             quoting.
         </div>
         """,
@@ -604,13 +604,13 @@ class PygetpapersUI:
                         f"**Repository:** "
                         f"{self.supported_apis.get(corpus['api'], corpus['api'])}"
                     )
-                    st.markdown(
-                        f"**Query:** {corpus['query'] or 'Date-based search'}"
-                    )
+                    st.markdown(f"**Query:** {corpus['query'] or 'Date-based search'}")
                     st.markdown(f"**Created:** {corpus['date_created']}")
 
                     # Add datatables view button
-                    if st.button(f"📊 View Papers Table {i + 1}", key=f"view_table_{i}"):
+                    if st.button(
+                        f"📊 View Papers Table {i + 1}", key=f"view_table_{i}"
+                    ):
                         st.session_state.selected_corpus = corpus["name"]
                         st.session_state.show_datatable = True
 

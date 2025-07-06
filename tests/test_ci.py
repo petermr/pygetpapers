@@ -1,6 +1,6 @@
 """
 Fast CI tests that don't make real API calls.
-These tests validate the CLI interface and basic functionality without 
+These tests validate the CLI interface and basic functionality without
 downloading papers.
 """
 
