@@ -1283,10 +1283,10 @@ class PygetpapersUINoDeps:
 
     def _scan_for_existing_corpora(self):
         """Scan the current directory for existing pygetpapers output directories and add them to session state"""
-        import os
-        from pathlib import Path
         import json
+        import os
         from datetime import datetime
+        from pathlib import Path
 
         # Get current directory
         current_dir = Path.cwd()
