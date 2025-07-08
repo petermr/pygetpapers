@@ -284,6 +284,7 @@ class EuropePmc(RepositoryInterface):
         makehtml=False,
         makecsv=False,
         makexml=False,
+        fulltext_html=False,
         references=False,
         citations=False,
         supplementary_files=False,
@@ -305,6 +306,7 @@ class EuropePmc(RepositoryInterface):
                 makecsv=makecsv,
                 makexml=makexml,
                 makehtml=makehtml,
+                fulltext_html=fulltext_html,
                 references=references,
                 citations=citations,
                 supplementary_files=supplementary_files,
@@ -319,11 +321,18 @@ class EuropePmc(RepositoryInterface):
         makecsv = query_namespace["makecsv"]
         makehtml = query_namespace["makehtml"]
         makexml = query_namespace["xml"]
+        fulltext_html = query_namespace.get("fulltext_html", False)
         references = query_namespace["references"]
         citations = query_namespace["citations"]
         supplementary_files = query_namespace["supp"]
         zip_files = query_namespace["zip"]
         synonym = query_namespace["synonym"]
+
+        # Ensure XML is downloaded if fulltext_html is requested
+        if fulltext_html and not makexml:
+            makexml = True
+            logging.info("Enabling XML download (required for HTML conversion)")
+
         self.run_eupmc_query_and_get_metadata(
             query,
             cutoff_size,
@@ -332,6 +341,7 @@ class EuropePmc(RepositoryInterface):
             makehtml=makehtml,
             makecsv=makecsv,
             makexml=makexml,
+            fulltext_html=fulltext_html,
             references=references,
             citations=citations,
             supplementary_files=supplementary_files,
@@ -411,6 +421,7 @@ class EuropePmc(RepositoryInterface):
         makecsv=False,
         makehtml=False,
         makexml=False,
+        fulltext_html=False,
         references=False,
         citations=False,
         supplementary_files=False,
@@ -491,6 +502,11 @@ class EuropePmc(RepositoryInterface):
             self._make_xml(
                 makexml, tree, destination_url, metadata_dictionary, condition_to_down
             )
+
+            # Convert XML to HTML if requested
+            if fulltext_html and makexml and condition_to_down:
+                self._make_fulltext_html(identifier_for_paper, destination_url)
+
             self._make_pdf(
                 getpdf,
                 identifier_for_paper,
@@ -625,6 +641,65 @@ class EuropePmc(RepositoryInterface):
                 identifier_for_paper, references, referenceurl
             )
             logging.debug("Made references for %s", identifier_for_paper)
+
+    def _make_fulltext_html(self, identifier_for_paper, xml_file_path):
+        """Convert XML fulltext to HTML using JATS4R or Simple HTML Converter
+
+        :param identifier_for_paper: Paper identifier
+        :type identifier_for_paper: str
+        :param xml_file_path: Path to XML file
+        :type xml_file_path: str
+        """
+        try:
+            # Try JATS4R first
+            try:
+                from pygetpapers.jats4r_integration import JATS4RConverter
+
+                converter = JATS4RConverter()
+                # Use new naming convention: fulltext.xml.html
+                html_file_path = xml_file_path.replace(".xml", ".xml.html")
+
+                success, result = converter.convert_xml_to_html(
+                    xml_file_path, html_file_path
+                )
+
+                if success:
+                    logging.info(
+                        f"Converted XML to HTML using JATS4R for {identifier_for_paper}"
+                    )
+                    return
+                else:
+                    logging.warning(
+                        f"JATS4R failed to convert XML to HTML for {identifier_for_paper}: {result}"
+                    )
+
+            except (ImportError, Exception) as e:
+                logging.warning(f"JATS4R not available for {identifier_for_paper}: {e}")
+
+            # Fallback to Simple HTML Converter
+            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+
+            converter = SimpleHTMLConverter()
+            # Use XML-to-HTML naming convention: fulltext.xml.html
+            html_file_path = xml_file_path.replace(".xml", ".xml.html")
+
+            success, result = converter.convert_xml_to_html(
+                xml_file_path, html_file_path
+            )
+
+            if success:
+                logging.info(
+                    f"Converted XML to HTML using Simple HTML Converter for {identifier_for_paper}"
+                )
+            else:
+                logging.warning(
+                    f"Failed to convert XML to HTML for {identifier_for_paper}: {result}"
+                )
+
+        except Exception as e:
+            logging.error(
+                f"Error converting XML to HTML for {identifier_for_paper}: {e}"
+            )
 
     @staticmethod
     def _csv_from_dict(dict_to_write, identifier_for_paper):

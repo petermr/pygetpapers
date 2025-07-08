@@ -1,12 +1,41 @@
+"""
+Pygetpapers Streamlit Web Interface
+
+A comprehensive web interface for pygetpapers with advanced features including
+query building, corpus management, data visualization, and fulltext search.
+"""
+
+import base64
+import json
+import logging
 import os
+import re
 import subprocess
+import sys
+import time
 from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from datatables_integration import PygetpapersDatatables
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Add the current directory to Python path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from datatables_integration import PygetpapersDatatables
+    from jats4r_integration import JATS4RConverter
+except ImportError:
+    # Fallback if modules are not available
+    PygetpapersDatatables = None
+    JATS4RConverter = None
+    logger.warning("Some modules not available. Some features will be limited.")
 
 # Page configuration
 st.set_page_config(
@@ -145,8 +174,16 @@ class PygetpapersUI:
         # Initialize datatables integration
         self.datatables = PygetpapersDatatables()
 
-    def run_pygetpapers_command(self, args):
-        """Run pygetpapers command and return results"""
+        # Initialize JATS4R converter
+        self.jats4r_converter = None
+        if JATS4RConverter:
+            try:
+                self.jats4r_converter = JATS4RConverter()
+            except Exception as e:
+                logger.warning(f"Failed to initialize JATS4R converter: {e}")
+
+    def run_pygetpapers_command(self, args, progress_placeholder=None):
+        """Run pygetpapers command and return results with real-time progress tracking"""
         try:
             # Try to use local development version first, fallback to installed version
             import os
@@ -162,22 +199,93 @@ class PygetpapersUI:
                 # Use installed version
                 cmd = ["pygetpapers"] + args
 
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+            # Initialize progress tracking
+            progress_data = {
+                "total_papers": 0,
+                "current_paper": 0,
+                "json_downloaded": 0,
+                "xml_downloaded": 0,
+                "pdf_downloaded": 0,
+                "supplementary_downloaded": 0,
+                "current_operation": "Initializing...",
+                "output_lines": [],
+            }
+
+            # Create progress display if placeholder provided
+            if progress_placeholder:
+                self._display_progress(progress_placeholder, progress_data)
+                # Also show a simple progress indicator as fallback
+                with progress_placeholder.container():
+                    st.info("🔄 Starting download process...")
+                    st.progress(0)
+
+            # Run command with real-time output capture
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+                universal_newlines=True,
+            )
+
+            stdout_lines = []
+            stderr_lines = []
+            update_counter = 0
+
+            # Read output in real-time
+            while True:
+                output = process.stdout.readline()
+                if output == "" and process.poll() is not None:
+                    break
+                if output:
+                    line = output.strip()
+                    stdout_lines.append(line)
+
+                    # Parse progress information
+                    self._parse_progress_line(line, progress_data)
+
+                    # Update progress display more frequently
+                    update_counter += 1
+                    if progress_placeholder and (
+                        update_counter % 3 == 0
+                        or "it [" in line
+                        or "Wrote" in line
+                        or "Downloaded" in line
+                    ):
+                        try:
+                            self._display_progress(progress_placeholder, progress_data)
+                        except Exception as e:
+                            # If display fails, continue but log the error
+                            print(f"Progress display error: {e}")
+
+            # Final progress update
+            if progress_placeholder:
+                try:
+                    self._display_progress(progress_placeholder, progress_data)
+                except Exception as e:
+                    print(f"Final progress display error: {e}")
+
+            # Wait for process to complete
+            returncode = process.poll()
 
             # Check if the command was successful
-            success = result.returncode == 0
+            success = returncode == 0
 
             # If successful but no stdout, create a summary
-            if success and not result.stdout.strip():
-                result.stdout = f"Successfully executed: pygetpapers {' '.join(args)}\n"
-                result.stdout += "Check the output directory for downloaded files."
+            if success and not stdout_lines:
+                stdout_lines = [
+                    f"Successfully executed: pygetpapers {' '.join(args)}",
+                    "Check the output directory for downloaded files.",
+                ]
 
             return {
                 "success": success,
-                "stdout": result.stdout,
-                "stderr": result.stderr,
-                "returncode": result.returncode,
+                "stdout": "\n".join(stdout_lines),
+                "stderr": "\n".join(stderr_lines),
+                "returncode": returncode,
                 "command": " ".join(cmd),
+                "progress_data": progress_data,
             }
         except subprocess.TimeoutExpired:
             return {
@@ -186,6 +294,7 @@ class PygetpapersUI:
                 "stderr": "Command timed out after 5 minutes",
                 "returncode": -1,
                 "command": " ".join(cmd),
+                "progress_data": progress_data if "progress_data" in locals() else {},
             }
         except Exception as e:
             return {
@@ -194,7 +303,267 @@ class PygetpapersUI:
                 "stderr": str(e),
                 "returncode": -1,
                 "command": " ".join(cmd),
+                "progress_data": progress_data if "progress_data" in locals() else {},
             }
+
+    def _parse_progress_line(self, line, progress_data):
+        """Parse a line of output to extract progress information"""
+        import re
+
+        # Skip tqdm progress bar lines (they're redundant with our own progress display)
+        if re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line):
+            # This is a tqdm progress bar line, skip it for output display
+            # But still extract progress information
+            match = re.search(r"(\d+)/(\d+)", line)
+            if match:
+                current = int(match.group(1))
+                total = int(match.group(2))
+                progress_data["current_paper"] = current
+                if progress_data["total_papers"] == 0:
+                    progress_data["total_papers"] = total
+            return  # Don't add tqdm lines to output_lines
+
+        # Also skip lines that are just progress percentages without the full bar
+        if re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line.strip()):
+            return
+
+        # Skip lines that are just progress updates
+        if re.match(r"^\d+/\d+ \[.*\]$", line.strip()):
+            return
+
+        # Update current operation
+        if "Making request to" in line:
+            progress_data["current_operation"] = "Searching repository..."
+        elif "Got request result" in line:
+            progress_data["current_operation"] = "Processing results..."
+        elif "Downloading" in line:
+            progress_data["current_operation"] = "Downloading files..."
+        elif "Writing" in line or "Wrote" in line:
+            progress_data["current_operation"] = "Writing files..."
+        elif "Processing" in line:
+            progress_data["current_operation"] = "Processing papers..."
+
+        # Extract total hits
+        if "Total Hits are" in line:
+            match = re.search(r"Total Hits are (\d+)", line)
+            if match:
+                progress_data["total_papers"] = int(match.group(1))
+        elif "Total number of hits" in line:
+            match = re.search(r"Total number of hits.*?(\d+)", line)
+            if match:
+                progress_data["total_papers"] = int(match.group(1))
+
+        # Extract current paper number from tqdm progress
+        if "it [" in line and "it/s]" in line:
+            # Parse tqdm progress bar: "5it [00:01, 3.16s/it]"
+            match = re.search(r"(\d+)it \[", line)
+            if match:
+                progress_data["current_paper"] = int(match.group(1))
+        # Also look for paper numbers in other formats
+        elif "paper" in line.lower() and any(str(i) in line for i in range(1, 1000)):
+            # Extract paper number from lines like "Wrote json files for paper 1"
+            match = re.search(r"paper (\d+)", line.lower())
+            if match:
+                paper_num = int(match.group(1))
+                if paper_num > progress_data["current_paper"]:
+                    progress_data["current_paper"] = paper_num
+
+        # Count different file types
+        if "json" in line.lower() and (
+            "wrote" in line.lower() or "downloaded" in line.lower()
+        ):
+            progress_data["json_downloaded"] += 1
+        elif "xml" in line.lower() and (
+            "wrote" in line.lower() or "downloaded" in line.lower()
+        ):
+            progress_data["xml_downloaded"] += 1
+        elif "pdf" in line.lower() and (
+            "wrote" in line.lower() or "downloaded" in line.lower()
+        ):
+            progress_data["pdf_downloaded"] += 1
+        elif "supplementary" in line.lower() and (
+            "wrote" in line.lower() or "downloaded" in line.lower()
+        ):
+            progress_data["supplementary_downloaded"] += 1
+
+        # Only store meaningful output lines (skip tqdm bars and progress updates)
+        if not re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line) and not re.match(
+            r"^\d+/\d+ \[.*\]$", line.strip()
+        ):
+            progress_data["output_lines"].append(line)
+
+    def _display_progress(self, placeholder, progress_data):
+        """Display progress indicators in the Streamlit placeholder"""
+        with placeholder.container():
+            st.markdown("### 📊 Download Progress")
+
+            # Current operation with animated indicator
+            operation_emoji = "🔄"
+            if "Searching" in progress_data["current_operation"]:
+                operation_emoji = "🔍"
+            elif "Downloading" in progress_data["current_operation"]:
+                operation_emoji = "⬇️"
+            elif "Writing" in progress_data["current_operation"]:
+                operation_emoji = "💾"
+            elif "Processing" in progress_data["current_operation"]:
+                operation_emoji = "⚙️"
+
+            st.info(f"{operation_emoji} **{progress_data['current_operation']}**")
+
+            # Main animated progress bar
+            if progress_data["total_papers"] > 0:
+                progress_percent = min(
+                    100,
+                    (progress_data["current_paper"] / progress_data["total_papers"])
+                    * 100,
+                )
+
+                # Create animated progress bar with custom styling
+                st.markdown(
+                    f"""
+                <div style="margin: 10px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>📄 Papers: {progress_data['current_paper']} / {progress_data['total_papers']}</span>
+                        <span>{progress_percent:.1f}%</span>
+                    </div>
+                    <div style="background-color: #f0f0f0; border-radius: 10px; height: 20px; overflow: hidden;">
+                        <div style="background: linear-gradient(90deg, #1f77b4, #ff7f0e); 
+                                    height: 100%; 
+                                    width: {progress_percent}%; 
+                                    border-radius: 10px; 
+                                    transition: width 0.3s ease;
+                                    display: flex; 
+                                    align-items: center; 
+                                    justify-content: center;">
+                            <span style="color: white; font-size: 12px; font-weight: bold;">
+                                {progress_data['current_paper']}/{progress_data['total_papers']}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                """,
+                    unsafe_allow_html=True,
+                )
+            else:
+                # Show indeterminate progress for initialization
+                st.markdown(
+                    """
+                <div style="margin: 10px 0;">
+                    <div style="background: linear-gradient(90deg, #1f77b4, #ff7f0e, #1f77b4); 
+                                background-size: 200% 100%; 
+                                animation: loading 2s infinite;
+                                height: 20px; 
+                                border-radius: 10px;">
+                    </div>
+                </div>
+                <style>
+                @keyframes loading {
+                    0% { background-position: 200% 0; }
+                    100% { background-position: -200% 0; }
+                }
+                </style>
+                """,
+                    unsafe_allow_html=True,
+                )
+
+            # File type progress with animated counters
+            st.markdown("**📁 File Downloads:**")
+            col1, col2, col3, col4 = st.columns(4)
+
+            with col1:
+                st.markdown(
+                    f"""
+                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                            border-radius: 10px; color: white;">
+                    <div style="font-size: 24px;">📄</div>
+                    <div style="font-size: 18px; font-weight: bold;">{progress_data['json_downloaded']}</div>
+                    <div style="font-size: 12px;">JSON</div>
+                </div>
+                """,
+                    unsafe_allow_html=True,
+                )
+
+            with col2:
+                st.markdown(
+                    f"""
+                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+                            border-radius: 10px; color: white;">
+                    <div style="font-size: 24px;">📋</div>
+                    <div style="font-size: 18px; font-weight: bold;">{progress_data['xml_downloaded']}</div>
+                    <div style="font-size: 12px;">XML</div>
+                </div>
+                """,
+                    unsafe_allow_html=True,
+                )
+
+            with col3:
+                st.markdown(
+                    f"""
+                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
+                            border-radius: 10px; color: white;">
+                    <div style="font-size: 24px;">📕</div>
+                    <div style="font-size: 18px; font-weight: bold;">{progress_data['pdf_downloaded']}</div>
+                    <div style="font-size: 12px;">PDF</div>
+                </div>
+                """,
+                    unsafe_allow_html=True,
+                )
+
+            with col4:
+                st.markdown(
+                    f"""
+                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
+                            border-radius: 10px; color: white;">
+                    <div style="font-size: 24px;">📎</div>
+                    <div style="font-size: 18px; font-weight: bold;">{progress_data['supplementary_downloaded']}</div>
+                    <div style="font-size: 12px;">Suppl</div>
+                </div>
+                """,
+                    unsafe_allow_html=True,
+                )
+
+            # Recent output with better formatting
+            if progress_data["output_lines"]:
+                st.markdown("**📝 Recent Activity:**")
+                recent_lines = progress_data["output_lines"][
+                    -5:
+                ]  # Show last 5 meaningful lines
+
+                # Filter out redundant or less useful messages
+                meaningful_lines = []
+                for line in recent_lines:
+                    # Skip very common or less informative messages
+                    if any(
+                        skip in line.lower()
+                        for skip in [
+                            "debug:",
+                            "time elapsed:",
+                            "got the query result",
+                            "making request to",
+                            "got request result",
+                        ]
+                    ):
+                        continue
+                    meaningful_lines.append(line)
+
+                if meaningful_lines:
+                    # Create a styled output area
+                    output_html = '<div style="background-color: #f8f9fa; border-left: 4px solid #1f77b4; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 12px;">'
+                    for line in meaningful_lines[-3:]:  # Show last 3 meaningful lines
+                        # Color code different types of messages
+                        if "ERROR" in line or "WARNING" in line:
+                            output_html += f'<div style="color: #dc3545; margin: 2px 0;">{line}</div>'
+                        elif "INFO" in line:
+                            output_html += f'<div style="color: #17a2b8; margin: 2px 0;">{line}</div>'
+                        elif "wrote" in line.lower() or "downloaded" in line.lower():
+                            output_html += f'<div style="color: #28a745; font-weight: bold; margin: 2px 0;">{line}</div>'
+                        else:
+                            output_html += f'<div style="color: #6c757d; margin: 2px 0;">{line}</div>'
+                    output_html += "</div>"
+
+                    st.markdown(output_html, unsafe_allow_html=True)
+                else:
+                    st.info("🔄 Processing papers...")
 
     def build_query_string(self, query_parts):
         """Build complex query string from parts"""
@@ -227,13 +596,13 @@ class PygetpapersUI:
         )
         st.markdown(
             """
-        <div class="info-box">
-            <strong>Welcome to Pygetpapers!</strong> This web interface makes it easy to
-            search and download scholarly papers from multiple repositories. Build complex  # noqa: E501
-            queries, manage your corpus, and explore research papers with an intuitive
-            interface.
-        </div>
-        """,
+            <div class="info-box">
+                <strong>Welcome to Pygetpapers!</strong> This web interface makes it easy to
+                search and download scholarly papers from multiple repositories. Build complex
+                queries, manage your corpus, and explore research papers with an intuitive
+                interface.
+            </div>
+            """,
             unsafe_allow_html=True,
         )
 
@@ -251,6 +620,7 @@ class PygetpapersUI:
                 "Figures Gallery",
                 "Corpus Comparison",
                 "Fulltext Search",
+                "XML to HTML",
                 "Settings",
                 "Help",
             ],
@@ -341,8 +711,17 @@ class PygetpapersUI:
 
         with col3:
             limit = st.number_input(
-                "Maximum Results", min_value=1, max_value=10000, value=10
+                "Maximum Results", min_value=1, max_value=1000, value=10
             )
+            if limit > 100:
+                st.warning(
+                    f"⚠️ **Warning:** Requesting {limit} papers may take a long time and use significant resources."
+                )
+            if limit > 500:
+                st.error(
+                    f"🚨 **DANGER:** Requesting {limit} papers is very resource-intensive. Consider reducing the limit."
+                )
+
             download_xml = st.checkbox(
                 "Download XML", value=True, disabled=not features["xml"]
             )
@@ -393,6 +772,21 @@ class PygetpapersUI:
                 st.error("Please enter a search query!")
                 return
 
+            # Safety check for large downloads
+            if limit > 200:
+                st.error(
+                    f"🚨 **SAFETY STOP:** Requesting {limit} papers is too large for this interface."
+                )
+                st.info("Please reduce the limit to 200 or fewer papers for safety.")
+                return
+            elif limit > 100:
+                st.warning(
+                    f"⚠️ **Large Download Warning:** You're requesting {limit} papers."
+                )
+                st.info(
+                    "This may take a long time and use significant resources. Consider starting with a smaller number."
+                )
+
             # Build command arguments
             args = ["--api", selected_api, "--limit", str(limit)]
 
@@ -422,14 +816,47 @@ class PygetpapersUI:
 
             args.extend(["--output", output_dir])
 
-            # Run the command
-            with st.spinner("Searching and downloading papers..."):
-                result = self.run_pygetpapers_command(args)
+            # Debug: Show the exact command being executed
+            st.info(f"🔍 **Debug Info:** Executing command with limit={limit}")
+            st.code(f"pygetpapers {' '.join(args)}")
+
+            # Create progress placeholder
+            progress_placeholder = st.empty()
+
+            # Run the command with progress tracking
+            result = self.run_pygetpapers_command(args, progress_placeholder)
 
             if result["success"]:
                 st.success("✅ Papers downloaded successfully!")
-                st.session_state.total_papers += limit
+
+                # Validate the number of papers actually downloaded
+                actual_papers = result["progress_data"].get("current_paper", 0)
+                if actual_papers > limit:
+                    st.warning(
+                        f"⚠️ **Warning:** Requested {limit} papers but {actual_papers} were downloaded!"
+                    )
+                    st.error(
+                        f"🚨 **CRITICAL:** This exceeds the requested limit by {actual_papers - limit} papers!"
+                    )
+                    st.info(
+                        "This may be due to API behavior or repository-specific limits. Please check the output directory."
+                    )
+                elif actual_papers == 0:
+                    st.warning(
+                        "⚠️ **Warning:** No papers were downloaded. Check the query and repository."
+                    )
+                else:
+                    st.success(
+                        f"✅ Successfully downloaded {actual_papers} papers (requested: {limit})"
+                    )
+
+                st.session_state.total_papers += actual_papers
                 st.session_state.total_corpora += 1
+
+                # Debug: Show stats update
+                st.info(
+                    f"📊 **Stats Updated:** Added {actual_papers} papers and 1 corpus. Total: {st.session_state.total_papers} papers, {st.session_state.total_corpora} corpora"
+                )
 
                 # Show results summary
                 st.markdown("### Results Summary")
@@ -438,10 +865,28 @@ class PygetpapersUI:
                 st.markdown("**Command executed:**")
                 st.code(f"pygetpapers {' '.join(args)}")
 
-                # Display output
+                # Display output (filtered to remove tqdm progress bars)
                 if result["stdout"].strip():
                     st.markdown("**Output:**")
-                    st.code(result["stdout"])
+                    # Filter out tqdm progress bars from the output
+                    import re
+
+                    filtered_output = []
+                    for line in result["stdout"].split("\n"):
+                        # Skip tqdm progress bar lines
+                        if not re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line.strip()):
+                            # Also skip lines that are just progress updates
+                            if not re.match(r"^\d+/\d+ \[.*\]$", line.strip()):
+                                filtered_output.append(line)
+
+                    clean_output = "\n".join(filtered_output).strip()
+                    if clean_output:
+                        st.code(clean_output)
+                    else:
+                        st.info(
+                            "📝 Command completed successfully. Check the output directory "
+                            "for downloaded files."
+                        )
                 else:
                     st.info(
                         "📝 Command completed successfully. Check the output directory "
@@ -452,16 +897,18 @@ class PygetpapersUI:
                 st.markdown("**Output Directory:**")
                 st.code(output_dir)
 
-                # Store output directory for corpus management
-                if "corpora" not in st.session_state:
-                    st.session_state.corpora = []
+                # Add corpus to session state
                 st.session_state.corpora.append(
                     {
                         "name": output_dir,
                         "api": selected_api,
                         "query": query,
-                        "date_created": datetime.now().isoformat(),
-                        "papers_count": limit,
+                        "downloaded_papers": actual_papers,  # Use actual papers downloaded
+                        "requested_limit": limit,  # Store the requested limit
+                        "total_hits": result["progress_data"].get(
+                            "total_papers", limit
+                        ),  # Use actual total hits if available
+                        "date_created": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     }
                 )
 
@@ -476,7 +923,22 @@ class PygetpapersUI:
                 st.markdown("**Command executed:**")
                 st.code(f"pygetpapers {' '.join(args)}")
                 st.markdown("**Error output:**")
-                st.code(result["stderr"])
+                # Filter out tqdm progress bars from error output too
+                import re
+
+                filtered_stderr = []
+                for line in result["stderr"].split("\n"):
+                    # Skip tqdm progress bar lines
+                    if not re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line.strip()):
+                        # Also skip lines that are just progress updates
+                        if not re.match(r"^\d+/\d+ \[.*\]$", line.strip()):
+                            filtered_stderr.append(line)
+
+                clean_stderr = "\n".join(filtered_stderr).strip()
+                if clean_stderr:
+                    st.code(clean_stderr)
+                else:
+                    st.info("No error output available.")
 
                 # Provide troubleshooting suggestions
                 st.markdown("**Troubleshooting:**")
@@ -591,6 +1053,18 @@ class PygetpapersUI:
             '<h2 class="section-header">📁 Corpus Manager</h2>', unsafe_allow_html=True
         )
 
+        # Add refresh button
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.markdown("### Your Corpora")
+        with col2:
+            if st.button(
+                "🔄 Refresh Corpus List", help="Scan for newly downloaded corpora"
+            ):
+                self._scan_for_existing_corpora()
+                st.success("Corpus list refreshed!")
+                st.rerun()
+
         if "corpora" not in st.session_state or not st.session_state.corpora:
             st.warning("No corpora found. Download some papers first!")
             return
@@ -599,7 +1073,13 @@ class PygetpapersUI:
         st.markdown("### Your Corpora")
 
         for i, corpus in enumerate(st.session_state.corpora):
-            with st.expander(f"📁 {corpus['name']} ({corpus['papers_count']} papers)"):
+            # Create display text showing requested vs downloaded
+            if corpus.get("requested_limit", 0) > 0:
+                papers_text = f"{corpus['downloaded_papers']} / {corpus['requested_limit']} papers"
+            else:
+                papers_text = f"{corpus['downloaded_papers']} papers"
+
+            with st.expander(f"📁 {corpus['name']} ({papers_text})"):
                 col1, col2 = st.columns([2, 1])
 
                 with col1:
@@ -609,6 +1089,45 @@ class PygetpapersUI:
                     )
                     st.markdown(f"**Query:** {corpus['query'] or 'Date-based search'}")
                     st.markdown(f"**Created:** {corpus['date_created']}")
+
+                    # Show paper count details
+                    if corpus.get("requested_limit", 0) > 0:
+                        st.markdown(
+                            f"**Downloaded:** {corpus['downloaded_papers']} papers"
+                        )
+                        st.markdown(
+                            f"**Requested:** {corpus['requested_limit']} papers"
+                        )
+
+                        # Show download success rate
+                        success_rate = (
+                            corpus["downloaded_papers"] / corpus["requested_limit"]
+                        ) * 100
+                        if success_rate == 100:
+                            st.markdown(
+                                f"**Status:** ✅ Complete ({success_rate:.0f}%)"
+                            )
+                        elif success_rate > 80:
+                            st.markdown(
+                                f"**Status:** ⚠️ Mostly Complete ({success_rate:.0f}%)"
+                            )
+                        else:
+                            st.markdown(
+                                f"**Status:** ❌ Incomplete ({success_rate:.0f}%)"
+                            )
+
+                        # Show total available in repository (if different from requested)
+                        if (
+                            corpus.get("total_hits", 0) > 0
+                            and corpus["total_hits"] != corpus["requested_limit"]
+                        ):
+                            st.markdown(
+                                f"**Total Available in Repository:** {corpus['total_hits']} papers"
+                            )
+                    else:
+                        st.markdown(
+                            f"**Papers Downloaded:** {corpus['downloaded_papers']}"
+                        )
 
                     # Add datatables view button
                     if st.button(
@@ -638,23 +1157,42 @@ class PygetpapersUI:
 
             # Papers by repository
             fig1 = px.pie(
-                df.groupby("api")["papers_count"].sum().reset_index(),
-                values="papers_count",
+                df.groupby("api")["downloaded_papers"].sum().reset_index(),
+                values="downloaded_papers",
                 names="api",
-                title="Papers by Repository",
+                title="Downloaded Papers by Repository",
             )
             st.plotly_chart(fig1, use_container_width=True)
 
             # Papers over time
             fig2 = px.line(
-                df.groupby(df["date_created"].dt.date)["papers_count"]
+                df.groupby(df["date_created"].dt.date)["downloaded_papers"]
                 .sum()
                 .reset_index(),
                 x="date_created",
-                y="papers_count",
+                y="downloaded_papers",
                 title="Papers Downloaded Over Time",
             )
             st.plotly_chart(fig2, use_container_width=True)
+
+            # Summary metrics
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                total_downloaded = df["downloaded_papers"].sum()
+                st.metric("Total Downloaded", total_downloaded)
+            with col2:
+                total_requested = df["requested_limit"].sum()
+                st.metric("Total Requested", total_requested)
+            with col3:
+                total_corpora = len(df)
+                st.metric("Total Corpora", total_corpora)
+            with col4:
+                avg_success_rate = (
+                    (total_downloaded / total_requested * 100)
+                    if total_requested > 0
+                    else 0
+                )
+                st.metric("Avg Success Rate", f"{avg_success_rate:.1f}%")
 
     def _render_corpus_datatables(self, corpus_name: str):
         """Render datatables for a specific corpus"""
@@ -1006,9 +1544,9 @@ class PygetpapersUI:
 
         corpus_names = [corpus["name"] for corpus in st.session_state.corpora]
         selected_corpus = st.selectbox(
-            "Choose a corpus:",
+            "Select Corpus:",
             corpus_names,
-            format_func=lambda x: f"{x} ({next(c['papers_count'] for c in st.session_state.corpora if c['name'] == x)} papers)",
+            format_func=lambda x: f"{x} ({next(c['downloaded_papers'] for c in st.session_state.corpora if c['name'] == x)} papers)",
         )
 
         if selected_corpus:
@@ -1111,7 +1649,7 @@ class PygetpapersUI:
         selected_corpus = st.selectbox(
             "Choose a corpus:",
             corpus_names,
-            format_func=lambda x: f"{x} ({next(c['papers_count'] for c in st.session_state.corpora if c['name'] == x)} papers)",
+            format_func=lambda x: f"{x} ({next(c['downloaded_papers'] for c in st.session_state.corpora if c['name'] == x)} papers)",
         )
 
         if selected_corpus:
@@ -1481,7 +2019,7 @@ class PygetpapersUI:
                             "api": "merged",
                             "query": f"Merged from: {', '.join(valid_corpora)}",
                             "date_created": datetime.now().isoformat(),
-                            "papers_count": merged_data["summary"]["total_papers"],
+                            "downloaded_papers": merged_data["summary"]["total_papers"],
                         }
                     )
 
@@ -1525,14 +2063,16 @@ class PygetpapersUI:
                         st.markdown(
                             f"**Repository:** {self.supported_apis.get(corpus['api'], corpus['api'])}"
                         )
-                        st.markdown(f"**Current Papers:** {corpus['papers_count']}")
+                        st.markdown(
+                            f"**Current Papers:** {corpus['downloaded_papers']}"
+                        )
 
                     with col2:
                         new_limit = st.number_input(
                             f"New Limit for {corpus['name']}:",
                             min_value=1,
                             max_value=10000,
-                            value=corpus["papers_count"],
+                            value=corpus["downloaded_papers"],
                             key=f"rerun_limit_{i}",
                         )
 
@@ -1569,7 +2109,7 @@ class PygetpapersUI:
         selected_corpus = st.selectbox(
             "Choose a corpus:",
             available_corpora,
-            format_func=lambda x: f"{x} ({next(c['papers_count'] for c in st.session_state.corpora if c['name'] == x)} papers)",
+            format_func=lambda x: f"{x} ({next(c['downloaded_papers'] for c in st.session_state.corpora if c['name'] == x)} papers)",
         )
 
         if not selected_corpus:
@@ -1787,6 +2327,97 @@ class PygetpapersUI:
                 "Enter search terms to search within the fulltext content of papers."
             )
 
+    def render_xml_to_html(self):
+        """Render the XML to HTML conversion page"""
+        st.markdown(
+            '<h2 class="section-header">🔄 XML to HTML Conversion</h2>',
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            """
+        <div class="info-box">
+            <strong>JATS4R Integration & Fallback:</strong> Convert JATS XML files to HTML using JATS4R XSLT stylesheets or a built-in fallback converter. This tool automatically uses the best available method.
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
+
+        # Corpus selection
+        st.markdown("### 📁 Select Corpus")
+
+        if "corpora" not in st.session_state or not st.session_state.corpora:
+            st.warning("No corpora found. Please download some papers first!")
+            return
+
+        corpus_options = {corpus["name"]: corpus for corpus in st.session_state.corpora}
+        selected_corpus_name = st.selectbox(
+            "Choose a corpus to convert:",
+            options=list(corpus_options.keys()),
+            format_func=lambda x: f"{x} ({corpus_options[x]['downloaded_papers']} papers)",
+        )
+
+        if selected_corpus_name:
+            selected_corpus = corpus_options[selected_corpus_name]
+            corpus_path = selected_corpus.get("path", selected_corpus_name)
+            corpus_dir = Path(corpus_path)
+
+            # Count XML and HTML files
+            xml_files = list(corpus_dir.rglob("*.xml"))
+            # Look for HTML files with .xml.html naming convention
+            html_files = [
+                f for f in corpus_dir.rglob("*.xml.html") if f.name != "index.html"
+            ]
+            xml_count = len(xml_files)
+            html_count = len(html_files)
+
+            st.markdown("### 📊 HTML Conversion Status")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.metric("XML Files", xml_count)
+            with col2:
+                st.metric("HTML Files", html_count)
+
+            if html_count < xml_count:
+                st.warning(
+                    f"Only {html_count} of {xml_count} XML files have HTML. You can convert the rest."
+                )
+                if st.button("🔄 Convert All XML to HTML", type="primary"):
+                    with st.spinner(
+                        "Converting XML files to HTML (using best available method)..."
+                    ):
+                        # Use CLI backend for robust conversion (uses fallback if needed)
+                        result = self.run_pygetpapers_command(
+                            ["--convert_html", str(corpus_path)]
+                        )
+                        if result["success"]:
+                            st.success("✅ Conversion complete!")
+                        else:
+                            st.error("❌ Conversion failed!")
+                        st.info(f"STDOUT:\n{result['stdout']}")
+                        if result["stderr"]:
+                            st.info(f"STDERR:\n{result['stderr']}")
+                    st.experimental_rerun()
+            else:
+                st.success("All XML files have corresponding HTML files.")
+
+            # Show converted files
+            if html_count > 0:
+                st.markdown("### 📄 Converted HTML Files")
+                if html_files:
+                    st.markdown("**Recent conversions:**")
+                    for html_file in sorted(html_files)[:5]:
+                        relative_path = html_file.relative_to(corpus_dir)
+                        st.markdown(f"- 📄 [{html_file.stem}]({relative_path})")
+                    if len(html_files) > 5:
+                        st.markdown(f"... and {len(html_files) - 5} more files")
+                    # Open index button
+                    index_file = corpus_dir / "index.html"
+                    if index_file.exists():
+                        st.markdown(f"📄 [Open HTML Index]({index_file})")
+                else:
+                    st.info("No HTML files found in this corpus.")
+
     def render_settings(self):
         """Render the settings page"""
         st.markdown(
@@ -1928,6 +2559,11 @@ class PygetpapersUI:
         if "show_paper_details" not in st.session_state:
             st.session_state.show_paper_details = False
 
+        # Scan for existing corpora on first load
+        if "corpora_scanned" not in st.session_state:
+            self._scan_for_existing_corpora()
+            st.session_state.corporas_scanned = True
+
         self.render_header()
         page = self.render_sidebar()
 
@@ -1945,10 +2581,181 @@ class PygetpapersUI:
             self.render_corpus_comparison()
         elif page == "Fulltext Search":
             self.render_fulltext_search()
+        elif page == "XML to HTML":
+            self.render_xml_to_html()
         elif page == "Settings":
             self.render_settings()
         elif page == "Help":
             self.render_help()
+
+    def _scan_for_existing_corpora(self):
+        """Scan the current directory for existing pygetpapers output directories and add them to session state"""
+        import os
+        from pathlib import Path
+        import json
+        from datetime import datetime
+
+        # Get current directory
+        current_dir = Path.cwd()
+
+        # Look for directories that look like pygetpapers output
+        # Common patterns: directory names with timestamps or descriptive names
+        corpus_dirs = []
+
+        for item in current_dir.iterdir():
+            if item.is_dir() and not item.name.startswith("."):
+                # Check if this looks like a pygetpapers output directory
+                if self._is_pygetpapers_output(item):
+                    corpus_dirs.append(item)
+
+        # Add any new corpora to session state
+        # Handle case where session state is not initialized
+        try:
+            existing_corpus_names = {
+                corpus["name"] for corpus in st.session_state.corpora
+            }
+        except (AttributeError, KeyError):
+            # Session state not initialized, start with empty set
+            existing_corpus_names = set()
+            # Initialize session state if possible
+            try:
+                if "corpora" not in st.session_state:
+                    st.session_state.corpora = []
+            except:
+                pass  # Not in Streamlit context
+
+        for corpus_dir in corpus_dirs:
+            if corpus_dir.name not in existing_corpus_names:
+                # Try to extract metadata about this corpus
+                corpus_info = self._extract_corpus_info(corpus_dir)
+                if corpus_info:
+                    try:
+                        st.session_state.corpora.append(corpus_info)
+                        # Update stats for auto-detected corpora
+                        if "total_papers" not in st.session_state:
+                            st.session_state.total_papers = 0
+                        if "total_corpora" not in st.session_state:
+                            st.session_state.total_corpora = 0
+
+                        st.session_state.total_papers += corpus_info.get(
+                            "downloaded_papers", 0
+                        )
+                        st.session_state.total_corpora += 1
+                    except:
+                        # Not in Streamlit context, just continue
+                        pass
+
+    def _is_pygetpapers_output(self, directory: Path) -> bool:
+        """Check if a directory looks like pygetpapers output"""
+        # Look for characteristic files
+        characteristic_files = [
+            "eupmc_results.json",
+            "europe_pmc.csv",
+            "crossref_results.json",
+            "arxiv_results.json",
+            "openalex_results.json",
+        ]
+
+        # Check if any characteristic files exist
+        for file_name in characteristic_files:
+            if (directory / file_name).exists():
+                return True
+
+        # Also check if it contains subdirectories that look like paper IDs
+        # (e.g., PMC12345678, arXiv:1234.5678, etc.)
+        paper_dirs = [d for d in directory.iterdir() if d.is_dir()]
+        if len(paper_dirs) > 0:
+            # Check if at least some look like paper IDs
+            paper_id_patterns = ["PMC", "arXiv:", "doi_"]
+            pattern_matches = 0
+            for paper_dir in paper_dirs[:5]:  # Check first 5
+                if any(pattern in paper_dir.name for pattern in paper_id_patterns):
+                    pattern_matches += 1
+
+            if pattern_matches >= 2:  # At least 2 out of 5 look like paper IDs
+                return True
+
+        return False
+
+    def _extract_corpus_info(self, corpus_dir: Path) -> dict:
+        """Extract information about a corpus directory"""
+        try:
+            # Count actually downloaded papers (subdirectories that look like paper IDs)
+            paper_dirs = [d for d in corpus_dir.iterdir() if d.is_dir()]
+            downloaded_papers_count = len(paper_dirs)
+
+            # Try to determine the API/repository
+            api = "Unknown"
+            if (corpus_dir / "eupmc_results.json").exists():
+                api = "eupmc"
+            elif (corpus_dir / "crossref_results.json").exists():
+                api = "crossref"
+            elif (corpus_dir / "arxiv_results.json").exists():
+                api = "arxiv"
+            elif (corpus_dir / "openalex_results.json").exists():
+                api = "openalex"
+
+            # Try to get creation date from directory name or metadata
+            date_created = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            # Look for timestamp in directory name
+            import re
+
+            timestamp_match = re.search(r"(\d{8}_\d{6})", corpus_dir.name)
+            if timestamp_match:
+                try:
+                    timestamp = timestamp_match.group(1)
+                    date_obj = datetime.strptime(timestamp, "%Y%m%d_%H%M%S")
+                    date_created = date_obj.strftime("%Y-%m-%d %H:%M:%S")
+                except ValueError:
+                    pass
+
+            # Try to extract query, requested limit, and total hits from metadata files
+            query = "Unknown"
+            requested_limit = 0
+            total_hits = 0
+
+            try:
+                if (corpus_dir / "eupmc_results.json").exists():
+                    with open(corpus_dir / "eupmc_results.json", "r") as f:
+                        data = json.load(f)
+                        if "request" in data and "query" in data["request"]:
+                            query = data["request"]["query"]
+                        # Extract requested limit from request parameters
+                        if "request" in data and "pageSize" in data["request"]:
+                            requested_limit = data["request"]["pageSize"]
+                        elif "request" in data and "limit" in data["request"]:
+                            requested_limit = data["request"]["limit"]
+                        # Extract total hits
+                        if "resultList" in data and "hitCount" in data["resultList"]:
+                            total_hits = data["resultList"]["hitCount"]
+                elif (corpus_dir / "europe_pmc.csv").exists():
+                    # Try to get count from CSV
+                    df = pd.read_csv(corpus_dir / "europe_pmc.csv")
+                    total_hits = len(df)
+                    # For CSV, assume requested limit is the number of rows (since we don't have request info)
+                    requested_limit = len(df)
+            except Exception:
+                pass
+
+            # Use directory name as repository name
+            repository_name = corpus_dir.name
+
+            return {
+                "name": repository_name,
+                "path": str(corpus_dir),
+                "api": api,
+                "query": query,
+                "downloaded_papers": downloaded_papers_count,
+                "requested_limit": requested_limit,
+                "total_hits": total_hits,
+                "date_created": date_created,
+                "auto_detected": True,
+            }
+
+        except Exception as e:
+            st.warning(f"Error extracting info from {corpus_dir.name}: {e}")
+            return None
 
 
 # Run the application
