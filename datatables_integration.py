@@ -167,7 +167,14 @@ class PygetpapersDatatables:
             # Extract key information
             title = metadata.get("title", paper["directory"])
             authors = metadata.get("authorString", "Unknown")
-            journal = metadata.get("journalTitle", "Unknown")
+            
+            # Extract journal name from nested structure
+            journal = "Unknown"
+            if "journalInfo" in metadata and "journal" in metadata["journalInfo"]:
+                journal = metadata["journalInfo"]["journal"].get("title", "Unknown")
+            elif "journalTitle" in metadata:
+                journal = metadata["journalTitle"]
+            
             doi = metadata.get("doi", "")
             pmid = metadata.get("pmid", "")
             pmcid = metadata.get("pmcid", "")
@@ -436,11 +443,18 @@ class PygetpapersDatatables:
             for paper in output_data["paper_directories"]:
                 metadata = paper.get("metadata", {})
 
+                # Extract journal name from nested structure
+                journal = ""
+                if "journalInfo" in metadata and "journal" in metadata["journalInfo"]:
+                    journal = metadata["journalInfo"]["journal"].get("title", "")
+                elif "journalTitle" in metadata:
+                    journal = metadata["journalTitle"]
+                
                 row = {
                     "ID": paper["directory"],
                     "Title": metadata.get("title", ""),
                     "Authors": metadata.get("authorString", ""),
-                    "Journal": metadata.get("journalTitle", ""),
+                    "Journal": journal,
                     "DOI": metadata.get("doi", ""),
                     "PMID": metadata.get("pmid", ""),
                     "PMCID": metadata.get("pmcid", ""),

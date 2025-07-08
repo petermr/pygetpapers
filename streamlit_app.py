@@ -306,14 +306,16 @@ class PygetpapersUI:
             else:
                 default_query = ""
 
+            st.markdown("### 🔍 **Search Query** (Required)")
             query = st.text_area(
-                "Search Query:",
+                "Enter your search terms here:",
                 value=default_query,
                 placeholder=(
                     "Enter your search query (e.g., 'artificial intelligence' OR "
                     "'machine learning')"
                 ),
                 height=100,
+                help="This is where you enter your search terms. Use simple keywords or complex Boolean queries.",
             )
 
             # Date range (if supported)
@@ -339,7 +341,7 @@ class PygetpapersUI:
 
         with col3:
             limit = st.number_input(
-                "Maximum Results", min_value=1, max_value=10000, value=100
+                "Maximum Results", min_value=1, max_value=10000, value=10
             )
             download_xml = st.checkbox(
                 "Download XML", value=True, disabled=not features["xml"]
@@ -368,8 +370,9 @@ class PygetpapersUI:
 
         # Output directory
         if "output_dir" not in st.session_state:
+            repo_name = self.supported_apis[selected_api].lower().replace(" ", "_")
             st.session_state.output_dir = (
-                f"pygetpapers_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+                f"{repo_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
             )
 
         output_dir = st.text_input(
@@ -1804,7 +1807,7 @@ class PygetpapersUI:
             )
 
             st.number_input(
-                "Default Result Limit:", min_value=10, max_value=1000, value=100
+                "Default Result Limit:", min_value=10, max_value=1000, value=10
             )
 
         with col2:
