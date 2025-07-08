@@ -9,6 +9,7 @@ import logging
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+
 import lxml.etree as ET
 
 logger = logging.getLogger(__name__)

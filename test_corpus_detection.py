@@ -3,10 +3,10 @@
 Test script to verify corpus detection is working
 """
 
-import sys
-from pathlib import Path
 import json
+import sys
 from datetime import datetime
+from pathlib import Path
 
 
 def test_corpus_detection():

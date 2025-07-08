@@ -7,13 +7,14 @@ using JATS4R XSLT stylesheets.
 
 import logging
 import os
+import shutil
 import subprocess
 import tempfile
+import zipfile
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+
 import requests
-import zipfile
-import shutil
 
 logger = logging.getLogger(__name__)
 
