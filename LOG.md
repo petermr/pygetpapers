@@ -2,6 +2,45 @@
 
 ## Latest Updates
 
+### 2024-07-08: Enhanced Universal File Browser
+- **Universal file browser**: New dual-mode file browser that can browse any directory on the filesystem
+- **Two browser modes**: 
+  - 🌐 Universal Browser: Browse any directory by entering a path
+  - 📚 Corpus Browser: Browse downloaded corpora specifically
+- **Path input**: Direct path entry for universal browser with validation
+- **Enhanced navigation**: Parent, Home, and Root navigation buttons
+- **Directory info**: Shows directory statistics (files, folders, total items)
+- **File viewer**: View file contents with syntax highlighting for different file types (JSON, XML, HTML, CSV, text)
+- **File information**: Display file size, modification date, and file type
+- **File download**: Download individual files directly from the browser
+- **Image support**: Display images (JPG, PNG, GIF, BMP) directly in the browser
+- **Large file handling**: Truncate large files (>10KB) to prevent browser overload
+- **Cross-version support**: Implemented in both main and no-dependencies Streamlit apps
+- **Error handling**: Robust error handling for file access and display issues
+- **Prominent placement**: Moved File Browser higher in the navigation sidebar for better visibility
+
+### 2024-07-08: File Browser Feature
+- **Added comprehensive file browser**: New "File Browser" page to explore corpus contents directly in the UI
+- **Directory navigation**: Navigate through corpus directories with parent/root navigation buttons
+- **File viewer**: View file contents with syntax highlighting for different file types (JSON, XML, HTML, CSV, text)
+- **File information**: Display file size, modification date, and file type
+- **File download**: Download individual files directly from the browser
+- **Image support**: Display images (JPG, PNG, GIF, BMP) directly in the browser
+- **Large file handling**: Truncate large files (>10KB) to prevent browser overload
+- **Corpus summary**: Show corpus metadata when no file is selected
+- **Cross-version support**: Implemented in both main and no-dependencies Streamlit apps
+- **Error handling**: Robust error handling for file access and display issues
+
+### 2024-07-08: File Downloads Panel Stats Fix
+- **Fixed stats not updating**: The "Papers Downloaded" and "Corpora Created" panels in the sidebar were showing 0 even when corpora existed
+- **Added debug output**: Enhanced auto-detection with detailed logging to show what corpora are found and added
+- **Added refresh button**: New "🔄 Refresh Stats" button in sidebar to manually recalculate stats from existing corpora
+- **Improved auto-detection**: Better tracking of papers and corpora during auto-detection with detailed feedback
+- **Fixed session state issues**: Corrected typos in session state keys that were preventing proper initialization
+- **Cross-version support**: Applied fixes to both main and no-dependencies Streamlit apps
+- **Enhanced error handling**: Better error handling and user feedback for stats calculation
+- **Fixed Streamlit deprecation**: Updated `st.experimental_rerun()` to `st.rerun()` for compatibility with newer Streamlit versions
+
 ### 2024-07-08: Automatic Corpus Detection
 - **Added automatic corpus detection**: The app now automatically scans for existing pygetpapers output directories on startup
 - **Smart directory recognition**: Detects corpora by looking for characteristic files (eupmc_results.json, europe_pmc.csv, etc.) and paper ID patterns (PMC, arXiv:, etc.)
