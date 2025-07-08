@@ -616,6 +616,7 @@ class PygetpapersUI:
                 "Search Papers",
                 "Query Builder",
                 "Corpus Manager",
+                "File Browser",
                 "Data Tables",
                 "Figures Gallery",
                 "Corpus Comparison",
@@ -637,6 +638,11 @@ class PygetpapersUI:
 
         st.sidebar.metric("Papers Downloaded", st.session_state.total_papers)
         st.sidebar.metric("Corpora Created", st.session_state.total_corpora)
+
+        # Add refresh button
+        if st.sidebar.button("🔄 Refresh Stats", help="Recalculate stats from existing corpora"):
+            self._recalculate_stats_from_corpora()
+            st.sidebar.success("✅ Stats refreshed!")
 
         return page
 
@@ -2397,7 +2403,7 @@ class PygetpapersUI:
                         st.info(f"STDOUT:\n{result['stdout']}")
                         if result["stderr"]:
                             st.info(f"STDERR:\n{result['stderr']}")
-                    st.experimental_rerun()
+                    st.rerun()
             else:
                 st.success("All XML files have corresponding HTML files.")
 
@@ -2543,50 +2549,313 @@ class PygetpapersUI:
             """
             )
 
-    def run(self):
-        """Main application runner"""
-        # Initialize session state for datatables
-        if "total_papers" not in st.session_state:
-            st.session_state.total_papers = 0
-        if "total_corpora" not in st.session_state:
-            st.session_state.total_corpora = 0
-        if "corpora" not in st.session_state:
-            st.session_state.corpora = []
-        if "show_datatable" not in st.session_state:
-            st.session_state.show_datatable = False
-        if "selected_corpus" not in st.session_state:
-            st.session_state.selected_corpus = None
-        if "show_paper_details" not in st.session_state:
-            st.session_state.show_paper_details = False
+    def render_file_browser(self):
+        """Render the file browser page"""
+        st.markdown(
+            '<h2 class="section-header">📁 File Browser</h2>',
+            unsafe_allow_html=True,
+        )
 
-        # Scan for existing corpora on first load
-        if "corpora_scanned" not in st.session_state:
-            self._scan_for_existing_corpora()
-            st.session_state.corporas_scanned = True
+        st.markdown(
+            """
+        <div class="info-box">
+            <strong>Universal File Browser:</strong> Browse any directory on your filesystem. 
+            View file contents, download files, and navigate through your entire file system.
+            You can also browse your downloaded corpora or any other directory.
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
 
-        self.render_header()
-        page = self.render_sidebar()
+        # Browser mode selection
+        browser_mode = st.radio(
+            "Browser Mode:",
+            ["🌐 Universal Browser", "📚 Corpus Browser"],
+            horizontal=True,
+            key="browser_mode"
+        )
 
-        if page == "Search Papers":
-            self.render_search_page()
-        elif page == "Query Builder":
-            self.render_query_builder()
-        elif page == "Corpus Manager":
-            self.render_corpus_manager()
-        elif page == "Data Tables":
-            self.render_data_tables()
-        elif page == "Figures Gallery":
-            self.render_figures_gallery()
-        elif page == "Corpus Comparison":
-            self.render_corpus_comparison()
-        elif page == "Fulltext Search":
-            self.render_fulltext_search()
-        elif page == "XML to HTML":
-            self.render_xml_to_html()
-        elif page == "Settings":
-            self.render_settings()
-        elif page == "Help":
-            self.render_help()
+        if browser_mode == "📚 Corpus Browser":
+            # Corpus selection
+            if not st.session_state.corpora:
+                st.warning("No corpora found. Please download some papers first or use Universal Browser.")
+                return
+
+            # Select corpus
+            corpus_names = [corpus["name"] for corpus in st.session_state.corpora]
+            selected_corpus_name = st.selectbox(
+                "Select Corpus:",
+                options=corpus_names,
+                format_func=lambda x: f"{x} ({next((c['downloaded_papers'] for c in st.session_state.corpora if c['name'] == x), 0)} papers)"
+            )
+
+            if not selected_corpus_name:
+                return
+
+            # Get corpus path
+            selected_corpus = next((c for c in st.session_state.corpora if c["name"] == selected_corpus_name), None)
+            if not selected_corpus:
+                st.error("Selected corpus not found.")
+                return
+
+            corpus_path = Path(selected_corpus.get("path", selected_corpus_name))
+            if not corpus_path.exists():
+                st.error(f"Corpus directory not found: {corpus_path}")
+                return
+
+            # Initialize current path for corpus browser
+            current_path = st.session_state.get(f"current_path_corpus_{selected_corpus_name}", str(corpus_path))
+            browser_key = f"corpus_{selected_corpus_name}"
+            
+            # Show corpus summary
+            st.markdown("**📊 Corpus Summary:**")
+            st.markdown(f"- **Total Papers:** {selected_corpus.get('downloaded_papers', 0)}")
+            st.markdown(f"- **API:** {selected_corpus.get('api', 'Unknown')}")
+            st.markdown(f"- **Query:** {selected_corpus.get('query', 'Unknown')}")
+            st.markdown(f"- **Created:** {selected_corpus.get('date_created', 'Unknown')}")
+
+        else:
+            # Universal browser
+            browser_key = "universal"
+            
+            # Path input for universal browser
+            col_path1, col_path2 = st.columns([3, 1])
+            with col_path1:
+                path_input = st.text_input(
+                    "Enter Directory Path:",
+                    value=st.session_state.get("universal_current_path", str(Path.cwd())),
+                    key="path_input"
+                )
+            
+            with col_path2:
+                if st.button("🔍 Go", key="go_path"):
+                    if path_input and Path(path_input).exists() and Path(path_input).is_dir():
+                        st.session_state["universal_current_path"] = path_input
+                        st.rerun()
+                    else:
+                        st.error("Invalid directory path")
+            
+            current_path = st.session_state.get("universal_current_path", str(Path.cwd()))
+
+        # File browser interface
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            st.markdown("### 📂 Directory Structure")
+            
+            # Current path display
+            st.text_input("Current Path:", value=current_path, key=f"path_display_{browser_key}", disabled=True)
+            
+            # Navigation buttons
+            col1a, col1b, col1c = st.columns(3)
+            with col1a:
+                if st.button("⬆️ Parent", key=f"parent_{browser_key}"):
+                    parent_path = Path(current_path).parent
+                    if parent_path.exists():
+                        if browser_mode == "📚 Corpus Browser":
+                            st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(parent_path)
+                        else:
+                            st.session_state["universal_current_path"] = str(parent_path)
+                        st.rerun()
+            
+            with col1b:
+                if st.button("🏠 Home", key=f"home_{browser_key}"):
+                    home_path = str(Path.home())
+                    if browser_mode == "📚 Corpus Browser":
+                        st.session_state[f"current_path_corpus_{selected_corpus_name}"] = home_path
+                    else:
+                        st.session_state["universal_current_path"] = home_path
+                    st.rerun()
+            
+            with col1c:
+                if st.button("📁 Root", key=f"root_{browser_key}"):
+                    if browser_mode == "📚 Corpus Browser":
+                        st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(corpus_path)
+                    else:
+                        st.session_state["universal_current_path"] = str(Path.cwd())
+                    st.rerun()
+
+            # Directory listing
+            try:
+                current_dir = Path(current_path)
+                if not current_dir.exists():
+                    st.error("Directory does not exist.")
+                    return
+
+                items = list(current_dir.iterdir())
+                items.sort(key=lambda x: (not x.is_dir(), x.name.lower()))  # Directories first, then files
+
+                # Show directories
+                st.markdown("**📁 Directories:**")
+                for item in items:
+                    if item.is_dir():
+                        if st.button(f"📁 {item.name}", key=f"dir_{item}_{browser_key}"):
+                            if browser_mode == "📚 Corpus Browser":
+                                st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(item)
+                            else:
+                                st.session_state["universal_current_path"] = str(item)
+                            st.rerun()
+
+                # Show files
+                st.markdown("**📄 Files:**")
+                for item in items:
+                    if item.is_file():
+                        if st.button(f"📄 {item.name}", key=f"file_{item}_{browser_key}"):
+                            st.session_state[f"selected_file_{browser_key}"] = str(item)
+                            st.rerun()
+
+            except Exception as e:
+                st.error(f"Error reading directory: {e}")
+
+        with col2:
+            st.markdown("### 📄 File Viewer")
+            
+            # Check if a file is selected
+            selected_file = st.session_state.get(f"selected_file_{browser_key}")
+            
+            if selected_file:
+                file_path = Path(selected_file)
+                if file_path.exists() and file_path.is_file():
+                    st.markdown(f"**Selected File:** `{file_path.name}`")
+                    
+                    # File info
+                    file_size = file_path.stat().st_size
+                    file_modified = datetime.fromtimestamp(file_path.stat().st_mtime)
+                    
+                    col2a, col2b, col2c = st.columns(3)
+                    with col2a:
+                        st.metric("Size", f"{file_size:,} bytes")
+                    with col2b:
+                        st.metric("Modified", file_modified.strftime("%Y-%m-%d"))
+                    with col2c:
+                        st.metric("Type", file_path.suffix or "No extension")
+                    
+                    # File actions
+                    col2d, col2e = st.columns(2)
+                    with col2d:
+                        if st.button("📥 Download File", key=f"download_{browser_key}"):
+                            with open(file_path, "rb") as f:
+                                st.download_button(
+                                    label="Click to download",
+                                    data=f.read(),
+                                    file_name=file_path.name,
+                                    mime="application/octet-stream"
+                                )
+                    
+                    with col2e:
+                        if st.button("🗑️ Clear Selection", key=f"clear_{browser_key}"):
+                            if f"selected_file_{browser_key}" in st.session_state:
+                                del st.session_state[f"selected_file_{browser_key}"]
+                            st.rerun()
+                    
+                    # File content viewer
+                    st.markdown("**File Contents:**")
+                    
+                    # Determine file type and display accordingly
+                    file_extension = file_path.suffix.lower()
+                    
+                    if file_extension in ['.txt', '.md', '.csv', '.json', '.xml', '.html']:
+                        # Text files
+                        try:
+                            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                                content = f.read()
+                            
+                            # For large files, show first part
+                            if len(content) > 10000:
+                                st.warning("File is large. Showing first 10,000 characters.")
+                                content = content[:10000] + "\n\n... (truncated)"
+                            
+                            if file_extension == '.json':
+                                # Pretty print JSON
+                                try:
+                                    import json
+                                    parsed_json = json.loads(content)
+                                    st.json(parsed_json)
+                                except:
+                                    st.code(content, language='json')
+                            elif file_extension == '.xml':
+                                st.code(content, language='xml')
+                            elif file_extension == '.html':
+                                st.code(content, language='html')
+                            elif file_extension == '.csv':
+                                # Show as table
+                                try:
+                                    import pandas as pd
+                                    df = pd.read_csv(file_path)
+                                    st.dataframe(df)
+                                except:
+                                    st.code(content, language='csv')
+                            else:
+                                st.code(content, language='text')
+                                
+                        except Exception as e:
+                            st.error(f"Error reading file: {e}")
+                    
+                    elif file_extension in ['.pdf']:
+                        # PDF files
+                        st.info("PDF files cannot be displayed directly in the browser.")
+                        st.markdown("Use the download button above to save the PDF file.")
+                    
+                    elif file_extension in ['.jpg', '.jpeg', '.png', '.gif', '.bmp']:
+                        # Image files
+                        try:
+                            st.image(file_path, caption=file_path.name, use_column_width=True)
+                        except Exception as e:
+                            st.error(f"Error displaying image: {e}")
+                    
+                    else:
+                        # Binary or unknown files
+                        st.info(f"Binary file ({file_extension}). Use the download button to save.")
+                        
+                        # Show file size info
+                        if file_size < 1024:
+                            size_str = f"{file_size} B"
+                        elif file_size < 1024**2:
+                            size_str = f"{file_size/1024:.1f} KB"
+                        else:
+                            size_str = f"{file_size/(1024**2):.1f} MB"
+                        
+                        st.metric("File Size", size_str)
+                
+                else:
+                    st.warning("Selected file does not exist.")
+                    if f"selected_file_{browser_key}" in st.session_state:
+                        del st.session_state[f"selected_file_{browser_key}"]
+            else:
+                st.info("Select a file from the directory structure to view its contents.")
+                
+                # Show current directory info
+                try:
+                    current_dir = Path(current_path)
+                    if current_dir.exists():
+                        items = list(current_dir.iterdir())
+                        dir_count = sum(1 for item in items if item.is_dir())
+                        file_count = sum(1 for item in items if item.is_file())
+                        
+                        st.markdown("**📊 Directory Info:**")
+                        st.markdown(f"- **Directories:** {dir_count}")
+                        st.markdown(f"- **Files:** {file_count}")
+                        st.markdown(f"- **Total Items:** {len(items)}")
+                except Exception as e:
+                    st.error(f"Error reading directory info: {e}")
+
+    def _recalculate_stats_from_corpora(self):
+        """Recalculate total papers and corpora from existing session state corpora"""
+        try:
+            total_papers = 0
+            total_corpora = len(st.session_state.corpora)
+            
+            for corpus in st.session_state.corpora:
+                papers_in_corpus = corpus.get("downloaded_papers", 0)
+                total_papers += papers_in_corpus
+            
+            st.session_state.total_papers = total_papers
+            st.session_state.total_corpora = total_corpora
+            
+            st.info(f"📊 **Recalculated:** {total_papers} total papers from {total_corpora} corpora")
+            
+        except Exception as e:
+            st.error(f"❌ **Error recalculating stats:** {e}")
 
     def _scan_for_existing_corpora(self):
         """Scan the current directory for existing pygetpapers output directories and add them to session state"""
@@ -2608,6 +2877,12 @@ class PygetpapersUI:
                 if self._is_pygetpapers_output(item):
                     corpus_dirs.append(item)
 
+        # Debug: Show what we found
+        try:
+            st.info(f"🔍 **Auto-detection:** Found {len(corpus_dirs)} potential corpus directories")
+        except:
+            pass  # Not in Streamlit context
+
         # Add any new corpora to session state
         # Handle case where session state is not initialized
         try:
@@ -2624,6 +2899,9 @@ class PygetpapersUI:
             except:
                 pass  # Not in Streamlit context
 
+        new_corpora_count = 0
+        total_papers_added = 0
+
         for corpus_dir in corpus_dirs:
             if corpus_dir.name not in existing_corpus_names:
                 # Try to extract metadata about this corpus
@@ -2637,13 +2915,26 @@ class PygetpapersUI:
                         if "total_corpora" not in st.session_state:
                             st.session_state.total_corpora = 0
 
-                        st.session_state.total_papers += corpus_info.get(
-                            "downloaded_papers", 0
-                        )
+                        papers_in_corpus = corpus_info.get("downloaded_papers", 0)
+                        st.session_state.total_papers += papers_in_corpus
                         st.session_state.total_corpora += 1
+                        
+                        new_corpora_count += 1
+                        total_papers_added += papers_in_corpus
+                        
+                        # Debug: Show what we added
+                        st.success(f"✅ **Auto-detected:** {corpus_dir.name} ({papers_in_corpus} papers)")
                     except:
                         # Not in Streamlit context, just continue
                         pass
+
+        # Debug: Show summary
+        if new_corpora_count > 0:
+            try:
+                st.success(f"📊 **Auto-detection complete:** Added {new_corpora_count} corpora with {total_papers_added} total papers")
+                st.info(f"📈 **Updated stats:** Total papers: {st.session_state.total_papers}, Total corpora: {st.session_state.total_corpora}")
+            except:
+                pass  # Not in Streamlit context
 
     def _is_pygetpapers_output(self, directory: Path) -> bool:
         """Check if a directory looks like pygetpapers output"""
@@ -2756,6 +3047,53 @@ class PygetpapersUI:
         except Exception as e:
             st.warning(f"Error extracting info from {corpus_dir.name}: {e}")
             return None
+
+    def run(self):
+        """Main application runner"""
+        # Initialize session state for datatables
+        if "total_papers" not in st.session_state:
+            st.session_state.total_papers = 0
+        if "total_corpora" not in st.session_state:
+            st.session_state.total_corpora = 0
+        if "corpora" not in st.session_state:
+            st.session_state.corpora = []
+        if "show_datatable" not in st.session_state:
+            st.session_state.show_datatable = False
+        if "selected_corpus" not in st.session_state:
+            st.session_state.selected_corpus = None
+        if "show_paper_details" not in st.session_state:
+            st.session_state.show_paper_details = False
+
+        # Scan for existing corpora on first load
+        if "corpora_scanned" not in st.session_state:
+            self._scan_for_existing_corpora()
+            st.session_state.corpora_scanned = True
+
+        self.render_header()
+        page = self.render_sidebar()
+
+        if page == "Search Papers":
+            self.render_search_page()
+        elif page == "Query Builder":
+            self.render_query_builder()
+        elif page == "Corpus Manager":
+            self.render_corpus_manager()
+        elif page == "Data Tables":
+            self.render_data_tables()
+        elif page == "Figures Gallery":
+            self.render_figures_gallery()
+        elif page == "Corpus Comparison":
+            self.render_corpus_comparison()
+        elif page == "Fulltext Search":
+            self.render_fulltext_search()
+        elif page == "XML to HTML":
+            self.render_xml_to_html()
+        elif page == "File Browser":
+            self.render_file_browser()
+        elif page == "Settings":
+            self.render_settings()
+        elif page == "Help":
+            self.render_help()
 
 
 # Run the application
