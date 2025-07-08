@@ -167,14 +167,14 @@ class PygetpapersDatatables:
             # Extract key information
             title = metadata.get("title", paper["directory"])
             authors = metadata.get("authorString", "Unknown")
-            
+
             # Extract journal name from nested structure
             journal = "Unknown"
             if "journalInfo" in metadata and "journal" in metadata["journalInfo"]:
                 journal = metadata["journalInfo"]["journal"].get("title", "Unknown")
             elif "journalTitle" in metadata:
                 journal = metadata["journalTitle"]
-            
+
             doi = metadata.get("doi", "")
             pmid = metadata.get("pmid", "")
             pmcid = metadata.get("pmcid", "")
@@ -184,6 +184,13 @@ class PygetpapersDatatables:
             has_xml = any("fulltext.xml" in f for f in paper["files"])
             has_pdf = any("fulltext.pdf" in f for f in paper["files"])
             has_supp = any("supplementary" in f for f in paper["files"])
+
+            # Check HTML file types
+            has_raw_html = any("fulltext.raw.html" in f for f in paper["files"])
+            has_xml_html = any("fulltext.xml.html" in f for f in paper["files"])
+            has_pdf_html = any("fulltext.pdf.html" in f for f in paper["files"])
+            has_doc_html = any("fulltext.doc.html" in f for f in paper["files"])
+            has_enhanced_html = any("html_with_ids.html" in f for f in paper["files"])
 
             # Create hyperlinks
             doi_link = f"https://doi.org/{doi}" if doi else ""
@@ -223,6 +230,18 @@ class PygetpapersDatatables:
                 "XML": "✅" if has_xml else "❌",
                 "PDF": "✅" if has_pdf else "❌",
                 "Suppl": "✅" if has_supp else "❌",
+                "HTML": (
+                    "✅"
+                    if (
+                        has_raw_html
+                        or has_xml_html
+                        or has_pdf_html
+                        or has_doc_html
+                        or has_enhanced_html
+                    )
+                    else "❌"
+                ),
+                "Enhanced": "✅" if has_enhanced_html else "❌",
                 "Files": len(paper["files"]),
             }
             table_data.append(row)
@@ -449,7 +468,7 @@ class PygetpapersDatatables:
                     journal = metadata["journalInfo"]["journal"].get("title", "")
                 elif "journalTitle" in metadata:
                     journal = metadata["journalTitle"]
-                
+
                 row = {
                     "ID": paper["directory"],
                     "Title": metadata.get("title", ""),
@@ -465,6 +484,21 @@ class PygetpapersDatatables:
                     "Has_PDF": any("fulltext.pdf" in f for f in paper["files"]),
                     "Has_Supplementary": any(
                         "supplementary" in f for f in paper["files"]
+                    ),
+                    "Has_Raw_HTML": any(
+                        "fulltext.raw.html" in f for f in paper["files"]
+                    ),
+                    "Has_XML_HTML": any(
+                        "fulltext.xml.html" in f for f in paper["files"]
+                    ),
+                    "Has_PDF_HTML": any(
+                        "fulltext.pdf.html" in f for f in paper["files"]
+                    ),
+                    "Has_DOC_HTML": any(
+                        "fulltext.doc.html" in f for f in paper["files"]
+                    ),
+                    "Has_Enhanced_HTML": any(
+                        "html_with_ids.html" in f for f in paper["files"]
                     ),
                     "File_Count": len(paper["files"]),
                 }

@@ -94,6 +94,7 @@ extend-exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
+  | venv.*
   | build
   | dist
 )/
@@ -117,9 +118,9 @@ exclude = [
     "build",
     "dist",
     ".venv",
+    "venv*",
     ".eggs",
     "*.egg-info",
-    "venv_p312",
 ]
 
 [tool.pytest.ini_options]
@@ -149,7 +150,7 @@ omit = [
     "*/tests/*",
     "*/test_*",
     "*/__pycache__/*",
-    "*/venv/*",
+    "*/venv*/*",
     "*/env/*",
 ]
 

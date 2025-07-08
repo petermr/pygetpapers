@@ -348,6 +348,7 @@ class Pygetpapers:
         onlyquery=False,
         makecsv=False,
         makehtml=False,
+        fulltext_html=False,
         synonym=False,
         startdate=False,
         enddate=False,
@@ -358,12 +359,162 @@ class Pygetpapers:
         loglevel="info",
         logfile=False,
         version=False,
+        convert_html=False,
+        process_html=False,
+        enhance_html=False,
     ):
         """Runs pygetpapers for the given parameters"""
         got_parameters = locals()
         if output is False:
             got_parameters[OUTPUT] = self.default_path
         self.runs_pygetpapers_for_given_args(got_parameters)
+
+    def _convert_existing_xml_to_html(self, directory_path):
+        """Convert existing XML files to HTML using JATS4R or Simple HTML Converter
+
+        :param directory_path: Path to directory containing XML files
+        :type directory_path: str
+        """
+        try:
+            # Try JATS4R first
+            try:
+                from pygetpapers.jats4r_integration import JATS4RConverter
+
+                converter = JATS4RConverter()
+                logging.info(
+                    f"Converting XML files to HTML using JATS4R in: {directory_path}"
+                )
+
+                results = converter.convert_corpus_xml_files(directory_path)
+
+                successful = len(results["successful"])
+                failed = len(results["failed"])
+                skipped = len(results["skipped"])
+
+                logging.info(
+                    f"JATS4R conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
+                )
+
+                if results["failed"]:
+                    logging.warning("Failed conversions:")
+                    for failure in results["failed"]:
+                        logging.warning(f"  - {failure}")
+
+                return
+
+            except (ImportError, Exception) as e:
+                logging.warning(f"JATS4R not available: {e}")
+                logging.info("Falling back to Simple HTML Converter...")
+
+            # Fallback to Simple HTML Converter
+            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+
+            converter = SimpleHTMLConverter()
+            logging.info(
+                f"Converting XML files to HTML using Simple HTML Converter in: {directory_path}"
+            )
+
+            results = converter.convert_corpus_xml_files(directory_path)
+
+            successful = len(results["successful"])
+            failed = len(results["failed"])
+            skipped = len(results["skipped"])
+
+            logging.info(
+                f"Simple HTML conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
+            )
+
+            if results["failed"]:
+                logging.warning("Failed conversions:")
+                for failure in results["failed"]:
+                    logging.warning(f"  - {failure}")
+
+        except Exception as e:
+            logging.error(f"Error during HTML conversion: {e}")
+
+    def _process_corpus_html(self, directory_path):
+        """Process all HTML files in a corpus
+
+        :param directory_path: Path to directory containing papers
+        :type directory_path: str
+        """
+        try:
+            # Import HTML processor
+            from pygetpapers.html_processor import HTMLProcessor
+
+            processor = HTMLProcessor()
+            logging.info(f"Processing HTML files in: {directory_path}")
+
+            stats = processor.process_corpus_html(Path(directory_path))
+
+            logging.info(f"HTML processing complete:")
+            logging.info(f"  Papers processed: {stats['papers_processed']}")
+            logging.info(f"  Enhanced HTML created: {stats['enhanced_html_created']}")
+            logging.info(f"  PDF conversions: {stats['pdf_conversions']}")
+            logging.info(f"  DOC conversions: {stats['doc_conversions']}")
+            logging.info(f"  Errors: {stats['errors']}")
+
+        except ImportError:
+            logging.error(
+                "HTML processor not available. Please install required dependencies."
+            )
+        except Exception as e:
+            logging.error(f"Error during HTML processing: {e}")
+
+    def _enhance_corpus_html(self, directory_path):
+        """Create enhanced HTML files for a corpus
+
+        :param directory_path: Path to directory containing papers
+        :type directory_path: str
+        """
+        try:
+            # Import HTML processor
+            from pygetpapers.html_processor import HTMLProcessor
+
+            processor = HTMLProcessor()
+            logging.info(f"Enhancing HTML files in: {directory_path}")
+
+            corpus_path = Path(directory_path)
+            enhanced_count = 0
+            error_count = 0
+
+            # Find all paper directories
+            paper_dirs = [
+                d
+                for d in corpus_path.iterdir()
+                if d.is_dir() and not d.name.startswith(".")
+            ]
+
+            for paper_dir in paper_dirs:
+                try:
+                    # Get best HTML file
+                    best_html = processor.get_best_html_file(paper_dir)
+                    if best_html:
+                        source_type, source_path = best_html
+                        enhanced_path = paper_dir / processor.html_types["enhanced"]
+
+                        if processor.create_enhanced_html(source_path, enhanced_path):
+                            enhanced_count += 1
+                            logging.info(f"Enhanced HTML created for {paper_dir.name}")
+                        else:
+                            error_count += 1
+                    else:
+                        logging.warning(f"No HTML files found for {paper_dir.name}")
+
+                except Exception as e:
+                    logging.error(f"Error enhancing HTML for {paper_dir.name}: {e}")
+                    error_count += 1
+
+            logging.info(
+                f"HTML enhancement complete: {enhanced_count} enhanced, {error_count} errors"
+            )
+
+        except ImportError:
+            logging.error(
+                "HTML processor not available. Please install required dependencies."
+            )
+        except Exception as e:
+            logging.error(f"Error during HTML enhancement: {e}")
 
     def runs_pygetpapers_for_given_args(self, query_namespace):
         """Runs pygetpapers for flags described in a dictionary
@@ -375,6 +526,22 @@ class Pygetpapers:
         if query_namespace[VERSION]:
             logging.info("You are running pygetpapers version %s", self.version)
             return
+
+        # Handle retrospective HTML conversion
+        if query_namespace.get("convert_html"):
+            self._convert_existing_xml_to_html(query_namespace["convert_html"])
+            return
+
+        # Handle HTML processing
+        if query_namespace.get("process_html"):
+            self._process_corpus_html(query_namespace["process_html"])
+            return
+
+        # Handle HTML enhancement
+        if query_namespace.get("enhance_html"):
+            self._enhance_corpus_html(query_namespace["enhance_html"])
+            return
+
         if query_namespace[SAVE_QUERY]:
             self.write_configuration_file(query_namespace)
         if query_namespace[API] not in list(self.download_tools.config):
@@ -572,6 +739,14 @@ class Pygetpapers:
             help=("[All] Stores the per-document metadata as html."),
         )
         parser.add_argument(
+            "--fulltext_html",
+            default=False,
+            action="store_true",
+            help=(
+                "[All] Convert XML fulltext to HTML using JATS4R (requires XML download)"
+            ),
+        )
+        parser.add_argument(
             "--synonym",
             default=False,
             action="store_true",
@@ -623,6 +798,24 @@ class Pygetpapers:
             default=None,
             type=str,
             help="[C] filter by key value pair (only crossref supported)",
+        )
+        parser.add_argument(
+            "--convert_html",
+            default=False,
+            type=str,
+            help="[All] Convert existing XML files to HTML in specified directory using JATS4R",
+        )
+        parser.add_argument(
+            "--process_html",
+            default=False,
+            type=str,
+            help="[All] Process all HTML files in corpus: convert PDFs/DOCs to HTML and create enhanced versions",
+        )
+        parser.add_argument(
+            "--enhance_html",
+            default=False,
+            type=str,
+            help="[All] Create enhanced HTML with IDs and cleaned structure from existing HTML files",
         )
         if len(sys.argv) == 1:
             parser.print_help(sys.stderr)
