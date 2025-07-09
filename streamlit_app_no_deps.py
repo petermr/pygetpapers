@@ -1547,6 +1547,39 @@ class PygetpapersUINoDeps:
             # Universal browser
             browser_key = "universal"
             
+            # Directory selection interface
+            st.markdown("### 📂 Directory Selection")
+            
+            # Quick access buttons
+            col_quick1, col_quick2, col_quick3, col_quick4 = st.columns(4)
+            with col_quick1:
+                if st.button("🏠 Home Directory", key="quick_home"):
+                    st.session_state["universal_current_path"] = str(Path.home())
+                    st.rerun()
+            
+            with col_quick2:
+                if st.button("📁 Current Directory", key="quick_current"):
+                    st.session_state["universal_current_path"] = str(Path.cwd())
+                    st.rerun()
+            
+            with col_quick3:
+                if st.button("📂 Desktop", key="quick_desktop"):
+                    desktop_path = Path.home() / "Desktop"
+                    if desktop_path.exists():
+                        st.session_state["universal_current_path"] = str(desktop_path)
+                        st.rerun()
+                    else:
+                        st.error("Desktop directory not found")
+            
+            with col_quick4:
+                if st.button("📁 Documents", key="quick_documents"):
+                    docs_path = Path.home() / "Documents"
+                    if docs_path.exists():
+                        st.session_state["universal_current_path"] = str(docs_path)
+                        st.rerun()
+                    else:
+                        st.error("Documents directory not found")
+            
             # Path input for universal browser
             col_path1, col_path2 = st.columns([3, 1])
             with col_path1:
@@ -1604,7 +1637,7 @@ class PygetpapersUINoDeps:
                         st.session_state["universal_current_path"] = str(Path.cwd())
                     st.rerun()
 
-            # Directory listing
+            # Visual directory tree
             try:
                 current_dir = Path(current_path)
                 if not current_dir.exists():
@@ -1614,24 +1647,108 @@ class PygetpapersUINoDeps:
                 items = list(current_dir.iterdir())
                 items.sort(key=lambda x: (not x.is_dir(), x.name.lower()))  # Directories first, then files
 
-                # Show directories
-                st.markdown("**📁 Directories:**")
-                for item in items:
-                    if item.is_dir():
-                        if st.button(f"📁 {item.name}", key=f"dir_{item}_{browser_key}"):
+                # Show breadcrumb navigation
+                st.markdown("**📍 Path Navigation:**")
+                path_parts = Path(current_path).parts
+                breadcrumb = ""
+                for i, part in enumerate(path_parts):
+                    if i > 0:
+                        breadcrumb += " / "
+                    if i == len(path_parts) - 1:
+                        breadcrumb += f"**{part}**"
+                    else:
+                        # Create clickable breadcrumb
+                        partial_path = Path(*path_parts[:i+1])
+                        if st.button(f"{part}", key=f"breadcrumb_{i}_{browser_key}"):
                             if browser_mode == "📚 Corpus Browser":
-                                st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(item)
+                                st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(partial_path)
                             else:
-                                st.session_state["universal_current_path"] = str(item)
+                                st.session_state["universal_current_path"] = str(partial_path)
                             st.rerun()
+                        breadcrumb += f"{part}"
+                
+                if not breadcrumb:
+                    st.markdown(f"**{current_path}**")
 
-                # Show files
-                st.markdown("**📄 Files:**")
-                for item in items:
-                    if item.is_file():
-                        if st.button(f"📄 {item.name}", key=f"file_{item}_{browser_key}"):
-                            st.session_state[f"selected_file_{browser_key}"] = str(item)
-                            st.rerun()
+                # Directory statistics
+                dir_count = sum(1 for item in items if item.is_dir())
+                file_count = sum(1 for item in items if item.is_file())
+                
+                col_stats1, col_stats2, col_stats3 = st.columns(3)
+                with col_stats1:
+                    st.metric("📁 Directories", dir_count)
+                with col_stats2:
+                    st.metric("📄 Files", file_count)
+                with col_stats3:
+                    st.metric("📊 Total", len(items))
+
+                # Show directories with expandable sections
+                if dir_count > 0:
+                    st.markdown("**📁 Directories:**")
+                    
+                    # Add search/filter for directories
+                    dir_search = st.text_input("🔍 Filter directories:", key=f"dir_search_{browser_key}")
+                    
+                    filtered_dirs = [item for item in items if item.is_dir()]
+                    if dir_search:
+                        filtered_dirs = [item for item in filtered_dirs if dir_search.lower() in item.name.lower()]
+                    
+                    # Show directories in a scrollable container
+                    with st.container():
+                        for item in filtered_dirs:
+                            col_dir1, col_dir2 = st.columns([3, 1])
+                            with col_dir1:
+                                if st.button(f"📁 {item.name}", key=f"dir_{item}_{browser_key}"):
+                                    if browser_mode == "📚 Corpus Browser":
+                                        st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(item)
+                                    else:
+                                        st.session_state["universal_current_path"] = str(item)
+                                    st.rerun()
+                            with col_dir2:
+                                # Show directory info on hover
+                                try:
+                                    sub_items = list(item.iterdir())
+                                    sub_dir_count = sum(1 for sub_item in sub_items if sub_item.is_dir())
+                                    sub_file_count = sum(1 for sub_item in sub_items if sub_item.is_file())
+                                    st.caption(f"{sub_dir_count}d {sub_file_count}f")
+                                except:
+                                    st.caption("...")
+
+                # Show files with search/filter
+                if file_count > 0:
+                    st.markdown("**📄 Files:**")
+                    
+                    # Add search/filter for files
+                    file_search = st.text_input("🔍 Filter files:", key=f"file_search_{browser_key}")
+                    
+                    filtered_files = [item for item in items if item.is_file()]
+                    if file_search:
+                        filtered_files = [item for item in filtered_files if file_search.lower() in item.name.lower()]
+                    
+                    # Show files in a scrollable container
+                    with st.container():
+                        for item in filtered_files:
+                            col_file1, col_file2, col_file3 = st.columns([3, 1, 1])
+                            with col_file1:
+                                if st.button(f"📄 {item.name}", key=f"file_{item}_{browser_key}"):
+                                    st.session_state[f"selected_file_{browser_key}"] = str(item)
+                                    st.rerun()
+                            with col_file2:
+                                # Show file size
+                                try:
+                                    size = item.stat().st_size
+                                    if size < 1024:
+                                        size_str = f"{size}B"
+                                    elif size < 1024**2:
+                                        size_str = f"{size/1024:.1f}KB"
+                                    else:
+                                        size_str = f"{size/(1024**2):.1f}MB"
+                                    st.caption(size_str)
+                                except:
+                                    st.caption("...")
+                            with col_file3:
+                                # Show file type
+                                st.caption(item.suffix or "no ext")
 
             except Exception as e:
                 st.error(f"Error reading directory: {e}")
@@ -1765,8 +1882,42 @@ class PygetpapersUINoDeps:
                         st.markdown(f"- **Directories:** {dir_count}")
                         st.markdown(f"- **Files:** {file_count}")
                         st.markdown(f"- **Total Items:** {len(items)}")
+                        
+                        # Show directory tree preview
+                        if dir_count > 0:
+                            st.markdown("**🌳 Directory Tree Preview:**")
+                            tree_preview = self._generate_directory_tree_preview(current_dir, max_depth=2)
+                            st.code(tree_preview, language="text")
                 except Exception as e:
                     st.error(f"Error reading directory info: {e}")
+
+    def _generate_directory_tree_preview(self, directory: Path, max_depth: int = 2, current_depth: int = 0) -> str:
+        """Generate a preview of the directory tree structure"""
+        if current_depth > max_depth:
+            return ""
+        
+        tree_lines = []
+        try:
+            items = list(directory.iterdir())
+            items.sort(key=lambda x: (not x.is_dir(), x.name.lower()))
+            
+            for i, item in enumerate(items):
+                is_last = i == len(items) - 1
+                prefix = "└── " if is_last else "├── "
+                indent = "    " * current_depth
+                
+                if item.is_dir():
+                    tree_lines.append(f"{indent}{prefix}📁 {item.name}/")
+                    if current_depth < max_depth:
+                        sub_tree = self._generate_directory_tree_preview(item, max_depth, current_depth + 1)
+                        if sub_tree:
+                            tree_lines.append(sub_tree)
+                else:
+                    tree_lines.append(f"{indent}{prefix}📄 {item.name}")
+        except Exception:
+            tree_lines.append(f"{indent}└── [Error reading directory]")
+        
+        return "\n".join(tree_lines)
 
     def _recalculate_stats_from_corpora(self):
         """Recalculates total_papers and total_corpora from the corpora list in session state."""
