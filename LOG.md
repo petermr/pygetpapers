@@ -2,6 +2,22 @@
 
 ## Latest Updates
 
+### 2024-07-08: Enhanced Visual Directory Tree File Browser
+- **Visual directory tree interface**: New clickable directory navigation system that allows users to browse directories without typing paths
+- **Quick access buttons**: One-click access to Home Directory, Current Directory, Desktop, and Documents
+- **Breadcrumb navigation**: Clickable path navigation for easy traversal up the directory tree
+- **Directory statistics**: Real-time display of directory and file counts with visual metrics
+- **Search and filter**: Real-time filtering of directories and files by name
+- **Directory tree preview**: Visual tree structure preview showing directory hierarchy
+- **File information display**: Shows file sizes in human-readable format (B, KB, MB) and file types
+- **Directory content preview**: Shows subdirectory and file counts for each directory
+- **Enhanced file browser**: Improved file viewer with better file type detection and display
+- **Visual indicators**: Clear icons for directories (📁) and files (📄) with type indicators
+- **Cross-version support**: Implemented in both main and no-dependencies Streamlit apps
+- **Performance optimization**: Directory tree generation limited to 2 levels deep to prevent performance issues
+- **Error handling**: Robust error handling for file access, permissions, and display issues
+- **User experience**: Intuitive interface that eliminates need for manual path entry
+
 ### 2024-07-08: Enhanced Universal File Browser
 - **Universal file browser**: New dual-mode file browser that can browse any directory on the filesystem
 - **Two browser modes**: 
