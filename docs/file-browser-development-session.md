@@ -86,7 +86,6 @@ def _generate_directory_tree_preview(self, directory: Path, max_depth: int = 2):
 ### 5. Cross-Version Support
 Applied enhancements to both:
 - `streamlit_app.py` (main version)
-- `streamlit_app_no_deps.py` (no-dependencies version)
 
 ### 6. Navigation Improvements
 - Moved File Browser higher in sidebar navigation
@@ -194,7 +193,6 @@ Added comprehensive entry for enhanced file browser:
 
 ### Core Files
 - `streamlit_app.py`: Enhanced file browser with visual directory tree
-- `streamlit_app_no_deps.py`: Applied same visual enhancements
 - `LOG.md`: Updated with new visual features
 
 ### Documentation

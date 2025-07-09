@@ -88,9 +88,8 @@ This session focused on enhancing the Streamlit UI file browser functionality an
 ## Session Files
 
 ### Modified Files
-- `streamlit_app.py`: Enhanced file browser implementation
-- `streamlit_app_no_deps.py`: Applied same enhancements
-- `LOG.md`: Updated with new features
+- `streamlit_app.py`: Enhanced file browser with visual directory tree
+- `LOG.md`: Updated with new visual features
 
 ### Created Files
 - `docs/file-browser-development-session.md`: Development log

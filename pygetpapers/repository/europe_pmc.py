@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import time
@@ -6,7 +7,13 @@ import pandas as pd
 from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools
-from pygetpapers.repositoryinterface import RepositoryInterface
+from pygetpapers.pgexceptions import PygetpapersError
+from pygetpapers.repositoryinterface import (
+    RepositoryInterface,
+    XML2HTML_SUPPORTED,
+    XML2HTML_CONVERTER,
+    FULLTEXT_HTML,
+)
 
 FULLTEXT_XML = "fulltext.xml"
 FULLTEXT_PDF = "fulltext.pdf"
@@ -64,25 +71,49 @@ HTML = "html"
 
 
 class EuropePmc(RepositoryInterface):
-    """Downloads metadata and optionally fulltext from https://europepmc.org
+    """Europe PMC repository
 
-    Can optionally download supplemental author data, the content of which is irregular and
-    not weell specified.
-    For articles with figures, the links to the figures on the EPMC site are included in the
-    fulltext.xml but the figures are NOT included. (We have are adding this functionality to
-    our `docanalysis` and `pyamiimage` codes.
+    This class handles the Europe PMC repository. It uses the Europe PMC REST API
+    to search for papers and download metadata, fulltext XML, PDFs, and other
+    supplementary files.
 
-    In some cases a "zip" file is provided by EPMC which does contain figures in the paper and
-    supplemntal author data; this can be downloaded.
-
-    EPMC has a number of additional services including:
-        - references and citations denoted by 3-letter codes
-
-    pygetpapers can translate a standard date into EPMC format and include it in the query.
     """
 
     def __init__(self):
         self.download_tools = DownloadTools(EUROPEPMC)
+        self.xml2html_supported = self.download_tools.config.get("europe_pmc", XML2HTML_SUPPORTED, fallback="false").lower() == "true"
+        self.xml2html_converters = self.download_tools.config.get("europe_pmc", XML2HTML_CONVERTER, fallback="").split(",")
+
+    def supports_xml2html(self) -> bool:
+        """Check if this repository supports XML to HTML conversion.
+        
+        :return: True if XML2HTML is supported, False otherwise
+        :rtype: bool
+        """
+        return self.xml2html_supported
+
+    def get_xml2html_converters(self) -> list:
+        """Get list of available XML to HTML converters for this repository.
+        
+        :return: List of converter names (e.g., ['jats4r', 'simple_html'])
+        :rtype: list
+        """
+        return [converter.strip() for converter in self.xml2html_converters if converter.strip()]
+
+    def convert_xml_to_html(self, xml_file_path: str, identifier_for_paper: str) -> bool:
+        """Convert XML file to HTML using available converters.
+        
+        :param xml_file_path: Path to XML file
+        :type xml_file_path: str
+        :param identifier_for_paper: Paper identifier
+        :type identifier_for_paper: str
+        :return: True if conversion was successful, False otherwise
+        :rtype: bool
+        """
+        if not self.supports_xml2html():
+            return False
+            
+        return self._make_fulltext_html(identifier_for_paper, xml_file_path) is not None
 
     def query(self, query, cutoff_size, synonym=True, cursor_mark="*"):
         """Queries eupmc for given query for given number(cutoff_size) papers
@@ -649,6 +680,8 @@ class EuropePmc(RepositoryInterface):
         :type identifier_for_paper: str
         :param xml_file_path: Path to XML file
         :type xml_file_path: str
+        :return: True if conversion was successful, False otherwise
+        :rtype: bool
         """
         try:
             # Try JATS4R first
@@ -667,7 +700,7 @@ class EuropePmc(RepositoryInterface):
                     logging.info(
                         f"Converted XML to HTML using JATS4R for {identifier_for_paper}"
                     )
-                    return
+                    return True
                 else:
                     logging.warning(
                         f"JATS4R failed to convert XML to HTML for {identifier_for_paper}: {result}"
@@ -691,6 +724,7 @@ class EuropePmc(RepositoryInterface):
                 logging.info(
                     f"Converted XML to HTML using Simple HTML Converter for {identifier_for_paper}"
                 )
+                return True
             else:
                 logging.warning(
                     f"Failed to convert XML to HTML for {identifier_for_paper}: {result}"
@@ -700,6 +734,8 @@ class EuropePmc(RepositoryInterface):
             logging.error(
                 f"Error converting XML to HTML for {identifier_for_paper}: {e}"
             )
+        
+        return False
 
     @staticmethod
     def _csv_from_dict(dict_to_write, identifier_for_paper):

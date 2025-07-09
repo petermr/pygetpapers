@@ -97,6 +97,22 @@ class SimpleHTMLConverter:
         .table {{ width: 100%; border-collapse: collapse; margin: 20px 0; }}
         .table th, .table td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
         .table th {{ background-color: #f2f2f2; }}
+        
+        /* Enhanced formatting for preserved elements */
+        b, strong {{ font-weight: bold; }}
+        i, em {{ font-style: italic; }}
+        a {{ color: #007acc; text-decoration: none; }}
+        a:hover {{ text-decoration: underline; }}
+        sup {{ vertical-align: super; font-size: smaller; }}
+        sub {{ vertical-align: sub; font-size: smaller; }}
+        
+        /* Named content styling */
+        .bold {{ font-weight: bold; }}
+        .italic {{ font-style: italic; }}
+        .emphasis {{ font-style: italic; }}
+        
+        /* Math content placeholder */
+        .math {{ background: #f0f0f0; padding: 5px; border-radius: 3px; font-family: monospace; }}
     </style>
 </head>
 <body>
@@ -343,7 +359,7 @@ class SimpleHTMLConverter:
         return "".join(html_parts)
 
     def _get_element_text(self, elem) -> str:
-        """Extract text content from an element."""
+        """Extract text content from an element, preserving formatting."""
         if elem is None:
             return ""
 
@@ -352,10 +368,59 @@ class SimpleHTMLConverter:
         if elem.text:
             text_parts.append(elem.text.strip())
 
-        # Get text from child elements
+        # Process child elements with formatting preservation
         for child in elem:
-            if child.text:
-                text_parts.append(child.text.strip())
+            tag = child.tag.split("}")[-1] if "}" in child.tag else child.tag
+            
+            # Handle formatting elements
+            if tag == "bold":
+                text_parts.append(f"<b>{self._get_element_text(child)}</b>")
+            elif tag == "italic":
+                text_parts.append(f"<i>{self._get_element_text(child)}</i>")
+            elif tag == "emphasis":
+                text_parts.append(f"<em>{self._get_element_text(child)}</em>")
+            elif tag == "ext-link":
+                # Handle external links
+                href = child.get("{http://www.w3.org/1999/xlink}href")
+                if href:
+                    link_text = self._get_element_text(child) or href
+                    text_parts.append(f'<a href="{href}" target="_blank">{link_text}</a>')
+                else:
+                    text_parts.append(self._get_element_text(child))
+            elif tag == "uri":
+                # Handle URI elements
+                href = child.get("{http://www.w3.org/1999/xlink}href")
+                if href:
+                    link_text = self._get_element_text(child) or href
+                    text_parts.append(f'<a href="{href}" target="_blank">{link_text}</a>')
+                else:
+                    text_parts.append(self._get_element_text(child))
+            elif tag == "sup":
+                text_parts.append(f"<sup>{self._get_element_text(child)}</sup>")
+            elif tag == "sub":
+                text_parts.append(f"<sub>{self._get_element_text(child)}</sub>")
+            elif tag == "break":
+                text_parts.append("<br>")
+            elif tag == "styled-content":
+                # Handle styled content with style attributes
+                style = child.get("style")
+                if style:
+                    text_parts.append(f'<span style="{style}">{self._get_element_text(child)}</span>')
+                else:
+                    text_parts.append(self._get_element_text(child))
+            elif tag == "named-content":
+                # Handle named content with content-type attributes
+                content_type = child.get("content-type")
+                if content_type:
+                    text_parts.append(f'<span class="{content_type}">{self._get_element_text(child)}</span>')
+                else:
+                    text_parts.append(self._get_element_text(child))
+            else:
+                # For other elements, just get their text content
+                if child.text:
+                    text_parts.append(child.text.strip())
+                text_parts.append(self._get_element_text(child))
+            
             if child.tail:
                 text_parts.append(child.tail.strip())
 

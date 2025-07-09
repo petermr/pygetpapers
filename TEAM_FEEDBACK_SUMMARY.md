@@ -12,7 +12,7 @@ This document summarizes the team's feedback and the current implementation stat
 ### 2. UI/UX Improvements
 - **Highlight query box**: ✅ **COMPLETED** - Added prominent styling with "🔍 **Search Query** (Required)" header and help text
 - **Reduce default limit**: ✅ **COMPLETED** - Changed from 100 to 10 papers in both search page and settings
-- **No-dependencies version**: ✅ **COMPLETED** - Created `streamlit_app_no_deps.py` without plotly requirement
+- **No-dependencies version**: ❌ **REMOVED** - Was a temporary fix, no longer needed
 
 ### 3. Functionality Issues
 - **Journal name display**: ✅ **COMPLETED** - Fixed metadata parsing to correctly extract `journalInfo.journal.title` instead of `journalTitle`
@@ -40,7 +40,7 @@ This document summarizes the team's feedback and the current implementation stat
 
 ### New Files:
 - `MIGRATION_GUIDE.md` - Complete migration guide from CLI to Streamlit
-- `streamlit_app_no_deps.py` - Version without external dependencies
+- ~~`streamlit_app_no_deps.py`~~ - Removed (was temporary fix)
 - `LOG.md` - Development log tracking all changes
 - `TEAM_FEEDBACK_SUMMARY.md` - This summary document
 
@@ -89,10 +89,8 @@ elif "journalTitle" in metadata:
 python run_streamlit.py
 ```
 
-### No-Dependencies Version:
-```bash
-python streamlit_app_no_deps.py
-```
+### ~~No-Dependencies Version~~ (Removed):
+~~`python streamlit_app_no_deps.py`~~
 
 ### Migration from CLI:
 See `MIGRATION_GUIDE.md` for detailed instructions.
@@ -124,8 +122,8 @@ Europe PMC papers store journal info as:
 ```
 
 ### Dependencies
-- **Standard version**: Requires plotly for visualizations
-- **No-deps version**: Uses only streamlit, pandas, and built-in modules
+- **Standard version**: Requires plotly for visualizations and JATS4R for XML processing
+- **All features**: Available in the main version with proper dependency management
 
 ## 📝 Next Steps
 

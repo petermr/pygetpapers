@@ -814,58 +814,126 @@ INFO: Wrote metadata file for the query
 INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivist
 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 1077.12it/s]
 ```
-## Run `pygetpapers` within the module
+## XML2HTML Interface
+
+Pygetpapers now supports on-the-fly XML to HTML conversion during the download process. This feature allows you to automatically generate HTML versions of downloaded XML files using the `--fulltext_html` flag.
+
+### Supported Repositories
+
+| Repository | XML2HTML Support | Converters |
+|------------|------------------|------------|
+| Europe PMC | ✅ Yes | JATS4R, Simple HTML |
+| arXiv | ✅ Yes | Simple HTML |
+| Crossref | ✅ Yes | Simple HTML |
+| OpenAlex | ❌ No | - |
+| bioRxiv | ❌ No | - |
+| medRxiv | ❌ No | - |
+| Rxivist | ❌ No | - |
+
+### Usage
+
+#### CLI Usage
+```bash
+# Download papers with XML to HTML conversion
+pygetpapers -q "machine learning" -k 10 -x --fulltext_html
+
+# Convert existing XML files to HTML
+pygetpapers --convert_html /path/to/corpus/directory
+```
+
+#### Streamlit UI
+1. Select a repository that supports XML2HTML (Europe PMC, arXiv, or Crossref)
+2. Enable "Download XML" option
+3. Check the "🔄 Convert XML to HTML" option
+4. Run the search
+
+### HTML File Naming Convention
+
+When XML2HTML conversion is enabled, HTML files are created with the following naming convention:
+- `fulltext.xml.html` - Converted from XML using JATS4R or Simple HTML Converter
+- `fulltext.raw.html` - Provided by publisher/repository
+- `fulltext.pdf.html` - Converted from PDF
+- `fulltext.doc.html` - Converted from DOC
+- `html_with_ids.html` - Enhanced HTML with section IDs
+
+### Converters
+
+#### JATS4R Converter (Europe PMC)
+- Uses JATS4R XSLT stylesheets for high-quality conversion
+- Requires `xsltproc` to be installed
+- Falls back to Simple HTML Converter if JATS4R is not available
+
+#### Simple HTML Converter
+- Built-in converter that doesn't require external dependencies
+- Handles JATS XML structure
+- Provides clean, readable HTML output
+
+### Repository Configuration
+
+XML2HTML support is configured in `pygetpapers/config.ini`:
+
+```ini
+[europe_pmc]
+xml2html_supported=true
+xml2html_converter=jats4r,simple_html
+
+[arxiv]
+xml2html_supported=true
+xml2html_converter=simple_html
+
+[crossref]
+xml2html_supported=true
+xml2html_converter=simple_html
+```
+
+## Repository Support Matrix
 
 ```
-def run_command(output=False, query=False, save_query=False, xml=False, pdf=False, supp=False, zip=False, references=False, noexecute=False, citations=False, limit=100, restart=False, update=False, onlyquery=False, makecsv=False, makehtml=False, synonym=False, startdate=False, enddate=False, terms=False, notterms=False, api='europe_pmc', filter=None, loglevel='info', logfile=False, version=False)
-```
 
-Here's an example script to download 50 papers from EPMC on 'lantana camara'.
+
 
 ```
-from pygetpapers import Pygetpapers
-pygetpapers_call=Pygetpapers()
-pygetpapers_call.run_command(query='lantana camara',limit=-50 ,output= lantana_camara, xml=True)
-```
 
-## Test `pygetpapers` 
-To run automated testing on `pygetpapers`, do the following:
-1) Install `pygetpapers`
-2) Clone into `pygetpapers` repository
-3) Install pytest
-4) Run the command, `pytest`
+## 📁 File Browser
 
-# Contributions
+The File Browser provides a comprehensive interface for navigating and managing your downloaded corpora and filesystem:
 
-https://github.com/petermr/pygetpapers/blob/main/resources/CONTRIBUTING.md
+### 🌐 Universal Browser
+- **Browse any directory** on your filesystem
+- **Quick access buttons** for Home, Desktop, Documents, and Current directory
+- **Path navigation** with breadcrumb-style navigation
+- **File and directory filtering** with search functionality
+- **Dot file visibility toggle** - hide/show hidden files (starting with .)
+- **File viewer** with syntax highlighting for various file types
+- **Download capability** for any file
 
-# Feature Requests
+### 📚 Corpus Browser
+- **Browse downloaded corpora** specifically
+- **Corpus summary** showing paper count, API used, and query details
+- **Structured navigation** through corpus directories
+- **Dot file visibility toggle** - hide/show hidden files (starting with .)
+- **Paper-specific file viewing** (XML, JSON, CSV, etc.)
 
-To request features, please put them in issues
+### 🔍 HTML Text Search
+- **Search through HTML files** (including converted `*.xml.html` files)
+- **Text snippet display** with surrounding context
+- **Highlighted search results** showing matched terms in bold
+- **File navigation** - click to view full files from search results
+- **Recursive search** through all subdirectories
+- **Real-time search** as you type
 
-# Legal Implications
+### 📄 File Viewer Features
+- **Syntax highlighting** for XML, JSON, CSV, HTML, and text files
+- **Image display** for JPG, PNG, GIF, and other image formats
+- **File information** including size, modification date, and type
+- **Download functionality** for any file type
+- **Large file handling** with truncation warnings
 
-If you use`pygetpapers`, you should be careful to understand the law as it applies to their content mining, as they assume full responsibility for their actions when using the software.
-
-## Countries with copyright exceptions for content mining:
-
-- UK
-- Japan
-
-## Countries with proposed copyright exceptions:
-
-- Ireland
-- EU countries 
-
-## Countries with permissive interpretations of 'fair use' that might allow content mining:
-
-- Israel
-- USA
-- Canada
-
-## General summaries and guides:
-
-- _"The legal framework of text and data mining (TDM)"_, carried out for the European Commission in March 2014 ([PDF](http://ec.europa.eu/internal_market/copyright/docs/studies/1403_study2_en.pdf))
-- _"Standardisation in the area of innovation and technological development, notably in the field of Text and Data Mining"_, carried out for the European Commission in 2014 ([PDF](http://ec.europa.eu/research/innovation-union/pdf/TDM-report_from_the_expert_group-042014.pdf))
+### 🎯 Use Cases
+- **Research review**: Search through converted HTML papers for specific terms
+- **Content discovery**: Find papers mentioning specific concepts or methods
+- **File management**: Organize and navigate large corpus collections
+- **Data exploration**: View and download various file formats
+- **Cross-corpus analysis**: Compare content across different downloads
 
 

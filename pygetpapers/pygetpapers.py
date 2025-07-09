@@ -54,6 +54,8 @@ CONFIG_INI = "config.ini"
 CLASSNAME = "class_name"
 LIBRARYNAME = "library_name"
 FEATURESNOTSUPPORTED = "features_not_supported"
+XML2HTML_SUPPORTED = "xml2html_supported"
+XML2HTML_CONVERTER = "xml2html_converters"
 
 
 class ApiPlugger:
@@ -112,6 +114,33 @@ class ApiPlugger:
         self.features_not_supported_by_api = ast.literal_eval(
             config.get(api, FEATURESNOTSUPPORTED)
         )
+        # Add XML2HTML support
+        self.xml2html_supported = config.get(api, XML2HTML_SUPPORTED, fallback="false").lower() == "true"
+        self.xml2html_converters = config.get(api, XML2HTML_CONVERTER, fallback="").split(",")
+
+    def check_xml2html_support(self, api_handler):
+        """Check if the repository supports XML2HTML conversion.
+        
+        :param api_handler: Repository handler instance
+        :type api_handler: RepositoryInterface
+        :return: True if supported, False otherwise
+        :rtype: bool
+        """
+        if hasattr(api_handler, 'supports_xml2html'):
+            return api_handler.supports_xml2html()
+        return False
+
+    def get_xml2html_converters(self, api_handler):
+        """Get available XML2HTML converters for the repository.
+        
+        :param api_handler: Repository handler instance
+        :type api_handler: RepositoryInterface
+        :return: List of converter names
+        :rtype: list
+        """
+        if hasattr(api_handler, 'get_xml2html_converters'):
+            return api_handler.get_xml2html_converters()
+        return []
 
     def _add_date_to_query(self):
         """Builds query from simple dates in --startdate and --enddate. (See
@@ -207,6 +236,21 @@ class ApiPlugger:
         except PygetpapersError as err:
             logging.warning(err.message)
             return
+
+        # Check XML2HTML support
+        if self.query_namespace.get("fulltext_html", False):
+            if not self.check_xml2html_support(self.api):
+                logging.warning(
+                    f"XML2HTML conversion is not supported for the {self.query_namespace[API]} repository. "
+                    "The --fulltext_html flag will be ignored."
+                )
+                self.query_namespace["fulltext_html"] = False
+            else:
+                converters = self.get_xml2html_converters(self.api)
+                logging.info(
+                    f"XML2HTML conversion enabled for {self.query_namespace[API]} "
+                    f"using converters: {', '.join(converters)}"
+                )
 
         if self.query_namespace[NOEXECUTE]:
             try:
