@@ -36,6 +36,13 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Local imports can cause `UnboundLocalError` when they shadow global imports.
 
+### STYLE: No use of `sys.path` or `PYTHONPATH`
+
+- ✅ **Good**: Use proper package installation with `pip install -e .`
+- ❌ **Bad**: `sys.path.append()`, `PYTHONPATH` environment variables
+
+**Rationale**: Manipulating Python's import path is fragile and can cause import conflicts. Use proper package installation instead.
+
 ## Interface Design
 
 ### STYLE: Remove unused UI elements

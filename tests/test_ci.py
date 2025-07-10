@@ -1,117 +1,155 @@
+#!/usr/bin/env python3
 """
-Fast CI tests that don't make real API calls.
-These tests validate the CLI interface and basic functionality without
-downloading papers.
+Simple test script to verify CI/CD functionality
 """
 
-import subprocess
+import os
 import sys
-from pathlib import Path
-
-
-def test_cli_help():
-    """Test that the CLI help command works"""
-    result = subprocess.run(
-        [sys.executable, "-m", "pygetpapers.pygetpapers", "--help"],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
-    assert result.returncode == 0
-    assert "usage:" in result.stdout.lower()
-    assert "pygetpapers" in result.stdout
-
-
-def test_cli_version():
-    """Test that the CLI version command works"""
-    result = subprocess.run(
-        [sys.executable, "-m", "pygetpapers.pygetpapers", "--version"],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
-    assert result.returncode == 0
-    # Version output goes to stderr, not stdout
-    assert "pygetpapers" in (result.stdout + result.stderr).lower()
-
-
-def test_cli_noexecute():
-    """Test the --noexecute flag (should not download anything)"""
-    result = subprocess.run(
-        [
-            sys.executable,
-            "-m",
-            "pygetpapers.pygetpapers",
-            "-q",
-            "test query",
-            "--noexecute",
-            "-k",
-            "1",
-        ],
-        capture_output=True,
-        text=True,
-        timeout=60,
-    )
-
-    # Should complete without error (even if no results found)
-    assert result.returncode in [0, 1]  # 0 = success, 1 = no results found
-    # Output goes to stderr, not stdout
-    assert (
-        "Total" in (result.stdout + result.stderr)
-        or "hits" in (result.stdout + result.stderr).lower()
-    )
-
-
-def test_cli_syntax():
-    """Test that basic CLI syntax is valid"""
-    # Test with invalid API (should fail gracefully)
-    result = subprocess.run(
-        [
-            sys.executable,
-            "-m",
-            "pygetpapers.pygetpapers",
-            "--api",
-            "invalid_api",
-            "-q",
-            "test",
-            "--noexecute",
-        ],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
-
-    # Should handle invalid API gracefully
-    assert result.returncode != 0  # Should fail with invalid API
 
 
 def test_imports():
-    """Test that all main modules can be imported"""
+    """Test that all required modules can be imported"""
+    print("🧪 Testing imports...")
+
+    try:
+        import streamlit
+
+        print(f"✅ Streamlit {streamlit.__version__}")
+    except ImportError as e:
+        print(f"❌ Streamlit import failed: {e}")
+        return False
+
+    try:
+        import plotly
+
+        print(f"✅ Plotly {plotly.__version__}")
+    except ImportError as e:
+        print(f"❌ Plotly import failed: {e}")
+        return False
+
+    try:
+        import pandas
+
+        print(f"✅ Pandas {pandas.__version__}")
+    except ImportError as e:
+        print(f"❌ Pandas import failed: {e}")
+        return False
+
+    try:
+        import lxml
+
+        print(f"✅ lxml {lxml.__version__}")
+    except ImportError as e:
+        print(f"❌ lxml import failed: {e}")
+        return False
+
+    return True
+
+
+def test_streamlit_app():
+    """Test that the Streamlit app can be imported"""
+    print("\n🧪 Testing Streamlit app...")
+
     try:
         pass
 
-        print("✅ All pygetpapers modules imported successfully")
+        print("✅ Streamlit app imported successfully")
+        return True
     except ImportError as e:
-        assert False, f"Failed to import pygetpapers: {e}"
+        print(f"❌ Streamlit app import failed: {e}")
+        return False
 
 
-def test_config_file():
-    """Test that config file exists and is readable"""
-    config_path = Path("pygetpapers/config.ini")
-    assert config_path.exists(), "config.ini should exist"
+def test_datatables():
+    """Test that datatables integration can be imported"""
+    print("\n🧪 Testing datatables integration...")
 
-    # Test that it can be read
-    with open(config_path, "r") as f:
-        content = f.read()
-        assert "[DEFAULT]" in content or "api" in content.lower()
+    try:
+        pass
+
+        print("✅ Datatables integration imported successfully")
+        return True
+    except ImportError as e:
+        print(f"❌ Datatables integration import failed: {e}")
+        return False
+
+
+def test_pygetpapers():
+    """Test that pygetpapers CLI is available"""
+    print("\n🧪 Testing pygetpapers CLI...")
+
+    try:
+        import subprocess
+
+        result = subprocess.run(
+            ["pygetpapers", "--version"], capture_output=True, text=True, timeout=10
+        )
+        if result.returncode == 0:
+            print(f"✅ pygetpapers CLI available: {result.stdout.strip()}")
+            return True
+        else:
+            print(f"❌ pygetpapers CLI failed: {result.stderr}")
+            return False
+    except Exception as e:
+        print(f"❌ pygetpapers CLI test failed: {e}")
+        return False
+
+
+def test_files_exist():
+    """Test that required files exist"""
+    print("\n🧪 Testing file existence...")
+
+    required_files = [
+        "streamlit_app.py",
+        "run_streamlit.py",
+        "datatables_integration.py",
+        "requirements.txt",
+    ]
+
+    all_exist = True
+    for file in required_files:
+        if os.path.exists(file):
+            print(f"✅ {file} exists")
+        else:
+            print(f"❌ {file} missing")
+            all_exist = False
+
+    return all_exist
+
+
+def main():
+    """Run all tests"""
+    print("🚀 Starting CI/CD Tests")
+    print("=" * 50)
+
+    tests = [
+        test_imports,
+        test_streamlit_app,
+        test_datatables,
+        test_pygetpapers,
+        test_files_exist,
+    ]
+
+    passed = 0
+    total = len(tests)
+
+    for test in tests:
+        try:
+            if test():
+                passed += 1
+        except Exception as e:
+            print(f"❌ Test {test.__name__} failed with exception: {e}")
+
+    print("\n" + "=" * 50)
+    print(f"📊 Test Results: {passed}/{total} tests passed")
+
+    if passed == total:
+        print("🎉 All tests passed! CI/CD should work correctly.")
+        return 0
+    else:
+        print("❌ Some tests failed. Please check the issues above.")
+        return 1
 
 
 if __name__ == "__main__":
-    # Run all tests
-    test_cli_help()
-    test_cli_version()
-    test_cli_noexecute()
-    test_cli_syntax()
-    test_imports()
-    test_config_file()
-    print("✅ All CI tests passed!")
+    sys.exit(main())

@@ -78,7 +78,7 @@ Repository = "https://github.com/petermr/pygetpapers"
 "Streamlit UI" = "https://github.com/petermr/pygetpapers/tree/v20#streamlit-ui"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["pygetpapers*"]
 
 [tool.black]

@@ -5,18 +5,19 @@ A comprehensive web interface for pygetpapers with advanced features including
 query building, corpus management, data visualization, and fulltext search.
 """
 
-import json
 import logging
 import os
 import subprocess
 import sys
 from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Dict, List
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import re
+from pathlib import Path
+import json
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -315,7 +316,6 @@ class PygetpapersUI:
 
     def _parse_progress_line(self, line, progress_data):
         """Parse a line of output to extract progress information"""
-        import re
 
         # Skip tqdm progress bar lines (they're redundant with our own progress display)
         if re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line):
@@ -434,13 +434,13 @@ class PygetpapersUI:
                         <span>{progress_percent:.1f}%</span>
                     </div>
                     <div style="background-color: #f0f0f0; border-radius: 10px; height: 20px; overflow: hidden;">
-                        <div style="background: linear-gradient(90deg, #1f77b4, #ff7f0e); 
-                                    height: 100%; 
-                                    width: {progress_percent}%; 
-                                    border-radius: 10px; 
+                        <div style="background: linear-gradient(90deg, #1f77b4, #ff7f0e);
+                                    height: 100%;
+                                    width: {progress_percent}%;
+                                    border-radius: 10px;
                                     transition: width 0.3s ease;
-                                    display: flex; 
-                                    align-items: center; 
+                                    display: flex;
+                                    align-items: center;
                                     justify-content: center;">
                             <span style="color: white; font-size: 12px; font-weight: bold;">
                                 {progress_data['current_paper']}/{progress_data['total_papers']}
@@ -456,10 +456,10 @@ class PygetpapersUI:
                 st.markdown(
                     """
                 <div style="margin: 10px 0;">
-                    <div style="background: linear-gradient(90deg, #1f77b4, #ff7f0e, #1f77b4); 
-                                background-size: 200% 100%; 
+                    <div style="background: linear-gradient(90deg, #1f77b4, #ff7f0e, #1f77b4);
+                                background-size: 200% 100%;
                                 animation: loading 2s infinite;
-                                height: 20px; 
+                                height: 20px;
                                 border-radius: 10px;">
                     </div>
                 </div>
@@ -905,7 +905,7 @@ class PygetpapersUI:
             # For bioRxiv/medRxiv text queries, use the BioRxivIntegration
             if selected_api in ["biorxiv", "medrxiv"] and query:
                 try:
-                    from biorxiv_integration import BioRxivIntegration
+                    from src.pygetpapers.biorxiv import BioRxivIntegration
 
                     # Create output directory
                     output_path = Path(output_dir)
@@ -1028,7 +1028,6 @@ class PygetpapersUI:
                 if result["stdout"].strip():
                     st.markdown("**Output:**")
                     # Filter out tqdm progress bars from the output
-                    import re
 
                     filtered_output = []
                     for line in result["stdout"].split("\n"):
@@ -1083,7 +1082,6 @@ class PygetpapersUI:
                 st.code(f"pygetpapers {' '.join(args)}")
                 st.markdown("**Error output:**")
                 # Filter out tqdm progress bars from error output too
-                import re
 
                 filtered_stderr = []
                 for line in result["stderr"].split("\n"):
@@ -2739,7 +2737,7 @@ class PygetpapersUI:
         st.markdown(
             """
         <div class="info-box">
-            <strong>Universal File Browser:</strong> Browse any directory on your filesystem. 
+            <strong>Universal File Browser:</strong> Browse any directory on your filesystem.
             View file contents, download files, and navigate through your entire file system.
             You can also browse your downloaded corpora or any other directory.
         </div>
@@ -3206,7 +3204,6 @@ class PygetpapersUI:
                             if file_extension == ".json":
                                 # Pretty print JSON
                                 try:
-                                    import json
 
                                     parsed_json = json.loads(content)
                                     st.json(parsed_json)
@@ -3359,8 +3356,6 @@ class PygetpapersUI:
 
     def _scan_for_existing_corpora(self):
         """Scan the current directory for existing pygetpapers output directories and add them to session state"""
-        import json
-        import os
         from datetime import datetime
 
         # Get current directory
@@ -3489,7 +3484,6 @@ class PygetpapersUI:
             date_created = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             # Look for timestamp in directory name
-            import re
 
             timestamp_match = re.search(r"(\d{8}_\d{6})", corpus_dir.name)
             if timestamp_match:
@@ -3575,7 +3569,6 @@ class PygetpapersUI:
                         content = f.read()
 
                     # Remove HTML tags for text search
-                    import re
 
                     text_content = re.sub(r"<[^>]+>", " ", content)
                     text_content = re.sub(r"\s+", " ", text_content).strip()

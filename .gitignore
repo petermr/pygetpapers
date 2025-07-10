@@ -1,15 +1,42 @@
+# Build and distribution
 build/
 dist/ 
 pygetpapers.egg-info/
-.vscode/
-.pytest_cache/
-venv/
-venv_*/
-.idea/
+*.egg-info/
+
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.coverage
-.flake8
 .Python
+
+# Virtual environments
+venv/
+venv_*/
+venv_p312/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# User-specific configuration
+scraping_config.ini
+
+# Temporary and development files
+fix_imports.py
+*.log
+.DS_Store
+Thumbs.db
+
+# Test outputs
+test_output/

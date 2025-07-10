@@ -1,0 +1,902 @@
+import ast
+import configparser
+import importlib
+import logging
+import os
+import sys
+import xml.etree.ElementTree as ET
+from functools import partialmethod
+from time import gmtime, strftime
+
+
+
+import coloredlogs
+import configargparse
+from tqdm import tqdm
+
+from pygetpapers.download_tools import DownloadTools
+from pygetpapers.pgexceptions import PygetpapersError
+
+VERSION = "version"
+RESTART = "restart"
+UPDATE = "update"
+LOGLEVEL = "loglevel"
+LOGFILE = "logfile"
+OUTPUT = "output"
+SAVE_QUERY = "save_query"
+NOEXECUTE = "noexecute"
+NOTTERMS = "notterms"
+TERMS = "terms"
+QUERY = "query"
+LIMIT = "limit"
+DATE_OR_NUMBER_OF_PAPERS = "date_or_number_of_papers"
+ENDDATE = "enddate"
+STARTDATE = "startdate"
+SUPPORTED = "SUPPORTED"
+DATE_QUERY = "date_query"
+API = "api"
+MEDRXIV = "medrxiv"
+CROSSREF = "crossref"
+BIORXIV = "biorxiv"
+ARXIV = "arxiv"
+EUPMC = "eupmc"
+SAVED_CONFIG_INI = "saved_config.ini"
+SAVED = "SAVED"
+RESULTS_JSON = "results.json"
+RXIVIST = "rxivist"
+TERM = "term"
+ENTRY = "entry"
+EUROPEPMC = "europe_pmc"
+PYGETPAPERS = "pygetpapers"
+CONFIG_INI = "config.ini"
+CLASSNAME = "class_name"
+LIBRARYNAME = "library_name"
+FEATURESNOTSUPPORTED = "features_not_supported"
+XML2HTML_SUPPORTED = "xml2html_supported"
+XML2HTML_CONVERTER = "xml2html_converters"
+
+
+class ApiPlugger:
+
+    def __init__(self, query_namespace):
+        """Helps run query for given api in the query_namespace"""
+        self.download_tools = DownloadTools(query_namespace[API])
+        self.query_namespace = query_namespace
+        self.setup_api_support_variables(
+            self.download_tools.config, query_namespace[API]
+        )
+        
+        # Disable arXiv support
+        if self.query_namespace[API] == "arxiv":
+            raise PygetpapersError(
+                "arXiv support is DISABLED in pygetpapers due to arXiv's policy against scraping or automated downloads. See https://arxiv.org/help/bulk_data for official guidance."
+            )
+        # Handle special cases for bioRxiv-related repositories
+        if self.library_name in ["rxiv", "rxivist"]:
+            module_path = f"{PYGETPAPERS}.biorxiv.{self.library_name}"
+        else:
+            module_path = f"{PYGETPAPERS}.{self.library_name}.{self.library_name}"
+            
+        api_class = getattr(
+            importlib.import_module(module_path),
+            self.class_name,
+        )
+        self.api = api_class()
+
+    def _assist_warning_api(self):
+        """Raises error if feature not supported for api but given in query_namespace"""
+        for feature in self.features_not_supported_by_api:
+            if self.query_namespace[feature]:
+                logging.warning(
+                    f"{feature} is not supported by {self.query_namespace[API]}"
+                )
+        # Note: bioRxiv/medRxiv now support text queries via web scraper
+        # The old API-only restriction has been removed
+        if (
+            not self.query_namespace[QUERY]
+            and not self.query_namespace[RESTART]
+            and not self.query_namespace[TERMS]
+            and not self.query_namespace[API] == BIORXIV
+            and not self.query_namespace[API] == MEDRXIV
+            and not self.query_namespace[VERSION]
+        ):
+            raise PygetpapersError("Please specify a query")
+
+    def setup_api_support_variables(self, config, api):
+        """Reads in the configuration file namespace object and sets up class variable
+        for the given api
+        :param config: Configparser configured configuration file
+        :type config: configparser object
+        :param api: the repository to get the variables for
+        :type api: string
+        """
+        self.class_name = config.get(api, CLASSNAME)
+        self.library_name = config.get(api, LIBRARYNAME)
+        self.date_query = config.get(api, DATE_QUERY) == SUPPORTED
+        self.term = config.get(api, TERM) == SUPPORTED
+        self.update = config.get(api, UPDATE) == SUPPORTED
+        self.restart = config.get(api, RESTART) == SUPPORTED
+        self.features_not_supported_by_api = ast.literal_eval(
+            config.get(api, FEATURESNOTSUPPORTED)
+        )
+        # Add XML2HTML support
+        self.xml2html_supported = (
+            config.get(api, XML2HTML_SUPPORTED, fallback="false").lower() == "true"
+        )
+        self.xml2html_converters = config.get(
+            api, XML2HTML_CONVERTER, fallback=""
+        ).split(",")
+
+    def check_xml2html_support(self, api_handler):
+        """Check if the repository supports XML2HTML conversion.
+
+        :param api_handler: Repository handler instance
+        :type api_handler: RepositoryInterface
+        :return: True if supported, False otherwise
+        :rtype: bool
+        """
+        if hasattr(api_handler, "supports_xml2html"):
+            return api_handler.supports_xml2html()
+        return False
+
+    def get_xml2html_converters(self, api_handler):
+        """Get available XML2HTML converters for the repository.
+
+        :param api_handler: Repository handler instance
+        :type api_handler: RepositoryInterface
+        :return: List of converter names
+        :rtype: list
+        """
+        if hasattr(api_handler, "get_xml2html_converters"):
+            return api_handler.get_xml2html_converters()
+        return []
+
+    def _add_date_to_query(self):
+        """Builds query from simple dates in --startdate and --enddate. (See
+        https://pygetpapers.readthedocs.io/en/latest/index.html#download-papers-within-certain-start-and-end-date-range)  # noqa: E501
+        Edits the namespace object's query flag.
+        :param query_namespace: namespace object from argparse (using --startdate and --enddate)  # noqa: E501
+        """
+
+        if self.query_namespace[STARTDATE] and not self.query_namespace[ENDDATE]:
+            self.query_namespace[ENDDATE] = strftime("%Y-%m-%d", gmtime())
+
+        if not self.query_namespace[STARTDATE]:
+            self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = self.query_namespace[LIMIT]
+        else:
+            self.query_namespace[DATE_OR_NUMBER_OF_PAPERS] = (
+                f"{self.query_namespace[STARTDATE]}/" f"{self.query_namespace[ENDDATE]}"
+            )
+        if (
+            self.query_namespace[STARTDATE]
+            and self.query_namespace[ENDDATE]
+            and self.query_namespace[API] == EUROPEPMC
+        ):
+            self.query_namespace[QUERY] = (
+                f"({self.query_namespace[QUERY]}) AND "
+                f"(FIRST_PDATE:[{self.query_namespace[STARTDATE]} TO "
+                f"{self.query_namespace[ENDDATE]}])"
+            )
+        elif self.query_namespace[ENDDATE] and self.query_namespace[API] == EUROPEPMC:
+            self.query_namespace[QUERY] = (
+                f"({self.query_namespace[QUERY]}) AND (FIRST_PDATE:[TO "
+                f"{self.query_namespace[ENDDATE]}])"
+            )
+
+        # Only overwrite query for bioRxiv/medRxiv if it's a date query or no text query provided
+        if (
+            self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
+        ) and (
+            self.query_namespace[STARTDATE]
+            or not self.query_namespace[QUERY]
+            or self.query_namespace[QUERY].isdigit()
+        ):
+            self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
+
+    def add_terms_from_file(self):
+        """Builds query from terms mentioned in a text file described in the argparse
+        namespace object. See (https://pygetpapers.readthedocs.io/en/latest/index.html?highlight=terms#querying-using-a-term-list)  # noqa: E501
+        Edits the namespace object's query flag.
+        :param query_namespace: namespace object from argparse (using --terms and --notterms)  # noqa: E501
+        """
+        if self.query_namespace[TERMS]:
+            terms_path = self.query_namespace[TERMS]
+            separator = "AND"
+        elif self.query_namespace[NOTTERMS]:
+            terms_path = self.query_namespace[NOTTERMS]
+            separator = "AND NOT"
+        if terms_path.endswith(".txt"):
+            with open(terms_path, "r") as file_handler:
+                all_terms = file_handler.read()
+            terms_list = all_terms.split(",")
+        elif terms_path.endswith(".xml"):
+            tree = ET.parse(terms_path)
+            root = tree.getroot()
+            terms_list = []
+            for para in root.iter(ENTRY):
+                terms_list.append(para.attrib[TERM])
+
+        or_ed_terms = " OR ".join(terms_list)
+        # modify query in namespace object
+        if self.query_namespace[QUERY]:
+            self.query_namespace[QUERY] = (
+                f"({self.query_namespace[QUERY]} {separator} " f"({or_ed_terms}))"
+            )
+        else:
+            if self.query_namespace[TERMS]:
+                self.query_namespace[QUERY] = f"({or_ed_terms})"
+            elif self.query_namespace[NOTTERMS]:
+                raise PygetpapersError("Please provide a query with not")
+
+    def check_query_logic_and_run(self):
+        """Checks the logic in query_namespace and runs pygetpapers for the given query"""  # noqa: E501
+        try:
+            self._assist_warning_api()
+        except PygetpapersError as err:
+            logging.warning(err.message)
+            return
+
+        if not self.query_namespace[QUERY] and self.query_namespace[TERMS]:
+            self.query_namespace[QUERY] = None
+
+        if self.term:
+            if self.query_namespace[TERMS] or self.query_namespace[NOTTERMS]:
+                try:
+                    self.add_terms_from_file()
+                except PygetpapersError as err:
+                    logging.warning(err.message)
+                    return
+
+        try:
+            self._add_date_to_query()
+        except PygetpapersError as err:
+            logging.warning(err.message)
+            return
+
+        # Check XML2HTML support
+        if self.query_namespace.get("fulltext_html", False):
+            if not self.check_xml2html_support(self.api):
+                logging.warning(
+                    f"XML2HTML conversion is not supported for the {self.query_namespace[API]} repository. "
+                    "The --fulltext_html flag will be ignored."
+                )
+                self.query_namespace["fulltext_html"] = False
+            else:
+                converters = self.get_xml2html_converters(self.api)
+                logging.info(
+                    f"XML2HTML conversion enabled for {self.query_namespace[API]} "
+                    f"using converters: {', '.join(converters)}"
+                )
+
+        if self.query_namespace[NOEXECUTE]:
+            try:
+                self.api.noexecute(self.query_namespace)
+            except PygetpapersError as err:
+                logging.warning(err.message)
+                return
+        elif self.query_namespace[RESTART] and self.restart:
+            try:
+                self.api.restart(self.query_namespace)
+            except PygetpapersError as err:
+                logging.warning(err.message)
+                return
+        elif self.query_namespace[UPDATE] and self.update:
+            logging.info(
+                "Please ensure that you are providing the same --api as the one in the "
+                "corpus or you may get errors"
+            )
+            try:
+                self.api.update(self.query_namespace)
+            except PygetpapersError as err:
+                logging.warning(err.message)
+                return
+        else:
+            try:
+                self.api.apipaperdownload(self.query_namespace)
+            except PygetpapersError as err:
+                logging.warning(err.message)
+                return
+
+
+class Pygetpapers:
+    """[summary]"""
+
+    def __init__(self):
+        """This function makes all the constants"""
+        self.download_tools = DownloadTools()
+        self.version = self.download_tools.get_version()
+        default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
+        self.default_path = os.path.join(os.getcwd(), default_path)
+        self.query_namespace = None
+
+    @staticmethod
+    def write_configuration_file(query_namespace):
+        """Writes the argparse namespace to SAVED_CONFIG_INI
+        :param query_namespace: argparse namespace object
+        """
+        parser = configparser.ConfigParser()
+
+        parsed_args = query_namespace
+
+        parser.add_section(SAVED)
+        for key in parsed_args.keys():
+            parser.set(SAVED, key, str(parsed_args[key]))
+
+        with open(SAVED_CONFIG_INI, "w") as file_handler:
+            parser.write(file_handler)
+
+    def write_logfile(self, query_namespace, level):
+        """This functions stores logs to a logfile
+        :param query_namespace: argparse namespace object
+        :param level: level of logger (See https://docs.python.org/3/library/logging.html#logging-levels)  # noqa: E501
+        """
+        location_to_store_logs = os.path.join(
+            query_namespace[OUTPUT],
+            query_namespace[LOGFILE],
+        )
+        self.download_tools.check_or_make_directory(query_namespace[OUTPUT])
+        logging.basicConfig(
+            filename=location_to_store_logs,
+            level=level,
+            filemode="a",
+        )
+        console = logging.StreamHandler()
+        console.setLevel(level)
+        formatter = logging.Formatter("%(levelname)s: %(message)s")
+        console.setFormatter(formatter)
+        logging.getLogger().addHandler(console)
+        logging.info(
+            "Making log file at %s",
+            location_to_store_logs,
+        )
+
+    @staticmethod
+    def makes_output_directory(query_namespace):
+        """Makes the output directory for the given output in query_namespace
+        :param query_namespace: pygetpaper's name space object  # noqa: E501
+        :type query_namespace: dict
+        """
+        if os.path.exists(query_namespace[OUTPUT]):
+            os.chdir(query_namespace[OUTPUT])
+        elif (
+            not query_namespace[NOEXECUTE]
+            and not query_namespace[UPDATE]
+            and not query_namespace[RESTART]
+            and not query_namespace[VERSION]
+        ):
+            os.makedirs(query_namespace[OUTPUT])
+            os.chdir(query_namespace[OUTPUT])
+
+    def generate_logger(self, query_namespace):
+        """Creates logger for the given loglevel
+        :param query_namespace: pygetpaper's name space object  # noqa: E501
+        :type query_namespace: dict
+        """
+        levels = {
+            "critical": logging.CRITICAL,
+            "error": logging.ERROR,
+            "warn": logging.WARNING,
+            "warning": logging.WARNING,
+            "info": logging.INFO,
+            "debug": logging.DEBUG,
+        }
+        level = levels.get(query_namespace[LOGLEVEL].lower())
+
+        if level == logging.DEBUG:
+            tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
+
+        if query_namespace[LOGFILE]:
+            self.write_logfile(query_namespace, level)
+        else:
+            coloredlogs.install(level=level, fmt="%(levelname)s: %(message)s")
+
+    def run_command(
+        self,
+        output=None,
+        query=None,
+        save_query=False,
+        xml=False,
+        pdf=False,
+        supp=False,
+        zip=False,
+        references=False,
+        noexecute=False,
+        citations=False,
+        limit=100,
+        restart=False,
+        update=False,
+        onlyquery=False,
+        makecsv=False,
+        makehtml=False,
+        fulltext_html=False,
+        synonym=False,
+        startdate=False,
+        enddate=False,
+        terms=False,
+        notterms=False,
+        api="europe_pmc",
+        filter=None,
+        loglevel="info",
+        logfile=False,
+        version=False,
+        convert_html=False,
+        process_html=False,
+        enhance_html=False,
+    ):
+        """Runs pygetpapers for the given parameters"""
+        got_parameters = locals()
+        if output is False:
+            got_parameters[OUTPUT] = self.default_path
+        self.runs_pygetpapers_for_given_args(got_parameters)
+
+    def _convert_existing_xml_to_html(self, directory_path):
+        """Convert existing XML files to HTML using JATS4R or Simple HTML Converter
+
+        :param directory_path: Path to directory containing XML files
+        :type directory_path: str
+        """
+        try:
+            # Try JATS4R first
+            try:
+                from pygetpapers.jats4r_integration import JATS4RConverter
+
+                converter = JATS4RConverter()
+                logging.info(
+                    f"Converting XML files to HTML using JATS4R in: {directory_path}"
+                )
+
+                results = converter.convert_corpus_xml_files(directory_path)
+
+                successful = len(results["successful"])
+                failed = len(results["failed"])
+                skipped = len(results["skipped"])
+
+                logging.info(
+                    f"JATS4R conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
+                )
+
+                if results["failed"]:
+                    logging.warning("Failed conversions:")
+                    for failure in results["failed"]:
+                        logging.warning(f"  - {failure}")
+
+                return
+
+            except (ImportError, Exception) as e:
+                logging.warning(f"JATS4R not available: {e}")
+                logging.info("Falling back to Simple HTML Converter...")
+
+            # Fallback to Simple HTML Converter
+            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+
+            converter = SimpleHTMLConverter()
+            logging.info(
+                f"Converting XML files to HTML using Simple HTML Converter in: {directory_path}"
+            )
+
+            results = converter.convert_corpus_xml_files(directory_path)
+
+            successful = len(results["successful"])
+            failed = len(results["failed"])
+            skipped = len(results["skipped"])
+
+            logging.info(
+                f"Simple HTML conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
+            )
+
+            if results["failed"]:
+                logging.warning("Failed conversions:")
+                for failure in results["failed"]:
+                    logging.warning(f"  - {failure}")
+
+        except Exception as e:
+            logging.error(f"Error during HTML conversion: {e}")
+
+    def _process_corpus_html(self, directory_path):
+        """Process all HTML files in a corpus
+
+        :param directory_path: Path to directory containing papers
+        :type directory_path: str
+        """
+        try:
+            # Import HTML processor
+            from pygetpapers.html_processor import HTMLProcessor
+
+            processor = HTMLProcessor()
+            logging.info(f"Processing HTML files in: {directory_path}")
+
+            stats = processor.process_corpus_html(Path(directory_path))
+
+            logging.info(f"HTML processing complete:")
+            logging.info(f"  Papers processed: {stats['papers_processed']}")
+            logging.info(f"  Enhanced HTML created: {stats['enhanced_html_created']}")
+            logging.info(f"  PDF conversions: {stats['pdf_conversions']}")
+            logging.info(f"  DOC conversions: {stats['doc_conversions']}")
+            logging.info(f"  Errors: {stats['errors']}")
+
+        except ImportError:
+            logging.error(
+                "HTML processor not available. Please install required dependencies."
+            )
+        except Exception as e:
+            logging.error(f"Error during HTML processing: {e}")
+
+    def _enhance_corpus_html(self, directory_path):
+        """Create enhanced HTML files for a corpus
+
+        :param directory_path: Path to directory containing papers
+        :type directory_path: str
+        """
+        try:
+            # Import HTML processor
+            from pygetpapers.html_processor import HTMLProcessor
+
+            processor = HTMLProcessor()
+            logging.info(f"Enhancing HTML files in: {directory_path}")
+
+            corpus_path = Path(directory_path)
+            enhanced_count = 0
+            error_count = 0
+
+            # Find all paper directories
+            paper_dirs = [
+                d
+                for d in corpus_path.iterdir()
+                if d.is_dir() and not d.name.startswith(".")
+            ]
+
+            for paper_dir in paper_dirs:
+                try:
+                    # Get best HTML file
+                    best_html = processor.get_best_html_file(paper_dir)
+                    if best_html:
+                        source_type, source_path = best_html
+                        enhanced_path = paper_dir / processor.html_types["enhanced"]
+
+                        if processor.create_enhanced_html(source_path, enhanced_path):
+                            enhanced_count += 1
+                            logging.info(f"Enhanced HTML created for {paper_dir.name}")
+                        else:
+                            error_count += 1
+                    else:
+                        logging.warning(f"No HTML files found for {paper_dir.name}")
+
+                except Exception as e:
+                    logging.error(f"Error enhancing HTML for {paper_dir.name}: {e}")
+                    error_count += 1
+
+            logging.info(
+                f"HTML enhancement complete: {enhanced_count} enhanced, {error_count} errors"
+            )
+
+        except ImportError:
+            logging.error(
+                "HTML processor not available. Please install required dependencies."
+            )
+        except Exception as e:
+            logging.error(f"Error during HTML enhancement: {e}")
+
+    def runs_pygetpapers_for_given_args(self, query_namespace):
+        """Runs pygetpapers for flags described in a dictionary
+        :param query_namespace: pygetpaper's namespace object  # noqa: E501
+        :type query_namespace: dict
+        """
+        self.generate_logger(query_namespace)
+        self.makes_output_directory(query_namespace)
+        if query_namespace[VERSION]:
+            logging.info("You are running pygetpapers version %s", self.version)
+            return
+
+        # Handle retrospective HTML conversion
+        if query_namespace.get("convert_html"):
+            self._convert_existing_xml_to_html(query_namespace["convert_html"])
+            return
+
+        # Handle HTML processing
+        if query_namespace.get("process_html"):
+            self._process_corpus_html(query_namespace["process_html"])
+            return
+
+        # Handle HTML enhancement
+        if query_namespace.get("enhance_html"):
+            self._enhance_corpus_html(query_namespace["enhance_html"])
+            return
+
+        if query_namespace[SAVE_QUERY]:
+            self.write_configuration_file(query_namespace)
+        if query_namespace[API] not in list(self.download_tools.config):
+            raise PygetpapersError("API not supported yet")
+            return
+        api_handler = ApiPlugger(query_namespace)
+        api_handler.check_query_logic_and_run()
+
+    def create_argparser(self):
+        """Creates the cli"""
+        version = self.version
+
+        parser = configargparse.ArgParser(
+            description=(
+                f"Welcome to Pygetpapers version {version}. -h or --help for help"
+            ),
+            add_config_file_help=False,
+        )
+        parser.add_argument(
+            "--config",
+            is_config_file=True,
+            help="config file path to read query for pygetpapers",
+        )
+
+        parser.add_argument(
+            "-v",
+            "--version",
+            default=False,
+            action="store_true",
+            help="output the version number",
+        )
+        parser.add_argument(
+            "-q",
+            "--query",
+            type=str,
+            default=False,
+            help=(
+                'Eg. "Artificial Intelligence" or "Plant Parts". '
+                "To escape special characters within the quotes, use backslash. "
+                "Incase of nested quotes, ensure that the initial "
+                "quotes are double and the qutoes inside are single. "
+                'For eg: `\'(LICENSE:"cc by" OR LICENSE:"cc-by") '
+                'AND METHODS:"transcriptome assembly"\' ` '
+                "is wrong. We should instead use `\"(LICENSE:'cc by' OR LICENSE:'cc-by') "  # noqa: E501
+                "AND METHODS:'transcriptome assembly'\"` "
+            ),
+        )
+
+        parser.add_argument(
+            "-o",
+            "--output",
+            type=str,
+            help=(
+                "output directory (Default: Folder inside current working "
+                "directory named )"
+            ),
+            default=self.default_path,
+        )
+        parser.add_argument(
+            "--save_query",
+            default=False,
+            action="store_true",
+            help="saved the passed query in a config file",
+        )
+        parser.add_argument(
+            "-x",
+            "--xml",
+            default=False,
+            action="store_true",
+            help="download fulltext XMLs if available or save metadata as XML",
+        )
+        parser.add_argument(
+            "-p",
+            "--pdf",
+            default=False,
+            action="store_true",
+            help=(
+                "[E][A] download fulltext PDFs if available (only eupmc, arxiv, and some "  # noqa: E501
+                "papers from openalex supported)"
+            ),
+        )
+        parser.add_argument(
+            "-s",
+            "--supp",
+            default=False,
+            action="store_true",
+            help=(
+                "[E] download supplementary files if available (only eupmc supported)\t"
+            ),
+        )
+        parser.add_argument(
+            "-z",
+            "--zip",
+            default=False,
+            action="store_true",
+            help=(
+                "[E] download files from ftp endpoint if available (only eupmc supported)\t"  # noqa: E501
+            ),
+        )
+        parser.add_argument(
+            "--references",
+            type=str,
+            default=False,
+            help=(
+                "[E] Download references if available. (only eupmc supported)"
+                "Requires source for references (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)."
+            ),
+        )
+        parser.add_argument(
+            "-n",
+            "--noexecute",
+            default=False,
+            action="store_true",
+            help=(
+                "[ALL] report how many results match the query, but don't actually download "  # noqa: E501
+                "anything"
+            ),
+        )
+        parser.add_argument(
+            "--citations",
+            type=str,
+            default=False,
+            help=(
+                "[E] Download citations if available (only eupmc supported). "
+                "Requires source for citations (AGR,CBA,CTX,ETH,HIR,MED,PAT,PMC,PPR)."
+            ),
+        )
+        parser.add_argument(
+            "-l",
+            "--loglevel",
+            default="info",
+            help=(
+                "[All] Provide logging level.  "
+                "Example --log warning <<info,warning,debug,error,critical>>, default='info'"  # noqa: E501
+            ),
+        )
+        parser.add_argument(
+            "-f",
+            "--logfile",
+            default=False,
+            type=str,
+            help=(
+                "[All] save log to specified file in output directory as well as printing to "  # noqa: E501
+                "terminal"
+            ),
+        )
+        parser.add_argument(
+            "-k",
+            "--limit",
+            default=100,
+            type=int,
+            help="[All] maximum number of hits (default: 100)",
+        )
+        parser.add_argument(
+            "-r",
+            "--restart",
+            action="store_true",
+            help=(
+                "[E] Downloads the missing flags for the corpus."
+                "Searches for already existing corpus in the output directory"
+            ),
+        )
+        parser.add_argument(
+            "-u",
+            "--update",
+            action="store_true",
+            help=(
+                "[E][B][M][C] Updates the corpus by downloading new papers. "
+                "Requires -k or --limit "
+                "(If not provided, default will be used) and -q or --query "
+                "(must be provided) to be given. "
+                "Searches for already existing corpus in the output directory"
+            ),
+        )
+        parser.add_argument(
+            "--onlyquery",
+            action="store_true",
+            help=(
+                "[E] Saves json file containing the result of the query in storage. (only eupmc "  # noqa: E501
+                "supported) "
+                "The json file can be given to --restart to download the papers later."
+            ),
+        )
+        parser.add_argument(
+            "-c",
+            "--makecsv",
+            default=False,
+            action="store_true",
+            help="[All] Stores the per-document metadata as csv.",
+        )
+        parser.add_argument(
+            "--makehtml",
+            default=False,
+            action="store_true",
+            help=("[All] Stores the per-document metadata as html."),
+        )
+        parser.add_argument(
+            "--fulltext_html",
+            default=False,
+            action="store_true",
+            help=(
+                "[All] Convert XML fulltext to HTML using JATS4R (requires XML download)"
+            ),
+        )
+        parser.add_argument(
+            "--synonym",
+            default=False,
+            action="store_true",
+            help="[E] Results contain synonyms as well.",
+        )
+        parser.add_argument(
+            "--startdate",
+            default=False,
+            type=str,
+            help="[E][B][M] Gives papers starting from given date. Format: YYYY-MM-DD",
+        )
+        parser.add_argument(
+            "--enddate",
+            default=False,
+            type=str,
+            help="[E][B][M] Gives papers till given date. Format: YYYY-MM-DD",
+        )
+        parser.add_argument(
+            "--terms",
+            default=False,
+            type=str,
+            help=(
+                "[All] Location of the file which contains terms serperated by a comma or an ami "  # noqa: E501
+                "dict which will be "
+                "OR'ed among themselves and AND'ed with the query"
+            ),
+        )
+        parser.add_argument(
+            "--notterms",
+            default=False,
+            type=str,
+            help=(
+                "[All] Location of the txt file which contains terms separated by a comma or an "  # noqa: E501
+                "ami dict which will be "
+                "OR'ed among themselves and NOT'ed with the query"
+            ),
+        )
+        parser.add_argument(
+            "--api",
+            default="europe_pmc",
+            type=str,
+            help=(
+                "API to search [europe_pmc, crossref,arxiv,biorxiv,medrxiv,rxivist,openalex] "  # noqa: E501
+                "(default: europe_pmc)"
+            ),
+        )
+        parser.add_argument(
+            "--filter",
+            default=None,
+            type=str,
+            help="[C] filter by key value pair (only crossref supported)",
+        )
+        parser.add_argument(
+            "--convert_html",
+            default=False,
+            type=str,
+            help="[All] Convert existing XML files to HTML in specified directory using JATS4R",
+        )
+        parser.add_argument(
+            "--process_html",
+            default=False,
+            type=str,
+            help="[All] Process all HTML files in corpus: convert PDFs/DOCs to HTML and create enhanced versions",
+        )
+        parser.add_argument(
+            "--enhance_html",
+            default=False,
+            type=str,
+            help="[All] Create enhanced HTML with IDs and cleaned structure from existing HTML files",
+        )
+        
+        args = parser.parse_args()
+        if args.version:
+            print(f"pygetpapers version {version}")
+            return
+        self.query_namespace = vars(args)
+        for arg in self.query_namespace:
+            if (self.query_namespace)[arg] == "False":
+                (self.query_namespace)[arg] = False
+        self.runs_pygetpapers_for_given_args(self.query_namespace)
+
+
+def main():
+    """Runs the CLI"""
+    callpygetpapers = Pygetpapers()
+    callpygetpapers.create_argparser()
+
+
+if __name__ == "__main__":
+    main()
+
+# TODO: add half a sentence about config queries
+# TODO: document habenaro usage in crossref and define the common functions
