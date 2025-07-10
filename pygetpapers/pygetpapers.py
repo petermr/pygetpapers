@@ -110,30 +110,34 @@ class ApiPlugger:
             config.get(api, FEATURESNOTSUPPORTED)
         )
         # Add XML2HTML support
-        self.xml2html_supported = config.get(api, XML2HTML_SUPPORTED, fallback="false").lower() == "true"
-        self.xml2html_converters = config.get(api, XML2HTML_CONVERTER, fallback="").split(",")
+        self.xml2html_supported = (
+            config.get(api, XML2HTML_SUPPORTED, fallback="false").lower() == "true"
+        )
+        self.xml2html_converters = config.get(
+            api, XML2HTML_CONVERTER, fallback=""
+        ).split(",")
 
     def check_xml2html_support(self, api_handler):
         """Check if the repository supports XML2HTML conversion.
-        
+
         :param api_handler: Repository handler instance
         :type api_handler: RepositoryInterface
         :return: True if supported, False otherwise
         :rtype: bool
         """
-        if hasattr(api_handler, 'supports_xml2html'):
+        if hasattr(api_handler, "supports_xml2html"):
             return api_handler.supports_xml2html()
         return False
 
     def get_xml2html_converters(self, api_handler):
         """Get available XML2HTML converters for the repository.
-        
+
         :param api_handler: Repository handler instance
         :type api_handler: RepositoryInterface
         :return: List of converter names
         :rtype: list
         """
-        if hasattr(api_handler, 'get_xml2html_converters'):
+        if hasattr(api_handler, "get_xml2html_converters"):
             return api_handler.get_xml2html_converters()
         return []
 
@@ -170,9 +174,12 @@ class ApiPlugger:
             )
 
         # Only overwrite query for bioRxiv/medRxiv if it's a date query or no text query provided
-        if (self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV) and (
-            self.query_namespace[STARTDATE] or not self.query_namespace[QUERY] or 
-            self.query_namespace[QUERY].isdigit()
+        if (
+            self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
+        ) and (
+            self.query_namespace[STARTDATE]
+            or not self.query_namespace[QUERY]
+            or self.query_namespace[QUERY].isdigit()
         ):
             self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
 

@@ -263,7 +263,7 @@ def demonstrate_integration():
         print(f"   Errors: {len(summary['errors'])}")
 
     # Show statistics
-    print(f"\n📊 Integration Statistics:")
+    print("\n📊 Integration Statistics:")
     stats = integration.get_statistics()
     print(f"   Total papers: {stats['total_papers']}")
     print(f"   Total size: {stats['total_size']:,} bytes")
@@ -271,7 +271,7 @@ def demonstrate_integration():
     print(f"   Average paper size: {stats['average_size']:,.0f} bytes")
 
     # List papers
-    print(f"\n📄 Collected Papers:")
+    print("\n📄 Collected Papers:")
     papers = integration.list_papers()
     for i, paper in enumerate(papers, 1):
         print(f"   {i}. {paper['title'][:60]}...")
@@ -338,11 +338,11 @@ def main():
         print(f"✅ Total errors: {summary['total_errors']}")
         print(f"✅ Queries processed: {len(summary['queries'])}")
 
-        print(f"\n📁 Output directory: biorxiv_integration_output/")
-        print(f"📄 Files created:")
-        print(f"   - biorxiv_metadata.json (metadata)")
-        print(f"   - biorxiv_papers.csv (CSV export)")
-        print(f"   - Individual paper directories")
+        print("\n📁 Output directory: biorxiv_integration_output/")
+        print("📄 Files created:")
+        print("   - biorxiv_metadata.json (metadata)")
+        print("   - biorxiv_papers.csv (CSV export)")
+        print("   - Individual paper directories")
 
     except Exception as e:
         print(f"❌ Integration demonstration failed: {e}")

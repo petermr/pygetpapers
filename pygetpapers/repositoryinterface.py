@@ -61,7 +61,7 @@ class RepositoryInterface(ABC):
 
     def supports_xml2html(self) -> bool:
         """Check if this repository supports XML to HTML conversion.
-        
+
         :return: True if XML2HTML is supported, False otherwise
         :rtype: bool
         """
@@ -69,15 +69,17 @@ class RepositoryInterface(ABC):
 
     def get_xml2html_converters(self) -> list:
         """Get list of available XML to HTML converters for this repository.
-        
+
         :return: List of converter names (e.g., ['jats4r', 'simple_html'])
         :rtype: list
         """
         return []
 
-    def convert_xml_to_html(self, xml_file_path: str, identifier_for_paper: str) -> bool:
+    def convert_xml_to_html(
+        self, xml_file_path: str, identifier_for_paper: str
+    ) -> bool:
         """Convert XML file to HTML using available converters.
-        
+
         :param xml_file_path: Path to XML file
         :type xml_file_path: str
         :param identifier_for_paper: Paper identifier

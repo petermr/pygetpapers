@@ -371,7 +371,7 @@ class SimpleHTMLConverter:
         # Process child elements with formatting preservation
         for child in elem:
             tag = child.tag.split("}")[-1] if "}" in child.tag else child.tag
-            
+
             # Handle formatting elements
             if tag == "bold":
                 text_parts.append(f"<b>{self._get_element_text(child)}</b>")
@@ -384,7 +384,9 @@ class SimpleHTMLConverter:
                 href = child.get("{http://www.w3.org/1999/xlink}href")
                 if href:
                     link_text = self._get_element_text(child) or href
-                    text_parts.append(f'<a href="{href}" target="_blank">{link_text}</a>')
+                    text_parts.append(
+                        f'<a href="{href}" target="_blank">{link_text}</a>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             elif tag == "uri":
@@ -392,7 +394,9 @@ class SimpleHTMLConverter:
                 href = child.get("{http://www.w3.org/1999/xlink}href")
                 if href:
                     link_text = self._get_element_text(child) or href
-                    text_parts.append(f'<a href="{href}" target="_blank">{link_text}</a>')
+                    text_parts.append(
+                        f'<a href="{href}" target="_blank">{link_text}</a>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             elif tag == "sup":
@@ -405,14 +409,18 @@ class SimpleHTMLConverter:
                 # Handle styled content with style attributes
                 style = child.get("style")
                 if style:
-                    text_parts.append(f'<span style="{style}">{self._get_element_text(child)}</span>')
+                    text_parts.append(
+                        f'<span style="{style}">{self._get_element_text(child)}</span>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             elif tag == "named-content":
                 # Handle named content with content-type attributes
                 content_type = child.get("content-type")
                 if content_type:
-                    text_parts.append(f'<span class="{content_type}">{self._get_element_text(child)}</span>')
+                    text_parts.append(
+                        f'<span class="{content_type}">{self._get_element_text(child)}</span>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             else:
@@ -420,7 +428,7 @@ class SimpleHTMLConverter:
                 if child.text:
                     text_parts.append(child.text.strip())
                 text_parts.append(self._get_element_text(child))
-            
+
             if child.tail:
                 text_parts.append(child.tail.strip())
 

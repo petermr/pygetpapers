@@ -113,13 +113,13 @@ class JATS4RConverter:
                 Path(self.jats4r_path) / "xsl" / "jats2html.xsl",
                 Path(self.jats4r_path) / "transform" / "jats2html.xsl",
             ]
-            
+
             self.xslt_path = None
             for xslt_path in possible_xslt_paths:
                 if xslt_path.exists():
                     self.xslt_path = str(xslt_path)
                     break
-            
+
             if not self.xslt_path:
                 # Search for any .xsl file
                 xsl_files = list(Path(self.jats4r_path).rglob("*.xsl"))
@@ -136,7 +136,7 @@ class JATS4RConverter:
                 Path(self.jats4r_path) / "jats4r.css",
                 Path(self.jats4r_path) / "jats2html.css",
             ]
-            
+
             self.css_path = None
             for css_path in possible_css_paths:
                 if css_path.exists():
@@ -190,8 +190,14 @@ class JATS4RConverter:
                 return True, output_file
             else:
                 # Check if it's an XSLT version compatibility issue
-                if "compilation error" in result.stderr or "XPath error" in result.stderr:
-                    return False, "JATS2HTML XSLT requires XSLT 2.0, but xsltproc only supports XSLT 1.0. Please use Simple HTML Converter instead."
+                if (
+                    "compilation error" in result.stderr
+                    or "XPath error" in result.stderr
+                ):
+                    return (
+                        False,
+                        "JATS2HTML XSLT requires XSLT 2.0, but xsltproc only supports XSLT 1.0. Please use Simple HTML Converter instead.",
+                    )
                 else:
                     return False, f"XSLT conversion failed: {result.stderr}"
 

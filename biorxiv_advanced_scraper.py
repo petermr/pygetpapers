@@ -540,7 +540,7 @@ def main():
     query = "urban heat island"
     results = scraper.batch_download_papers(query, max_papers=5, results_per_page=25)
 
-    print(f"Batch download completed!")
+    print("Batch download completed!")
     print(f"Papers downloaded: {results['summary']['total_papers_downloaded']}")
     print(f"Errors: {results['summary']['total_errors']}")
     print(f"Success rate: {results['summary']['success_rate']:.1%}")

@@ -65,12 +65,19 @@ class Arxiv(RepositoryInterface):
 
     def __init__(self):
         self.download_tools = DownloadTools(ARXIV)
-        self.xml2html_supported = self.download_tools.config.get("arxiv", XML2HTML_SUPPORTED, fallback="false").lower() == "true"
-        self.xml2html_converters = self.download_tools.config.get("arxiv", XML2HTML_CONVERTER, fallback="").split(",")
+        self.xml2html_supported = (
+            self.download_tools.config.get(
+                "arxiv", XML2HTML_SUPPORTED, fallback="false"
+            ).lower()
+            == "true"
+        )
+        self.xml2html_converters = self.download_tools.config.get(
+            "arxiv", XML2HTML_CONVERTER, fallback=""
+        ).split(",")
 
     def supports_xml2html(self) -> bool:
         """Check if this repository supports XML to HTML conversion.
-        
+
         :return: True if XML2HTML is supported, False otherwise
         :rtype: bool
         """
@@ -78,15 +85,21 @@ class Arxiv(RepositoryInterface):
 
     def get_xml2html_converters(self) -> list:
         """Get list of available XML to HTML converters for this repository.
-        
+
         :return: List of converter names (e.g., ['simple_html'])
         :rtype: list
         """
-        return [converter.strip() for converter in self.xml2html_converters if converter.strip()]
+        return [
+            converter.strip()
+            for converter in self.xml2html_converters
+            if converter.strip()
+        ]
 
-    def convert_xml_to_html(self, xml_file_path: str, identifier_for_paper: str) -> bool:
+    def convert_xml_to_html(
+        self, xml_file_path: str, identifier_for_paper: str
+    ) -> bool:
         """Convert XML file to HTML using available converters.
-        
+
         :param xml_file_path: Path to XML file
         :type xml_file_path: str
         :param identifier_for_paper: Paper identifier
@@ -96,7 +109,7 @@ class Arxiv(RepositoryInterface):
         """
         if not self.supports_xml2html():
             return False
-            
+
         try:
             # Use Simple HTML Converter for arXiv XML
             from pygetpapers.simple_html_converter import SimpleHTMLConverter
@@ -123,7 +136,7 @@ class Arxiv(RepositoryInterface):
             logging.error(
                 f"Error converting XML to HTML for {identifier_for_paper}: {e}"
             )
-        
+
         return False
 
     def arxiv(
