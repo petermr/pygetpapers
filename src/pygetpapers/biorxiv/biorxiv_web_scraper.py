@@ -10,16 +10,16 @@ and returns results in a paginated format, unlike the API which only supports
 date-based searches.
 """
 
+import json
 import logging
+import re
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, quote_plus, urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
-import re
-from pathlib import Path
-import json
 
 logger = logging.getLogger(__name__)
 

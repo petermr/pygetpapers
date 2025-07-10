@@ -6,9 +6,8 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 from functools import partialmethod
+from pathlib import Path
 from time import gmtime, strftime
-
-
 
 import coloredlogs
 import configargparse
@@ -65,7 +64,7 @@ class ApiPlugger:
         self.setup_api_support_variables(
             self.download_tools.config, query_namespace[API]
         )
-        
+
         # Disable arXiv support
         if self.query_namespace[API] == "arxiv":
             raise PygetpapersError(
@@ -76,7 +75,7 @@ class ApiPlugger:
             module_path = f"{PYGETPAPERS}.biorxiv.{self.library_name}"
         else:
             module_path = f"{PYGETPAPERS}.{self.library_name}.{self.library_name}"
-            
+
         api_class = getattr(
             importlib.import_module(module_path),
             self.class_name,
@@ -188,7 +187,9 @@ class ApiPlugger:
             self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
         ) and (
             self.query_namespace[STARTDATE]
-            and (not self.query_namespace[QUERY] or self.query_namespace[QUERY].isdigit())
+            and (
+                not self.query_namespace[QUERY] or self.query_namespace[QUERY].isdigit()
+            )
         ):
             self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
 
@@ -477,7 +478,7 @@ class Pygetpapers:
 
             stats = processor.process_corpus_html(Path(directory_path))
 
-            logging.info(f"HTML processing complete:")
+            logging.info("HTML processing complete:")
             logging.info(f"  Papers processed: {stats['papers_processed']}")
             logging.info(f"  Enhanced HTML created: {stats['enhanced_html_created']}")
             logging.info(f"  PDF conversions: {stats['pdf_conversions']}")
@@ -837,7 +838,7 @@ class Pygetpapers:
         parser.add_argument(
             "--convert_html",
             default=False,
-            nargs='?',
+            nargs="?",
             const=True,
             type=str,
             help="[All] Convert existing XML files to HTML in specified directory (defaults to output directory if no path given)",
@@ -854,7 +855,7 @@ class Pygetpapers:
             type=str,
             help="[All] Create enhanced HTML with IDs and cleaned structure from existing HTML files",
         )
-        
+
         args = parser.parse_args()
         if args.version:
             print(f"pygetpapers version {version}")

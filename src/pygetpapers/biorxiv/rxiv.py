@@ -8,9 +8,7 @@ from tqdm import tqdm
 from pygetpapers.config_loader import get_repository_config
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.errors import PygetpapersError
-from pygetpapers.pygetpapers import (
-    BIORXIV,
-)
+from pygetpapers.pygetpapers import BIORXIV
 from pygetpapers.repositoryinterface import (
     COLLECTION,
     DOI,

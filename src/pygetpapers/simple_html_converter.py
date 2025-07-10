@@ -20,8 +20,8 @@ class SimpleHTMLConverter:
     def __init__(self):
         """Initialize the converter."""
         self.namespaces = {
-            'jats': 'http://jats.nlm.nih.gov',
-            'xlink': 'http://www.w3.org/1999/xlink'
+            "jats": "http://jats.nlm.nih.gov",
+            "xlink": "http://www.w3.org/1999/xlink",
         }
 
     def convert_xml_to_html(
@@ -48,10 +48,10 @@ class SimpleHTMLConverter:
             # Create output filename if not provided
             if output_file is None:
                 xml_path = Path(xml_file)
-                output_file = str(xml_path.with_suffix('.xml.html'))
+                output_file = str(xml_path.with_suffix(".xml.html"))
 
             # Write HTML file
-            with open(output_file, 'w', encoding='utf-8') as f:
+            with open(output_file, "w", encoding="utf-8") as f:
                 f.write(html_content)
 
             return True, f"Successfully converted to {output_file}"
@@ -65,54 +65,50 @@ class SimpleHTMLConverter:
         """Convert XML root element to HTML."""
         # Create HTML document structure
         html_parts = [
-            '<!DOCTYPE html>',
+            "<!DOCTYPE html>",
             '<html lang="en">',
-            '<head>',
+            "<head>",
             '<meta charset="utf-8">',
             '<meta name="viewport" content="width=device-width, initial-scale=1">',
-            '<title>Converted Document</title>',
-            '<style>',
-            'body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }',
-            '.xml { margin: 0; padding: 0; }',
-            '.xml > * { margin: 10px 0; }',
-            '.xml > * > * { margin: 5px 0; }',
-            '.title { font-size: 1.5em; font-weight: bold; }',
-            '.section { margin: 20px 0; }',
-            '.section-title { font-size: 1.2em; font-weight: bold; margin: 10px 0; }',
-            '.paragraph { margin: 10px 0; }',
-            '.figure { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }',
-            '.figure-label { font-weight: bold; }',
-            '.figure-caption { font-style: italic; }',
-            '.table { margin: 20px 0; }',
-            '.table table { border-collapse: collapse; width: 100%; }',
-            '.table th, .table td { border: 1px solid #ddd; padding: 8px; text-align: left; }',
-            '.table th { background-color: #f2f2f2; }',
-            '.list { margin: 10px 0; }',
-            '.list-item { margin: 5px 0; }',
-            '.reference { margin: 10px 0; padding: 5px; background-color: #f9f9f9; }',
-            '.bold { font-weight: bold; }',
-            '.italic { font-style: italic; }',
-            '.superscript { vertical-align: super; font-size: smaller; }',
-            '.subscript { vertical-align: sub; font-size: smaller; }',
-            '.link { color: #0066cc; text-decoration: none; }',
-            '.link:hover { text-decoration: underline; }',
-            '</style>',
-            '</head>',
-            '<body>',
-            '<div class="xml">'
+            "<title>Converted Document</title>",
+            "<style>",
+            "body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }",
+            ".xml { margin: 0; padding: 0; }",
+            ".xml > * { margin: 10px 0; }",
+            ".xml > * > * { margin: 5px 0; }",
+            ".title { font-size: 1.5em; font-weight: bold; }",
+            ".section { margin: 20px 0; }",
+            ".section-title { font-size: 1.2em; font-weight: bold; margin: 10px 0; }",
+            ".paragraph { margin: 10px 0; }",
+            ".figure { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }",
+            ".figure-label { font-weight: bold; }",
+            ".figure-caption { font-style: italic; }",
+            ".table { margin: 20px 0; }",
+            ".table table { border-collapse: collapse; width: 100%; }",
+            ".table th, .table td { border: 1px solid #ddd; padding: 8px; text-align: left; }",
+            ".table th { background-color: #f2f2f2; }",
+            ".list { margin: 10px 0; }",
+            ".list-item { margin: 5px 0; }",
+            ".reference { margin: 10px 0; padding: 5px; background-color: #f9f9f9; }",
+            ".bold { font-weight: bold; }",
+            ".italic { font-style: italic; }",
+            ".superscript { vertical-align: super; font-size: smaller; }",
+            ".subscript { vertical-align: sub; font-size: smaller; }",
+            ".link { color: #0066cc; text-decoration: none; }",
+            ".link:hover { text-decoration: underline; }",
+            "</style>",
+            "</head>",
+            "<body>",
+            '<div class="xml">',
         ]
 
         # Convert root element
         html_parts.append(self._convert_element(root))
 
         # Close HTML structure
-        html_parts.extend([
-            '</div>',
-            '</body>',
-            '</html>'
-        ])
+        html_parts.extend(["</div>", "</body>", "</html>"])
 
-        return '\n'.join(html_parts)
+        return "\n".join(html_parts)
 
     def _convert_element(self, elem) -> str:
         """Convert an XML element to HTML with semantic class names."""
@@ -136,27 +132,27 @@ class SimpleHTMLConverter:
                 return self._format_text_content(elem.text, tag)
 
         # Handle special elements
-        if tag in ['title', 'article-title', 'book-title']:
+        if tag in ["title", "article-title", "book-title"]:
             return f'<h1 class="{tag}">{self._get_element_text(elem)}</h1>'
-        elif tag in ['sec', 'section']:
+        elif tag in ["sec", "section"]:
             return self._convert_section(elem)
-        elif tag in ['p', 'paragraph']:
+        elif tag in ["p", "paragraph"]:
             return f'<p class="{tag}">{self._get_element_text(elem)}</p>'
-        elif tag in ['fig', 'figure']:
+        elif tag in ["fig", "figure"]:
             return self._convert_figure(elem)
-        elif tag in ['table-wrap', 'table']:
+        elif tag in ["table-wrap", "table"]:
             return self._convert_table(elem)
-        elif tag in ['list']:
+        elif tag in ["list"]:
             return self._convert_list(elem)
-        elif tag in ['ref-list', 'references']:
+        elif tag in ["ref-list", "references"]:
             return self._convert_references(elem)
-        elif tag in ['abstract']:
+        elif tag in ["abstract"]:
             return f'<div class="{tag}"><h2>Abstract</h2><p>{self._get_element_text(elem)}</p></div>'
-        elif tag in ['body']:
+        elif tag in ["body"]:
             return f'<div class="{tag}">{self._convert_children(elem)}</div>'
-        elif tag in ['front', 'back']:
+        elif tag in ["front", "back"]:
             return f'<div class="{tag}">{self._convert_children(elem)}</div>'
-        elif tag in ['article', 'book']:
+        elif tag in ["article", "book"]:
             return f'<div class="{tag}">{self._convert_children(elem)}</div>'
 
         # Default: convert to div with class name
@@ -165,7 +161,7 @@ class SimpleHTMLConverter:
     def _convert_children(self, elem) -> str:
         """Convert all child elements of an element."""
         html_parts = []
-        
+
         # Add text content before first child
         if elem.text and elem.text.strip():
             html_parts.append(self._format_text_content(elem.text.strip()))
@@ -174,7 +170,7 @@ class SimpleHTMLConverter:
         try:
             for child in elem:
                 html_parts.append(self._convert_element(child))
-                
+
                 # Add text content after child
                 if child.tail and child.tail.strip():
                     html_parts.append(self._format_text_content(child.tail.strip()))
@@ -185,7 +181,7 @@ class SimpleHTMLConverter:
             if elem.text:
                 html_parts.append(self._format_text_content(elem.text))
 
-        return ''.join(html_parts)
+        return "".join(html_parts)
 
     def _convert_section(self, section_elem) -> str:
         """Convert a section element to HTML."""
@@ -207,8 +203,8 @@ class SimpleHTMLConverter:
 
             html_parts.append(self._convert_element(child))
 
-        html_parts.append('</div>')
-        return ''.join(html_parts)
+        html_parts.append("</div>")
+        return "".join(html_parts)
 
     def _convert_figure(self, fig_elem) -> str:
         """Convert a figure element to HTML."""
@@ -239,8 +235,8 @@ class SimpleHTMLConverter:
                 continue  # Already handled
             html_parts.append(self._convert_element(child))
 
-        html_parts.append('</div>')
-        return ''.join(html_parts)
+        html_parts.append("</div>")
+        return "".join(html_parts)
 
     def _convert_table(self, table_elem) -> str:
         """Convert a table element to HTML."""
@@ -261,8 +257,8 @@ class SimpleHTMLConverter:
             table = table_elem.find(".//table")
 
         if table is not None:
-            html_parts.append('<table>')
-            
+            html_parts.append("<table>")
+
             # Process table rows
             for row in table.findall(".//jats:row", self.namespaces):
                 html_parts.append("<tr>")
@@ -273,8 +269,8 @@ class SimpleHTMLConverter:
 
             html_parts.append("</table>")
 
-        html_parts.append('</div>')
-        return ''.join(html_parts)
+        html_parts.append("</div>")
+        return "".join(html_parts)
 
     def _convert_list(self, list_elem) -> str:
         """Convert a list element to HTML."""
@@ -284,8 +280,8 @@ class SimpleHTMLConverter:
             item_text = self._get_element_text(item)
             html_parts.append(f'<li class="list-item">{item_text}</li>')
 
-        html_parts.append('</ul></div>')
-        return ''.join(html_parts)
+        html_parts.append("</ul></div>")
+        return "".join(html_parts)
 
     def _convert_references(self, ref_list_elem) -> str:
         """Convert references to HTML."""
@@ -295,8 +291,8 @@ class SimpleHTMLConverter:
             ref_text = self._get_element_text(ref)
             html_parts.append(f'<div class="reference">{ref_text}</div>')
 
-        html_parts.append('</div>')
-        return ''.join(html_parts)
+        html_parts.append("</div>")
+        return "".join(html_parts)
 
     def _get_element_text(self, elem) -> str:
         """Extract text content from an element, preserving formatting."""
@@ -314,17 +310,25 @@ class SimpleHTMLConverter:
 
             # Handle formatting elements
             if tag == "bold":
-                text_parts.append(f'<span class="bold">{self._get_element_text(child)}</span>')
+                text_parts.append(
+                    f'<span class="bold">{self._get_element_text(child)}</span>'
+                )
             elif tag == "italic":
-                text_parts.append(f'<span class="italic">{self._get_element_text(child)}</span>')
+                text_parts.append(
+                    f'<span class="italic">{self._get_element_text(child)}</span>'
+                )
             elif tag == "emphasis":
-                text_parts.append(f'<em class="emphasis">{self._get_element_text(child)}</em>')
+                text_parts.append(
+                    f'<em class="emphasis">{self._get_element_text(child)}</em>'
+                )
             elif tag == "ext-link":
                 # Handle external links
                 href = child.get("{http://www.w3.org/1999/xlink}href")
                 if href:
                     link_text = self._get_element_text(child) or href
-                    text_parts.append(f'<a href="{href}" target="_blank" class="link">{link_text}</a>')
+                    text_parts.append(
+                        f'<a href="{href}" target="_blank" class="link">{link_text}</a>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             elif tag == "uri":
@@ -332,27 +336,37 @@ class SimpleHTMLConverter:
                 href = child.get("{http://www.w3.org/1999/xlink}href")
                 if href:
                     link_text = self._get_element_text(child) or href
-                    text_parts.append(f'<a href="{href}" target="_blank" class="link">{link_text}</a>')
+                    text_parts.append(
+                        f'<a href="{href}" target="_blank" class="link">{link_text}</a>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             elif tag == "sup":
-                text_parts.append(f'<span class="superscript">{self._get_element_text(child)}</span>')
+                text_parts.append(
+                    f'<span class="superscript">{self._get_element_text(child)}</span>'
+                )
             elif tag == "sub":
-                text_parts.append(f'<span class="subscript">{self._get_element_text(child)}</span>')
+                text_parts.append(
+                    f'<span class="subscript">{self._get_element_text(child)}</span>'
+                )
             elif tag == "break":
                 text_parts.append("<br>")
             elif tag == "styled-content":
                 # Handle styled content with style attributes
                 style = child.get("style")
                 if style:
-                    text_parts.append(f'<span style="{style}">{self._get_element_text(child)}</span>')
+                    text_parts.append(
+                        f'<span style="{style}">{self._get_element_text(child)}</span>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             elif tag == "named-content":
                 # Handle named content with content-type attributes
                 content_type = child.get("content-type")
                 if content_type:
-                    text_parts.append(f'<span class="{content_type}">{self._get_element_text(child)}</span>')
+                    text_parts.append(
+                        f'<span class="{content_type}">{self._get_element_text(child)}</span>'
+                    )
                 else:
                     text_parts.append(self._get_element_text(child))
             else:
@@ -370,7 +384,7 @@ class SimpleHTMLConverter:
         """Format plain text content."""
         if not text or not text.strip():
             return ""
-        
+
         text = text.strip()
         if tag:
             return f'<span class="{tag}">{text}</span>'

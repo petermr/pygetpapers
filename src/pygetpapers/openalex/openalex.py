@@ -1,10 +1,10 @@
+import json
 import logging
 import os
-from pathlib import Path
-import requests
-import json
 from datetime import datetime
+from pathlib import Path
 
+import requests
 from tqdm import tqdm
 
 from pygetpapers.download_tools import DownloadTools

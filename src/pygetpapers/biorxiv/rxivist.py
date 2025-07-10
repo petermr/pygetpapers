@@ -1,8 +1,9 @@
+import json
 import logging
 import os
 from pathlib import Path
+
 import requests
-import json
 
 from pygetpapers.download_tools import DownloadTools
 from pygetpapers.repositoryinterface import RepositoryInterface
