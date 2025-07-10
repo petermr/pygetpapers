@@ -28,11 +28,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
     from datatables_integration import PygetpapersDatatables
-    from jats4r_integration import JATS4RConverter
 except ImportError:
     # Fallback if modules are not available
     PygetpapersDatatables = None
-    JATS4RConverter = None
     logger.warning("Some modules not available. Some features will be limited.")
 
 # Page configuration
@@ -181,14 +179,6 @@ class PygetpapersUI:
             self.datatables = PygetpapersDatatables()
         else:
             self.datatables = None
-
-        # Initialize JATS4R converter
-        self.jats4r_converter = None
-        if JATS4RConverter:
-            try:
-                self.jats4r_converter = JATS4RConverter()
-            except Exception as e:
-                logger.warning(f"Failed to initialize JATS4R converter: {e}")
 
     def run_pygetpapers_command(self, args, progress_placeholder=None):
         """Run pygetpapers command and return results with real-time progress tracking"""
@@ -703,13 +693,13 @@ class PygetpapersUI:
                 convert_xml2html = st.checkbox(
                     "🔄 Convert XML to HTML",
                     value=False,
-                    help="Convert downloaded XML files to HTML using JATS4R or Simple HTML Converter",
+                    help="Convert downloaded XML files to HTML using Simple HTML Converter",
                 )
             with col_xml2html2:
                 if convert_xml2html:
                     st.info(
                         "📝 **XML2HTML Conversion:** This will create `fulltext.xml.html` files alongside the XML files. "
-                        "Uses JATS4R if available, otherwise falls back to Simple HTML Converter."
+                        "Uses Simple HTML Converter for clean, semantic HTML output."
                     )
         else:
             convert_xml2html = False
@@ -2525,7 +2515,7 @@ class PygetpapersUI:
         st.markdown(
             """
         <div class="info-box">
-            <strong>JATS4R Integration & Fallback:</strong> Convert JATS XML files to HTML using JATS4R XSLT stylesheets or a built-in fallback converter. This tool automatically uses the best available method.
+            <strong>Simple HTML Converter:</strong> Convert JATS XML files to clean, semantic HTML using our built-in converter. This tool provides readable HTML output with proper structure and styling.
         </div>
         """,
             unsafe_allow_html=True,
@@ -2572,9 +2562,9 @@ class PygetpapersUI:
                 )
                 if st.button("🔄 Convert All XML to HTML", type="primary"):
                     with st.spinner(
-                        "Converting XML files to HTML (using best available method)..."
+                        "Converting XML files to HTML using Simple HTML Converter..."
                     ):
-                        # Use CLI backend for robust conversion (uses fallback if needed)
+                        # Use CLI backend for robust conversion
                         result = self.run_pygetpapers_command(
                             ["--convert_html", str(corpus_path)]
                         )

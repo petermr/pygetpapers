@@ -188,8 +188,7 @@ class ApiPlugger:
             self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
         ) and (
             self.query_namespace[STARTDATE]
-            or not self.query_namespace[QUERY]
-            or self.query_namespace[QUERY].isdigit()
+            and (not self.query_namespace[QUERY] or self.query_namespace[QUERY].isdigit())
         ):
             self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
 
@@ -430,43 +429,12 @@ class Pygetpapers:
         self.runs_pygetpapers_for_given_args(got_parameters)
 
     def _convert_existing_xml_to_html(self, directory_path):
-        """Convert existing XML files to HTML using JATS4R or Simple HTML Converter
+        """Convert existing XML files to HTML using Simple HTML Converter
 
         :param directory_path: Path to directory containing XML files
         :type directory_path: str
         """
         try:
-            # Try JATS4R first
-            try:
-                from pygetpapers.jats4r_integration import JATS4RConverter
-
-                converter = JATS4RConverter()
-                logging.info(
-                    f"Converting XML files to HTML using JATS4R in: {directory_path}"
-                )
-
-                results = converter.convert_corpus_xml_files(directory_path)
-
-                successful = len(results["successful"])
-                failed = len(results["failed"])
-                skipped = len(results["skipped"])
-
-                logging.info(
-                    f"JATS4R conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
-                )
-
-                if results["failed"]:
-                    logging.warning("Failed conversions:")
-                    for failure in results["failed"]:
-                        logging.warning(f"  - {failure}")
-
-                return
-
-            except (ImportError, Exception) as e:
-                logging.warning(f"JATS4R not available: {e}")
-                logging.info("Falling back to Simple HTML Converter...")
-
-            # Fallback to Simple HTML Converter
             from pygetpapers.simple_html_converter import SimpleHTMLConverter
 
             converter = SimpleHTMLConverter()
@@ -481,7 +449,7 @@ class Pygetpapers:
             skipped = len(results["skipped"])
 
             logging.info(
-                f"Simple HTML conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
+                f"HTML conversion complete: {successful} successful, {failed} failed, {skipped} skipped"
             )
 
             if results["failed"]:
@@ -489,6 +457,8 @@ class Pygetpapers:
                 for failure in results["failed"]:
                     logging.warning(f"  - {failure}")
 
+        except ImportError:
+            logging.error("Simple HTML Converter not available.")
         except Exception as e:
             logging.error(f"Error during HTML conversion: {e}")
 
@@ -589,7 +559,12 @@ class Pygetpapers:
 
         # Handle retrospective HTML conversion
         if query_namespace.get("convert_html"):
-            self._convert_existing_xml_to_html(query_namespace["convert_html"])
+            # If convert_html is True (no path provided), use output directory
+            if query_namespace["convert_html"] is True:
+                convert_dir = query_namespace.get("output", self.default_path)
+            else:
+                convert_dir = query_namespace["convert_html"]
+            self._convert_existing_xml_to_html(convert_dir)
             return
 
         # Handle HTML processing
@@ -862,8 +837,10 @@ class Pygetpapers:
         parser.add_argument(
             "--convert_html",
             default=False,
+            nargs='?',
+            const=True,
             type=str,
-            help="[All] Convert existing XML files to HTML in specified directory using JATS4R",
+            help="[All] Convert existing XML files to HTML in specified directory (defaults to output directory if no path given)",
         )
         parser.add_argument(
             "--process_html",

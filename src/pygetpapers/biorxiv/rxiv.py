@@ -1,29 +1,33 @@
+import json
 import logging
 import os
+from pathlib import Path
 
 from tqdm import tqdm
 
+from pygetpapers.config_loader import get_repository_config
 from pygetpapers.download_tools import DownloadTools
-from pygetpapers.repositoryinterface import RepositoryInterface
-from pathlib import Path
-import json
-from pygetpapers.pgexceptions import PygetpapersError
+from pygetpapers.errors import PygetpapersError
+from pygetpapers.pygetpapers import (
+    BIORXIV,
+)
+from pygetpapers.repositoryinterface import (
+    COLLECTION,
+    DOI,
+    RXIV_RESULT,
+    RepositoryInterface,
+)
 
 TOTAL_HITS = "total_hits"
 NEW_RESULTS = "new_results"
-RXIV_RESULT = "rxiv_result"
 UPDATED_DICT = "updated_dict"
 JATSXML = "jatsxml"
 FULLTEXT_XML = "fulltext.xml"
-DOI = "doi"
 TOTAL_JSON_OUTPUT = "total_json_output"
-BIORXIV = "biorxiv"
 MESSAGES = "messages"
 TOTAL = "total"
-COLLECTION = "collection"
 CURSOR_MARK = "cursor_mark"
 RXIV = "rxiv"
-DATE_OR_NUMBER_OF_PAPERS = "date_or_number_of_papers"
 
 
 class Rxiv(RepositoryInterface):
@@ -35,9 +39,33 @@ class Rxiv(RepositoryInterface):
     """
 
     def __init__(self, api="biorxiv"):
-        """initiate Rxiv class"""
-        self.download_tools = DownloadTools(api)
-        self.doi_done = []
+        """Initialize the bioRxiv repository interface.
+
+        Args:
+            api: Repository type ('biorxiv' or 'medrxiv')
+        """
+        self.api = api
+        self.download_tools = DownloadTools()
+        self.get_url = None
+        self.config = get_repository_config("biorxiv")
+
+        # Log repository capabilities
+        logging.info("bioRxiv repository capabilities:")
+        logging.info(f"  API: {self.config.get_capability('api')}")
+        logging.info(f"  Web scraper: {self.config.get_capability('web_scraper')}")
+        logging.info(f"  Text queries: {self.config.get_capability('text_queries')}")
+        logging.info(f"  Date queries: {self.config.get_capability('date_queries')}")
+
+    def has_capability(self, capability: str) -> bool:
+        """Check if the repository has a specific capability.
+
+        Args:
+            capability: Name of the capability to check
+
+        Returns:
+            True if capability is available, False otherwise
+        """
+        return self.config.get_capability(capability)
 
     def rxiv(
         self,
@@ -104,9 +132,22 @@ class Rxiv(RepositoryInterface):
         papers_list = request_dict[COLLECTION]
         final_list = []
         for paper in papers_list:
-            if paper[DOI] not in self.doi_done:
-                final_list.append(paper)
-                self.doi_done.append(paper[DOI])
+            # Ensure DOI has the correct format for pygetpapers
+            if DOI in paper and paper[DOI]:
+                # Add https://doi.org/ prefix if not present
+                if not paper[DOI].startswith("https://doi.org/"):
+                    paper[DOI] = "https://doi.org/" + paper[DOI]
+
+                # Add "id" field that download_tools expects (using DOI as ID)
+                paper["id"] = paper[DOI]
+
+                if paper[DOI] not in self.doi_done:
+                    final_list.append(paper)
+                    self.doi_done.append(paper[DOI])
+            else:
+                logging.warning(
+                    f"Paper missing DOI field: {paper.get('title', 'Unknown title')}"
+                )
         if TOTAL in request_dict[MESSAGES][0]:
             total_number_of_results = request_dict[MESSAGES][0][TOTAL]
         total_papers_list += final_list
@@ -250,7 +291,9 @@ class Rxiv(RepositoryInterface):
         )
 
     def apipaperdownload(self, query_namespace):
-        """Download papers from bioRxiv/medRxiv using either API (for dates) or web scraper (for text queries)"""
+        """
+        Download papers using API (for dates) or web scraper (for text queries).
+        """
 
         query = query_namespace["query"]
 
@@ -295,6 +338,10 @@ class Rxiv(RepositoryInterface):
             except ValueError:
                 pass
 
+        # Check if it contains letters (indicating a text query)
+        if any(c.isalpha() for c in query):
+            return True
+
         # If it's not a number or date range, it's a text query
         return True
 
@@ -303,6 +350,7 @@ class Rxiv(RepositoryInterface):
         try:
             # Import the bioRxiv web scraper integration
             import os
+
             from .biorxiv_integration import BioRxivIntegration
 
             # Get the output directory from query_namespace
@@ -314,10 +362,8 @@ class Rxiv(RepositoryInterface):
             # Extract parameters
             query = query_namespace["query"]
             limit = query_namespace["limit"]
-            api = query_namespace["api"]  # "biorxiv" or "medrxiv"
             makecsv = query_namespace["makecsv"]
             makehtml = query_namespace["makehtml"]
-            makexml = query_namespace["xml"]
 
             # Run the web scraper to get papers
             result = temp_scraper.search_and_collect(
@@ -405,12 +451,15 @@ class Rxiv(RepositoryInterface):
                 shutil.rmtree("temp_biorxiv_scraper")
 
             logging.info(
-                f"Web scraper completed successfully. Downloaded {len(papers)} papers to {output_dir}"
+                "Web scraper completed successfully. Downloaded %d papers to %s",
+                len(papers),
+                output_dir,
             )
 
         except ImportError:
             logging.error(
-                "bioRxiv web scraper integration not available. Falling back to API-only mode."
+                "bioRxiv web scraper integration not available. "
+                "Falling back to API-only mode."
             )
             # Fall back to API-only mode for date queries
             if not self._is_text_query(query_namespace["query"]):
@@ -424,8 +473,9 @@ class Rxiv(RepositoryInterface):
                 )
             else:
                 raise PygetpapersError(
-                    "Text queries for bioRxiv/medRxiv require the web scraper integration. "
-                    "Please install the required dependencies or use date-based queries instead."
+                    "Text queries for bioRxiv/medRxiv require the web scraper "
+                    "integration. Please install the required dependencies or use "
+                    "date-based queries instead."
                 )
         except Exception as e:
             logging.error(f"Error in web scraper: {e}")
