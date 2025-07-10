@@ -5,17 +5,14 @@ A comprehensive web interface for pygetpapers with advanced features including
 query building, corpus management, data visualization, and fulltext search.
 """
 
-import base64
 import json
 import logging
 import os
-import re
 import subprocess
 import sys
-import time
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, List
 
 import pandas as pd
 import plotly.express as px
@@ -147,24 +144,24 @@ class PygetpapersUI:
                 "xml2html": False,
             },
             "biorxiv": {
-                "query": False,
+                "query": True,
                 "date_range": True,
-                "pdf": False,
-                "xml": False,
+                "pdf": True,
+                "xml": True,
                 "references": False,
                 "citations": False,
                 "supplementary": False,
-                "xml2html": False,
+                "xml2html": True,
             },
             "medrxiv": {
-                "query": False,
+                "query": True,
                 "date_range": True,
-                "pdf": False,
-                "xml": False,
+                "pdf": True,
+                "xml": True,
                 "references": False,
                 "citations": False,
                 "supplementary": False,
-                "xml2html": False,
+                "xml2html": True,
             },
             "rxivist": {
                 "query": True,
@@ -179,7 +176,10 @@ class PygetpapersUI:
         }
 
         # Initialize datatables integration
-        self.datatables = PygetpapersDatatables()
+        if PygetpapersDatatables:
+            self.datatables = PygetpapersDatatables()
+        else:
+            self.datatables = None
 
         # Initialize JATS4R converter
         self.jats4r_converter = None
@@ -473,62 +473,6 @@ class PygetpapersUI:
                     unsafe_allow_html=True,
                 )
 
-            # File type progress with animated counters
-            st.markdown("**📁 File Downloads:**")
-            col1, col2, col3, col4 = st.columns(4)
-
-            with col1:
-                st.markdown(
-                    f"""
-                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                            border-radius: 10px; color: white;">
-                    <div style="font-size: 24px;">📄</div>
-                    <div style="font-size: 18px; font-weight: bold;">{progress_data['json_downloaded']}</div>
-                    <div style="font-size: 12px;">JSON</div>
-                </div>
-                """,
-                    unsafe_allow_html=True,
-                )
-
-            with col2:
-                st.markdown(
-                    f"""
-                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
-                            border-radius: 10px; color: white;">
-                    <div style="font-size: 24px;">📋</div>
-                    <div style="font-size: 18px; font-weight: bold;">{progress_data['xml_downloaded']}</div>
-                    <div style="font-size: 12px;">XML</div>
-                </div>
-                """,
-                    unsafe_allow_html=True,
-                )
-
-            with col3:
-                st.markdown(
-                    f"""
-                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-                            border-radius: 10px; color: white;">
-                    <div style="font-size: 24px;">📕</div>
-                    <div style="font-size: 18px; font-weight: bold;">{progress_data['pdf_downloaded']}</div>
-                    <div style="font-size: 12px;">PDF</div>
-                </div>
-                """,
-                    unsafe_allow_html=True,
-                )
-
-            with col4:
-                st.markdown(
-                    f"""
-                <div style="text-align: center; padding: 10px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
-                            border-radius: 10px; color: white;">
-                    <div style="font-size: 24px;">📎</div>
-                    <div style="font-size: 18px; font-weight: bold;">{progress_data['supplementary_downloaded']}</div>
-                    <div style="font-size: 12px;">Suppl</div>
-                </div>
-                """,
-                    unsafe_allow_html=True,
-                )
-
             # Recent output with better formatting
             if progress_data["output_lines"]:
                 st.markdown("**📝 Recent Activity:**")
@@ -647,7 +591,9 @@ class PygetpapersUI:
         st.sidebar.metric("Corpora Created", st.session_state.total_corpora)
 
         # Add refresh button
-        if st.sidebar.button("🔄 Refresh Stats", help="Recalculate stats from existing corpora"):
+        if st.sidebar.button(
+            "🔄 Refresh Stats", help="Recalculate stats from existing corpora"
+        ):
             self._recalculate_stats_from_corpora()
             st.sidebar.success("✅ Stats refreshed!")
 
@@ -655,9 +601,7 @@ class PygetpapersUI:
 
     def render_search_page(self):
         """Render the main search page"""
-        st.markdown(
-            '<h2 class="section-header">🔍 Search Papers</h2>', unsafe_allow_html=True
-        )
+        # Removed the "🔍 Search Papers" header
 
         # Repository selection
         col1, col2 = st.columns([1, 2])
@@ -669,12 +613,8 @@ class PygetpapersUI:
                 format_func=lambda x: self.supported_apis[x],
             )
 
-            # Show API features
+            # Get API features for use in other sections
             features = self.api_features[selected_api]
-            st.markdown("**Supported Features:**")
-            for feature, supported in features.items():
-                status = "✅" if supported else "❌"
-                st.markdown(f"{status} {feature.replace('_', ' ').title()}")
 
         with col2:
             # Query input
@@ -689,47 +629,13 @@ class PygetpapersUI:
             else:
                 default_query = ""
 
-                    # Handle biorxiv/medrxiv differently (pygetpapers limitation - not bioRxiv website limitation)
-        if selected_api in ["biorxiv", "medrxiv"]:
-            st.markdown("### 📅 **Date Range Search** (Required for bioRxiv/medRxiv)")
-            st.info(
-                "⚠️ **Note:** While bioRxiv/medRxiv websites support text queries, pygetpapers' API implementation "
-                "only supports date-based searches. For text-based searches, use the 'Rxivist' repository instead."
-            )
-            
-            # Date range is required for biorxiv/medrxiv
-            col2a, col2b = st.columns(2)
-            with col2a:
-                start_date = st.date_input(
-                    "Start Date", 
-                    value=datetime.now() - timedelta(days=365),
-                    key="biorxiv_start_date"
-                )
-            with col2b:
-                end_date = st.date_input(
-                    "End Date", 
-                    value=datetime.now(),
-                    key="biorxiv_end_date"
-                )
-            
-            # Disable query input for biorxiv/medrxiv
-            query = ""
-            st.markdown("### 🔍 **Search Query** (Not Supported by pygetpapers)")
-            st.text_area(
-                "Query input disabled for bioRxiv/medRxiv",
-                value="Text queries are not supported by pygetpapers' bioRxiv/medRxiv API.\n\nFor text-based searches, use the 'Rxivist' repository instead, which supports text queries for bioRxiv/medRxiv content.",
-                disabled=True,
-                height=100,
-            )
-        else:
-            # Regular query input for other APIs
-            st.markdown("### 🔍 **Search Query** (Required)")
+            # Query input for all APIs
             query = st.text_area(
                 "Enter your search terms here:",
                 value=default_query,
                 placeholder=(
-                    "Enter your search query (e.g., 'artificial intelligence' OR "
-                    "'machine learning')"
+                    "Enter your search query (e.g., 'cancer immunotherapy' OR "
+                    "'machine learning genomics')"
                 ),
                 height=100,
                 help="This is where you enter your search terms. Use simple keywords or complex Boolean queries.",
@@ -753,9 +659,7 @@ class PygetpapersUI:
             '<h3 class="section-header">📥 Download Options</h3>',
             unsafe_allow_html=True,
         )
-
         col3, col4, col5 = st.columns(3)
-
         with col3:
             limit = st.number_input(
                 "Maximum Results", min_value=1, max_value=1000, value=10
@@ -768,14 +672,12 @@ class PygetpapersUI:
                 st.error(
                     f"🚨 **DANGER:** Requesting {limit} papers is very resource-intensive. Consider reducing the limit."
                 )
-
             download_xml = st.checkbox(
                 "Download XML", value=True, disabled=not features["xml"]
             )
             download_pdf = st.checkbox(
                 "Download PDF", value=False, disabled=not features["pdf"]
             )
-
         with col4:
             download_supp = st.checkbox(
                 "Download Supplementary Files",
@@ -788,21 +690,20 @@ class PygetpapersUI:
             download_citations = st.checkbox(
                 "Download Citations", value=False, disabled=not features["citations"]
             )
-
         with col5:
             make_csv = st.checkbox("Generate CSV Metadata", value=True)
             make_html = st.checkbox("Generate HTML Metadata", value=False)
             save_query = st.checkbox("Save Query Configuration", value=False)
-            
+
         # XML2HTML conversion option
         if features["xml2html"]:
             st.markdown("---")
             col_xml2html1, col_xml2html2 = st.columns([1, 3])
             with col_xml2html1:
                 convert_xml2html = st.checkbox(
-                    "🔄 Convert XML to HTML", 
+                    "🔄 Convert XML to HTML",
                     value=False,
-                    help="Convert downloaded XML files to HTML using JATS4R or Simple HTML Converter"
+                    help="Convert downloaded XML files to HTML using JATS4R or Simple HTML Converter",
                 )
             with col_xml2html2:
                 if convert_xml2html:
@@ -815,21 +716,22 @@ class PygetpapersUI:
 
         # Output directory with file browser
         if "output_dir" not in st.session_state:
+            # Default to user's home directory with pygetpapers subdirectory
+            default_base = str(Path(Path.home(), "pygetpapers"))
             repo_name = self.supported_apis[selected_api].lower().replace(" ", "_")
-            st.session_state.output_dir = (
-                f"{repo_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-            )
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            st.session_state.output_dir = f"{default_base}/{repo_name}_{timestamp}"
 
         col_output1, col_output2 = st.columns([3, 1])
-        
+
         with col_output1:
             output_dir = st.text_input(
                 "Output Directory:",
                 value=st.session_state.output_dir,
                 key="output_dir_input",
-                help="Enter the directory path where papers will be downloaded"
+                help="Directory where papers will be downloaded (default: ~/pygetpapers/)",
             )
-        
+
         with col_output2:
             st.markdown("###")  # Add some spacing to align with text input
             if st.button("📁 Browse", help="Browse for output directory"):
@@ -839,13 +741,13 @@ class PygetpapersUI:
         # Directory browser for output directory
         if st.session_state.get("show_dir_browser", False):
             st.markdown("### 📁 Directory Browser")
-            
+
             # Initialize current path if not set
             if "current_browse_path" not in st.session_state:
                 st.session_state.current_browse_path = str(Path.cwd())
-            
+
             current_path = Path(st.session_state.current_browse_path)
-            
+
             # Navigation bar
             st.markdown("---")
             col_nav1, col_nav2, col_nav3, col_nav4, col_nav5 = st.columns(5)
@@ -860,7 +762,9 @@ class PygetpapersUI:
                         st.rerun()
             with col_nav3:
                 if st.button("📁 Desktop", use_container_width=True):
-                    st.session_state.current_browse_path = str(Path.home() / "Desktop")
+                    st.session_state.current_browse_path = str(
+                        Path(Path.home(), "Desktop")
+                    )
                     st.rerun()
             with col_nav4:
                 if st.button("✅ Select", type="primary", use_container_width=True):
@@ -871,27 +775,31 @@ class PygetpapersUI:
                 if st.button("❌ Close", use_container_width=True):
                     st.session_state.show_dir_browser = False
                     st.rerun()
-            
+
             # Current path display
             st.markdown(f"**Current Location:** `{current_path}`")
-            
+
             # List directories and files in a compact table-like format
             try:
                 items = list(current_path.iterdir())
                 dirs = [item for item in items if item.is_dir()]
                 files = [item for item in items if item.is_file()]
-                
+
                 # Create a more compact display
                 if dirs or files:
                     st.markdown("**Contents:**")
-                    
+
                     # Show directories in a compact list
                     if dirs:
                         for dir_item in sorted(dirs):
-                            if st.button(f"📁 {dir_item.name}", key=f"dir_{dir_item.name}", use_container_width=True):
+                            if st.button(
+                                f"📁 {dir_item.name}",
+                                key=f"dir_{dir_item.name}",
+                                use_container_width=True,
+                            ):
                                 st.session_state.current_browse_path = str(dir_item)
                                 st.rerun()
-                    
+
                     # Show file count if there are files
                     if files:
                         file_count = len(files)
@@ -900,15 +808,15 @@ class PygetpapersUI:
                                 st.markdown(f"📄 {file_item.name}")
                         else:
                             st.markdown(f"📄 {file_count} files in this directory")
-                    
+
                     if not dirs and not files:
                         st.info("📂 Empty directory")
-                        
+
             except PermissionError:
                 st.error("❌ Permission denied accessing this directory")
             except Exception as e:
                 st.error(f"❌ Error accessing directory: {e}")
-            
+
             st.markdown("---")
 
         # Update session state when user changes the value
@@ -919,18 +827,19 @@ class PygetpapersUI:
         if st.button(
             "🔍 Search and Download", type="primary", use_container_width=True
         ):
-            # Validation for biorxiv/medrxiv
+            # Validation for biorxiv/medrxiv (now supports both text queries and date ranges)
             if selected_api in ["biorxiv", "medrxiv"]:
-                if not start_date or not end_date:
-                    st.error("⚠️ **Error:** Date range is required for bioRxiv/medRxiv searches!")
-                    st.info("Please specify both start and end dates.")
+                # For bioRxiv/medRxiv, we need either a text query OR a date range
+                if not query and (not start_date or not end_date):
+                    st.error(
+                        "⚠️ **Error:** bioRxiv/medRxiv requires either a text query OR a date range!"
+                    )
+                    st.info(
+                        "Please provide either a search query or specify both start and end dates."
+                    )
                     return
-                if start_date >= end_date:
+                if start_date and end_date and start_date >= end_date:
                     st.error("⚠️ **Error:** Start date must be before end date!")
-                    return
-                if query:
-                    st.error("⚠️ **Error:** Query-based searches are not supported for bioRxiv/medRxiv!")
-                    st.info("Please remove any query and use only date range.")
                     return
             else:
                 # Validation for other APIs
@@ -956,12 +865,12 @@ class PygetpapersUI:
             # Build command arguments
             args = ["--api", selected_api, "--limit", str(limit)]
 
-            # Only add query for APIs that support it
-            if query and selected_api not in ["biorxiv", "medrxiv"]:
+            # Add query for APIs that support it (now including bioRxiv/medRxiv)
+            if query and features["query"]:
                 args.extend(["--query", query])
 
             # Add date range for APIs that support it
-            if start_date and end_date and (features["date_range"] or selected_api in ["biorxiv", "medrxiv"]):
+            if start_date and end_date and features["date_range"]:
                 args.extend(["--startdate", start_date.strftime("%Y-%m-%d")])
                 args.extend(["--enddate", end_date.strftime("%Y-%m-%d")])
 
@@ -993,32 +902,112 @@ class PygetpapersUI:
             # Create progress placeholder
             progress_placeholder = st.empty()
 
-            # Run the command with progress tracking
-            result = self.run_pygetpapers_command(args, progress_placeholder)
+            # For bioRxiv/medRxiv text queries, use the BioRxivIntegration
+            if selected_api in ["biorxiv", "medrxiv"] and query:
+                try:
+                    from biorxiv_integration import BioRxivIntegration
+
+                    # Create output directory
+                    output_path = Path(output_dir)
+                    output_path.mkdir(parents=True, exist_ok=True)
+
+                    # Initialize bioRxiv integration
+                    integration = BioRxivIntegration(str(output_path))
+
+                    # Show progress
+                    with progress_placeholder.container():
+                        st.info("🔍 Searching bioRxiv/medRxiv with web scraper...")
+
+                    # Search and collect papers
+                    collection_result = integration.search_and_collect(
+                        query=query,
+                        max_papers=limit,
+                        results_per_page=25,
+                        save_metadata=True,
+                    )
+
+                    # Create a result structure compatible with the existing code
+                    result = {
+                        "success": True,
+                        "stdout": f"Downloaded {collection_result['papers_downloaded']} papers",
+                        "stderr": "",
+                        "progress_data": {
+                            "current_paper": collection_result["papers_downloaded"],
+                            "total_papers": collection_result["papers_collected"],
+                        },
+                    }
+
+                    # Show immediate completion message for bioRxiv
+                    st.success(
+                        f"✅ BioRxiv collection completed! Downloaded {collection_result['papers_downloaded']} papers."
+                    )
+
+                except Exception as e:
+                    result = {
+                        "success": False,
+                        "stdout": "",
+                        "stderr": f"Error with bioRxiv integration: {str(e)}",
+                        "progress_data": {"current_paper": 0, "total_papers": 0},
+                    }
+            else:
+                # Run the command with progress tracking for other APIs
+                result = self.run_pygetpapers_command(args, progress_placeholder)
 
             if result["success"]:
                 st.success("✅ Papers downloaded successfully!")
 
                 # Validate the number of papers actually downloaded
                 actual_papers = result["progress_data"].get("current_paper", 0)
-                if actual_papers > limit:
-                    st.warning(
-                        f"⚠️ **Warning:** Requested {limit} papers but {actual_papers} were downloaded!"
-                    )
-                    st.error(
-                        f"🚨 **CRITICAL:** This exceeds the requested limit by {actual_papers - limit} papers!"
-                    )
-                    st.info(
-                        "This may be due to API behavior or repository-specific limits. Please check the output directory."
-                    )
-                elif actual_papers == 0:
-                    st.warning(
-                        "⚠️ **Warning:** No papers were downloaded. Check the query and repository."
-                    )
+
+                # For bioRxiv/medRxiv web scraper, always check the output directory for actual papers
+                if selected_api in ["biorxiv", "medrxiv"]:
+                    # Count actual papers in the output directory
+                    import os
+
+                    output_path = Path(output_dir)
+                    if output_path.exists():
+                        # Count directories that look like paper directories (contain DOI-like names)
+                        # bioRxiv uses format: 10.1101_2020.12.03.409615 (with underscores)
+                        paper_dirs = [
+                            d
+                            for d in output_path.iterdir()
+                            if d.is_dir()
+                            and ("10.1101" in d.name or d.name.startswith("10.1101_"))
+                        ]
+                        actual_papers = len(paper_dirs)
+
+                        if actual_papers > 0:
+                            st.success(
+                                f"✅ Successfully downloaded {actual_papers} papers via web scraper (requested: {limit})"
+                            )
+                        else:
+                            st.warning(
+                                "⚠️ **Warning:** No papers were downloaded. Check the query and repository."
+                            )
+                    else:
+                        st.warning(
+                            "⚠️ **Warning:** Output directory not found. Check the query and repository."
+                        )
                 else:
-                    st.success(
-                        f"✅ Successfully downloaded {actual_papers} papers (requested: {limit})"
-                    )
+                    # For other APIs, use the progress data
+                    if actual_papers > limit:
+                        st.warning(
+                            f"⚠️ **Warning:** Requested {limit} papers but {actual_papers} were downloaded!"
+                        )
+                        st.error(
+                            f"🚨 **CRITICAL:** This exceeds the requested limit by {actual_papers - limit} papers!"
+                        )
+                        st.info(
+                            "This may be due to API behavior or repository-specific limits. Please check the output directory."
+                        )
+                    elif actual_papers == 0:
+                        st.warning(
+                            "⚠️ **Warning:** No papers were downloaded. Check the query and repository."
+                        )
+                    else:
+                        st.success(
+                            f"✅ Successfully downloaded {actual_papers} papers (requested: {limit})"
+                        )
 
                 st.session_state.total_papers += actual_papers
                 st.session_state.total_corpora += 1
@@ -1141,7 +1130,7 @@ class PygetpapersUI:
             "Choose Repository for Query:",
             options=list(self.supported_apis.keys()),
             format_func=lambda x: self.supported_apis[x],
-            key="query_builder_api"
+            key="query_builder_api",
         )
 
         # Show warning for bioRxiv/medRxiv
@@ -1223,7 +1212,9 @@ class PygetpapersUI:
         # Copy to search page
         if st.button("📋 Copy to Search Page"):
             st.session_state.generated_query = generated_query
-            st.success(f"Query copied! Switch to Search Papers page and select {self.supported_apis[selected_api]} to use it.")
+            st.success(
+                f"Query copied! Switch to Search Papers page and select {self.supported_apis[selected_api]} to use it."
+            )
 
         # Query examples
         with st.expander("📖 Query Examples"):
@@ -2625,9 +2616,7 @@ class PygetpapersUI:
 
         # Default settings
         st.markdown("### Default Settings")
-
         col1, col2 = st.columns(2)
-
         with col1:
             st.selectbox(
                 "Default Repository:",
@@ -2635,22 +2624,20 @@ class PygetpapersUI:
                 index=0,
                 format_func=lambda x: self.supported_apis[x],
             )
-
             st.number_input(
                 "Default Result Limit:", min_value=10, max_value=1000, value=10
             )
-
         with col2:
-            st.text_input(
-                "Default Output Directory Pattern:",
-                value="pygetpapers_output_{timestamp}",
+            # Output directory configuration
+            default_pattern = st.text_input(
+                "Output Directory Pattern:",
+                value="~/pygetpapers/{repo}_{timestamp}",
+                help="Use {repo} for repository name, {timestamp} for datetime",
             )
-
             st.checkbox("Auto-save queries", value=True)
 
         # Advanced settings
         st.markdown("### Advanced Settings")
-
         st.number_input(
             "Command Timeout (seconds):", min_value=60, max_value=1800, value=300
         )
@@ -2765,13 +2752,15 @@ class PygetpapersUI:
             "Browser Mode:",
             ["🌐 Universal Browser", "📚 Corpus Browser"],
             horizontal=True,
-            key="browser_mode"
+            key="browser_mode",
         )
 
         if browser_mode == "📚 Corpus Browser":
             # Corpus selection
             if not st.session_state.corpora:
-                st.warning("No corpora found. Please download some papers first or use Universal Browser.")
+                st.warning(
+                    "No corpora found. Please download some papers first or use Universal Browser."
+                )
                 return
 
             # Select corpus
@@ -2779,14 +2768,21 @@ class PygetpapersUI:
             selected_corpus_name = st.selectbox(
                 "Select Corpus:",
                 options=corpus_names,
-                format_func=lambda x: f"{x} ({next((c['downloaded_papers'] for c in st.session_state.corpora if c['name'] == x), 0)} papers)"
+                format_func=lambda x: f"{x} ({next((c['downloaded_papers'] for c in st.session_state.corpora if c['name'] == x), 0)} papers)",
             )
 
             if not selected_corpus_name:
                 return
 
             # Get corpus path
-            selected_corpus = next((c for c in st.session_state.corpora if c["name"] == selected_corpus_name), None)
+            selected_corpus = next(
+                (
+                    c
+                    for c in st.session_state.corpora
+                    if c["name"] == selected_corpus_name
+                ),
+                None,
+            )
             if not selected_corpus:
                 st.error("Selected corpus not found.")
                 return
@@ -2797,81 +2793,100 @@ class PygetpapersUI:
                 return
 
             # Initialize current path for corpus browser
-            current_path = st.session_state.get(f"current_path_corpus_{selected_corpus_name}", str(corpus_path))
+            current_path = st.session_state.get(
+                f"current_path_corpus_{selected_corpus_name}", str(corpus_path)
+            )
             browser_key = f"corpus_{selected_corpus_name}"
-            
+
             # Show corpus summary
             st.markdown("**📊 Corpus Summary:**")
-            st.markdown(f"- **Total Papers:** {selected_corpus.get('downloaded_papers', 0)}")
+            st.markdown(
+                f"- **Total Papers:** {selected_corpus.get('downloaded_papers', 0)}"
+            )
             st.markdown(f"- **API:** {selected_corpus.get('api', 'Unknown')}")
             st.markdown(f"- **Query:** {selected_corpus.get('query', 'Unknown')}")
-            st.markdown(f"- **Created:** {selected_corpus.get('date_created', 'Unknown')}")
+            st.markdown(
+                f"- **Created:** {selected_corpus.get('date_created', 'Unknown')}"
+            )
 
         else:
             # Universal browser
             browser_key = "universal"
-            
+
             # Directory selection interface
             st.markdown("### 📂 Directory Selection")
-            
+
             # Quick access buttons
             col_quick1, col_quick2, col_quick3, col_quick4 = st.columns(4)
             with col_quick1:
                 if st.button("🏠 Home Directory", key="quick_home"):
                     st.session_state["universal_current_path"] = str(Path.home())
                     st.rerun()
-            
+
             with col_quick2:
                 if st.button("📁 Current Directory", key="quick_current"):
                     st.session_state["universal_current_path"] = str(Path.cwd())
                     st.rerun()
-            
+
             with col_quick3:
                 if st.button("📂 Desktop", key="quick_desktop"):
-                    desktop_path = Path.home() / "Desktop"
+                    desktop_path = Path(Path.home(), "Desktop")
                     if desktop_path.exists():
                         st.session_state["universal_current_path"] = str(desktop_path)
                         st.rerun()
                     else:
                         st.error("Desktop directory not found")
-            
+
             with col_quick4:
                 if st.button("📁 Documents", key="quick_documents"):
-                    docs_path = Path.home() / "Documents"
+                    docs_path = Path(Path.home(), "Documents")
                     if docs_path.exists():
                         st.session_state["universal_current_path"] = str(docs_path)
                         st.rerun()
                     else:
                         st.error("Documents directory not found")
-            
+
             # Path input for universal browser
             col_path1, col_path2 = st.columns([3, 1])
             with col_path1:
                 path_input = st.text_input(
                     "Enter Directory Path:",
-                    value=st.session_state.get("universal_current_path", str(Path.cwd())),
-                    key="path_input"
+                    value=st.session_state.get(
+                        "universal_current_path", str(Path.cwd())
+                    ),
+                    key="path_input",
                 )
-            
+
             with col_path2:
                 if st.button("🔍 Go", key="go_path"):
-                    if path_input and Path(path_input).exists() and Path(path_input).is_dir():
+                    if (
+                        path_input
+                        and Path(path_input).exists()
+                        and Path(path_input).is_dir()
+                    ):
                         st.session_state["universal_current_path"] = path_input
                         st.rerun()
                     else:
                         st.error("Invalid directory path")
-            
-            current_path = st.session_state.get("universal_current_path", str(Path.cwd()))
+
+            current_path = st.session_state.get(
+                "universal_current_path", str(Path.cwd())
+            )
 
         # File browser interface
         col1, col2 = st.columns([1, 2])
 
         with col1:
             st.markdown("### 📂 Directory Structure")
-            
+
             # Current path display
-            st.text_input("Current Path:", value=current_path, key=f"path_display_{browser_key}", disabled=True)
-            
+            st.text_input(
+                "Current Path:",
+                value=current_path,
+                key=f"path_display_{browser_key}",
+                disabled=True,
+            )
+
             # Navigation buttons
             col1a, col1b, col1c = st.columns(3)
             with col1a:
@@ -2879,24 +2894,32 @@ class PygetpapersUI:
                     parent_path = Path(current_path).parent
                     if parent_path.exists():
                         if browser_mode == "📚 Corpus Browser":
-                            st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(parent_path)
+                            st.session_state[
+                                f"current_path_corpus_{selected_corpus_name}"
+                            ] = str(parent_path)
                         else:
-                            st.session_state["universal_current_path"] = str(parent_path)
+                            st.session_state["universal_current_path"] = str(
+                                parent_path
+                            )
                         st.rerun()
-            
+
             with col1b:
                 if st.button("🏠 Home", key=f"home_{browser_key}"):
                     home_path = str(Path.home())
                     if browser_mode == "📚 Corpus Browser":
-                        st.session_state[f"current_path_corpus_{selected_corpus_name}"] = home_path
+                        st.session_state[
+                            f"current_path_corpus_{selected_corpus_name}"
+                        ] = home_path
                     else:
                         st.session_state["universal_current_path"] = home_path
                     st.rerun()
-            
+
             with col1c:
                 if st.button("📁 Root", key=f"root_{browser_key}"):
                     if browser_mode == "📚 Corpus Browser":
-                        st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(corpus_path)
+                        st.session_state[
+                            f"current_path_corpus_{selected_corpus_name}"
+                        ] = str(corpus_path)
                     else:
                         st.session_state["universal_current_path"] = str(Path.cwd())
                     st.rerun()
@@ -2909,19 +2932,21 @@ class PygetpapersUI:
                     return
 
                 items = list(current_dir.iterdir())
-                items.sort(key=lambda x: (not x.is_dir(), x.name.lower()))  # Directories first, then files
+                items.sort(
+                    key=lambda x: (not x.is_dir(), x.name.lower())
+                )  # Directories first, then files
 
                 # Add dot file visibility toggle
                 show_dot_files = st.checkbox(
                     "👁️ Show hidden files (starting with .)",
                     value=False,
                     key=f"show_dot_files_{browser_key}",
-                    help="Toggle visibility of hidden files and directories (like .git, .DS_Store, etc.)"
+                    help="Toggle visibility of hidden files and directories (like .git, .DS_Store, etc.)",
                 )
-                
+
                 # Filter out dot files if not showing them
                 if not show_dot_files:
-                    items = [item for item in items if not item.name.startswith('.')]
+                    items = [item for item in items if not item.name.startswith(".")]
 
                 # Show breadcrumb navigation
                 st.markdown("**📍 Path Navigation:**")
@@ -2934,22 +2959,26 @@ class PygetpapersUI:
                         breadcrumb += f"**{part}**"
                     else:
                         # Create clickable breadcrumb
-                        partial_path = Path(*path_parts[:i+1])
+                        partial_path = Path(*path_parts[: i + 1])
                         if st.button(f"{part}", key=f"breadcrumb_{i}_{browser_key}"):
                             if browser_mode == "📚 Corpus Browser":
-                                st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(partial_path)
+                                st.session_state[
+                                    f"current_path_corpus_{selected_corpus_name}"
+                                ] = str(partial_path)
                             else:
-                                st.session_state["universal_current_path"] = str(partial_path)
+                                st.session_state["universal_current_path"] = str(
+                                    partial_path
+                                )
                             st.rerun()
                         breadcrumb += f"{part}"
-                
+
                 if not breadcrumb:
                     st.markdown(f"**{current_path}**")
 
                 # Directory statistics
                 dir_count = sum(1 for item in items if item.is_dir())
                 file_count = sum(1 for item in items if item.is_file())
-                
+
                 col_stats1, col_stats2, col_stats3 = st.columns(3)
                 with col_stats1:
                     st.metric("📁 Directories", dir_count)
@@ -2961,31 +2990,49 @@ class PygetpapersUI:
                 # Show directories with expandable sections
                 if dir_count > 0:
                     st.markdown("**📁 Directories:**")
-                    
+
                     # Add search/filter for directories
-                    dir_search = st.text_input("🔍 Filter directories:", key=f"dir_search_{browser_key}")
-                    
+                    dir_search = st.text_input(
+                        "🔍 Filter directories:", key=f"dir_search_{browser_key}"
+                    )
+
                     filtered_dirs = [item for item in items if item.is_dir()]
                     if dir_search:
-                        filtered_dirs = [item for item in filtered_dirs if dir_search.lower() in item.name.lower()]
-                    
+                        filtered_dirs = [
+                            item
+                            for item in filtered_dirs
+                            if dir_search.lower() in item.name.lower()
+                        ]
+
                     # Show directories in a scrollable container
                     with st.container():
                         for item in filtered_dirs:
                             col_dir1, col_dir2 = st.columns([3, 1])
                             with col_dir1:
-                                if st.button(f"📁 {item.name}", key=f"dir_{item}_{browser_key}"):
+                                if st.button(
+                                    f"📁 {item.name}", key=f"dir_{item}_{browser_key}"
+                                ):
                                     if browser_mode == "📚 Corpus Browser":
-                                        st.session_state[f"current_path_corpus_{selected_corpus_name}"] = str(item)
+                                        st.session_state[
+                                            f"current_path_corpus_{selected_corpus_name}"
+                                        ] = str(item)
                                     else:
-                                        st.session_state["universal_current_path"] = str(item)
+                                        st.session_state["universal_current_path"] = (
+                                            str(item)
+                                        )
                                     st.rerun()
                             with col_dir2:
                                 # Show directory info on hover
                                 try:
                                     sub_items = list(item.iterdir())
-                                    sub_dir_count = sum(1 for sub_item in sub_items if sub_item.is_dir())
-                                    sub_file_count = sum(1 for sub_item in sub_items if sub_item.is_file())
+                                    sub_dir_count = sum(
+                                        1 for sub_item in sub_items if sub_item.is_dir()
+                                    )
+                                    sub_file_count = sum(
+                                        1
+                                        for sub_item in sub_items
+                                        if sub_item.is_file()
+                                    )
                                     st.caption(f"{sub_dir_count}d {sub_file_count}f")
                                 except:
                                     st.caption("...")
@@ -2993,21 +3040,31 @@ class PygetpapersUI:
                 # Show files with search/filter
                 if file_count > 0:
                     st.markdown("**📄 Files:**")
-                    
+
                     # Add search/filter for files
-                    file_search = st.text_input("🔍 Filter files:", key=f"file_search_{browser_key}")
-                    
+                    file_search = st.text_input(
+                        "🔍 Filter files:", key=f"file_search_{browser_key}"
+                    )
+
                     filtered_files = [item for item in items if item.is_file()]
                     if file_search:
-                        filtered_files = [item for item in filtered_files if file_search.lower() in item.name.lower()]
-                    
+                        filtered_files = [
+                            item
+                            for item in filtered_files
+                            if file_search.lower() in item.name.lower()
+                        ]
+
                     # Show files in a scrollable container
                     with st.container():
                         for item in filtered_files:
                             col_file1, col_file2, col_file3 = st.columns([3, 1, 1])
                             with col_file1:
-                                if st.button(f"📄 {item.name}", key=f"file_{item}_{browser_key}"):
-                                    st.session_state[f"selected_file_{browser_key}"] = str(item)
+                                if st.button(
+                                    f"📄 {item.name}", key=f"file_{item}_{browser_key}"
+                                ):
+                                    st.session_state[f"selected_file_{browser_key}"] = (
+                                        str(item)
+                                    )
                                     st.rerun()
                             with col_file2:
                                 # Show file size
@@ -3031,54 +3088,67 @@ class PygetpapersUI:
 
         with col2:
             st.markdown("### 📄 File Viewer & Search")
-            
+
             # Add HTML search functionality
             st.markdown("#### 🔍 HTML Text Search")
             html_search_query = st.text_input(
                 "Search in HTML files:",
                 placeholder="Enter text to search in HTML files...",
-                key=f"html_search_{browser_key}"
+                key=f"html_search_{browser_key}",
             )
-            
+
             if html_search_query:
                 # Search in current directory and subdirectories
-                search_results = self._search_html_files(Path(current_path), html_search_query)
-                
+                search_results = self._search_html_files(
+                    Path(current_path), html_search_query
+                )
+
                 if search_results:
-                    st.success(f"Found {len(search_results)} HTML files with matches for '{html_search_query}'")
-                    
+                    st.success(
+                        f"Found {len(search_results)} HTML files with matches for '{html_search_query}'"
+                    )
+
                     # Display search results
                     for result in search_results:
-                        with st.expander(f"📄 {result['file_name']} ({result['match_count']} matches)"):
+                        with st.expander(
+                            f"📄 {result['file_name']} ({result['match_count']} matches)"
+                        ):
                             st.markdown(f"**File:** `{result['relative_path']}`")
-                            
-                            for match in result['matches']:
+
+                            for match in result["matches"]:
                                 st.markdown(f"**Line {match['line_number']}:**")
                                 st.markdown(f"```\n{match['snippet']}\n```")
-                                
+
                                 # Add button to view full file
-                                if st.button(f"View full file: {result['file_name']}", key=f"view_{result['file_path']}_{browser_key}"):
-                                    st.session_state[f"selected_file_{browser_key}"] = result['file_path']
+                                if st.button(
+                                    f"View full file: {result['file_name']}",
+                                    key=f"view_{result['file_path']}_{browser_key}",
+                                ):
+                                    st.session_state[f"selected_file_{browser_key}"] = (
+                                        result["file_path"]
+                                    )
                                     st.rerun()
-                                
+
                                 st.divider()
                 else:
-                    st.warning(f"No matches found for '{html_search_query}' in HTML files")
-            
+                    st.warning(
+                        f"No matches found for '{html_search_query}' in HTML files"
+                    )
+
             st.divider()
-            
+
             # Check if a file is selected
             selected_file = st.session_state.get(f"selected_file_{browser_key}")
-            
+
             if selected_file:
                 file_path = Path(selected_file)
                 if file_path.exists() and file_path.is_file():
                     st.markdown(f"**Selected File:** `{file_path.name}`")
-                    
+
                     # File info
                     file_size = file_path.stat().st_size
                     file_modified = datetime.fromtimestamp(file_path.stat().st_mtime)
-                    
+
                     col2a, col2b, col2c = st.columns(3)
                     with col2a:
                         st.metric("Size", f"{file_size:,} bytes")
@@ -3086,7 +3156,7 @@ class PygetpapersUI:
                         st.metric("Modified", file_modified.strftime("%Y-%m-%d"))
                     with col2c:
                         st.metric("Type", file_path.suffix or "No extension")
-                    
+
                     # File actions
                     col2d, col2e = st.columns(2)
                     with col2d:
@@ -3096,74 +3166,95 @@ class PygetpapersUI:
                                     label="Click to download",
                                     data=f.read(),
                                     file_name=file_path.name,
-                                    mime="application/octet-stream"
+                                    mime="application/octet-stream",
                                 )
-                    
+
                     with col2e:
                         if st.button("🗑️ Clear Selection", key=f"clear_{browser_key}"):
                             if f"selected_file_{browser_key}" in st.session_state:
                                 del st.session_state[f"selected_file_{browser_key}"]
                             st.rerun()
-                    
+
                     # File content viewer
                     st.markdown("**File Contents:**")
-                    
+
                     # Determine file type and display accordingly
                     file_extension = file_path.suffix.lower()
-                    
-                    if file_extension in ['.txt', '.md', '.csv', '.json', '.xml', '.html']:
+
+                    if file_extension in [
+                        ".txt",
+                        ".md",
+                        ".csv",
+                        ".json",
+                        ".xml",
+                        ".html",
+                    ]:
                         # Text files
                         try:
-                            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                            with open(
+                                file_path, "r", encoding="utf-8", errors="ignore"
+                            ) as f:
                                 content = f.read()
-                            
+
                             # For large files, show first part
                             if len(content) > 10000:
-                                st.warning("File is large. Showing first 10,000 characters.")
+                                st.warning(
+                                    "File is large. Showing first 10,000 characters."
+                                )
                                 content = content[:10000] + "\n\n... (truncated)"
-                            
-                            if file_extension == '.json':
+
+                            if file_extension == ".json":
                                 # Pretty print JSON
                                 try:
                                     import json
+
                                     parsed_json = json.loads(content)
                                     st.json(parsed_json)
                                 except:
-                                    st.code(content, language='json')
-                            elif file_extension == '.xml':
-                                st.code(content, language='xml')
-                            elif file_extension == '.html':
-                                st.code(content, language='html')
-                            elif file_extension == '.csv':
+                                    st.code(content, language="json")
+                            elif file_extension == ".xml":
+                                st.code(content, language="xml")
+                            elif file_extension == ".html":
+                                st.code(content, language="html")
+                            elif file_extension == ".csv":
                                 # Show as table
                                 try:
                                     import pandas as pd
+
                                     df = pd.read_csv(file_path)
                                     st.dataframe(df)
                                 except:
-                                    st.code(content, language='csv')
+                                    st.code(content, language="csv")
                             else:
-                                st.code(content, language='text')
-                                
+                                st.code(content, language="text")
+
                         except Exception as e:
                             st.error(f"Error reading file: {e}")
-                    
-                    elif file_extension in ['.pdf']:
+
+                    elif file_extension in [".pdf"]:
                         # PDF files
-                        st.info("PDF files cannot be displayed directly in the browser.")
-                        st.markdown("Use the download button above to save the PDF file.")
-                    
-                    elif file_extension in ['.jpg', '.jpeg', '.png', '.gif', '.bmp']:
+                        st.info(
+                            "PDF files cannot be displayed directly in the browser."
+                        )
+                        st.markdown(
+                            "Use the download button above to save the PDF file."
+                        )
+
+                    elif file_extension in [".jpg", ".jpeg", ".png", ".gif", ".bmp"]:
                         # Image files
                         try:
-                            st.image(file_path, caption=file_path.name, use_column_width=True)
+                            st.image(
+                                file_path, caption=file_path.name, use_column_width=True
+                            )
                         except Exception as e:
                             st.error(f"Error displaying image: {e}")
-                    
+
                     else:
                         # Binary or unknown files
-                        st.info(f"Binary file ({file_extension}). Use the download button to save.")
-                        
+                        st.info(
+                            f"Binary file ({file_extension}). Use the download button to save."
+                        )
+
                         # Show file size info
                         if file_size < 1024:
                             size_str = f"{file_size} B"
@@ -3171,16 +3262,18 @@ class PygetpapersUI:
                             size_str = f"{file_size/1024:.1f} KB"
                         else:
                             size_str = f"{file_size/(1024**2):.1f} MB"
-                        
+
                         st.metric("File Size", size_str)
-                
+
                 else:
                     st.warning("Selected file does not exist.")
                     if f"selected_file_{browser_key}" in st.session_state:
                         del st.session_state[f"selected_file_{browser_key}"]
             else:
-                st.info("Select a file from the directory structure to view its contents.")
-                
+                st.info(
+                    "Select a file from the directory structure to view its contents."
+                )
+
                 # Show current directory info
                 try:
                     current_dir = Path(current_path)
@@ -3188,50 +3281,60 @@ class PygetpapersUI:
                         items = list(current_dir.iterdir())
                         dir_count = sum(1 for item in items if item.is_dir())
                         file_count = sum(1 for item in items if item.is_file())
-                        
+
                         st.markdown("**📊 Directory Info:**")
                         st.markdown(f"- **Directories:** {dir_count}")
                         st.markdown(f"- **Files:** {file_count}")
                         st.markdown(f"- **Total Items:** {len(items)}")
-                        
+
                         # Show directory tree preview
                         if dir_count > 0:
                             st.markdown("**🌳 Directory Tree Preview:**")
-                            tree_preview = self._generate_directory_tree_preview(current_dir, max_depth=2, show_dot_files=show_dot_files)
+                            tree_preview = self._generate_directory_tree_preview(
+                                current_dir, max_depth=2, show_dot_files=show_dot_files
+                            )
                             st.code(tree_preview, language="text")
                 except Exception as e:
                     st.error(f"Error reading directory info: {e}")
 
-    def _generate_directory_tree_preview(self, directory: Path, max_depth: int = 2, current_depth: int = 0, show_dot_files: bool = False) -> str:
+    def _generate_directory_tree_preview(
+        self,
+        directory: Path,
+        max_depth: int = 2,
+        current_depth: int = 0,
+        show_dot_files: bool = False,
+    ) -> str:
         """Generate a preview of the directory tree structure"""
         if current_depth > max_depth:
             return ""
-        
+
         tree_lines = []
         try:
             items = list(directory.iterdir())
             items.sort(key=lambda x: (not x.is_dir(), x.name.lower()))
-            
+
             # Filter out dot files if not showing them
             if not show_dot_files:
-                items = [item for item in items if not item.name.startswith('.')]
-            
+                items = [item for item in items if not item.name.startswith(".")]
+
             for i, item in enumerate(items):
                 is_last = i == len(items) - 1
                 prefix = "└── " if is_last else "├── "
                 indent = "    " * current_depth
-                
+
                 if item.is_dir():
                     tree_lines.append(f"{indent}{prefix}📁 {item.name}/")
                     if current_depth < max_depth:
-                        sub_tree = self._generate_directory_tree_preview(item, max_depth, current_depth + 1, show_dot_files)
+                        sub_tree = self._generate_directory_tree_preview(
+                            item, max_depth, current_depth + 1, show_dot_files
+                        )
                         if sub_tree:
                             tree_lines.append(sub_tree)
                 else:
                     tree_lines.append(f"{indent}{prefix}📄 {item.name}")
         except Exception:
             tree_lines.append(f"{indent}└── [Error reading directory]")
-        
+
         return "\n".join(tree_lines)
 
     def _recalculate_stats_from_corpora(self):
@@ -3239,16 +3342,18 @@ class PygetpapersUI:
         try:
             total_papers = 0
             total_corpora = len(st.session_state.corpora)
-            
+
             for corpus in st.session_state.corpora:
                 papers_in_corpus = corpus.get("downloaded_papers", 0)
                 total_papers += papers_in_corpus
-            
+
             st.session_state.total_papers = total_papers
             st.session_state.total_corpora = total_corpora
-            
-            st.info(f"📊 **Recalculated:** {total_papers} total papers from {total_corpora} corpora")
-            
+
+            st.info(
+                f"📊 **Recalculated:** {total_papers} total papers from {total_corpora} corpora"
+            )
+
         except Exception as e:
             st.error(f"❌ **Error recalculating stats:** {e}")
 
@@ -3257,7 +3362,6 @@ class PygetpapersUI:
         import json
         import os
         from datetime import datetime
-        from pathlib import Path
 
         # Get current directory
         current_dir = Path.cwd()
@@ -3272,11 +3376,11 @@ class PygetpapersUI:
                 if self._is_pygetpapers_output(item):
                     corpus_dirs.append(item)
 
-        # Debug: Show what we found
-        try:
-            st.info(f"🔍 **Auto-detection:** Found {len(corpus_dirs)} potential corpus directories")
-        except:
-            pass  # Not in Streamlit context
+        # Debug: Show what we found (disabled)
+        # try:
+        #     st.info(f"🔍 **Auto-detection:** Found {len(corpus_dirs)} potential corpus directories")
+        # except:
+        #     pass  # Not in Streamlit context
 
         # Add any new corpora to session state
         # Handle case where session state is not initialized
@@ -3313,23 +3417,23 @@ class PygetpapersUI:
                         papers_in_corpus = corpus_info.get("downloaded_papers", 0)
                         st.session_state.total_papers += papers_in_corpus
                         st.session_state.total_corpora += 1
-                        
+
                         new_corpora_count += 1
                         total_papers_added += papers_in_corpus
-                        
-                        # Debug: Show what we added
-                        st.success(f"✅ **Auto-detected:** {corpus_dir.name} ({papers_in_corpus} papers)")
+
+                        # Debug: Show what we added (disabled)
+                        # st.success(f"✅ **Auto-detected:** {corpus_dir.name} ({papers_in_corpus} papers)")
                     except:
                         # Not in Streamlit context, just continue
                         pass
 
-        # Debug: Show summary
-        if new_corpora_count > 0:
-            try:
-                st.success(f"📊 **Auto-detection complete:** Added {new_corpora_count} corpora with {total_papers_added} total papers")
-                st.info(f"📈 **Updated stats:** Total papers: {st.session_state.total_papers}, Total corpora: {st.session_state.total_corpora}")
-            except:
-                pass  # Not in Streamlit context
+        # Debug: Show summary (disabled)
+        # if new_corpora_count > 0:
+        #     try:
+        #         st.success(f"📊 **Auto-detection complete:** Added {new_corpora_count} corpora with {total_papers_added} total papers")
+        #         st.info(f"📈 **Updated stats:** Total papers: {st.session_state.total_papers}, Total corpora: {st.session_state.total_corpora}")
+        #     except:
+        #         pass  # Not in Streamlit context
 
     def _is_pygetpapers_output(self, directory: Path) -> bool:
         """Check if a directory looks like pygetpapers output"""
@@ -3443,95 +3547,102 @@ class PygetpapersUI:
             st.warning(f"Error extracting info from {corpus_dir.name}: {e}")
             return None
 
-    def _search_html_files(self, search_directory: Path, search_query: str, max_results: int = 50) -> List[Dict]:
+    def _search_html_files(
+        self, search_directory: Path, search_query: str, max_results: int = 50
+    ) -> List[Dict]:
         """
         Search through HTML files in a directory and return matching snippets.
-        
+
         Args:
             search_directory: Directory to search in
             search_query: Text to search for
             max_results: Maximum number of results to return
-            
+
         Returns:
             List of dictionaries containing file info and matching snippets
         """
         results = []
         search_query_lower = search_query.lower()
-        
+
         try:
             # Find all HTML files recursively
             html_files = list(search_directory.rglob("*.html"))
-            
+
             for html_file in html_files:
                 try:
                     # Read HTML file
-                    with open(html_file, 'r', encoding='utf-8', errors='ignore') as f:
+                    with open(html_file, "r", encoding="utf-8", errors="ignore") as f:
                         content = f.read()
-                    
+
                     # Remove HTML tags for text search
                     import re
-                    text_content = re.sub(r'<[^>]+>', ' ', content)
-                    text_content = re.sub(r'\s+', ' ', text_content).strip()
-                    
+
+                    text_content = re.sub(r"<[^>]+>", " ", content)
+                    text_content = re.sub(r"\s+", " ", text_content).strip()
+
                     # Search for matches
                     matches = []
-                    lines = text_content.split('\n')
-                    
+                    lines = text_content.split("\n")
+
                     for line_num, line in enumerate(lines, 1):
                         if search_query_lower in line.lower():
                             # Find the position of the match
                             match_pos = line.lower().find(search_query_lower)
-                            
+
                             # Create snippet with context (50 characters before and after)
                             start_pos = max(0, match_pos - 50)
                             end_pos = min(len(line), match_pos + len(search_query) + 50)
-                            
+
                             snippet = line[start_pos:end_pos]
-                            
+
                             # Highlight the match
                             if match_pos >= 0:
                                 match_start = match_pos - start_pos
                                 match_end = match_start + len(search_query)
                                 highlighted_snippet = (
-                                    snippet[:match_start] + 
-                                    f"**{snippet[match_start:match_end]}**" + 
-                                    snippet[match_end:]
+                                    snippet[:match_start]
+                                    + f"**{snippet[match_start:match_end]}**"
+                                    + snippet[match_end:]
                                 )
                             else:
                                 highlighted_snippet = snippet
-                            
-                            matches.append({
-                                'line_number': line_num,
-                                'snippet': highlighted_snippet,
-                                'full_line': line.strip()
-                            })
-                    
+
+                            matches.append(
+                                {
+                                    "line_number": line_num,
+                                    "snippet": highlighted_snippet,
+                                    "full_line": line.strip(),
+                                }
+                            )
+
                     if matches:
                         # Calculate relative path from search directory
                         try:
                             relative_path = html_file.relative_to(search_directory)
                         except ValueError:
                             relative_path = html_file.name
-                        
-                        results.append({
-                            'file_path': str(html_file),
-                            'relative_path': str(relative_path),
-                            'file_name': html_file.name,
-                            'matches': matches,
-                            'match_count': len(matches)
-                        })
-                        
+
+                        results.append(
+                            {
+                                "file_path": str(html_file),
+                                "relative_path": str(relative_path),
+                                "file_name": html_file.name,
+                                "matches": matches,
+                                "match_count": len(matches),
+                            }
+                        )
+
                         # Limit results per file
                         if len(results) >= max_results:
                             break
-                            
+
                 except Exception as e:
                     # Skip files that can't be read
                     continue
-                    
+
         except Exception as e:
             st.error(f"Error searching HTML files: {e}")
-            
+
         return results
 
     def run(self):

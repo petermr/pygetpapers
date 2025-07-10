@@ -80,13 +80,8 @@ class ApiPlugger:
                 logging.warning(
                     f"{feature} is not supported by {self.query_namespace[API]}"
                 )
-        if self.query_namespace[QUERY] and (
-            self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV
-        ):
-            raise PygetpapersError(
-                "*rxiv doesnt support giving a query. Please provide a date interval "
-                "or number of results to get instead"
-            )
+        # Note: bioRxiv/medRxiv now support text queries via web scraper
+        # The old API-only restriction has been removed
         if (
             not self.query_namespace[QUERY]
             and not self.query_namespace[RESTART]
@@ -174,7 +169,11 @@ class ApiPlugger:
                 f"{self.query_namespace[ENDDATE]}])"
             )
 
-        if self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV:
+        # Only overwrite query for bioRxiv/medRxiv if it's a date query or no text query provided
+        if (self.query_namespace[API] == BIORXIV or self.query_namespace[API] == MEDRXIV) and (
+            self.query_namespace[STARTDATE] or not self.query_namespace[QUERY] or 
+            self.query_namespace[QUERY].isdigit()
+        ):
             self.query_namespace[QUERY] = self.query_namespace[DATE_OR_NUMBER_OF_PAPERS]
 
     def add_terms_from_file(self):
