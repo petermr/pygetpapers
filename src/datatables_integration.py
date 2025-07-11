@@ -1,8 +1,8 @@
 """
-Datatables Integration for Pygetpapers
+Datatables integration for pygetpapers output visualization.
 
-This module provides functionality to read and display pygetpapers output
-using the datatables module for interactive HTML tables.
+This module provides functionality to create interactive HTML tables using jQuery
+DataTables for displaying pygetpapers output data.
 """
 
 import base64
@@ -14,9 +14,191 @@ from typing import Any, Dict, List, Optional
 
 import lxml.etree as ET
 import pandas as pd
-from datatables_module import HtmlTable
+
+# CSS styles for datatables
+DATATABLES_CSS = """
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+.header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.stat {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+.stat-label {
+    font-size: 12px;
+    color: #6c757d;
+}
+.table-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.table-card {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+.table-card h3 {
+    margin-top: 0;
+    color: #495057;
+}
+.table-card p {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+.table-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.table-link:hover {
+    background-color: #0056b3;
+}
+"""
 
 logger = logging.getLogger(__name__)
+
+# Check if datatables_module is available
+try:
+    from datatables_module import HtmlTable as ExternalHtmlTable
+
+    DATATABLES_AVAILABLE = True
+    HtmlTable = ExternalHtmlTable
+except ImportError:
+    DATATABLES_AVAILABLE = False
+    logger.warning(
+        "datatables_module not available. Using fallback HTML table implementation."
+    )
+
+    class HtmlTable:
+        """Fallback HTML table implementation when datatables_module is not available."""
+
+        @staticmethod
+        def create_html_table(dict_by_id, datatables=True, table_id="table"):
+            """Create a simple HTML table from dictionary data with jQuery datatables support."""
+            if not dict_by_id:
+                # Return empty divs as strings
+                return "<div></div>", "<table></table>"
+
+            # Get headers from first item
+            first_item = next(iter(dict_by_id.values()))
+            headers = list(first_item.keys())
+
+            # Build HTML table as string to avoid escaping issues
+            html_parts = []
+
+            # Table structure
+            html_parts.append(
+                f'<table id="{table_id}" style="width: 100%; border-collapse: collapse;">'
+            )
+
+            # Header
+            html_parts.append("<thead><tr>")
+            for header in headers:
+                html_parts.append(
+                    f'<th style="border: 1px solid #ddd; padding: 8px; '
+                    f'background-color: #f2f2f2;">{header}</th>'
+                )
+            html_parts.append("</tr></thead>")
+
+            # Body
+            html_parts.append("<tbody>")
+            for item_id, item_data in dict_by_id.items():
+                html_parts.append("<tr>")
+                for key in headers:
+                    value = item_data.get(key, "")
+                    html_parts.append(
+                        f'<td style="border: 1px solid #ddd; padding: 8px;">{value}</td>'
+                    )
+                html_parts.append("</tr>")
+            html_parts.append("</tbody>")
+
+            html_parts.append("</table>")
+
+            table_html = "".join(html_parts)
+
+            # Add jQuery datatables if requested
+            if datatables:
+                # Create complete HTML document
+                full_html = f"""
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
+                    <link rel=\"stylesheet\" type=\"text/css\"
+                          href=\"https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css\">
+                    <script src=\"https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js\"></script>
+                    <script>
+                    $(document).ready(function() {{
+                        $('#{table_id}').DataTable({{
+                            pageLength: 25,
+                            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, \"All\"]],
+                            responsive: true,
+                            scrollX: true,
+                            columnDefs: [
+                                {{
+                                    targets: '_all',
+                                    render: function(data, type, row) {{
+                                        if (type === 'display' && typeof data === 'string' && data.includes('<')) {{
+                                            return data; // Allow HTML rendering
+                                        }}
+                                        return data;
+                                    }}
+                                }}
+                            ],
+                            language: {{
+                                search: \"Search:\",
+                                lengthMenu: \"Show _MENU_ entries per page\",
+                                info: \"Showing _START_ to _END_ of _TOTAL_ entries\",
+                                infoEmpty: \"Showing 0 to 0 of 0 entries\",
+                                infoFiltered: \"(filtered from _MAX_ total entries)\",
+                                paginate: {{
+                                    first: \"First\",
+                                    last: \"Last\",
+                                    next: \"Next\",
+                                    previous: \"Previous\"
+                                }}
+                            }}
+                        }});
+                    }});
+                    </script>
+                </head>
+                <body>
+                    <div style=\"overflow-x: auto;\">
+                        {table_html}
+                    </div>
+                </body>
+                </html>
+                """
+
+                return full_html, table_html
+
+            # For non-datatables version, create a simple container
+            container_html = f'<div style="overflow-x: auto;">{table_html}</div>'
+            return container_html, table_html
 
 
 class PygetpapersDatatables:
@@ -33,6 +215,12 @@ class PygetpapersDatatables:
             "arxiv_results.json",
             "openalex_results.json",
         ]
+
+        if not DATATABLES_AVAILABLE:
+            logger.warning(
+                "datatables_module not available. Tables will be displayed using basic HTML. "
+                "For enhanced functionality, install the datatables_module from the amilib project."
+            )
 
     def read_pygetpapers_output(self, output_dir: str) -> Dict[str, Any]:
         """
@@ -165,7 +353,20 @@ class PygetpapersDatatables:
 
             # Extract key information
             title = metadata.get("title", paper["directory"])
-            authors = metadata.get("authorString", "Unknown")
+
+            # Handle different author field names
+            authors = "Unknown"
+            if "authorString" in metadata:
+                authors = metadata["authorString"]
+            elif "authors" in metadata:
+                authors = metadata["authors"]
+            elif "authorList" in metadata and "author" in metadata["authorList"]:
+                # Europe PMC format
+                author_list = []
+                for author in metadata["authorList"]["author"]:
+                    if "fullName" in author:
+                        author_list.append(author["fullName"])
+                authors = ", ".join(author_list) if author_list else "Unknown"
 
             # Extract journal name from nested structure
             journal = "Unknown"
@@ -173,11 +374,21 @@ class PygetpapersDatatables:
                 journal = metadata["journalInfo"]["journal"].get("title", "Unknown")
             elif "journalTitle" in metadata:
                 journal = metadata["journalTitle"]
+            elif "journal" in metadata:
+                journal = metadata["journal"]
 
             doi = metadata.get("doi", "")
             pmid = metadata.get("pmid", "")
             pmcid = metadata.get("pmcid", "")
-            pub_date = metadata.get("firstPublicationDate", "")
+
+            # Handle different date field names
+            pub_date = ""
+            if "firstPublicationDate" in metadata:
+                pub_date = metadata["firstPublicationDate"]
+            elif "publication_date" in metadata:
+                pub_date = metadata["publication_date"]
+            elif "date" in metadata:
+                pub_date = metadata["date"]
 
             # Check file availability
             has_xml = any("fulltext.xml" in f for f in paper["files"])
@@ -253,9 +464,8 @@ class PygetpapersDatatables:
                 table_id=table_id,
             )
 
-            # Convert to string
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
+            # htmlx is now a string, not an lxml element
+            return htmlx
 
         except Exception as e:
             logger.error(f"Error creating datatable: {e}")
@@ -337,8 +547,8 @@ class PygetpapersDatatables:
                 table_id=table_id,
             )
 
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
+            # htmlx is now a string, not an lxml element
+            return htmlx
 
         except Exception as e:
             logger.error(f"Error creating metadata table: {e}")
@@ -395,8 +605,8 @@ class PygetpapersDatatables:
                 table_id=table_id,
             )
 
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
+            # htmlx is now a string, not an lxml element
+            return htmlx
 
         except Exception as e:
             logger.error(f"Error creating summary table: {e}")
@@ -1658,3 +1868,168 @@ class PygetpapersDatatables:
         except Exception as e:
             logger.error(f"Error creating overlap table: {e}")
             return self._create_simple_table(overlap_data)
+
+    def save_datatables_to_output(
+        self, output_data: Dict[str, Any], output_dir: str = None,
+        save_css_file: bool = True
+    ) -> Dict[str, str]:
+        """
+        Save datatables HTML files to the output directory.
+
+        Args:
+            output_data: Output from read_pygetpapers_output
+            output_dir: Output directory path (defaults to output_data["output_dir"])
+            save_css_file: Whether to save CSS as a separate file
+
+        Returns:
+            Dictionary mapping table names to their file paths
+        """
+        if output_dir is None:
+            output_dir = output_data["output_dir"]
+
+        output_path = Path(output_dir)
+        if not output_path.exists():
+            raise FileNotFoundError(f"Output directory not found: {output_dir}")
+
+        saved_files = {}
+
+        try:
+            # Save CSS file if requested
+            if save_css_file:
+                css_file = output_path / "datatables.css"
+                with open(css_file, "w", encoding="utf-8") as f:
+                    f.write(DATATABLES_CSS)
+                saved_files["css"] = str(css_file)
+
+            # Create papers table
+            papers_html = self.create_papers_table(output_data, "papers_table")
+            papers_file = output_path / "papers_datatable.html"
+            with open(papers_file, "w", encoding="utf-8") as f:
+                f.write(papers_html)
+            saved_files["papers"] = str(papers_file)
+
+            # Create metadata table
+            metadata_html = self.create_metadata_table(output_data, "metadata_table")
+            metadata_file = output_path / "metadata_datatable.html"
+            with open(metadata_file, "w", encoding="utf-8") as f:
+                f.write(metadata_html)
+            saved_files["metadata"] = str(metadata_file)
+
+            # Create summary table
+            summary_html = self.create_summary_table(output_data, "summary_table")
+            summary_file = output_path / "summary_datatable.html"
+            with open(summary_file, "w", encoding="utf-8") as f:
+                f.write(summary_html)
+            saved_files["summary"] = str(summary_file)
+
+            # Create index file that links to all tables
+            index_html = self._create_datatables_index(
+                saved_files, output_data, use_external_css=save_css_file
+            )
+            index_file = output_path / "datatables_index.html"
+            with open(index_file, "w", encoding="utf-8") as f:
+                f.write(index_html)
+            saved_files["index"] = str(index_file)
+
+            logger.info(
+                f"Saved {len(saved_files)} datatables HTML files to {output_dir}"
+            )
+
+        except Exception as e:
+            logger.error(f"Error saving datatables: {e}")
+            raise
+
+        return saved_files
+
+    def _create_datatables_index(
+        self, saved_files: Dict[str, str], output_data: Dict[str, Any],
+        use_external_css: bool = False
+    ) -> str:
+        """
+        Create an index HTML file that links to all datatables.
+
+        Args:
+            saved_files: Dictionary of saved file paths
+            output_data: Output data for summary information
+            use_external_css: Whether to link to external CSS file
+
+        Returns:
+            HTML string for the index page
+        """
+        summary = output_data["summary"]
+
+        # Choose CSS source
+        if use_external_css and "css" in saved_files:
+            css_content = '<link rel="stylesheet" type="text/css" href="datatables.css">'
+        else:
+            css_content = f'<style>\n{DATATABLES_CSS}\n</style>'
+
+        html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>pygetpapers Datatables - {Path(output_data['output_dir']).name}</title>
+            {css_content}
+        </head>
+        <body>
+            <div class="header">
+                <h1>pygetpapers Datatables</h1>
+                <p>Interactive data tables for corpus:
+                   <strong>{Path(output_data['output_dir']).name}</strong></p>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">{summary['total_papers']}</div>
+                        <div class="stat-label">Total Papers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">{len(summary['metadata_files_found'])}</div>
+                        <div class="stat-label">Metadata Files</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">{'✅' if summary['has_xml'] else '❌'}</div>
+                        <div class="stat-label">XML Files</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">{'✅' if summary['has_pdf'] else '❌'}</div>
+                        <div class="stat-label">PDF Files</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-links">
+                <div class="table-card">
+                    <h3>📄 Papers Table</h3>
+                    <p>Interactive table showing all papers with metadata, file availability,
+                       and links.</p>
+                    <a href="papers_datatable.html" class="table-link">Open Papers Table</a>
+                </div>
+
+                <div class="table-card">
+                    <h3>📊 Metadata Table</h3>
+                    <p>Overview of metadata files and their contents.</p>
+                    <a href="metadata_datatable.html" class="table-link">Open Metadata Table</a>
+                </div>
+
+                <div class="table-card">
+                    <h3>📈 Summary Table</h3>
+                    <p>Corpus statistics and summary information.</p>
+                    <a href="summary_datatable.html" class="table-link">Open Summary Table</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background-color: #f8f9fa;
+                        border-radius: 5px;">
+                <h3>📝 Notes</h3>
+                <ul>
+                    <li>All tables include search, pagination, and sorting functionality</li>
+                    <li>Tables are responsive and work on mobile devices</li>
+                    <li>DOI links open in new tabs</li>
+                    <li>Checkboxes allow for paper selection (functionality can be extended)</li>
+                </ul>
+            </div>
+        </body>
+        </html>
+        """
+
+        return html
