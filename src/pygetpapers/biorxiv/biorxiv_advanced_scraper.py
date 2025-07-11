@@ -148,7 +148,7 @@ class BioRxivAdvancedScraper:
         self, doi: str, paper_dir: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Download full content for a paper including HTML and extract PDF link.
+        Download full content for a paper including landing page and full text.
 
         Args:
             doi: DOI of the paper
@@ -179,11 +179,11 @@ class BioRxivAdvancedScraper:
 
             logger.info(f"Downloading full content for {doi}")
 
-            # Download HTML
+            # Download landing page (abstract)
             response = self.session.get(paper_url, timeout=30)
             response.raise_for_status()
 
-            # Save HTML
+            # Save landing page HTML
             # Use the same encoding for file names
             if doi.startswith("https://doi.org/"):
                 doi_clean = doi.replace("https://doi.org/", "")
@@ -191,12 +191,34 @@ class BioRxivAdvancedScraper:
                 doi_clean = doi
             url_encoded_doi = doi_clean.replace("\\", "_").replace("/", "_")
 
-            html_file = paper_dir / f"{url_encoded_doi}.html"
-            with open(html_file, "w", encoding="utf-8") as f:
+            landing_file = paper_dir / "landing.html"
+            with open(landing_file, "w", encoding="utf-8") as f:
                 f.write(response.text)
 
-            # Parse HTML to extract additional information
+            # Parse HTML to extract full text link and additional information
             soup = BeautifulSoup(response.text, "html.parser")
+
+            # Extract full text link
+            fulltext_url = self._extract_fulltext_link(soup, doi)
+            fulltext_file = None
+
+            # Download full text if link found
+            if fulltext_url:
+                try:
+                    logger.info(f"Downloading full text from {fulltext_url}")
+                    fulltext_response = self.session.get(fulltext_url, timeout=30)
+                    fulltext_response.raise_for_status()
+
+                    fulltext_file = paper_dir / "fulltext.html"
+                    with open(fulltext_file, "w", encoding="utf-8") as f:
+                        f.write(fulltext_response.text)
+
+                    logger.info(f"Successfully downloaded full text for {doi}")
+                except Exception as e:
+                    logger.warning(f"Failed to download full text for {doi}: {e}")
+                    fulltext_file = None
+            else:
+                logger.warning(f"No full text link found for {doi}")
 
             # Extract PDF link
             pdf_url = self._extract_pdf_link(soup)
@@ -212,11 +234,14 @@ class BioRxivAdvancedScraper:
             result = {
                 "doi": doi,
                 "paper_url": paper_url,
-                "html_file": str(html_file),
+                "landing_file": str(landing_file),
+                "fulltext_file": str(fulltext_file) if fulltext_file else None,
                 "metadata_file": str(metadata_file),
                 "pdf_url": pdf_url,
+                "fulltext_url": fulltext_url,
                 "download_timestamp": datetime.now().isoformat(),
-                "file_size_bytes": html_file.stat().st_size,
+                "landing_size_bytes": landing_file.stat().st_size,
+                "fulltext_size_bytes": fulltext_file.stat().st_size if fulltext_file else 0,
                 "metadata": metadata,
             }
 
@@ -250,6 +275,46 @@ class BioRxivAdvancedScraper:
 
         except Exception as e:
             logger.warning(f"Error extracting PDF link: {e}")
+            return None
+
+    def _extract_fulltext_link(self, soup: BeautifulSoup, doi: str) -> Optional[str]:
+        """Extract full text link from paper landing page."""
+        try:
+            # Look for the "Full Text" tab link
+            # Based on the HTML structure provided, the full text link has:
+            # - href containing ".full-text"
+            # - text content "Full Text"
+            # - class containing "panels-ajax-tab-tab"
+            
+            fulltext_links = soup.find_all("a", href=re.compile(r"\.full-text$"))
+            
+            for link in fulltext_links:
+                # Check if this is the "Full Text" link
+                if "Full Text" in link.get_text(strip=True):
+                    href = link.get("href", "")
+                    if href:
+                        # Convert relative URL to absolute
+                        return urljoin(self.base_url, href)
+            
+            # Alternative: look for any link with "full-text" in href and "Full Text" text
+            for link in soup.find_all("a"):
+                href = link.get("href", "")
+                text = link.get_text(strip=True)
+                if "full-text" in href and "Full Text" in text:
+                    return urljoin(self.base_url, href)
+            
+            # Fallback: construct the full text URL based on DOI pattern
+            # bioRxiv full text URLs follow pattern: /content/{doi}.full-text
+            if "10.1101/" in doi:
+                doi_clean = doi.replace("https://doi.org/", "")
+                fulltext_url = f"{self.base_url}/content/{doi_clean}.full-text"
+                logger.info(f"Constructed fallback full text URL: {fulltext_url}")
+                return fulltext_url
+
+            return None
+
+        except Exception as e:
+            logger.warning(f"Error extracting full text link: {e}")
             return None
 
     def _extract_paper_metadata(self, soup: BeautifulSoup, doi: str) -> Dict[str, Any]:

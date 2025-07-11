@@ -103,9 +103,12 @@ class BioRxivIntegration:
                         "title": paper["title"],
                         "authors": paper["authors"],
                         "biorxiv_id": paper.get("biorxiv_id"),
-                        "html_file": download_result["html_file"],
+                        "landing_file": download_result["landing_file"],
+                        "fulltext_file": download_result["fulltext_file"],
                         "pdf_url": download_result["pdf_url"],
-                        "file_size": download_result["file_size_bytes"],
+                        "fulltext_url": download_result["fulltext_url"],
+                        "landing_size": download_result["landing_size_bytes"],
+                        "fulltext_size": download_result["fulltext_size_bytes"],
                         "download_timestamp": download_result["download_timestamp"],
                         "search_query": query,
                     }
@@ -192,12 +195,16 @@ class BioRxivIntegration:
         if not self.papers_metadata:
             return {"total_papers": 0, "total_size": 0, "unique_queries": 0}
 
-        total_size = sum(p["file_size"] for p in self.papers_metadata)
+        total_landing_size = sum(p.get("landing_size", 0) for p in self.papers_metadata)
+        total_fulltext_size = sum(p.get("fulltext_size", 0) for p in self.papers_metadata)
+        total_size = total_landing_size + total_fulltext_size
         unique_queries = len(set(p["search_query"] for p in self.papers_metadata))
 
         return {
             "total_papers": len(self.papers_metadata),
             "total_size": total_size,
+            "total_landing_size": total_landing_size,
+            "total_fulltext_size": total_fulltext_size,
             "unique_queries": unique_queries,
             "average_size": (
                 total_size / len(self.papers_metadata) if self.papers_metadata else 0
@@ -268,6 +275,8 @@ def demonstrate_integration():
     stats = integration.get_statistics()
     print(f"   Total papers: {stats['total_papers']}")
     print(f"   Total size: {stats['total_size']:,} bytes")
+    print(f"   Landing pages: {stats['total_landing_size']:,} bytes")
+    print(f"   Full text: {stats['total_fulltext_size']:,} bytes")
     print(f"   Unique queries: {stats['unique_queries']}")
     print(f"   Average paper size: {stats['average_size']:,.0f} bytes")
 
@@ -277,7 +286,12 @@ def demonstrate_integration():
     for i, paper in enumerate(papers, 1):
         print(f"   {i}. {paper['title'][:60]}...")
         print(f"      DOI: {paper['doi']}")
-        print(f"      Size: {paper['file_size']:,} bytes")
+        print(f"      Landing: {paper.get('landing_size', 0):,} bytes")
+        print(f"      Fulltext: {paper.get('fulltext_size', 0):,} bytes")
+        if paper.get('fulltext_file'):
+            print(f"      ✅ Full text available")
+        else:
+            print(f"      ❌ Full text not available")
 
     # Export to CSV
     csv_file = integration.export_to_csv()
