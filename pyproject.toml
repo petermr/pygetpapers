@@ -4,22 +4,23 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygetpapers"
-version = "1.2.5a2"
-description = "A tool to assist text miners. It makes requests to open access scientific text repositories, analyses the hits, and systematically downloads the articles without further interaction."
+version = "1.2.5a13"
+description = "A tool to download papers from various repositories"
 readme = "README.md"
-license = {text = "Apache-2.0"}
+license = {text = "MIT"}
 authors = [
     {name = "Ayush Garg", email = "ayushgarg@outlook.com"},
-    {name = "Peter Murray-Rust", email = "pm286@cam.ac.uk"}
+    {name = "Peter Murray-Rust", email = "petermurrayrust@googlemail.com"},
 ]
 maintainers = [
-    {name = "Peter Murray-Rust", email = "pm286@cam.ac.uk"}
+    {name = "Ayush Garg", email = "ayushgarg@outlook.com"},
+    {name = "Peter Murray-Rust", email = "petermurrayrust@googlemail.com"},
 ]
-keywords = ["text-mining", "scientific-papers", "research", "download", "api"]
+keywords = ["papers", "download", "biorxiv", "medrxiv", "arxiv", "europepmc", "crossref", "openalex"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: Apache Software License",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -80,6 +81,9 @@ Repository = "https://github.com/petermr/pygetpapers"
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["pygetpapers*"]
+
+[tool.setuptools.package-data]
+pygetpapers = ["config.ini", "*/config.ini"]
 
 [tool.black]
 line-length = 88

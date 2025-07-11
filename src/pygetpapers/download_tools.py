@@ -692,6 +692,10 @@ class DownloadTools:
         :return: url encoded doi
         :rtype: string
         """
+        # Remove https://doi.org/ prefix if present for consistent encoding
+        if doi_of_paper.startswith("https://doi.org/"):
+            doi_of_paper = doi_of_paper.replace("https://doi.org/", "")
+
         url_encoded_doi_of_paper = doi_of_paper.replace("\\", "_").replace("/", "_")
         return url_encoded_doi_of_paper
 

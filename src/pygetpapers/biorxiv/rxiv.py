@@ -43,9 +43,10 @@ class Rxiv(RepositoryInterface):
             api: Repository type ('biorxiv' or 'medrxiv')
         """
         self.api = api
-        self.download_tools = DownloadTools()
+        self.download_tools = DownloadTools(api)
         self.get_url = None
-        self.config = get_repository_config("biorxiv")
+        self.config = get_repository_config(api)
+        self.doi_done = []  # Track processed DOIs to avoid duplicates
 
         # Log repository capabilities
         logging.info("bioRxiv repository capabilities:")
@@ -81,6 +82,8 @@ class Rxiv(RepositoryInterface):
             cursor_mark = 0
         total_number_of_results = 0
         total_papers_list = []
+        # Reset doi_done for this query to avoid duplicates
+        self.doi_done = []
         logging.info("Making Request to rxiv")
         while len(total_papers_list) <= cutoff_size:
             total_number_of_results, total_papers_list, papers_list = (
@@ -112,10 +115,12 @@ class Rxiv(RepositoryInterface):
         )
 
         metadata_dictionary = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
+        # For bioRxiv, only generate CSV from metadata
+        # HTML content will be downloaded separately by make_html_for_rxiv
         self.download_tools.handle_creation_of_csv_html_xml(
             makecsv=makecsv,
-            makehtml=makehtml,
-            makexml=False,
+            makehtml=False,  # Don't generate HTML from metadata for bioRxiv
+            makexml=False,  # bioRxiv doesn't have XML content
             metadata_dictionary=metadata_dictionary,
             name=RXIV_RESULT,
         )
@@ -138,6 +143,27 @@ class Rxiv(RepositoryInterface):
 
                 # Add "id" field that download_tools expects (using DOI as ID)
                 paper["id"] = paper[DOI]
+
+                # Extract bioRxiv ID from DOI and add HTML URL
+                # bioRxiv DOIs have format: 10.1101/XXXXXX
+                doi = paper[DOI]
+                if "10.1101/" in doi:
+                    # Extract the bioRxiv ID from the DOI
+                    biorxiv_id = doi.split("10.1101/")[-1]
+                    # bioRxiv HTML is available at: https://www.biorxiv.org/content/10.1101/{biorxiv_id}
+                    # bioRxiv will automatically redirect to the latest version
+                    paper["html_url"] = (
+                        f"https://www.biorxiv.org/content/10.1101/{biorxiv_id}"
+                    )
+                    logging.debug(f"Generated HTML URL for {doi}: {paper['html_url']}")
+                elif "10.1101/" in doi.replace("https://doi.org/", ""):
+                    # Handle case where DOI might have different format
+                    doi_clean = doi.replace("https://doi.org/", "")
+                    biorxiv_id = doi_clean.split("10.1101/")[-1]
+                    paper["html_url"] = (
+                        f"https://www.biorxiv.org/content/10.1101/{biorxiv_id}"
+                    )
+                    logging.debug(f"Generated HTML URL for {doi}: {paper['html_url']}")
 
                 if paper[DOI] not in self.doi_done:
                     final_list.append(paper)
@@ -207,10 +233,14 @@ class Rxiv(RepositoryInterface):
             makecsv=makecsv,
             makehtml=makehtml,
         )
-        if makexml:
-            logging.info("Making xml for paper")
-            dict_of_papers = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
-            self.make_xml_for_rxiv(dict_of_papers, JATSXML, DOI, FULLTEXT_XML)
+
+        # For bioRxiv/medRxiv, always download HTML content when available
+        # since HTML is the primary content format for these repositories
+        # Note: bioRxiv doesn't have XML content, so we skip XML generation
+        logging.info("Making html for bioRxiv/medRxiv papers")
+        dict_of_papers = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
+        self.make_html_for_rxiv(dict_of_papers, DOI)
+
         self.download_tools._make_metadata_json_files_for_paper(
             result_dict[NEW_RESULTS],
             updated_dict=result_dict[UPDATED_DICT],
@@ -226,7 +256,17 @@ class Rxiv(RepositoryInterface):
             dict_of_paper = dict_of_papers[paper]
             xml_url = dict_of_paper[xml_identifier]
             doi_of_paper = dict_of_paper[paper_id_identifier]
-            url_encoded_doi_of_paper = self.download_tools.url_encode_id(doi_of_paper)
+
+            # Use the same encoding logic as _make_dict_from_list
+            # Remove https://doi.org/ prefix if present, then URL encode
+            if doi_of_paper.startswith("https://doi.org/"):
+                doi_of_paper_clean = doi_of_paper.replace("https://doi.org/", "")
+            else:
+                doi_of_paper_clean = doi_of_paper
+
+            url_encoded_doi_of_paper = self.download_tools.url_encode_id(
+                doi_of_paper_clean
+            )
             self.download_tools.check_or_make_directory(url_encoded_doi_of_paper)
             path_to_save_xml = os.path.join(
                 str(os.getcwd()), url_encoded_doi_of_paper, filename
@@ -234,6 +274,40 @@ class Rxiv(RepositoryInterface):
             self.download_tools.queries_the_url_and_writes_response_to_destination(
                 xml_url, path_to_save_xml
             )
+
+    def make_html_for_rxiv(self, dict_of_papers, paper_id_identifier):
+        """Download HTML content for bioRxiv papers"""
+        for paper in tqdm(dict_of_papers):
+            dict_of_paper = dict_of_papers[paper]
+            doi_of_paper = dict_of_paper[paper_id_identifier]
+
+            # Use the same encoding logic as _make_dict_from_list
+            # Remove https://doi.org/ prefix if present, then URL encode
+            if doi_of_paper.startswith("https://doi.org/"):
+                doi_of_paper_clean = doi_of_paper.replace("https://doi.org/", "")
+            else:
+                doi_of_paper_clean = doi_of_paper
+
+            url_encoded_doi_of_paper = self.download_tools.url_encode_id(
+                doi_of_paper_clean
+            )
+            self.download_tools.check_or_make_directory(url_encoded_doi_of_paper)
+            path_to_save_html = os.path.join(
+                str(os.getcwd()), url_encoded_doi_of_paper, "fulltext.html"
+            )
+
+            # Get HTML URL from paper metadata
+            html_url = dict_of_paper.get("html_url")
+            if html_url:
+                try:
+                    self.download_tools.queries_the_url_and_writes_response_to_destination(
+                        html_url, path_to_save_html
+                    )
+                    logging.info(f"Downloaded HTML for {doi_of_paper}")
+                except Exception as e:
+                    logging.warning(f"Failed to download HTML for {doi_of_paper}: {e}")
+            else:
+                logging.warning(f"No HTML URL available for {doi_of_paper}")
 
     def noexecute(self, query_namespace):
         """Test query without downloading papers"""
@@ -385,8 +459,15 @@ class Rxiv(RepositoryInterface):
 
             for paper in papers:
                 doi = paper["doi"]
+                # Use the same encoding logic as _make_dict_from_list
+                # Remove https://doi.org/ prefix if present, then URL encode
+                if doi.startswith("https://doi.org/"):
+                    doi_clean = doi.replace("https://doi.org/", "")
+                else:
+                    doi_clean = doi
+
                 # URL-encode the DOI for the metadata key (as pygetpapers expects)
-                url_encoded_doi = doi.replace("/", "_")
+                url_encoded_doi = doi_clean.replace("/", "_")
 
                 # Save paper metadata
                 metadata_dict[url_encoded_doi] = {
@@ -433,14 +514,15 @@ class Rxiv(RepositoryInterface):
             )
 
             # Handle CSV/HTML export if requested
-            if makecsv or makehtml:
-                self.download_tools.handle_creation_of_csv_html_xml(
-                    makecsv=makecsv,
-                    makehtml=makehtml,
-                    makexml=False,
-                    metadata_dictionary=metadata_dict,
-                    name=RXIV_RESULT,
-                )
+            # For bioRxiv/medRxiv, only generate CSV from metadata
+            # HTML content is already downloaded by the web scraper
+            self.download_tools.handle_creation_of_csv_html_xml(
+                makecsv=makecsv,
+                makehtml=False,  # Don't generate HTML from metadata for bioRxiv
+                makexml=False,
+                metadata_dictionary=metadata_dict,
+                name=RXIV_RESULT,
+            )
 
             # Clean up temporary directory
             import shutil

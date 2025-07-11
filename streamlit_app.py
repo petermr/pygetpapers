@@ -690,17 +690,25 @@ class PygetpapersUI:
             st.markdown("---")
             col_xml2html1, col_xml2html2 = st.columns([1, 3])
             with col_xml2html1:
+                # Enable by default for Europe PMC
+                default_xml2html = selected_api == "europe_pmc"
                 convert_xml2html = st.checkbox(
                     "🔄 Convert XML to HTML",
-                    value=False,
-                    help="Convert downloaded XML files to HTML using Simple HTML Converter",
+                    value=default_xml2html,
+                    help="Convert downloaded XML files to HTML using Simple HTML Converter. Enabled by default for Europe PMC.",
                 )
             with col_xml2html2:
                 if convert_xml2html:
-                    st.info(
-                        "📝 **XML2HTML Conversion:** This will create `fulltext.xml.html` files alongside the XML files. "
-                        "Uses Simple HTML Converter for clean, semantic HTML output."
-                    )
+                    if selected_api == "europe_pmc":
+                        st.info(
+                            "📝 **XML2HTML Conversion (Default for Europe PMC):** This will create `fulltext.xml.html` files alongside the XML files. "
+                            "Uses JATS4R or Simple HTML Converter for clean, semantic HTML output."
+                        )
+                    else:
+                        st.info(
+                            "📝 **XML2HTML Conversion:** This will create `fulltext.xml.html` files alongside the XML files. "
+                            "Uses Simple HTML Converter for clean, semantic HTML output."
+                        )
         else:
             convert_xml2html = False
 

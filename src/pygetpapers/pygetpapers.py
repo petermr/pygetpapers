@@ -229,12 +229,12 @@ class ApiPlugger:
                 raise PygetpapersError("Please provide a query with not")
 
     def check_query_logic_and_run(self):
-        """Checks the logic in query_namespace and runs pygetpapers for the given query"""  # noqa: E501
+        """Checks the logic in query_namespace and runs pygetpapers for the given query"""
         try:
             self._assist_warning_api()
         except PygetpapersError as err:
             logging.warning(err.message)
-            return
+            return  # Return early on error
 
         if not self.query_namespace[QUERY] and self.query_namespace[TERMS]:
             self.query_namespace[QUERY] = None
@@ -779,7 +779,8 @@ class Pygetpapers:
             default=False,
             action="store_true",
             help=(
-                "[All] Convert XML fulltext to HTML using JATS4R (requires XML download)"
+                "[All] Convert XML fulltext to HTML using JATS4R (requires XML download). "
+                "Enabled by default for Europe PMC."
             ),
         )
         parser.add_argument(
@@ -864,6 +865,16 @@ class Pygetpapers:
         for arg in self.query_namespace:
             if (self.query_namespace)[arg] == "False":
                 (self.query_namespace)[arg] = False
+
+        # Enable fulltext_html by default for Europe PMC
+        if (
+            self.query_namespace["api"] == "europe_pmc"
+            and not self.query_namespace["fulltext_html"]
+            and self.query_namespace["xml"]
+        ):
+            self.query_namespace["fulltext_html"] = True
+            logging.info("Enabling XML to HTML conversion by default for Europe PMC")
+
         self.runs_pygetpapers_for_given_args(self.query_namespace)
 
 

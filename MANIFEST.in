@@ -1,1 +1,2 @@
-include pygetpapers/config.ini
+include src/pygetpapers/config.ini
+include src/pygetpapers/*/config.ini

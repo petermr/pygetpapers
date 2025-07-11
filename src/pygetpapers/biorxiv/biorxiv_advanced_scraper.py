@@ -158,9 +158,17 @@ class BioRxivAdvancedScraper:
             Dictionary with download results and metadata
         """
         try:
-            # Create paper directory
+            # Create paper directory using the same encoding logic as pygetpapers
+            # Remove https://doi.org/ prefix if present, then URL encode
             if paper_dir is None:
-                paper_dir = self.output_dir / doi.replace("/", "_")
+                if doi.startswith("https://doi.org/"):
+                    doi_clean = doi.replace("https://doi.org/", "")
+                else:
+                    doi_clean = doi
+
+                # Use the same encoding as pygetpapers download_tools.url_encode_id
+                url_encoded_doi = doi_clean.replace("\\", "_").replace("/", "_")
+                paper_dir = self.output_dir / url_encoded_doi
             else:
                 paper_dir = Path(paper_dir)
 
@@ -176,7 +184,14 @@ class BioRxivAdvancedScraper:
             response.raise_for_status()
 
             # Save HTML
-            html_file = paper_dir / f"{doi.replace('/', '_')}.html"
+            # Use the same encoding for file names
+            if doi.startswith("https://doi.org/"):
+                doi_clean = doi.replace("https://doi.org/", "")
+            else:
+                doi_clean = doi
+            url_encoded_doi = doi_clean.replace("\\", "_").replace("/", "_")
+
+            html_file = paper_dir / f"{url_encoded_doi}.html"
             with open(html_file, "w", encoding="utf-8") as f:
                 f.write(response.text)
 
@@ -190,7 +205,7 @@ class BioRxivAdvancedScraper:
             metadata = self._extract_paper_metadata(soup, doi)
 
             # Save metadata
-            metadata_file = paper_dir / f"{doi.replace('/', '_')}_metadata.json"
+            metadata_file = paper_dir / f"{url_encoded_doi}_metadata.json"
             with open(metadata_file, "w", encoding="utf-8") as f:
                 json.dump(metadata, f, indent=2, ensure_ascii=False)
 
