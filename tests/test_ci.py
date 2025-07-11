@@ -6,6 +6,9 @@ Simple test script to verify CI/CD functionality
 import os
 import sys
 
+# Add the current directory to Python path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 def test_imports():
     """Test that all required modules can be imported"""
@@ -51,7 +54,7 @@ def test_streamlit_app():
     print("\n🧪 Testing Streamlit app...")
 
     try:
-        pass
+        import streamlit_app
 
         print("✅ Streamlit app imported successfully")
         return True
@@ -65,7 +68,7 @@ def test_datatables():
     print("\n🧪 Testing datatables integration...")
 
     try:
-        pass
+        from src.datatables_integration import PygetpapersDatatables
 
         print("✅ Datatables integration imported successfully")
         return True
@@ -102,7 +105,7 @@ def test_files_exist():
     required_files = [
         "streamlit_app.py",
         "run_streamlit.py",
-        "datatables_integration.py",
+        "src/datatables_integration.py",
         "requirements.txt",
     ]
 
