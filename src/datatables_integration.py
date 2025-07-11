@@ -1870,8 +1870,10 @@ class PygetpapersDatatables:
             return self._create_simple_table(overlap_data)
 
     def save_datatables_to_output(
-        self, output_data: Dict[str, Any], output_dir: str = None,
-        save_css_file: bool = True
+        self,
+        output_data: Dict[str, Any],
+        output_dir: str = None,
+        save_css_file: bool = True,
     ) -> Dict[str, str]:
         """
         Save datatables HTML files to the output directory.
@@ -1942,8 +1944,10 @@ class PygetpapersDatatables:
         return saved_files
 
     def _create_datatables_index(
-        self, saved_files: Dict[str, str], output_data: Dict[str, Any],
-        use_external_css: bool = False
+        self,
+        saved_files: Dict[str, str],
+        output_data: Dict[str, Any],
+        use_external_css: bool = False,
     ) -> str:
         """
         Create an index HTML file that links to all datatables.
@@ -1960,9 +1964,11 @@ class PygetpapersDatatables:
 
         # Choose CSS source
         if use_external_css and "css" in saved_files:
-            css_content = '<link rel="stylesheet" type="text/css" href="datatables.css">'
+            css_content = (
+                '<link rel="stylesheet" type="text/css" href="datatables.css">'
+            )
         else:
-            css_content = f'<style>\n{DATATABLES_CSS}\n</style>'
+            css_content = f"<style>\n{DATATABLES_CSS}\n</style>"
 
         html = f"""
         <!DOCTYPE html>
