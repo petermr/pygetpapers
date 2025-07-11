@@ -1,0 +1,27 @@
+{
+  "total_papers": 1,
+  "collection_timestamp": 0.716049,
+  "papers": [
+    {
+      "doi": "10.1101/2023.11.10.566554",
+      "title": "Environmental fungi from cool and warm neighborhoods in the urban heat island of Baltimore City show differences in thermal susceptibility and pigmentation",
+      "authors": [
+        "Daniel F. Q. Smith",
+        "Madhura Kulkarni",
+        "Alexa Bencomo",
+        "Tasnim Syakirah Faiez",
+        "J. Marie Hardwick",
+        "Arturo Casadevall"
+      ],
+      "biorxiv_id": "2023.11.10.566554",
+      "landing_file": "test_biorxiv_integration/10.1101_2023.11.10.566554/landing.html",
+      "fulltext_file": "test_biorxiv_integration/10.1101_2023.11.10.566554/fulltext.html",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/2023.11.10.566554v2.full.pdf",
+      "fulltext_url": "https://www.biorxiv.org/content/10.1101/2023.11.10.566554v2.full-text",
+      "landing_size": 102542,
+      "fulltext_size": 249088,
+      "download_timestamp": "2025-07-11T17:31:06.563668",
+      "search_query": "urban heat island"
+    }
+  ]
+}

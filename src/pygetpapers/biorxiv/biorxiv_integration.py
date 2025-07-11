@@ -196,7 +196,9 @@ class BioRxivIntegration:
             return {"total_papers": 0, "total_size": 0, "unique_queries": 0}
 
         total_landing_size = sum(p.get("landing_size", 0) for p in self.papers_metadata)
-        total_fulltext_size = sum(p.get("fulltext_size", 0) for p in self.papers_metadata)
+        total_fulltext_size = sum(
+            p.get("fulltext_size", 0) for p in self.papers_metadata
+        )
         total_size = total_landing_size + total_fulltext_size
         unique_queries = len(set(p["search_query"] for p in self.papers_metadata))
 
@@ -288,7 +290,7 @@ def demonstrate_integration():
         print(f"      DOI: {paper['doi']}")
         print(f"      Landing: {paper.get('landing_size', 0):,} bytes")
         print(f"      Fulltext: {paper.get('fulltext_size', 0):,} bytes")
-        if paper.get('fulltext_file'):
+        if paper.get("fulltext_file"):
             print(f"      ✅ Full text available")
         else:
             print(f"      ❌ Full text not available")

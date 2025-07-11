@@ -241,7 +241,9 @@ class BioRxivAdvancedScraper:
                 "fulltext_url": fulltext_url,
                 "download_timestamp": datetime.now().isoformat(),
                 "landing_size_bytes": landing_file.stat().st_size,
-                "fulltext_size_bytes": fulltext_file.stat().st_size if fulltext_file else 0,
+                "fulltext_size_bytes": (
+                    fulltext_file.stat().st_size if fulltext_file else 0
+                ),
                 "metadata": metadata,
             }
 
@@ -285,9 +287,9 @@ class BioRxivAdvancedScraper:
             # - href containing ".full-text"
             # - text content "Full Text"
             # - class containing "panels-ajax-tab-tab"
-            
+
             fulltext_links = soup.find_all("a", href=re.compile(r"\.full-text$"))
-            
+
             for link in fulltext_links:
                 # Check if this is the "Full Text" link
                 if "Full Text" in link.get_text(strip=True):
@@ -295,14 +297,14 @@ class BioRxivAdvancedScraper:
                     if href:
                         # Convert relative URL to absolute
                         return urljoin(self.base_url, href)
-            
+
             # Alternative: look for any link with "full-text" in href and "Full Text" text
             for link in soup.find_all("a"):
                 href = link.get("href", "")
                 text = link.get_text(strip=True)
                 if "full-text" in href and "Full Text" in text:
                     return urljoin(self.base_url, href)
-            
+
             # Fallback: construct the full text URL based on DOI pattern
             # bioRxiv full text URLs follow pattern: /content/{doi}.full-text
             if "10.1101/" in doi:
