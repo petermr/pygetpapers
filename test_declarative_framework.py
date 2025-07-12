@@ -6,8 +6,8 @@ This script demonstrates the framework working with security components.
 Run this to verify the implementation is working correctly.
 """
 
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Add src to path for imports
@@ -20,9 +20,9 @@ def test_security_framework():
 
     try:
         from pygetpapers.security_framework import (
-            SecurityValidator,
             ResourceManager,
             SafeContentProcessor,
+            SecurityValidator,
             create_security_framework,
         )
 
@@ -111,12 +111,13 @@ def test_cli_interface():
     print("\n🖥️  Testing CLI Interface...")
 
     try:
+        from argparse import Namespace
+
         from pygetpapers.declarative_cli import (
             create_config_command,
             list_operations_command,
             validate_config_command,
         )
-        from argparse import Namespace
 
         # Test configuration validation
         args = Namespace(config="config/crossref_declarative.yaml")

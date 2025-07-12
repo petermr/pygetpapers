@@ -71,10 +71,10 @@ def test_no_subprocess_imports():
 
     try:
         # Check declarative operations module
-        import pygetpapers.declarative_operations as decl_ops
-
         # Get the source code
         import inspect
+
+        import pygetpapers.declarative_operations as decl_ops
 
         source = inspect.getsource(decl_ops)
 
