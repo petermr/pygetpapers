@@ -1,0 +1,303 @@
+# Repository Configuration Schema
+# This file defines the structure for configuring repositories and content types
+
+# Content Type Definitions
+content_types:
+  metadata:
+    description: "Paper metadata (title, authors, abstract, etc.)"
+    formats: ["json", "xml", "csv", "html"]
+    dependencies: []
+    required_fields: ["title", "authors", "publication_date"]
+    optional_fields: ["abstract", "keywords", "doi", "url"]
+    
+  fulltext:
+    description: "Full text content of papers"
+    formats: ["xml", "html", "pdf", "txt"]
+    dependencies: ["metadata"]
+    required_fields: ["content", "format"]
+    optional_fields: ["sections", "figures", "tables"]
+    
+  references:
+    description: "Reference lists and bibliographic data"
+    formats: ["xml", "json", "bibtex"]
+    dependencies: ["metadata"]
+    required_fields: ["references"]
+    optional_fields: ["citation_count", "reference_style"]
+    
+  citations:
+    description: "Citation data and impact metrics"
+    formats: ["xml", "json", "csv"]
+    dependencies: ["metadata"]
+    required_fields: ["citation_count"]
+    optional_fields: ["cited_by", "h_index", "impact_factor"]
+    
+  supplementary:
+    description: "Supplementary files and data"
+    formats: ["zip", "pdf", "data", "images", "code"]
+    dependencies: ["metadata"]
+    required_fields: ["file_type", "file_size"]
+    optional_fields: ["description", "license", "checksum"]
+    
+  figures:
+    description: "Figures and images from papers"
+    formats: ["png", "jpg", "svg", "pdf"]
+    dependencies: ["metadata"]
+    required_fields: ["figure_url", "caption"]
+    optional_fields: ["figure_number", "resolution", "alt_text"]
+    
+  tables:
+    description: "Tables and structured data"
+    formats: ["csv", "xlsx", "json", "xml"]
+    dependencies: ["metadata"]
+    required_fields: ["table_data"]
+    optional_fields: ["table_number", "caption", "column_headers"]
+
+# Repository Configurations
+repositories:
+  crossref:
+    name: "Crossref"
+    description: "Crossref academic metadata repository"
+    base_url: "https://api.crossref.org/"
+    
+    # API Configuration
+    api_client:
+      type: "habanero.Crossref"
+      mailto: "ayushgarg@science.org.in"
+      user_agent: "pygetpapers/version@"
+      rate_limit: 30  # requests per minute
+      timeout: 30
+    
+    # Response Structure
+    response_structure:
+      items_path: "message.items"
+      total_path: "message.total-results"
+      cursor_path: "message.next-cursor"
+      paper_key: "DOI"
+    
+    # Content Types Supported
+    content_types: ["metadata", "fulltext"]
+    
+    # Paper Identification
+    paper_key: "DOI"
+    paper_id_format: "doi"
+    
+    # Query Configuration
+    query_format: "dict"  # query={query} format
+    supports_filters: true
+    supports_date_range: true
+    supports_cursor_pagination: true
+    
+    # File Naming
+    file_name: "crossref_result"
+    
+    # XML2HTML Support
+    xml2html_supported: true
+    xml2html_converters: ["simple_html"]
+    
+    # Rate Limiting
+    rate_limits:
+      requests_per_minute: 30
+      delay_between_requests: 2.0
+    
+    # Security
+    security:
+      allowed_domains: ["crossref.org", "api.crossref.org"]
+      max_file_size: 104857600  # 100MB
+      timeout: 30
+
+  europe_pmc:
+    name: "Europe PMC"
+    description: "Europe PubMed Central biomedical repository"
+    base_url: "https://www.ebi.ac.uk/europepmc/webservices/rest/"
+    
+    # API Configuration
+    api_client:
+      type: "requests"
+      base_url: "https://www.ebi.ac.uk/europepmc/webservices/rest/"
+      headers:
+        User-Agent: "pygetpapers/1.0"
+      rate_limit: 10
+      timeout: 30
+    
+    # Response Structure
+    response_structure:
+      items_path: "resultList.result"
+      total_path: "hitCount"
+      cursor_path: "nextCursorMark"
+      paper_key: "id"
+    
+    # Content Types Supported
+    content_types: ["metadata", "fulltext", "references", "citations", "supplementary"]
+    
+    # Paper Identification
+    paper_key: "id"
+    paper_id_format: "pmid"
+    
+    # Query Configuration
+    query_format: "string"  # plain query string
+    supports_filters: true
+    supports_date_range: true
+    supports_cursor_pagination: true
+    
+    # File Naming
+    file_name: "europe_pmc_result"
+    
+    # XML2HTML Support
+    xml2html_supported: true
+    xml2html_converters: ["simple_html", "pandoc"]
+    
+    # Rate Limiting
+    rate_limits:
+      requests_per_minute: 10
+      delay_between_requests: 6.0
+    
+    # Security
+    security:
+      allowed_domains: ["ebi.ac.uk", "europepmc.org"]
+      max_file_size: 52428800  # 50MB
+      timeout: 30
+
+  arxiv:
+    name: "arXiv"
+    description: "arXiv preprint repository"
+    base_url: "http://export.arxiv.org/api/"
+    
+    # API Configuration
+    api_client:
+      type: "requests"
+      base_url: "http://export.arxiv.org/api/query"
+      headers:
+        User-Agent: "pygetpapers/1.0"
+      rate_limit: 5
+      timeout: 30
+    
+    # Response Structure
+    response_structure:
+      items_path: "feed.entry"
+      total_path: "feed.opensearch:totalResults"
+      paper_key: "id"
+    
+    # Content Types Supported
+    content_types: ["metadata", "fulltext", "supplementary"]
+    
+    # Paper Identification
+    paper_key: "id"
+    paper_id_format: "arxiv_id"
+    
+    # Query Configuration
+    query_format: "string"
+    supports_filters: true
+    supports_date_range: true
+    supports_cursor_pagination: false
+    
+    # File Naming
+    file_name: "arxiv_result"
+    
+    # XML2HTML Support
+    xml2html_supported: false
+    xml2html_converters: []
+    
+    # Rate Limiting
+    rate_limits:
+      requests_per_minute: 5
+      delay_between_requests: 12.0
+    
+    # Security
+    security:
+      allowed_domains: ["arxiv.org", "export.arxiv.org"]
+      max_file_size: 104857600  # 100MB
+      timeout: 30
+
+  biorxiv:
+    name: "bioRxiv"
+    description: "bioRxiv preprint repository"
+    base_url: "https://www.biorxiv.org/"
+    
+    # API Configuration
+    api_client:
+      type: "requests"
+      base_url: "https://www.biorxiv.org/"
+      headers:
+        User-Agent: "pygetpapers/1.0"
+      rate_limit: 2
+      timeout: 30
+    
+    # Response Structure
+    response_structure:
+      items_path: "collection"
+      total_path: "total"
+      paper_key: "doi"
+    
+    # Content Types Supported
+    content_types: ["metadata", "fulltext", "figures"]
+    
+    # Paper Identification
+    paper_key: "doi"
+    paper_id_format: "doi"
+    
+    # Query Configuration
+    query_format: "string"
+    supports_filters: true
+    supports_date_range: true
+    supports_cursor_pagination: true
+    
+    # File Naming
+    file_name: "biorxiv_result"
+    
+    # XML2HTML Support
+    xml2html_supported: true
+    xml2html_converters: ["simple_html"]
+    
+    # Rate Limiting
+    rate_limits:
+      requests_per_minute: 2
+      delay_between_requests: 30.0
+    
+    # Security
+    security:
+      allowed_domains: ["biorxiv.org", "medrxiv.org"]
+      max_file_size: 52428800  # 50MB
+      timeout: 30
+
+# Global Settings
+global:
+  default_timeout: 300
+  default_retries: 3
+  working_directory: "./corpus"
+  log_level: "INFO"
+  parallel_execution: false
+  max_parallel_operations: 2
+  
+  # Content Type Dependencies
+  content_dependencies:
+    fulltext: ["metadata"]
+    references: ["metadata"]
+    citations: ["metadata"]
+    supplementary: ["metadata"]
+    figures: ["metadata"]
+    tables: ["metadata"]
+  
+  # File Patterns
+  file_patterns:
+    metadata_files: ".*_metadata\\.json$"
+    xml_files: ".*\\.xml$"
+    html_files: ".*\\.html$"
+    pdf_files: ".*\\.pdf$"
+    csv_files: ".*\\.csv$"
+    json_files: ".*\\.json$"
+    zip_files: ".*\\.zip$"
+    image_files: ".*\\.(png|jpg|jpeg|gif|svg)$"
+  
+  # Security Settings
+  security:
+    allowed_domains: []
+    rate_limits:
+      requests_per_minute: 30
+      delay_between_requests: 2.0
+    file_limits:
+      max_file_size: 104857600  # 100MB
+      max_total_size: 1073741824  # 1GB
+    timeout_limits:
+      request_timeout: 30
+      parse_timeout: 60
+      total_timeout: 300 
