@@ -73,6 +73,8 @@ class ApiPlugger:
         # Handle special cases for bioRxiv-related repositories
         if self.library_name in ["rxiv", "rxivist"]:
             module_path = f"{PYGETPAPERS}.biorxiv.{self.library_name}"
+        elif self.library_name == "redalyc_selenium":
+            module_path = f"{PYGETPAPERS}.redalyc.redalyc_selenium"
         else:
             module_path = f"{PYGETPAPERS}.{self.library_name}.{self.library_name}"
 

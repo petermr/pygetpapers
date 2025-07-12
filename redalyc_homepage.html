@@ -1,0 +1,2520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="homeApp"><head>
+
+	<title>Sistema de Información Científica Redalyc, Red de
+		Revistas Científicas</title>
+
+	<meta name="application-name" content="Redalyc" />
+	<meta name="language" content="spanish" />
+	<meta name="description" lang="es" content="Sistema de Información Científica Redalyc. Red de Revistas Científicas. Acceso abierto sin fines de lucro propiedad de la academia. Modelo de acceso abierto diamante." />
+	<meta name="description" lang="en" content="Scientific Information System Redalyc. Network of Scientific Journals. Non-profit academy-owned Open Access. Diamond open access model." />
+	<meta name="keywords" content="UAEM,científica,revistas científicas,libre acceso,artículos científicos,XML,OAI,Open archives,acceso abierto,SEGE,Sistema Electrónico de Gestión Editorial,RABiD,DOAJ,e-revistas,Creative Commons license,CC,Visualización estadística de la información científica,indices bibliométricos,acceso abierto diamante" />
+	<meta name="robots" content="index,follow" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta http-equiv="Content-Language" content="es,en" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<meta name="verify-v1" content="reh85Mq5Fcb6ZkTcaKOqi+1dgsh0I53YgayJum+Xi5c=" />
+	<meta name="verify-v1" content="+HlK2LJfgXpICZtbU5lbYj/2SERPyRJLLLbikQD+5yo=" />
+	<meta name="verify-v1" content="mTdvT7oO4oCkpdOYFIYkvWqAiyJ7gvA05VgYbdBB6qc=" />
+	<meta name="y_key" content="5a3c4d9c3168f82e" />
+
+	<meta property="og:title" content="Sistema de Información Científica Redalyc, Red de Revistas Científicas" />
+	<meta property="og:description" content="Acceso abierto sin fines de lucro propiedad de la academia, fortaleciendo el acceso abierto diamante" />
+	<meta property="og:image" content="https://www.redalyc.org/redalyc/media/inc/img/revista/social/redalyc_generica.jpg" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.redalyc.org/home.oa" />
+	<meta property="og:site_name" content="Redalyc.org" />
+	
+	<meta property="og:locale" content="es_LA" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@Redalyc" />
+	<meta name="twitter:url" content="https://www.redalyc.org/home.oa" />
+	<meta name="twitter:title" content="Sistema de Información Científica Redalyc, Red de Revistas Científicas" />
+	<meta name="twitter:description" content="Sistema de Información Científica Redalyc. Red de Revistas Científicas. Acceso abierto sin fines de lucro propiedad de la academia." />
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
+	<link rel="shortcut icon" href="img/r2020.ico" />
+	<link rel="image_src" type="image/jpeg" href="https://www.redalyc.org/redalyc/media/inc/img/revista/social/redalyc_generica.jpg" />
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-3153272-1' ]);
+		_gaq.push([ '_trackPageview' ]);
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	
+	<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PG5DW8YGFY"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-PG5DW8YGFY');
+	</script>
+	
+	<link rel="stylesheet" href="css/popUp.css" />
+	<script src="js/popUp.js"></script>
+	
+	<link rel="stylesheet" href="css/home.css" />
+	<link rel="stylesheet" href="css/slider.css" />
+	<link rel="stylesheet" href="css/ammap.css" />
+	<script src="js/angular.js"></script>
+	<script src="js/homeAngularJS.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/homeJS.js"></script>	
+	<script src="js/slider.js"></script>
+
+	<script src="js/core.js"></script>
+	<script src="js/maps.js"></script>
+	<script src="js/worldLow.js"></script>
+	<script src="js/animated.js"></script>
+	<script src="js/charts.js"></script>
+	<script src="js/mapan.js"></script>
+	<script src="js/ammap.js"></script>
+	<script src="js/dataloader.min.js"></script>
+	<script src="js/worldLowAutorHome.js"></script></head>
+<body ng-controller="HomeController">
+	<script type="text/javascript">
+		/**
+		evento de visita
+		 */
+		gtag('event', 'screen_view', {
+			'app_name' : 'PortalRedalyc',
+			'screen_name' : 'HomeRedalyc'
+		});
+		gtag('event', 'page_view', {
+			'page_title' : 'HomeRedalyc',
+			'page_location' : 'https://redalyc.org/home.oa'
+		});
+	</script>
+	<input id="numbernews" type="hidden" />
+	<input id="reconsText" type="hidden" />
+	<input value="2.0" id="totalAuthors" type="hidden" />
+	<input value="72,415" id="totalPagesAuthors" type="hidden" />
+	<div id="overlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); opacity: 0.5; cursor: wait; position: fixed;"></div>
+	<div id="loading" style="z-index: 1011; position: fixed; padding: 15px; margin: 0px; width: 30%; top: 40%; left: 35%; text-align: center; color: rgb(255, 255, 255); border: none; background-color: rgb(0, 0, 0); cursor: wait; border-radius: 10px; opacity: 0.5; font-size: 20px; font-family: Helvetica;">
+		<img src="img/loading-2.gif" width="100" height="100" /> <br />
+	</div>
+	<main>
+
+	<div class="tooltip"></div>
+	
+	<div id="home-principal">
+		
+		<div id="headerHomeRedalyc">
+			<div id="tituloHeader">
+				<div>
+					<div></div>
+					<div class="rect1 rectangulosTitulo">
+						<img class="to-home" id="to-home" src="img/nuevoHeaderHome/logo_redalyc.png" />
+					</div>
+					<div class="rect2 rectangulosTitulo">
+						<span ng-bind-html="t.collectionHome.head_reda"></span>
+					</div>
+					<div class="rect3 rectangulosTitulo">
+						<span ng-bind-html="t.collectionHome.head_net"></span>
+					</div>
+					<div>
+						<div class="rect4 rectangulosTitulo">
+							<span ng-bind-html="t.collectionHome.head_oa"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="cont-menuResp" id="menuResp">
+			<div class="links-home sidepanel" id="mySidepanel">
+			<span class="closebtn">
+                <a href="#" class="closeboton" ng-click="closeNav()">×</a>
+            </span>
+				<span class="menu-visible boton-menu-about">
+					<span ng-bind-html="t.header.about"></span>
+					<img class="flechaAbajo" src="img/nuevoHeaderHome/ic_abajo.png" />
+				</span>
+				<span class="menu-visible" id="principios-valores" ng-bind-html="t.header.principles"></span>
+				<span class="menu-visible boton-menu-tecn">
+					<span ng-bind-html="t.header.digital"></span>
+					<img class="flechaAbajo" src="img/nuevoHeaderHome/ic_abajo.png" />
+				</span>
+				<span class="menu-visible jornals-indexation boton-menu-index">
+					<span ng-bind-html="t.header.journals_indexation"></span>
+					<img class="flechaAbajo" src="img/nuevoHeaderHome/ic_abajo.png" />
+				</span>
+				<span class="menu-visible" id="services" ng-bind-html="t.header.services"></span>
+				<span class="menu-visible btn-openCience" id="openCience">
+					<span ng-bind-html="t.header.openCience"></span>
+					<img class="flechaAbajo" src="img/nuevoHeaderHome/ic_abajo.png" />
+				</span>
+				<span class="menu-visible-hidden marcalyc"><a href="http://marcalyc.redalyc.org/" target="_blank">MARCALYC</a></span>
+				<span class="menu-visible-hidden blog-xml-jats"><a href="https://xmljatsredalyc.org/" target="_blank">BLOG XML JATS</a></span>
+				
+			<div id="menu-indexation">
+				<a class="consolidated-option" href="http://www.redalyc.org"><span ng-bind-html="t.header.consolidated_indexation"></span><i class="fa fa-caret-down" aria-hidden="true"></i></a> <a class="consolidated-item" href="postulacion.oa?q=criterios" ng-bind-html="t.header.critery"></a> <a class="consolidated-item" href="postulacion.oa?q=proceso" ng-bind-html="t.header.critery_proces"></a> <a class="proces-option" href="http://portal.amelica.org"><span ng-bind-html="t.header.process_consolidation"></span><i class="fa fa-caret-down" aria-hidden="true"></i></a> <a class="proces-item" href="http://portal.amelica.org/microPortal.oa?opcion=postula" ng-bind-html="t.header.critery"></a> <a class="proces-item" href="http://portal.amelica.org/microPortal.oa?opcion=postula" ng-bind-html="t.header.critery_proces"></a>
+			</div>
+			<div id="menu-tecnologias">
+				<a href="http://marcalyc.redalyc.org"><span ng-bind-html="t.header.menu2.marcalyc"></span></a> <a><span ng-bind-html="t.header.menu2.integration"></span></a> <a href="http://marcalyc.redalyc.org/ayuda"><span ng-bind-html="t.header.menu2.capacitation"></span></a> <a><span ng-bind-html="t.header.menu2.generating"></span></a> <a><span ng-bind-html="t.header.menu2.visor_articles"></span></a> <a><span ng-bind-html="t.header.menu2.visor_movil"></span></a> 
+			</div>
+			<div id="menu-about">
+				<a href="/redalyc/acerca-de/mision.html"><span ng-bind-html="t.header.menu1.about"></span></a> <a href="/redalyc/acerca-de/directorio.html"><span ng-bind-html="t.header.menu1.consejoDir"></span></a> <a href="/redalyc/acerca-de/consejoAsesor.html"><span ng-bind-html="t.header.menu1.comite"></span></a> <a href="/redalyc/acerca-de/consejoEvaluador.html"><span ng-bind-html="t.header.menu1.consejoEvaluador"></span></a> <a href="/redalyc/acerca-de/equipo.html"><span ng-bind-html="t.header.menu1.equipo"></span></a> <a href="/redalyc/acerca-de/noticias.html"><span ng-bind-html="t.header.menu1.chronology"></span></a> <a href="/redalyc/acerca-de/reconocimientos.html"><span ng-bind-html="t.header.menu1.international"></span></a> <a href="/redalyc/acerca-de/buscador.html"><span ng-bind-html="t.header.menu1.download"></span></a> <a href="/redalyc/acerca-de/usolegal.html"><span ng-bind-html="t.header.menu1.use"></span></a> <a href="/redalyc/acerca-de/productos.html"><span ng-bind-html="t.header.menu1.editorial"></span></a> <a href="/redalyc/periscopio/inicio.html"><span ng-bind-html="t.redalyc.icons.periscopio"></span></a> <span>
+					{{t.redalyc.icons.proyectosInt}}</span> <a class="padd-pro" href="https://www.goap.info/"><span ng-bind-html="t.redalyc.icons.goap"></span></a> <a class="padd-pro" href="https://www.goap.info/oa-for-angola"><span ng-bind-html="t.redalyc.icons.angola"></span></a> <a class="padd-pro" href="http://amelica.org/concurso-latinoamericano-de-ensayo/resultados/"><span ng-bind-html="t.redalyc.icons.ensayo"></span></a> <a class="padd-pro" href="http://amelica.org/index.php/2022/05/25/una-cooperacion-entre-redclara-redalyc-y-la-referencia-que-promueva-la-ciencia-como-un-bien-comun/"><span ng-bind-html="t.redalyc.icons.laRefe"></span></a> <a href="https://redalyc.org/redalyc/acerca-de/acceso-abierto/iniciativaOA_Mx.html"><span ng-bind-html="t.redalyc.icons.oaMX"></span></a> <a href="https://redalyc.org/declaracion-mexico/"><span ng-bind-html="t.redalyc.icons.declaracionMX"></span></a>
+			</div>
+			<div id="menu-openCience">
+				<a class="consolidated-option" href="/redalyc/acerca-de/open-data.html" rel="nofollow"><span ng-bind-html="t.header.menu3.openData"></span><i class="fa fa-caret-down" aria-hidden="true"></i></a> <a class="consolidated-item" href="/redalyc/acerca-de/open-data.html?id=oai" ng-bind-html="t.header.menu3.oai"></a> <a class="consolidated-item" href="/redalyc/acerca-de/open-data.html?id=api" ng-bind-html="t.header.menu3.api"></a> <a class="consolidated-item" href="/redalyc/acerca-de/open-data.html?id=xml" ng-bind-html="t.header.menu3.descargaxml"></a> <a class="proces-option" href="#" rel="nofollow"><span ng-bind-html="t.header.menu3.openSource"></span><i class="fa fa-caret-down" aria-hidden="true"></i></a> <a class="proces-item" href="https://github.com/sistemasredalyc/redalyc-oaidataprovider" ng-bind-html="t.header.menu3.code"></a>
+			</div>
+		
+		</div>
+				<button class="openbtn" id="abrir" ng-click="openNav()">☰</button>
+	</div>
+		
+<div class="idiomas-redes-estaticas cont-social">
+					<span class="idioma" ng-click="traducir('es')" ng-bind-html="t.languages.spa"></span> <span class="idioma" ng-click="traducir('en')" ng-bind-html="t.languages.en"></span> <a href="https://www.instagram.com/redalyc_oficial/" target="_blank"><img class="twitter" src="img/nuevoHeaderHome/ic_in.png" /></a> <a href="https://twitter.com/Redalyc" target="_blank"><img class="twitter" src="img/nuevoHeaderHome/ic_x.png" /></a> <a href="https://www.facebook.com/Redalyc/" target="_blank"><img class="facebook" src="img/nuevoHeaderHome/icon_fb.png" /></a> <img class="boton-menu" src="img/menu.png" />
+
+				</div>
+		<div id="buscador">
+			<div>
+				<h4 ng-bind-html="t.pandemics.search_redalyc"></h4>
+			</div>
+			<div id="buscadorN">
+				<div class="contaidner-select">
+					<select id="item-seleccionado" name="itemseleccionado" size="1" ng-model="busqueda.tipo" ng-change="cambiarSelect()">
+						<option value="Art" ng-bind-html="t.select.articles"></option>
+						<option value="Aut" ng-bind-html="t.select.authors"></option>
+						<option value="Rev" ng-bind-html="t.select.journals"></option>
+						<option value="Are" ng-bind-html="t.select.fields"></option>
+						<option value="Ins" ng-bind-html="t.select.institutions"></option>
+						<option value="Pai" ng-bind-html="t.select.countries"></option>
+					</select>
+				</div>
+				<div class="container-input">
+					<input id="input-articulo" type="text" name="input-articulo" value="" class="entrada-busqueda" ng-if="busqueda.tipo === 'Art' || busqueda.tipo === 'Aut' || busqueda.tipo === 'Rev' || busqueda.tipo === 'Ins'" ng-model="busqueda.textoABuscar" ng-keypress="($event.which === 13)?irA():0" /> <input id="boton-buscar-articulo" type="image" src="img/nuevoHeaderHome/ic_busqueda.png" name="boton-buscar-articulo" alt="Buscar en Redalyc" ng-if="busqueda.tipo === 'Art' || busqueda.tipo === 'Aut' || busqueda.tipo === 'Rev' || busqueda.tipo === 'Ins'" ng-click="irA()" /> <select id="options" name="disciplinas" ng-if="busqueda.tipo === 'Are' || busqueda.tipo === 'Pai'" ng-model="busqueda.valorSelect" ng-change="irA()">
+						<option ng-repeat="option in options" value="{{option.value}}" ng-bind-html="option.name"></option>
+					</select>
+				</div>
+			</div>			
+		</div>
+		<div id="container-numerarias">
+			<span>
+				<b class="numeros">1,727</b>
+				<b style="font-weight: lighter;" ng-bind-html="t.redalyc.numerary.journals"></b>
+			</span>
+			<span>
+				<b class="numeros">817</b>
+				<b style="font-weight: lighter;" ng-bind-html="t.redalyc.numerary.institutions"></b>
+			</span>
+			<span>
+				<b class="numeros">36</b>
+				<b style="font-weight: lighter;" ng-bind-html="t.redalyc.numerary.countries"></b>
+			</span>
+			<span class="border-none">
+			 	<b class="numeros">782,555</b>
+			 	<b style="font-weight: lighter;" ng-bind-html="t.redalyc.numerary.articles"></b>
+			</span>
+		</div>		
+		<div class="scoss-component" id="scoss-component">
+			<div id="container-scoss-arca">
+				<div class="banners-scoss-arca">
+					<div class="slider" id="sliderScoss-arca">
+						<div class="slItems slitems-scoss-arca">
+							
+							
+							 <div class="slItem sliderItem text-cc">
+								<div class="background-manifiesto">
+									<a href="https://globaldiamantoa.org/manifiesto/" target="_blank">
+										<ng-container ng-if="widthScreen == 'pantalla'">
+											<img class="imges" ng-if="pageLanguaje=='es'" src="img/nuevoHeaderHome/banner_manifiesto_esp.png" />
+											<img class="imgen" ng-if="pageLanguaje=='en'" src="img/nuevoHeaderHome/banner_manifiesto_eng.png" />
+										</ng-container>
+										
+										<ng-container ng-if="widthScreen != 'pantalla'">
+											<img class="imges" ng-if="pageLanguaje=='es'" src="img/nuevoHeaderHome/banner_manifiesto_esp_m.png" />
+											<img class="imgen" ng-if="pageLanguaje=='en'" src="img/nuevoHeaderHome/banner_manifiesto_eng_m.png" />
+										</ng-container>
+									</a>
+								</div>
+							</div>
+							
+							<div class="slItem sliderItem text-cc">
+								<div class="background-manifiesto">
+									<a href="https://redalyc.org/redalyc/acerca-de/scoss.html" target="_blank">
+										<ng-container ng-if="widthScreen == 'pantalla'">
+											<img class="imges" ng-if="pageLanguaje=='es'" src="img/nuevoHeaderHome/banner_crowdfunding_esp.png" />
+											<img class="imgen" ng-if="pageLanguaje=='en'" src="img/nuevoHeaderHome/banner_crowdfunding_eng.png" />
+										</ng-container>
+										<ng-container ng-if="widthScreen != 'pantalla'">
+											<img class="imges" ng-if="pageLanguaje=='es'" src="img/nuevoHeaderHome/banner_crowdfunding_esp_m.png" />
+											<img class="imgen" ng-if="pageLanguaje=='en'" src="img/nuevoHeaderHome/banner_crowdfunding_eng_m.png" />
+										</ng-container>								
+									</a>
+								</div>
+							</div>
+							
+							<div class="slItem sliderItem text-cc">
+								<div class="background-manifiesto">
+									<a href="https://redalyc.org/arcadia/" target="_blank">
+										<ng-container ng-if="widthScreen == 'pantalla'">
+											<img class="imgen" ng-if="pageLanguaje=='es'" src="img/nuevoHeaderHome/banner_arcadia_esp.png" />
+											<img class="imgen" ng-if="pageLanguaje=='en'" src="img/nuevoHeaderHome/banner_arcadia_eng.png" />
+										</ng-container>
+										<ng-container ng-if="widthScreen != 'pantalla'">
+											<img class="imgen" ng-if="pageLanguaje=='es'" src="img/nuevoHeaderHome/banner_arcadia_esp_m.png" />
+											<img class="imgen" ng-if="pageLanguaje=='en'" src="img/nuevoHeaderHome/banner_arcadia_eng_m.png" />
+										</ng-container>
+									</a>
+								</div>
+							</div>
+						
+							
+							
+														
+								
+								
+							
+							
+							
+
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div>
+		<div id="container-header-nav-sect">
+			<div id="container-revistas-consolidadas">
+				<img src="img/revistas_consolidadas.png" /><span class="padd-title" ng-bind-html="t.redalyc.journalsCon"></span>
+				<a href="#home-revistas-por-idioma"><b style="         margin: 0 2%;     " ng-bind-html="t.redalyc.journalsLang"></b></a>
+				<a href="#redalyc-amelica">
+				<b style="         margin: 0 2%;     " ng-bind-html="t.redalyc.journalsCont"></b></a>
+				<a href="#coleccion-por-disciplina">
+				<b style="         margin: 0 2%;     " ng-bind-html="t.redalyc.journalsDisc"></b></a>
+				<a href="#coleccion-por-institucion">
+				<b style="         margin: 0 2%;     " ng-bind-html="t.redalyc.journalsIns"></b></a>
+			</div>
+		</div>
+		<div id="container-home-revistas-por-idioma">
+			<div id="home-revistas-por-idioma">
+				<div class="titulo-coleccion" style="text-align: center;" ng-bind-html="t.journals_language.title">
+				</div>
+				<div id="idiomas-container" ng-if="pageLanguaje == 'es'">
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=1&amp;name=Español&amp;nameE=Spanish&amp;tipo=coleccion">Español</a>
+								
+							<span class="simbol-numeral"><b>(1456)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=2&amp;name=Inglés&amp;nameE=English&amp;tipo=coleccion">Inglés</a>
+								
+							<span class="simbol-numeral"><b>(749)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=5&amp;name=Portugués&amp;nameE=Portuguese&amp;tipo=coleccion">Portugués</a>
+								
+							<span class="simbol-numeral"><b>(490)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=3&amp;name=Francés&amp;nameE=French&amp;tipo=coleccion">Francés</a>
+								
+							<span class="simbol-numeral"><b>(54)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=4&amp;name=Alemán&amp;nameE=German&amp;tipo=coleccion">Alemán</a>
+								
+							<span class="simbol-numeral"><b>(12)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=42&amp;name=Lituano&amp;nameE=Lithuanian&amp;tipo=coleccion">Lituano</a>
+								
+							<span class="simbol-numeral"><b>(7)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=7&amp;name=Italiano&amp;nameE=Italian&amp;tipo=coleccion">Italiano</a>
+								
+							<span class="simbol-numeral"><b>(5)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=11&amp;name=Catalán&amp;nameE=Catalan&amp;tipo=coleccion">Catalán</a>
+								
+							<span class="simbol-numeral"><b>(4)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=8&amp;name=Ruso&amp;nameE=Russian&amp;tipo=coleccion">Ruso</a>
+								
+							<span class="simbol-numeral"><b>(3)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=32&amp;name=Polaco&amp;nameE=Polish&amp;tipo=coleccion">Polaco</a>
+								
+							<span class="simbol-numeral"><b>(2)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=43&amp;name=Bengalí&amp;nameE=Bengali&amp;tipo=coleccion">Bengalí</a>
+								
+							<span class="simbol-numeral"><b>(1)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=13&amp;name=Multilenguaje&amp;nameE=Multilanguage&amp;tipo=coleccion">Multilenguaje</a>
+								
+							<span class="simbol-numeral"><b>(1)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=12&amp;name=Gallego&amp;nameE=Galician&amp;tipo=coleccion">Gallego</a>
+								
+							<span class="simbol-numeral"><b>(1)</b>
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=35&amp;name=Serbocroata&amp;nameE=Serbocroata&amp;tipo=coleccion">Serbocroata</a>
+								
+							<span class="simbol-numeral"><b>(1)</b>
+							</span>
+						</div>
+				</div>
+				<div id="idiomas-container" ng-if="pageLanguaje == 'en'">
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=1&amp;name=Español&amp;nameE=Spanish&amp;tipo=coleccion">Spanish</a> <span class="simbol-numeral">(<b>1456</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=2&amp;name=Inglés&amp;nameE=English&amp;tipo=coleccion">English</a> <span class="simbol-numeral">(<b>749</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=5&amp;name=Portugués&amp;nameE=Portuguese&amp;tipo=coleccion">Portuguese</a> <span class="simbol-numeral">(<b>490</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=3&amp;name=Francés&amp;nameE=French&amp;tipo=coleccion">French</a> <span class="simbol-numeral">(<b>54</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=4&amp;name=Alemán&amp;nameE=German&amp;tipo=coleccion">German</a> <span class="simbol-numeral">(<b>12</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=42&amp;name=Lituano&amp;nameE=Lithuanian&amp;tipo=coleccion">Lithuanian</a> <span class="simbol-numeral">(<b>7</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=7&amp;name=Italiano&amp;nameE=Italian&amp;tipo=coleccion">Italian</a> <span class="simbol-numeral">(<b>5</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=11&amp;name=Catalán&amp;nameE=Catalan&amp;tipo=coleccion">Catalan</a> <span class="simbol-numeral">(<b>4</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=8&amp;name=Ruso&amp;nameE=Russian&amp;tipo=coleccion">Russian</a> <span class="simbol-numeral">(<b>3</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=32&amp;name=Polaco&amp;nameE=Polish&amp;tipo=coleccion">Polish</a> <span class="simbol-numeral">(<b>2</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=43&amp;name=Bengalí&amp;nameE=Bengali&amp;tipo=coleccion">Bengali</a> <span class="simbol-numeral">(<b>1</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=13&amp;name=Multilenguaje&amp;nameE=Multilanguage&amp;tipo=coleccion">Multilanguage</a> <span class="simbol-numeral">(<b>1</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=12&amp;name=Gallego&amp;nameE=Galician&amp;tipo=coleccion">Galician</a> <span class="simbol-numeral">(<b>1</b>)
+							</span>
+						</div>
+						<div>
+							<a class="hover-dis" href="idioma.oa?id=35&amp;name=Serbocroata&amp;nameE=Serbocroata&amp;tipo=coleccion">Serbocroata</a> <span class="simbol-numeral">(<b>1</b>)
+							</span>
+						</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="redalyc-amelica">
+				<div class="titulo-coleccion" style="text-align: center;" ng-bind-html="t.journals_collection.country"></div>
+				<div class="mundo-colec">
+					<div id="mundo">
+						<div id="coleccion-por-pais">
+							<div id="chartdiv" class="mapaSec"></div>
+							<script src="js/mapan.js"></script>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+		
+							
+					
+					<div ng-if="pageLanguaje == 'es'" id="coleccion-por-disciplina">
+					<div class="collection-cnart" style="width: 100%;">
+						<div class="titulo-coleccion" ng-bind-html="t.journals_field.title"></div>
+						<div class="disciplinas-container">
+						<div>
+						<div id="csociales" class="lista-disciplinas">
+							<p>
+								<b ng-bind-html="t.sciences.social"></b><b class="simbol-numeral"> (<b>1036</b>
+									<b ng-bind-html="t.select.journals"></b>)
+								</b>
+							</p>
+							<div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=1&amp;tipo=coleccion">Administración y Contabilidad</a> <span class="simbol-numeral">(<b>96</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=2&amp;tipo=coleccion">Antropología</a> <span class="simbol-numeral">(<b>40</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=23&amp;tipo=coleccion">Ciencias de la Información</a> <span class="simbol-numeral">(<b>21</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=3&amp;tipo=coleccion">Comunicación</a> <span class="simbol-numeral">(<b>37</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=5&amp;tipo=coleccion">Demografía</a> <span class="simbol-numeral">(<b>6</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=6&amp;tipo=coleccion">Derecho</a> <span class="simbol-numeral">(<b>64</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=8&amp;tipo=coleccion">Economía y Finanzas</a> <span class="simbol-numeral">(<b>1</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=9&amp;tipo=coleccion">Educación</a> <span class="simbol-numeral">(<b>60</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=22&amp;tipo=coleccion">Estudios Agrarios</a> <span class="simbol-numeral">(<b>188</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=19&amp;tipo=coleccion">Estudios Ambientales</a> <span class="simbol-numeral">(<b>6</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=4&amp;tipo=coleccion">Estudios Culturales</a> <span class="simbol-numeral">(<b>8</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=47&amp;tipo=coleccion">Estudios de Turismo</a> <span class="simbol-numeral">(<b>18</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=10&amp;tipo=coleccion">Estudios Territoriales</a> <span class="simbol-numeral">(<b>12</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=12&amp;tipo=coleccion">Geografía Social</a> <span class="simbol-numeral">(<b>32</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=17&amp;tipo=coleccion">Multidisciplinarias (CS)</a> <span class="simbol-numeral">(<b>17</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=14&amp;tipo=coleccion">Política</a> <span class="simbol-numeral">(<b>141</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=15&amp;tipo=coleccion">Psicología</a> <span class="simbol-numeral">(<b>42</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=25&amp;tipo=coleccion">Relaciones Internacionales</a> <span class="simbol-numeral">(<b>107</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=20&amp;tipo=coleccion">Salud</a> <span class="simbol-numeral">(<b>15</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=16&amp;tipo=coleccion">Sociología</a> <span class="simbol-numeral">(<b>58</b>)
+										</span>
+									</div>
+
+							</div>
+						</div>
+							</div>
+							<div class="collection-cnart" style="width: 100%;">
+								<div id="cnaturales" class="lista-disciplinas lista-disciplinas-cnart">
+									<p>
+										<b ng-bind-html="t.sciences.exact_natural"></b><b class="simbol-numeral"> (<b>417</b> <b ng-bind-html="t.select.journals"></b>)
+										</b>
+									</p>
+									<div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=28&amp;tipo=coleccion">Agrociencias</a> <span class="simbol-numeral">(<b>49</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=31&amp;tipo=coleccion">Biología</a> <span class="simbol-numeral">(<b>40</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=48&amp;tipo=coleccion">Ciencias de la tierra</a> <span class="simbol-numeral">(<b>23</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=33&amp;tipo=coleccion">Computación</a> <span class="simbol-numeral">(<b>11</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=49&amp;tipo=coleccion">Física, Astronomía y Matemáticas</a> <span class="simbol-numeral">(<b>9</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=36&amp;tipo=coleccion">Geología</a> <span class="simbol-numeral">(<b>4</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=38&amp;tipo=coleccion">Ingeniería</a> <span class="simbol-numeral">(<b>80</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=39&amp;tipo=coleccion">Matemáticas</a> <span class="simbol-numeral">(<b>5</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=40&amp;tipo=coleccion">Medicina</a> <span class="simbol-numeral">(<b>140</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=44&amp;tipo=coleccion">Multidisciplinaria (Ciencias Naturales y Exactas)</a> <span class="simbol-numeral">(<b>25</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=41&amp;tipo=coleccion">Química</a> <span class="simbol-numeral">(<b>13</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=43&amp;tipo=coleccion">Veterinaria</a> <span class="simbol-numeral">(<b>18</b>)
+												</span>
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="collection-cnart" style="width: 100%;">
+								<div id="carte" class="lista-disciplinas lista-disciplinas-cnart">
+									<p>
+										<b ng-bind-html="t.sciences.art_humanities"></b><b class="simbol-numeral"> (<b>256</b> <b ng-bind-html="t.select.journals"></b>)
+										</b>
+									</p>
+									<div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=29&amp;tipo=coleccion">Arquitectura</a> <span class="simbol-numeral">(<b>17</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=21&amp;tipo=coleccion">Arte</a> <span class="simbol-numeral">(<b>31</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=11&amp;tipo=coleccion">Filosofía</a> <span class="simbol-numeral">(<b>50</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=13&amp;tipo=coleccion">Historia</a> <span class="simbol-numeral">(<b>77</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=24&amp;tipo=coleccion">Lengua y Literatura</a> <span class="simbol-numeral">(<b>77</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=50&amp;tipo=coleccion">Teología</a> <span class="simbol-numeral">(<b>4</b>)
+												</span>
+											</div>
+	
+									</div>
+								</div>
+							</div>
+							<div class="collection-cnart" style="width: 100%;">
+								<div id="sc-multidiciplinary" class="lista-disciplinas lista-disciplinas-cnart">
+									<p>
+									
+											<b ng-bind-html="t.sciences.multidiciplinary"></b> <b class="simbol-numeral"> (<b>20</b> <b ng-bind-html="t.select.journals"></b>)
+											</b>
+										
+										</p>
+										<div>
+											<div>
+											<a class="hover-dis" href="area.oa?id=45&amp;tipo=coleccion" ng-bind-html="t.sciences.multidiciplinary"></a> <span class="simbol-numeral">(<b>20</b>)
+											</span>
+										</div>
+										</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+
+				
+				
+
+
+				<div ng-if="pageLanguaje == 'en'" id="coleccion-por-disciplina">
+					<div class="collection-cnart" style="width: 100%;">
+						<div class="titulo-coleccion" ng-bind-html="t.journals_field.title"></div>
+						<div class="disciplinas-container">
+						<div>
+						<div id="csociales" class="lista-disciplinas">
+							<p>
+								<b ng-bind-html="t.sciences.social"></b><b class="simbol-numeral"> (<b>1036</b>
+									<b ng-bind-html="t.select.journals"></b>)
+								</b>
+							</p>
+							<div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=1&amp;tipo=coleccion">Accounting and Managment</a> <span class="simbol-numeral">(<b>96</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=2&amp;tipo=coleccion">Anthropology</a> <span class="simbol-numeral">(<b>40</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=23&amp;tipo=coleccion">Information Science</a> <span class="simbol-numeral">(<b>21</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=3&amp;tipo=coleccion">Communication</a> <span class="simbol-numeral">(<b>37</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=5&amp;tipo=coleccion">Demography</a> <span class="simbol-numeral">(<b>6</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=6&amp;tipo=coleccion">Law</a> <span class="simbol-numeral">(<b>64</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=8&amp;tipo=coleccion">Economics and Finance</a> <span class="simbol-numeral">(<b>1</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=9&amp;tipo=coleccion">Education</a> <span class="simbol-numeral">(<b>60</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=22&amp;tipo=coleccion">Agricutural Sciences</a> <span class="simbol-numeral">(<b>188</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=19&amp;tipo=coleccion">Enviromental Sciences</a> <span class="simbol-numeral">(<b>6</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=4&amp;tipo=coleccion">Cultural Studies</a> <span class="simbol-numeral">(<b>8</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=47&amp;tipo=coleccion">Tourism</a> <span class="simbol-numeral">(<b>18</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=10&amp;tipo=coleccion">Territorial Studies</a> <span class="simbol-numeral">(<b>12</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=12&amp;tipo=coleccion">Social Geography</a> <span class="simbol-numeral">(<b>32</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=17&amp;tipo=coleccion">Multidisciplinary (Social Sciences)</a> <span class="simbol-numeral">(<b>17</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=14&amp;tipo=coleccion">Politics</a> <span class="simbol-numeral">(<b>141</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=15&amp;tipo=coleccion">Psychology</a> <span class="simbol-numeral">(<b>42</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=25&amp;tipo=coleccion">International Relations</a> <span class="simbol-numeral">(<b>107</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=20&amp;tipo=coleccion">Health</a> <span class="simbol-numeral">(<b>15</b>)
+										</span>
+									</div>
+									<div>
+										<a class="hover-dis" href="area.oa?id=16&amp;tipo=coleccion">Sociology</a> <span class="simbol-numeral">(<b>58</b>)
+										</span>
+									</div>
+
+							</div>
+						</div>
+							</div>
+							<div class="collection-cnart" style="width: 100%;">
+								<div id="cnaturales" class="lista-disciplinas lista-disciplinas-cnart">
+									<p>
+										<b ng-bind-html="t.sciences.exact_natural"></b><b class="simbol-numeral"> (<b>417</b> <b ng-bind-html="t.select.journals"></b>)
+										</b>
+									</p>
+									<div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=28&amp;tipo=coleccion">Agriculture</a> <span class="simbol-numeral">(<b>49</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=31&amp;tipo=coleccion">Biology</a> <span class="simbol-numeral">(<b>40</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=48&amp;tipo=coleccion">Earth Sciences</a> <span class="simbol-numeral">(<b>23</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=33&amp;tipo=coleccion">Computational Sciences</a> <span class="simbol-numeral">(<b>11</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=49&amp;tipo=coleccion">Physics, Astronomy and Mathematics</a> <span class="simbol-numeral">(<b>9</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=36&amp;tipo=coleccion">Geology</a> <span class="simbol-numeral">(<b>4</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=38&amp;tipo=coleccion">Engineering</a> <span class="simbol-numeral">(<b>80</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=39&amp;tipo=coleccion">Mathematics</a> <span class="simbol-numeral">(<b>5</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=40&amp;tipo=coleccion">Medicine</a> <span class="simbol-numeral">(<b>140</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=44&amp;tipo=coleccion">Multidisciplinary (Exact and Natural Sciences)</a> <span class="simbol-numeral">(<b>25</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=41&amp;tipo=coleccion">Chemistry</a> <span class="simbol-numeral">(<b>13</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=43&amp;tipo=coleccion">Veterinary</a> <span class="simbol-numeral">(<b>18</b>)
+												</span>
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="collection-cnart" style="width: 100%;">
+								<div id="carte" class="lista-disciplinas lista-disciplinas-cnart">
+									<p>
+										<b ng-bind-html="t.sciences.art_humanities"></b><b class="simbol-numeral"> (<b>256</b> <b ng-bind-html="t.select.journals"></b>)
+										</b>
+									</p>
+									<div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=29&amp;tipo=coleccion">Architecture</a> <span class="simbol-numeral">(<b>17</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=21&amp;tipo=coleccion">Arts</a> <span class="simbol-numeral">(<b>31</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=11&amp;tipo=coleccion">Phylosophy</a> <span class="simbol-numeral">(<b>50</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=13&amp;tipo=coleccion">History</a> <span class="simbol-numeral">(<b>77</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=24&amp;tipo=coleccion">Language and Literature</a> <span class="simbol-numeral">(<b>77</b>)
+												</span>
+											</div>
+											<div>
+												<a class="hover-dis" href="area.oa?id=50&amp;tipo=coleccion">Theology</a> <span class="simbol-numeral">(<b>4</b>)
+												</span>
+											</div>
+	
+									</div>
+								</div>
+							</div>
+							<div class="collection-cnart" style="width: 100%;">
+								<div id="sc-multidiciplinary" class="lista-disciplinas lista-disciplinas-cnart">
+									<p>
+									
+											<b ng-bind-html="t.sciences.multidiciplinary"></b> <b class="simbol-numeral"> (<b>20</b> <b ng-bind-html="t.select.journals"></b>)
+											</b>
+										
+										</p>
+										<div>
+											<div>
+											<a class="hover-dis" href="area.oa?id=45&amp;tipo=coleccion" ng-bind-html="t.sciences.multidiciplinary"></a> <span class="simbol-numeral">(<b>20</b>)
+											</span>
+										</div>
+										</div>
+								</div>
+							</div>
+							</div>
+						</div>
+				</div>
+				
+		
+		
+					
+					
+				
+
+				
+								
+
+							
+									
+								
+									
+								
+				
+				
+							
+						
+		
+	</div>
+	
+		<div id="coleccion-por-institucion">
+					<div class="titulo-coleccion" ng-bind-html="t.journals_institution.title"></div>
+					<div class="lista-instituciones">
+					<span id="subtitulo-instituciones">
+						<b ng-bind-html="t.journals_institution.institutions"></b><span class="simbol-numeral"> (<b>817</b>
+								<b ng-bind-html="t.redalyc.numerary.institutions"></b>)
+							</span>
+					</span>
+					
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+						<div>
+								<div>
+									<a href="institucion.oa?id=15992&amp;tipo=coleccion">Universidad Nacional Autónoma de México</a> <span class="simbol-numeral">(<b> 49</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=16281&amp;tipo=coleccion">Universidad Nacional de Colombia</a> <span class="simbol-numeral">(<b> 35</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22227&amp;tipo=coleccion">Universidade de São Paulo</a> <span class="simbol-numeral">(<b> 30</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=16825&amp;tipo=coleccion">Universidad de Costa Rica</a> <span class="simbol-numeral">(<b> 28</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=19365&amp;tipo=coleccion">Vilniaus Universitetas</a> <span class="simbol-numeral">(<b> 24</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=18493&amp;tipo=coleccion">Universidad de los Andes</a> <span class="simbol-numeral">(<b> 20</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=10945&amp;tipo=coleccion">Universidad de Buenos Aires</a> <span class="simbol-numeral">(<b> 18</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=15344&amp;tipo=coleccion">Universidad de Antioquia</a> <span class="simbol-numeral">(<b> 17</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=14959&amp;tipo=coleccion">Universidad Autónoma Metropolitana</a> <span class="simbol-numeral">(<b> 17</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=15083&amp;tipo=coleccion">Universidad de Guadalajara</a> <span class="simbol-numeral">(<b> 16</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=18518&amp;tipo=coleccion">Universidad del Zulia</a> <span class="simbol-numeral">(<b> 15</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=14939&amp;tipo=coleccion">Universidad Autónoma del Estado de México</a> <span class="simbol-numeral">(<b> 15</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22587&amp;tipo=coleccion">Universidade Federal de Santa Catarina</a> <span class="simbol-numeral">(<b> 12</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=11630&amp;tipo=coleccion">Pontificia Universidad Católica de Chile</a> <span class="simbol-numeral">(<b> 12</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22405&amp;tipo=coleccion">Universidade Estadual de Maringá</a> <span class="simbol-numeral">(<b> 12</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=23339&amp;tipo=coleccion">Universität Bern</a> <span class="simbol-numeral">(<b> 11</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=11762&amp;tipo=coleccion">Universidad de Chile</a> <span class="simbol-numeral">(<b> 11</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22267&amp;tipo=coleccion">Universidade do Estado do Rio de Janeiro</a> <span class="simbol-numeral">(<b> 10</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=15407&amp;tipo=coleccion">Universidad de los Andes</a> <span class="simbol-numeral">(<b> 10</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22372&amp;tipo=coleccion">Universidade Federal do Rio Grande do Sul</a> <span class="simbol-numeral">(<b> 1</b>)
+									</span>
+								</div>
+
+							
+						</div>
+					</div>
+					<div class="lista-instituciones">
+						<p class="title-find-institutions" ng-bind-html="t.search_institutions.title"></p>
+						<input id="buscar-mas-instituciones" type="text" ng-model="busquedaInstituciones.nombreABuscar" placeholder="{{t.search_institutions.title}}" ng-keypress="($event.which === 13)?buscarInstituciones():0" />
+						<input id="lupa-mas-instituciones" type="image" src="img/buscador-institucionmdpi.png" ng-click="buscarInstituciones()" />
+					</div>
+					<div class="lista-instituciones lista-instituciones-right" ng-if="getData().length &gt; 0">
+						<p></p>
+						<div>
+							<div ng-repeat="institucion in institucionesBuscadas | startFrom:currentPage*pageSize | limitTo:pageSize">
+								<a href="institucion.oa?id={{institucion.key}}&amp;tipo=coleccion" ng-bind-html="institucion.name"></a>
+							</div>
+						</div>
+						<p></p>
+
+						<span><span ng-bind-html="(institucionesBuscadas.length == 0) ? 0 : (currentPage * pageSize) + 1"></span>
+							- <span ng-bind-html="((pageSize * (currentPage + 1)) &gt; institucionesBuscadas.length) ? institucionesBuscadas.length : pageSize * (currentPage + 1)"></span>
+							de <span ng-bind-html="getData().length"></span></span>
+						<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn-page">&lt;</button>
+						<button ng-disabled="currentPage &gt;= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn-page">&gt;</button>
+					</div>
+					<div style="visibility: hidden; text-align: left; margin: 5px;" ng-if="flag" ng-Style="{'visibility': getData().length &gt; 0 ? 'hidden' : 'visible' }">
+						<b>{{t.error}}</b> {{busquedaInstituciones.nombreABuscar}}
+					</div>
+				</div>
+
+	<div id="container-pandemics">
+		<div class="shadow-white">
+			<div id="row-pandemics">
+				<div id="head-left-pandemics">
+					<a href="http://semantic.redalyc.org/epidemics/" target="_blank"><span class="pandemics-lf-tit"><strong ng-bind-html="t.redalyc.base_pandemics"></strong></span></a>
+					<div class="tit-pande-cnt">
+						<span class="pandemics-nb-tit" ng-bind-html="t.pandemics.numeralia"></span><span class="pandemics-nbrh-tit" ng-bind-html="t.pandemics.numeraliasb"></span>
+					</div>
+				</div>
+				<div class="pandemics-block">
+
+					<div id="footer-left-pandemics">
+						<div id="shadow-pandemics">
+
+							<div id="head-right-pandemics">
+								<div id="buscador-pandemics">
+									<div class="container-input">
+										<div class="sb-pande-cnt">
+											<span class="pandemics-lf-sb"><strong ng-bind-html="t.pandemics.search_recent"></strong></span>
+										</div>
+										<input id="input-articulo-pandemics" type="text" name="input-articulo-pandemics" value="" class="entrada-busqueda" ng-model="busqueda.textoABuscarPandemics" ng-keypress="($event.which === 13)?findPandemics():0" />
+										<input id="boton-buscar-articulo-pandemics" type="image" src="img/buscador-institucionmdpi.png" name="boton-buscar-articulo-pandemics" alt="Buscar en Pandemics" ng-click="findPandemics()" />
+									</div>
+
+								</div>
+							</div>
+							<div style="height: 3rem; width: 100%;" class="space-pandemic"></div>
+							<h4 ng-bind-html="t.pandemics.teme_search"></h4>
+							<a href="http://semantic.redalyc.org/epidemics/#/home/network" target="_blank"><img src="img/imgRedalyc_network_covid19.jpg" /></a>
+							<div class="content-btn">
+								<a href="http://sparql.amelica.org/knowledgebase/epidemics/datastore" target="_blank" class="btn-white-theme" ng-bind-html="t.pandemics.sparql"></a>
+							</div>
+						</div>
+					</div>
+					<div id="footer-right-pandemics">
+						<div class="sb-pande-cnt">
+							<span class="title-recent"><strong ng-bind-html="t.pandemics.recent_articles"></strong></span>
+						</div>
+						<div class="slider" id="slider">
+							<div class="slItems">
+									<div class="slItem sliderItem">
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/140/14075366011/" target="_blank">COVID-19 y salud mental docente: Diferencias en torno al sexo y el rol de cuidador(a)</a>
+												</h4>
+													<p class="full-autores">Vanessa Orrego</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=140&amp;numero=75366" class="full-journal" target="_blank">Revista Mexicana de Investigación Educativa</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														97, {{t.pandemics.issue}}.  28,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=14075366011" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/413/41375362006/" target="_blank">Impacto del empleo informal en los rendimientos de la educación 					superior por el COVID-19 en México</a>
+												</h4>
+													<p class="full-autores">Humberto Aguirre-Aguirre, Marco Antonio Austria-Carlos, Nora Gavira-Durón, Francisco Venegas-Martínez</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=413&amp;numero=75362" class="full-journal" target="_blank">Análisis Económico</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														98, {{t.pandemics.issue}}.  XXXVIII,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=41375362006" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/413/41375362011/" target="_blank">Resiliencia y vulnerabilidad económicas durante el coronavirus</a>
+												</h4>
+													<p class="full-autores">Fernando Carlos Jeannot Rossi</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=413&amp;numero=75362" class="full-journal" target="_blank">Análisis Económico</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														98, {{t.pandemics.issue}}.  XXXVIII,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=41375362011" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1230/123075329002/" target="_blank">Black Swan Event and The Stock Market Volatility Response to Shocks in Developed, Emerging, Frontier and the BRIC Markets: Lessons from the COVID-19 Pandemic</a>
+												</h4>
+													<p class="full-autores">Nayanjyoti Bhattacharjee, Anupam De</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1230&amp;numero=75329" class="full-journal" target="_blank">BBR - Brazilian Business Review</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														5, {{t.pandemics.issue}}.  19,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=123075329002" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1230/123075331002/" target="_blank">Performance of Equity Mutual Funds considering ESG investments, Financial Constraints, and the COVID-19 Pandemic</a>
+												</h4>
+													<p class="full-autores">Thayse Machado Guimarães, Rodrigo Fernandes Malaquias</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1230&amp;numero=75331" class="full-journal" target="_blank">BBR - Brazilian Business Review</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														1, {{t.pandemics.issue}}.  20,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=123075331002" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/869/86975367012/" target="_blank">Educación remota durante la emergencia por COVID-19. Análisis de la experiencia de los estudiantes universitarios</a>
+												</h4>
+													<p class="full-autores">Luz Ángela Núñez Espinel</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=869&amp;numero=75367" class="full-journal" target="_blank">Revista Historia de la Educación Latinoamericana</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														39, {{t.pandemics.issue}}.  24,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=86975367012" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+									</div>
+									<div class="slItem sliderItem">
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/3555/355575333003/" target="_blank">Severidad de la colecistitis aguda en tiempos de COVID-19: ¿mito o realidad?</a>
+												</h4>
+													<p class="full-autores">Ada Mercedes Bustos-Guerrero, Silvia Inés Guerrero-Macías, Edgar Fabian Manrique-Hernández, German Andrés Gomez-Rincón</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=3555&amp;numero=75333" class="full-journal" target="_blank">Revista Colombiana de Cirugía</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  37,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=355575333003" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/3915/391573997023/" target="_blank">Estudo comparativo de zumbido e aptidão cardiorrespiratória entre pessoas pós-COVID-19</a>
+												</h4>
+													<p class="full-autores full-autores-hg">Luciana Lozza de Moraes Marchiori, Daiane Soares de Almeida Ciquinato, Glória de Moraes Marchiori, Lígia Hallana Kosse da Silva, Licia Savuri Tanaka Okamura, Braulio Henrique Magnani Branco</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=3915&amp;numero=73997" class="full-journal" target="_blank">Audiology - Communication Research</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														, {{t.pandemics.issue}}.  28,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=391573997023" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/5742/574275303003/" target="_blank">Entre el aislamiento y las brechas digitales: sistematización de experiencia de acompañamiento socioemocional en personas mayores de Temuco, Chile, en tiempos de COVID-19</a>
+												</h4>
+													<p class="full-autores">G. Bernarda Aedo-Neira</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=5742&amp;numero=75303" class="full-journal" target="_blank">PROSPECTIVA. Revista de Trabajo Social e intervención social</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														33, {{t.pandemics.issue}}.   ,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=574275303003" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/5742/574275303008/" target="_blank">Resignificación de los vínculos sociales durante la pandemia de COVID-19: narrativas de personas que convergen en Conjuntos residenciales en Bogotá, Colombia</a>
+												</h4>
+													<p class="full-autores">Andrea Marcela Reyes-García, Laura Daniela Molina-Ortiz</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=5742&amp;numero=75303" class="full-journal" target="_blank">PROSPECTIVA. Revista de Trabajo Social e intervención social</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														33, {{t.pandemics.issue}}.   ,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=574275303008" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/5742/574275304011/" target="_blank">Dimensiones de los estilos de vida saludable durante el confinamiento por COVID-19 en población mexicana</a>
+												</h4>
+													<p class="full-autores">Jesús Alberto García-García, Rosa Isabel Garza-Sánchez, Martha Leticia Cabello-Garza Mario Alejandro Pérez-Rincón</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=5742&amp;numero=75304" class="full-journal" target="_blank">PROSPECTIVA. Revista de Trabajo Social e intervención social</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														34, {{t.pandemics.issue}}.   ,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=574275304011" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/5705/570574907013/" target="_blank">A importância da educação em saúde para o retorno das aulas presenciais de adolescentes em tempos de pandemia pela COVID-19: uma revisão de literatura</a>
+												</h4>
+													<p class="full-autores">Luis Costa Coutinho, Caroline Brandão Quines, Laiane Oliveira  Lima Soares</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=5705&amp;numero=74907" class="full-journal" target="_blank">Vigilância Sanitária em Debate: Sociedade, Ciência &amp; Tecnologia</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														, {{t.pandemics.issue}}.  11,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=570574907013" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+									</div>
+									<div class="slItem sliderItem">
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/7037/703775308004/" target="_blank">Reasons for the use of masks in open areas after the Peruvian government announced that it will no longer be mandatory in the context of COVID-19 in 2022</a>
+												</h4>
+													<p class="full-autores full-autores-hg">Tomás Caycho-Rodríguez, Nicole Oré-Kovacs, Carlos Carbajal-León, Ximena Llerena-Espezúa, Daniel E. Yupanqui-Lorenzo, Julio Torales</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=7037&amp;numero=75308" class="full-journal" target="_blank">Medicina Clínica y Social</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  7,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=703775308004" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/7037/703775308008/" target="_blank">Percepción sobre la vacuna COVID-19 y su efecto en la cobertura de vacunación regular de pueblos indígenas del Departamento de Presidente Hayes, Paraguay</a>
+												</h4>
+													<p class="full-autores">Maida Barrios, Mirian Espínola-Canata, Julieta Méndez</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=7037&amp;numero=75308" class="full-journal" target="_blank">Medicina Clínica y Social</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  7,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=703775308008" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/2655/265570220042/" target="_blank">A vacinação contra SARS-CoV-2 afeta o efeito imediato da toxina                     botulínica? Primeiras impressões</a>
+												</h4>
+													<p class="full-autores full-autores-hg">Bruna Souza Felix Bravo, Raquel Melo Carvalho, Laís Bezerra de Menezes Penedo, Fernanda Lourenço Prestes, Samantha Talarico, Sabrina Talarico, Sergio Talarico</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=2655&amp;numero=70220" class="full-journal" target="_blank">Surgical &amp; Cosmetic Dermatology</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														, {{t.pandemics.issue}}.  14,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=265570220042" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/5517/551774301024/" target="_blank">Automedicación por síntomas de COVID-19 en internos rotativos de Enfermería</a>
+												</h4>
+													<p class="full-autores">Zuly Rivel Nazate-Chuga, Alexandra Roxana Rebolledo-Solis, Alexandra Patricia Abata-Erazo, Reudis Durán-Rodríguez</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=5517&amp;numero=74301" class="full-journal" target="_blank">Revista Información Científica</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														, {{t.pandemics.issue}}.  102,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=551774301024" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/5517/551774301028/" target="_blank">Impacto de la COVID-19 en el área de Odontología</a>
+												</h4>
+													<p class="full-autores">Karen Estefanny Alvarez-Freire, Gabriela L. Vaca-Altamirano, José Arturo Molina-Ramón, Lisbeli Cantillo-Acosta</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=5517&amp;numero=74301" class="full-journal" target="_blank">Revista Información Científica</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														, {{t.pandemics.issue}}.  102,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=551774301028" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/6338/633869001001/" target="_blank">OS DESAFIOS IMPOSTOS PELA PANDEMIA COVID-19: DAS MEDIDAS DE PROTEÇÃO DO DIREITO À SAÚDE AOS IMPACTOS NA SAÚDE MENTAL</a>
+												</h4>
+													<p class="full-autores">Janaína Machado Sturza, Rodrigo Tonel</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=6338&amp;numero=69001" class="full-journal" target="_blank">Revista Opinião Jurídica</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														29, {{t.pandemics.issue}}.  18,
+														 2020 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=633869001001" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+									</div>
+									<div class="slItem sliderItem">
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/6338/633869001004/" target="_blank">A SOLIDARIEDADE COMO FUNDAMENTO PARA O ENFRENTAMENTO DO COVID-19 NA UNIÃO EUROPEIA</a>
+												</h4>
+													<p class="full-autores">Jamile Bergamaschine Mata Diz, Elizabeth Accioly Rodrigues Costa, Alice Rocha da Silva</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=6338&amp;numero=69001" class="full-journal" target="_blank">Revista Opinião Jurídica</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														29, {{t.pandemics.issue}}.  18,
+														 2020 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=633869001004" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/213/21375058005/" target="_blank">Validación del CESQT en trabajadores colombianos: Un estudio psicométrico en tiempos de COVID-19</a>
+												</h4>
+													<p class="full-autores">Angélica Hermosa Rodríguez, Pedro Gil-LaOrden, Pedro R. Gil-Monte</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=213&amp;numero=75058" class="full-journal" target="_blank">Psicología desde el Caribe</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														3, {{t.pandemics.issue}}.  39,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=21375058005" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1052/105275077001/" target="_blank">Post-COVID-19 metabolic syndrome: a new challenge for nursing care</a>
+												</h4>
+													<p class="full-autores">João Cruz, Tahissa Frota Cavalcante, Nuno Damácio de Carvalho Félix</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1052&amp;numero=75077" class="full-journal" target="_blank">Investigación y Educación en Enfermería</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														1, {{t.pandemics.issue}}.  41,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=105275077001" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1052/105275077006/" target="_blank">Impact of COVID-19 on lifestyles related etiquette among nursing staff in India: a cross sectional descriptive e-survey</a>
+												</h4>
+													<p class="full-autores">Nipin Kalal, Suresh K Sharma, Nimarta Rana, Ashok Kumar</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1052&amp;numero=75077" class="full-journal" target="_blank">Investigación y Educación en Enfermería</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														1, {{t.pandemics.issue}}.  41,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=105275077006" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1052/105275077011/" target="_blank">Impact of the COVID-19 pandemic on the nursing students' education in a public university in Colombia</a>
+												</h4>
+													<p class="full-autores">Cecilia Leon Palomino, Sandra Catalina Ochoa Marín, Vanessa Restrepo Betancur, Sonia Semenic</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1052&amp;numero=75077" class="full-journal" target="_blank">Investigación y Educación en Enfermería</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														1, {{t.pandemics.issue}}.  41,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=105275077011" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1270/127075137009/" target="_blank">Ethics and Responsibility in Facing COVID-19 in the Context of Brazilian Public Agents</a>
+												</h4>
+													<p class="full-autores">Norton Nohama, Jefferson Soares da Silva, Daiane Priscila Simão-Silva</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1270&amp;numero=75137" class="full-journal" target="_blank">Revista Latinoamericana de Bioética</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  22,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=127075137009" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+									</div>
+									<div class="slItem sliderItem">
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/582/58275096002/" target="_blank">Effectiveness evaluation of online Mindfulness in mental health and alcohol consumption in medical students during the COVID-19 pandemic</a>
+												</h4>
+													<p class="full-autores full-autores-hg">León Jesús German-Ponciano, María Fernanda Zapata-de la Rosa, Brenda Itzel Molina-Cadena, Yared Sarai Velasco-Gómez, Ángel Alberto Puig-Lagunes</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=582&amp;numero=75096" class="full-journal" target="_blank">Salud Mental</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  46,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=58275096002" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/582/58275096006/" target="_blank">Association between physical activity and affects in college students during the COVID-19 pandemic: A cross-sectional study</a>
+												</h4>
+													<p class="full-autores full-autores-hg">Juliette Marie Brito-Suárez, Anna D. Argoty-Pantoja, Luisa Fernanda Achury Beltrán, Luis Eduardo González Martínez,, Claudia Gutiérrez Camacho</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=582&amp;numero=75096" class="full-journal" target="_blank">Salud Mental</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  46,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=58275096006" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/582/58275096005/" target="_blank">An assessment of mental health of Mexican and Colombian medical students during the COVID-19 pandemic</a>
+												</h4>
+													<p class="full-autores full-autores-hg">D. Xipe Pacheco-Tobón, Edgar Bautista-Soto, Claudia Arellano-Ramírez, Daniela Orozco-García, Lucia Ramos-Ruiz, Eliana Herbales-Martinez, Leonardo M. Porchia, Ricardo Pérez-Fuentes, M. Elba Gonzalez-Mejia</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=582&amp;numero=75096" class="full-journal" target="_blank">Salud Mental</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  46,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=58275096005" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/582/58275096010/" target="_blank">Resilience, adverse childhood experiences, and mental health in Health Science students during the COVID-19 pandemic</a>
+												</h4>
+													<p class="full-autores">Felipe Agudelo Hernández, María Benavides Bastidas, Fernando Arango Gómez</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=582&amp;numero=75096" class="full-journal" target="_blank">Salud Mental</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  46,
+														 2023 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=58275096010" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/686/68675081006/" target="_blank">Social Representations of COVID-19 Among Brazilian Elderly Women: A Structural Approach</a>
+												</h4>
+													<p class="full-autores">Alda Vanessa Cardoso Ferreira, Ludgleydson Fernandes de Araújo, Raimundo Nonato de Sousa Barros</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=686&amp;numero=75081" class="full-journal" target="_blank">Liberabit. Revista Peruana de Psicología</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														2, {{t.pandemics.issue}}.  28,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=68675081006" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+
+											<div class="container-pandemic-card-lts">
+												<h4>
+													<a href="https://www.redalyc.org/journal/1631/163175158005/" target="_blank">Early warning scores to identify the risk of clinical  worsening or death in patients hospitalized for COVID-19</a>
+												</h4>
+													<p class="full-autores full-autores-hg">MAURICIO OROZCO-LEVI, ANDERSON BERMON-ANGARITA, DIANA ISABEL CÁCERES-RIVERA, JULIE MELISSA MOGOLLÓN-VARGAS, MARÍA ANGÉLICA FORERO-BLANCO, ALBA RAMÍREZ-SARMIENTO, DIANA CAROLINA TIGA-LOZA, VICTORIA ELENA CORAL-ZÚÑIGA, IVÁN SANTIAGO ACUÑA-CORTÉS, SEBASTIÁN TABARES-RODRÍGUEZ</p>
+												<p>
+													<a href="https://www.redalyc.org/revista.oa?id=1631&amp;numero=75158" class="full-journal" target="_blank">Acta Médica Colombiana</a> <span class="card-txt"> , {{t.pandemics.volume}}.
+														3, {{t.pandemics.issue}}.  47,
+														 2022 </span>
+												</p>
+
+												<p class="card-full">
+													<a href="https://www.redalyc.org/articulo.oa?id=163175158005" target="_blank" ng-bind-html="t.pandemics.fullText"></a>
+												</p>
+											</div>
+									</div>
+							</div>
+						</div>
+						<div class="content-btn-recent">
+							<a class="btn-white-pandemics" href="https://www.redalyc.org/articulosRecientes.oa" ng-bind-html="t.redalyc.seeMore"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="container-icons">
+		<div class="icons-redalyc">
+			<div class="title-redalyc">
+				<h2 ng-bind-html="t.redalyc.icons.title"></h2>
+				<img src="img/sv-redalyc.png" />
+			</div>
+			<div class="icons">
+				<div class="card-icon-serv">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/tarjeta-indice.png" />
+					</div>
+					<div>
+						<span class="tit-card-ind" ng-bind-html="t.redalyc.icons.journals_indexation"></span>
+					</div>
+					<div class="card-icon-enlaces">
+						<div class="item" alt="t1-criterios-deslect">
+							<a href="postulacion.oa?q=criterios" target="_blank"><img class="img-hv" src="img/t1-criterios-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.ind_rev1"></span></a>
+						</div>
+						<div class="item" alt="t1-busqueda-deslect">
+							<a href="BusquedaRevistaPorNombre.oa?q=" target="_blank"><img class="img-hv" src="img/t1-busqueda-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.ind_rev2"></span></a>
+						</div>
+						<div class="item" alt="t1-articulos-deslect">
+							<a href="busquedaArticuloFiltros.oa?q=" target="_blank"><img class="img-hv" src="img/t1-articulos-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.ind_rev3"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-icon-serv">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/tarjeta-produccion.png" />
+					</div>
+					<div>
+						<span class="tit-card-ind" ng-bind-html="t.redalyc.icons.production"></span>
+					</div>
+					<div class="card-icon-enlaces">
+						<div class="item" alt="t2-inst-deslect">
+							<a rel="nofollow" class="ver-prod" target="_blank"><img class="img-hv" src="img/t2-inst-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.prod1"></span></a>
+						</div>
+						<div class="item" alt="t2-pais-deslect">
+							<a rel="nofollow" class="ver-prod" target="_blank"><img class="img-hv" src="img/t2-pais-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.prod2"></span></a>
+						</div>
+						<div class="item special-item-card-link" alt="null">
+							<a rer="nofollow" target="_blank" style="cursor: unset;"><span ng-bind-html="t.redalyc.icons_items.prod3"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-icon-serv">
+					<div class="img">
+						<img alt="profesionalizacion" src="img/tarjeta-profesionalizacion.png" />
+					</div>
+					<div>
+						<span class="tit-card-ind" ng-bind-html="t.redalyc.icons.profesional"></span>
+					</div>
+					<div class="card-icon-enlaces">
+						<div class="item item-calidad-s" alt="t3-calidad-deslect">
+							<a rel="nofollow" id="ver-proff"><img class="img-hv" src="img/t3-calidad-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.prof1"></span></a>
+						</div>
+						<div class="item" alt="t3-xml-deslect">
+							<a rel="nofollow" id="ver-flujo" class="ver-flujo"><img class="img-hv" src="img/t3-xml-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.prof2"></span></a>
+						</div>
+						<div class="item btn-menu-prof" id="btn-menu-prof" alt="t3-capacitaciones-deslect">
+							<a><img class="img-hv" src="img/t3-capacitaciones-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.prof3"></span></a>
+						</div>
+
+					</div>
+				</div>
+				<div class="card-icon-serv">
+					<div class="img">
+						<img alt="indicadores" src="img/tarjeta-indicadores.png" />
+					</div>
+					<div>
+						<span class="tit-card-ind" ng-bind-html="t.redalyc.icons.indicators"></span>
+					</div>
+					<div class="card-icon-enlaces">
+						<div class="item" alt="t4-revistas-deslect">
+							<a href="indicadores.oa?q=revista" target="_blank"><img class="img-hv" src="img/t4-revistas-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.indicator1"></span></a>
+						</div>
+						<div class="item" alt="t4-areas-deslect">
+							<a href="indicadores.oa?q=area" target="_blank"><img class="img-hv" src="img/t4-areas-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.indicator2"></span></a>
+						</div>
+						<div class="item" alt="t4-instpais-deslect">
+							<a href="indicadores.oa?q=institucion" target="_blank"><img class="img-hv" src="img/t4-instpais-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.indicator3"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-icon-serv">
+					<div class="img">
+						<img alt="authors" src="img/tajeta-autores.png" />
+					</div>
+					<div>
+						<span class="tit-card-ind" ng-bind-html="t.redalyc.icons.authors"></span>
+					</div>
+					<div class="card-icon-enlaces">
+						<div class="item special-item-card-link" alt="null">
+							<a href="/redalyc/periscopio/redalyc-orcid.html" target="_blank"><span ng-bind-html="t.redalyc.icons_items.aut1"></span></a>
+						</div>
+						<div class="item special-item-card-link" alt="null">
+							<a href="autorHome.oa" target="_blank"><span ng-bind-html="t.redalyc.icons_items.aut2"></span></a>
+						</div>
+						<div class="item" alt="t5-busqa-deslect">
+							<a href="BusquedaAutorPorNombre.oa?filtBuscar=" target="_blank"><img class="img-hv" src="img/t5-busqa-deslect.png" /><span ng-bind-html="t.redalyc.icons_items.aut3"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-icon-serv">
+					<div class="img">
+						<img alt="Periscopio" src="img/tajeta-linked-open-data.png" />
+					</div>
+					<div>
+						<span class="tit-card-ind" ng-bind-html="t.redalyc.icons.linked"></span>
+					</div>
+					<div class="card-icon-enlaces">
+						<div class="item special-item-card-link" alt="null">
+							<a href="https://direct.mit.edu/books/book/chapter-pdf/677150/9780262363723_c002000.pdf" target="_blank"><span ng-bind-html="t.redalyc.icons_items.linked1"></span></a>
+						</div>
+						<div class="item special-item-card-link" id="col-hhr" alt="null">
+							<a id="collections-base" rel="nofollow"><span ng-bind-html="t.redalyc.icons_items.linked2"></span></a>
+						</div>
+						<div class="item special-item-card-link" alt="null">
+							<a href="/redalyc/acerca-de/sparql.html" target="_blank"><span ng-bind-html="t.redalyc.icons_items.linked3"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="container-mapa-prod">
+		<div class="prod-box">
+			<div class="title-redalyc">
+				<img src="img/ic-prduccion cientifica.png" />
+				<h2 class="padd-title" ng-bind-html="t.redalyc.icons.production"></h2>
+			</div>
+			<div id="mundo-prod">
+				<h2 class="prod" ng-bind-html="t.redalyc.icons.productionCountry"></h2>
+				<div id="mapa-prod">
+					<div id="chartdivProd"></div>
+					<script src="js/mapan.js"></script>
+				</div>
+			</div>
+			<div class="box-inst-prod">
+				<div id="coleccion-por-institucion-prod">
+					<h2 class="prod" ng-bind-html="t.redalyc.icons.productionInst"></h2>
+					<div class="lista-instituciones">
+						<p>
+							<b ng-bind-html="t.journals_institution.institutions"></b>
+						</p>
+						<div>
+								<div>
+									<a href="institucion.oa?id=15992&amp;tipo=produccion">Universidad Nacional Autónoma de México</a> <span class="simbol-numeral">(<b>30412</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=16281&amp;tipo=produccion">Universidad Nacional de Colombia</a> <span class="simbol-numeral">(<b>19044</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22227&amp;tipo=produccion">Universidade de São Paulo</a> <span class="simbol-numeral">(<b>17872</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=16825&amp;tipo=produccion">Universidad de Costa Rica</a> <span class="simbol-numeral">(<b>15924</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=19365&amp;tipo=produccion">Vilniaus Universitetas</a> <span class="simbol-numeral">(<b>2461</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=18493&amp;tipo=produccion">Universidad de los Andes</a> <span class="simbol-numeral">(<b>7034</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=10945&amp;tipo=produccion">Universidad de Buenos Aires</a> <span class="simbol-numeral">(<b>5312</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=15344&amp;tipo=produccion">Universidad de Antioquia</a> <span class="simbol-numeral">(<b>8688</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=14959&amp;tipo=produccion">Universidad Autónoma Metropolitana</a> <span class="simbol-numeral">(<b>9671</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=15083&amp;tipo=produccion">Universidad de Guadalajara</a> <span class="simbol-numeral">(<b>5418</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=18518&amp;tipo=produccion">Universidad del Zulia</a> <span class="simbol-numeral">(<b>11304</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=14939&amp;tipo=produccion">Universidad Autónoma del Estado de México</a> <span class="simbol-numeral">(<b>6709</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22587&amp;tipo=produccion">Universidade Federal de Santa Catarina</a> <span class="simbol-numeral">(<b>8346</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=11630&amp;tipo=produccion">Pontificia Universidad Católica de Chile</a> <span class="simbol-numeral">(<b>6353</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22405&amp;tipo=produccion">Universidade Estadual de Maringá</a> <span class="simbol-numeral">(<b>8871</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=23339&amp;tipo=produccion">Universität Bern</a> <span class="simbol-numeral">(<b>1923</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=11762&amp;tipo=produccion">Universidad de Chile</a> <span class="simbol-numeral">(<b>3665</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22267&amp;tipo=produccion">Universidade do Estado do Rio de Janeiro</a> <span class="simbol-numeral">(<b>6451</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=15407&amp;tipo=produccion">Universidad de los Andes</a> <span class="simbol-numeral">(<b>4787</b>)
+									</span>
+								</div>
+								<div>
+									<a href="institucion.oa?id=22372&amp;tipo=produccion">Universidade Federal do Rio Grande do Sul</a> <span class="simbol-numeral">(<b>8307</b>)
+									</span>
+								</div>
+
+						</div>
+					</div>
+					<div class="lista-instituciones">
+						<p class="title-find-institutions" ng-bind-html="t.search_institutions.title"></p>
+						<input id="buscar-mas-instituciones" type="text" ng-model="busquedaInstituciones.nombreABuscar" ng-click="inputProdBox='prod'" ng-keypress="($event.which === 13)?buscarInstituciones():0" />
+						<input id="lupa-mas-instituciones" type="image" src="img/buscador-institucionmdpi.png" ng-click="buscarInstituciones()" />
+					</div>
+					<div class="lista-instituciones lista-instituciones-right-prod" ng-if="getData().length &gt; 0 &amp;&amp; inputProdBox=='prod'">
+						<p></p>
+						<div>
+							<div ng-repeat="institucion in institucionesBuscadas | startFrom:currentPage*pageSize | limitTo:pageSize">
+								<a href="institucion.oa?id={{institucion.key}}&amp;tipo=produccion" ng-bind-html="institucion.name"></a>
+							</div>
+						</div>
+						<p></p>
+
+						<span><span ng-bind-html="(institucionesBuscadas.length == 0) ? 0 : (currentPage * pageSize) + 1"></span>
+							- <span ng-bind-html="((pageSize * (currentPage + 1)) &gt; institucionesBuscadas.length) ? institucionesBuscadas.length : pageSize * (currentPage + 1)"></span>
+							de <span ng-bind-html="getData().length"></span></span>
+						<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn-page">&lt;</button>
+						<button ng-disabled="currentPage &gt;= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn-page">&gt;</button>
+					</div>
+					<div style="visibility: hidden; text-align: left; margin: 5px;" ng-if="flag" ng-Style="{'visibility': getData().length &gt; 0 ? 'hidden' : 'visible' }">
+						<b>{{t.error}}</b> {{busquedaInstituciones.nombreABuscar}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="container-cards-prof">
+		<div class="cards-prof-row">
+			<div class="title-redalyc">
+				<img src="img/ic-profesionalizacion.png" />
+				<h2 class="padd-title" ng-bind-html="t.redalyc.icons.profesional"></h2>
+			</div>
+			<div class="container-row-black">
+				<div class="card-row-black card-prof" alt="4ic-calidad-deslect">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/4ic-calidad-deslect.png" class="img-hv" />
+					</div>
+					<div>
+						<span class="tit-card-prof" ng-bind-html="t.redalyc.profList.textcard13"></span>
+					</div>
+					<div class="card-row-black-enlaces">
+						<div class="item border-top-grey item-prof" alt="4ic-criterios-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/criterios-editoriales-que-se-deben-aplicar-para-el-mejoramiento-en-la-gestion-editorial-de-una-revista-cientifica/" target="_blank"> <img class="img-hv-prof" src="img/4ic-criterios-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard1"></span></a>
+						</div>
+						<div class="item item-prof" alt="4ic-estandares-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/25/estandares-internacionales-de-calidad-editorial-de-revistas-cientificas" target="_blank"> <img class="img-hv-prof" src="img/4ic-estandares-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard2"></span></a>
+						</div>
+						<div class="item item-prof" alt="4ic-practicas-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/practicas-editoriales-que-mejoran-la-publicacion-de-una-revista-cientifica/" target="_blank"> <img class="img-hv-prof" src="img/4ic-practicas-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard3"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-black card-prof" alt="2ic-marcacion-deslect">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/2ic-marcacion-deslect.png" class="img-hv" />
+					</div>
+					<div>
+						<span class="tit-card-prof" ng-bind-html="t.redalyc.profList.textcard14"></span>
+					</div>
+					<div class="card-row-black-enlaces">
+						<div class="item border-top-grey item-prof" alt="2ic-marcalyc-deslect">
+							<a href="http://marcalyc.redalyc.org/" target="_blank"> <img class="img-hv-prof" src="img/2ic-marcalyc-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard4"></span></a>
+						</div>
+						<div class="item item-prof" alt="2ic-tutoriales-deslect">
+							<a href="http://marcalyc.redalyc.org/ayuda/" target="_blank" alt="2ic-tutoriales-deslect"> <img class="img-hv-prof" src="img/2ic-tutoriales-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard5"></span></a>
+						</div>
+						<div class="item item-prof" alt="1ic-metodologia-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/flujo-de-trabajo-editorial-usando-la-infraestructura-tecnologica-de-redalyc-amelica-basada-en-el-xml-jats" target="_blank"> <img class="img-hv-prof" src="img/1ic-metodologia-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard6"></span></a>
+						</div>
+						<div class="item item-prof" alt="1ic-html-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/caracteristicas-de-los-productos-de-lectura-generados-con-marcalyc-y-su-reutilizacion">
+								<img class="img-hv-prof" src="img/1ic-html-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard7"></span>
+							</a>
+						</div>
+						<div class="item item-prof" alt="1ic-blog-deslect">
+							<a href="https://xmljatsredalyc.org/" target="_blank"> <img class="img-hv-prof" src="img/1ic-blog-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard8"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-black card-prof" alt="3ic-capacitaciones-deslect">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/3ic-capacitaciones-deslect.png" class="img-hv" />
+					</div>
+					<div>
+						<span class="tit-card-prof" ng-bind-html="t.redalyc.profList.textcard15"></span>
+					</div>
+					<div class="card-row-black-enlaces">
+						<div class="item border-top-grey item-prof" alt="3ic-calidad-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/contribucion-en-la-profesionalizacion-de-los-editores-de-revistas-cientificas" target="_blank"> <img class="img-hv-prof" src="img/3ic-calidad-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard9"></span></a>
+						</div>
+						<div class="item item-prof" alt="3ic-xml-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/contribucion-de-redalyc-en-la-profesionalizacion-del-editor-de-revistas-cientificas-en-cuanto-al-uso-del-xml-jats" target="_blank"> <img class="img-hv-prof" src="img/3ic-xml-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard10"></span></a>
+						</div>
+						<div class="item item-prof" alt="3ic-workflow-deslect">
+							<a href="https://xmljatsredalyc.org/2021/05/19/capacitaciones-enfocadas-en-el-flujo-de-los-procesos-editoriales-de-una-revista-cientifica" target="_blank"> <img class="img-hv-prof" src="img/3ic-workflow-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard11"></span></a>
+						</div>
+						<div class="item item-prof" alt="3ic-calendario-deslect">
+							<a href="/redalyc/acerca-de/capacitacion.html" target="_blank">
+								<img class="img-hv-prof" src="img/3ic-calendario-deslect.png" /><span ng-bind-html="t.redalyc.profList.textcard12"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="container-cards-indicators">
+		<div class="cards-indicators-row">
+			<div class="title-redalyc">
+				<img src="img/ic-indicadores.png" />
+				<h2 class="padd-title" ng-bind-html="t.redalyc.icons.indicators"></h2>
+			</div>
+			<div class="container-row-indicators">
+				<div class="card-row-indicators" id="card1-indicators">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/t1-metodologia.png" />
+					</div>
+					<div class="subt-card-ind">
+						<span class="card-ind-text-high" id="card1-title" ng-bind-html="t.redalyc.cardsInd.motodologies"></span>
+					</div>
+					<div class="card-row-indicators-enlaces" id="enlaces-metodologia">
+						<div class="item">
+							<p class="card-ind-text" id="completo-texto-metodologia">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard1"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-mas-metodologia"><i class="fa fa-arrow-circle-down"></i></span>
+							</p>
+
+							<p class="card-ind-text" id="incompleto-texto-metodologia" style="display: none;">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard1_full"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-menos-metodologia"><i class="fa fa-arrow-circle-up"></i></span>
+							</p>
+						</div>
+						<div class="item btn-cards-orange" id="btn-orange-metodologia">
+							<div class="text-btn-cc">
+								<a href="/redalyc/acerca-de/metodologia.html" target="_blank"><span ng-bind-html="t.redalyc.seeMore"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-indicators" id="card2-indicators">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/t2-revista.png" />
+					</div>
+					<div class="subt-card-ind">
+						<span class="card-ind-text-high" id="card2-title" ng-bind-html="t.redalyc.cardsInd.journalCard"></span>
+					</div>
+					<div class="card-row-indicators-enlaces" id="enlaces-revista">
+						<div class="item">
+							<p class="card-ind-text" id="completo-texto-revista">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard2"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-mas-revista"><i class="fa fa-arrow-circle-down"></i></span>
+							</p>
+
+							<p class="card-ind-text" id="incompleto-texto-revista" style="display: none;">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard2_full"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-menos-revista"><i class="fa fa-arrow-circle-up"></i></span>
+							</p>
+						</div>
+						<div class="item btn-cards-pink" id="btn-pink-revista">
+							<div class="text-btn-cc">
+								<a href="indicadores.oa?q=revista" target="_blank"><span ng-bind-html="t.redalyc.seeMore"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-indicators" id="card3-indicators">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/t3-intitucion.png" />
+					</div>
+					<div class="subt-card-ind">
+						<span class="card-ind-text-high" id="card3-title" ng-bind-html="t.redalyc.cardsInd.institutionCard"></span>
+					</div>
+					<div class="card-row-indicators-enlaces" id="enlaces-institucion">
+						<div class="item">
+							<p class="card-ind-text" id="completo-texto-institucion">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard3"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-mas-institucion"><i class="fa fa-arrow-circle-down"></i></span>
+							</p>
+
+							<p class="card-ind-text" id="incompleto-texto-institucion" style="display: none;">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard3_full"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-menos-institucion"><i class="fa fa-arrow-circle-up"></i></span>
+							</p>
+						</div>
+						<div class="item btn-cards-purple" id="btn-purple-institucion">
+							<div class="text-btn-cc">
+								<a href="indicadores.oa?q=institucion" target="_blank"><span ng-bind-html="t.redalyc.seeMore"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-indicators" id="card4-indicators">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/t4-pais.png" />
+					</div>
+					<div class="subt-card-ind">
+						<span class="card-ind-text-high" id="card4-title" ng-bind-html="t.redalyc.cardsInd.countryCard"></span>
+					</div>
+					<div class="card-row-indicators-enlaces" id="enlaces-pais">
+						<div class="item">
+							<p class="card-ind-text" id="completo-texto-pais">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard4"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-mas-pais"><i class="fa fa-arrow-circle-down"></i></span>
+							</p>
+
+							<p class="card-ind-text" id="incompleto-texto-pais" style="display: none;">
+								<span ng-bind-html="t.redalyc.cardsInd.loremCard4_full"></span><span style="color: #8a8a8a; cursor: pointer;" id="ver-menos-pais"><i class="fa fa-arrow-circle-up"></i></span>
+							</p>
+						</div>
+						<div class="item btn-cards-green" id="btn-gren-pais">
+							<div class="text-btn-cc">
+								<a href="indicadores.oa?q=pais" target="_blank"><span ng-bind-html="t.redalyc.seeMore"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="container-back-image-black">
+		<img src="img/ic-autores-redlayc-orcid.png" /> <span class="padd-title"><strong ng-bind-html="t.redalyc.autoresOrcid.title_autores"></strong></span>
+	</div>
+	<div class="container-redalyc-orcid">
+		<div class="head-orcid">
+			<div class="container-search-aut">
+				<div class="orcid-cnt-tit">
+					<span class="title-autores" ng-bind-html="t.redalyc.autoresOrcid.localization"></span>
+				</div>
+				<div class="container-autor-nombre container-left">
+					<span class="subtitle-autores" ng-bind-html="t.redalyc.autoresOrcid.autorsName"></span>
+					<div class="box-container">
+						<input id="box-autor-nombre" ng-model="busqueda.textoAutnon" ng-keypress="($event.which === 13)?goAutnon():0" class="int-autor" />
+					</div>
+				</div>
+				<div class="container-autor-nombre">
+					<span class="subtitle-autores" ng-bind-html="t.redalyc.autoresOrcid.autorsInst"></span>
+					<div class="box-container">
+						<input id="box-autor-inst" class="int-autor" ng-model="busqueda.textoAutinst" ng-keypress="($event.which === 13)?goAutinst():0" />
+					</div>
+				</div>
+			</div>
+			<div id="section-map-countries">
+				<div class="titulo-mapa-orcid" ng-bind-html="t.redalyc.autoresOrcid.autorsCountry"></div>
+				<div id="map-countries">
+					<div id="coleccion-countres">
+						<div id="chartdiv2"></div>
+						<script src="js/mapan.js"></script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-orcid">
+			<div class="container-log-orcid">
+				<span class="tit-log-autores">2.0<b ng-bind-html="t.redalyc.autoresOrcid.subtit1"></b>
+				</span><span class="subtit-log-autores" ng-bind-html="t.redalyc.autoresOrcid.subtit2"></span><br /> <span class="tit-log-autores">72,415<span class="subtit-log-autores" ng-bind-html="t.redalyc.autoresOrcid.subtit4"></span></span><br />
+				<div class="buttons-autores">
+					<a class="btn-start-sesion" href="https://autores.redalyc.org/iniciaAutores.oa" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.logAutor"></span></a> <a class="btn-create-sesion" href="https://autores.redalyc.org/registroAutores.oa" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.newAutor"></span></a>
+				</div>
+				<div class="cont-enlaces-autores">
+					<a class="enlace-autores" href="https://www.youtube.com/watch?v=Dp9d8mwIJEc" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.enlace1"></span></a> <a class="enlace-autores" href="/redalyc/periscopio/redalyc-orcid.html" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.enlace2"></span></a> <a class="enlace-autores" href="acercadeautores.oa?q=identifica" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.enlace3"></span></a> <a class="enlace-autores" href="https://autores.redalyc.org/iniciaAutores.oa" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.enlace4"></span></a> <a class="enlace-autores" href="acercadeautores.oa?q=interpreta" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.enlace5"></span></a> <a class="enlace-autores" href="acercadeautores.oa?q=integra" target="_blank"><span ng-bind-html="t.redalyc.autoresOrcid.enlace6"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="container-cards-linked">
+		<div class="cards-linked-row">
+			<div class="title-redalyc">
+				<img src="img/ic-linked-open data.png" />
+				<h2 class="padd-title" ng-bind-html="t.redalyc.icons.linked"></h2>
+			</div>
+			<div class="container-row-linked">
+				<div class="card-row-linked" id="card1-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/img-ancestral.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/conocimientoancestral" target="_blank"> <span class="card-linked-text" id="tit-ancestral" ng-bind-html="t.redalyc.ancestral"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_ancestral"></span>
+						</div>
+						<div class="item btn-cards-blueH">
+							<a href="http://semantic.redalyc.org/conocimientoancestral" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card2-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/img-pandemias.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/epidemics" target="_blank">
+							<span class="card-linked-text" id="tit-pandemics" ng-bind-html="t.redalyc.base_pandemics"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_pandemics"></span>
+						</div>
+						<div class="item btn-cards-blue">
+							<a href="http://semantic.redalyc.org/epidemics/" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card3-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/img-genero.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/gender/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.colectionGenre"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.loremGenre"></span>
+						</div>
+						<div class="item btn-cards-purpleH">
+							<a href="http://semantic.redalyc.org/gender/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card4-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/climate_icon.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/climateaction/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.colectionClimate"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.loremClimate"></span>
+						</div>
+						<div class="item btn-cards-greenH">
+							<a href="http://semantic.redalyc.org/climateaction/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card5-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/poverty_icon.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/poverty/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.colectionPoverty"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.loremPoverty"></span>
+						</div>
+						<div class="item btn-cards-provH">
+							<a href="http://semantic.redalyc.org/poverty/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card6-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/educacionCalidad_img.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/education/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.col_educacion"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_educacion"></span>
+						</div>
+						<div class="item btn-cards-provH" style="background: #c5192d;">
+							<a href="http://semantic.redalyc.org/education/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card7-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/hambreCero_img.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/hunger/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.col_hambre"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_hambre"></span>
+						</div>
+						<div class="item btn-cards-provH" style="background: #dda83a;">
+							<a href="http://semantic.redalyc.org/hunger/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card8-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/reduccionDesigualdades_img.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/inequalities/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.col_inequalities"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_inequalities"></span>
+						</div>
+						<div class="item btn-cards-provH" style="background: #de1267;">
+							<a href="http://semantic.redalyc.org/inequalities/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+<div class="card-row-linked" id="card9-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/sustainable_icon.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/cities/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.col_cities"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_cities"></span>
+						</div>
+						<div class="item btn-cards-provH" style="background: #fd9d24;">
+							<a href="http://semantic.redalyc.org/cities/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-row-linked" id="card10-linked">
+					<div class="img">
+						<img alt="coleccionDeRevistas" src="img/peace-justice_icon.png" />
+					</div>
+					<div class="tit-card-linked">
+						<a href="http://semantic.redalyc.org/peace/#/home" target="_blank"> <span class="card-linked-text" id="tit-genre" ng-bind-html="t.redalyc.col_peace"></span>
+						</a>
+					</div>
+					<div class="card-row-linked-enlaces">
+						<div class="item">
+							<span class="card-ind-text" ng-bind-html="t.redalyc.lorem_peace"></span>
+						</div>
+						<div class="item btn-cards-provH" style="background: #00689d;">
+							<a href="http://semantic.redalyc.org/peace/#/home" target="_blank"><span ng-bind-html="t.redalyc.gotolink"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="home-principios-valores">
+		<div class="title-model-diamante">
+			<span ng-bind-html="t.our_model.title4"></span>
+		</div>
+		<div class="text-model-diamante">
+			<p ng-bind-html="t.our_model.text4"></p>
+		</div>
+		<div id="titulo-principios-valores">
+			<span ng-bind-html="t.principles_values.title"></span>
+		</div>
+		<div class="principios-valores">
+			<div class="principio-valor">
+				<span class="numero-principio-valor">1.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[1]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">2.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[2]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">3.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[3]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">4.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[4]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">5.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[5]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">6.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[6]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">7.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[7]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">8.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[8]"></span>
+			</div>
+			<div class="principio-valor">
+				<span class="numero-principio-valor">9.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[9]"></span>
+			</div>
+			<div class="principio-valor valor-l">
+				<span class="numero-principio-valor">10.</span> <span class="definicion-principio-valor" ng-bind-html="t.principles_values[10]"></span>
+			</div>
+		</div>
+		<div class="back-diamond">
+			<img alt="refuerzo del modelo de acceso abierto diamante" class="refuerzo-diamante" ng-if="pageLanguaje=='es'" src="img/modelo-refuerzo-diamante-esp.png" /> <img alt="reinforcement of the diamond open access model" class="refuerzo-diamante" ng-if="pageLanguaje=='en'" src="img/modelo-refuerzo-diamante-eng.png" />
+			<div id="papalotes-modelo">
+				<div>
+					<img src="img/modelo-oa.png" alt="acceso abierto" />
+					<div class="informacion-papalote">
+						<span ng-bind-html="t.our_model.oa"></span><br />
+					</div>
+				</div>
+				<div>
+					<img ng-if="pageLanguaje=='es'" src="img/modelo-Calidad.gif" alt="modelo con revision de calidad" style="width: 140%; margin-left: -18%;" /> <img ng-if="pageLanguaje=='en'" src="img/modelo-Calidad-en.png" alt="model with quality review" style="width: 140%; margin-left: -18%;" />
+					<div class="informacion-papalote">
+						<span ng-bind-html="t.our_model.quality"></span><br />
+					</div>
+				</div>
+				<div>
+					<img src="img/modelo-XML.png" alt="Tecnología de publicación digital (XML JATS)" />
+					<div class="informacion-papalote">
+						<span ng-bind-html="t.our_model.jats"></span><br />
+					</div>
+				</div>
+				<div>
+					<img src="img/modelo-noAPC.png" alt="Política de Acceso Abierto sin costos por publicación o procesamiento" />
+					<div class="informacion-papalote">
+						<span ng-bind-html="t.our_model.apc"></span><br />
+					</div>
+				</div>
+				<div>
+					<img ng-if="pageLanguaje=='es'" src="img/Icono-evaluacion-2020G.gif" alt="evaluación de la ciencia basada en métricas" /> <img ng-if="pageLanguaje=='en'" src="img/Icono-evaluacion-2020G-en.png" alt="evaluación de la ciencia basada en métricas" />
+					<div class="informacion-papalote">
+						<span ng-bind-html="t.our_model.dora"></span><br />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="banners-colaboration">
+		<div class="card-banners">
+			<div class="slider" id="slider3">
+				<div class="slItems slitems-col">
+					<div class="slItem sliderItem text-cc" ng-repeat="e in t.carrusel track by $index" ng-show="e.elemento.length &gt; 0">
+						
+						<div class="{{c.class}}title-video" id="{{c.id}}" ng-repeat="c in e.elemento track by $index">
+							
+
+							<div ng-if="c.tipo ==='0'">
+								<a href="{{c.linkEsp}}" target="_blank"> <img class="image-banner-esp image4 bnES" ng-if="pageLanguaje=='es'" src="{{c.srcEsp}}" alt="LATIN AMERICAN OPEN ACCESS ESSAY COMPETITION 2020" />
+								</a> <a href="{{c.linkIng}}" target="_blank"> <img class="image-banner-esp image4 bnEN" ng-if="pageLanguaje=='en'" src="{{c.srcIng}}" alt="LATIN AMERICAN OPEN ACCESS ESSAY COMPETITION 2020" />
+								</a>
+							</div>
+
+							<div ng-if="c.tipo === '1'">
+								{{urlVideos(c.srcEsp)}}
+								<iframe ng-if="pageLanguaje=='es'" width="400" height="210" ng-src="{{urlVideo}}"> </iframe>
+								<iframe ng-if="pageLanguaje=='en'" width="400" height="210" ng-src="{{urlVideo}}"> </iframe>
+								<h3 class="h4" ng-bind-html="t.redalyc.titleVideo"></h3>
+							</div>
+
+							<div ng-if="c.tipo === '2'">
+								<a href="{{c.linkEsp}}" target="_blank"> <img class="image-banner-esp" src="{{c.srcEsp}}" alt="calendario de capacitaciones marcalyc" />
+								</a>
+								<h3 class="h4" ng-bind-html="t.redalyc.titleMarcalyc"></h3>
+								<h3 class="h4" ng-bind-html="t.redalyc.periodBanner"></h3>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="container-reconocimientos">
+		<h2 class="title-reconocimientos" ng-bind-html="t.redalyc.acknowledgments"></h2>
+		<div class="slider sliderReconocim" id="sliderReconocim">
+			<div class="slItems slitems-col">
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon" style="text-align: center;">
+						<img src="img/scoss1.png" alt="Reconocimiento de tercer lugar en la Categoría Instituciones Académicas " />
+					</div>
+					<div class="card-recon">
+						<img src="img/certamen.png" alt="Reconocimiento de tercer lugar en la Categoría Instituciones Académicas " />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title2"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text2"></b></span>
+					</div>
+					<div class="card-recon">
+						<img src="img/UOR_logo.png" alt="Reconocimiento en el fortalecimiento de la cooperación Sur-Sur, Angola." />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title3"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text3"></b></span>
+					</div>
+				</div>
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon">
+						<img width="260" src="img/SPARC1.png" />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title4"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text4"></b></span>
+					</div>
+					<div class="card-recon">
+						<img src="img/AMERBAC_logo.png" alt="Reconocimiento en el marco de la primera reunión internacional del 2018" />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title5"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text5"></b></span>
+					</div>
+					<div class="card-recon">
+						<img src="img/uvc-recon-last.png" alt="Diploma de honor a Redalyc" />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title6"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text6"></b></span>
+					</div>
+				</div>
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon">
+						<img src="img/clacso-recon-last.png" alt="Premio Latinoamericano y Caribeño de Ciencias Sociales CLACSO" />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title7"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text7"></b></span>
+					</div>
+					<div class="card-recon">
+						<img src="img/fiap-recon-last.png" alt="Reconocimiento a Redalyc por el papel fundamental del desarrollo y conocimiento" />
+
+						<span class="text"><span class="title" ng-bind-html="t.redalyc.list_acknowledgments.title8"></span><b style="font-weight: lighter;" ng-bind-html="t.redalyc.list_acknowledgments.text8"></b></span>
+					</div>
+					<div class="card-recon">
+						<img src="img/4-diciembre 2014 Premio Nacional del Libro Venezuela.png" alt="Premio Nacional del Libro Venezuela, en la categoría de Libro Científico-Técnico." />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title9}}</span>{{t.redalyc.list_acknowledgments.text9}}</span>
+					</div>
+				</div>
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon">
+						<img src="img/5-octubre 2012 XII SEMINARIO RII brasil copia.png" alt="Reconocimiento por la diseminación de la comunicación científica y democratización del conocimiento en Estudios Territoriales Iberoamericanos por la Red de Investigadores sobre Globalización y Territorio RII" />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title10}}</span>{{t.redalyc.list_acknowledgments.text10}}</span>
+					</div>
+					<div class="card-recon">
+						<img src="img/6-julio 2012 Consejo Superior de Investigaciones Cientificas.png" alt="Segundo sitio a nivel mundial en top portales webometrics, y el primer portal en archivos ricos." />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title11}}</span>{{t.redalyc.list_acknowledgments.text11}}</span>
+					</div>
+					<div class="card-recon">
+						<img src="img/7-abril 2012 Congreso Internacional de Informacion INFO.png" alt="Reconocimiento especial en el marco del Congreso Internacional de Información INFO" />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title12}}</span>{{t.redalyc.list_acknowledgments.text12}}</span>
+					</div>
+				</div>
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon">
+						<img src="img/6-julio 2012 Consejo Superior de Investigaciones Cientificas.png" alt="Segundo sitio a nivel mundial en top portales webometrics, y el primer portal en archivos ricos" />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title13}}</span>{{t.redalyc.list_acknowledgments.text13}}</span>
+					</div>
+					<div class="card-recon">
+						<img src="img/8-diciembre 2011 Premio alvaro Perez-Ugena.png" alt="Premio Álvaro Pérez-Ugena, otorgado por la Universidad Rey Juan Carlos, la Universidad de La Laguna y La Sociedad Latina de Comunicación Social (España)" />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title14}}</span>{{t.redalyc.list_acknowledgments.text14}}</span>
+					</div>
+					<div class="card-recon">
+						<img src="img/9-octubre 2011 Universidad Complutense de Madrid.png" alt="Distinción por alta labor científica, Universidad Complutense de Madrid, España." />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title15}}</span>{{t.redalyc.list_acknowledgments.text15}}</span>
+					</div>
+				</div>
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon">
+						<img src="img/10-Abril 2011 Universidad de los Andes.png" alt="Medalla &quot;Doctor Caracciolo Parra y Olmedo&quot; de la Universidad de los Andes, Venezuela." />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title16}}</span>{{t.redalyc.list_acknowledgments.text16}}</span>
+					</div>
+					<div class="card-recon">
+						<img src="img/11-julio 2011 top portales webometrics.png" alt="Tercer sitio a nivel mundial en top portales webometrics, y el segundo portal en archivos ricos" />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title17}}</span>{{t.redalyc.list_acknowledgments.text17}}</span>
+					</div>
+					<div class="card-recon">
+						<img src="img/12-septiembre 2009 Informe Mundial de las Ciencias Sociales UNESCO.png" alt="Mencionada como modelo de comunicación científica en América Latina, en el Informe Mundial de las Ciencias Sociales, UNESCO" />
+
+						<span class="text"><span class="title">{{t.redalyc.list_acknowledgments.title18}}</span>{{t.redalyc.list_acknowledgments.text18}}</span>
+					</div>
+				</div>
+				<div class="slItem sliderItem text-cc">
+					<div class="card-recon">
+						<img src="img/13-septiembre 2009 World_Summit_Award_WSA.png" alt="Reconocimiento como la mejor página de e-ciencia de México, World Summit Award, UNESCO." />
+
+						<span class="text"> <span class="title">{{t.redalyc.list_acknowledgments.title19}}</span>
+							{{t.redalyc.list_acknowledgments.text19}}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="title-mas-recon">
+			<span class="txt-more-recons"> <a class="txt-none" href="/redalyc/acerca-de/reconocimientos.html" ng-bind-html="t.redalyc.seeMore"></a> <b style="font-weight: lighter;">+</b>
+			</span>
+		</div>
+	</div>
+	<div id="container-relations">
+		<h2 class="title-footer-colaboration" ng-bind-html="t.redalyc.relations"></h2>
+		<div id="relations-logos">
+			<img id="relat-unesco" src="img/unesco-last.png" alt="colaboracion con la unesco" /> <img id="relat-clacso" src="img/clacso-relat-last.png" alt="elaboracion de proyectos de libre acceso" /> <img id="relat-shutleworth" src="img/shuttleworth-foundation.png" alt="proyectos en colaboracion con shutleworth fundation" /> <img id="relat-indian" src="img/indian-statistical-institute.png" alt="difución del acceso abierto" /> <img id="relat-doaj" src="img/doaj-last.png" alt="acceso abierto con metricas" /> <img id="relat-ioi" src="img/ioi-last.png" alt="investigaciones con relat-ioi" /> <img id="relat-scoss" src="img/scoss-last.png" alt="colaboración para el acceso abierto" />
+		</div>
+	</div>
+	<div class="backscreen" id="backscreen"></div>
+	<div class="popup-container" id="popup">
+		<span class="close-btn" onclick="closePopup()">x</span>
+		    <a href="https://globaldiamantoa.org/manifiesto/" target="_blank">
+        <img src="/img/pop-up-firmas.png" alt="" />
+    </a>
+		<label>
+            <input type="checkbox" id="noMostrarCheckbox"> No mostrar de nuevo</input>
+        </label>
+	</div>
+	<footer id="pie-pagina">
+	<div id="informacion-redalyc">
+		<span><b style="font-weight: lighter;" ng-bind-html="t.footer.redalyc"></b><b> ®</b></span><br /> <span ng-bind-html="t.footer.network"></span><br /> <br /> <span ng-bind-html="t.footer.ver"></span><span id="current-year"></span><br /> <span>comunicacion@redalyc.org</span>
+	</div>
+	<div id="pie-logos">
+		<img src="img/nuevoHeaderHome/logo_redalyc.png" style="width: 190px;" /> <img src="img/administracion 2021.png" />
+	</div>
+	</footer> </main>
+</body>
+</html>
