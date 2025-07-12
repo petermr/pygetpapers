@@ -1,0 +1,209 @@
+# Declarative Operations Configuration Example
+# This file demonstrates how to define repository operations with dependencies
+
+repositories:
+  crossref:
+    name: Crossref
+    description: Crossref repository with declarative operations
+    base_url: https://api.crossref.org/
+    
+    # File patterns for dependency checking
+    file_patterns:
+      xml_files: "*.xml"
+      html_files: "*.html"
+      pdf_files: "*.pdf"
+      metadata_files: "*_metadata.json"
+      validation_files: "*_validation.json"
+    
+    # Available transformers
+    transformers:
+      xml_to_html: "simple_html"
+      xml_to_pdf: "pandoc"
+      metadata_to_csv: "pandas"
+      metadata_to_json: "json"
+    
+    # Available validators
+    validators:
+      xml_validator: "lxml"
+      json_validator: "jsonschema"
+      doi_validator: "regex"
+    
+    # Available exporters
+    exporters:
+      csv_export: "pandas"
+      json_export: "json"
+      xml_export: "lxml"
+      html_export: "jinja2"
+
+operations:
+  # Download operation - no dependencies
+  crossref_download:
+    type: download
+    description: Download papers from Crossref
+    command: "pygetpapers crossref -q {query} -o {working_dir} -x --limit {limit}"
+    inputs: []
+    outputs: ["*.xml", "*_metadata.json"]
+    dependencies: []
+    conditions: []
+    enabled: true
+    timeout: 300
+    retries: 3
+    config:
+      rate_limit: 2.0
+      user_agent: "pygetpapers/1.0"
+  
+  # Convert XML to HTML - depends on XML files existing
+  crossref_xml_to_html:
+    type: convert
+    description: Convert XML files to HTML using simple converter
+    command: "pygetpapers convert-xml-to-html {input_file} {output_file} --converter simple_html"
+    inputs: ["*.xml"]
+    outputs: ["*.xml.html"]
+    dependencies:
+      - type: file_exists
+        target: "*.xml"
+        description: "XML files must exist before conversion"
+    conditions:
+      - "file_absent:*.xml.html"
+    enabled: true
+    timeout: 60
+    retries: 2
+    config:
+      converter: "simple_html"
+      preserve_structure: true
+  
+  # Validate metadata - depends on metadata files
+  crossref_validate_metadata:
+    type: validate
+    description: Validate metadata files for completeness
+    command: "pygetpapers validate-metadata {metadata_file} --schema crossref"
+    inputs: ["*_metadata.json"]
+    outputs: ["*_validation.json"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+        description: "Metadata files must exist before validation"
+    conditions: []
+    enabled: true
+    timeout: 30
+    retries: 1
+    config:
+      schema: "crossref"
+      strict: false
+  
+  # Export to CSV - depends on metadata and validation
+  crossref_export_csv:
+    type: export
+    description: Export metadata to CSV format
+    command: "pygetpapers export-csv {metadata_file} {csv_file} --format pandas"
+    inputs: ["*_metadata.json"]
+    outputs: ["metadata.csv"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+        description: "Metadata files must exist"
+      - type: file_absent
+        target: "metadata.csv"
+        description: "CSV file should not exist (will be overwritten)"
+    conditions: []
+    enabled: true
+    timeout: 30
+    retries: 1
+    config:
+      format: "pandas"
+      include_validation: true
+  
+  # Clean up temporary files - depends on final outputs
+  crossref_cleanup:
+    type: clean
+    description: Clean up temporary files after processing
+    command: "pygetpapers cleanup {working_dir} --keep-final-outputs"
+    inputs: ["*.xml.html", "metadata.csv"]
+    outputs: []
+    dependencies:
+      - type: file_exists
+        target: "*.xml.html"
+        description: "HTML files must be generated"
+      - type: file_exists
+        target: "metadata.csv"
+        description: "CSV export must be complete"
+    conditions:
+      - "file_exists:*.xml.html"
+      - "file_exists:metadata.csv"
+    enabled: true
+    timeout: 10
+    retries: 1
+    config:
+      keep_final_outputs: true
+      remove_temp_files: true
+
+  # BioRxiv specific operations
+  biorxiv_download:
+    type: download
+    description: Download papers from bioRxiv
+    command: "pygetpapers biorxiv -q {query} -o {working_dir} -x --limit {limit}"
+    inputs: []
+    outputs: ["*.xml", "*_metadata.json"]
+    dependencies: []
+    conditions: []
+    enabled: true
+    timeout: 300
+    retries: 3
+    config:
+      rate_limit: 1.0
+      user_agent: "pygetpapers/1.0"
+  
+  # Convert bioRxiv XML to HTML - only if HTML doesn't exist
+  biorxiv_xml_to_html:
+    type: convert
+    description: Convert bioRxiv XML files to HTML
+    command: "pygetpapers convert-xml-to-html {input_file} {output_file} --converter simple_html"
+    inputs: ["*.xml"]
+    outputs: ["*.xml.html"]
+    dependencies:
+      - type: file_exists
+        target: "*.xml"
+        description: "XML files must exist"
+    conditions:
+      - "file_absent:*.xml.html"
+    enabled: true
+    timeout: 60
+    retries: 2
+    config:
+      converter: "simple_html"
+      bioRxiv_specific: true
+
+  # Europe PMC operations
+  europepmc_download:
+    type: download
+    description: Download papers from Europe PMC
+    command: "pygetpapers europepmc -q {query} -o {working_dir} -x --limit {limit}"
+    inputs: []
+    outputs: ["*.xml", "*_metadata.json"]
+    dependencies: []
+    conditions: []
+    enabled: true
+    timeout: 300
+    retries: 3
+    config:
+      rate_limit: 2.0
+      user_agent: "pygetpapers/1.0"
+
+# Global file patterns for dependency checking
+file_patterns:
+  xml_files: ".*\\.xml$"
+  html_files: ".*\\.html$"
+  pdf_files: ".*\\.pdf$"
+  metadata_files: ".*_metadata\\.json$"
+  validation_files: ".*_validation\\.json$"
+  csv_files: ".*\\.csv$"
+  json_files: ".*\\.json$"
+
+# Global settings
+global:
+  default_timeout: 300
+  default_retries: 3
+  working_directory: "./corpus"
+  log_level: "INFO"
+  parallel_execution: false
+  max_parallel_operations: 2 

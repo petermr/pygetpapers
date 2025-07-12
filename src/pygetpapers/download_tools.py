@@ -721,24 +721,18 @@ class DownloadTools:
         paper_by_key = {}
 
         for paper in metadata_list:
-            id = paper.get("id")
-            if id is None:
-                logging.warning("no id for paper ; skipped")
-                continue
-            # logger.info(f"id: {id}")
-            key = paper[paper_key]  # normally doi
+            # For Crossref papers, use DOI as the key directly
+            key = paper.get(paper_key)  # normally doi
             if key is None:
-                logging.warning(f"no paper_key for id={id}")
+                logging.warning(f"no {paper_key} for paper; skipped")
                 continue
 
+            # Handle both https://doi.org/ and plain DOI formats
             if key.startswith(HTTPS_DOI_ORG):
                 key = key.replace(HTTPS_DOI_ORG, "")
-            else:
-                logging.warning(
-                    f"key {key} does not start with {HTTPS_DOI_ORG}; "
-                    f"skipped id={id}"
-                )
-                continue
+            
+            # For Crossref, we don't require the https://doi.org/ prefix
+            # Just use the DOI as is
             key = DownloadTools.url_encode_id(key)
             paper_by_key[key] = paper
         return paper_by_key

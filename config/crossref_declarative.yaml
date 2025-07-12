@@ -1,0 +1,198 @@
+# Crossref Declarative Operations Configuration
+# This file demonstrates the declarative operations framework for Crossref
+
+repositories:
+  crossref:
+    name: Crossref
+    description: Crossref repository with declarative operations
+    base_url: https://api.crossref.org/
+    
+    # File patterns for dependency checking
+    file_patterns:
+      xml_files: "*.xml"
+      html_files: "*.html"
+      pdf_files: "*.pdf"
+      metadata_files: "*_metadata.json"
+      validation_files: "*_validation.json"
+    
+    # Available transformers
+    transformers:
+      xml_to_html: "simple_html"
+      xml_to_pdf: "pandoc"
+      metadata_to_csv: "pandas"
+      metadata_to_json: "json"
+    
+    # Available validators
+    validators:
+      xml_validator: "lxml"
+      json_validator: "jsonschema"
+      doi_validator: "regex"
+    
+    # Available exporters
+    exporters:
+      csv_export: "pandas"
+      json_export: "json"
+      xml_export: "lxml"
+      html_export: "jinja2"
+
+operations:
+  # Download operation - no dependencies
+  crossref_download:
+    type: download
+    description: Download papers from Crossref using habanero
+    command: "pygetpapers crossref -q {query} -o {working_dir} -x --limit {limit}"
+    inputs: []
+    outputs: ["*.xml", "*_metadata.json"]
+    dependencies: []
+    conditions: []
+    enabled: true
+    timeout: 300
+    retries: 3
+    config:
+      rate_limit: 2.0
+      user_agent: "pygetpapers/1.0"
+      use_habanero: true
+  
+  # Convert XML to HTML - depends on XML files existing
+  crossref_xml_to_html:
+    type: convert
+    description: Convert XML files to HTML using simple converter
+    command: "pygetpapers convert-xml-to-html {input_file} {output_file} --converter simple_html"
+    inputs: ["*.xml"]
+    outputs: ["*.xml.html"]
+    dependencies:
+      - type: file_exists
+        target: "*.xml"
+        description: "XML files must exist before conversion"
+    conditions:
+      - "file_absent:*.xml.html"
+    enabled: true
+    timeout: 60
+    retries: 2
+    config:
+      converter: "simple_html"
+      preserve_structure: true
+  
+  # Validate metadata - depends on metadata files
+  crossref_validate_metadata:
+    type: validate
+    description: Validate metadata files for completeness
+    command: "pygetpapers validate-metadata {metadata_file} --schema crossref"
+    inputs: ["*_metadata.json"]
+    outputs: ["*_validation.json"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+        description: "Metadata files must exist before validation"
+    conditions: []
+    enabled: true
+    timeout: 30
+    retries: 1
+    config:
+      schema: "crossref"
+      strict: false
+      check_doi: true
+  
+  # Export to CSV - depends on metadata and validation
+  crossref_export_csv:
+    type: export
+    description: Export metadata to CSV format
+    command: "pygetpapers export-csv {metadata_file} {csv_file} --format pandas"
+    inputs: ["*_metadata.json"]
+    outputs: ["metadata.csv"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+        description: "Metadata files must exist"
+      - type: file_absent
+        target: "metadata.csv"
+        description: "CSV file should not exist (will be overwritten)"
+    conditions: []
+    enabled: true
+    timeout: 30
+    retries: 1
+    config:
+      format: "pandas"
+      include_validation: true
+      fields: ["doi", "title", "authors", "publication_date", "journal"]
+  
+  # Export to JSON - depends on metadata
+  crossref_export_json:
+    type: export
+    description: Export metadata to JSON format
+    command: "pygetpapers export-json {metadata_file} {json_file} --format json"
+    inputs: ["*_metadata.json"]
+    outputs: ["metadata.json"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+        description: "Metadata files must exist"
+    conditions:
+      - "file_absent:metadata.json"
+    enabled: true
+    timeout: 30
+    retries: 1
+    config:
+      format: "json"
+      pretty_print: true
+      include_validation: false
+  
+  # Clean up temporary files - depends on final outputs
+  crossref_cleanup:
+    type: clean
+    description: Clean up temporary files after processing
+    command: "pygetpapers cleanup {working_dir} --keep-final-outputs"
+    inputs: ["*.xml.html", "metadata.csv", "metadata.json"]
+    outputs: []
+    dependencies:
+      - type: file_exists
+        target: "*.xml.html"
+        description: "HTML files must be generated"
+      - type: file_exists
+        target: "metadata.csv"
+        description: "CSV export must be complete"
+    conditions:
+      - "file_exists:*.xml.html"
+      - "file_exists:metadata.csv"
+    enabled: true
+    timeout: 10
+    retries: 1
+    config:
+      keep_final_outputs: true
+      remove_temp_files: true
+      remove_original_xml: false
+
+# Global file patterns for dependency checking
+file_patterns:
+  xml_files: ".*\\.xml$"
+  html_files: ".*\\.html$"
+  pdf_files: ".*\\.pdf$"
+  metadata_files: ".*_metadata\\.json$"
+  validation_files: ".*_validation\\.json$"
+  csv_files: ".*\\.csv$"
+  json_files: ".*\\.json$"
+
+# Global settings
+global:
+  default_timeout: 300
+  default_retries: 3
+  working_directory: "./corpus"
+  log_level: "INFO"
+  parallel_execution: false
+  max_parallel_operations: 2
+  
+  # Security settings
+  security:
+    allowed_domains:
+      - crossref.org
+      - api.crossref.org
+    rate_limits:
+      requests_per_minute: 30
+      delay_between_requests: 2.0
+    file_limits:
+      max_file_size: 104857600  # 100MB
+      max_total_size: 1073741824  # 1GB
+    timeout_limits:
+      request_timeout: 30
+      parse_timeout: 60
+      total_timeout: 300 

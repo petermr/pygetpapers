@@ -11,31 +11,46 @@ from pygetpapers.repositoryinterface import (
     RepositoryInterface,
 )
 
+# File naming constants
 crossref_file_name = "crossref_result"
 
+# Dictionary key constants
 DOI = "DOI"
-
 UPDATED_DICT = "updated_dict"
-
 NEW_RESULTS = "new_results"
-
 TOTAL_HITS = "total_hits"
-
 ITEMS = "items"
-
 MESSAGE = "message"
-
 raw_crossref_metadata = "raw_crossref_metadata"
-
 TOTAL_JSON_OUTPUT = "total_json_output"
-
 NEXT_CURSOR = "next-cursor"
-
 TOTAL_RESULTS = "total-results"
-
 CURSOR_MARK = "cursor_mark"
-
 CROSSREF = "crossref"
+
+# Configuration constants
+CONFIG_SECTION_CROSSREF = "crossref"
+CONFIG_FALLBACK_FALSE = "false"
+CONFIG_FALLBACK_TRUE = "true"
+CONFIG_FALLBACK_EMPTY = ""
+
+# File extension constants
+XML_EXTENSION = ".xml"
+XML_HTML_EXTENSION = ".xml.html"
+
+# API configuration constants
+DEFAULT_CURSOR = "*"
+DEFAULT_CUTOFF_SIZE = 10
+CONTACT_EMAIL = "ayushgarg@science.org.in"
+USER_AGENT_PREFIX = "pygetpapers/version@"
+
+# Logging message constants
+LOG_MAKING_REQUEST = "Making request to crossref"
+LOG_READING_OLD_JSON = "Reading old json metadata file"
+LOG_TOTAL_HITS_TEMPLATE = "Total number of hits for the query are %s"
+LOG_XML_TO_HTML_SUCCESS_TEMPLATE = "Converted XML to HTML using Simple HTML Converter for {}"
+LOG_XML_TO_HTML_FAILURE_TEMPLATE = "Failed to convert XML to HTML for {}: {}"
+LOG_XML_TO_HTML_ERROR_TEMPLATE = "Error converting XML to HTML for {}: {}"
 
 
 class CrossRef(RepositoryInterface):
@@ -47,12 +62,12 @@ class CrossRef(RepositoryInterface):
         self.download_tools = DownloadTools(CROSSREF)
         self.xml2html_supported = (
             self.download_tools.config.get(
-                "crossref", XML2HTML_SUPPORTED, fallback="false"
+                CONFIG_SECTION_CROSSREF, XML2HTML_SUPPORTED, fallback=CONFIG_FALLBACK_FALSE
             ).lower()
-            == "true"
+            == CONFIG_FALLBACK_TRUE
         )
         self.xml2html_converters = self.download_tools.config.get(
-            "crossref", XML2HTML_CONVERTER, fallback=""
+            CONFIG_SECTION_CROSSREF, XML2HTML_CONVERTER, fallback=CONFIG_FALLBACK_EMPTY
         ).split(",")
 
     def supports_xml2html(self) -> bool:
@@ -96,7 +111,7 @@ class CrossRef(RepositoryInterface):
 
             converter = SimpleHTMLConverter()
             # Use XML-to-HTML naming convention: fulltext.xml.html
-            html_file_path = xml_file_path.replace(".xml", ".xml.html")
+            html_file_path = xml_file_path.replace(XML_EXTENSION, XML_HTML_EXTENSION)
 
             success, result = converter.convert_xml_to_html(
                 xml_file_path, html_file_path
@@ -104,17 +119,17 @@ class CrossRef(RepositoryInterface):
 
             if success:
                 logging.info(
-                    f"Converted XML to HTML using Simple HTML Converter for {identifier_for_paper}"
+                    LOG_XML_TO_HTML_SUCCESS_TEMPLATE.format(identifier_for_paper)
                 )
                 return True
             else:
                 logging.warning(
-                    f"Failed to convert XML to HTML for {identifier_for_paper}: {result}"
+                    LOG_XML_TO_HTML_FAILURE_TEMPLATE.format(identifier_for_paper, result)
                 )
 
         except Exception as e:
             logging.error(
-                f"Error converting XML to HTML for {identifier_for_paper}: {e}"
+                LOG_XML_TO_HTML_ERROR_TEMPLATE.format(identifier_for_paper, e)
             )
 
         return False
@@ -149,12 +164,12 @@ class CrossRef(RepositoryInterface):
         :rtype: dict
         """
         crossref_client = self.initiate_crossref()
-        logging.info("Making request to crossref")
+        logging.info(LOG_MAKING_REQUEST)
 
         if update:
             cursor = update[CURSOR_MARK]
         else:
-            cursor = "*"
+            cursor = DEFAULT_CURSOR
         # Submits a request to crossref
         # raw_crossref_metadata is a dictionary containing bibliographic metadata
         # for each paper
@@ -178,7 +193,7 @@ class CrossRef(RepositoryInterface):
         )
         metadata_dictionary = result_dict[NEW_RESULTS][TOTAL_JSON_OUTPUT]
         self.download_tools.handle_creation_of_csv_html_xml(
-            makecsv, makehtml, makexml, metadata_dictionary, raw_crossref_metadata
+            makecsv, makehtml, makexml, metadata_dictionary, crossref_file_name
         )
         return result_dict
 
@@ -194,14 +209,14 @@ class CrossRef(RepositoryInterface):
         :return: crossref object
         """
         cr = Crossref()
-        Crossref(mailto="ayushgarg@science.org.in")
+        Crossref(mailto=CONTACT_EMAIL)
         version = self.download_tools.get_version()
-        Crossref(ua_string=f"pygetpapers/version@{version}")
+        Crossref(ua_string=f"{USER_AGENT_PREFIX}{version}")
         return cr
 
     def update(self, query_namespace):
 
-        logging.info("Reading old json metadata file")
+        logging.info(LOG_READING_OLD_JSON)
         update_path = self.get_metadata_results_file()
         os.chdir(os.path.dirname(update_path))
         update = self.download_tools.readjsondata(update_path)
@@ -225,9 +240,9 @@ class CrossRef(RepositoryInterface):
 
         query = query_namespace["query"]
         filter_dict = query_namespace["filter"]
-        result_dict = self.crossref(query, cutoff_size=10, filter_dict=filter_dict)
+        result_dict = self.crossref(query, cutoff_size=DEFAULT_CUTOFF_SIZE, filter_dict=filter_dict)
         totalhits = result_dict[NEW_RESULTS][TOTAL_HITS]
-        logging.info("Total number of hits for the query are %s", totalhits)
+        logging.info(LOG_TOTAL_HITS_TEMPLATE, totalhits)
 
     def apipaperdownload(self, query_namespace):
 
