@@ -730,7 +730,7 @@ class DownloadTools:
             # Handle both https://doi.org/ and plain DOI formats
             if key.startswith(HTTPS_DOI_ORG):
                 key = key.replace(HTTPS_DOI_ORG, "")
-            
+
             # For Crossref, we don't require the https://doi.org/ prefix
             # Just use the DOI as is
             key = DownloadTools.url_encode_id(key)

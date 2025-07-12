@@ -48,7 +48,9 @@ USER_AGENT_PREFIX = "pygetpapers/version@"
 LOG_MAKING_REQUEST = "Making request to crossref"
 LOG_READING_OLD_JSON = "Reading old json metadata file"
 LOG_TOTAL_HITS_TEMPLATE = "Total number of hits for the query are %s"
-LOG_XML_TO_HTML_SUCCESS_TEMPLATE = "Converted XML to HTML using Simple HTML Converter for {}"
+LOG_XML_TO_HTML_SUCCESS_TEMPLATE = (
+    "Converted XML to HTML using Simple HTML Converter for {}"
+)
 LOG_XML_TO_HTML_FAILURE_TEMPLATE = "Failed to convert XML to HTML for {}: {}"
 LOG_XML_TO_HTML_ERROR_TEMPLATE = "Error converting XML to HTML for {}: {}"
 
@@ -62,7 +64,9 @@ class CrossRef(RepositoryInterface):
         self.download_tools = DownloadTools(CROSSREF)
         self.xml2html_supported = (
             self.download_tools.config.get(
-                CONFIG_SECTION_CROSSREF, XML2HTML_SUPPORTED, fallback=CONFIG_FALLBACK_FALSE
+                CONFIG_SECTION_CROSSREF,
+                XML2HTML_SUPPORTED,
+                fallback=CONFIG_FALLBACK_FALSE,
             ).lower()
             == CONFIG_FALLBACK_TRUE
         )
@@ -124,7 +128,9 @@ class CrossRef(RepositoryInterface):
                 return True
             else:
                 logging.warning(
-                    LOG_XML_TO_HTML_FAILURE_TEMPLATE.format(identifier_for_paper, result)
+                    LOG_XML_TO_HTML_FAILURE_TEMPLATE.format(
+                        identifier_for_paper, result
+                    )
                 )
 
         except Exception as e:
@@ -240,7 +246,9 @@ class CrossRef(RepositoryInterface):
 
         query = query_namespace["query"]
         filter_dict = query_namespace["filter"]
-        result_dict = self.crossref(query, cutoff_size=DEFAULT_CUTOFF_SIZE, filter_dict=filter_dict)
+        result_dict = self.crossref(
+            query, cutoff_size=DEFAULT_CUTOFF_SIZE, filter_dict=filter_dict
+        )
         totalhits = result_dict[NEW_RESULTS][TOTAL_HITS]
         logging.info(LOG_TOTAL_HITS_TEMPLATE, totalhits)
 

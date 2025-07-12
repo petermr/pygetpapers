@@ -30,6 +30,9 @@ class AbstractRepository(RepositoryInterface):
             repository_name: Name of the repository (e.g., 'crossref', 'europe_pmc')
             config: Repository configuration dictionary
         """
+        # Initialize parent class (RepositoryInterface)
+        super().__init__()
+
         self.repository_name = repository_name
         self.config = config
         self.download_tools = DownloadTools(repository_name)

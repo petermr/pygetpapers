@@ -5,10 +5,11 @@ This module demonstrates how to create a repository using the abstract
 repository system. The entire implementation is just a few lines of code!
 """
 
-from pygetpapers.repository_config import create_repository
+from pygetpapers.abstract_repository import AbstractRepository
+from pygetpapers.repository_config import get_repository_config
 
 
-class CrossRef:
+class CrossRef(AbstractRepository):
     """
     Crossref repository implementation using the abstract repository system.
 
@@ -17,21 +18,8 @@ class CrossRef:
 
     def __init__(self):
         """Initialize the Crossref repository using configuration."""
-        self.repository = create_repository("crossref")
-
-    def supports_xml2html(self) -> bool:
-        """Check if this repository supports XML to HTML conversion."""
-        return self.repository.supports_xml2html()
-
-    def get_xml2html_converters(self) -> list:
-        """Get list of available XML to HTML converters for this repository."""
-        return self.repository.get_xml2html_converters()
-
-    def convert_xml_to_html(
-        self, xml_file_path: str, identifier_for_paper: str
-    ) -> bool:
-        """Convert XML file to HTML using available converters."""
-        return self.repository.convert_xml_to_html(xml_file_path, identifier_for_paper)
+        config = get_repository_config().get_repository_config("crossref")
+        super().__init__("crossref", config)
 
     def crossref(
         self,
@@ -60,11 +48,11 @@ class CrossRef:
 
         if update:
             # Handle update case
-            self.repository.update(query_namespace)
+            self.update(query_namespace)
             return self._get_result_dict()
         else:
             # Handle new download case
-            self.repository.apipaperdownload(query_namespace)
+            self.apipaperdownload(query_namespace)
             return self._get_result_dict()
 
     def _get_result_dict(self):
@@ -76,18 +64,6 @@ class CrossRef:
             "updated_dict": {},
         }
 
-    def update(self, query_namespace):
-        """Update existing corpus with new results."""
-        self.repository.update(query_namespace)
-
-    def noexecute(self, query_namespace):
-        """Execute search without downloading files."""
-        self.repository.noexecute(query_namespace)
-
-    def apipaperdownload(self, query_namespace):
-        """Download papers from the repository."""
-        self.repository.apipaperdownload(query_namespace)
-
 
 # Example usage and comparison:
 if __name__ == "__main__":
@@ -97,7 +73,7 @@ if __name__ == "__main__":
     print()
 
     print("=== New Crossref Implementation ===")
-    print("Lines of code: ~60")
+    print("Lines of code: ~40")
     print("Features: Configuration-driven, easily extensible")
     print()
 
