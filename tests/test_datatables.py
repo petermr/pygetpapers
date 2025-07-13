@@ -8,7 +8,7 @@ import os
 import tempfile
 from pathlib import Path
 
-from datatables_integration import PygetpapersDatatables
+from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 
 
 def create_sample_pygetpapers_output():

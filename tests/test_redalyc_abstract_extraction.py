@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 
-from pygetpapers.redalyc.redalyc_selenium import RedalycSelenium
+from pygetpapers.repositories.redalyc.redalyc_selenium import RedalycSelenium
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)

@@ -31,10 +31,10 @@ try:
 except ImportError:
     BEAUTIFULSOUP_AVAILABLE = False
 
-from pygetpapers.repositoryinterface import RepositoryInterface
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.file_utils import FileUtils
-from pygetpapers.metadata_extractor import MetadataExtractor
+from pygetpapers.core.repositoryinterface import RepositoryInterface
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.file_utils import FileUtils
+from pygetpapers.core.metadata_extractor import MetadataExtractor
 
 
 class RedalycSelenium(RepositoryInterface):

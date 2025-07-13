@@ -7,7 +7,7 @@ import os
 import sys
 from pathlib import Path
 
-from datatables_integration import PygetpapersDatatables
+from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 
 # Add the current directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

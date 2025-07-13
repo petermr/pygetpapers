@@ -13,7 +13,7 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from pygetpapers.redalyc import RedalycSelenium
+from pygetpapers.repositories.redalyc.redalyc_selenium import RedalycSelenium
 
 
 def test_redalyc_selenium_initialization():

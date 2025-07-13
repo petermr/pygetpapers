@@ -13,7 +13,7 @@ import json
 import logging
 from pathlib import Path
 
-from src.pygetpapers.biorxiv.biorxiv_web_scraper import BioRxivWebScraper
+from pygetpapers.repositories.biorxiv.biorxiv_web_scraper import BioRxivWebScraper
 
 # Set up logging
 logging.basicConfig(
