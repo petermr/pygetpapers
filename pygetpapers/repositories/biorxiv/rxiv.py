@@ -5,15 +5,15 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from pygetpapers.config_loader import get_repository_config
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.errors import PygetpapersError
-from pygetpapers.pygetpapers import BIORXIV
-from pygetpapers.repositoryinterface import (
+from pygetpapers.core.config_loader import get_repository_config
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.errors import PygetpapersError
+from pygetpapers.core.repositoryinterface import (
     COLLECTION,
     DOI,
     RXIV_RESULT,
     RepositoryInterface,
+    BIORXIV,
 )
 
 TOTAL_HITS = "total_hits"

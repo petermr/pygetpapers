@@ -72,11 +72,11 @@ class ApiPlugger:
             )
         # Handle special cases for bioRxiv-related repositories
         if self.library_name in ["rxiv", "rxivist"]:
-            module_path = f"{PYGETPAPERS}.biorxiv.{self.library_name}"
+            module_path = f"{PYGETPAPERS}.repositories.biorxiv.{self.library_name}"
         elif self.library_name == "redalyc_selenium":
-            module_path = f"{PYGETPAPERS}.redalyc.redalyc_selenium"
+            module_path = f"{PYGETPAPERS}.repositories.redalyc.redalyc_selenium"
         else:
-            module_path = f"{PYGETPAPERS}.{self.library_name}.{self.library_name}"
+            module_path = f"{PYGETPAPERS}.repositories.{self.library_name}.{self.library_name}"
 
         api_class = getattr(
             importlib.import_module(module_path),
@@ -410,6 +410,7 @@ class Pygetpapers:
         onlyquery=False,
         makecsv=False,
         makehtml=False,
+        datatables=False,
         fulltext_html=False,
         synonym=False,
         startdate=False,
@@ -549,6 +550,121 @@ class Pygetpapers:
         except Exception as e:
             logging.error(f"Error during HTML enhancement: {e}")
 
+    def _create_datatables(self, query_namespace):
+        """Create datatables HTML files for the corpus."""
+        try:
+            import os
+            from pygetpapers.tools.datatables_integration import PygetpapersDatatables
+            
+            # Debug logging (can be removed in production)
+            # logging.info(f"Query namespace output: {query_namespace.get('output')}")
+            # logging.info(f"Query namespace datatables: {query_namespace.get('datatables')}")
+            # logging.info(f"Self default path: {self.default_path}")
+            
+            # Initialize datatables
+            dt = PygetpapersDatatables()
+            
+            # Read the pygetpapers output
+            output_dir = query_namespace.get("output", self.default_path)
+            
+            # Since the working directory has been changed to the output directory,
+            # we need to use "." to refer to the current directory
+            logging.info(f"Reading pygetpapers output from: . (current directory)")
+            
+            # Check if the directory exists
+            if not os.path.exists("."):
+                logging.error(f"Current directory does not exist")
+                return
+                
+            output_data = dt.read_pygetpapers_output(".")
+            
+            # Determine datatables output directory
+            if query_namespace["datatables"] is True:
+                # No directory specified, use output directory
+                datatables_dir = output_dir
+            else:
+                # Directory specified
+                datatables_dir = query_namespace["datatables"]
+                if not os.path.isabs(datatables_dir):
+                    datatables_dir = os.path.abspath(datatables_dir)
+            
+            logging.info(f"Creating datatables in: {datatables_dir}")
+            
+            if not output_data or not output_data.get("summary", {}).get("total_papers", 0):
+                logging.warning("No papers found for datatables creation")
+                return
+            
+            # Create datatables HTML files
+            papers_html = dt.create_papers_table(output_data, "papers_table")
+            metadata_html = dt.create_metadata_table(output_data, "metadata_table")
+            summary_html = dt.create_summary_table(output_data, "summary_table")
+            
+            # Save HTML files
+            import os
+            os.makedirs(datatables_dir, exist_ok=True)
+            
+            with open(os.path.join(datatables_dir, "datatables_papers.html"), "w", encoding="utf-8") as f:
+                f.write(papers_html)
+            
+            with open(os.path.join(datatables_dir, "datatables_metadata.html"), "w", encoding="utf-8") as f:
+                f.write(metadata_html)
+            
+            with open(os.path.join(datatables_dir, "datatables_summary.html"), "w", encoding="utf-8") as f:
+                f.write(summary_html)
+            
+            # Also create a combined datatables.html file
+            combined_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pygetpapers Datatables</title>
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .section {{ margin-bottom: 30px; }}
+        h1, h2 {{ color: #333; }}
+        iframe {{ width: 100%; height: 600px; border: 1px solid #ddd; }}
+    </style>
+</head>
+<body>
+    <h1>Pygetpapers Datatables</h1>
+    <p>Generated for query: {query_namespace.get('query', 'Unknown')}</p>
+    <p>Total papers: {output_data.get('summary', {}).get('total_papers', 0)}</p>
+    
+    <div class="section">
+        <h2>Papers Table</h2>
+        <iframe src="datatables_papers.html"></iframe>
+    </div>
+    
+    <div class="section">
+        <h2>Metadata Table</h2>
+        <iframe src="datatables_metadata.html"></iframe>
+    </div>
+    
+    <div class="section">
+        <h2>Summary Table</h2>
+        <iframe src="datatables_summary.html"></iframe>
+    </div>
+</body>
+</html>
+"""
+            
+            with open(os.path.join(datatables_dir, "datatables.html"), "w", encoding="utf-8") as f:
+                f.write(combined_html)
+            
+            logging.info(f"Created datatables files in: {datatables_dir}")
+            logging.info("Files created:")
+            logging.info("  - datatables.html (combined view)")
+            logging.info("  - datatables_papers.html")
+            logging.info("  - datatables_metadata.html")
+            logging.info("  - datatables_summary.html")
+            
+        except ImportError:
+            logging.error("Datatables integration not available. Please install required dependencies.")
+        except Exception as e:
+            logging.error(f"Error creating datatables: {e}")
+            import traceback
+            logging.debug(traceback.format_exc())
+
     def runs_pygetpapers_for_given_args(self, query_namespace):
         """Runs pygetpapers for flags described in a dictionary
         :param query_namespace: pygetpaper's namespace object  # noqa: E501
@@ -587,6 +703,10 @@ class Pygetpapers:
             return
         api_handler = ApiPlugger(query_namespace)
         api_handler.check_query_logic_and_run()
+        
+        # Handle datatables creation
+        if query_namespace.get("datatables"):
+            self._create_datatables(query_namespace)
 
     def create_argparser(self):
         """Creates the cli"""
@@ -775,6 +895,14 @@ class Pygetpapers:
             default=False,
             action="store_true",
             help=("[All] Stores the per-document metadata as html."),
+        )
+        parser.add_argument(
+            "--datatables",
+            default=False,
+            nargs="?",
+            const=True,
+            type=str,
+            help="[All] Create datatables HTML files. If directory specified, saves to that directory, otherwise uses output directory.",
         )
         parser.add_argument(
             "--fulltext_html",
