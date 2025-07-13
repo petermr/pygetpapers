@@ -16,7 +16,7 @@
       "doi": "10.1101/2023.11.10.566554",
       "pisa_id": "biorxiv;2023.11.10.566554v2",
       "apath": "/biorxiv/early/2025/05/01/2023.11.10.566554.atom",
-      "extracted_at": "2025-07-13T22:31:48.380604"
+      "extracted_at": "2025-07-13T23:09:23.462122"
     },
     {
       "title": "Some like it hot: adaptation to the urban heat island in common dandelion",
@@ -37,7 +37,7 @@
       "doi": "10.1101/2023.06.01.543268",
       "pisa_id": "biorxiv;2023.06.01.543268v1",
       "apath": "/biorxiv/early/2023/06/05/2023.06.01.543268.atom",
-      "extracted_at": "2025-07-13T22:31:48.380940"
+      "extracted_at": "2025-07-13T23:09:23.462488"
     },
     {
       "title": "Genomics highlight an underestimation of the urban heat island effect on red oak phenology",
@@ -54,7 +54,7 @@
       "doi": "10.1101/2022.08.03.502691",
       "pisa_id": "biorxiv;2022.08.03.502691v2",
       "apath": "/biorxiv/early/2022/11/02/2022.08.03.502691.atom",
-      "extracted_at": "2025-07-13T22:31:48.381167"
+      "extracted_at": "2025-07-13T23:09:23.462733"
     }
   ],
   "pagination": {
@@ -66,9 +66,9 @@
     "next_url": "https://www.biorxiv.org/search/urban%20heat%20island?page=1",
     "previous_url": null
   },
-  "parsed_at": "2025-07-13T22:31:48.382080",
+  "parsed_at": "2025-07-13T23:09:23.463831",
   "search_query": "urban heat island",
   "search_url": "https://www.biorxiv.org/search/urban+heat+island",
   "total_found": 3,
-  "search_timestamp": "2025-07-13T22:31:48.382085"
+  "search_timestamp": "2025-07-13T23:09:23.463842"
 }
