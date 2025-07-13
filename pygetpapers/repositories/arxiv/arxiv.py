@@ -4,8 +4,8 @@ import os
 import arxiv as arxiv_wrapper
 from tqdm import tqdm
 
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.repositoryinterface import (
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.repositoryinterface import (
     XML2HTML_CONVERTER,
     XML2HTML_SUPPORTED,
     RepositoryInterface,
@@ -112,7 +112,7 @@ class Arxiv(RepositoryInterface):
 
         try:
             # Use Simple HTML Converter for arXiv XML
-            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+            from pygetpapers.core.simple_html_converter import SimpleHTMLConverter
 
             converter = SimpleHTMLConverter()
             # Use XML-to-HTML naming convention: fulltext.xml.html

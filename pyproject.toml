@@ -69,7 +69,7 @@ test = [
 ]
 
 [project.scripts]
-pygetpapers = "pygetpapers.pygetpapers:main"
+pygetpapers = "pygetpapers:main"
 
 [project.urls]
 Homepage = "https://github.com/petermr/pygetpapers"
@@ -79,7 +79,7 @@ Repository = "https://github.com/petermr/pygetpapers"
 "Streamlit UI" = "https://github.com/petermr/pygetpapers/tree/v20#streamlit-ui"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 include = ["pygetpapers*"]
 
 [tool.setuptools.package-data]

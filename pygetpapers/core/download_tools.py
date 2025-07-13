@@ -17,10 +17,7 @@ from dict2xml import dict2xml
 from lxml import etree
 from tqdm import tqdm
 
-try:
-    from pygetpapers.pgexceptions import PygetpapersError
-except ImportError:
-    from pgexceptions import PygetpapersError
+from pygetpapers.core.pgexceptions import PygetpapersError
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)

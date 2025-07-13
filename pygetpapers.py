@@ -13,8 +13,8 @@ import coloredlogs
 import configargparse
 from tqdm import tqdm
 
-from src.pygetpapers.download_tools import DownloadTools
-from src.pygetpapers.pgexceptions import PygetpapersError
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.pgexceptions import PygetpapersError
 
 VERSION = "version"
 RESTART = "restart"

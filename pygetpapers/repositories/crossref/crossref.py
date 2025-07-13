@@ -4,8 +4,8 @@ from pathlib import Path
 
 from habanero import Crossref
 
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.repositoryinterface import (
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.repositoryinterface import (
     XML2HTML_CONVERTER,
     XML2HTML_SUPPORTED,
     RepositoryInterface,

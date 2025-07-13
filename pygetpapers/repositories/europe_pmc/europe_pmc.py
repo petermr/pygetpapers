@@ -6,8 +6,8 @@ from pathlib import Path
 import pandas as pd
 from tqdm import tqdm
 
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.repositoryinterface import (
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.repositoryinterface import (
     XML2HTML_CONVERTER,
     XML2HTML_SUPPORTED,
     RepositoryInterface,
@@ -697,7 +697,7 @@ class EuropePmc(RepositoryInterface):
         try:
             # Try JATS4R first
             try:
-                from pygetpapers.jats4r_integration import JATS4RConverter
+                from pygetpapers.tools.jats4r_integration import JATS4RConverter
 
                 converter = JATS4RConverter()
                 # Use new naming convention: fulltext.xml.html
@@ -721,7 +721,7 @@ class EuropePmc(RepositoryInterface):
                 logging.warning(f"JATS4R not available for {identifier_for_paper}: {e}")
 
             # Fallback to Simple HTML Converter
-            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+            from pygetpapers.core.simple_html_converter import SimpleHTMLConverter
 
             converter = SimpleHTMLConverter()
             # Use XML-to-HTML naming convention: fulltext.xml.html

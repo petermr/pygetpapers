@@ -105,7 +105,7 @@ class AbstractRepository(RepositoryInterface):
             return False
 
         try:
-            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+            from pygetpapers.core.simple_html_converter import SimpleHTMLConverter
 
             converter = SimpleHTMLConverter()
             html_file_path = xml_file_path.replace(".xml", ".xml.html")
