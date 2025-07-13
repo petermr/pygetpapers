@@ -275,7 +275,8 @@ class FileUtils:
     @staticmethod
     def save_article_files(metadata: Dict[str, Any], output_dir: Union[str, Path],
                           html_content: str = "", pdf_content: bytes = b"",
-                          xml_content: str = "", encoding: str = 'utf-8') -> Dict[str, str]:
+                          xml_content: str = "", epub_content: bytes = b"",
+                          encoding: str = 'utf-8') -> Dict[str, str]:
         """
         Save all article files to the output directory.
         
@@ -285,6 +286,7 @@ class FileUtils:
             html_content: HTML content to save
             pdf_content: PDF content to save
             xml_content: XML content to save
+            epub_content: ePUB content to save
             encoding: File encoding
             
         Returns:
@@ -325,6 +327,12 @@ class FileUtils:
             xml_file = output_dir / "fulltext.xml"
             if FileUtils.write_html_content(xml_content, xml_file, encoding):
                 saved_files['xml'] = str(xml_file)
+        
+        # Save ePUB content
+        if epub_content:
+            epub_file = output_dir / "fulltext.epub"
+            if FileUtils.write_binary_content(epub_content, epub_file):
+                saved_files['epub'] = str(epub_file)
         
         return saved_files
     

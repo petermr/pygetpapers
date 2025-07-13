@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redalyc Search Results - Lantana</title>
+    
+    <!-- External CDN Scripts - minimal external dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" 
+          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #333; 
+            text-align: center; 
+            margin-bottom: 30px; 
+        }
+        .abstract-cell { 
+            max-width: 400px; 
+        }
+        .preview-cell { 
+            max-width: 300px; 
+        }
+        .url-cell { 
+            max-width: 100px; 
+            text-align: center; 
+        }
+        .pdf-cell { 
+            max-width: 100px; 
+            text-align: center; 
+        }
+        .dataTables_wrapper { 
+            margin-top: 20px; 
+        }
+        .dataTables_filter { 
+            margin-bottom: 15px; 
+        }
+        .dataTables_filter input { 
+            padding: 5px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+        }
+        .btn { 
+            display: inline-block; 
+            padding: 5px 10px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 12px; 
+        }
+        .btn-primary { 
+            background-color: #007bff; 
+            color: white; 
+        }
+        .btn-success { 
+            background-color: #28a745; 
+            color: white; 
+        }
+        .btn-disabled { 
+            background-color: #6c757d; 
+            color: white; 
+            cursor: not-allowed; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redalyc Search Results - "Lantana"</h1>
+        <table id="redalyc-table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Journal</th>
+                    <th>Year</th>
+                    <th>Abstract</th>
+                    <th>Content Preview</th>
+                    <th>Article Link</th>
+                    <th>PDF Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>REDALYC_66914279011</td>
+                    <td>NOVEDADES NOMENCLATURALES EN LOS GÉNEROS LIPPIA Y LANTANA (VERBENACEAE)</td>
+                    <td>Darwiniana</td>
+                    <td>2010</td>
+                    <td class="abstract-cell">Como continuación de nuestros estudios previos realizados en los géneros Lippia y Lantana, se proponen las siguientes novedades: Lantana bocainiensis, como una nueva combinación; se establecen nuevos sinónimos, Lantana brachypoda y Lantana ventura, para Lippia grisebachiana: y un nuevo sinónimo, Lantana clarazii, para Junellia spatulatha var. spathulata. Se designan lectotipos para los siguientes taxones: Lippia lantanifolia, Lantana brachypoda y Lippia turbinata. Se consideran taxones dudosos a Lantana cummingiana y Lantana hyptoides.</td>
+                    <td class="preview-cell">NOVEDADES NOMENCLATURALES EN LOS GÉNEROS LIPPIA Y LANTANA (VERBENACEAE) Alicia D. Rotman1... Como continuación de nuestros estudios previos realizados e...</td>
+                    <td class="url-cell"><a href="https://www.redalyc.org/articulo.oa?id=66914279011" target="_blank" class="btn btn-primary">View</a></td>
+                    <td class="pdf-cell"><a href="https://www.redalyc.org/articulo.oa?id=66914279011" target="_blank" class="btn btn-success">PDF</a></td>
+                </tr>
+        
+                <tr>
+                    <td>REDALYC_66940408</td>
+                    <td>Novas combinações e novos sinônimos em Lippia e Lantana (Verbenaceae)</td>
+                    <td>Darwiniana</td>
+                    <td>2002</td>
+                    <td class="abstract-cell">Após a revisão taxonômica das espécies brasileiras de Lantana por Silva (1999), foi restabelecido o conceito de Chamisso (1832) para o gênero. Assim as espécies de Lantana sect. Sarcolippia e todas as espécies com frutos com dois pirenos foram excluídas de Lantana e transferidas para o gênero Lippia. Além disso foram estabelecidos novos sinônimos e encontrado um nome supérfluo</td>
+                    <td class="preview-cell">NOVAS COMBINAÇÕES E NOVOS SINÔNIMOS EM LIPPIA E LANTANA (VERBENACEAE) TÂNIA REGINA DOS SANTOS SILVA 1 & FÁTIMA REGINA G. SALIMENA 2 1 Dpto. de... ABSTRACT: Silva, T. R. S. & Salimena, F. R. 2002. New ...</td>
+                    <td class="url-cell"><a href="https://www.redalyc.org/articulo.oa?id=66940408" target="_blank" class="btn btn-primary">View</a></td>
+                    <td class="pdf-cell"><a href="https://www.redalyc.org/articulo.oa?id=66940408" target="_blank" class="btn btn-success">PDF</a></td>
+                </tr>
+        
+                <tr>
+                    <td>REDALYC_86214152006</td>
+                    <td>Comparación ecofisiológica de tres especies del género Lantana L. (Verbenaceae)</td>
+                    <td>Acta Botanica Venezuelica</td>
+                    <td>2009</td>
+                    <td class="abstract-cell">Las especies del género Lantana son conocidas por el alto valor comercial de sus aceites naturales, pero se sabe poco de su respuesta fotosintética a variables ambientales. El efecto del déficit hídrico sobre la actividad fotosintética se estudió en tres especies de Lantana: L. caracasana, L. canescens y L. camara, con tratamientos de suspensión del riego. L. caracasana tuvo la mayor asimilación de carbono durante el período de medida y el déficit en la disponibilidad de agua ocasionó una disminución del potencial hídrico, de la fotosíntesis y de la conductancia estomática en las tres especies. Los cambios observados en las variables de fluorescencia, en la eficiencia cuántica aparente y en la fotosíntesis a luz saturante, sugieren una regulación descendente de la actividad fotoquímica del fotosistema II durante el déficit hídrico. En plantas control se observaron pocas diferencias entre especies en la respuesta de la fotosíntesis a la concentración intercelular de CO2. La temperatura óptima para la fotosíntesis varió entre 25-26ºC. El efecto del déficit hídrico sobre el intercambio gaseoso de las tres especies fue diferente, siendo L. camara la más afectada</td>
+                    <td class="preview-cell">Lantana l. (VerbenaCeae) ecophysiological comparison of three species of the genus Lantana l. (Verbenaceae) armando gonzález1, Valentina Villalobos1..., Apartado 21827, Caracas 1020-A. wilmer.tezara@c...</td>
+                    <td class="url-cell"><a href="https://www.redalyc.org/articulo.oa?id=86214152006" target="_blank" class="btn btn-primary">View</a></td>
+                    <td class="pdf-cell"><a href="https://www.redalyc.org/articulo.oa?id=86214152006" target="_blank" class="btn btn-success">PDF</a></td>
+                </tr>
+        
+                <tr>
+                    <td>REDALYC_209118173010</td>
+                    <td>REVISIÓN BIBLIOGRÁFICA SOBRE LANTANA CAMARA L. UNA AMENAZA PARA LA GANADERÍA</td>
+                    <td>Fitosanidad</td>
+                    <td>2003</td>
+                    <td class="abstract-cell">Se realizó una revisión bibliográfica de Lantana camara L. perteneciente a la familia Verbenaceae (subfamilia Verbenoideae). Es un arbusto leñoso perenne, y se considera una de las 10 malezas más nocivas del mundo. Infesta millones de hectáreas de tierras cultivadas, pastos, caminos y terrenos improductivos. Está más distribuida en el área del Caribe, África oriental, Suráfrica, Asia meridional, Australia y las islas del Pacífico. El resultado de su invasión es la expansión de densos matorrales que alteran el ecosistema, y a la vez pueden causar daños a humanos y animales debido a que sus hojas, tallos y frutos son altamente tóxicos al ganado. Para su control se han utilizado métodos convencionales como el mecánico, físico y químico, pero se han demostrado las inconveniencias económicas y ambientales de sus aplicaciones. Por ello es necesario la búsqueda de reguladores biológicos que permitan mantener sus poblaciones a un nivel en el cual no ocasione daños económicos, teniendo en cuenta la preservación del entorno.</td>
+                    <td class="preview-cell">fitosanidad/45 REVISIÓN BIBLIOGR`FICA SOBRE LANTANA CAMARA L. UNA AMENAZA PARA LA GANADER˝A Yaril... 11600. RESUMEN Se realizó una revisión bibliográfica de L...</td>
+                    <td class="url-cell"><a href="https://www.redalyc.org/articulo.oa?id=209118173010" target="_blank" class="btn btn-primary">View</a></td>
+                    <td class="pdf-cell"><a href="https://www.redalyc.org/articulo.oa?id=209118173010" target="_blank" class="btn btn-success">PDF</a></td>
+                </tr>
+        
+                <tr>
+                    <td>REDALYC_66944214</td>
+                    <td>Lantana lundiana y L. velutina (Verbenaceae), nuevos registros para Argentina y Paraguay</td>
+                    <td>Darwiniana</td>
+                    <td>2006</td>
+                    <td class="abstract-cell">Lantana lundiana and L. velutina, (Verbenaceae, Lantana sect. Callioreas) are recorded for the first time for Argentina and Paraguay. Descriptions and illustrations of each taxon are included.</td>
+                    <td class="preview-cell">Lantana L., es un género esencialmente ame- ricano, de América Tropical y Subtropical, con algunos representantes en África y en Asia. Según... austral, Paraguay y Uruguay). Según Atkins (2004), Lanta...</td>
+                    <td class="url-cell"><a href="https://www.redalyc.org/articulo.oa?id=66944214" target="_blank" class="btn btn-primary">View</a></td>
+                    <td class="pdf-cell"><a href="https://www.redalyc.org/articulo.oa?id=66944214" target="_blank" class="btn btn-success">PDF</a></td>
+                </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Minimal, readable JavaScript - no abbreviations -->
+    <script>
+        $(document).ready(function() {
+            $('#redalyc-table').DataTable({
+                pageLength: 10,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                responsive: true,
+                scrollX: true,
+                order: [[3, 'desc']], // Sort by year descending
+                columnDefs: [
+                    {
+                        targets: [4, 5], // Abstract and Content Preview columns
+                        render: function(data, type, row) {
+                            if (type === 'display' && data.length > 150) {
+                                return data.substr(0, 150) + '...';
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        targets: [6, 7], // URL and PDF columns
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html> 

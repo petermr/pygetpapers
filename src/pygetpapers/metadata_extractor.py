@@ -42,7 +42,9 @@ class MetadataExtractor:
     
     ABSTRACT_SELECTORS = [
         '.abstract', '.resumen', '.summary', 'div[class*="abstract"]',
-        '.abstract-text', '.resumen-texto', '.paper-abstract'
+        '.abstract-text', '.resumen-texto', '.paper-abstract',
+        '.summary', 'span.summary', 'div[class*="resumen"]',
+        '[ng-bind*="resumen"]', '[ng-bind*="abstract"]'
     ]
     
     JOURNAL_SELECTORS = [
@@ -208,6 +210,91 @@ class MetadataExtractor:
         
         # Fallback to text-based extraction
         return MetadataExtractor._extract_abstract_from_text(html_content)
+
+    @staticmethod
+    def extract_redalyc_abstract_from_search_results(html_content: str, soup: Optional[BeautifulSoup] = None) -> str:
+        """
+        Extract abstract from Redalyc search results page.
+        
+        This method specifically handles Redalyc's abstract toggle functionality
+        where abstracts are stored in article.resumen and displayed via checkbox.
+        
+        Args:
+            html_content: Raw HTML content from Redalyc search results
+            soup: Optional BeautifulSoup object
+            
+        Returns:
+            Extracted abstract or empty string
+        """
+        if not BEAUTIFULSOUP_AVAILABLE:
+            return MetadataExtractor._extract_abstract_from_text(html_content)
+        
+        if soup is None:
+            soup = BeautifulSoup(html_content, 'html.parser')
+        
+        # Look for Redalyc-specific abstract patterns
+        # 1. Check for summary spans that contain abstract text
+        summary_spans = soup.find_all('span', class_='summary')
+        for span in summary_spans:
+            text = span.get_text(strip=True)
+            if text and len(text) > 20:
+                return text
+        
+        # 2. Look for article content that might contain abstract
+        content_spans = soup.find_all('span', class_='article-contenido')
+        for span in content_spans:
+            text = span.get_text(strip=True)
+            # Look for abstract indicators in the content
+            if any(indicator in text.lower() for indicator in ['resumen:', 'abstract:', 'summary:']):
+                # Extract text after the indicator
+                for indicator in ['resumen:', 'abstract:', 'summary:']:
+                    if indicator in text.lower():
+                        parts = text.split(indicator, 1)
+                        if len(parts) > 1:
+                            abstract = parts[1].strip()
+                            if len(abstract) > 20:
+                                return abstract
+        
+        # 3. Look for ng-bind attributes that might contain abstract data
+        ng_bind_elements = soup.find_all(attrs={'ng-bind': True})
+        for elem in ng_bind_elements:
+            ng_bind = elem.get('ng-bind', '')
+            if 'resumen' in ng_bind or 'abstract' in ng_bind:
+                text = elem.get_text(strip=True)
+                if text and len(text) > 20:
+                    return text
+        
+        # 4. Look for abstract checkbox and try to extract from ng-click data
+        resumen_checkboxes = soup.find_all('input', class_='check-resumen')
+        for checkbox in resumen_checkboxes:
+            ng_click = checkbox.get('ng-click', '')
+            if 'muestraResumen' in ng_click and 'article.resumen' in ng_click:
+                # The abstract data is in the AngularJS model, not directly in HTML
+                # We need to look for any text that might be the abstract
+                parent = checkbox.parent
+                if parent:
+                    # Look for any text that looks like an abstract
+                    for text_elem in parent.find_all(text=True):
+                        text = text_elem.strip()
+                        if text and len(text) > 50 and not text.startswith('Resumen:'):
+                            # This might be the abstract
+                            return text
+        
+        # 5. Look for any text that looks like an abstract in the article content
+        content_elem = soup.find('span', class_='article-contenido')
+        if content_elem:
+            text = content_elem.get_text(strip=True)
+            # Look for patterns that indicate abstract content
+            if len(text) > 100:
+                # Split by common separators and look for abstract-like content
+                parts = text.split('.')
+                for part in parts:
+                    part = part.strip()
+                    if len(part) > 50 and any(word in part.lower() for word in ['resumen', 'abstract', 'summary', 'como', 'se', 'los', 'las']):
+                        return part
+        
+        # Fallback to general abstract extraction
+        return MetadataExtractor.extract_abstract(html_content, soup)
     
     @staticmethod
     def _extract_abstract_from_text(text_content: str) -> str:
@@ -458,9 +545,9 @@ class MetadataExtractor:
             base_url: Base URL for resolving relative links
             
         Returns:
-            Dictionary with 'pdf_url' and 'xml_url' keys
+            Dictionary with 'pdf_url', 'xml_url', 'html_url', 'epub_url', and 'mobile_url' keys
         """
-        links = {'pdf_url': '', 'xml_url': ''}
+        links = {'pdf_url': '', 'xml_url': '', 'html_url': '', 'epub_url': '', 'mobile_url': ''}
         
         if not BEAUTIFULSOUP_AVAILABLE:
             return links
@@ -482,12 +569,33 @@ class MetadataExtractor:
                         links['pdf_url'] = urljoin(base_url, full_href)
                 
                 # Look for XML links
-                elif ('xml' in href or 'xml' in link_text) and not links['xml_url']:
+                elif ('xml' in href or 'xml' in link_text or 'jats' in href or 'jats' in link_text) and not links['xml_url']:
                     # Include XML links when found (different repositories may have them)
                     if full_href and full_href.startswith('http'):
                         links['xml_url'] = full_href
                     elif base_url and full_href:
                         links['xml_url'] = urljoin(base_url, full_href)
+                
+                # Look for HTML links
+                elif ('html' in href or 'html' in link_text) and not links['html_url']:
+                    if full_href and full_href.startswith('http'):
+                        links['html_url'] = full_href
+                    elif base_url and full_href:
+                        links['html_url'] = urljoin(base_url, full_href)
+                
+                # Look for ePUB links
+                elif ('epub' in href or 'epub' in link_text) and not links['epub_url']:
+                    if full_href and full_href.startswith('http'):
+                        links['epub_url'] = full_href
+                    elif base_url and full_href:
+                        links['epub_url'] = urljoin(base_url, full_href)
+                
+                # Look for mobile links
+                elif ('mobile' in href or 'mobile' in link_text) and not links['mobile_url']:
+                    if full_href and full_href.startswith('http'):
+                        links['mobile_url'] = full_href
+                    elif base_url and full_href:
+                        links['mobile_url'] = urljoin(base_url, full_href)
                 
                 # Look for repository-specific download links
                 elif 'articulo.oa' in href and not links['pdf_url']:
@@ -527,7 +635,10 @@ class MetadataExtractor:
             'keywords': MetadataExtractor.extract_keywords(html_content, soup),
             'language': MetadataExtractor.extract_language(html_content, soup),
             'pdf_url': '',
-            'xml_url': ''
+            'xml_url': '',
+            'html_url': '',
+            'epub_url': '',
+            'mobile_url': ''
         }
         
         # Extract links

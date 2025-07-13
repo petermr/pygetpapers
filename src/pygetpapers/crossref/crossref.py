@@ -111,7 +111,7 @@ class CrossRef(RepositoryInterface):
 
         try:
             # Use Simple HTML Converter for Crossref XML
-            from pygetpapers.simple_html_converter import SimpleHTMLConverter
+            from src.pygetpapers.simple_html_converter import SimpleHTMLConverter
 
             converter = SimpleHTMLConverter()
             # Use XML-to-HTML naming convention: fulltext.xml.html

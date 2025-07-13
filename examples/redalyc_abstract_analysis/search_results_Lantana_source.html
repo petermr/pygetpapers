@@ -1,0 +1,1527 @@
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="artjs" ng-controller="articleController" class="ng-scope"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+	
+	<title>Búsqueda de artículos</title>
+	<meta charset="UTF-8">
+	<meta name="application-name" content="Redalyc">
+	<meta name="language" content="spanish">
+	<meta name="description" lang="es" content="Buscador de artículos científicos en redalyc.org">
+	<meta name="robots" content="index,follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta http-equiv="Content-Language" content="es,en">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta property="og:title" content="Búsqueda de artículos en redalyc.org">
+	<meta property="og:description" content="Buscador de artículos científicos en redalyc.org">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Redalyc.org">
+	<meta property="og:locale" content="es_LA">
+	<meta property="og:locale:alternate" content="en_US">
+	<meta property="og:locale:alternate" content="es_ES">	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@Redalyc">
+	<meta name="twitter:title" content="Búsqueda de artículos en redalyc.org">
+	<meta name="twitter:description" content="Buscador de artículos científicos en redalyc.org">
+	
+	
+	<link rel="shortcut icon" href="img/r2020.ico">
+	
+	<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript">
+	 	var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-3153272-1']);
+		_gaq.push(['_trackPageview']);
+	 	(function() {
+	 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	
+	<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PG5DW8YGFY"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-PG5DW8YGFY');
+	</script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/busquedaArticulo.css">
+	
+	
+	<script src="js/angular.js"></script>
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/angular-sanitize.js"></script>
+	
+	<script src="js/busquedaArticulo.js"></script></head>
+<body> 
+<script type="text/javascript">
+	  /**
+		evento de visita
+	  */
+	  gtag('event', 'screen_view', {
+	    'app_name': 'PortalRedalyc',
+	    'screen_name': 'busquedaArticulosFiltros'
+	  });
+	  gtag('event', 'page_view', {
+		  'page_title': 'busquedaArticulosFiltros',
+		  'page_location': 'https://redalyc.org/busquedaArticulosFiltros.oa'
+	  });
+	</script> 
+	<div class="todo">   
+		<main class="panelD">
+				<div id="containerHeader">
+				<div id="redalyc-generall">
+					<div id="logoDiv">
+						<a href="home.oa"><img id="logo-redalyc" src="img/nuevoHeaderHome/logo_redalyc.png"></a>
+					</div>
+					<div id="textContainer">
+						<div>
+							<b><span class="ng-binding">Sistema de Información Científica Redalyc</span></b><br>
+							<span class="ng-binding">Red de revistas científicas de Acceso Abierto diamante</span><br>
+							<span class="ng-binding">Infraestructura abierta no comercial propiedad de la academia</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		<header class="header">
+			<div>
+				<div id="redalyc-redes-idioma">
+					<a href="home.oa" class="tr"><img src="img/homeRevista2024/home-principal.png"></a>
+					<a href="https://twitter.com/Redalyc" target="_blank"><img src="img/nuevoHeaderHome/ic_x.png"></a>
+					<a href="https://www.facebook.com/Redalyc/" target="_blank"><img src="img/nuevoHeaderHome/icon_fb.png"></a>
+					<span class="idioma" ng-click="traducir('es', true)"><b class="ng-binding">ESP</b></span>
+					<span class="idioma" ng-click="traducir('en', true)"><b class="ng-binding">ENG</b></span>
+				</div>
+				
+			</div>
+			<!-- ngIf: articlesCovidFull.length>0 -->
+			<!-- ngIf: data.length>0 --><div id="titulo-pagina" ng-if="data.length>0" class="ng-scope">
+				<span class="ng-binding">Búsqueda de artículos</span>
+			</div><!-- end ngIf: data.length>0 -->
+		</header>
+		  	<!-- ngInclude: 'html/plantillaArticulos.html' --><div class="plantilla ng-scope" ng-include="'html/plantillaArticulos.html'"><!-- SIDEBAR -->
+<div id="sidebar" class="sidebar ng-scope">
+	<h4 style="text-align:left;font-weight:normal;text-indent:40px;" class="ng-binding">Filtros de búsqueda</h4>
+	<br> 
+	<div style="display: block; text-align:center;">
+		<!-- ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre == 'AÃ±o' || filtro.nombre == 'A�o' --><div class="filtro ng-scope" ng-repeat="filtro in filterData" ng-if="filtro.nombre == 'AÃ±o' || filtro.nombre == 'A�o'">
+			<!-- ngIf: filtro.elementos.length > 1 --><div ng-if="filtro.elementos.length > 1" class="ng-scope">
+		    	<h5 style="border-bottom: 1px solid #f5f5f5;width: 82%;margin: 0 auto;" class="ng-binding">Año:</h5>
+		        <!-- ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2025
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2024
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(6)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2023
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(14)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2022
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(24)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2021
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(23)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2020
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(42)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2019
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(39)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2018
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(33)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2017
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(47)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2016
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(46)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2015
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(62)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2014
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(44)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2013
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(61)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2012
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(42)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2011
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(48)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2010
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(36)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2009
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(43)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2008
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(31)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2007
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(40)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2006
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(29)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2005
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(27)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2004
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(16)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2003
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(12)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2002
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(11)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2001
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(11)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	2000
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(8)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	1999
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(4)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	1998
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	1995
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos | orderBy : '-nombre'">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	1994
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos | orderBy : '-nombre' -->
+		         <!-- ngIf: filtro.elementos.length > 5 --><label id="mas-A�o" class="ver-mas-menos ng-binding ng-scope" ng-click="clickListener($event, true)" ng-if="filtro.elementos.length > 5">Ver más...</label><!-- end ngIf: filtro.elementos.length > 5 -->
+		         <label id="menos-A�o" style="display:none;" class="ver-mas-menos ng-binding" ng-click="clickListener($event, false)">Ver menos...</label>
+		         <br><br>
+	         </div><!-- end ngIf: filtro.elementos.length > 1 -->
+		</div><!-- end ngIf: filtro.nombre == 'AÃ±o' || filtro.nombre == 'A�o' --><!-- end ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre == 'AÃ±o' || filtro.nombre == 'A�o' --><!-- end ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre == 'AÃ±o' || filtro.nombre == 'A�o' --><!-- end ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre == 'AÃ±o' || filtro.nombre == 'A�o' --><!-- end ngRepeat: filtro in filterData -->
+		<!-- ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><!-- end ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><div class="filtro ng-scope" ng-repeat="filtro in filterData" ng-if="filtro.nombre != 'AÃ±o' &amp;&amp; filtro.nombre != 'A�o'">
+			<!-- ngIf: filtro.elementos.length > 1 --><div ng-if="filtro.elementos.length > 1" class="ng-scope">
+		    	<h5 style="border-bottom: 1px solid #f5f5f5;width: 82%;margin: 0 auto;" class="ng-binding">Idioma:</h5>
+		        <!-- ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Español
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(553)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Inglés
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(184)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Portugués
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(62)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Desconocido
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(3)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Serbocroata
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Italiano
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos -->
+		         <!-- ngIf: filtro.elementos.length > 5 --><label id="mas-Idioma" class="ver-mas-menos ng-binding ng-scope" ng-click="clickListener($event, true)" ng-if="filtro.elementos.length > 5">Ver más...</label><!-- end ngIf: filtro.elementos.length > 5 -->
+		         <label id="menos-Idioma" style="display:none;" class="ver-mas-menos ng-binding" ng-click="clickListener($event, false)">Ver menos...</label>
+		         <br><br>
+	         </div><!-- end ngIf: filtro.elementos.length > 1 -->
+		</div><!-- end ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><!-- end ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><div class="filtro ng-scope" ng-repeat="filtro in filterData" ng-if="filtro.nombre != 'AÃ±o' &amp;&amp; filtro.nombre != 'A�o'">
+			<!-- ngIf: filtro.elementos.length > 1 --><div ng-if="filtro.elementos.length > 1" class="ng-scope">
+		    	<h5 style="border-bottom: 1px solid #f5f5f5;width: 82%;margin: 0 auto;" class="ng-binding">Disciplina:</h5>
+		        <!-- ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Biología
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(266)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Agrociencias
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(184)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Química
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(50)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Ingeniería
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(50)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Multidisciplinaria (Ciencias Naturales y Exactas)
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(35)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Multidisciplinarias (Ciencias Sociales)
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(32)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Ciencias de la Tierra
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(29)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Estudios Ambientales
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(29)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Medicina
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(25)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Veterinaria
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(19)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Física, Astronomía y Matemáticas
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(16)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Educación
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(15)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Antropología
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(10)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Salud
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(7)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Geografía
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(5)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Psicología
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(5)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Historia
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(4)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Lengua y Literatura
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(3)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Estudios Agrarios
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(3)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Administración y Contabilidad
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(3)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Política
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Filosofía
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Derecho
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Estudios Territoriales
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Geología
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Multidisciplinarias (Ciencias, Ciencias Sociales, Artes y Humanidades)
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Economía y Finanzas
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Sociología
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Estudios de Turismo
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Arte
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos -->
+		         <!-- ngIf: filtro.elementos.length > 5 --><label id="mas-Disciplina" class="ver-mas-menos ng-binding ng-scope" ng-click="clickListener($event, true)" ng-if="filtro.elementos.length > 5">Ver más...</label><!-- end ngIf: filtro.elementos.length > 5 -->
+		         <label id="menos-Disciplina" style="display:none;" class="ver-mas-menos ng-binding" ng-click="clickListener($event, false)">Ver menos...</label>
+		         <br><br>
+	         </div><!-- end ngIf: filtro.elementos.length > 1 -->
+		</div><!-- end ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><!-- end ngRepeat: filtro in filterData --><!-- ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><div class="filtro ng-scope" ng-repeat="filtro in filterData" ng-if="filtro.nombre != 'AÃ±o' &amp;&amp; filtro.nombre != 'A�o'">
+			<!-- ngIf: filtro.elementos.length > 1 --><div ng-if="filtro.elementos.length > 1" class="ng-scope">
+		    	<h5 style="border-bottom: 1px solid #f5f5f5;width: 82%;margin: 0 auto;" class="ng-binding">País:</h5>
+		        <!-- ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	México
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(252)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Brasil
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(112)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Colombia
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(103)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Costa Rica
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(62)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	República Bolivariana de Venezuela
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(59)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Argentina
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(52)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Cuba
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(49)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	España
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(33)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Chile
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(31)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Perú
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(18)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Ecuador
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(13)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	India
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(6)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Estado Plurinacional de Bolivia
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(4)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Uruguay
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(4)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Portugal
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	República Dominicana
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(2)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Serbia
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos --><div class="elemento-filtro-hidden" ng-repeat="filter in filtro.elementos">
+		        	<label class="container-radio ng-binding">
+		           		<input ng-click="findWithFilters({tipo:filtro.nombre,clave:filter.clave,nombre:filter.nombre})" type="checkbox" ng-checked="campoFiltrado({tipo:filtro.nombre,clave:filter.clave})">
+		            	Panamá
+					 	<span class="checkmark"></span>
+					</label>
+					<span class="ng-binding">(1)</span>
+		         </div><!-- end ngRepeat: filter in filtro.elementos -->
+		         <!-- ngIf: filtro.elementos.length > 5 --><label id="mas-Pa�s" class="ver-mas-menos ng-binding ng-scope" ng-click="clickListener($event, true)" ng-if="filtro.elementos.length > 5">Ver más...</label><!-- end ngIf: filtro.elementos.length > 5 -->
+		         <label id="menos-Pa�s" style="display:none;" class="ver-mas-menos ng-binding" ng-click="clickListener($event, false)">Ver menos...</label>
+		         <br><br>
+	         </div><!-- end ngIf: filtro.elementos.length > 1 -->
+		</div><!-- end ngIf: filtro.nombre != 'AÃ±o' && filtro.nombre != 'A�o' --><!-- end ngRepeat: filtro in filterData -->
+		<div class="container">
+   			<div class="row">
+    			<div ng-click="applyFilters()" class="btn-nav aplicar-filtro ng-binding" style="cursor:pointer;">Aplicar filtros</div>
+	    	</div>
+	 	</div>
+    </div>
+</div>    
+<!-- END SIDEBAR -->
+<div id="contenido" class="ng-scope">
+	<span class="content" id="content">
+	  	<a id="cerrar" class="abrir-cerrar close-sidenav" onclick="ocultar()"><i class="fas fa-bars"></i></a>
+		<a id="abrir" class="abrir-cerrar open-sidenav" onclick="mostrar()"><i class="fas fa-bars"></i></a>
+  	</span>
+  	<div class="searchBox">
+   		<form id="busqueda" class="ng-pristine ng-valid">
+			<label>
+				<input ng-model="busqueda.textoABuscar" type="text" id="box-textoABuscar" placeholder="Buscar artículos por palabra clave, título, DOI" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+				<input ng-keypress="goEnter($event, busqueda.textoABuscar)" ng-click="go(busqueda.textoABuscar)" type="image" src="img/buscador-institucionmdpi.png" title="Buscar" style="width: 25px;height: 25px;border-bottom: none;position: relative;right: 35px;">
+			</label>
+		</form>
+   		<br>
+   		<!-- ngIf: data.length > 0 --><h4 ng-if="data.length > 0" class="ng-binding ng-scope">Resultados para  "<i class="ng-binding">Lantana</i>"</h4><!-- end ngIf: data.length > 0 --> 
+   		<br><br>
+		<span class="vistas border-red lista ng-binding" ng-click="cambiaVista('lista')" style="cursor: pointer;"><img src="img/lista.png" width="17px">  Lista</span>
+		<span class="vistas tabla ng-binding" ng-click="cambiaVista('tabla')" style="cursor: pointer;"><img src="img/tabla.png" width="15px">  Tabla</span>	
+		<!-- ngIf: data.length > 0 --><div id="paginador" ng-if="data.length > 0" class="ng-scope">
+			<div id="select-paginator">
+				<span class="ng-binding">Artículos por página</span>
+				<select id="pageSize" onchange="changeSizeArticles()">
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+					<option value="50">50</option>
+					<option value="60">60</option>
+					<option value="80">80</option>
+					<option value="100">100</option>
+			    </select>
+			</div>
+			<p class="ng-binding">1 a 10 de 804 artículos</p>
+			<button ng-disabled="currentPage == 1" ng-click="paginaAnteriorSiguiente('anterior')" class="btn-page" disabled="disabled">
+	       		<i class="fa fa-chevron-left"></i>
+	    	</button>
+<!-- 	    		<span>{{currentPage}}</span> {{t.results.of}} <span>{{totalPaginas}}</span> -->
+	    	<button ng-disabled="currentPage >= totalPaginas" ng-click="paginaAnteriorSiguiente('siguiente')" class="btn-page">
+	      		<i class="fa fa-chevron-right"></i>
+	    	</button>
+		</div><!-- end ngIf: data.length > 0 -->
+	</div>  
+  	<div id="filtros">
+	  	<!-- ngIf: cadenaYear.length != '' -->
+	  	<!-- ngIf: cadenaIdioma.length != '' -->
+	  	<!-- ngIf: cadenaDisciplina.length != '' -->
+	  	<!-- ngIf: cadenaPais.length != '' -->
+  	</div>
+  	<!-- NO RESULTS -->
+    <div id="ar-informe-no-resultados" class="ar-informe-no-resultados" style="text-align:center;margin-top: 20px; display: none;">
+  		<span class="ng-binding">No se encontraron resultados para: <b class="ng-binding">Lantana</b>.</span><br><br>
+	</div>  
+	<!-- NO RESULTS END -->
+<div>
+<!-- GRID CARD VIEW -->
+	
+	<!-- ngIf: tipoVista == 'lista' --><div class="content ng-scope" ng-if="tipoVista == 'lista'" style="background-color:#f5f5f5;">
+		
+	   	<!-- ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=66914279011" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">NOVEDADES NOMENCLATURALES EN LOS GÉNEROS LIPPIA Y LANTANA (VERBENACEAE)</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=669" style="margin:0px;">
+	          			<span class="ng-binding">Darwiniana,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=669&amp;numero=14279" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2010, 48</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(1)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Darwiniana&amp;rft.aulast=Alicia D. Rotman, María E. Múlgura de Romero&amp;rft.atitle=NOVEDADES NOMENCLATURALES EN LOS GÉNEROS LIPPIA Y LANTANA (VERBENACEAE)&amp;rft.volume=48&amp;rft.issue=1&amp;rft.date=2010&amp;rft_id=https://www.redalyc.org/pdf/669/66914279011.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html">97
+DARWINIANA 48(1): 97-99. 2010 ISSN 0011-6793
+NOVEDADES NOMENCLATURALES EN LOS GÉNEROS LIPPIA Y 
+<b>LANTANA</b> (VERBENACEAE)
+Alicia D. Rotman1...
+Como continuación de nuestros estudios previos realizados en los géneros Lippia y <b>Lantana</b>, se
+proponen las siguientes novedades: <b>Lantana</b> bocainiensis, como una nueva combinación; se estable-
+cen nuevos sinónimos, <b>Lantana</b> brachypoda y <b>Lantana</b> ventura, para Lippia grisebachiana: y un
+nuevo sinónimo</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=66914279011" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=66914279011" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=66914279011&amp;text=NOVEDADES NOMENCLATURALES EN LOS GÉNEROS LIPPIA Y LANTANA (VERBENACEAE) http://www.redalyc.org/articulo.oa?id=66914279011 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=66940408" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">Novas combinações e novos sinônimos em Lippia e Lantana (Verbenaceae)</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=669" style="margin:0px;">
+	          			<span class="ng-binding">Darwiniana,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=669&amp;numero=9409" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2002, 40</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(1-4)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Darwiniana&amp;rft.aulast=Tânia Regina Silva Dos Santos , Fátima Regina Salimena G. &amp;rft.atitle=Novas combinações e novos sinônimos em Lippia e Lantana (Verbenaceae)&amp;rft.volume=40&amp;rft.issue=1-4&amp;rft.date=2002&amp;rft_id=https://www.redalyc.org/pdf/669/66940408.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html">
+NOVAS COMBINAÇÕES E NOVOS SINÔNIMOS EM LIPPIA E <b>LANTANA</b>
+(VERBENACEAE)
+TÂNIA REGINA DOS SANTOS SILVA 1 &amp; FÁTIMA REGINA G. SALIMENA 2
+1 Dpto. de...
+ABSTRACT: Silva, T. R. S. &amp; Salimena, F. R. 2002. New combinations and new synonyms in Lippia
+and <b>Lantana</b> (Verbenaceae). Darwiniana 40(1-4):  57-59.
+After the revision of the genus <b>Lantana</b> in Brazil by Silva (1999), Chamissos’s concept of the genus
+was re-established. Therefore, the species of</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=66940408" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=66940408" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=66940408&amp;text=Novas combinações e novos sinônimos em Lippia e Lantana (Verbenaceae) http://www.redalyc.org/articulo.oa?id=66940408 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=86214152006" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">Comparación ecofisiológica de tres especies del género Lantana L. (Verbenaceae)</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=862" style="margin:0px;">
+	          			<span class="ng-binding">Acta Botanica Venezuelica,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=862&amp;numero=14152" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2009, 32</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(2)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Acta Botanica Venezuelica&amp;rft.aulast=Armando González, Valentina Villalobos, Gabriela Pereyra, Elizabeth Rengifo, Oranys Marín, Wilmer Tezara&amp;rft.atitle=Comparación ecofisiológica de tres especies del género Lantana L. (Verbenaceae)&amp;rft.volume=32&amp;rft.issue=2&amp;rft.date=2009&amp;rft_id=https://www.redalyc.org/pdf/862/86214152006.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html"> <b>Lantana</b> l. (VerbenaCeae) 
+ecophysiological comparison of three species of the genus <b>Lantana</b> l. 
+(Verbenaceae)
+armando gonzález1, Valentina Villalobos1..., Apartado 21827, Caracas 1020-A.
+wilmer.tezara@ciens.ucv.ve
+resUmen
+Las especies del género <b>Lantana</b> son conocidas por el alto valor comercial de sus... gaseoso de las tres especies fue diferente, siendo L. camara la más afectada. 
+palabras clave: Déficit hídrico, fluorescencia, fotosíntesis, <b>Lantana</b></span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=86214152006" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=86214152006" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=86214152006&amp;text=Comparación ecofisiológica de tres especies del género Lantana L. (Verbenaceae) http://www.redalyc.org/articulo.oa?id=86214152006 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=209118173010" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">REVISIÓN BIBLIOGRÁFICA SOBRE LANTANA CAMARA L. UNA AMENAZA PARA LA GANADERÍA</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=2091" style="margin:0px;">
+	          			<span class="ng-binding">Fitosanidad,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=2091&amp;numero=18173" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2003, 7</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(4)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Fitosanidad&amp;rft.aulast=Yaril Matienzo, Berta Ramos, Esperanza Rijo&amp;rft.atitle=REVISIÓN BIBLIOGRÁFICA SOBRE LANTANA CAMARA L. UNA AMENAZA PARA LA GANADERÍA&amp;rft.volume=7&amp;rft.issue=4&amp;rft.date=2003&amp;rft_id=https://www.redalyc.org/pdf/2091/209118173010.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html">fitosanidad/45
+FITOSANIDAD vol. 7, no. 4, diciembre 2003
+REVISIÓN BIBLIOGR`FICA SOBRE <b>LANTANA</b> CAMARA L.
+UNA AMENAZA PARA LA GANADER˝A
+Yaril... 11600.
+RESUMEN
+Se realizó una revisión bibliográfica de <b>Lantana</b> camara L. pertene-
+ciente a la familia Verbenaceae (subfamilia Verbenoideae). Es...
+la preservación del entorno.
+Palabras clave: maleza, <b>Lantana</b> camara L., control biológico
+1234567890
+1234567890
+1234567890
+1234567890</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=209118173010" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=209118173010" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=209118173010&amp;text=REVISIÓN BIBLIOGRÁFICA SOBRE LANTANA CAMARA L. UNA AMENAZA PARA LA GANADERÍA http://www.redalyc.org/articulo.oa?id=209118173010 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=66944214" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">Lantana lundiana y L. velutina (Verbenaceae), nuevos registros para Argentina y Paraguay </b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=669" style="margin:0px;">
+	          			<span class="ng-binding">Darwiniana,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=669&amp;numero=6728" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2006, 44</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(2)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Darwiniana&amp;rft.aulast=Alicia D. Rotman  &amp;rft.atitle=Lantana lundiana y L. velutina (Verbenaceae), nuevos registros para Argentina y Paraguay &amp;rft.volume=44&amp;rft.issue=2&amp;rft.date=2006&amp;rft_id=https://www.redalyc.org/pdf/669/66944214.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html"><b>Lantana</b> L., es un género esencialmente ame-
+ricano, de América Tropical y Subtropical, con
+algunos representantes en África y en Asia.
+Según... austral, Paraguay y Uruguay).
+Según Atkins (2004), <b>Lantana</b> comprende cerca
+de 150 especies (Verdcourt, 1992), mayormente
+en América tropical y...
+melíferas y otras invasoras y constituyen malezas
+difíciles de erradicar.
+Durante la revisión del género <b>Lantana</b> (Verbe-
+naceae) de la Argentina y</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=66944214" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=66944214" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=66944214&amp;text=Lantana lundiana y L. velutina (Verbenaceae), nuevos registros para Argentina y ... http://www.redalyc.org/articulo.oa?id=66944214 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=443543687089" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">ESTUDIO FITOQUIMICO PRELIMINAR DEL EXTRACTO ETANOLICO DEL FOLLAJE DE LANTANA TRIFOLIA L. ACTIVIDAD ALELOPÁTICA</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=4435" style="margin:0px;">
+	          			<span class="ng-binding">Revista Cubana de Química,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=4435&amp;numero=43687" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2005, XVII</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(3)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Revista Cubana de Química&amp;rft.aulast=Alexander Valerino, Iraida Spengler, Tamara Maurice, Telce Gonzalez&amp;rft.atitle=ESTUDIO FITOQUIMICO PRELIMINAR DEL EXTRACTO ETANOLICO DEL FOLLAJE DE LANTANA TRIFOLIA L. ACTIVIDAD ALELOPÁTICA&amp;rft.volume=XVII&amp;rft.issue=3&amp;rft.date=2005&amp;rft_id=https://www.redalyc.org/pdf/4435/443543687089.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html">Vol. XVII, No 3, 2005 227
+ESTUDIO FITOQUIMICO PRELIMINAR DEL EXTRACTO ETANOLICO DEL 
+FOLLAJE DE <b>LANTANA</b> TRIFOLIA L. ACTIVIDAD ALELOPÁTICA... Investigaciones del arroz 
+Palabras Claves: <b>Lantana</b> trifolia L., alelopatía, flavonoides. 
+ 
+Introducción. 
+La actividad alelopática es una alternativa muy  
+promisoria para el control de malezas en muchos 
+cultivos1. El extracto n-hexano y etanólico de las hojas 
+de la planta <b>Lantana</b> trifolia L</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=443543687089" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=443543687089" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=443543687089&amp;text=ESTUDIO FITOQUIMICO PRELIMINAR DEL EXTRACTO ETANOLICO DEL FOLLAJE DE LANTANA TRI... http://www.redalyc.org/articulo.oa?id=443543687089 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=187141162010" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">Phytochemical analysis and modulation in aminoglycosides antibiotics activity by Lantana camara L.</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=1871" style="margin:0px;">
+	          			<span class="ng-binding">Acta Scientiarum. Biological Sciences,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=1871&amp;numero=41162" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2015, 37</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(2)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Acta Scientiarum. Biological Sciences&amp;rft.aulast=Erlânio  Oliveira de Sousa, Fabíola  Fernandez Galvão Rodrigues, Adriana  Rolim Campos, José Galberto  Martins da Costa&amp;rft.atitle=Phytochemical analysis and modulation in aminoglycosides antibiotics activity by Lantana camara L.&amp;rft.volume=37&amp;rft.issue=2&amp;rft.date=2015&amp;rft_id=https://www.redalyc.org/pdf/1871/187141162010.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html"> 
+antibiotics activity by <b>Lantana</b> camara L. 
+Erlânio Oliveira de Sousa1,2*, Fabíola Fernandez Galvão Rodrigues1,2, Adriana Rolim Campos1 and 
+José... activity, but as 
+resistance-modifying agent. This work is the first on the modulation of antibiotic activity by <b>Lantana</b> camara 
+L. extracts against... aminoglycosides analyzed. 
+Keywords: <b>Lantana</b> camara L., antibacterial activity, aminoglycosides, synergism. 
+Análise fitoquímica e modulação sobre a</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=187141162010" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=187141162010" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=187141162010&amp;text=Phytochemical analysis and modulation in aminoglycosides antibiotics activity by... http://www.redalyc.org/articulo.oa?id=187141162010 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=577061824020" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">First record of lantana mealybug, Phenacoccus parvus Morrison (Hemiptera: Pseudococcidae), as a pest on China aster from South India</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=5770" style="margin:0px;">
+	          			<span class="ng-binding">Journal of Horticultural Sciences,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=5770&amp;numero=61824" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2012, 7</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(1)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Journal of Horticultural Sciences&amp;rft.aulast=V.  Sridhar, Sunil  Joshi,  B.  Jhansi Rani, Rajiv  Kumar&amp;rft.atitle=First record of lantana mealybug, Phenacoccus parvus Morrison (Hemiptera: Pseudococcidae), as a pest on China aster from South India&amp;rft.volume=7&amp;rft.issue=1&amp;rft.date=2012&amp;rft_id=https://www.redalyc.org/pdf/5770/577061824020.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html"> at the Indian Institute of Horticultural
+Research, Bangalore, incidence of <b>lantana</b> mealybug,
+Phenacoccus parvus Morrison (Hemiptera:
+Pseudococcidae),  was observed on China aster, infesting
+First record of <b>lantana</b> mealybug, Phenacoccus parvus Morrison (Hemiptera:
+Pseudococcidae), as a pest on... Horticultural Research, Bangalore 560 089, India
+E-mail: vsridhar@icar.org.in
+ABSTRACT
+Heavy population of <b>lantana</b> mealybug, Phenacoccus parvus</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=577061824020" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=577061824020" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=577061824020&amp;text=First record of lantana mealybug, Phenacoccus parvus Morrison (Hemiptera: Pseudo... http://www.redalyc.org/articulo.oa?id=577061824020 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=85670404" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">Antifungal Activity of the Essential Oils of Two Verbenaceae: Lantana
+achyranthifolia and Lippia graveolens of Zapotitlán de las Salinas, Puebla
+(México)</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=856" style="margin:0px;">
+	          			<span class="ng-binding">Boletín Latinoamericano y del Caribe de Plantas Medicinales y Aromáticas,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=856&amp;numero=10115" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2008, 7</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(4)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Boletín Latinoamericano y del Caribe de Plantas Medicinales y Aromáticas&amp;rft.aulast=Tzasna Hernández, Margarita Canales, Ana Maria García, Ángel Duran, Samuel Meráz, Patricia Dávila, J. Guillermo Ávila&amp;rft.atitle=Antifungal Activity of the Essential Oils of Two Verbenaceae: Lantana
+achyranthifolia and Lippia graveolens of Zapotitlán de las Salinas, Puebla
+(México)&amp;rft.volume=7&amp;rft.issue=4&amp;rft.date=2008&amp;rft_id=https://www.redalyc.org/pdf/856/85670404.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html"> 
+BLACPMA ISSN 0717 7917 
+ 
+ArtículoOriginal | Original Article 
+ 
+ 
+Antifungal Activity of the Essential Oils of Two Verbenaceae: <b>Lantana</b> 
+achyranthifolia and Lippia graveolens of Zapotitlán de las Salinas, Puebla 
+(México) 
+[Actividad antifúngica del aceite esencial de dos Verbenaceae: <b>Lantana</b>... antifungal activity of the essentials oils of <b>Lantana</b> achyranthifolia Desf. and Lippia graveolens H.B.K. The 
+essential oils of aerial parts of L</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=85670404" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=85670404" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=85670404&amp;text=Antifungal Activity of the Essential Oils of Two Verbenaceae: Lantana
+achyranthi... http://www.redalyc.org/articulo.oa?id=85670404 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data --><article class="contentcard card ng-scope" ng-repeat="article in data">
+	   	
+		    <div class="wrapper">	    	  
+				<span>
+	    	  		<!-- ngIf: article.edoJats == '0' --><a href="https://www.redalyc.org/articulo.oa?id=209117853011" ng-if="article.edoJats == '0'" style="margin:0px !important" class="ng-scope">
+	    	  			<span class="title"><b class="ng-binding">ALGUNAS CONSIDERACIONES ACERCA DE LA COMPOSICIÓN QUÍMICA DEL ACEITE ESENCIAL DE LANTANA CAMARA L. PRESENTE EN CUBA</b></span>
+	    	  			
+	    	  		</a><!-- end ngIf: article.edoJats == '0' -->
+	    	  		<!-- ngIf: article.edoJats == '1' -->
+	    	  		<br>
+	          		<a class="nomRevista-hover" href="https://www.redalyc.org/revista.oa?id=2091" style="margin:0px;">
+	          			<span class="ng-binding">Fitosanidad,  </span>
+	          		</a>
+	          		<!-- ngIf: article.edoJats == '0' --><a class="articulo-hover ng-scope" href="https://www.redalyc.org/toc.oa?id=2091&amp;numero=17853" ng-if="article.edoJats == '0'" style="margin:0px">
+	          			<span class="ng-binding">2004, 8</span><!-- ngIf: article.numRevNum!=' ' --><span ng-if="article.numRevNum!=' '" class="ng-binding ng-scope">(3)</span><!-- end ngIf: article.numRevNum!=' ' -->
+	          		</a><!-- end ngIf: article.edoJats == '0' -->
+	          		<!-- ngIf: article.edoJats == '1' -->
+	          		<!-- ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') --><span class="Z3988 ng-scope" ng-if="(article.jatspdf!='7') &amp;&amp; (article.jatspdf!='8')" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info:ofi/fmt:kev:mtx:journal&amp;rft.genre=article&amp;rft.title=Fitosanidad&amp;rft.aulast=Carlos  Romeu, José  Pino, María P. Martí&amp;rft.atitle=ALGUNAS CONSIDERACIONES ACERCA DE LA COMPOSICIÓN QUÍMICA DEL ACEITE ESENCIAL DE LANTANA CAMARA L. PRESENTE EN CUBA&amp;rft.volume=8&amp;rft.issue=3&amp;rft.date=2004&amp;rft_id=https://www.redalyc.org/pdf/2091/209117853011.pdf"></span><!-- end ngIf: (article.jatspdf!='7') && (article.jatspdf!='8') -->
+	    	  		<!-- ngIf: (article.jatspdf=='7') || (article.jatspdf=='8') -->
+	    	  		
+	    	  	</span>
+		    	<p>
+		    		<span class="article-contenido author ng-binding" ng-bind-html="article.contenido | html">fitosanidad/59
+FITOSANIDAD vol. 8, no. 3, septiembre 2004
+ALGUNAS CONSIDERACIONES ACERCA DE LA COMPOSICIÓN
+QU˝MICA DEL ACEITE ESENCIAL DE <b>LANTANA</b>..., Avda. Ramón y Cajal 70, E-43005 Tarragona, España
+RESUMEN
+Se realizó un estudio de la composición química del aceite esencial de
+hojas de <b>Lantana</b>... sesquiterpénico, puede
+suponerse que la especie analizada representa un nuevo quimiotipo.
+Palabras clave: <b>Lantana</b> camara, aceites esenciales, (E</span>
+		    	</p> 
+				<!-- ngIf: article.resumen.trim() != '' --><p ng-if="article.resumen.trim() != ''" class="ng-scope">
+					<span class="author ng-binding">
+						Resumen: 
+						<input type="checkbox" class="check-resumen" ng-click="muestraResumen($event, article.resumen, article.cveIdioma)" style="position: relative;top: 2px;left: 7px;"> 
+					</span>
+					<br>
+			  	</p><!-- end ngIf: article.resumen.trim() != '' -->
+			  	<!-- ngIf: article.resumen.trim() != '' --><div class="author ng-scope" ng-if="article.resumen.trim() != ''">
+					<span class="summary"></span>
+			  	</div><!-- end ngIf: article.resumen.trim() != '' -->
+				<div class="productos-articulo">
+					<!-- ngIf: article.edoJats == '1' -->
+				 	<!-- ngIf: article.pdfOtroIdioma=='' --><a ng-if="article.pdfOtroIdioma==''" href="https://www.redalyc.org/articulo.oa?id=209117853011" target="_blank" class="ng-scope">
+				 		<img src="img/formatos-06-pdf.png" style="width: auto;height: 14px;margin-top:-4px;vertical-align: middle;">
+				 		PDF
+				 	</a><!-- end ngIf: article.pdfOtroIdioma=='' -->
+				 	<!-- ngIf: article.pdfOtroIdioma!='' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				  	<!-- ngIf: article.edoJats == '1' -->
+				</div>			  
+				<div class="compartir-articulo">
+					<img src="img/articulo-open-access.png" class="topimg">
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '1' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="http://www.facebook.com/sharer.php?u=http://www.redalyc.org/articulo.oa?id=209117853011" target="_blank" class="ng-scope">
+				    	<img src="img/facebook.png" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+				    <!-- ngIf: article.edoJats == '0' --><a ng-if="article.edoJats == '0'" href="https://twitter.com/intent/tweet?original_referer=http://www.redalyc.org/articulo.oa?id=209117853011&amp;text=ALGUNAS CONSIDERACIONES ACERCA DE LA COMPOSICIÓN QUÍMICA DEL ACEITE ESENCIAL DE ... http://www.redalyc.org/articulo.oa?id=209117853011 vía @Redalyc" target="_blank" class="ng-scope">
+				    	<img src="img/twitter.gif" class="ico">
+				    </a><!-- end ngIf: article.edoJats == '0' -->
+			  	</div>				    
+	   		</div>
+		</article><!-- end ngRepeat: article in data -->
+	</div><!-- end ngIf: tipoVista == 'lista' -->
+<!-- END GRID CARD VIEW -->  
+<!-- TABLE VIEW -->
+	<!-- ngIf: tipoVista == 'tabla' -->
+<!-- END TABLE VIEW -->
+</div>
+<!-- ngIf: data.length > 0 --><div id="paginador-bottom" ng-if="data.length > 0" class="ng-scope">
+	<!-- Primer Pagina -->
+	<button class="paginator-button" ng-disabled="currentPage == 1" ng-click="primerPagina(); volverArriba()" disabled="disabled"><b class="ng-binding">Primera</b></button>
+	<!-- Fin Primer Pagina -->
+	<!-- Pagina Anterior -->
+	<button ng-disabled="currentPage == 1" ng-click="paginaAnteriorSiguiente(&quot;anterior&quot;); volverArriba()" disabled="disabled"><b class="ng-binding">Anterior</b></button>
+	<!-- Fin Pagina Anterior -->
+	<!-- 5 botones -->
+	<!-- ngRepeat: number in pageNumbers --><!-- ngIf: (number > totalPaginas) == false --><button ng-repeat="number in pageNumbers" id="btn-1" ng-click="cambiarPaginaB(number); volverArriba()" ng-disabled="number == currentPage" ng-if="(number > totalPaginas) == false" ng-style="{'color': number == currentPage ? 'red' : 'black' }" class="ng-scope" disabled="disabled" style="color: red;"><b class="ng-binding">1</b></button><!-- end ngIf: (number > totalPaginas) == false --><!-- end ngRepeat: number in pageNumbers --><!-- ngIf: (number > totalPaginas) == false --><button ng-repeat="number in pageNumbers" id="btn-2" ng-click="cambiarPaginaB(number); volverArriba()" ng-disabled="number == currentPage" ng-if="(number > totalPaginas) == false" ng-style="{'color': number == currentPage ? 'red' : 'black' }" class="ng-scope" style="color: black;"><b class="ng-binding">2</b></button><!-- end ngIf: (number > totalPaginas) == false --><!-- end ngRepeat: number in pageNumbers --><!-- ngIf: (number > totalPaginas) == false --><button ng-repeat="number in pageNumbers" id="btn-3" ng-click="cambiarPaginaB(number); volverArriba()" ng-disabled="number == currentPage" ng-if="(number > totalPaginas) == false" ng-style="{'color': number == currentPage ? 'red' : 'black' }" class="ng-scope" style="color: black;"><b class="ng-binding">3</b></button><!-- end ngIf: (number > totalPaginas) == false --><!-- end ngRepeat: number in pageNumbers --><!-- ngIf: (number > totalPaginas) == false --><button ng-repeat="number in pageNumbers" id="btn-4" ng-click="cambiarPaginaB(number); volverArriba()" ng-disabled="number == currentPage" ng-if="(number > totalPaginas) == false" ng-style="{'color': number == currentPage ? 'red' : 'black' }" class="ng-scope" style="color: black;"><b class="ng-binding">4</b></button><!-- end ngIf: (number > totalPaginas) == false --><!-- end ngRepeat: number in pageNumbers --><!-- ngIf: (number > totalPaginas) == false --><button ng-repeat="number in pageNumbers" id="btn-5" ng-click="cambiarPaginaB(number); volverArriba()" ng-disabled="number == currentPage" ng-if="(number > totalPaginas) == false" ng-style="{'color': number == currentPage ? 'red' : 'black' }" class="ng-scope" style="color: black;"><b class="ng-binding">5</b></button><!-- end ngIf: (number > totalPaginas) == false --><!-- end ngRepeat: number in pageNumbers -->
+	<!-- Fin 5 botones -->
+	<!-- Pagina siguiente -->
+	<button ng-disabled="currentPage == totalPaginas" ng-click="paginaAnteriorSiguiente(&quot;siguiente&quot;); volverArriba()"><b class="ng-binding">Siguiente</b></button>
+	<!-- Fin Pagina siguiente -->
+	<!-- Ultima Pagina -->
+	<button ng-disabled="currentPage == totalPaginas" ng-click="ultimaPagina(); volverArriba()"><b class="ng-binding">Última</b></button>
+	<!-- Fin Ultima Pagina -->
+</div><!-- end ngIf: data.length > 0 -->
+</div></div>  
+		</main>
+	</div>
+	
+	<div id="overlay" class="overlay" style="display:none"></div>
+	<div id="loading" class="loading" style="display:none">
+		<img src="img/loading-2.gif" width="100" height="100"> <br><span ng-bind-html="t.paginator_articles.title_mask" class="ng-binding">Buscando artículos</span>
+	</div>
+		<footer id="pie-pagina">
+			<div id="informacion-redalyc">
+				<span><b style="font-weight: lighter;" ng-bind-html="t.footer.redalyc" class="ng-binding">Sistema de Información Científica Redalyc</b><b> ®</b></span><br>
+				<span ng-bind-html="t.footer.network" class="ng-binding">Red de revistas científicas de Acceso Abierto no comercial propiedad de la academia.</span><br>
+				<br>
+				<span ng-bind-html="t.footer.ver" class="ng-binding">Redalyc Versión 5.0 | 2003-</span><span id="current-year">2025</span><br>
+				<span>comunicacion@redalyc.org</span>			
+			</div>
+			<div id="pie-logos">
+				<img src="img/nuevoHeaderHome/logo_redalyc.png">
+				<img src="img/administracion 2021.png">
+			</div>
+		</footer>
+		<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtiene el año actual
+            const currentYear = new Date().getFullYear();
+            // Establece el contenido del span con id 'current-year'
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = currentYear;
+            }
+        });
+    </script>
+ 
+</body></html>

@@ -13,7 +13,7 @@ from pathlib import Path
 # Add the pygetpapers directory to the path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from pygetpapers.web_scraping import (
+from src.pygetpapers.web_scraping import (
     GenericWebScraper,
     ScrapingConfigParser,
     WebScrapingRepositoryManager,

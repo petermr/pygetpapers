@@ -11,8 +11,8 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .config_parser import ScrapingConfigParser
-from .generic_scraper import GenericWebScraper
+from src.pygetpapers.web_scraping.config_parser import ScrapingConfigParser
+from src.pygetpapers.web_scraping.generic_scraper import GenericWebScraper
 
 logger = logging.getLogger(__name__)
 

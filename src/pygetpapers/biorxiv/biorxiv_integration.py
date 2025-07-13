@@ -12,7 +12,7 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .biorxiv_advanced_scraper import BioRxivAdvancedScraper
+from src.pygetpapers.biorxiv.biorxiv_advanced_scraper import BioRxivAdvancedScraper
 
 logger = logging.getLogger(__name__)
 

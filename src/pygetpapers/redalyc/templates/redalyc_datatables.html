@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redalyc Search Results - Lantana</title>
+    
+    <!-- External CDN Scripts - minimal external dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" 
+          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #333; 
+            text-align: center; 
+            margin-bottom: 30px; 
+        }
+        .abstract-cell { 
+            max-width: 400px; 
+        }
+        .preview-cell { 
+            max-width: 300px; 
+        }
+        .url-cell { 
+            max-width: 100px; 
+            text-align: center; 
+        }
+        .pdf-cell { 
+            max-width: 100px; 
+            text-align: center; 
+        }
+        .dataTables_wrapper { 
+            margin-top: 20px; 
+        }
+        .dataTables_filter { 
+            margin-bottom: 15px; 
+        }
+        .dataTables_filter input { 
+            padding: 5px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+        }
+        .btn { 
+            display: inline-block; 
+            padding: 5px 10px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 12px; 
+        }
+        .btn-primary { 
+            background-color: #007bff; 
+            color: white; 
+        }
+        .btn-success { 
+            background-color: #28a745; 
+            color: white; 
+        }
+        .btn-disabled { 
+            background-color: #6c757d; 
+            color: white; 
+            cursor: not-allowed; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redalyc Search Results - "Lantana"</h1>
+        <table id="redalyc-table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Journal</th>
+                    <th>Year</th>
+                    <th>Abstract</th>
+                    <th>Content Preview</th>
+                    <th>Article Link</th>
+                    <th>PDF Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{TABLE_ROWS}}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Minimal, readable JavaScript - no abbreviations -->
+    <script>
+        $(document).ready(function() {
+            $('#redalyc-table').DataTable({
+                pageLength: 10,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                responsive: true,
+                scrollX: true,
+                order: [[3, 'desc']], // Sort by year descending
+                columnDefs: [
+                    {
+                        targets: [4, 5], // Abstract and Content Preview columns
+                        render: function(data, type, row) {
+                            if (type === 'display' && data.length > 150) {
+                                return data.substr(0, 150) + '...';
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        targets: [6, 7], // URL and PDF columns
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html> 

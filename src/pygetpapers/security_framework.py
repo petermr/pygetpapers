@@ -54,7 +54,7 @@ class ResourceLimitError(Exception):
 
 class SecurityValidator:
     """Validates inputs and operations for security."""
-
+    """PLEASE use CONFIG"""
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         """
         Initialize security validator.

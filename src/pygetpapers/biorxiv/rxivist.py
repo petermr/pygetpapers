@@ -5,8 +5,8 @@ from pathlib import Path
 
 import requests
 
-from pygetpapers.download_tools import DownloadTools
-from pygetpapers.repositoryinterface import RepositoryInterface
+from src.pygetpapers.download_tools import DownloadTools
+from src.pygetpapers.repositoryinterface import RepositoryInterface
 
 TOTAL_HITS = "total_hits"
 

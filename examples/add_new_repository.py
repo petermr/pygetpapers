@@ -6,11 +6,7 @@ This example demonstrates how to add a new repository using the
 configuration-driven system. No code required - just configuration!
 """
 
-import sys
 from pathlib import Path
-
-# Add the src directory to the path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 
 def add_new_repository_example():

@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
-from pygetpapers.abstract_repository import AbstractRepository
+from src.pygetpapers.abstract_repository import AbstractRepository
 
 logger = logging.getLogger(__name__)
 
