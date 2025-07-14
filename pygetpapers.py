@@ -308,7 +308,10 @@ class Pygetpapers:
         self.download_tools = DownloadTools()
         self.version = self.download_tools.get_version()
         default_path = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
-        self.default_path = os.path.join(os.getcwd(), default_path)
+        # Use $HOME/pygetpapers as default output directory
+        home_dir = os.path.expanduser("~")
+        pygetpapers_dir = os.path.join(home_dir, "pygetpapers")
+        self.default_path = os.path.join(pygetpapers_dir, default_path)
         self.query_namespace = None
 
     @staticmethod
