@@ -698,11 +698,40 @@ class DownloadTools:
 
     @staticmethod
     def get_version():
-        """Gets version from the configuration file
+        """Gets version from pyproject.toml
 
-        :return: version of pygetpapers as described in the configuration file
+        :return: version of pygetpapers as described in pyproject.toml
         :rtype: string
         """
+        from pathlib import Path
+        
+        # Find pyproject.toml in the project root
+        current_dir = Path(__file__).parent
+        while current_dir.parent != current_dir:  # Stop at root
+            pyproject_path = current_dir / "pyproject.toml"
+            if pyproject_path.exists():
+                try:
+                    # Try tomllib first (Python 3.11+)
+                    import tomllib
+                    with open(pyproject_path, "rb") as f:
+                        data = tomllib.load(f)
+                        return data["project"]["version"]
+                except ImportError:
+                    # Fallback to toml (needs to be installed)
+                    try:
+                        import toml
+                        with open(pyproject_path, "r") as f:
+                            data = toml.load(f)
+                            return data["project"]["version"]
+                    except ImportError:
+                        # Fallback to manual parsing
+                        with open(pyproject_path, "r") as f:
+                            for line in f:
+                                if line.strip().startswith("version = "):
+                                    return line.split("=", 1)[1].strip().strip('"')
+            current_dir = current_dir.parent
+        
+        # Fallback to config.ini if pyproject.toml not found
         with open(
             os.path.join(os.path.dirname(__file__), "config.ini")
         ) as file_handler:

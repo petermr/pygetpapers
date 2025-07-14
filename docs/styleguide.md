@@ -52,6 +52,15 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Unused UI elements clutter the interface and confuse users.
 
+## Version Management
+
+### STYLE: Every edit should increase the version
+
+- ✅ **Good**: Increment version number for every code change during development
+- ❌ **Bad**: Making multiple changes without version bumps
+
+**Rationale**: During development this will be `\d.\d.\da\d+`, e.g. `1.2.5a21`. This prevents confusion with cached installations and makes it clear when changes were made.
+
 ## Output Directory Structure
 
 ### STYLE: Use user's home directory for output

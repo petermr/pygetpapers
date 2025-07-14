@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygetpapers"
-version = "1.2.5a13"
+version = "1.2.5a20"
 description = "A tool to download papers from various repositories"
 readme = "README.md"
 license = {text = "MIT"}
@@ -69,7 +69,7 @@ test = [
 ]
 
 [project.scripts]
-pygetpapers = "pygetpapers:main"
+pygetpapers = "pygetpapers.pygetpapers:main"
 
 [project.urls]
 Homepage = "https://github.com/petermr/pygetpapers"
