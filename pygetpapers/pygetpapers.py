@@ -1015,6 +1015,147 @@ class Pygetpapers:
         self.runs_pygetpapers_for_given_args(self.query_namespace)
 
 
+def run_pygetpapers(command_string):
+    """
+    Run pygetpapers from Python code using a command string.
+    
+    This function parses a command string (similar to command line arguments)
+    and runs pygetpapers with those parameters.
+    
+    Args:
+        command_string (str): Command string in the format "pygetpapers [options]"
+                             Example: "pygetpapers -q 'artificial intelligence' -k 10 -x"
+    
+    Returns:
+        dict: Dictionary containing execution results and metadata
+        
+    Example:
+        >>> from pygetpapers import run_pygetpapers
+        >>> cmd = "pygetpapers -q wombat -n"
+        >>> result = run_pygetpapers(cmd)
+        >>> print(result)
+    """
+    import shlex
+    import sys
+    from io import StringIO
+    import contextlib
+    
+    # Parse the command string
+    if command_string.startswith("pygetpapers"):
+        # Remove "pygetpapers" from the beginning
+        args_string = command_string[len("pygetpapers"):].strip()
+    else:
+        args_string = command_string.strip()
+    
+    # Split the arguments
+    try:
+        args = shlex.split(args_string)
+    except ValueError as e:
+        return {
+            "success": False,
+            "error": f"Failed to parse command string: {e}",
+            "command": command_string
+        }
+    
+    # Create a Pygetpapers instance
+    pygetpapers_instance = Pygetpapers()
+    
+    # Capture stdout and stderr
+    stdout_capture = StringIO()
+    stderr_capture = StringIO()
+    
+    # Store original stdout/stderr
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    
+    try:
+        # Redirect stdout and stderr to capture output
+        sys.stdout = stdout_capture
+        sys.stderr = stderr_capture
+        
+        # Create argument parser and parse arguments
+        parser = pygetpapers_instance.create_argparser()
+        
+        # Temporarily replace sys.argv to simulate command line
+        original_argv = sys.argv
+        sys.argv = ["pygetpapers"] + args
+        
+        try:
+            # Parse arguments
+            parsed_args = parser.parse_args()
+            
+            # Convert to namespace dictionary
+            query_namespace = vars(parsed_args)
+            
+            # Convert string "False" to boolean False
+            for arg in query_namespace:
+                if query_namespace[arg] == "False":
+                    query_namespace[arg] = False
+            
+            # Enable fulltext_html by default for Europe PMC
+            if (
+                query_namespace["api"] == "europe_pmc"
+                and not query_namespace["fulltext_html"]
+                and query_namespace["xml"]
+            ):
+                query_namespace["fulltext_html"] = True
+            
+            # Run pygetpapers
+            pygetpapers_instance.runs_pygetpapers_for_given_args(query_namespace)
+            
+            # Get captured output
+            stdout_output = stdout_capture.getvalue()
+            stderr_output = stderr_capture.getvalue()
+            
+            return {
+                "success": True,
+                "command": command_string,
+                "parsed_args": query_namespace,
+                "stdout": stdout_output,
+                "stderr": stderr_output,
+                "output_directory": query_namespace.get("output", pygetpapers_instance.default_path)
+            }
+            
+        except SystemExit as e:
+            # Handle version or help commands that exit
+            stdout_output = stdout_capture.getvalue()
+            stderr_output = stderr_capture.getvalue()
+            
+            return {
+                "success": True,
+                "command": command_string,
+                "stdout": stdout_output,
+                "stderr": stderr_output,
+                "exit_code": e.code
+            }
+            
+        except Exception as e:
+            stderr_output = stderr_capture.getvalue()
+            
+            return {
+                "success": False,
+                "error": str(e),
+                "command": command_string,
+                "stderr": stderr_output
+            }
+            
+        finally:
+            # Restore original argv
+            sys.argv = original_argv
+            
+    except Exception as e:
+        return {
+            "success": False,
+            "error": f"Failed to execute command: {e}",
+            "command": command_string
+        }
+        
+    finally:
+        # Restore original stdout/stderr
+        sys.stdout = original_stdout
+        sys.stderr = original_stderr
+
+
 def main():
     """Runs the CLI"""
     callpygetpapers = Pygetpapers()

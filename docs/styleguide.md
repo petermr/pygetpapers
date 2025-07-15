@@ -70,6 +70,13 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Using the home directory provides a consistent, user-accessible location for downloaded files.
 
+### STYLE: Output should never be sent to the root dir of pygetpapers. Use dir temp/ to which all non-permanent output should be sent. Deleting temp should not delete anything important
+
+- ✅ **Good**: `temp/output_files/`, `temp/test_results/`, `temp/downloads/`
+- ❌ **Bad**: Output files in the root pygetpapers directory
+
+**Rationale**: Keeping temporary output in a dedicated `temp/` directory prevents cluttering the project root and makes it clear which files are temporary and can be safely deleted.
+
 ---
 
 *This style guide will be updated as new conventions are established.* 
