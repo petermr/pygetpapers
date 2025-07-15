@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from pygetpapers.repositories.redalyc.redalyc import Redalyc
+from test_utils import test_redalyc_connectivity, skip_if_redalyc_down
 
 
 def test_redalyc_initialization():
@@ -27,6 +28,7 @@ def test_redalyc_initialization():
         return False
 
 
+@skip_if_redalyc_down()
 def test_redalyc_search():
     """Test Redalyc search functionality."""
     print("\nTesting Redalyc search...")
@@ -34,7 +36,7 @@ def test_redalyc_search():
         redalyc = Redalyc()
         
         # Test with a simple query
-        query = "machine learning"
+        query = "climate change"
         max_results = 5
         
         print(f"Searching for: '{query}' (max {max_results} results)")
@@ -59,6 +61,7 @@ def test_redalyc_search():
         return False
 
 
+@skip_if_redalyc_down()
 def test_redalyc_main_method():
     """Test the main redalyc method."""
     print("\nTesting Redalyc main method...")
@@ -67,7 +70,7 @@ def test_redalyc_main_method():
         
         # Test the main method
         result = redalyc.redalyc(
-            query="artificial intelligence",
+            query="global warming",
             cutoff_size=3,
             makecsv=False,
             makexml=False,
@@ -83,6 +86,7 @@ def test_redalyc_main_method():
         return False
 
 
+@skip_if_redalyc_down()
 def test_redalyc_noexecute():
     """Test the noexecute method."""
     print("\nTesting Redalyc noexecute method...")
@@ -91,7 +95,7 @@ def test_redalyc_noexecute():
         
         # Test noexecute
         query_namespace = {
-            "query": "data science",
+            "query": "carbon dioxide",
             "filter": None
         }
         
@@ -112,25 +116,46 @@ def main():
     # Configure logging
     logging.basicConfig(level=logging.INFO)
     
-    tests = [
-        test_redalyc_initialization,
-        test_redalyc_search,
-        test_redalyc_main_method,
-        test_redalyc_noexecute,
-    ]
+    # Test connectivity first
+    print("🔍 Testing Redalyc connectivity...")
+    is_connected, error_msg = test_redalyc_connectivity()
+    
+    if not is_connected:
+        print(f"⚠️  Redalyc appears to be down: {error_msg}")
+        print("   Only running initialization test...")
+        tests = [test_redalyc_initialization]
+    else:
+        print("✅ Redalyc is accessible, running all tests...")
+        tests = [
+            test_redalyc_initialization,
+            test_redalyc_search,
+            test_redalyc_main_method,
+            test_redalyc_noexecute,
+        ]
     
     passed = 0
     total = len(tests)
+    skipped = 0
     
     for test in tests:
-        if test():
+        result = test()
+        if result is True:
             passed += 1
+        elif result is False:
+            pass  # Already counted in total
+        else:
+            # Special case for skipped tests
+            skipped += 1
     
     print("\n" + "=" * 50)
     print(f"Test Results: {passed}/{total} tests passed")
+    if skipped > 0:
+        print(f"              {skipped} tests skipped due to connectivity issues")
     
     if passed == total:
         print("🎉 All tests passed! Redalyc implementation is working correctly.")
+    elif passed + skipped == total:
+        print("✅ All accessible tests passed! Some tests were skipped due to connectivity.")
     else:
         print("⚠️  Some tests failed. Check the implementation.")
     

@@ -89,7 +89,7 @@ def test_new_crossref_implementation():
 
         # Test noexecute (safe to run)
         print("Testing noexecute (simulated)...")
-        query_namespace = {"query": "machine learning", "limit": 5, "filter": None}
+        query_namespace = {"query": "climate change", "limit": 5, "filter": None}
         crossref.noexecute(query_namespace)
 
         return True

@@ -45,7 +45,7 @@ pygetpapers/
 - **Crossref**: Query support, XML download
 - **OpenAlex**: Query support, date range, PDF download
 - **bioRxiv/medRxiv**: Date-based search only
-- **Rxivist**: Basic query support
+
 
 ### 2. Query Builder Page
 

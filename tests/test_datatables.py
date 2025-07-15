@@ -25,7 +25,7 @@ def create_sample_pygetpapers_output():
             "result": [
                 {
                     "id": "PMC123456",
-                    "title": "Sample Paper 1: Machine Learning in Bioinformatics",
+                    "title": "Sample Paper 1: Climate Change Impact on Biodiversity",
                     "authorString": "Smith J, Johnson A, Brown B",
                     "journalTitle": "Nature",
                     "doi": "10.1038/sample1",
@@ -36,7 +36,7 @@ def create_sample_pygetpapers_output():
                 },
                 {
                     "id": "PMC789012",
-                    "title": "Sample Paper 2: Deep Learning Applications",
+                    "title": "Sample Paper 2: Global Warming Effects on Ecosystems",
                     "authorString": "Davis C, Wilson D, Miller E",
                     "journalTitle": "Science",
                     "doi": "10.1126/sample2",

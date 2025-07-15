@@ -191,7 +191,7 @@ def demonstrate_cursor_reset():
 
     scraper = BioRxivAdvancedScraper(output_dir="biorxiv_cursor_test", delay=0.5)
 
-    query = "machine learning"
+    query = "climate change"
 
     # First search
     print(f"First search for '{query}':")

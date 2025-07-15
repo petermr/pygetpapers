@@ -32,7 +32,7 @@ class Rxiv(RepositoryInterface):
     """Biorxiv and Medrxiv repositories
 
     At present (2022-03) the API appears only to support date searches.
-    The `rxivist` system is layered on top and supports fuller queries
+    The bioRxiv web scraper is layered on top and supports fuller queries
 
     """
 

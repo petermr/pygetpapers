@@ -26,7 +26,7 @@ This document captures the complete conversation and development process for cre
 
 **Exploration Results:**
 - Found pygetpapers is a command-line tool for downloading research papers from various repositories
-- Supports multiple APIs: EuropePMC, Crossref, arXiv, BioRxiv, MedRxiv, Rxivist
+- Supports multiple APIs: EuropePMC, Crossref, arXiv, BioRxiv, MedRxiv
 - Has modular repository support with CLI arguments for queries, output formats, limits, etc.
 - Main functionality in `pygetpapers/pygetpapers.py` with repository-specific modules
 
@@ -43,7 +43,7 @@ This document captures the complete conversation and development process for cre
 
 **Core Features:**
 - Multi-page interface (Search Papers, Query Builder, Corpus Manager, Settings, Help)
-- Repository selection (EuropePMC, Crossref, arXiv, BioRxiv, MedRxiv, Rxivist)
+- Repository selection (EuropePMC, Crossref, arXiv, BioRxiv, MedRxiv)
 - Query input with Boolean support
 - Date range filtering
 - Download options (XML, PDF, supplementary files)

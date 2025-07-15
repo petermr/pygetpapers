@@ -98,7 +98,7 @@ class PygetpapersUI:
             "openalex": "OpenAlex",
             "biorxiv": "bioRxiv",
             "medrxiv": "medRxiv",
-            "rxivist": "Rxivist",
+
         }
 
         self.api_features = {
@@ -162,16 +162,7 @@ class PygetpapersUI:
                 "supplementary": False,
                 "xml2html": True,
             },
-            "rxivist": {
-                "query": True,
-                "date_range": False,
-                "pdf": False,
-                "xml": False,
-                "references": False,
-                "citations": False,
-                "supplementary": False,
-                "xml2html": False,
-            },
+
         }
 
         # Initialize datatables integration
@@ -2699,7 +2690,7 @@ class PygetpapersUI:
                     ["OpenAlex", "Academic papers", "PDF available", "✅"],
                     ["bioRxiv", "Biology preprints", "Date-based", "❌"],
                     ["medRxiv", "Medical preprints", "Date-based", "❌"],
-                    ["Rxivist", "Preprint search", "Basic search", "❌"],
+
                 ],
                 columns=["Repository", "Content", "Features", "Query Support"],
             )

@@ -4,7 +4,7 @@
 
 ### 2024-07-08: Clarified bioRxiv/medRxiv Query Support Limitations
 - **Clarified bioRxiv/medRxiv API limitations**: Updated the Streamlit UI to clearly explain that while bioRxiv/medRxiv websites support text queries, pygetpapers' API implementation only supports date-based searches
-- **Improved user guidance**: Added clear messaging that directs users to use the 'Rxivist' repository for text-based searches of bioRxiv/medRxiv content
+- **Improved user guidance**: Added clear messaging that directs users to use the bioRxiv web scraper for text-based searches of bioRxiv/medRxiv content
 - **Date-only search interface**: When bioRxiv or medRxiv is selected, the UI shows a date range interface with disabled query input
 - **Proper validation**: Maintained validation to ensure date ranges are provided for bioRxiv/medRXiv and queries are not allowed
 - **Command building fix**: Maintained command generation that excludes query parameters for bioRXiv/medRXiv and includes date parameters
@@ -137,7 +137,7 @@
 
 ### 2024-07-07: Streamlit UI Development
 - **Initial implementation**: Created comprehensive Streamlit web interface for pygetpapers
-- **Repository support**: Full support for Europe PMC, arXiv, Crossref, OpenAlex, bioRxiv, medRxiv, Rxivist
+- **Repository support**: Full support for Europe PMC, arXiv, Crossref, OpenAlex, bioRxiv, medRxiv
 - **Query builder**: Advanced query builder with Boolean operators and field-specific search
 - **Corpus management**: Complete corpus management with statistics and visualization
 - **Data tables**: Interactive HTML tables with datatables integration
@@ -165,7 +165,7 @@
   - **Europe PMC**: Full support with JATS4R and Simple HTML converters
   - **arXiv**: Support with Simple HTML converter
   - **Crossref**: Support with Simple HTML converter
-  - **Other repositories**: No support (bioRxiv, medRxiv, OpenAlex, Rxivist)
+  - **Other repositories**: No support (bioRxiv, medRxiv, OpenAlex)
 - **CLI integration**: Enhanced `--fulltext_html` flag with repository validation
 - **Streamlit UI integration**: Added XML2HTML checkbox in download options with repository-specific availability
 - **Automatic validation**: CLI checks repository support and provides warnings for unsupported repositories

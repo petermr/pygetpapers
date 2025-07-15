@@ -5,7 +5,7 @@ A comprehensive web interface for pygetpapers with advanced features including q
 ## Features
 
 - **Multi-page Interface**: Search Papers, Query Builder, Corpus Manager, Settings, Help
-- **Repository Support**: Europe PMC, Crossref, arXiv, OpenAlex, bioRxiv, medRxiv, Rxivist
+- **Repository Support**: Europe PMC, Crossref, arXiv, OpenAlex, bioRxiv, medRxiv
 - **Advanced Query Building**: Boolean logic, date ranges, filters
 - **Corpus Management**: Browse, analyze, and manage downloaded papers
 - **Data Visualization**: Interactive charts and statistics

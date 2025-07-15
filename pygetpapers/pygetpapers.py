@@ -42,7 +42,7 @@ EUPMC = "eupmc"
 SAVED_CONFIG_INI = "saved_config.ini"
 SAVED = "SAVED"
 RESULTS_JSON = "results.json"
-RXIVIST = "rxivist"
+
 TERM = "term"
 ENTRY = "entry"
 EUROPEPMC = "europe_pmc"
@@ -71,7 +71,7 @@ class ApiPlugger:
                 "arXiv support is DISABLED in pygetpapers due to arXiv's policy against scraping or automated downloads. See https://arxiv.org/help/bulk_data for official guidance."
             )
         # Handle special cases for bioRxiv-related repositories
-        if self.library_name in ["rxiv", "rxivist"]:
+        if self.library_name == "rxiv":
             module_path = f"{PYGETPAPERS}.repositories.biorxiv.{self.library_name}"
         elif self.library_name == "redalyc_selenium":
             module_path = f"{PYGETPAPERS}.repositories.redalyc.redalyc_selenium"
@@ -963,7 +963,7 @@ class Pygetpapers:
             default="europe_pmc",
             type=str,
             help=(
-                "API to search [europe_pmc, crossref,arxiv,biorxiv,medrxiv,rxivist,openalex] "  # noqa: E501
+                "API to search [europe_pmc, crossref,arxiv,biorxiv,medrxiv,openalex] "  # noqa: E501
                 "(default: europe_pmc)"
             ),
         )

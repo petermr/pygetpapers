@@ -5,13 +5,22 @@ Test script to check for XML links in Redalyc articles.
 
 import requests
 import re
+import sys
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import logging
+from pathlib import Path
+
+# Add src to path for test_utils import
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+
+from test_utils import test_redalyc_connectivity, skip_if_redalyc_down
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+@skip_if_redalyc_down()
 def test_redalyc_links():
     """Test what links we can find in Redalyc articles."""
     
@@ -140,6 +149,8 @@ def test_redalyc_links():
         except Exception as e:
             print(f"Error testing {url}: {e}")
 
+
+@skip_if_redalyc_down()
 def test_redalyc_api_endpoints():
     """Test if Redalyc has any API endpoints that might provide XML."""
     
@@ -170,6 +181,33 @@ def test_redalyc_api_endpoints():
         except Exception as e:
             print(f"{endpoint}: Error - {e}")
 
+
+def main():
+    """Run the XML links tests."""
+    print("🧪 Testing Redalyc XML Links")
+    print("=" * 50)
+    
+    # Test connectivity first
+    print("🔍 Testing Redalyc connectivity...")
+    is_connected, error_msg = test_redalyc_connectivity()
+    
+    if not is_connected:
+        print(f"⚠️  Redalyc appears to be down: {error_msg}")
+        print("   Skipping XML links tests...")
+        return True  # Return True to indicate "skipped" rather than "failed"
+    
+    print("✅ Redalyc is accessible, running XML links tests...")
+    
+    try:
+        test_redalyc_links()
+        test_redalyc_api_endpoints()
+        print("🎉 XML links tests completed!")
+        return True
+    except Exception as e:
+        print(f"❌ Test failed: {e}")
+        return False
+
+
 if __name__ == "__main__":
-    test_redalyc_links()
-    test_redalyc_api_endpoints() 
+    success = main()
+    sys.exit(0 if success else 1) 

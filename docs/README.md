@@ -183,7 +183,7 @@ optional arguments:
                         serperated by a comma or an ami dict which will beOR'ed
                         among themselves and NOT'ed with the query
   --api API             API to search [eupmc,
-                        crossref,arxiv,biorxiv,medrxiv,rxivist] (default: eupmc)
+                        crossref,arxiv,biorxiv,medrxiv] (default: eupmc)
   --filter FILTER       [C] filter by key value pair (only crossref supported)
 ```
 
@@ -201,7 +201,7 @@ A CTree is a subdirectory of a CProject that deals with a single paper.
 # Tutorial
 `pygetpapers` was on version `0.0.9.3` when the tutorials were documented. 
 
-`pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv,rxivist-bio,rxivist-med. By default, it queries EPMC. You can specify the API by using `--api` flag.  
+`pygetpapers` supports multiple APIs including eupmc, crossref,arxiv,biorxiv,medrxiv. By default, it queries EPMC. You can specify the API by using `--api` flag.  
 
 You can also follow this [colab notebook](https://colab.research.google.com/drive/18SJ9H4Hm_7Y2rJENXdEhmJMS59Ojm2SK?usp=sharing) as part of the tutorial. 
 
@@ -757,63 +757,8 @@ The CProject now has 20 papers, in total after updating.
 └───10.1101_196105
 ```
 The working of `medarxiv` is same as `biorxiv`
-## rxivist
-Lets you specify a queries string to both `biorxiv` and `medarxiv`. The results you get would be a mixture of papers from both repository since `rxivist` doesn't differentiate. 
 
-Another caveat here is that you can only retrieve metadata from `rxivist`. 
 
-INPUT:
-```
-pygetpapers --api rxivist -q "biomedicine" -k 10 -c -x -o "biomedicine_rxivist" --makehtml -p
-```
-OUTPUT:
-```
-WARNING: Pdf is not supported for this api
-INFO: Final query is biomedicine
-INFO: Making Request to rxivist
-INFO: Making csv files for metadata at C:\Users\shweata\biomedicine_rxivist
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 125.54it/s]
-INFO: Making html files for metadata at C:\Users\shweata\biomedicine_rxivist
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 124.71it/s]
-INFO: Making xml files for metadata at C:\Users\shweata\biomedicine_rxivist
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 633.38it/s]
-INFO: Wrote metadata file for the query
-INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivist
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 751.09it/s]
-```
-### Query hits only 
-Like any other repositories under `pygetpapers`, you can use the `-n` flag to get only the hit number
-INPUT: 
-```
-C:\Users\shweata>pygetpapers --api rxivist -q "biomedical sciences" -n
-```
-OUTPUT:
-```
-INFO: Final query is biomedical sciences
-INFO: Making Request to rxivist
-INFO: Total number of hits for the query are 62
-```
-### Update
-`--update` works the same as many other repositories. Make sure to provide `rxvist` as api. 
-
-INPUT: 
-```
-pygetpapers --api rxivist -q "biomedical sciences" -k 20 -c -x -o "biomedicine_rxivist" --update
-```
-OUPUT: 
-```
-INFO: Final query is biomedical sciences
-INFO: Please ensure that you are providing the same --api as the one in the corpus or you may get errors
-INFO: Reading old json metadata file
-INFO: Making Request to rxivist
-INFO: Making csv files for metadata at C:\Users\shweata\biomedicine_rxivist
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 203.69it/s]
-INFO: Making xml files for metadata at C:\Users\shweata\biomedicine_rxivist
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 1059.17it/s]
-INFO: Wrote metadata file for the query
-INFO: Writing metadata file for the papers at C:\Users\shweata\biomedicine_rxivist
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 1077.12it/s]
-```
 ## XML2HTML Interface
 
 Pygetpapers now supports on-the-fly XML to HTML conversion during the download process. This feature allows you to automatically generate HTML versions of downloaded XML files using the `--fulltext_html` flag.
@@ -828,7 +773,7 @@ Pygetpapers now supports on-the-fly XML to HTML conversion during the download p
 | OpenAlex | ❌ No | - |
 | bioRxiv | ❌ No | - |
 | medRxiv | ❌ No | - |
-| Rxivist | ❌ No | - |
+
 
 ### Usage
 

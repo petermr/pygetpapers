@@ -8,7 +8,7 @@ Pygetpapers is a Python tool designed to assist text miners and researchers in a
 
 ### Key Features of pygetpapers
 
-- **Multi-repository support**: Searches across Europe PMC, arXiv, Crossref, bioRxiv, medRxiv, Rxivist, and OpenAlex
+- **Multi-repository support**: Searches across Europe PMC, arXiv, Crossref, bioRxiv, medRxiv, and OpenAlex
 - **Flexible query system**: Supports complex Boolean queries with nested quoting
 - **Multiple output formats**: Downloads full-text XML, PDF, supplementary files, references, and citations
 - **Metadata management**: Saves metadata in JSON, CSV, and HTML formats
@@ -30,7 +30,7 @@ pygetpapers/
 │   ├── crossref.py
 │   ├── openalex.py
 │   ├── rxiv.py
-│   └── rxivist.py
+
 ├── config.ini             # Repository configuration
 └── extensions.py          # Extension functionality
 ```
@@ -78,7 +78,7 @@ The Streamlit UI enhancement aims to:
 | OpenAlex | ✅ Full | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | bioRxiv | ❌ (Date only) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | medRxiv | ❌ (Date only) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Rxivist | ✅ Full | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
 
 ## Query Format Examples
 

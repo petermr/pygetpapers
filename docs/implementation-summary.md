@@ -147,7 +147,7 @@ def build_query_string(self, query_parts):
 | OpenAlex | ✅ Full | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | bioRxiv | ❌ (Date only) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | medRxiv | ❌ (Date only) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Rxivist | ✅ Full | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
 
 ## 🔍 Query Building Capabilities
 

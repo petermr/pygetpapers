@@ -60,7 +60,7 @@ Choose from the available scholarly repositories:
 - **OpenAlex**: Academic papers with PDF access
 - **bioRxiv**: Biology preprints (date-based only)
 - **medRxiv**: Medical preprints (date-based only)
-- **Rxivist**: Preprint search engine
+
 
 Each repository shows its supported features with checkmarks.
 

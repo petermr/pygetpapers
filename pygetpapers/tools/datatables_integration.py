@@ -409,6 +409,29 @@ class PygetpapersDatatables:
                 f"https://www.ncbi.nlm.nih.gov/pmc/articles/{pmcid}/" if pmcid else ""
             )
 
+            # Create file links
+            pdf_link = ""
+            html_link = ""
+            
+            if has_pdf:
+                pdf_file = next((f for f in paper["files"] if "fulltext.pdf" in f), None)
+                if pdf_file:
+                    pdf_link = f'<a href="{paper["directory"]}/{pdf_file}" target="_blank">📄 PDF</a>'
+            
+            # Prioritize enhanced HTML, then XML HTML, then raw HTML
+            if has_enhanced_html:
+                html_file = next((f for f in paper["files"] if "html_with_ids.html" in f), None)
+                if html_file:
+                    html_link = f'<a href="{paper["directory"]}/{html_file}" target="_blank">🌐 Enhanced</a>'
+            elif has_xml_html:
+                html_file = next((f for f in paper["files"] if "fulltext.xml.html" in f), None)
+                if html_file:
+                    html_link = f'<a href="{paper["directory"]}/{html_file}" target="_blank">🌐 HTML</a>'
+            elif has_raw_html:
+                html_file = next((f for f in paper["files"] if "fulltext.raw.html" in f), None)
+                if html_file:
+                    html_link = f'<a href="{paper["directory"]}/{html_file}" target="_blank">🌐 HTML</a>'
+
             # Create row data with hyperlinks
             row = {
                 "Select": (
@@ -438,9 +461,9 @@ class PygetpapersDatatables:
                 ),
                 "Date": pub_date,
                 "XML": "✅" if has_xml else "❌",
-                "PDF": "✅" if has_pdf else "❌",
+                "PDF": pdf_link if pdf_link else ("✅" if has_pdf else "❌"),
                 "Suppl": "✅" if has_supp else "❌",
-                "HTML": (
+                "HTML": html_link if html_link else (
                     "✅"
                     if (
                         has_raw_html

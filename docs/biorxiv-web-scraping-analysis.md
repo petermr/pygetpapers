@@ -134,8 +134,8 @@ The search results page contains:
 
 ## Alternative Approaches
 
-### 1. Rxivist Integration
-- **Current solution**: Use existing Rxivist API for text search
+### 1. Web Scraper Integration
+- **Current solution**: Use bioRxiv web scraper for text search
 - **Limitations**: Metadata only, no full text
 - **Advantage**: Already implemented and working
 
