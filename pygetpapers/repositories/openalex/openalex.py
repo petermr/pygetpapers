@@ -1,14 +1,15 @@
 import json
 import logging
 import os
+import time
 from datetime import datetime
 from pathlib import Path
 
 import requests
 from tqdm import tqdm
 
-from src.pygetpapers.download_tools import DownloadTools
-from src.pygetpapers.repositoryinterface import RepositoryInterface
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.repositoryinterface import RepositoryInterface
 
 TOTAL_HITS = "total_hits"
 

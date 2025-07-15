@@ -8,6 +8,7 @@ This script helps manage Streamlit instances and prevents port conflicts.
 import os
 import subprocess
 import sys
+import time
 
 
 def find_available_port(start_port=8501, max_attempts=10):
@@ -37,7 +38,7 @@ def kill_existing_streamlit():
         print(f"⚠️  Could not kill existing processes: {e}")
 
 
-def run_streamlit(app_file="streamlit_app.py", port=None, headless=True):
+def run_streamlit(app_file="pygetpapers/streamlit_app.py", port=None, headless=True):
     """Run Streamlit with the specified configuration"""
 
     # Find available port if not specified
@@ -86,7 +87,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Run Pygetpapers Streamlit app")
     parser.add_argument(
-        "--app", default="streamlit_app.py", help="Streamlit app file to run"
+        "--app", default="pygetpapers/streamlit_app.py", help="Streamlit app file to run"
     )
     parser.add_argument(
         "--port",

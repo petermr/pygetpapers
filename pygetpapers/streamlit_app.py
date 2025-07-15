@@ -684,6 +684,7 @@ class PygetpapersUI:
             make_csv = st.checkbox("Generate CSV Metadata", value=True)
             make_html = st.checkbox("Generate HTML Metadata", value=False)
             save_query = st.checkbox("Save Query Configuration", value=False)
+            make_datatables = st.checkbox("Generate Datatables", value=False, help="Create interactive HTML tables for data exploration")
 
         # XML2HTML conversion option
         if features["xml2html"]:
@@ -736,86 +737,108 @@ class PygetpapersUI:
                 # Show directory browser
                 st.session_state.show_dir_browser = True
 
-        # Directory browser for output directory
+        # Directory browser for output directory using streamlit-tree-select
         if st.session_state.get("show_dir_browser", False):
             st.markdown("### 📁 Directory Browser")
-
-            # Initialize current path if not set
-            if "current_browse_path" not in st.session_state:
-                st.session_state.current_browse_path = str(Path.cwd())
-
-            current_path = Path(st.session_state.current_browse_path)
-
-            # Navigation bar
-            st.markdown("---")
-            col_nav1, col_nav2, col_nav3, col_nav4, col_nav5 = st.columns(5)
-            with col_nav1:
-                if st.button("🏠 Home", use_container_width=True):
-                    st.session_state.current_browse_path = str(Path.home())
-                    st.rerun()
-            with col_nav2:
-                if st.button("⬆️ Parent", use_container_width=True):
-                    if current_path.parent != current_path:
-                        st.session_state.current_browse_path = str(current_path.parent)
-                        st.rerun()
-            with col_nav3:
-                if st.button("📁 Desktop", use_container_width=True):
-                    st.session_state.current_browse_path = str(
-                        Path(Path.home(), "Desktop")
-                    )
-                    st.rerun()
-            with col_nav4:
-                if st.button("✅ Select", type="primary", use_container_width=True):
-                    st.session_state.output_dir = str(current_path)
+            
+            try:
+                from streamlit_tree_select import tree_select
+                
+                # Generate directory tree data
+                tree_data = self._generate_directory_tree_data(Path.home())
+                
+                # Use tree_select for directory selection
+                selected_paths = tree_select(
+                    tree_data,
+                    ["Select output directory"],
+                    show_expand_all=True,
+                    show_select_all=False,
+                    check_on_select=True,
+                    key="output_dir_tree"
+                )
+                
+                if selected_paths:
+                    selected_path = selected_paths[0]
+                    st.session_state.output_dir = selected_path
                     st.session_state.show_dir_browser = False
                     st.rerun()
-            with col_nav5:
+                
+                # Close button
+                if st.button("❌ Close", use_container_width=True):
+                    st.session_state.show_dir_browser = False
+                    st.rerun()
+                    
+            except ImportError:
+                st.error("streamlit-tree-select not available. Please install with: pip install streamlit-tree-select")
                 if st.button("❌ Close", use_container_width=True):
                     st.session_state.show_dir_browser = False
                     st.rerun()
 
-            # Current path display
-            st.markdown(f"**Current Location:** `{current_path}`")
-
-            # List directories and files in a compact table-like format
-            try:
-                items = list(current_path.iterdir())
-                dirs = [item for item in items if item.is_dir()]
-                files = [item for item in items if item.is_file()]
-
-                # Create a more compact display
-                if dirs or files:
-                    st.markdown("**Contents:**")
-
-                    # Show directories in a compact list
-                    if dirs:
-                        for dir_item in sorted(dirs):
-                            if st.button(
-                                f"📁 {dir_item.name}",
-                                key=f"dir_{dir_item.name}",
-                                use_container_width=True,
-                            ):
-                                st.session_state.current_browse_path = str(dir_item)
-                                st.rerun()
-
-                    # Show file count if there are files
-                    if files:
-                        file_count = len(files)
-                        if file_count <= 5:
-                            for file_item in sorted(files):
-                                st.markdown(f"📄 {file_item.name}")
-                        else:
-                            st.markdown(f"📄 {file_count} files in this directory")
-
-                    if not dirs and not files:
-                        st.info("📂 Empty directory")
-
-            except PermissionError:
-                st.error("❌ Permission denied accessing this directory")
-            except Exception as e:
-                st.error(f"❌ Error accessing directory: {e}")
-
+        # Datatables directory selection
+        if make_datatables:
             st.markdown("---")
+            st.markdown("### 📊 Datatables Configuration")
+            
+            col_datatables1, col_datatables2 = st.columns([3, 1])
+            
+            with col_datatables1:
+                # Default datatables directory to output directory
+                if "datatables_dir" not in st.session_state:
+                    st.session_state.datatables_dir = output_dir
+                
+                datatables_dir = st.text_input(
+                    "Datatables Directory:",
+                    value=st.session_state.datatables_dir,
+                    key="datatables_dir_input",
+                    help="Directory where datatables HTML files will be saved (defaults to output directory)",
+                )
+            
+            with col_datatables2:
+                st.markdown("###")  # Add some spacing to align with text input
+                if st.button("📁 Browse Datatables", help="Browse for datatables directory"):
+                    # Show datatables directory browser
+                    st.session_state.show_datatables_dir_browser = True
+            
+            # Datatables directory browser using streamlit-tree-select
+            if st.session_state.get("show_datatables_dir_browser", False):
+                st.markdown("### 📁 Datatables Directory Browser")
+                
+                try:
+                    from streamlit_tree_select import tree_select
+                    
+                    # Generate directory tree data
+                    tree_data = self._generate_directory_tree_data(Path.home())
+                    
+                    # Use tree_select for directory selection
+                    selected_paths = tree_select(
+                        tree_data,
+                        ["Select datatables directory"],
+                        show_expand_all=True,
+                        show_select_all=False,
+                        check_on_select=True,
+                        key="datatables_dir_tree"
+                    )
+                    
+                    if selected_paths:
+                        selected_path = selected_paths[0]
+                        st.session_state.datatables_dir = selected_path
+                        st.session_state.show_datatables_dir_browser = False
+                        st.rerun()
+                    
+                    # Close button
+                    if st.button("❌ Close", use_container_width=True):
+                        st.session_state.show_datatables_dir_browser = False
+                        st.rerun()
+                        
+                except ImportError:
+                    st.error("streamlit-tree-select not available. Please install with: pip install streamlit-tree-select")
+                    if st.button("❌ Close", use_container_width=True):
+                        st.session_state.show_datatables_dir_browser = False
+                        st.rerun()
+            
+            # Update session state when user changes the value
+            if datatables_dir != st.session_state.datatables_dir:
+                st.session_state.datatables_dir = datatables_dir
 
         # Update session state when user changes the value
         if output_dir != st.session_state.output_dir:
@@ -890,6 +913,11 @@ class PygetpapersUI:
                 args.append("--save_query")
             if convert_xml2html:
                 args.append("--fulltext_html")
+            if make_datatables:
+                if st.session_state.get("datatables_dir") and st.session_state.datatables_dir != output_dir:
+                    args.extend(["--datatables", st.session_state.datatables_dir])
+                else:
+                    args.append("--datatables")
 
             args.extend(["--output", output_dir])
 
@@ -3538,6 +3566,36 @@ class PygetpapersUI:
         except Exception as e:
             st.warning(f"Error extracting info from {corpus_dir.name}: {e}")
             return None
+
+    def _generate_directory_tree_data(self, root_path: Path, max_depth: int = 3) -> List[Dict]:
+        """Generate directory tree data for streamlit-tree-select
+        
+        Args:
+            root_path: Root directory to start from
+            max_depth: Maximum depth to traverse
+            
+        Returns:
+            List of dictionaries representing the directory tree
+        """
+        def _build_tree(path: Path, depth: int = 0) -> List[Dict]:
+            if depth > max_depth:
+                return []
+                
+            try:
+                items = []
+                for item in sorted(path.iterdir()):
+                    if item.is_dir() and not item.name.startswith('.'):
+                        node = {
+                            "label": item.name,
+                            "value": str(item),
+                            "children": _build_tree(item, depth + 1)
+                        }
+                        items.append(node)
+                return items
+            except (PermissionError, OSError):
+                return []
+                
+        return _build_tree(root_path)
 
     def _search_html_files(
         self, search_directory: Path, search_query: str, max_results: int = 50

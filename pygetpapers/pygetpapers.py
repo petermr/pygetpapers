@@ -82,7 +82,11 @@ class ApiPlugger:
             importlib.import_module(module_path),
             self.class_name,
         )
-        self.api = api_class()
+        # Pass the API type for repositories that need it (like Rxiv for bioRxiv/medRxiv)
+        if self.class_name == "Rxiv":
+            self.api = api_class(api=self.query_namespace[API])
+        else:
+            self.api = api_class()
 
     def _assist_warning_api(self):
         """Raises error if feature not supported for api but given in query_namespace"""

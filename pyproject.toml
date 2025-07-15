@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygetpapers"
-version = "1.2.5a20"
+version = "1.2.5a22"
 description = "A tool to download papers from various repositories"
 readme = "README.md"
 license = {text = "MIT"}
@@ -49,6 +49,7 @@ dependencies = [
 streamlit = [
     "streamlit>=1.28.0",
     "plotly>=5.15.0",
+    "streamlit-tree-select>=0.0.5",
 ]
 dev = [
     "pytest>=6.2.5",

@@ -176,12 +176,17 @@ class CrossRef(RepositoryInterface):
             cursor = update[CURSOR_MARK]
         else:
             cursor = DEFAULT_CURSOR
-        # Submits a request to crossref
-        # raw_crossref_metadata is a dictionary containing bibliographic metadata
-        # for each paper
-        raw_crossref_metadata = crossref_client.works(
-            query={query}, filter=filter_dict, cursor_max=cutoff_size, cursor=cursor
-        )
+        try:
+            # Submits a request to crossref
+            # raw_crossref_metadata is a dictionary containing bibliographic metadata
+            # for each paper
+            raw_crossref_metadata = crossref_client.works(
+                query={query}, filter=filter_dict, cursor_max=cutoff_size, cursor=cursor
+            )
+        except Exception as e:
+            logging.error(f"Crossref API request failed: {e}")
+            print(f"❌ Crossref API request failed: {e}\nTry again later or check your network connection.")
+            return {NEW_RESULTS: {TOTAL_HITS: 0, TOTAL_JSON_OUTPUT: []}, UPDATED_DICT: {}, CURSOR_MARK: None}
         metadata_count = raw_crossref_metadata[MESSAGE][TOTAL_RESULTS]
         cursor_mark = raw_crossref_metadata[MESSAGE][NEXT_CURSOR]
         cutoff_metadata_list = self._make_metadata_subset(
@@ -214,7 +219,7 @@ class CrossRef(RepositoryInterface):
 
         :return: crossref object
         """
-        cr = Crossref()
+        cr = Crossref(timeout=30)
         Crossref(mailto=CONTACT_EMAIL)
         version = self.download_tools.get_version()
         Crossref(ua_string=f"{USER_AGENT_PREFIX}{version}")

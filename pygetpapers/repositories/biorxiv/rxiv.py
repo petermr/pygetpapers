@@ -317,25 +317,51 @@ class Rxiv(RepositoryInterface):
 
         # Check if query is a text query
         if self._is_text_query(query):
-            logging.info("Using bioRxiv web scraper for text query (noexecute mode)")
+            logging.info(f"Using {source} web scraper for text query (noexecute mode)")
             try:
-                from .biorxiv_integration import BioRxivIntegration
+                from .biorxiv_advanced_scraper import BioRxivAdvancedScraper
+                import requests
+                from bs4 import BeautifulSoup
+                from urllib.parse import quote_plus
 
-                scraper = BioRxivIntegration()
-
-                # Test the query with a small limit
-                result = scraper.search_and_collect(
-                    query=query, max_papers=5, save_metadata=False  # Small test limit
-                )
-
-                totalhits = result.get("papers_collected", 0)
-                logging.info(f"Total number of hits for the query are {totalhits}")
+                # Use the correct base URL based on the source
+                if source == "medrxiv":
+                    base_url = "https://www.medrxiv.org"
+                else:
+                    base_url = "https://www.biorxiv.org"
+                search_url = f"{base_url}/search/{quote_plus(query)}"
+                
+                # Make a single request to get pagination info
+                session = requests.Session()
+                session.headers.update({
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+                })
+                
+                response = session.get(search_url, params={"numresults": 25}, timeout=30)
+                response.raise_for_status()
+                
+                # Parse the page to get exact total results
+                soup = BeautifulSoup(response.text, "html.parser")
+                
+                # Extract the exact result count from the page header
+                # Look for text like "25,195 Results for term 'climate change'"
+                import re
+                page_text = soup.get_text()
+                result_match = re.search(r'([\d,]+)\s+Results?\s+for\s+term', page_text)
+                
+                if result_match:
+                    total_results = int(result_match.group(1).replace(',', ''))
+                    logging.info(f"Total number of hits for the query are {total_results}")
+                else:
+                    # Fallback: count papers on this page
+                    papers_on_page = len(soup.find_all("div", class_="highwire-cite"))
+                    logging.info(f"Total number of hits for the query are at least {papers_on_page}")
 
             except ImportError:
                 logging.error(
-                    "bioRxiv web scraper integration not available for text queries"
+                    "bioRxiv web scraper not available for text queries"
                 )
-                logging.info("Text queries require the web scraper integration")
+                logging.info("Text queries require the web scraper")
             except Exception as e:
                 logging.error(f"Error testing text query: {e}")
         else:
