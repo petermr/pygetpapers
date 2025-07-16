@@ -3,6 +3,18 @@ Datatables integration for pygetpapers output visualization.
 
 This module provides functionality to create interactive HTML tables using jQuery
 DataTables for displaying pygetpapers output data.
+
+ORIGINAL AUTHOR: petermr (Peter Murray-Rust) <peter.murray.rust@googlemail.com>
+ORIGINAL DATE: July 5, 2025
+GIT COMMITS:
+- f92cfab (Jul 5, 2025): Initial implementation "added datatables and corpus FIRST PASS MAY HAV BUGS"
+- 84c12de (Jul 11, 2025): Major enhancement "Add datatables HTML export functionality with external CSS support"
+- 2e9f96d (Jul 15, 2025): Final tidy "tidying and testing"
+
+EDITED: Assistant on December 19, 2024 for pygetpapers v2.0 (1.2.5a23)
+- Removed draft features (figure extraction, corpus comparison) from public API
+- Added warning messages for disabled functionality
+- Preserved original code structure for future re-enablement
 """
 
 import base64
@@ -409,30 +421,49 @@ class PygetpapersDatatables:
                 f"https://www.ncbi.nlm.nih.gov/pmc/articles/{pmcid}/" if pmcid else ""
             )
 
-            # Create file links
+            # Create comprehensive file links
             pdf_link = ""
+            xml_link = ""
             html_link = ""
+            supp_link = ""
             
+            # Calculate relative path from datatables location to paper directory
+            # Datatables are typically in output_dir/examples/output_dir/, so we need to go up two levels
+            relative_paper_path = f"../../{paper['directory']}"
+            
+            # PDF link
             if has_pdf:
                 pdf_file = next((f for f in paper["files"] if "fulltext.pdf" in f), None)
                 if pdf_file:
-                    pdf_link = f'<a href="{paper["directory"]}/{pdf_file}" target="_blank">📄 PDF</a>'
+                    pdf_link = f'<a href="{relative_paper_path}/{pdf_file}" target="_blank" title="Open PDF file">📄 PDF</a>'
             
-            # Prioritize enhanced HTML, then XML HTML, then raw HTML
+            # XML link
+            if has_xml:
+                xml_file = next((f for f in paper["files"] if "fulltext.xml" in f), None)
+                if xml_file:
+                    xml_link = f'<a href="{relative_paper_path}/{xml_file}" target="_blank" title="Open XML file">📋 XML</a>'
+            
+            # HTML link (prioritize enhanced HTML, then XML HTML, then raw HTML)
             if has_enhanced_html:
                 html_file = next((f for f in paper["files"] if "html_with_ids.html" in f), None)
                 if html_file:
-                    html_link = f'<a href="{paper["directory"]}/{html_file}" target="_blank">🌐 Enhanced</a>'
+                    html_link = f'<a href="{relative_paper_path}/{html_file}" target="_blank" title="Open enhanced HTML file">🌐 Enhanced</a>'
             elif has_xml_html:
                 html_file = next((f for f in paper["files"] if "fulltext.xml.html" in f), None)
                 if html_file:
-                    html_link = f'<a href="{paper["directory"]}/{html_file}" target="_blank">🌐 HTML</a>'
+                    html_link = f'<a href="{relative_paper_path}/{html_file}" target="_blank" title="Open HTML file">🌐 HTML</a>'
             elif has_raw_html:
                 html_file = next((f for f in paper["files"] if "fulltext.raw.html" in f), None)
                 if html_file:
-                    html_link = f'<a href="{paper["directory"]}/{html_file}" target="_blank">🌐 HTML</a>'
+                    html_link = f'<a href="{relative_paper_path}/{html_file}" target="_blank" title="Open HTML file">🌐 HTML</a>'
+            
+            # Supplementary files link
+            if has_supp:
+                supp_files = [f for f in paper["files"] if "supplementary" in f]
+                if supp_files:
+                    supp_link = f'<a href="{relative_paper_path}/supplementary/" target="_blank" title="Open supplementary files directory">📁 Suppl ({len(supp_files)})</a>'
 
-            # Create row data with hyperlinks
+            # Create row data with hyperlinks and tooltips
             row = {
                 "Select": (
                     f'<input type="checkbox" class="paper-checkbox" '
@@ -445,24 +476,24 @@ class PygetpapersDatatables:
                 "Authors": authors[:50] + "..." if len(authors) > 50 else authors,
                 "Journal": journal,
                 "DOI": (
-                    f'<a href="{doi_link}" target="_blank">{doi}</a>'
+                    f'<a href="{doi_link}" target="_blank" title="Open DOI link">{doi}</a>'
                     if doi_link
                     else doi
                 ),
                 "PMID": (
-                    f'<a href="{pmid_link}" target="_blank">{pmid}</a>'
+                    f'<a href="{pmid_link}" target="_blank" title="Open PubMed link">{pmid}</a>'
                     if pmid_link
                     else pmid
                 ),
                 "PMCID": (
-                    f'<a href="{pmcid_link}" target="_blank">{pmcid}</a>'
+                    f'<a href="{pmcid_link}" target="_blank" title="Open PMC link">{pmcid}</a>'
                     if pmcid_link
                     else pmcid
                 ),
                 "Date": pub_date,
-                "XML": "✅" if has_xml else "❌",
+                "XML": xml_link if xml_link else ("✅" if has_xml else "❌"),
                 "PDF": pdf_link if pdf_link else ("✅" if has_pdf else "❌"),
-                "Suppl": "✅" if has_supp else "❌",
+                "Suppl": supp_link if supp_link else ("✅" if has_supp else "❌"),
                 "HTML": html_link if html_link else (
                     "✅"
                     if (
@@ -479,15 +510,33 @@ class PygetpapersDatatables:
             }
             table_data.append(row)
 
-        # Create HTML table using datatables
+        # Create HTML table with tooltips using datatables
         try:
-            htmlx, table = HtmlTable.create_html_table(
+            # Define column tooltips
+            column_tooltips = {
+                "Select": "Select paper for bulk operations",
+                "ID": "Unique paper identifier",
+                "Title": "Paper title (truncated if >100 characters)",
+                "Authors": "Author names (truncated if >50 characters)",
+                "Journal": "Journal or repository name",
+                "DOI": "Digital Object Identifier - click to open",
+                "PMID": "PubMed ID - click to open in PubMed",
+                "PMCID": "PubMed Central ID - click to open in PMC",
+                "Date": "Publication date",
+                "XML": "XML fulltext file - click to download/view",
+                "PDF": "PDF fulltext file - click to download/view",
+                "Suppl": "Supplementary files - click to browse",
+                "HTML": "HTML version of fulltext - click to view",
+                "Enhanced": "Enhanced HTML with semantic markup",
+                "Files": "Total number of files in paper directory"
+            }
+            
+            htmlx = self._create_datatable_with_tooltips(
                 dict_by_id=OrderedDict({row["ID"]: row for row in table_data}),
-                datatables=True,
                 table_id=table_id,
+                column_tooltips=column_tooltips
             )
-
-            # htmlx is now a string, not an lxml element
+            
             return htmlx
 
         except Exception as e:
@@ -635,6 +684,141 @@ class PygetpapersDatatables:
             logger.error(f"Error creating summary table: {e}")
             return self._create_simple_table(summary_data)
 
+    def _create_datatable_with_tooltips(
+        self, 
+        dict_by_id: OrderedDict, 
+        table_id: str, 
+        column_tooltips: Dict[str, str]
+    ) -> str:
+        """
+        Create a datatable with tooltips for column headers.
+
+        Args:
+            dict_by_id: OrderedDict with data
+            table_id: Unique ID for the table
+            column_tooltips: Dictionary mapping column names to tooltip text
+
+        Returns:
+            HTML string with datatable and tooltips
+        """
+        if not dict_by_id:
+            return "<p>No data available.</p>"
+
+        # Get headers from first item
+        first_item = next(iter(dict_by_id.values()))
+        headers = list(first_item.keys())
+
+        # Build HTML table with tooltips
+        html_parts = []
+        html_parts.append(
+            f'<table id="{table_id}" style="width: 100%; border-collapse: collapse;">'
+        )
+
+        # Header with tooltips
+        html_parts.append("<thead><tr>")
+        for header in headers:
+            tooltip = column_tooltips.get(header, header)
+            html_parts.append(
+                f'<th style="border: 1px solid #ddd; padding: 8px; '
+                f'background-color: #f2f2f2;" title="{tooltip}">{header}</th>'
+            )
+        html_parts.append("</tr></thead>")
+
+        # Body
+        html_parts.append("<tbody>")
+        for item_id, item_data in dict_by_id.items():
+            html_parts.append("<tr>")
+            for header in headers:
+                value = item_data.get(header, "")
+                html_parts.append(
+                    f'<td style="border: 1px solid #ddd; padding: 8px;">{value}</td>'
+                )
+            html_parts.append("</tr>")
+        html_parts.append("</tbody>")
+
+        html_parts.append("</table>")
+        table_html = "".join(html_parts)
+
+        # Create complete HTML document with datatables
+        full_html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" type="text/css"
+                  href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+            <style>
+                .tooltip {{
+                    position: relative;
+                    display: inline-block;
+                }}
+                .tooltip .tooltiptext {{
+                    visibility: hidden;
+                    width: 200px;
+                    background-color: #555;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -100px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }}
+                .tooltip:hover .tooltiptext {{
+                    visibility: visible;
+                    opacity: 1;
+                }}
+            </style>
+            <script>
+            $(document).ready(function() {{
+                $('#{table_id}').DataTable({{
+                    pageLength: 25,
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    responsive: true,
+                    scrollX: true,
+                    columnDefs: [
+                        {{
+                            targets: '_all',
+                            render: function(data, type, row) {{
+                                if (type === 'display' && typeof data === 'string' && data.includes('<')) {{
+                                    return data; // Allow HTML rendering
+                                }}
+                                return data;
+                            }}
+                        }}
+                    ],
+                    language: {{
+                        search: "Search:",
+                        lengthMenu: "Show _MENU_ entries per page",
+                        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                        infoEmpty: "Showing 0 to 0 of 0 entries",
+                        infoFiltered: "(filtered from _MAX_ total entries)",
+                        paginate: {{
+                            first: "First",
+                            last: "Last",
+                            next: "Next",
+                            previous: "Previous"
+                        }}
+                    }}
+                }});
+            }});
+            </script>
+        </head>
+        <body>
+            <div style="overflow-x: auto;">
+                {table_html}
+            </div>
+        </body>
+        </html>
+        """
+
+        return full_html
+
     def _create_simple_table(self, data: List[Dict[str, Any]]) -> str:
         """
         Create a simple HTML table as fallback.
@@ -763,11 +947,18 @@ class PygetpapersDatatables:
                 return paper
         return None
 
+    # DRAFT: Corpus comparison functionality - REMOVED FROM PUBLIC VIEW
+    # This feature is under development and not ready for public use
+    # ORIGINAL AUTHOR: petermr (Peter Murray-Rust) - July 5, 2025
+    # EDITED: Assistant on 2024-12-19 for pygetpapers v2.0 - CURRENTLY IN DRAFT STATUS
     def merge_corpora(
         self, corpora_data: List[Dict[str, Any]], merged_name: str = "merged_corpus"
     ) -> Dict[str, Any]:
         """
-        Merge multiple corpora into a single dataset.
+        DRAFT: Merge multiple corpora into a single dataset.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             corpora_data: List of output data from multiple corpora
@@ -776,48 +967,20 @@ class PygetpapersDatatables:
         Returns:
             Merged corpus data
         """
-        merged_data = {
+        logger.warning("Corpus merging is currently in draft status and not available for public use.")
+        return {
             "output_dir": merged_name,
             "metadata_files": {},
             "paper_directories": [],
-            "summary": {},
+            "summary": {"total_papers": 0, "source_corpora": 0},
         }
-
-        # Merge paper directories
-        seen_papers = set()
-        for corpus_data in corpora_data:
-            for paper in corpus_data["paper_directories"]:
-                if paper["directory"] not in seen_papers:
-                    merged_data["paper_directories"].append(paper)
-                    seen_papers.add(paper["directory"])
-
-        # Merge metadata files (keep unique ones)
-        for corpus_data in corpora_data:
-            for filename, data in corpus_data["metadata_files"].items():
-                if filename not in merged_data["metadata_files"]:
-                    merged_data["metadata_files"][filename] = data
-
-        # Update summary
-        merged_data["summary"] = {
-            "total_papers": len(merged_data["paper_directories"]),
-            "metadata_files_found": list(merged_data["metadata_files"].keys()),
-            "has_xml": any(
-                "fulltext.xml" in str(p) for p in merged_data["paper_directories"]
-            ),
-            "has_pdf": any(
-                "fulltext.pdf" in str(p) for p in merged_data["paper_directories"]
-            ),
-            "has_supplementary": any(
-                "supplementary" in str(p) for p in merged_data["paper_directories"]
-            ),
-            "source_corpora": len(corpora_data),
-        }
-
-        return merged_data
 
     def compare_corpora(self, corpora_data: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
-        Compare multiple corpora and generate comparison statistics.
+        DRAFT: Compare multiple corpora and generate comparison statistics.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             corpora_data: List of output data from multiple corpora
@@ -825,56 +988,16 @@ class PygetpapersDatatables:
         Returns:
             Comparison data with statistics
         """
-        comparison = {"corpora": [], "overlap_analysis": {}, "summary_stats": {}}
-
-        # Analyze each corpus
-        for i, corpus_data in enumerate(corpora_data):
-            corpus_info = {
-                "name": corpus_data["output_dir"],
-                "total_papers": corpus_data["summary"]["total_papers"],
-                "has_xml": corpus_data["summary"]["has_xml"],
-                "has_pdf": corpus_data["summary"]["has_pdf"],
-                "has_supplementary": corpus_data["summary"]["has_supplementary"],
-                "paper_ids": set(
-                    paper["directory"] for paper in corpus_data["paper_directories"]
-                ),
-            }
-            comparison["corpora"].append(corpus_info)
-
-        # Find overlaps
-        if len(corpora_data) > 1:
-            all_paper_ids = [corpus["paper_ids"] for corpus in comparison["corpora"]]
-            common_papers = set.intersection(*all_paper_ids)
-
-            comparison["overlap_analysis"] = {
-                "common_papers": len(common_papers),
-                "common_paper_ids": list(common_papers),
-                "unique_papers_per_corpus": [
-                    len(corpus["paper_ids"] - common_papers)
-                    for corpus in comparison["corpora"]
-                ],
-            }
-
-        # Summary statistics
-        total_papers = sum(corpus["total_papers"] for corpus in comparison["corpora"])
-        comparison["summary_stats"] = {
-            "total_corpora": len(corpora_data),
-            "total_papers": total_papers,
-            "average_papers_per_corpus": (
-                total_papers / len(corpora_data) if corpora_data else 0
-            ),
-            "corpora_with_xml": sum(
-                1 for corpus in comparison["corpora"] if corpus["has_xml"]
-            ),
-            "corpora_with_pdf": sum(
-                1 for corpus in comparison["corpora"] if corpus["has_pdf"]
-            ),
-            "corpora_with_supplementary": sum(
-                1 for corpus in comparison["corpora"] if corpus["has_supplementary"]
-            ),
+        logger.warning("Corpus comparison is currently in draft status and not available for public use.")
+        return {
+            "corpora": [],
+            "overlap_analysis": {},
+            "summary_stats": {
+                "total_corpora": 0,
+                "total_papers": 0,
+                "average_papers_per_corpus": 0,
+            },
         }
-
-        return comparison
 
     def search_fulltext(
         self,
@@ -1235,9 +1358,16 @@ class PygetpapersDatatables:
 
         return filtered_data
 
+    # DRAFT: Figure extraction functionality - REMOVED FROM PUBLIC VIEW
+    # This feature is under development and not ready for public use
+    # ORIGINAL AUTHOR: petermr (Peter Murray-Rust) - July 5, 2025
+    # EDITED: Assistant on 2024-12-19 for pygetpapers v2.0 - CURRENTLY IN DRAFT STATUS
     def extract_figures(self, output_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Extract figures, captions, and thumbnails from papers.
+        DRAFT: Extract figures, captions, and thumbnails from papers.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             output_data: Output from read_pygetpapers_output
@@ -1245,7 +1375,8 @@ class PygetpapersDatatables:
         Returns:
             Dictionary containing figure information for each paper
         """
-        figures_data = {
+        logger.warning("Figure extraction is currently in draft status and not available for public use.")
+        return {
             "papers": {},
             "summary": {
                 "total_figures": 0,
@@ -1253,17 +1384,6 @@ class PygetpapersDatatables:
                 "figure_types": {},
             },
         }
-
-        for paper in output_data["paper_directories"]:
-            paper_figures = self._extract_paper_figures(paper)
-            if paper_figures:
-                figures_data["papers"][paper["directory"]] = paper_figures
-                figures_data["summary"]["papers_with_figures"] += 1
-                figures_data["summary"]["total_figures"] += len(
-                    paper_figures["figures"]
-                )
-
-        return figures_data
 
     def _extract_paper_figures(self, paper: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """
@@ -1655,11 +1775,18 @@ class PygetpapersDatatables:
             logger.warning(f"Error creating thumbnail for {image_file}: {e}")
             return None
 
+    # DRAFT: Figure table creation - REMOVED FROM PUBLIC VIEW
+    # This feature is under development and not ready for public use
+    # ORIGINAL AUTHOR: petermr (Peter Murray-Rust) - July 5, 2025
+    # EDITED: Assistant on 2024-12-19 for pygetpapers v2.0 - CURRENTLY IN DRAFT STATUS
     def create_figures_table(
         self, figures_data: Dict[str, Any], table_id: str = "figures_table"
     ) -> str:
         """
-        Create a table showing figures with thumbnails.
+        DRAFT: Create a table showing figures with thumbnails.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             figures_data: Output from extract_figures
@@ -1668,71 +1795,21 @@ class PygetpapersDatatables:
         Returns:
             HTML string with figures table
         """
-        if not figures_data["papers"]:
-            return "<p>No figures found in the papers.</p>"
+        logger.warning("Figure table creation is currently in draft status and not available for public use.")
+        return "<p>Figure table creation is currently in draft status and not available for public use.</p>"
 
-        # Prepare table data
-        table_data = []
-        for paper_id, paper_figures in figures_data["papers"].items():
-            for figure in paper_figures["figures"]:
-                # Create thumbnail HTML
-                thumbnail_html = ""
-                if figure.get("thumbnail"):
-                    thumbnail_html = (
-                        f'<img src="{figure["thumbnail"]}" alt="Thumbnail" '
-                        'style="max-width: 100px; max-height: 100px;">'
-                    )
-                elif figure.get("image_src"):
-                    thumbnail_html = (
-                        '<span style="color: #666;">📷 Image available</span>'
-                    )
-                else:
-                    thumbnail_html = '<span style="color: #999;">No image</span>'
-
-                # Create paper link
-                paper_link = (
-                    f'<a href="#paper_{figure["paper_id"]}" '
-                    f'onclick="showPaperDetails(\'{figure["paper_id"]}\')">'
-                    f'{figure["paper_id"]}</a>'
-                )
-
-                row = {
-                    "Paper ID": paper_link,
-                    "Figure ID": figure["figure_id"],
-                    "Thumbnail": thumbnail_html,
-                    "Caption": (
-                        figure["caption"][:100] + "..."
-                        if len(figure["caption"]) > 100
-                        else figure["caption"]
-                    ),
-                    "Label": figure["label"],
-                    "Title": figure["title"],
-                    "Type": figure["figure_type"],
-                }
-                table_data.append(row)
-
-        # Create HTML table
-        try:
-            htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict(
-                    {f"{row['Paper ID']}_{row['Figure ID']}": row for row in table_data}
-                ),
-                datatables=True,
-                table_id=table_id,
-            )
-
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
-
-        except Exception as e:
-            logger.error(f"Error creating figures table: {e}")
-            return self._create_simple_table(table_data)
-
+    # DRAFT: Figure summary table creation - REMOVED FROM PUBLIC VIEW
+    # This feature is under development and not ready for public use
+    # ORIGINAL AUTHOR: petermr (Peter Murray-Rust) - July 5, 2025
+    # EDITED: Assistant on 2024-12-19 for pygetpapers v2.0 - CURRENTLY IN DRAFT STATUS
     def create_figures_summary_table(
         self, figures_data: Dict[str, Any], table_id: str = "figures_summary_table"
     ) -> str:
         """
-        Create a summary table of figures by paper.
+        DRAFT: Create a summary table of figures by paper.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             figures_data: Output from extract_figures
@@ -1741,52 +1818,21 @@ class PygetpapersDatatables:
         Returns:
             HTML string with figures summary table
         """
-        if not figures_data["papers"]:
-            return "<p>No figures found in the papers.</p>"
+        logger.warning("Figure summary table creation is currently in draft status and not available for public use.")
+        return "<p>Figure summary table creation is currently in draft status and not available for public use.</p>"
 
-        # Prepare summary data
-        summary_data = []
-        for paper_id, paper_figures in figures_data["papers"].items():
-            # Count figure types
-            type_counts = {}
-            for figure in paper_figures["figures"]:
-                fig_type = figure["figure_type"]
-                type_counts[fig_type] = type_counts.get(fig_type, 0) + 1
-
-            row = {
-                "Paper ID": paper_id,
-                "Paper Title": (
-                    paper_figures["paper_title"][:50] + "..."
-                    if len(paper_figures["paper_title"]) > 50
-                    else paper_figures["paper_title"]
-                ),
-                "Total Figures": paper_figures["total_figures"],
-                "XML Figures": type_counts.get("xml_extracted", 0),
-                "Image Files": type_counts.get("image_file", 0),
-                "Captions Only": type_counts.get("caption_only", 0),
-            }
-            summary_data.append(row)
-
-        # Create HTML table
-        try:
-            htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Paper ID"]: row for row in summary_data}),
-                datatables=True,
-                table_id=table_id,
-            )
-
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
-
-        except Exception as e:
-            logger.error(f"Error creating figures summary table: {e}")
-            return self._create_simple_table(summary_data)
-
+    # DRAFT: Corpus comparison table creation - REMOVED FROM PUBLIC VIEW
+    # This feature is under development and not ready for public use
+    # ORIGINAL AUTHOR: petermr (Peter Murray-Rust) - July 5, 2025
+    # EDITED: Assistant on 2024-12-19 for pygetpapers v2.0 - CURRENTLY IN DRAFT STATUS
     def create_comparison_table(
         self, comparison_data: Dict[str, Any], table_id: str = "comparison_table"
     ) -> str:
         """
-        Create a comparison table for multiple corpora.
+        DRAFT: Create a comparison table for multiple corpora.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             comparison_data: Output from compare_corpora
@@ -1795,41 +1841,21 @@ class PygetpapersDatatables:
         Returns:
             HTML string with comparison table
         """
-        if not comparison_data["corpora"]:
-            return "<p>No corpora to compare.</p>"
+        logger.warning("Corpus comparison table creation is currently in draft status and not available for public use.")
+        return "<p>Corpus comparison table creation is currently in draft status and not available for public use.</p>"
 
-        # Prepare comparison data
-        comparison_rows = []
-        for corpus in comparison_data["corpora"]:
-            row = {
-                "Corpus": corpus["name"],
-                "Total Papers": corpus["total_papers"],
-                "XML Files": "✅" if corpus["has_xml"] else "❌",
-                "PDF Files": "✅" if corpus["has_pdf"] else "❌",
-                "Supplementary": "✅" if corpus["has_supplementary"] else "❌",
-            }
-            comparison_rows.append(row)
-
-        # Create HTML table
-        try:
-            htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Corpus"]: row for row in comparison_rows}),
-                datatables=True,
-                table_id=table_id,
-            )
-
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
-
-        except Exception as e:
-            logger.error(f"Error creating comparison table: {e}")
-            return self._create_simple_table(comparison_rows)
-
+    # DRAFT: Corpus overlap table creation - REMOVED FROM PUBLIC VIEW
+    # This feature is under development and not ready for public use
+    # ORIGINAL AUTHOR: petermr (Peter Murray-Rust) - July 5, 2025
+    # EDITED: Assistant on 2024-12-19 for pygetpapers v2.0 - CURRENTLY IN DRAFT STATUS
     def create_overlap_table(
         self, comparison_data: Dict[str, Any], table_id: str = "overlap_table"
     ) -> str:
         """
-        Create an overlap analysis table.
+        DRAFT: Create an overlap analysis table.
+        
+        This feature is under development and not ready for public use.
+        It has been removed from the public API.
 
         Args:
             comparison_data: Output from compare_corpora
@@ -1838,59 +1864,8 @@ class PygetpapersDatatables:
         Returns:
             HTML string with overlap table
         """
-        if not comparison_data.get("overlap_analysis"):
-            return "<p>No overlap analysis available.</p>"
-
-        overlap = comparison_data["overlap_analysis"]
-        summary = comparison_data["summary_stats"]
-
-        overlap_data = [
-            {
-                "Metric": "Total Corpora",
-                "Value": summary["total_corpora"],
-                "Description": "Number of corpora compared",
-            },
-            {
-                "Metric": "Common Papers",
-                "Value": overlap["common_papers"],
-                "Description": "Papers found in all corpora",
-            },
-            {
-                "Metric": "Average Papers per Corpus",
-                "Value": f"{summary['average_papers_per_corpus']:.1f}",
-                "Description": "Average number of papers per corpus",
-            },
-        ]
-
-        # Add unique papers per corpus
-        for i, unique_count in enumerate(overlap.get("unique_papers_per_corpus", [])):
-            corpus_name = (
-                comparison_data["corpora"][i]["name"]
-                if i < len(comparison_data["corpora"])
-                else f"Corpus {i + 1}"
-            )
-            overlap_data.append(
-                {
-                    "Metric": f"Unique in {corpus_name}",
-                    "Value": unique_count,
-                    "Description": f"Papers unique to {corpus_name}",
-                }
-            )
-
-        # Create HTML table
-        try:
-            htmlx, table = HtmlTable.create_html_table(
-                dict_by_id=OrderedDict({row["Metric"]: row for row in overlap_data}),
-                datatables=True,
-                table_id=table_id,
-            )
-
-            html_string = ET.tostring(htmlx, encoding="unicode", pretty_print=True)
-            return html_string
-
-        except Exception as e:
-            logger.error(f"Error creating overlap table: {e}")
-            return self._create_simple_table(overlap_data)
+        logger.warning("Corpus overlap table creation is currently in draft status and not available for public use.")
+        return "<p>Corpus overlap table creation is currently in draft status and not available for public use.</p>"
 
     def save_datatables_to_output(
         self,

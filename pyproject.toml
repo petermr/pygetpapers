@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygetpapers"
-version = "1.2.5a23"
+version = "1.2.5a24"
 description = "A tool to download papers from various repositories"
 readme = "README.md"
 license = {text = "MIT"}

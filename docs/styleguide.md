@@ -2,6 +2,29 @@
 
 This document records coding and naming conventions for the pygetpapers project.
 
+## Query Examples
+
+### STYLE: Use climate change examples for demonstrations and testing
+
+- ✅ **Good**: `"climate change AND adaptation"`, `"global warming AND mitigation"`, `"carbon sequestration"`
+- ❌ **Bad**: `"cancer AND immunotherapy"`, `"artificial intelligence"`, `"machine learning"`
+
+**Rationale**: Climate change is a universally relevant topic that demonstrates the tool's capabilities while being accessible to all users. It avoids medical or technical jargon that might not be familiar to all audiences.
+
+### STYLE: Include full download flags in examples
+
+- ✅ **Good**: `pygetpapers --query "climate change AND adaptation" --api europe_pmc --limit 5 -x -p --fulltext_html --datatables`
+- ❌ **Bad**: `pygetpapers --query "climate change AND adaptation" --limit 5`
+
+**Rationale**: Examples should demonstrate the full capabilities by downloading XML (-x), PDF (-p), and generating HTML (--fulltext_html) to show local file links in datatables.
+
+### STYLE: Never write any files to root directory of pygetpapers project without asking
+
+- ✅ **Good**: Write files to appropriate subdirectories (examples/, temp/, docs/, etc.)
+- ❌ **Bad**: Creating files directly in the project root without explicit permission
+
+**Rationale**: The root directory should remain clean and organized. All output files, examples, and temporary files should go to designated directories. This prevents clutter and maintains project structure integrity.
+
 ## File Naming Conventions
 
 ### STYLE: All filenames should only have alphanumeric and underscores
