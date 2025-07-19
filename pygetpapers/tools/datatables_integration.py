@@ -463,6 +463,11 @@ class PygetpapersDatatables:
                 if supp_files:
                     supp_link = f'<a href="{relative_paper_path}/supplementary/" target="_blank" title="Open supplementary files directory">📁 Suppl ({len(supp_files)})</a>'
 
+            # Extract abstract using enhanced method
+            abstract = self._extract_abstract_string(metadata)
+            if not abstract:
+                abstract = "No abstract available"
+            
             # Create row data with hyperlinks and tooltips
             row = {
                 "Select": (
@@ -474,6 +479,7 @@ class PygetpapersDatatables:
                 "ID": paper["directory"],
                 "Title": title[:100] + "..." if len(title) > 100 else title,
                 "Authors": authors[:50] + "..." if len(authors) > 50 else authors,
+                "Abstract": abstract[:150] + "..." if len(abstract) > 150 else abstract,
                 "Journal": journal,
                 "DOI": (
                     f'<a href="{doi_link}" target="_blank" title="Open DOI link">{doi}</a>'
@@ -518,6 +524,7 @@ class PygetpapersDatatables:
                 "ID": "Unique paper identifier",
                 "Title": "Paper title (truncated if >100 characters)",
                 "Authors": "Author names (truncated if >50 characters)",
+                "Abstract": "Paper abstract (truncated if >150 characters)",
                 "Journal": "Journal or repository name",
                 "DOI": "Digital Object Identifier - click to open",
                 "PMID": "PubMed ID - click to open in PubMed",
@@ -1866,6 +1873,578 @@ class PygetpapersDatatables:
         """
         logger.warning("Corpus overlap table creation is currently in draft status and not available for public use.")
         return "<p>Corpus overlap table creation is currently in draft status and not available for public use.</p>"
+
+    def search_datatables_fields(
+        self,
+        output_data: Dict[str, Any],
+        wordlist: List[str],
+        search_fields: List[str] = None,
+        case_sensitive: bool = False,
+        min_hits: int = 1,
+    ) -> Dict[str, Any]:
+        """
+        Search datatables fields with a wordlist and flag which ones have the highest hits.
+
+        Args:
+            output_data: Output from read_pygetpapers_output
+            wordlist: List of words to search for
+            search_fields: Fields to search in (default: all text fields)
+            case_sensitive: Whether search should be case sensitive
+            min_hits: Minimum number of hits to include in results
+
+        Returns:
+            Search results with field hit counts and flagged papers
+        """
+        if search_fields is None:
+            search_fields = ["Title", "Authors", "Abstract", "Journal", "Keywords", "DOI", "PMID", "PMCID"]
+
+        search_results = {
+            "wordlist": wordlist,
+            "search_fields": search_fields,
+            "case_sensitive": case_sensitive,
+            "min_hits": min_hits,
+            "field_hit_counts": {},
+            "paper_hits": {},
+            "flagged_papers": [],
+            "summary": {},
+        }
+
+        # Initialize field hit counts
+        for field in search_fields:
+            search_results["field_hit_counts"][field] = {
+                "total_hits": 0,
+                "papers_with_hits": 0,
+                "word_hits": {word: 0 for word in wordlist}
+            }
+
+        # Initialize paper hits
+        for paper in output_data["paper_directories"]:
+            search_results["paper_hits"][paper["directory"]] = {
+                "total_hits": 0,
+                "field_hits": {field: 0 for field in search_fields},
+                "word_hits": {word: 0 for word in wordlist},
+                "matches": []
+            }
+
+        # Process each paper
+        for paper in output_data["paper_directories"]:
+            metadata = paper.get("metadata", {})
+            paper_id = paper["directory"]
+
+            # Extract field values
+            field_values = {
+                "Title": metadata.get("title", ""),
+                "Authors": self._extract_authors_string(metadata),
+                "Abstract": self._extract_abstract_string(metadata),
+                "Journal": self._extract_journal_string(metadata),
+                "Keywords": self._extract_keywords_string(metadata),
+                "DOI": metadata.get("doi", ""),
+                "PMID": metadata.get("pmid", ""),
+                "PMCID": metadata.get("pmcid", ""),
+            }
+
+            # Search in each field
+            for field in search_fields:
+                if field in field_values:
+                    field_text = str(field_values[field])
+                    
+                    if not case_sensitive:
+                        field_text = field_text.lower()
+                        # Keep original words for dictionary keys, use lowercase for searching
+                        search_words = [(original_word, original_word.lower()) for original_word in wordlist]
+                    else:
+                        search_words = [(word, word) for word in wordlist]
+
+                    # Count hits for each word
+                    for original_word, search_word in search_words:
+                        hit_count = field_text.count(search_word)
+                        if hit_count > 0:
+                            # Update field hit counts using original word case
+                            search_results["field_hit_counts"][field]["word_hits"][original_word] += hit_count
+                            search_results["field_hit_counts"][field]["total_hits"] += hit_count
+                            
+                            # Update paper hit counts
+                            search_results["paper_hits"][paper_id]["word_hits"][original_word] += hit_count
+                            search_results["paper_hits"][paper_id]["field_hits"][field] += hit_count
+                            search_results["paper_hits"][paper_id]["total_hits"] += hit_count
+                            
+                            # Add match details
+                            search_results["paper_hits"][paper_id]["matches"].append({
+                                "field": field,
+                                "word": original_word,
+                                "count": hit_count,
+                                "value": field_values[field][:100] + "..." if len(field_values[field]) > 100 else field_values[field]
+                            })
+
+            # Check if paper meets minimum hit threshold
+            if search_results["paper_hits"][paper_id]["total_hits"] >= min_hits:
+                search_results["flagged_papers"].append(paper_id)
+
+        # Update field summary
+        for field in search_fields:
+            papers_with_hits = sum(
+                1 for paper_hits in search_results["paper_hits"].values()
+                if paper_hits["field_hits"][field] > 0
+            )
+            search_results["field_hit_counts"][field]["papers_with_hits"] = papers_with_hits
+
+        # Calculate overall summary
+        total_papers = len(output_data["paper_directories"])
+        flagged_count = len(search_results["flagged_papers"])
+        
+        search_results["summary"] = {
+            "total_papers": total_papers,
+            "flagged_papers": flagged_count,
+            "flag_rate": flagged_count / total_papers if total_papers > 0 else 0,
+            "total_hits": sum(
+                paper_hits["total_hits"] 
+                for paper_hits in search_results["paper_hits"].values()
+            ),
+            "most_hit_fields": sorted(
+                search_fields,
+                key=lambda f: search_results["field_hit_counts"][f]["total_hits"],
+                reverse=True
+            ),
+            "most_hit_words": sorted(
+                wordlist,
+                key=lambda w: sum(
+                    search_results["field_hit_counts"][f]["word_hits"][w]
+                    for f in search_fields
+                ),
+                reverse=True
+            )
+        }
+
+        return search_results
+
+    def _extract_authors_string(self, metadata: Dict[str, Any]) -> str:
+        """Extract authors as a string from metadata."""
+        if "authorString" in metadata:
+            return metadata["authorString"]
+        elif "authors" in metadata:
+            return metadata["authors"]
+        elif "authorList" in metadata and "author" in metadata["authorList"]:
+            # Europe PMC format
+            author_list = []
+            for author in metadata["authorList"]["author"]:
+                if "fullName" in author:
+                    author_list.append(author["fullName"])
+            return ", ".join(author_list) if author_list else ""
+        return ""
+
+    def _extract_journal_string(self, metadata: Dict[str, Any]) -> str:
+        """Extract journal name as a string from metadata."""
+        if "journalInfo" in metadata and "journal" in metadata["journalInfo"]:
+            return metadata["journalInfo"]["journal"].get("title", "")
+        elif "journalTitle" in metadata:
+            return metadata["journalTitle"]
+        elif "journal" in metadata:
+            return metadata["journal"]
+        return ""
+
+    def _extract_keywords_string(self, metadata: Dict[str, Any]) -> str:
+        """Extract keywords as a string from metadata."""
+        keywords = metadata.get("keywords", [])
+        if isinstance(keywords, list):
+            return ", ".join(keywords)
+        elif isinstance(keywords, str):
+            return keywords
+        return ""
+
+    def _extract_abstract_string(self, metadata: Dict[str, Any]) -> str:
+        """
+        Extract abstract as a string from metadata.
+        
+        Handles multiple abstract field names and formats:
+        - abstract
+        - abstractText  
+        - description
+        - summary
+        - Europe PMC format: abstractText
+        - Crossref format: abstract
+        - ArXiv format: summary
+        
+        Args:
+            metadata: Paper metadata dictionary
+            
+        Returns:
+            Abstract text string or empty string if not found
+        """
+        # Try different abstract field names
+        abstract_fields = [
+            "abstract",
+            "abstractText", 
+            "description",
+            "summary",
+            "content"
+        ]
+        
+        for field in abstract_fields:
+            if field in metadata:
+                abstract = metadata[field]
+                if isinstance(abstract, str) and abstract.strip():
+                    return abstract.strip()
+                elif isinstance(abstract, list):
+                    # Handle list format (e.g., multiple paragraphs)
+                    return " ".join(str(item).strip() for item in abstract if str(item).strip())
+        
+        # Try nested structures (Europe PMC format)
+        if "abstractText" in metadata:
+            abstract_text = metadata["abstractText"]
+            if isinstance(abstract_text, str) and abstract_text.strip():
+                return abstract_text.strip()
+        
+        # Try journal info structure
+        if "journalInfo" in metadata and "journal" in metadata["journalInfo"]:
+            journal_info = metadata["journalInfo"]["journal"]
+            if "abstract" in journal_info:
+                abstract = journal_info["abstract"]
+                if isinstance(abstract, str) and abstract.strip():
+                    return abstract.strip()
+        
+        return ""
+
+    def extract_abstracts(self, output_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Extract abstracts from all papers in the output data.
+        
+        Args:
+            output_data: Output from read_pygetpapers_output
+            
+        Returns:
+            Dictionary with abstract extraction results
+        """
+        abstracts_data = {
+            "total_papers": len(output_data["paper_directories"]),
+            "papers_with_abstracts": 0,
+            "papers_without_abstracts": 0,
+            "abstract_lengths": {},
+            "abstract_sources": {},
+            "papers": {}
+        }
+        
+        for paper in output_data["paper_directories"]:
+            paper_id = paper["directory"]
+            metadata = paper.get("metadata", {})
+            
+            # Extract abstract
+            abstract = self._extract_abstract_string(metadata)
+            
+            # Determine abstract source
+            abstract_source = "none"
+            if "abstract" in metadata and metadata["abstract"]:
+                abstract_source = "abstract"
+            elif "abstractText" in metadata and metadata["abstractText"]:
+                abstract_source = "abstractText"
+            elif "description" in metadata and metadata["description"]:
+                abstract_source = "description"
+            elif "summary" in metadata and metadata["summary"]:
+                abstract_source = "summary"
+            elif "content" in metadata and metadata["content"]:
+                abstract_source = "content"
+            
+            # Store paper abstract data
+            abstracts_data["papers"][paper_id] = {
+                "has_abstract": bool(abstract),
+                "abstract": abstract,
+                "abstract_length": len(abstract) if abstract else 0,
+                "abstract_source": abstract_source,
+                "title": metadata.get("title", ""),
+                "authors": self._extract_authors_string(metadata),
+                "journal": self._extract_journal_string(metadata)
+            }
+            
+            # Update counts
+            if abstract:
+                abstracts_data["papers_with_abstracts"] += 1
+                abstracts_data["abstract_lengths"][paper_id] = len(abstract)
+                abstracts_data["abstract_sources"][paper_id] = abstract_source
+            else:
+                abstracts_data["papers_without_abstracts"] += 1
+        
+        # Calculate statistics
+        abstracts_data["abstract_coverage"] = (
+            abstracts_data["papers_with_abstracts"] / abstracts_data["total_papers"]
+            if abstracts_data["total_papers"] > 0 else 0
+        )
+        
+        # Calculate average abstract length
+        if abstracts_data["abstract_lengths"]:
+            avg_length = sum(abstracts_data["abstract_lengths"].values()) / len(abstracts_data["abstract_lengths"])
+            abstracts_data["average_abstract_length"] = round(avg_length, 2)
+        else:
+            abstracts_data["average_abstract_length"] = 0
+        
+        return abstracts_data
+
+    def create_abstracts_table(
+        self, 
+        abstracts_data: Dict[str, Any], 
+        table_id: str = "abstracts_table"
+    ) -> str:
+        """
+        Create an interactive HTML table showing abstract information.
+        
+        Args:
+            abstracts_data: Output from extract_abstracts
+            table_id: Unique ID for the table
+            
+        Returns:
+            HTML string with interactive table
+        """
+        if not abstracts_data["papers"]:
+            return "<p>No papers found for abstract analysis.</p>"
+        
+        # Prepare table data
+        table_data = []
+        for paper_id, paper_data in abstracts_data["papers"].items():
+            abstract = paper_data["abstract"]
+            if not abstract:
+                abstract = "No abstract available"
+            
+            # Truncate abstract for display
+            display_abstract = abstract[:200] + "..." if len(abstract) > 200 else abstract
+            
+            row = {
+                "Paper ID": paper_id,
+                "Title": paper_data["title"][:80] + "..." if len(paper_data["title"]) > 80 else paper_data["title"],
+                "Authors": paper_data["authors"][:50] + "..." if len(paper_data["authors"]) > 50 else paper_data["authors"],
+                "Journal": paper_data["journal"][:40] + "..." if len(paper_data["journal"]) > 40 else paper_data["journal"],
+                "Abstract": display_abstract,
+                "Length": paper_data["abstract_length"],
+                "Source": paper_data["abstract_source"],
+                "Has Abstract": "✅" if paper_data["has_abstract"] else "❌"
+            }
+            table_data.append(row)
+        
+        # Sort by abstract length (descending)
+        table_data.sort(key=lambda x: x["Length"], reverse=True)
+        
+        # Create HTML table with tooltips
+        column_tooltips = {
+            "Paper ID": "Unique paper identifier",
+            "Title": "Paper title (truncated if >80 characters)",
+            "Authors": "Author names (truncated if >50 characters)",
+            "Journal": "Journal name (truncated if >40 characters)",
+            "Abstract": "Paper abstract (truncated if >200 characters)",
+            "Length": "Number of characters in abstract",
+            "Source": "Source field used for abstract extraction",
+            "Has Abstract": "Whether paper has an abstract"
+        }
+        
+        try:
+            html_table = self._create_datatable_with_tooltips(
+                dict_by_id=OrderedDict({row["Paper ID"]: row for row in table_data}),
+                table_id=table_id,
+                column_tooltips=column_tooltips
+            )
+            
+            return html_table
+            
+        except Exception as e:
+            logger.error(f"Error creating abstracts table: {e}")
+            return self._create_simple_table(table_data)
+
+    def create_abstracts_summary_table(
+        self, 
+        abstracts_data: Dict[str, Any], 
+        table_id: str = "abstracts_summary_table"
+    ) -> str:
+        """
+        Create a summary table showing abstract statistics.
+        
+        Args:
+            abstracts_data: Output from extract_abstracts
+            table_id: Unique ID for the table
+            
+        Returns:
+            HTML string with summary table
+        """
+        # Prepare summary data
+        summary_data = [
+            {
+                "Metric": "Total Papers",
+                "Value": abstracts_data["total_papers"],
+                "Description": "Total number of papers analyzed"
+            },
+            {
+                "Metric": "Papers with Abstracts",
+                "Value": abstracts_data["papers_with_abstracts"],
+                "Description": "Number of papers that have abstracts"
+            },
+            {
+                "Metric": "Papers without Abstracts", 
+                "Value": abstracts_data["papers_without_abstracts"],
+                "Description": "Number of papers missing abstracts"
+            },
+            {
+                "Metric": "Abstract Coverage",
+                "Value": f"{abstracts_data['abstract_coverage']:.1%}",
+                "Description": "Percentage of papers with abstracts"
+            },
+            {
+                "Metric": "Average Abstract Length",
+                "Value": f"{abstracts_data['average_abstract_length']} characters",
+                "Description": "Average number of characters per abstract"
+            }
+        ]
+        
+        # Create HTML table
+        try:
+            html_table = self._create_datatable_with_tooltips(
+                dict_by_id=OrderedDict({row["Metric"]: row for row in summary_data}),
+                table_id=table_id,
+                column_tooltips={
+                    "Metric": "Statistical measure",
+                    "Value": "Calculated value",
+                    "Description": "Explanation of the metric"
+                }
+            )
+            
+            return html_table
+            
+        except Exception as e:
+            logger.error(f"Error creating abstracts summary table: {e}")
+            return self._create_simple_table(summary_data)
+
+    def create_wordlist_search_table(
+        self, 
+        search_results: Dict[str, Any], 
+        table_id: str = "wordlist_search_table"
+    ) -> str:
+        """
+        Create an interactive HTML table showing wordlist search results.
+
+        Args:
+            search_results: Results from search_datatables_fields
+            table_id: Unique ID for the table
+
+        Returns:
+            HTML string with interactive table
+        """
+        if not search_results["flagged_papers"]:
+            return "<p>No papers found matching the wordlist criteria.</p>"
+
+        # Prepare table data
+        table_data = []
+        for paper_id in search_results["flagged_papers"]:
+            paper_hits = search_results["paper_hits"][paper_id]
+            
+            # Create field hit summary
+            field_summary = []
+            for field in search_results["search_fields"]:
+                hits = paper_hits["field_hits"][field]
+                if hits > 0:
+                    field_summary.append(f"{field}: {hits}")
+            
+            # Create word hit summary
+            word_summary = []
+            for word in search_results["wordlist"]:
+                hits = paper_hits["word_hits"][word]
+                if hits > 0:
+                    word_summary.append(f"{word}: {hits}")
+            
+            # Create match details
+            match_details = []
+            for match in paper_hits["matches"][:5]:  # Show first 5 matches
+                match_details.append(
+                    f"{match['field']} ({match['word']}): {match['count']} - {match['value']}"
+                )
+            if len(paper_hits["matches"]) > 5:
+                match_details.append(f"... and {len(paper_hits['matches']) - 5} more matches")
+
+            row = {
+                "Paper ID": paper_id,
+                "Total Hits": paper_hits["total_hits"],
+                "Field Hits": "<br>".join(field_summary),
+                "Word Hits": "<br>".join(word_summary),
+                "Top Matches": "<br>".join(match_details),
+            }
+            table_data.append(row)
+
+        # Sort by total hits (descending)
+        table_data.sort(key=lambda x: x["Total Hits"], reverse=True)
+
+        # Create HTML table with tooltips
+        column_tooltips = {
+            "Paper ID": "Unique paper identifier",
+            "Total Hits": "Total number of word matches across all fields",
+            "Field Hits": "Breakdown of hits by field",
+            "Word Hits": "Breakdown of hits by word",
+            "Top Matches": "Detailed match information with context"
+        }
+        
+        try:
+            html_table = self._create_datatable_with_tooltips(
+                dict_by_id=OrderedDict({row["Paper ID"]: row for row in table_data}),
+                table_id=table_id,
+                column_tooltips=column_tooltips
+            )
+            
+            return html_table
+
+        except Exception as e:
+            logger.error(f"Error creating wordlist search table: {e}")
+            return self._create_simple_table(table_data)
+
+    def create_field_hit_summary_table(
+        self, 
+        search_results: Dict[str, Any], 
+        table_id: str = "field_hit_summary_table"
+    ) -> str:
+        """
+        Create a summary table showing hit counts by field.
+
+        Args:
+            search_results: Results from search_datatables_fields
+            table_id: Unique ID for the table
+
+        Returns:
+            HTML string with summary table
+        """
+        # Prepare table data
+        table_data = []
+        for field in search_results["search_fields"]:
+            field_stats = search_results["field_hit_counts"][field]
+            
+            # Create word breakdown
+            word_breakdown = []
+            for word in search_results["wordlist"]:
+                hits = field_stats["word_hits"][word]
+                if hits > 0:
+                    word_breakdown.append(f"{word}: {hits}")
+            
+            row = {
+                "Field": field,
+                "Total Hits": field_stats["total_hits"],
+                "Papers with Hits": field_stats["papers_with_hits"],
+                "Word Breakdown": "<br>".join(word_breakdown) if word_breakdown else "No hits",
+            }
+            table_data.append(row)
+
+        # Sort by total hits (descending)
+        table_data.sort(key=lambda x: x["Total Hits"], reverse=True)
+
+        # Create HTML table with tooltips
+        column_tooltips = {
+            "Field": "Datatables field name",
+            "Total Hits": "Total number of word matches in this field",
+            "Papers with Hits": "Number of papers with matches in this field",
+            "Word Breakdown": "Breakdown of hits by individual words"
+        }
+        
+        try:
+            html_table = self._create_datatable_with_tooltips(
+                dict_by_id=OrderedDict({row["Field"]: row for row in table_data}),
+                table_id=table_id,
+                column_tooltips=column_tooltips
+            )
+            
+            return html_table
+
+        except Exception as e:
+            logger.error(f"Error creating field hit summary table: {e}")
+            return self._create_simple_table(table_data)
 
     def save_datatables_to_output(
         self,
