@@ -9,4 +9,5 @@ exclude =
     *.egg-info
 ignore = 
     E203,
-    W503 
+    W503,
+    E501 

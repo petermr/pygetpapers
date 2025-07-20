@@ -1,0 +1,45 @@
+{
+  "exploration_date": "2025-07-20 17:20:33",
+  "base_urls": {
+    "global": "https://scielo.org",
+    "brazil": "https://www.scielo.br",
+    "search": "https://search.scielo.org"
+  },
+  "findings": {
+    "search_interface": {
+      "status": "explored",
+      "blocking": "unknown",
+      "parameters": [
+        "q",
+        "lang",
+        "count",
+        "from",
+        "output",
+        "sort",
+        "format"
+      ]
+    },
+    "content_types": {
+      "html": "likely_available",
+      "pdf": "likely_available",
+      "xml": "unknown"
+    },
+    "rate_limiting": {
+      "implemented": true,
+      "delay_seconds": 2.0
+    },
+    "language_support": {
+      "english": true,
+      "spanish": true,
+      "portuguese": true
+    }
+  },
+  "recommendations": [
+    "Implement both basic and Selenium scrapers",
+    "Use proper User-Agent and session management",
+    "Implement rate limiting (2+ seconds between requests)",
+    "Handle 403 Forbidden responses gracefully",
+    "Extract metadata from article pages",
+    "Support multiple content types (HTML, PDF)"
+  ]
+}
