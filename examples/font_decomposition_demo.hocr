@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Font Decomposition Demo</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="ocr-system" content="pygetpapers hOCR Builder"/>
+    <meta name="ocr-capabilities" content="ocr_page ocr_carea ocr_par ocr_line ocr_word ocrx_char"/>
+    <meta name="ocr-langs" content="en"/>
+    <meta name="ocr-number-of-pages" content="1"/>
+    <meta name="ocr-datetime" content="2025-07-19T17:24:25.346356"/>
+  </head>
+  <body>
+    <div class="ocr_page" id="page_1" title="image ''; bbox 0 0 612 792; ppageno 1">
+      <div class="ocr_par" id="par_0" title="bbox 50 50 180 100">
+        <span class="ocr_line" id="line_0" title="bbox 50 50 180 70">
+          <span class="ocr_word" id="word_0" title="bbox 50 50 80 70; x_font &quot;Arial&quot;; x_fsize 12; x_fweight &quot;bold&quot;; x_fstyle &quot;normal&quot;">Bold</span>
+          <span class="ocr_word" id="word_1" title="bbox 85 50 120 70; x_font &quot;Times&quot;; x_fsize 12; x_fweight &quot;normal&quot;; x_fstyle &quot;italic&quot;">Italic</span>
+          <span class="ocr_word" id="word_2" title="bbox 125 50 180 70; x_font &quot;Helvetica&quot;; x_fsize 12; x_fweight &quot;bold&quot;; x_fstyle &quot;italic&quot;">BoldItalic</span>
+        </span>
+        <span class="ocr_line" id="line_1" title="bbox 50 80 160 100">
+          <span class="ocr_word" id="word_0" title="bbox 50 80 100 100; x_font &quot;Arial&quot;; x_fsize 12; x_fweight &quot;normal&quot;; x_fstyle &quot;normal&quot;">Normal</span>
+          <span class="ocr_word" id="word_1" title="bbox 105 80 135 100; x_font &quot;Foo&quot;; x_fsize 12; x_fweight &quot;bold&quot;; x_fstyle &quot;normal&quot;">Foo-B</span>
+          <span class="ocr_word" id="word_2" title="bbox 140 80 160 100; x_font &quot;Bar&quot;; x_fsize 12; x_fweight &quot;normal&quot;; x_fstyle &quot;italic&quot;">Bar-I</span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>PDF Document</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="ocr-system" content="pygetpapers hOCR Builder"/>
+    <meta name="ocr-capabilities" content="ocr_page ocr_carea ocr_par ocr_line ocr_word ocrx_char"/>
+    <meta name="ocr-langs" content="en"/>
+    <meta name="ocr-number-of-pages" content="1"/>
+    <meta name="ocr-datetime" content="2025-07-19T17:24:25.346838"/>
+  </head>
+  <body>
+    <div class="ocr_page" id="page_1" title="image ''; bbox 0 0 612 792; ppageno 1">
+      <div class="ocr_par" id="par_0" title="bbox 50 50 180 100">
+        <span class="ocr_line" id="line_0" title="bbox 50 50 180 70">
+          <span class="ocr_word" id="word_0" title="bbox 50 50 100 70; x_wconf 95; x_font &quot;Arial&quot;; x_fsize 14; x_fweight &quot;bold&quot;; x_fstyle &quot;normal&quot;; x_color &quot;#000000&quot;">Title</span>
+          <span class="ocr_word" id="word_1" title="bbox 105 50 180 70; x_wconf 95; x_font &quot;Times&quot;; x_fsize 12; x_fweight &quot;normal&quot;; x_fstyle &quot;italic&quot;; x_color &quot;#333333&quot;">Subtitle</span>
+        </span>
+        <span class="ocr_line" id="line_1" title="bbox 50 80 140 100">
+          <span class="ocr_word" id="word_0" title="bbox 50 80 80 100; x_wconf 95; x_font &quot;Arial&quot;; x_fsize 10; x_fweight &quot;normal&quot;; x_fstyle &quot;normal&quot;; x_color &quot;#000000&quot;">Body</span>
+          <span class="ocr_word" id="word_1" title="bbox 85 80 140 100; x_wconf 95; x_font &quot;Helvetica&quot;; x_fsize 10; x_fweight &quot;bold&quot;; x_fstyle &quot;italic&quot;; x_color &quot;#000000&quot;">Emphasis</span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l10n xmlns="http://transpect.io/l10n" xml:lang="de">
+  <group name="Linking">
+    <string xml:id="sec">Abschn.</string>
+    <string xml:id="secs">Abschn.</string>
+    <string xml:id="part">Teil</string>
+    <string xml:id="parts">Teile</string>
+    <string xml:id="chapter">Kapitel</string>
+    <string xml:id="chapters">Kapitel</string>
+  </group>
+</l10n>

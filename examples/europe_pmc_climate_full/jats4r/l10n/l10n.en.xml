@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l10n xmlns="http://transpect.io/l10n" xml:lang="de">
+  <group name="Linking">
+    <string xml:id="sec">Sect.</string>
+    <string xml:id="secs">Sects.</string>
+  </group>
+</l10n>

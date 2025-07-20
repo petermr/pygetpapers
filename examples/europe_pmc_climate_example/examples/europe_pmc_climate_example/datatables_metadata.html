@@ -1,0 +1,50 @@
+
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+                    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+                    <script>
+                    $(document).ready(function() {
+                        $('#metadata_table').DataTable({
+                            pageLength: 25,
+                            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                            responsive: true,
+                            scrollX: true,
+                            columnDefs: [
+                                {
+                                    targets: '_all',
+                                    render: function(data, type, row) {
+                                        if (type === 'display' && typeof data === 'string' && data.includes('<')) {
+                                            return data; // Allow HTML rendering
+                                        }
+                                        return data;
+                                    }
+                                }
+                            ],
+                            language: {
+                                search: "Search:",
+                                lengthMenu: "Show _MENU_ entries per page",
+                                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                                infoEmpty: "Showing 0 to 0 of 0 entries",
+                                infoFiltered: "(filtered from _MAX_ total entries)",
+                                paginate: {
+                                    first: "First",
+                                    last: "Last",
+                                    next: "Next",
+                                    previous: "Previous"
+                                }
+                            }
+                        });
+                    });
+                    </script>
+                </head>
+                <body>
+                    <div style="overflow-x: auto;">
+                        <table id="metadata_table" style="width: 100%; border-collapse: collapse;"><thead><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">File</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Type</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Records</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Total Hits</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Format</th></tr></thead><tbody><tr><td style="border: 1px solid #ddd; padding: 8px;">eupmc_results.json</td><td style="border: 1px solid #ddd; padding: 8px;">JSON</td><td style="border: 1px solid #ddd; padding: 8px;">1</td><td style="border: 1px solid #ddd; padding: 8px;">Unknown</td><td style="border: 1px solid #ddd; padding: 8px;">Generic</td></tr></tbody></table>
+                    </div>
+                </body>
+                </html>
+                

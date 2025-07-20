@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Functionality Test Report - Pygetpapers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Abstract Functionality Test Report</h1>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Total Papers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">With Abstracts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">83.3%</div>
+                <div class="stat-label">Coverage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">70</div>
+                <div class="stat-label">Search Hits</div>
+            </div>
+        </div>
+        
+        <h2>📋 Abstract Summary</h2>
+        
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" type="text/css"
+                  href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+            <style>
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                }
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 200px;
+                    background-color: #555;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -100px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            </style>
+            <script>
+            $(document).ready(function() {
+                $('#abstracts_summary_table').DataTable({
+                    pageLength: 25,
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    responsive: true,
+                    scrollX: true,
+                    columnDefs: [
+                        {
+                            targets: '_all',
+                            render: function(data, type, row) {
+                                if (type === 'display' && typeof data === 'string' && data.includes('<')) {
+                                    return data; // Allow HTML rendering
+                                }
+                                return data;
+                            }
+                        }
+                    ],
+                    language: {
+                        search: "Search:",
+                        lengthMenu: "Show _MENU_ entries per page",
+                        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                        infoEmpty: "Showing 0 to 0 of 0 entries",
+                        infoFiltered: "(filtered from _MAX_ total entries)",
+                        paginate: {
+                            first: "First",
+                            last: "Last",
+                            next: "Next",
+                            previous: "Previous"
+                        }
+                    }
+                });
+            });
+            </script>
+        </head>
+        <body>
+            <div style="overflow-x: auto;">
+                <table id="abstracts_summary_table" style="width: 100%; border-collapse: collapse;"><thead><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Statistical measure">Metric</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Calculated value">Value</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Explanation of the metric">Description</th></tr></thead><tbody><tr><td style="border: 1px solid #ddd; padding: 8px;">Total Papers</td><td style="border: 1px solid #ddd; padding: 8px;">6</td><td style="border: 1px solid #ddd; padding: 8px;">Total number of papers analyzed</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">Papers with Abstracts</td><td style="border: 1px solid #ddd; padding: 8px;">5</td><td style="border: 1px solid #ddd; padding: 8px;">Number of papers that have abstracts</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">Papers without Abstracts</td><td style="border: 1px solid #ddd; padding: 8px;">1</td><td style="border: 1px solid #ddd; padding: 8px;">Number of papers missing abstracts</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">Abstract Coverage</td><td style="border: 1px solid #ddd; padding: 8px;">83.3%</td><td style="border: 1px solid #ddd; padding: 8px;">Percentage of papers with abstracts</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">Average Abstract Length</td><td style="border: 1px solid #ddd; padding: 8px;">1594.8 characters</td><td style="border: 1px solid #ddd; padding: 8px;">Average number of characters per abstract</td></tr></tbody></table>
+            </div>
+        </body>
+        </html>
+        
+        
+        <h2>📄 Detailed Abstracts</h2>
+        
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" type="text/css"
+                  href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+            <style>
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                }
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 200px;
+                    background-color: #555;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -100px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            </style>
+            <script>
+            $(document).ready(function() {
+                $('#abstracts_table').DataTable({
+                    pageLength: 25,
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    responsive: true,
+                    scrollX: true,
+                    columnDefs: [
+                        {
+                            targets: '_all',
+                            render: function(data, type, row) {
+                                if (type === 'display' && typeof data === 'string' && data.includes('<')) {
+                                    return data; // Allow HTML rendering
+                                }
+                                return data;
+                            }
+                        }
+                    ],
+                    language: {
+                        search: "Search:",
+                        lengthMenu: "Show _MENU_ entries per page",
+                        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                        infoEmpty: "Showing 0 to 0 of 0 entries",
+                        infoFiltered: "(filtered from _MAX_ total entries)",
+                        paginate: {
+                            first: "First",
+                            last: "Last",
+                            next: "Next",
+                            previous: "Previous"
+                        }
+                    }
+                });
+            });
+            </script>
+        </head>
+        <body>
+            <div style="overflow-x: auto;">
+                <table id="abstracts_table" style="width: 100%; border-collapse: collapse;"><thead><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Unique paper identifier">Paper ID</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Paper title (truncated if >80 characters)">Title</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Author names (truncated if >50 characters)">Authors</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Journal name (truncated if >40 characters)">Journal</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Paper abstract (truncated if >200 characters)">Abstract</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Number of characters in abstract">Length</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Source field used for abstract extraction">Source</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Whether paper has an abstract">Has Abstract</th></tr></thead><tbody><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12217367</td><td style="border: 1px solid #ddd; padding: 8px;">"SCALE-up" - a new framework to assess the effectiveness of climate change adapt...</td><td style="border: 1px solid #ddd; padding: 8px;">Wright CY, Naidoo N, Anand N, Kapwata T, Webster C...</td><td style="border: 1px solid #ddd; padding: 8px;">BMC public health</td><td style="border: 1px solid #ddd; padding: 8px;">Climate change is a grave threat to human health and wellbeing. Adaptation is one mechanism (the other is mitigation) by which we can intervene to increase adaptive capacity and preparedness to protec...</td><td style="border: 1px solid #ddd; padding: 8px;">2247</td><td style="border: 1px solid #ddd; padding: 8px;">abstractText</td><td style="border: 1px solid #ddd; padding: 8px;">✅</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12244606</td><td style="border: 1px solid #ddd; padding: 8px;">Factors influencing farming households' climate change adaptation strategies in ...</td><td style="border: 1px solid #ddd; padding: 8px;">Nhuong BH, Truong DD, Huan LH, Lan BTH, Hang ND, T...</td><td style="border: 1px solid #ddd; padding: 8px;">PloS one</td><td style="border: 1px solid #ddd; padding: 8px;">This study investigates the determinants of household-level adaptation strategies to climate variability and saltwater intrusion in the coastal regions of Central Vietnam. Using a Multinomial Logistic...</td><td style="border: 1px solid #ddd; padding: 8px;">1886</td><td style="border: 1px solid #ddd; padding: 8px;">abstractText</td><td style="border: 1px solid #ddd; padding: 8px;">✅</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12003623</td><td style="border: 1px solid #ddd; padding: 8px;">Outpacing climate change: adaptation to heatwaves in Europe.</td><td style="border: 1px solid #ddd; padding: 8px;">Walkowiak MP, Bandurski K, Walkowiak J, Walkowiak ...</td><td style="border: 1px solid #ddd; padding: 8px;">International journal of biometeorology</td><td style="border: 1px solid #ddd; padding: 8px;">Current predictions of climate change impacts rely on conservative assumptions about a lack of adaptation, projecting significantly increased heatwave mortality. However, long-term studies have shown ...</td><td style="border: 1px solid #ddd; padding: 8px;">1683</td><td style="border: 1px solid #ddd; padding: 8px;">abstractText</td><td style="border: 1px solid #ddd; padding: 8px;">✅</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12173939</td><td style="border: 1px solid #ddd; padding: 8px;">Private investments in climate change adaptation are increasing in Europe, altho...</td><td style="border: 1px solid #ddd; padding: 8px;">Cortés Arbués I, Chatzivasileiadis T, Storm S, Iva...</td><td style="border: 1px solid #ddd; padding: 8px;">Communications earth & environment</td><td style="border: 1px solid #ddd; padding: 8px;">Climate-induced hazards are becoming more frequent and severe, causing escalating economic losses worldwide. Consequently, climate change adaptation is increasingly necessary to protect people, nature...</td><td style="border: 1px solid #ddd; padding: 8px;">1165</td><td style="border: 1px solid #ddd; padding: 8px;">abstractText</td><td style="border: 1px solid #ddd; padding: 8px;">✅</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC11625676</td><td style="border: 1px solid #ddd; padding: 8px;">What is limiting how we imagine climate change adaptation?</td><td style="border: 1px solid #ddd; padding: 8px;">Olazabal M, Amorim-Maia AT, Alda-Vidal C, Goodwin ...</td><td style="border: 1px solid #ddd; padding: 8px;">Current opinion in environmental sustain...</td><td style="border: 1px solid #ddd; padding: 8px;">Imaginaries of adaptation are currently dominated by technocratic, homogenous, top-down approaches that hinder sustainable, just, and effective adaptation worldwide. We have identified three practices...</td><td style="border: 1px solid #ddd; padding: 8px;">993</td><td style="border: 1px solid #ddd; padding: 8px;">abstractText</td><td style="border: 1px solid #ddd; padding: 8px;">✅</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">examples</td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;">No abstract available</td><td style="border: 1px solid #ddd; padding: 8px;">0</td><td style="border: 1px solid #ddd; padding: 8px;">none</td><td style="border: 1px solid #ddd; padding: 8px;">❌</td></tr></tbody></table>
+            </div>
+        </body>
+        </html>
+        
+
+        <h2>🔍 Wordlist Search Results</h2>
+        
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" type="text/css"
+                  href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+            <style>
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                }
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 200px;
+                    background-color: #555;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -100px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            </style>
+            <script>
+            $(document).ready(function() {
+                $('#wordlist_search_table').DataTable({
+                    pageLength: 25,
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    responsive: true,
+                    scrollX: true,
+                    columnDefs: [
+                        {
+                            targets: '_all',
+                            render: function(data, type, row) {
+                                if (type === 'display' && typeof data === 'string' && data.includes('<')) {
+                                    return data; // Allow HTML rendering
+                                }
+                                return data;
+                            }
+                        }
+                    ],
+                    language: {
+                        search: "Search:",
+                        lengthMenu: "Show _MENU_ entries per page",
+                        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                        infoEmpty: "Showing 0 to 0 of 0 entries",
+                        infoFiltered: "(filtered from _MAX_ total entries)",
+                        paginate: {
+                            first: "First",
+                            last: "Last",
+                            next: "Next",
+                            previous: "Previous"
+                        }
+                    }
+                });
+            });
+            </script>
+        </head>
+        <body>
+            <div style="overflow-x: auto;">
+                <table id="wordlist_search_table" style="width: 100%; border-collapse: collapse;"><thead><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Unique paper identifier">Paper ID</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Total number of word matches across all fields">Total Hits</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Breakdown of hits by field">Field Hits</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Breakdown of hits by word">Word Hits</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Detailed match information with context">Top Matches</th></tr></thead><tbody><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12173939</td><td style="border: 1px solid #ddd; padding: 8px;">17</td><td style="border: 1px solid #ddd; padding: 8px;">Title: 3<br>Abstract: 14</td><td style="border: 1px solid #ddd; padding: 8px;">climate: 4<br>adaptation: 11<br>change: 2</td><td style="border: 1px solid #ddd; padding: 8px;">Title (climate): 1 - Private investments in climate change adaptation are increasing in Europe, although sectoral differe...<br>Title (adaptation): 1 - Private investments in climate change adaptation are increasing in Europe, although sectoral differe...<br>Title (change): 1 - Private investments in climate change adaptation are increasing in Europe, although sectoral differe...<br>Abstract (climate): 3 - Climate-induced hazards are becoming more frequent and severe, causing escalating economic losses wo...<br>Abstract (adaptation): 10 - Climate-induced hazards are becoming more frequent and severe, causing escalating economic losses wo...<br>... and 1 more matches</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC11625676</td><td style="border: 1px solid #ddd; padding: 8px;">17</td><td style="border: 1px solid #ddd; padding: 8px;">Title: 3<br>Abstract: 14</td><td style="border: 1px solid #ddd; padding: 8px;">climate: 1<br>adaptation: 11<br>change: 2<br>imaginaries: 3</td><td style="border: 1px solid #ddd; padding: 8px;">Title (climate): 1 - What is limiting how we imagine climate change adaptation?<br>Title (adaptation): 1 - What is limiting how we imagine climate change adaptation?<br>Title (change): 1 - What is limiting how we imagine climate change adaptation?<br>Abstract (adaptation): 10 - Imaginaries of adaptation are currently dominated by technocratic, homogenous, top-down approaches t...<br>Abstract (change): 1 - Imaginaries of adaptation are currently dominated by technocratic, homogenous, top-down approaches t...<br>... and 1 more matches</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12003623</td><td style="border: 1px solid #ddd; padding: 8px;">12</td><td style="border: 1px solid #ddd; padding: 8px;">Title: 3<br>Abstract: 9</td><td style="border: 1px solid #ddd; padding: 8px;">climate: 5<br>adaptation: 4<br>change: 3</td><td style="border: 1px solid #ddd; padding: 8px;">Title (climate): 1 - Outpacing climate change: adaptation to heatwaves in Europe.<br>Title (adaptation): 1 - Outpacing climate change: adaptation to heatwaves in Europe.<br>Title (change): 1 - Outpacing climate change: adaptation to heatwaves in Europe.<br>Abstract (climate): 4 - Current predictions of climate change impacts rely on conservative assumptions about a lack of adapt...<br>Abstract (adaptation): 3 - Current predictions of climate change impacts rely on conservative assumptions about a lack of adapt...<br>... and 1 more matches</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12244606</td><td style="border: 1px solid #ddd; padding: 8px;">12</td><td style="border: 1px solid #ddd; padding: 8px;">Title: 3<br>Abstract: 9</td><td style="border: 1px solid #ddd; padding: 8px;">climate: 5<br>adaptation: 6<br>change: 1</td><td style="border: 1px solid #ddd; padding: 8px;">Title (climate): 1 - Factors influencing farming households' climate change adaptation strategies in Central Vietnam.<br>Title (adaptation): 1 - Factors influencing farming households' climate change adaptation strategies in Central Vietnam.<br>Title (change): 1 - Factors influencing farming households' climate change adaptation strategies in Central Vietnam.<br>Abstract (climate): 4 - This study investigates the determinants of household-level adaptation strategies to climate variabi...<br>Abstract (adaptation): 5 - This study investigates the determinants of household-level adaptation strategies to climate variabi...</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;">PMC12217367</td><td style="border: 1px solid #ddd; padding: 8px;">12</td><td style="border: 1px solid #ddd; padding: 8px;">Title: 3<br>Abstract: 9</td><td style="border: 1px solid #ddd; padding: 8px;">climate: 3<br>adaptation: 6<br>change: 3</td><td style="border: 1px solid #ddd; padding: 8px;">Title (climate): 1 - "SCALE-up" - a new framework to assess the effectiveness of climate change adaptation interventions ...<br>Title (adaptation): 1 - "SCALE-up" - a new framework to assess the effectiveness of climate change adaptation interventions ...<br>Title (change): 1 - "SCALE-up" - a new framework to assess the effectiveness of climate change adaptation interventions ...<br>Abstract (climate): 2 - Climate change is a grave threat to human health and wellbeing. Adaptation is one mechanism (the oth...<br>Abstract (adaptation): 5 - Climate change is a grave threat to human health and wellbeing. Adaptation is one mechanism (the oth...<br>... and 1 more matches</td></tr></tbody></table>
+            </div>
+        </body>
+        </html>
+        
+
+    </div>
+</body>
+</html>

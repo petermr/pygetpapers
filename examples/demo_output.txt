@@ -1,0 +1,92 @@
+datatables_module not available. Using fallback HTML table implementation.
+datatables_module not available. Tables will be displayed using basic HTML. For enhanced functionality, install the datatables_module from the amilib project.
+============================================================
+           ABSTRACT FUNCTIONALITY DEMO
+============================================================
+
+📁 Creating 4 sample papers...
+✅ Sample data created successfully!
+
+🔍 Reading output data...
+✅ Found 4 papers
+
+📄 Extracting abstracts...
+
+📊 ABSTRACT ANALYSIS RESULTS:
+--------------------------------------------------
+Total Papers: 4
+Papers with Abstracts: 3
+Papers without Abstracts: 1
+Abstract Coverage: 75.0%
+Average Abstract Length: 190.67 characters
+
+📋 ABSTRACT SOURCES:
+--------------------------------------------------
+abstract: 1 papers
+abstractText: 1 papers
+description: 1 papers
+none: 1 papers
+
+📄 INDIVIDUAL ABSTRACTS:
+--------------------------------------------------
+
+📑 Climate Change Adaptation in Agriculture
+   Authors: Smith, J., Johnson, A.
+   Journal: Environmental Science
+   Source: abstract
+   Length: 197 characters
+   Abstract: This study examines climate change adaptation strategies in agricultural systems. We found that sust...
+
+📑 Renewable Energy Technologies for Sustainability
+   Authors: Wilson, K.
+   Journal: Energy Research
+   Source: description
+   Length: 172 characters
+   Abstract: This paper reviews renewable energy technologies and their potential to reduce carbon emissions. Sol...
+
+📑 Paper Without Abstract
+   Authors: Unknown, A.
+   Journal: Unknown Journal
+   Source: none
+   Length: 0 characters
+   Abstract: No abstract available
+
+📑 Carbon Sequestration in Forest Ecosystems
+   Authors: Brown, M., Davis, R.
+   Journal: Forest Ecology
+   Source: abstractText
+   Length: 203 characters
+   Abstract: Forest ecosystems play a crucial role in carbon sequestration and reducing greenhouse gas emissions....
+
+🔍 WORDLIST SEARCH TEST:
+--------------------------------------------------
+Search words: ['climate', 'carbon', 'energy', 'sustainability']
+Papers with matches: 3
+Total hits: 10
+
+Hits by field:
+  Title: 4 hits
+  Abstract: 6 hits
+
+Hits by word:
+  'climate': 3 hits
+  'carbon': 3 hits
+  'energy': 2 hits
+  'sustainability': 2 hits
+
+🔄 CREATING TABLES:
+--------------------------------------------------
+✅ Abstracts table created
+✅ Summary table created
+📊 Tables contain 4 paper entries
+✅ Demo HTML saved to: /var/folders/ft/7j605bsd10l0ftqygyxjjflh0000gq/T/tmpgs0fny2a/demo_output/abstract_demo.html
+
+🎉 DEMO COMPLETE!
+============================================================
+The abstract functionality is working correctly!
+Features demonstrated:
+✅ Abstract extraction from multiple formats
+✅ Abstract analysis and statistics
+✅ Wordlist search integration
+✅ Table creation and display
+✅ HTML report generation

@@ -1,0 +1,76 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" type="text/css"
+                  href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+            <style>
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                }
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 200px;
+                    background-color: #555;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -100px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            </style>
+            <script>
+            $(document).ready(function() {
+                $('#papers_table').DataTable({
+                    pageLength: 25,
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    responsive: true,
+                    scrollX: true,
+                    columnDefs: [
+                        {
+                            targets: '_all',
+                            render: function(data, type, row) {
+                                if (type === 'display' && typeof data === 'string' && data.includes('<')) {
+                                    return data; // Allow HTML rendering
+                                }
+                                return data;
+                            }
+                        }
+                    ],
+                    language: {
+                        search: "Search:",
+                        lengthMenu: "Show _MENU_ entries per page",
+                        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                        infoEmpty: "Showing 0 to 0 of 0 entries",
+                        infoFiltered: "(filtered from _MAX_ total entries)",
+                        paginate: {
+                            first: "First",
+                            last: "Last",
+                            next: "Next",
+                            previous: "Previous"
+                        }
+                    }
+                });
+            });
+            </script>
+        </head>
+        <body>
+            <div style="overflow-x: auto;">
+                <table id="papers_table" style="width: 100%; border-collapse: collapse;"><thead><tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Select paper for bulk operations">Select</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Unique paper identifier">ID</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Paper title (truncated if >100 characters)">Title</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Author names (truncated if >50 characters)">Authors</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Journal or repository name">Journal</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Digital Object Identifier - click to open">DOI</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="PubMed ID - click to open in PubMed">PMID</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="PubMed Central ID - click to open in PMC">PMCID</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Publication date">Date</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="XML fulltext file - click to download/view">XML</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="PDF fulltext file - click to download/view">PDF</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Supplementary files - click to browse">Suppl</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="HTML version of fulltext - click to view">HTML</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Enhanced HTML with semantic markup">Enhanced</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;" title="Total number of files in paper directory">Files</th></tr></thead><tbody><tr><td style="border: 1px solid #ddd; padding: 8px;"><input type="checkbox" class="paper-checkbox" data-paper-id="PMC12003623"></td><td style="border: 1px solid #ddd; padding: 8px;">PMC12003623</td><td style="border: 1px solid #ddd; padding: 8px;">Outpacing climate change: adaptation to heatwaves in Europe.</td><td style="border: 1px solid #ddd; padding: 8px;">Walkowiak MP, Bandurski K, Walkowiak J, Walkowiak ...</td><td style="border: 1px solid #ddd; padding: 8px;">International journal of biometeorology</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://doi.org/10.1007/s00484-025-02872-0" target="_blank" title="Open DOI link">10.1007/s00484-025-02872-0</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://pubmed.ncbi.nlm.nih.gov/39966149/" target="_blank" title="Open PubMed link">39966149</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12003623/" target="_blank" title="Open PMC link">PMC12003623</a></td><td style="border: 1px solid #ddd; padding: 8px;">2025-02-19</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12003623/fulltext.xml" target="_blank" title="Open XML file">📋 XML</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12003623/fulltext.pdf" target="_blank" title="Open PDF file">📄 PDF</a></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12003623/fulltext.xml.html" target="_blank" title="Open HTML file">🌐 HTML</a></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">4</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;"><input type="checkbox" class="paper-checkbox" data-paper-id="PMC12244606"></td><td style="border: 1px solid #ddd; padding: 8px;">PMC12244606</td><td style="border: 1px solid #ddd; padding: 8px;">Factors influencing farming households' climate change adaptation strategies in Central Vietnam.</td><td style="border: 1px solid #ddd; padding: 8px;">Nhuong BH, Truong DD, Huan LH, Lan BTH, Hang ND, T...</td><td style="border: 1px solid #ddd; padding: 8px;">PloS one</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://doi.org/10.1371/journal.pone.0328058" target="_blank" title="Open DOI link">10.1371/journal.pone.0328058</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://pubmed.ncbi.nlm.nih.gov/40638687/" target="_blank" title="Open PubMed link">40638687</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12244606/" target="_blank" title="Open PMC link">PMC12244606</a></td><td style="border: 1px solid #ddd; padding: 8px;">2025-07-10</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12244606/fulltext.xml" target="_blank" title="Open XML file">📋 XML</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12244606/fulltext.pdf" target="_blank" title="Open PDF file">📄 PDF</a></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12244606/fulltext.xml.html" target="_blank" title="Open HTML file">🌐 HTML</a></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">4</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;"><input type="checkbox" class="paper-checkbox" data-paper-id="jats4r"></td><td style="border: 1px solid #ddd; padding: 8px;">jats4r</td><td style="border: 1px solid #ddd; padding: 8px;">jats4r</td><td style="border: 1px solid #ddd; padding: 8px;">Unknown</td><td style="border: 1px solid #ddd; padding: 8px;">Unknown</td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;"></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">8</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px;"><input type="checkbox" class="paper-checkbox" data-paper-id="PMC12173939"></td><td style="border: 1px solid #ddd; padding: 8px;">PMC12173939</td><td style="border: 1px solid #ddd; padding: 8px;">Private investments in climate change adaptation are increasing in Europe, although sectoral differe...</td><td style="border: 1px solid #ddd; padding: 8px;">Cortés Arbués I, Chatzivasileiadis T, Storm S, Iva...</td><td style="border: 1px solid #ddd; padding: 8px;">Communications earth & environment</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://doi.org/10.1038/s43247-025-02454-3" target="_blank" title="Open DOI link">10.1038/s43247-025-02454-3</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://pubmed.ncbi.nlm.nih.gov/40538635/" target="_blank" title="Open PubMed link">40538635</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12173939/" target="_blank" title="Open PMC link">PMC12173939</a></td><td style="border: 1px solid #ddd; padding: 8px;">2025-06-17</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12173939/fulltext.xml" target="_blank" title="Open XML file">📋 XML</a></td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12173939/fulltext.pdf" target="_blank" title="Open PDF file">📄 PDF</a></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;"><a href="PMC12173939/fulltext.xml.html" target="_blank" title="Open HTML file">🌐 HTML</a></td><td style="border: 1px solid #ddd; padding: 8px;">❌</td><td style="border: 1px solid #ddd; padding: 8px;">4</td></tr></tbody></table>
+            </div>
+        </body>
+        </html>
+        

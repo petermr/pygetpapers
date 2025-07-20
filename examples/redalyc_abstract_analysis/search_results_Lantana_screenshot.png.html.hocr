@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name='ocr-system' content='tesseract 5.5.1' />
+  <meta name='ocr-capabilities' content='ocr_page ocr_carea ocr_par ocr_line ocrx_word ocrp_dir ocrp_lang ocrp_wconf'/>
+ </head>
+ <body>
+  <div class='ocr_page' id='page_1' title='image "examples/redalyc_abstract_analysis/search_results_Lantana_screenshot.png"; bbox 0 0 3456 1778; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 82 534 344 565">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 82 534 344 565">
+     <span class='ocr_textfloat' id='line_1_1' title="bbox 82 534 344 565; baseline 0.004 -7; x_size 31; x_descenders 6; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_1' title='bbox 82 534 164 559; x_wconf 92'>Filtros</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 173 534 204 559; x_wconf 93'>de</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 214 534 344 565; x_wconf 52'>bisqueda</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 157 628 352 846">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 157 628 352 846">
+     <span class='ocr_line' id='line_1_2' title="bbox 303 628 352 649; baseline 0 0; x_size 26.571428; x_descenders 5.5714288; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_4' title='bbox 303 628 352 649; x_wconf 37'>Afio:</span>
+     </span>
+     <span class='ocr_line' id='line_1_3' title="bbox 157 665 244 690; baseline 0.034 -3; x_size 23.956522; x_descenders 4.956522; x_ascenders 7.4347825">
+      <span class='ocrx_word' id='word_1_5' title='bbox 157 665 179 687; x_wconf 26'>@</span>
+      <span class='ocrx_word' id='word_1_6' title='bbox 189 671 244 690; x_wconf 92'>2025</span>
+     </span>
+     <span class='ocr_line' id='line_1_4' title="bbox 157 704 245 729; baseline 0.023 -3; x_size 22.695652; x_descenders 4.6956525; x_ascenders 7.043478">
+      <span class='ocrx_word' id='word_1_7' title='bbox 157 704 179 726; x_wconf 23'>@</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 189 710 245 729; x_wconf 90'>2024</span>
+     </span>
+     <span class='ocr_line' id='line_1_5' title="bbox 157 743 244 768; baseline 0.034 -3; x_size 23.956522; x_descenders 4.956522; x_ascenders 7.4347825">
+      <span class='ocrx_word' id='word_1_9' title='bbox 157 743 179 765; x_wconf 13'>®</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 189 749 244 768; x_wconf 94'>2023</span>
+     </span>
+     <span class='ocr_line' id='line_1_6' title="bbox 157 782 244 807; baseline 0.023 -3; x_size 22.695652; x_descenders 4.6956525; x_ascenders 7.043478">
+      <span class='ocrx_word' id='word_1_11' title='bbox 157 782 179 804; x_wconf 0'>@</span>
+      <span class='ocrx_word' id='word_1_12' title='bbox 189 788 244 807; x_wconf 94'>2022</span>
+     </span>
+     <span class='ocr_line' id='line_1_7' title="bbox 157 821 241 846; baseline 0.024 -3; x_size 22.695652; x_descenders 4.6956525; x_ascenders 7.043478">
+      <span class='ocrx_word' id='word_1_13' title='bbox 157 821 179 843; x_wconf 53'>@</span>
+      <span class='ocrx_word' id='word_1_14' title='bbox 189 827 241 846; x_wconf 93'>2021</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 157 956 368 1174">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 157 956 368 1174">
+     <span class='ocr_line' id='line_1_8' title="bbox 289 956 368 977; baseline 0 0; x_size 26.423388; x_descenders 5.4233871; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_15' title='bbox 289 956 368 977; x_wconf 96'>Idioma:</span>
+     </span>
+     <span class='ocr_line' id='line_1_9' title="bbox 157 993 272 1023; baseline -0.009 -5; x_size 31; x_descenders 6; x_ascenders 10">
+      <span class='ocrx_word' id='word_1_16' title='bbox 157 993 179 1015; x_wconf 70'>@</span>
+      <span class='ocrx_word' id='word_1_17' title='bbox 189 998 272 1023; x_wconf 54'>Espajiol</span>
+     </span>
+     <span class='ocr_line' id='line_1_10' title="bbox 157 1032 251 1062; baseline 0.032 -8; x_size 28; x_descenders 6; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_18' title='bbox 157 1032 179 1054; x_wconf 18'>Wi</span>
+      <span class='ocrx_word' id='word_1_19' title='bbox 189 1036 251 1062; x_wconf 65'>inglés</span>
+     </span>
+     <span class='ocr_line' id='line_1_11' title="bbox 157 1071 300 1101; baseline 0 -5; x_size 30; x_descenders 5; x_ascenders 10">
+      <span class='ocrx_word' id='word_1_20' title='bbox 157 1071 179 1093; x_wconf 69'>@</span>
+      <span class='ocrx_word' id='word_1_21' title='bbox 189 1075 300 1101; x_wconf 96'>Portugués</span>
+     </span>
+     <span class='ocr_line' id='line_1_12' title="bbox 157 1110 325 1135; baseline 0.018 -3; x_size 27.423388; x_descenders 5.4233871; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_22' title='bbox 157 1110 179 1132; x_wconf 31'>@</span>
+      <span class='ocrx_word' id='word_1_23' title='bbox 189 1115 325 1135; x_wconf 78'>Desconocido</span>
+     </span>
+     <span class='ocr_line' id='line_1_13' title="bbox 157 1149 320 1174; baseline 0 0; x_size 30.423388; x_descenders 5.4233871; x_ascenders 10">
+      <span class='ocrx_word' id='word_1_24' title='bbox 157 1149 179 1171; x_wconf 32'>@</span>
+      <span class='ocrx_word' id='word_1_25' title='bbox 188 1154 320 1174; x_wconf 76'>Serbocroata</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_4' title="bbox 156 1284 383 1583">
+    <p class='ocr_par' id='par_1_4' lang='eng' title="bbox 156 1284 383 1583">
+     <span class='ocr_line' id='line_1_14' title="bbox 274 1284 383 1310; baseline 0 -5; x_size 26; x_descenders 5; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_26' title='bbox 274 1284 383 1310; x_wconf 92'>Disciplina:</span>
+     </span>
+     <span class='ocr_line' id='line_1_15' title="bbox 157 1321 274 1351; baseline 0.026 -8; x_size 27; x_descenders 5; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_27' title='bbox 157 1321 179 1343; x_wconf 60'>@</span>
+      <span class='ocrx_word' id='word_1_28' title='bbox 189 1325 274 1351; x_wconf 96'>Biologia</span>
+     </span>
+     <span class='ocr_line' id='line_1_16' title="bbox 157 1360 324 1390; baseline 0.018 -8; x_size 28; x_descenders 6; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_29' title='bbox 157 1360 179 1382; x_wconf 40'>@</span>
+      <span class='ocrx_word' id='word_1_30' title='bbox 187 1365 324 1390; x_wconf 68'>Agrociencias</span>
+     </span>
+     <span class='ocr_line' id='line_1_17' title="bbox 157 1399 275 1427; baseline 0.025 -6; x_size 26; x_descenders 4; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_31' title='bbox 157 1399 179 1421; x_wconf 30'>B®</span>
+      <span class='ocrx_word' id='word_1_32' title='bbox 188 1403 275 1427; x_wconf 74'>Quimica</span>
+     </span>
+     <span class='ocr_line' id='line_1_18' title="bbox 157 1438 294 1468; baseline 0.022 -8; x_size 28; x_descenders 6; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_33' title='bbox 157 1438 179 1460; x_wconf 54'>@</span>
+      <span class='ocrx_word' id='word_1_34' title='bbox 189 1442 294 1468; x_wconf 46'>Ingenieria</span>
+     </span>
+     <span class='ocr_line' id='line_1_19' title="bbox 157 1477 372 1507; baseline 0.009 -8; x_size 28; x_descenders 6; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_35' title='bbox 157 1477 179 1499; x_wconf 51'>@</span>
+      <span class='ocrx_word' id='word_1_36' title='bbox 189 1482 372 1507; x_wconf 85'>Multidisciplinaria</span>
+     </span>
+     <span class='ocr_line' id='line_1_20' title="bbox 156 1520 382 1546; baseline 0.004 -6; x_size 26; x_descenders 5; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_37' title='bbox 156 1520 250 1544; x_wconf 96'>(Ciencias</span>
+      <span class='ocrx_word' id='word_1_38' title='bbox 258 1521 363 1541; x_wconf 93'>Naturales</span>
+      <span class='ocrx_word' id='word_1_39' title='bbox 370 1526 382 1546; x_wconf 92'>y</span>
+     </span>
+     <span class='ocr_line' id='line_1_21' title="bbox 157 1559 246 1583; baseline 0.011 -4; x_size 26.794086; x_descenders 5.7940865; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_40' title='bbox 157 1559 246 1583; x_wconf 92'>Exactas)</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_5' title="bbox 304 1690 354 1711">
+    <p class='ocr_par' id='par_1_5' lang='eng' title="bbox 304 1690 354 1711">
+     <span class='ocr_line' id='line_1_22' title="bbox 304 1690 354 1711; baseline 0 0; x_size 26.32258; x_descenders 5.3225803; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_41' title='bbox 304 1690 354 1711; x_wconf 96'>Pais:</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_6' title="bbox 0 486 664 1778"></div>
+   <div class='ocr_carea' id='block_1_7' title="bbox 157 1727 263 1752">
+    <p class='ocr_par' id='par_1_6' lang='eng' title="bbox 157 1727 263 1752">
+     <span class='ocr_caption' id='line_1_23' title="bbox 157 1727 263 1752; baseline 0.009 -1; x_size 29.32258; x_descenders 5.3225803; x_ascenders 9">
+      <span class='ocrx_word' id='word_1_42' title='bbox 157 1727 179 1749; x_wconf 55'>@</span>
+      <span class='ocrx_word' id='word_1_43' title='bbox 189 1731 263 1752; x_wconf 79'>México</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_8' title="bbox 752 66 841 125">
+    <p class='ocr_par' id='par_1_7' lang='eng' title="bbox 752 66 841 125">
+     <span class='ocr_line' id='line_1_24' title="bbox 752 66 841 125; baseline 0 -14; x_size 50.417912; x_descenders 5.4179106; x_ascenders 12">
+      <span class='ocrx_word' id='word_1_44' title='bbox 752 66 841 125; x_wconf 82'>Pre</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_9' title="bbox 699 553 787 572">
+    <p class='ocr_par' id='par_1_8' lang='eng' title="bbox 699 553 787 572">
+     <span class='ocr_line' id='line_1_25' title="bbox 699 553 787 572; baseline 0 0; x_size 24.310345; x_descenders 5.3103447; x_ascenders 5">
+      <span class='ocrx_word' id='word_1_45' title='bbox 699 553 787 572; x_wconf 96'>Lantana</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_10' title="bbox 1910 36 2643 78">
+    <p class='ocr_par' id='par_1_9' lang='eng' title="bbox 1910 36 2643 78">
+     <span class='ocr_caption' id='line_1_26' title="bbox 1910 36 2643 78; baseline 0 -9; x_size 41; x_descenders 9; x_ascenders 9">
+      <span class='ocrx_word' id='word_1_46' title='bbox 1910 38 2052 69; x_wconf 96'>Sistema</span>
+      <span class='ocrx_word' id='word_1_47' title='bbox 2063 37 2104 69; x_wconf 93'>de</span>
+      <span class='ocrx_word' id='word_1_48' title='bbox 2117 36 2323 69; x_wconf 61'>Informaci6n</span>
+      <span class='ocrx_word' id='word_1_49' title='bbox 2337 37 2497 69; x_wconf 91'>Cientifica</span>
+      <span class='ocrx_word' id='word_1_50' title='bbox 2509 37 2643 78; x_wconf 92'>Redalyc</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_11' title="bbox 846 66 2545 125">
+    <p class='ocr_par' id='par_1_10' lang='eng' title="bbox 846 66 2545 125">
+     <span class='ocr_textfloat' id='line_1_27' title="bbox 846 66 2545 125; baseline 0.004 -14; x_size 26.32258; x_descenders 5.3225803; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_51' title='bbox 846 66 991 125; x_wconf 93'>dalyc</span>
+      <span class='ocrx_word' id='word_1_52' title='bbox 1911 96 1953 116; x_wconf 96'>Red</span>
+      <span class='ocrx_word' id='word_1_53' title='bbox 1962 96 1989 116; x_wconf 93'>de</span>
+      <span class='ocrx_word' id='word_1_54' title='bbox 1998 96 2088 116; x_wconf 93'>revistas</span>
+      <span class='ocrx_word' id='word_1_55' title='bbox 2096 95 2212 116; x_wconf 91'>cientificas</span>
+      <span class='ocrx_word' id='word_1_56' title='bbox 2220 96 2247 116; x_wconf 96'>de</span>
+      <span class='ocrx_word' id='word_1_57' title='bbox 2255 96 2336 116; x_wconf 96'>Acceso</span>
+      <span class='ocrx_word' id='word_1_58' title='bbox 2344 96 2428 116; x_wconf 96'>Abierto</span>
+      <span class='ocrx_word' id='word_1_59' title='bbox 2436 96 2545 116; x_wconf 96'>diamante</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_12' title="bbox 1911 138 2633 165">
+    <p class='ocr_par' id='par_1_11' lang='eng' title="bbox 1911 138 2633 165">
+     <span class='ocr_line' id='line_1_28' title="bbox 1911 138 2633 165; baseline 0 -6; x_size 26; x_descenders 6; x_ascenders 5">
+      <span class='ocrx_word' id='word_1_60' title='bbox 1911 138 2085 159; x_wconf 92'>Infraestructura</span>
+      <span class='ocrx_word' id='word_1_61' title='bbox 2093 139 2174 159; x_wconf 92'>abierta</span>
+      <span class='ocrx_word' id='word_1_62' title='bbox 2183 144 2209 159; x_wconf 96'>no</span>
+      <span class='ocrx_word' id='word_1_63' title='bbox 2218 139 2327 159; x_wconf 96'>comercial</span>
+      <span class='ocrx_word' id='word_1_64' title='bbox 2337 139 2451 165; x_wconf 96'>propiedad</span>
+      <span class='ocrx_word' id='word_1_65' title='bbox 2460 139 2487 159; x_wconf 96'>de</span>
+      <span class='ocrx_word' id='word_1_66' title='bbox 2496 139 2514 159; x_wconf 95'>la</span>
+      <span class='ocrx_word' id='word_1_67' title='bbox 2522 139 2633 159; x_wconf 96'>academia</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_13' title="bbox 1092 0 3456 194"></div>
+   <div class='ocr_carea' id='block_1_14' title="bbox 3031 265 3435 314">
+    <p class='ocr_par' id='par_1_12' lang='eng' title="bbox 3031 265 3435 314">
+     <span class='ocr_line' id='line_1_29' title="bbox 3031 265 3435 314; baseline 0 -11; x_size 44; x_descenders 6; x_ascenders 14">
+      <span class='ocrx_word' id='word_1_68' title='bbox 3031 265 3075 309; x_wconf 37'>A</span>
+      <span class='ocrx_word' id='word_1_69' title='bbox 3130 269 3177 311; x_wconf 90'>X</span>
+      <span class='ocrx_word' id='word_1_70' title='bbox 3217 266 3241 314; x_wconf 92'>f</span>
+      <span class='ocrx_word' id='word_1_71' title='bbox 3284 279 3336 303; x_wconf 32'>EP</span>
+      <span class='ocrx_word' id='word_1_72' title='bbox 3378 279 3435 303; x_wconf 44'>ENG</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_15' title="bbox 868 419 1327 468">
+    <p class='ocr_par' id='par_1_13' lang='eng' title="bbox 868 419 1327 468">
+     <span class='ocr_line' id='line_1_30' title="bbox 868 419 1327 468; baseline 0 -10; x_size 50; x_descenders 11; x_ascenders 12">
+      <span class='ocrx_word' id='word_1_73' title='bbox 868 419 1074 468; x_wconf 31'>Basqueda</span>
+      <span class='ocrx_word' id='word_1_74' title='bbox 1087 420 1135 458; x_wconf 93'>de</span>
+      <span class='ocrx_word' id='word_1_75' title='bbox 1149 419 1327 458; x_wconf 92'>articulos</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_16' title="bbox 699 657 1053 687">
+    <p class='ocr_par' id='par_1_14' lang='eng' title="bbox 699 657 1053 687">
+     <span class='ocr_header' id='line_1_31' title="bbox 699 657 1053 687; baseline 0 -7; x_size 30; x_descenders 7; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_76' title='bbox 699 657 846 680; x_wconf 96'>Resultados</span>
+      <span class='ocrx_word' id='word_1_77' title='bbox 857 663 914 687; x_wconf 96'>para</span>
+      <span class='ocrx_word' id='word_1_78' title='bbox 923 657 1053 680; x_wconf 95'>&quot;Lantana&quot;</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_17' title="bbox 697 804 807 824">
+    <p class='ocr_par' id='par_1_15' lang='eng' title="bbox 697 804 807 824">
+     <span class='ocr_line' id='line_1_32' title="bbox 697 804 807 824; baseline 0.009 -1; x_size 25.32258; x_descenders 5.3225803; x_ascenders 5">
+      <span class='ocrx_word' id='word_1_79' title='bbox 697 804 730 823; x_wconf 88'>=</span>
+      <span class='ocrx_word' id='word_1_80' title='bbox 753 804 807 824; x_wconf 83'>Lista</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_18' title="bbox 2361 716 3265 745">
+    <p class='ocr_par' id='par_1_16' lang='eng' title="bbox 2361 716 3265 745">
+     <span class='ocr_line' id='line_1_33' title="bbox 2361 716 3265 745; baseline 0 -7; x_size 28; x_descenders 6; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_81' title='bbox 2361 717 2463 738; x_wconf 92'>Articulos</span>
+      <span class='ocrx_word' id='word_1_82' title='bbox 2472 723 2509 744; x_wconf 96'>por</span>
+      <span class='ocrx_word' id='word_1_83' title='bbox 2517 717 2593 745; x_wconf 96'>pagina</span>
+      <span class='ocrx_word' id='word_1_84' title='bbox 2611 720 2637 738; x_wconf 92'>10</span>
+      <span class='ocrx_word' id='word_1_85' title='bbox 2661 724 2679 734; x_wconf 91'>v</span>
+      <span class='ocrx_word' id='word_1_86' title='bbox 2937 719 3006 738; x_wconf 82'>1a10</span>
+      <span class='ocrx_word' id='word_1_87' title='bbox 3015 718 3041 738; x_wconf 70'>de</span>
+      <span class='ocrx_word' id='word_1_88' title='bbox 3049 719 3094 738; x_wconf 70'>804</span>
+      <span class='ocrx_word' id='word_1_89' title='bbox 3103 717 3202 738; x_wconf 89'>articulos</span>
+      <span class='ocrx_word' id='word_1_90' title='bbox 3215 716 3227 738; x_wconf 90'>&lt;</span>
+      <span class='ocrx_word' id='word_1_91' title='bbox 3251 716 3265 738; x_wconf 96'>&gt;</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_separator' id='block_1_19' title="bbox 965 795 994 797"></div>
+   <div class='ocr_separator' id='block_1_20' title="bbox 965 795 967 824"></div>
+   <div class='ocr_separator' id='block_1_21' title="bbox 992 795 994 824"></div>
+   <div class='ocr_carea' id='block_1_22' title="bbox 967 797 1075 824">
+    <p class='ocr_par' id='par_1_17' lang='eng' title="bbox 967 797 1075 824">
+     <span class='ocr_line' id='line_1_34' title="bbox 967 797 1075 824; baseline 0.019 -2; x_size 30.32258; x_descenders 5.3225803; x_ascenders 10">
+      <span class='ocrx_word' id='word_1_92' title='bbox 967 797 992 822; x_wconf 68'>EH</span>
+      <span class='ocrx_word' id='word_1_93' title='bbox 1014 804 1075 824; x_wconf 93'>Tabla</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_separator' id='block_1_23' title="bbox 965 822 994 824"></div>
+   <div class='ocr_separator' id='block_1_24' title="bbox 957 853 3440 863"></div>
+   <div class='ocr_carea' id='block_1_25' title="bbox 879 965 2077 1047">
+    <p class='ocr_par' id='par_1_18' lang='eng' title="bbox 879 965 2077 1047">
+     <span class='ocr_line' id='line_1_35' title="bbox 879 965 2077 999; baseline 0 -4; x_size 27.865385; x_descenders 4.8653846; x_ascenders 7.5192308">
+      <span class='ocrx_word' id='word_1_94' title='bbox 879 972 1049 996; x_wconf 92'>NOVEDADES</span>
+      <span class='ocrx_word' id='word_1_95' title='bbox 1060 972 1341 996; x_wconf 90'>NOMENCLATURALES</span>
+      <span class='ocrx_word' id='word_1_96' title='bbox 1352 972 1387 995; x_wconf 95'>EN</span>
+      <span class='ocrx_word' id='word_1_97' title='bbox 1398 972 1448 996; x_wconf 91'>LOS</span>
+      <span class='ocrx_word' id='word_1_98' title='bbox 1458 965 1590 996; x_wconf 91'>GENEROS</span>
+      <span class='ocrx_word' id='word_1_99' title='bbox 1601 972 1686 995; x_wconf 91'>LIPPIA</span>
+      <span class='ocrx_word' id='word_1_100' title='bbox 1694 972 1711 995; x_wconf 93'>Y</span>
+      <span class='ocrx_word' id='word_1_101' title='bbox 1720 972 1848 995; x_wconf 92'>LANTANA</span>
+      <span class='ocrx_word' id='word_1_102' title='bbox 1857 971 2077 999; x_wconf 92'>(VERBENACEAE)</span>
+     </span>
+     <span class='ocr_line' id='line_1_36' title="bbox 879 1018 1199 1047; baseline 0 -4; x_size 29; x_descenders 4; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_103' title='bbox 879 1020 1035 1047; x_wconf 91'>Darwiniana,</span>
+      <span class='ocrx_word' id='word_1_104' title='bbox 1045 1021 1120 1047; x_wconf 93'>2010,</span>
+      <span class='ocrx_word' id='word_1_105' title='bbox 1130 1018 1199 1047; x_wconf 92'>48(1)</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_26' title="bbox 878 1081 3000 1255">
+    <p class='ocr_par' id='par_1_19' lang='eng' title="bbox 878 1081 3000 1255">
+     <span class='ocr_line' id='line_1_37' title="bbox 878 1081 2998 1115; baseline 0 -4; x_size 31.5; x_descenders 7.4849396; x_ascenders 6.5150604">
+      <span class='ocrx_word' id='word_1_106' title='bbox 878 1089 910 1111; x_wconf 93'>97</span>
+      <span class='ocrx_word' id='word_1_107' title='bbox 926 1088 1108 1111; x_wconf 90'>DARWINIANA</span>
+      <span class='ocrx_word' id='word_1_108' title='bbox 1121 1087 1196 1115; x_wconf 84'>48(1):</span>
+      <span class='ocrx_word' id='word_1_109' title='bbox 1210 1089 1300 1111; x_wconf 91'>97-99.</span>
+      <span class='ocrx_word' id='word_1_110' title='bbox 1315 1089 1384 1111; x_wconf 96'>2010</span>
+      <span class='ocrx_word' id='word_1_111' title='bbox 1399 1088 1458 1111; x_wconf 96'>ISSN</span>
+      <span class='ocrx_word' id='word_1_112' title='bbox 1473 1089 1628 1111; x_wconf 93'>0011-6793</span>
+      <span class='ocrx_word' id='word_1_113' title='bbox 1644 1088 1814 1111; x_wconf 91'>NOVEDADES</span>
+      <span class='ocrx_word' id='word_1_114' title='bbox 1829 1088 2111 1111; x_wconf 91'>NOMENCLATURALES</span>
+      <span class='ocrx_word' id='word_1_115' title='bbox 2126 1088 2160 1111; x_wconf 96'>EN</span>
+      <span class='ocrx_word' id='word_1_116' title='bbox 2177 1088 2226 1111; x_wconf 93'>LOS</span>
+      <span class='ocrx_word' id='word_1_117' title='bbox 2241 1081 2373 1111; x_wconf 92'>GENEROS</span>
+      <span class='ocrx_word' id='word_1_118' title='bbox 2388 1088 2473 1111; x_wconf 92'>LIPPIA</span>
+      <span class='ocrx_word' id='word_1_119' title='bbox 2486 1088 2502 1111; x_wconf 93'>Y</span>
+      <span class='ocrx_word' id='word_1_120' title='bbox 2517 1088 2645 1111; x_wconf 92'>LANTANA</span>
+      <span class='ocrx_word' id='word_1_121' title='bbox 2658 1087 2878 1115; x_wconf 92'>(VERBENACEAE)</span>
+      <span class='ocrx_word' id='word_1_122' title='bbox 2892 1088 2961 1111; x_wconf 93'>Alicia</span>
+      <span class='ocrx_word' id='word_1_123' title='bbox 2975 1088 2998 1111; x_wconf 85'>D.</span>
+     </span>
+     <span class='ocr_line' id='line_1_38' title="bbox 879 1135 3000 1167; baseline 0 -8; x_size 30; x_descenders 7; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_124' title='bbox 879 1136 1021 1159; x_wconf 30'>Rotman1...</span>
+      <span class='ocrx_word' id='word_1_125' title='bbox 1037 1136 1112 1159; x_wconf 93'>Como</span>
+      <span class='ocrx_word' id='word_1_126' title='bbox 1127 1135 1295 1159; x_wconf 38'>continuacién</span>
+      <span class='ocrx_word' id='word_1_127' title='bbox 1310 1136 1341 1159; x_wconf 96'>de</span>
+      <span class='ocrx_word' id='word_1_128' title='bbox 1357 1138 1473 1159; x_wconf 93'>nuestros</span>
+      <span class='ocrx_word' id='word_1_129' title='bbox 1487 1136 1600 1159; x_wconf 92'>estudios</span>
+      <span class='ocrx_word' id='word_1_130' title='bbox 1616 1136 1710 1166; x_wconf 91'>previos</span>
+      <span class='ocrx_word' id='word_1_131' title='bbox 1726 1136 1859 1159; x_wconf 92'>realizados</span>
+      <span class='ocrx_word' id='word_1_132' title='bbox 1874 1142 1904 1159; x_wconf 96'>en</span>
+      <span class='ocrx_word' id='word_1_133' title='bbox 1921 1136 1957 1159; x_wconf 93'>los</span>
+      <span class='ocrx_word' id='word_1_134' title='bbox 1972 1135 2078 1167; x_wconf 92'>géneros</span>
+      <span class='ocrx_word' id='word_1_135' title='bbox 2094 1136 2170 1166; x_wconf 92'>Lippia</span>
+      <span class='ocrx_word' id='word_1_136' title='bbox 2184 1143 2198 1166; x_wconf 93'>y</span>
+      <span class='ocrx_word' id='word_1_137' title='bbox 2213 1136 2325 1163; x_wconf 95'>Lantana,</span>
+      <span class='ocrx_word' id='word_1_138' title='bbox 2341 1142 2369 1159; x_wconf 93'>se</span>
+      <span class='ocrx_word' id='word_1_139' title='bbox 2385 1142 2510 1166; x_wconf 92'>proponen</span>
+      <span class='ocrx_word' id='word_1_140' title='bbox 2527 1136 2562 1159; x_wconf 96'>las</span>
+      <span class='ocrx_word' id='word_1_141' title='bbox 2576 1136 2712 1167; x_wconf 96'>siguientes</span>
+      <span class='ocrx_word' id='word_1_142' title='bbox 2728 1136 2877 1159; x_wconf 96'>novedades:</span>
+      <span class='ocrx_word' id='word_1_143' title='bbox 2894 1136 3000 1160; x_wconf 96'>Lantana</span>
+     </span>
+     <span class='ocr_line' id='line_1_39' title="bbox 879 1183 2999 1215; baseline 0 -8; x_size 30; x_descenders 7; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_144' title='bbox 879 1184 1047 1211; x_wconf 91'>bocainiensis,</span>
+      <span class='ocrx_word' id='word_1_145' title='bbox 1059 1190 1130 1207; x_wconf 96'>como</span>
+      <span class='ocrx_word' id='word_1_146' title='bbox 1142 1190 1190 1207; x_wconf 96'>una</span>
+      <span class='ocrx_word' id='word_1_147' title='bbox 1201 1190 1280 1207; x_wconf 93'>nueva</span>
+      <span class='ocrx_word' id='word_1_148' title='bbox 1290 1183 1464 1211; x_wconf 83'>combinaci6n;</span>
+      <span class='ocrx_word' id='word_1_149' title='bbox 1475 1190 1504 1207; x_wconf 93'>se</span>
+      <span class='ocrx_word' id='word_1_150' title='bbox 1515 1184 1625 1207; x_wconf 91'>estable-</span>
+      <span class='ocrx_word' id='word_1_151' title='bbox 1636 1190 1680 1207; x_wconf 96'>cen</span>
+      <span class='ocrx_word' id='word_1_152' title='bbox 1693 1190 1787 1207; x_wconf 91'>nuevos</span>
+      <span class='ocrx_word' id='word_1_153' title='bbox 1797 1183 1940 1211; x_wconf 60'>sindnimos,</span>
+      <span class='ocrx_word' id='word_1_154' title='bbox 1953 1184 2059 1208; x_wconf 93'>Lantana</span>
+      <span class='ocrx_word' id='word_1_155' title='bbox 2070 1184 2225 1214; x_wconf 92'>brachypoda</span>
+      <span class='ocrx_word' id='word_1_156' title='bbox 2234 1191 2248 1214; x_wconf 91'>y</span>
+      <span class='ocrx_word' id='word_1_157' title='bbox 2260 1184 2366 1208; x_wconf 96'>Lantana</span>
+      <span class='ocrx_word' id='word_1_158' title='bbox 2375 1186 2484 1211; x_wconf 96'>ventura,</span>
+      <span class='ocrx_word' id='word_1_159' title='bbox 2496 1190 2554 1214; x_wconf 92'>para</span>
+      <span class='ocrx_word' id='word_1_160' title='bbox 2565 1184 2641 1214; x_wconf 91'>Lippia</span>
+      <span class='ocrx_word' id='word_1_161' title='bbox 2652 1184 2841 1215; x_wconf 92'>grisebachiana:</span>
+      <span class='ocrx_word' id='word_1_162' title='bbox 2852 1191 2866 1214; x_wconf 93'>y</span>
+      <span class='ocrx_word' id='word_1_163' title='bbox 2877 1190 2908 1207; x_wconf 96'>un</span>
+      <span class='ocrx_word' id='word_1_164' title='bbox 2920 1190 2999 1207; x_wconf 96'>nuevo</span>
+     </span>
+     <span class='ocr_line' id='line_1_40' title="bbox 878 1231 999 1255; baseline 0 0; x_size 31.271084; x_descenders 7.2710843; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_165' title='bbox 878 1231 999 1255; x_wconf 77'>sindnimo</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_27' title="bbox 879 1320 1058 1347">
+    <p class='ocr_par' id='par_1_20' lang='eng' title="bbox 879 1320 1058 1347">
+     <span class='ocr_line' id='line_1_41' title="bbox 879 1320 1058 1347; baseline 0 -4; x_size 27; x_descenders 4; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_166' title='bbox 879 1320 1009 1343; x_wconf 96'>Resumen:</span>
+      <span class='ocrx_word' id='word_1_167' title='bbox 1032 1321 1058 1347; x_wconf 42'>(1)</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_28' title="bbox 3163 1060 3234 1367">
+    <p class='ocr_par' id='par_1_21' lang='eng' title="bbox 3163 1060 3234 1367">
+     <span class='ocr_line' id='line_1_42' title="bbox 3163 1060 3234 1367; textangle 90; x_size 86.333336; x_descenders 21.583334; x_ascenders 21.583334">
+      <span class='ocrx_word' id='word_1_168' title='bbox 3163 1060 3234 1367; x_wconf 59'>GO</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_29' title="bbox 967 1418 1021 1441">
+    <p class='ocr_par' id='par_1_22' lang='eng' title="bbox 938 1415 1021 1443">
+     <span class='ocr_line' id='line_1_43' title="bbox 967 1418 1021 1441; baseline -0.024 1.301; x_size 31.555555; x_descenders 7.8888888; x_ascenders 7.8888888">
+      <span class='ocrx_word' id='word_1_169' title='bbox 967 1418 1021 1441; x_wconf 96'>PDF</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_30' title="bbox 879 1595 1871 1671">
+    <p class='ocr_par' id='par_1_23' lang='eng' title="bbox 879 1595 1871 1671">
+     <span class='ocr_line' id='line_1_44' title="bbox 879 1595 1871 1627; baseline 0 -7; x_size 31; x_descenders 7; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_170' title='bbox 879 1596 960 1620; x_wconf 93'>Novas</span>
+      <span class='ocrx_word' id='word_1_171' title='bbox 969 1596 1143 1626; x_wconf 0'>combinagGes</span>
+      <span class='ocrx_word' id='word_1_172' title='bbox 1152 1602 1166 1620; x_wconf 92'>e</span>
+      <span class='ocrx_word' id='word_1_173' title='bbox 1176 1602 1254 1620; x_wconf 90'>novos</span>
+      <span class='ocrx_word' id='word_1_174' title='bbox 1263 1595 1400 1620; x_wconf 29'>sindnimos</span>
+      <span class='ocrx_word' id='word_1_175' title='bbox 1409 1602 1449 1620; x_wconf 92'>em</span>
+      <span class='ocrx_word' id='word_1_176' title='bbox 1460 1596 1537 1627; x_wconf 92'>Lippia</span>
+      <span class='ocrx_word' id='word_1_177' title='bbox 1545 1602 1559 1620; x_wconf 93'>e</span>
+      <span class='ocrx_word' id='word_1_178' title='bbox 1569 1596 1676 1620; x_wconf 92'>Lantana</span>
+      <span class='ocrx_word' id='word_1_179' title='bbox 1684 1595 1871 1623; x_wconf 90'>(Verbenaceae)</span>
+     </span>
+     <span class='ocr_line' id='line_1_45' title="bbox 879 1642 1230 1671; baseline 0 -4; x_size 29; x_descenders 4; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_180' title='bbox 879 1644 1035 1671; x_wconf 89'>Darwiniana,</span>
+      <span class='ocrx_word' id='word_1_181' title='bbox 1045 1645 1120 1671; x_wconf 93'>2002,</span>
+      <span class='ocrx_word' id='word_1_182' title='bbox 1130 1642 1230 1671; x_wconf 91'>40(1-4)</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_31' title="bbox 879 1684 3223 1771">
+    <p class='ocr_par' id='par_1_24' lang='eng' title="bbox 879 1684 3224 1771">
+     <span class='ocr_line' id='line_1_46' title="bbox 879 1684 3223 1771; baseline 0 -36; x_size 31.373333; x_descenders 7.8433332; x_ascenders 7.8433332">
+      <span class='ocrx_word' id='word_1_183' title='bbox 879 1712 972 1735; x_wconf 92'>NOVAS</span>
+      <span class='ocrx_word' id='word_1_184' title='bbox 982 1705 1186 1742; x_wconf 47'>COMBINACOES</span>
+      <span class='ocrx_word' id='word_1_185' title='bbox 1197 1712 1211 1735; x_wconf 92'>E</span>
+      <span class='ocrx_word' id='word_1_186' title='bbox 1222 1712 1318 1735; x_wconf 91'>NOVOS</span>
+      <span class='ocrx_word' id='word_1_187' title='bbox 1328 1705 1489 1735; x_wconf 91'>SINONIMOS</span>
+      <span class='ocrx_word' id='word_1_188' title='bbox 1500 1712 1540 1735; x_wconf 93'>EM</span>
+      <span class='ocrx_word' id='word_1_189' title='bbox 1552 1712 1638 1735; x_wconf 93'>LIPPIA</span>
+      <span class='ocrx_word' id='word_1_190' title='bbox 1648 1712 1662 1735; x_wconf 93'>E</span>
+      <span class='ocrx_word' id='word_1_191' title='bbox 1674 1712 1802 1735; x_wconf 92'>LANTANA</span>
+      <span class='ocrx_word' id='word_1_192' title='bbox 1812 1711 2031 1739; x_wconf 91'>(VERBENACEAE)</span>
+      <span class='ocrx_word' id='word_1_193' title='bbox 2041 1705 2123 1735; x_wconf 96'>TANIA</span>
+      <span class='ocrx_word' id='word_1_194' title='bbox 2134 1712 2236 1735; x_wconf 96'>REGINA</span>
+      <span class='ocrx_word' id='word_1_195' title='bbox 2247 1712 2302 1735; x_wconf 96'>DOS</span>
+      <span class='ocrx_word' id='word_1_196' title='bbox 2313 1712 2423 1735; x_wconf 96'>SANTOS</span>
+      <span class='ocrx_word' id='word_1_197' title='bbox 2433 1712 2507 1735; x_wconf 96'>SILVA</span>
+      <span class='ocrx_word' id='word_1_198' title='bbox 2518 1713 2528 1735; x_wconf 93'>1</span>
+      <span class='ocrx_word' id='word_1_199' title='bbox 2542 1712 2562 1735; x_wconf 93'>&amp;</span>
+      <span class='ocrx_word' id='word_1_200' title='bbox 2573 1705 2674 1735; x_wconf 96'>FATIMA</span>
+      <span class='ocrx_word' id='word_1_201' title='bbox 2685 1712 2787 1735; x_wconf 93'>REGINA</span>
+      <span class='ocrx_word' id='word_1_202' title='bbox 2797 1712 2820 1735; x_wconf 92'>G.</span>
+      <span class='ocrx_word' id='word_1_203' title='bbox 2831 1712 2974 1735; x_wconf 91'>SALIMENA</span>
+      <span class='ocrx_word' id='word_1_204' title='bbox 2984 1713 2998 1735; x_wconf 97'>2</span>
+      <span class='ocrx_word' id='word_1_205' title='bbox 3163 1684 3223 1771; x_wconf 63'>9</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_32' title="bbox 880 1759 2998 1778">
+    <p class='ocr_par' id='par_1_25' lang='eng' title="bbox 880 1759 2998 1778">
+     <span class='ocr_line' id='line_1_47' title="bbox 880 1759 2998 1778; baseline 0 0; x_size 23.279999; x_descenders 5.2799997; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_206' title='bbox 880 1760 967 1778; x_wconf 3'>11Nntn</span>
+      <span class='ocrx_word' id='word_1_207' title='bbox 985 1760 1015 1778; x_wconf 88'>da</span>
+      <span class='ocrx_word' id='word_1_208' title='bbox 1047 1760 1194 1778; x_wconf 37'>ARSTRACT:</span>
+      <span class='ocrx_word' id='word_1_209' title='bbox 1205 1760 1265 1778; x_wconf 0'>Gila</span>
+      <span class='ocrx_word' id='word_1_210' title='bbox 1282 1760 1330 1778; x_wconf 87'>TR</span>
+      <span class='ocrx_word' id='word_1_211' title='bbox 1348 1760 1363 1778; x_wconf 88'>S</span>
+      <span class='ocrx_word' id='word_1_212' title='bbox 1380 1760 1398 1778; x_wconf 25'>2</span>
+      <span class='ocrx_word' id='word_1_213' title='bbox 1411 1760 1531 1778; x_wconf 80'>Galimana</span>
+      <span class='ocrx_word' id='word_1_214' title='bbox 1551 1760 1565 1778; x_wconf 41'>FE</span>
+      <span class='ocrx_word' id='word_1_215' title='bbox 1581 1760 1597 1778; x_wconf 71'>R</span>
+      <span class='ocrx_word' id='word_1_216' title='bbox 1615 1761 1682 1778; x_wconf 27'>INND</span>
+      <span class='ocrx_word' id='word_1_217' title='bbox 1702 1760 1761 1778; x_wconf 93'>Naw</span>
+      <span class='ocrx_word' id='word_1_218' title='bbox 1771 1760 1950 1778; x_wconf 57'>cambinatinnc</span>
+      <span class='ocrx_word' id='word_1_219' title='bbox 1961 1760 2008 1778; x_wconf 95'>and</span>
+      <span class='ocrx_word' id='word_1_220' title='bbox 2020 1766 2075 1778; x_wconf 92'>naw</span>
+      <span class='ocrx_word' id='word_1_221' title='bbox 2085 1766 2220 1778; x_wconf 7'>cjnoanymc</span>
+      <span class='ocrx_word' id='word_1_222' title='bbox 2232 1760 2252 1778; x_wconf 88'>in</span>
+      <span class='ocrx_word' id='word_1_223' title='bbox 2265 1760 2268 1778; x_wconf 22'>|</span>
+      <span class='ocrx_word' id='word_1_224' title='bbox 2280 1760 2339 1778; x_wconf 63'>innia</span>
+      <span class='ocrx_word' id='word_1_225' title='bbox 2351 1760 2398 1778; x_wconf 93'>and</span>
+      <span class='ocrx_word' id='word_1_226' title='bbox 2410 1760 2413 1778; x_wconf 39'>|]</span>
+      <span class='ocrx_word' id='word_1_227' title='bbox 2424 1762 2515 1778; x_wconf 89'>antana</span>
+      <span class='ocrx_word' id='word_1_228' title='bbox 2526 1759 2713 1778; x_wconf 39'>[\larhanaraaa)</span>
+      <span class='ocrx_word' id='word_1_229' title='bbox 2732 1760 2880 1778; x_wconf 88'>Narwiniana</span>
+      <span class='ocrx_word' id='word_1_230' title='bbox 2891 1759 2998 1778; x_wconf 0'>AN(1_4“A):</span>
+     </span>
+    </p>
+   </div>
+  </div>
+ </body>
+</html>
