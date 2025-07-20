@@ -100,6 +100,39 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Keeping temporary output in a dedicated `temp/` directory prevents cluttering the project root and makes it clear which files are temporary and can be safely deleted.
 
+## Development Protocol
+
+### STYLE: Follow strict development protocol for all code changes
+
+**Before Any Code Changes:**
+1. **Full schema design** - Define exact output structure, file naming, directory layout
+2. **Validation tool** - Create tool to verify output conforms to schema and prevent regression
+3. **File change plan** - List exactly what files will be edited/created/deleted
+4. **User approval** - Wait for explicit agreement before proceeding
+5. **Small steps** - Make minimal changes, show diffs on demand
+
+**For Any Code Project:**
+1. **Propose changes** - "I will edit X, create Y, delete Z"
+2. **Get agreement** - Wait for "proceed" or "modify plan"
+3. **Show diffs** - On demand, show exactly what will change
+4. **Test thoroughly** - Ensure existing functionality remains intact
+
+**Rationale**: This protocol prevents breaking working systems, ensures user control over changes, and maintains code quality through systematic validation and testing.
+
+### STYLE: Never write code without explicit user approval
+
+- ✅ **Good**: Propose changes, wait for approval, then implement
+- ❌ **Bad**: Writing code immediately without user agreement
+
+**Rationale**: Users have invested significant time in building working systems. All changes must be approved to prevent regression and maintain trust.
+
+### STYLE: Create validation tools for all output schemas
+
+- ✅ **Good**: Build tools to verify output conforms to defined schemas
+- ❌ **Bad**: Assuming output is correct without validation
+
+**Rationale**: Validation tools prevent regression and ensure consistent output quality across all repositories and updates.
+
 ---
 
 *This style guide will be updated as new conventions are established.* 

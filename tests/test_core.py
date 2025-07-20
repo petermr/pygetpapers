@@ -23,7 +23,7 @@ path_for_supp = os.path.join(current_path, paper_for_supp, "supplementaryfiles")
 logfile_name = "abc.txt"
 path_for_logfile = os.path.join(current_path, logfile_name)
 
-os.system(f'python pygetpapers.py -q "lantana" -k 5 -o "{current_path}"')
+os.system(f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}"')
 
 
 def test_directory_creation():
@@ -43,7 +43,7 @@ def test_eupmc_does_update_work():
     path, dirs, files = next(os.walk(current_path))
     old_file_count = len(dirs)
     os.system(
-        f'python pygetpapers.py -q "lantana" -k 10 --update '
+        f'python -m pygetpapers.pygetpapers -q "lantana" -k 10 --update '
         f"-o {current_path}"
     )
     path, dirs, files = next(os.walk(current_path))
@@ -60,7 +60,7 @@ def test_does_zip_work():
     """
     print("checking zip")
     os.system(
-        f"python pygetpapers.py -q {paper_for_zip} -o {current_path} "
+        f"python -m pygetpapers.pygetpapers -q {paper_for_zip} -o {current_path} "
         f"-k 1 --zip"
     )
     # The zip functionality should work without errors
@@ -77,7 +77,7 @@ def test_does_zip_work():
 def test_does_supplementary_work():
     print("checking supp")
     os.system(
-        f"python pygetpapers.py -q {paper_for_supp} -o {current_path} "
+        f"python -m pygetpapers.pygetpapers -q {paper_for_supp} -o {current_path} "
         f"-k 1 --supp"
     )
     does_supp_folder_exist = os.path.isdir(path_for_supp)
@@ -87,7 +87,7 @@ def test_does_supplementary_work():
 def does_references_work():
     print("Checking references")
     os.system(
-        f"python pygetpapers.py -q {paper_for_references_test} "
+        f"python -m pygetpapers.pygetpapers -q {paper_for_references_test} "
         f"-o {current_path} -k 1 --supp"
     )
     does_references_exist = os.path.isfile(references_path)
@@ -97,7 +97,7 @@ def does_references_work():
 def does_citations_work():
     print("Checking citations")
     os.system(
-        f"python pygetpapers.py -q {paper_for_citations_test} "
+        f"python -m pygetpapers.pygetpapers -q {paper_for_citations_test} "
         f"-o {current_path} -k 1 --supp"
     )
     does_citations_exist = os.path.isfile(citation_path)
@@ -106,7 +106,7 @@ def does_citations_work():
 
 def test_does_crossref_work():
     command = (
-        f'python pygetpapers.py -q "lantana" -k 5 -o "{current_path}" '
+        f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" '
         f'--api "crossref" '
     )
     logger.info(f"running {command}")
@@ -119,7 +119,7 @@ def test_does_crossref_work():
 def test_does_arxiv_work():
     logger.info(f"testing {test_does_arxiv_work}")
     command = (
-        f'python pygetpapers.py -q "lantana" -k 5 -o "{current_path}" '
+        f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}" '
         f'--api "arxiv" '
     )
     logger.info(f"running {command}")
@@ -130,7 +130,7 @@ def test_does_arxiv_work():
 
 def test_does_logfile_work():
     os.system(
-        f'python pygetpapers.py -q lantana -o "{current_path}" -k 1 '
+        f'python -m pygetpapers.pygetpapers -q lantana -o "{current_path}" -k 1 '
         f"--logfile {logfile_name}"
     )
     does_logfile_exist = os.path.isfile(path_for_logfile)
@@ -139,7 +139,7 @@ def test_does_logfile_work():
 
 def test_does_biorxiv_work():
     os.system(
-        f'python pygetpapers.py -k 5 -o "{current_path}" '
+        f'python -m pygetpapers.pygetpapers -k 5 -o "{current_path}" '
         f'--api "biorxiv" '
     )
     print("Checking if query run successfully")
