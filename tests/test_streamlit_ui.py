@@ -11,9 +11,9 @@ from pathlib import Path
 def test_streamlit_app_import():
     """Test that the streamlit app module can be imported"""
     try:
-        # Test importing the main streamlit app from root directory
+        # Test importing the main streamlit app from pygetpapers directory
         result = subprocess.run(
-            [sys.executable, "-c", "import streamlit_app"],
+            [sys.executable, "-c", "import pygetpapers.streamlit_app"],
             capture_output=True,
             text=True,
             timeout=30,
@@ -21,17 +21,17 @@ def test_streamlit_app_import():
         )
         assert (
             result.returncode == 0
-        ), f"Failed to import streamlit_app: {result.stderr}"
+        ), f"Failed to import pygetpapers.streamlit_app: {result.stderr}"
     except Exception as e:
-        assert False, f"Failed to import streamlit_app: {e}"
+        assert False, f"Failed to import pygetpapers.streamlit_app: {e}"
 
 
 def test_run_streamlit_import():
     """Test that the run_streamlit module can be imported"""
     try:
-        # Test importing the run_streamlit module from root directory
+        # Test importing the run_streamlit module from pygetpapers directory
         result = subprocess.run(
-            [sys.executable, "-c", "import run_streamlit"],
+            [sys.executable, "-c", "import pygetpapers.run_streamlit"],
             capture_output=True,
             text=True,
             timeout=30,
@@ -39,53 +39,53 @@ def test_run_streamlit_import():
         )
         assert (
             result.returncode == 0
-        ), f"Failed to import run_streamlit: {result.stderr}"
+        ), f"Failed to import pygetpapers.run_streamlit: {result.stderr}"
     except Exception as e:
-        assert False, f"Failed to import run_streamlit: {e}"
+        assert False, f"Failed to import pygetpapers.run_streamlit: {e}"
 
 
 def test_streamlit_app_exists():
     """Test that the streamlit app file exists"""
-    app_path = Path("streamlit_app.py")
-    assert app_path.exists(), "streamlit_app.py should exist"
+    app_path = Path("pygetpapers/streamlit_app.py")
+    assert app_path.exists(), "pygetpapers/streamlit_app.py should exist"
 
 
 def test_run_streamlit_exists():
     """Test that the run_streamlit file exists"""
-    run_path = Path("run_streamlit.py")
-    assert run_path.exists(), "run_streamlit.py should exist"
+    run_path = Path("pygetpapers/run_streamlit.py")
+    assert run_path.exists(), "pygetpapers/run_streamlit.py should exist"
 
 
 def test_streamlit_app_syntax():
     """Test that the streamlit app has valid Python syntax"""
     try:
         result = subprocess.run(
-            [sys.executable, "-m", "py_compile", "streamlit_app.py"],
+            [sys.executable, "-m", "py_compile", "pygetpapers/streamlit_app.py"],
             capture_output=True,
             text=True,
             timeout=30,
         )
         assert (
             result.returncode == 0
-        ), f"streamlit_app.py has syntax errors: {result.stderr}"
+        ), f"pygetpapers/streamlit_app.py has syntax errors: {result.stderr}"
     except Exception as e:
-        assert False, f"Failed to compile streamlit_app.py: {e}"
+        assert False, f"Failed to compile pygetpapers/streamlit_app.py: {e}"
 
 
 def test_run_streamlit_syntax():
     """Test that the run_streamlit file has valid Python syntax"""
     try:
         result = subprocess.run(
-            [sys.executable, "-m", "py_compile", "run_streamlit.py"],
+            [sys.executable, "-m", "py_compile", "pygetpapers/run_streamlit.py"],
             capture_output=True,
             text=True,
             timeout=30,
         )
         assert (
             result.returncode == 0
-        ), f"run_streamlit.py has syntax errors: {result.stderr}"
+        ), f"pygetpapers/run_streamlit.py has syntax errors: {result.stderr}"
     except Exception as e:
-        assert False, f"Failed to compile run_streamlit.py: {e}"
+        assert False, f"Failed to compile pygetpapers/run_streamlit.py: {e}"
 
 
 if __name__ == "__main__":
