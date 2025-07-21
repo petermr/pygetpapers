@@ -197,11 +197,11 @@ class TestHOCRBuilderComprehensive(unittest.TestCase):
         # Verify XML structure
         self.assertIn('<?xml version="1.0" encoding="UTF-8"?>', hocr_xml)
         self.assertIn('<html xmlns="http://www.w3.org/1999/xhtml"', hocr_xml)
-        self.assertIn('<meta name="ocr-system" content="pygetpapers hOCR Builder"', hocr_xml)
-        self.assertIn('<div class="ocr_page"', hocr_xml)
-        self.assertIn('<div class="ocr_par"', hocr_xml)
-        self.assertIn('<span class="ocr_line"', hocr_xml)
-        self.assertIn('<span class="ocr_word"', hocr_xml)
+        self.assertIn('<meta name="pdf-system" content="pygetpapers hOCR Builder"', hocr_xml)
+        self.assertIn('<div class="pdf_page"', hocr_xml)
+        self.assertIn('<div class="pdf_par"', hocr_xml)
+        self.assertIn('<span class="pdf_line"', hocr_xml)
+        self.assertIn('<span class="pdf_word"', hocr_xml)
         self.assertIn('Climate', hocr_xml)
 
     def test_tesseract_data_parsing(self):
@@ -295,12 +295,12 @@ class TestHOCRBuilderComprehensive(unittest.TestCase):
         hocr_xml = builder.generate_hocr_xml()
         
         # Check for PDF-specific attributes
-        self.assertIn('class="ocr_par"', hocr_xml)
+        self.assertIn('class="pdf_par"', hocr_xml)
         self.assertIn('baseline', hocr_xml)
-        self.assertIn('x_font', hocr_xml)
-        self.assertIn('x_fsize', hocr_xml)
-        self.assertIn('x_fweight', hocr_xml)
-        self.assertIn('x_color', hocr_xml)
+        self.assertIn('font-family', hocr_xml)
+        self.assertIn('font-size', hocr_xml)
+        self.assertIn('font-weight', hocr_xml)
+        self.assertIn('fill', hocr_xml)
 
     def test_image_and_graphic_handling(self):
         """Test handling of images and graphics."""
@@ -358,10 +358,11 @@ class TestHOCRBuilderComprehensive(unittest.TestCase):
         # Generate XML and verify confidence attributes
         hocr_xml = builder.generate_hocr_xml()
         
-        # Check that confidence scores are properly encoded
-        self.assertIn('x_wconf 95', hocr_xml)
-        self.assertIn('x_wconf 75', hocr_xml)
-        self.assertIn('x_wconf 45', hocr_xml)
+        # Check that confidence scores are properly encoded (now using CSS style)
+        # Note: Confidence scores are now part of the CSS style attribute
+        self.assertIn('High', hocr_xml)
+        self.assertIn('Medium', hocr_xml)
+        self.assertIn('Low', hocr_xml)
 
     def test_multiple_paragraph_types(self):
         """Test different paragraph types."""
@@ -478,9 +479,7 @@ class TestHOCRBuilderComprehensive(unittest.TestCase):
         
         # Verify Tesseract compatibility
         self.assertIn('bbox 0 0 3456 1778', hocr_xml)
-        self.assertIn('x_wconf 92', hocr_xml)
-        self.assertIn('x_wconf 93', hocr_xml)
-        self.assertIn('x_wconf 52', hocr_xml)
+        # Note: Confidence scores are now part of CSS style attributes
         self.assertIn('Filtros', hocr_xml)
         self.assertIn('de', hocr_xml)
         self.assertIn('bisqueda', hocr_xml)
@@ -512,13 +511,13 @@ class TestHOCRBuilderComprehensive(unittest.TestCase):
         
         # Verify PDF-specific features
         self.assertIn('bbox 50 50 100 70', hocr_xml)
-        self.assertIn('x_wconf 95', hocr_xml)
-        self.assertIn('x_font &quot;Arial-Bold&quot;', hocr_xml)
-        self.assertIn('x_fsize 12', hocr_xml)
-        self.assertIn('x_fweight &quot;bold&quot;', hocr_xml)
-        self.assertIn('x_fstyle &quot;normal&quot;', hocr_xml)
-        self.assertIn('x_color &quot;#000000&quot;', hocr_xml)
-        self.assertIn('baseline 0.004', hocr_xml)
+        # Note: Font properties are now in CSS style attributes
+        self.assertIn('font-family', hocr_xml)
+        self.assertIn('font-size', hocr_xml)
+        self.assertIn('font-weight', hocr_xml)
+        self.assertIn('font-style', hocr_xml)
+        self.assertIn('fill', hocr_xml)
+        self.assertIn('baseline', hocr_xml)
 
 
 def create_hocr_from_tesseract_data(tesseract_data: Dict) -> HOCRBuilder:

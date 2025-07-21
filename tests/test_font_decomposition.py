@@ -119,8 +119,8 @@ class TestFontDecomposition(unittest.TestCase):
         hocr_xml = builder.generate_hocr_xml()
         
         # Verify line structure
-        self.assertIn('<div class="ocr_par"', hocr_xml)
-        self.assertIn('<span class="ocr_line"', hocr_xml)
+        self.assertIn('<div class="pdf_par"', hocr_xml)
+        self.assertIn('<span class="pdf_line"', hocr_xml)
         
         # Verify line coordinates are preserved
         self.assertIn('title="bbox 50 50 115 70"', hocr_xml)  # First line
@@ -228,12 +228,12 @@ class TestFontDecomposition(unittest.TestCase):
         # Generate XML
         hocr_xml = builder.generate_hocr_xml()
         
-        # Verify font information in XML
-        self.assertIn('x_font &quot;Arial&quot;', hocr_xml)
-        self.assertIn('x_fweight &quot;bold&quot;', hocr_xml)
-        self.assertIn('x_fstyle &quot;normal&quot;', hocr_xml)
-        self.assertIn('x_fsize 12', hocr_xml)
-        self.assertIn('x_color &quot;#000000&quot;', hocr_xml)
+        # Verify font information in XML (now using CSS style attributes)
+        self.assertIn('font-family: &quot;Arial&quot;', hocr_xml)
+        self.assertIn('font-weight: bold', hocr_xml)
+        self.assertIn('font-style: normal', hocr_xml)
+        self.assertIn('font-size: 12pt', hocr_xml)
+        self.assertIn('fill: #000000', hocr_xml)
 
     def test_complex_font_patterns(self):
         """Test complex font naming patterns."""
@@ -284,11 +284,11 @@ class TestFontDecomposition(unittest.TestCase):
         hocr_xml = builder.generate_hocr_xml()
         
         # Verify paragraph structure
-        self.assertIn('<div class="ocr_par"', hocr_xml)
+        self.assertIn('<div class="pdf_par"', hocr_xml)
         
         # Verify line spans within paragraph
         lines = hocr_xml.split('\n')
-        line_spans = [line for line in lines if 'class="ocr_line"' in line]
+        line_spans = [line for line in lines if 'class="pdf_line"' in line]
         
         self.assertEqual(len(line_spans), 2)
         
