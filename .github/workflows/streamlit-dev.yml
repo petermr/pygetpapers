@@ -42,15 +42,15 @@ jobs:
     - name: Test Streamlit app structure
       run: |
         # Test that the main app file exists and has correct syntax
-        python -m py_compile streamlit_app.py
+        python -m py_compile pygetpapers/streamlit_app.py
         echo "✅ Streamlit app syntax is valid"
         
         # Test that the run script exists and has valid syntax
-        python -m py_compile run_streamlit.py
+        python -m py_compile pygetpapers/run_streamlit.py
         echo "✅ Run script syntax is valid"
         
         # Test that the script can be imported (without running it - with 30-second timeout)
-        python -c "import signal; import sys; signal.alarm(30); import run_streamlit; print('✅ Run script imported successfully')"
+        python -c "import signal; import sys; signal.alarm(30); from pygetpapers import run_streamlit; print('✅ Run script imported successfully')"
         
         # Test that all required dependencies are available
         python -c "import streamlit; print(f'✅ Streamlit {streamlit.__version__}')"
@@ -80,24 +80,24 @@ jobs:
     - name: Test port configuration
       run: |
         # Verify that the app has port configuration
-        grep -q "port" run_streamlit.py && echo "✅ Port configuration found in run script"
-        grep -q "8501\|8502\|8503" run_streamlit.py && echo "✅ Port range configured in run script"
+        grep -q "port" pygetpapers/run_streamlit.py && echo "✅ Port configuration found in run script"
+        grep -q "8501\|8502\|8503" pygetpapers/run_streamlit.py && echo "✅ Port range configured in run script"
         
     - name: Lint Streamlit code
       run: |
         # Basic syntax check (already done above, but double-check)
-        python -m py_compile streamlit_app.py
-        python -m py_compile run_streamlit.py
+        python -m py_compile pygetpapers/streamlit_app.py
+        python -m py_compile pygetpapers/run_streamlit.py
         
         # Check for common issues
-        if grep -q "TODO\|FIXME\|XXX" streamlit_app.py; then
+        if grep -q "TODO\|FIXME\|XXX" pygetpapers/streamlit_app.py; then
           echo "⚠️  Found TODO/FIXME comments in streamlit_app.py"
         else
           echo "✅ No TODO/FIXME comments found"
         fi
         
         # Check for potential issues
-        if grep -q "streamlit.run()" streamlit_app.py; then
+        if grep -q "streamlit.run()" pygetpapers/streamlit_app.py; then
           echo "✅ streamlit.run() found (expected)"
         fi
 
