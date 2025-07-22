@@ -62,11 +62,43 @@ class SciELO(RepositoryInterface):
     def _make_request(
         self, url: str, params: Optional[Dict] = None
     ) -> Optional[requests.Response]:
-        """Make a rate-limited request to SciELO."""
+        """Make a rate-limited request to SciELO with proper encoding detection."""
         self._rate_limit()
         try:
             response = self.session.get(url, params=params, timeout=30)
             response.raise_for_status()
+            
+            # Detect encoding properly
+            if response.encoding is None or response.encoding.lower() == 'iso-8859-1':
+                # Try to detect encoding from content
+                import chardet
+                detected = chardet.detect(response.content)
+                if detected and detected['confidence'] > 0.7:
+                    detected_encoding = detected['encoding']
+                    logging.info(f"Detected encoding: {detected_encoding} (confidence: {detected['confidence']:.2f})")
+                    response.encoding = detected_encoding
+                else:
+                    logging.warning(f"Could not reliably detect encoding for {url}. Detected: {detected}")
+                    # Don't guess - alert user
+                    print(f"⚠️  ENCODING WARNING: Could not detect encoding for {url}")
+                    print(f"   Detected: {detected}")
+                    print(f"   Response headers: {dict(response.headers)}")
+                    print(f"   Please check if this is acceptable or specify encoding manually.")
+                    # For now, use UTF-8 but log the issue
+                    response.encoding = 'utf-8'
+            
+            # Validate that text extraction works
+            try:
+                test_text = response.text[:100]  # Test first 100 characters
+                if not test_text or test_text.strip() == '':
+                    logging.warning(f"Response text appears empty for {url}")
+            except UnicodeDecodeError as e:
+                logging.error(f"Unicode decode error for {url}: {e}")
+                print(f"❌ ENCODING ERROR: Failed to decode response from {url}")
+                print(f"   Error: {e}")
+                print(f"   Please specify correct encoding manually.")
+                return None
+                
             return response
         except requests.RequestException as e:
             logging.error(f"Request failed for {url}: {e}")
@@ -331,8 +363,8 @@ class SciELO(RepositoryInterface):
         # Extract metadata
         metadata = self._extract_article_metadata(response.text, article_url)
 
-        # Use FileUtils for file operations
-        article_id = FileUtils.generate_article_id(metadata, article_url)
+        # Use custom SciELO article ID generation following style guide
+        article_id = self._generate_scielo_article_id(metadata, article_url)
         article_dir = Path(output_dir) / article_id
         article_dir.mkdir(parents=True, exist_ok=True)
 
@@ -371,6 +403,7 @@ class SciELO(RepositoryInterface):
         makecsv: bool = False,
         makexml: bool = False,
         makehtml: bool = False,
+        makedatatables: bool = True,  # Default to True for DataTables
     ) -> Dict[str, Any]:
         """
         Main SciELO search and download method.
@@ -383,6 +416,7 @@ class SciELO(RepositoryInterface):
             makecsv: Generate CSV output
             makexml: Generate XML output
             makehtml: Generate HTML output
+            makedatatables: Generate DataTables HTML output
 
         Returns:
             Dictionary with search results and metadata
@@ -401,24 +435,47 @@ class SciELO(RepositoryInterface):
             "repository": "scielo"
         }
 
+        # Create output directory in temp/ as per style guide
+        output_dir = Path("temp") / "scielo_results"
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Download articles for file links to work
+        print(f"📥 Downloading {len(articles)} articles...")
+        for i, article in enumerate(articles, 1):
+            article_url = article.get("url")
+            if article_url:
+                print(f"   [{i}/{len(articles)}] Downloading: {article.get('title', 'Unknown')[:50]}...")
+                self.download_article(article_url, output_dir)
+            else:
+                print(f"   [{i}/{len(articles)}] Skipping: No URL available")
+
         # Generate outputs if requested
         if makecsv:
-            self._generate_csv_output(results, "scielo_results")
+            self._generate_csv_output(results, output_dir / "scielo_results")
         
         if makexml:
-            self._generate_xml_output(results, "scielo_results")
+            self._generate_xml_output(results, output_dir / "scielo_results")
         
         if makehtml:
-            self._generate_html_output(results, "scielo_results")
+            self._generate_html_output(results, output_dir / "scielo_results")
+        
+        if makedatatables:
+            self._generate_datatables_output(results, "results")
 
         logging.info(f"SciELO search completed. Found {len(articles)} articles.")
+        print(f"✅ SciELO search completed successfully!")
+        print(f"   📊 Found {len(articles)} articles")
+        print(f"   📁 Output directory: {output_dir}")
+        if makedatatables:
+            print(f"   🎯 DataTables: {output_dir}/scielo_results/datatables.html")
+        
         return results
 
-    def _generate_csv_output(self, results: Dict[str, Any], base_filename: str) -> None:
+    def _generate_csv_output(self, results: Dict[str, Any], base_filename: Path) -> None:
         """Generate CSV output from search results."""
         import csv
         
-        csv_file = Path(f"{base_filename}.csv")
+        csv_file = base_filename.with_suffix('.csv')
         with open(csv_file, "w", newline="", encoding="utf-8") as f:
             if results["articles"]:
                 fieldnames = results["articles"][0].keys()
@@ -429,7 +486,7 @@ class SciELO(RepositoryInterface):
         
         logging.info(f"CSV output saved to: {csv_file}")
 
-    def _generate_xml_output(self, results: Dict[str, Any], base_filename: str) -> None:
+    def _generate_xml_output(self, results: Dict[str, Any], base_filename: Path) -> None:
         """Generate XML output from search results."""
         import xml.etree.ElementTree as ET
         
@@ -450,12 +507,12 @@ class SciELO(RepositoryInterface):
                     elem.text = str(value) if value else ""
         
         tree = ET.ElementTree(root)
-        xml_file = Path(f"{base_filename}.xml")
+        xml_file = base_filename.with_suffix('.xml')
         tree.write(xml_file, encoding="utf-8", xml_declaration=True)
         
         logging.info(f"XML output saved to: {xml_file}")
 
-    def _generate_html_output(self, results: Dict[str, Any], base_filename: str) -> None:
+    def _generate_html_output(self, results: Dict[str, Any], base_filename: Path) -> None:
         """Generate HTML output from search results."""
         html_content = f"""
 <!DOCTYPE html>
@@ -478,19 +535,19 @@ class SciELO(RepositoryInterface):
     <p><strong>Total Results:</strong> {results['total_results']}</p>
     <p><strong>Search Date:</strong> {results['search_date']}</p>
     
-    <div class="results">
+    <div class="articles">
 """
         
         for article in results["articles"]:
             html_content += f"""
         <div class="article">
             <div class="title">{article.get('title', 'No title')}</div>
-            <div class="authors">Authors: {', '.join(article.get('authors', []))}</div>
+            <div class="authors">{', '.join(article.get('authors', []))}</div>
             <div class="abstract">{article.get('abstract', 'No abstract')}</div>
             <div class="metadata">
-                Journal: {article.get('journal', 'Unknown')} | 
-                DOI: {article.get('doi', 'No DOI')} | 
-                Collection: {article.get('collection', 'Unknown')}
+                <strong>Journal:</strong> {article.get('journal', 'Unknown')} | 
+                <strong>DOI:</strong> {article.get('doi', 'None')} | 
+                <strong>URL:</strong> <a href="{article.get('url', '#')}">{article.get('url', 'No URL')}</a>
             </div>
         </div>
 """
@@ -501,11 +558,215 @@ class SciELO(RepositoryInterface):
 </html>
 """
         
-        html_file = Path(f"{base_filename}.html")
+        html_file = base_filename.with_suffix('.html')
         with open(html_file, "w", encoding="utf-8") as f:
             f.write(html_content)
         
         logging.info(f"HTML output saved to: {html_file}")
+
+    def _generate_datatables_output(self, results: Dict[str, Any], base_filename: str) -> None:
+        """Generate DataTables HTML output from search results with proper file links."""
+        # Create output directory in temp/ as per style guide
+        output_dir = Path("temp") / f"scielo_{base_filename}"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Generate DataTables HTML with proper file links
+        datatables_html = self._create_scielo_datatables_html(results)
+        
+        # Save DataTables HTML
+        datatables_file = output_dir / "datatables.html"
+        with open(datatables_file, "w", encoding="utf-8") as f:
+            f.write(datatables_html)
+        
+        # Create index file
+        index_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SciELO Search Results - {results['query']}</title>
+    <meta charset="utf-8">
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .header {{ background-color: #f5f5f5; padding: 20px; border-radius: 5px; }}
+        .summary {{ margin: 20px 0; }}
+        .datatables-link {{ 
+            display: inline-block; 
+            background-color: #007bff; 
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin: 10px 0;
+        }}
+        .datatables-link:hover {{ background-color: #0056b3; }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SciELO Search Results</h1>
+        <div class="summary">
+            <p><strong>Query:</strong> {results['query']}</p>
+            <p><strong>Total Results:</strong> {results['total_results']}</p>
+            <p><strong>Search Date:</strong> {results['search_date']}</p>
+            <p><strong>Repository:</strong> SciELO</p>
+        </div>
+        <a href="datatables.html" class="datatables-link">View Interactive DataTable</a>
+    </div>
+    
+    <h2>Search Summary</h2>
+    <p>This search returned {results['total_results']} articles from SciELO.</p>
+    <p>Click the link above to view the interactive DataTable with search, sort, and pagination features.</p>
+    
+    <h2>Files Generated</h2>
+    <ul>
+        <li><strong>datatables.html</strong> - Interactive DataTable with all results and file links</li>
+        <li><strong>index.html</strong> - This summary page</li>
+    </ul>
+</body>
+</html>
+"""
+        
+        index_file = output_dir / "index.html"
+        with open(index_file, "w", encoding="utf-8") as f:
+            f.write(index_html)
+        
+        logging.info(f"DataTables output saved to: {output_dir}")
+        print(f"✅ DataTables created successfully in: {output_dir}")
+
+    def _create_scielo_datatables_html(self, results: Dict[str, Any]) -> str:
+        """Create SciELO-specific DataTables HTML with proper file links."""
+        
+        # Prepare table rows with file links
+        table_rows = []
+        for article in results["articles"]:
+            # Generate article ID for file paths
+            article_id = self._generate_scielo_article_id(article, article.get("url", ""))
+            
+            # Create file links
+            html_link = f'<a href="{article_id}/{article_id}.html" target="_blank" title="View HTML">📄 HTML</a>'
+            metadata_link = f'<a href="{article_id}/{article_id}_metadata.json" target="_blank" title="View Metadata">📋 JSON</a>'
+            
+            # Create PDF links if available
+            pdf_links = []
+            for i, pdf_url in enumerate(article.get("pdf_urls", [])):
+                pdf_filename = f"{article_id}_pdf_{i+1}.pdf"
+                pdf_links.append(f'<a href="{article_id}/{pdf_filename}" target="_blank" title="Download PDF">📄 PDF{i+1}</a>')
+            
+            pdf_links_html = " | ".join(pdf_links) if pdf_links else "No PDF"
+            
+            # Create title link
+            title_link = f'<a href="{article.get("url", "#")}" target="_blank">{article.get("title", "No title")}</a>'
+            
+            # Create table row
+            row = f"""
+        <tr>
+            <td>{title_link}</td>
+            <td>{", ".join(article.get("authors", []))}</td>
+            <td>{article.get("abstract", "No abstract")[:100]}...</td>
+            <td>{article.get("journal", "Unknown")}</td>
+            <td>{article.get("doi", "No DOI")}</td>
+            <td>{article.get("year", "")}</td>
+            <td>{article.get("language", "")}</td>
+            <td>{html_link} | {metadata_link}</td>
+            <td>{pdf_links_html}</td>
+        </tr>"""
+            table_rows.append(row)
+        
+        # Create the full HTML
+        datatables_html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>SciELO Search Results - {results['query']}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }}
+        .container {{ max-width: 1400px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }}
+        .header {{ text-align: center; margin-bottom: 30px; }}
+        .header h1 {{ color: #2c3e50; margin-bottom: 10px; }}
+        .summary {{ background-color: #ecf0f1; padding: 15px; border-radius: 5px; margin-bottom: 20px; }}
+        .summary p {{ margin: 5px 0; }}
+        table {{ width: 100%; }}
+        .dataTables_wrapper {{ margin-top: 20px; }}
+        .footer {{ margin-top: 30px; text-align: center; color: #7f8c8d; font-size: 14px; }}
+        /* Fixed column widths to prevent overlap */
+        #scieloTable th:nth-child(1) {{ width: 20%; }} /* Title */
+        #scieloTable th:nth-child(2) {{ width: 12%; }} /* Authors */
+        #scieloTable th:nth-child(3) {{ width: 20%; }} /* Abstract */
+        #scieloTable th:nth-child(4) {{ width: 10%; }} /* Journal */
+        #scieloTable th:nth-child(5) {{ width: 8%; }}  /* DOI */
+        #scieloTable th:nth-child(6) {{ width: 5%; }}  /* Year */
+        #scieloTable th:nth-child(7) {{ width: 5%; }}  /* Language */
+        #scieloTable th:nth-child(8) {{ width: 10%; }} /* HTML/JSON */
+        #scieloTable th:nth-child(9) {{ width: 10%; }} /* PDFs */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SciELO Search Results</h1>
+            <h2>{results['query']}</h2>
+        </div>
+        
+        <div class="summary">
+            <p><strong>Query:</strong> {results['query']}</p>
+            <p><strong>Total Results:</strong> {results['total_results']} articles</p>
+            <p><strong>Search Date:</strong> {results['search_date']}</p>
+            <p><strong>Repository:</strong> SciELO (Multiple Regional Sites)</p>
+            <p><strong>Note:</strong> All columns visible - file links point to downloaded content</p>
+        </div>
+        
+        <table id="scieloTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Abstract</th>
+                    <th>Journal</th>
+                    <th>DOI</th>
+                    <th>Year</th>
+                    <th>Language</th>
+                    <th>Files</th>
+                    <th>PDFs</th>
+                </tr>
+            </thead>
+            <tbody>
+                {''.join(table_rows)}
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            <p>Generated by pygetpapers SciELO Repository | Interactive DataTable with file links</p>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {{
+            $('#scieloTable').DataTable({{
+                responsive: false,  // Disabled responsive to show all columns
+                pageLength: 10,
+                order: [[0, 'asc']],
+                scrollX: true,      // Enable horizontal scrolling if needed
+                language: {{
+                    search: "Search articles:",
+                    lengthMenu: "Show _MENU_ articles per page",
+                    info: "Showing _START_ to _END_ of _TOTAL_ articles",
+                    paginate: {{
+                        first: "First",
+                        last: "Last",
+                        next: "Next",
+                        previous: "Previous"
+                    }}
+                }}
+            }});
+        }});
+    </script>
+</body>
+</html>"""
+        
+        return datatables_html
 
     def update(self, query_namespace: Dict[str, Any]) -> None:
         """Update from previous results."""
@@ -533,3 +794,47 @@ class SciELO(RepositoryInterface):
             article_url = article.get("url")
             if article_url:
                 self.download_article(article_url, output_dir) 
+    def _generate_scielo_article_id(self, metadata: Dict[str, Any], article_url: str) -> str:
+        """
+        Generate SciELO-specific article ID following style guide.
+        
+        Style guide: DOIs should not start with https___doi_org_.
+        Use repository-specific URL or clean DOI.
+        """
+        # Try to extract SciELO article ID from URL first
+        if article_url:
+            # Extract SciELO article ID from URL
+            # Example: https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0100-12342024000100001
+            scielo_match = re.search(r'pid=([A-Z0-9]+)', article_url)
+            if scielo_match:
+                return f"SCIELO_{scielo_match.group(1)}"
+            
+            # Extract ID from other SciELO URL patterns
+            id_match = re.search(r'/([A-Z0-9]+)(?:[/?]|$)', article_url)
+            if id_match:
+                return f"SCIELO_{id_match.group(1)}"
+        
+        # Try to use DOI (clean version without https://doi.org/)
+        if metadata.get('doi'):
+            doi = metadata['doi']
+            # Remove https://doi.org/ prefix if present
+            if doi.startswith('https://doi.org/'):
+                doi = doi.replace('https://doi.org/', '')
+            elif doi.startswith('http://doi.org/'):
+                doi = doi.replace('http://doi.org/', '')
+            
+            # Clean DOI for filename (replace non-alphanumeric with underscores)
+            doi_clean = re.sub(r'[^\w\-]', '_', doi)
+            return f"DOI_{doi_clean}"
+        
+        # Try to use title (first few words)
+        if metadata.get('title'):
+            title_clean = re.sub(r'[^\w\s]', '', metadata['title'])
+            title_words = title_clean.split()[:3]
+            if title_words:
+                return f"TITLE_{'_'.join(title_words)}"
+        
+        # Fallback to hash of URL
+        import hashlib
+        url_hash = hashlib.md5(article_url.encode()).hexdigest()[:8]
+        return f"SCIELO_hash_{url_hash}" 
