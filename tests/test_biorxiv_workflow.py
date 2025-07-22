@@ -156,7 +156,7 @@ def demonstrate_full_workflow():
         )
 
     # Save summary
-    summary_file = Path("biorxiv_workflow_output") / "workflow_summary.json"
+    summary_file = Path("biorxiv_workflow_output", "workflow_summary.json")
     with open(summary_file, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 

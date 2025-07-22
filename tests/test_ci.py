@@ -4,10 +4,6 @@ Simple test script to verify CI/CD functionality
 """
 
 import os
-import sys
-
-# Add the current directory to Python path for imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 def test_imports():
@@ -54,7 +50,7 @@ def test_streamlit_app():
     print("\n🧪 Testing Streamlit app...")
 
     try:
-        import streamlit_app
+        from pygetpapers import streamlit_app
 
         print("✅ Streamlit app imported successfully")
         return True
@@ -68,7 +64,7 @@ def test_datatables():
     print("\n🧪 Testing datatables integration...")
 
     try:
-        from src.datatables_integration import PygetpapersDatatables
+        from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 
         print("✅ Datatables integration imported successfully")
         return True

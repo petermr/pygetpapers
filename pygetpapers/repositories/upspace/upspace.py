@@ -266,7 +266,7 @@ class UPSpace(RepositoryInterface):
             return False
         
         article_id = self._generate_article_id(article)
-        article_dir = Path(output_dir) / article_id
+        article_dir = Path(output_dir, article_id)
         
         try:
             article_dir.mkdir(parents=True, exist_ok=True)
@@ -277,7 +277,7 @@ class UPSpace(RepositoryInterface):
         logging.info(f"Downloading article: {article_id}")
         
         # Download metadata
-        metadata_file = article_dir / "metadata.json"
+        metadata_file = Path(article_dir, "metadata.json")
         try:
             with open(metadata_file, "w", encoding="utf-8") as f:
                 json.dump(article, f, indent=2, ensure_ascii=False)
@@ -302,7 +302,7 @@ class UPSpace(RepositoryInterface):
                                 if isinstance(bitstream, dict):
                                     filename = bitstream.get("name", "")
                                     if filename.lower().endswith('.pdf'):
-                                        pdf_path = article_dir / "fulltext.pdf"
+                                        pdf_path = Path(article_dir, "fulltext.pdf")
                                         bitstream_uuid = bitstream.get("uuid")
                                         if bitstream_uuid and self._download_bitstream(bitstream_uuid, pdf_path):
                                             logging.info(f"Downloaded PDF: {pdf_path}")
@@ -362,7 +362,7 @@ class UPSpace(RepositoryInterface):
         logging.info(f"Creating DataTables for {len(articles)} articles")
 
         # Read the template
-        template_path = Path(__file__).parent / "templates" / "upspace_datatables.html"
+        template_path = Path(Path(__file__).parent, "templates", "upspace_datatables.html")
         if not template_path.exists():
             logging.error(f"Template not found: {template_path}")
             return
@@ -405,11 +405,11 @@ class UPSpace(RepositoryInterface):
 
             # Format local files
             local_files = []
-            pdf_path = Path(self.output_dir) / article_id / "fulltext.pdf"
+            pdf_path = Path(self.output_dir, article_id, "fulltext.pdf")
             if pdf_path.exists():
                 local_files.append(f'<a href="{article_id}/fulltext.pdf" class="btn btn-success" target="_blank">PDF</a>')
 
-            metadata_path = Path(self.output_dir) / article_id / "metadata.json"
+            metadata_path = Path(self.output_dir, article_id, "metadata.json")
             if metadata_path.exists():
                 local_files.append(f'<a href="{article_id}/metadata.json" class="btn btn-info" target="_blank">JSON</a>')
 
@@ -436,7 +436,7 @@ class UPSpace(RepositoryInterface):
         html_content = html_content.replace("{{QUERY}}", "UPSpace Search")
 
         # Save DataTables HTML
-        datatables_file = Path(self.output_dir) / "upspace_datatables.html"
+        datatables_file = Path(self.output_dir, "upspace_datatables.html")
         with open(datatables_file, "w", encoding="utf-8") as f:
             f.write(html_content)
 
@@ -450,7 +450,7 @@ class UPSpace(RepositoryInterface):
         logging.info("Creating UPSpace index HTML")
 
         # Read the template
-        template_path = Path(__file__).parent / "templates" / "upspace_index.html"
+        template_path = Path(Path(__file__).parent, "templates", "upspace_index.html")
         if not template_path.exists():
             logging.error(f"Template not found: {template_path}")
             return
@@ -468,7 +468,7 @@ class UPSpace(RepositoryInterface):
         html_content = html_content.replace("{{QUERY}}", "UPSpace Search")
 
         # Save index HTML
-        index_file = Path(self.output_dir) / "index.html"
+        index_file = Path(self.output_dir, "index.html")
         with open(index_file, "w", encoding="utf-8") as f:
             f.write(html_content)
 

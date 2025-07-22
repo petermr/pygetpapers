@@ -319,7 +319,7 @@ class Rxiv(RepositoryInterface):
         if self._is_text_query(query):
             logging.info(f"Using {source} web scraper for text query (noexecute mode)")
             try:
-                from .biorxiv_advanced_scraper import BioRxivAdvancedScraper
+                from pygetpapers.repositories.biorxiv.biorxiv_advanced_scraper import BioRxivAdvancedScraper
                 import requests
                 from bs4 import BeautifulSoup
                 from urllib.parse import quote_plus
@@ -449,7 +449,7 @@ class Rxiv(RepositoryInterface):
             # Import the bioRxiv web scraper integration
             import os
 
-            from .biorxiv_integration import BioRxivIntegration
+            from pygetpapers.repositories.biorxiv.biorxiv_integration import BioRxivIntegration
 
             # Get the output directory from query_namespace
             output_dir = query_namespace.get("output", "biorxiv_output")

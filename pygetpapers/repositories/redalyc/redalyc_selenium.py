@@ -629,7 +629,7 @@ class RedalycSelenium(RepositoryInterface):
             import os
 
             output_dir = os.getcwd()
-            xml_file = Path(output_dir) / f"{base_filename}s.xml"
+            xml_file = Path(output_dir, f"{base_filename}s.xml")
 
             if FileUtils.write_xml_data(
                 combined_metadata, xml_file, root_name="redalyc_articles"
@@ -669,7 +669,7 @@ class RedalycSelenium(RepositoryInterface):
 
             # Use FileUtils for file operations
             article_id = FileUtils.generate_article_id(metadata, article_url)
-            article_dir = Path(output_dir) / article_id
+            article_dir = Path(output_dir, article_id)
             FileUtils.create_directory(article_dir)
 
             # Save files using FileUtils
@@ -682,7 +682,7 @@ class RedalycSelenium(RepositoryInterface):
                 try:
                     self.driver.get(metadata["pdf_url"])
                     time.sleep(2)
-                    pdf_file = article_dir / "fulltext.pdf"
+                    pdf_file = Path(article_dir, "fulltext.pdf")
                     with open(pdf_file, "wb") as f:
                         f.write(self.driver.page_source.encode("utf-8"))
                     logging.info(f"Downloaded PDF: {pdf_file}")

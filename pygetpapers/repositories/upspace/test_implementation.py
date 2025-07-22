@@ -6,12 +6,8 @@ Tests search, metadata extraction, and file download functionality.
 
 import json
 import logging
-import sys
 import tempfile
 from pathlib import Path
-
-# Add the project root to the path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 from pygetpapers.repositories.upspace.upspace import UPSpace
 
@@ -109,13 +105,13 @@ def test_upspace_implementation():
                     
                     # Check if files were created
                     article_id = upspace._generate_article_id(article)
-                    article_dir = Path(temp_dir) / article_id
+                    article_dir = Path(temp_dir, article_id)
                     
                     if article_dir.exists():
                         print(f"  ✓ Article directory created: {article_id}")
                         
                         # Check for metadata file
-                        metadata_file = article_dir / "metadata.json"
+                        metadata_file = Path(article_dir, "metadata.json")
                         if metadata_file.exists():
                             print("  ✓ Metadata file created")
                             
@@ -125,7 +121,7 @@ def test_upspace_implementation():
                             print(f"  ✓ Metadata contains {len(saved_metadata)} fields")
                         
                         # Check for PDF file
-                        pdf_file = article_dir / "fulltext.pdf"
+                        pdf_file = Path(article_dir, "fulltext.pdf")
                         if pdf_file.exists():
                             print(f"  ✓ PDF file created ({pdf_file.stat().st_size} bytes)")
                         else:
@@ -149,8 +145,8 @@ def test_upspace_implementation():
                 upspace._create_upspace_datatables_html(articles)
                 
                 # Check if files were created
-                datatables_file = Path(temp_dir) / "upspace_datatables.html"
-                index_file = Path(temp_dir) / "index.html"
+                datatables_file = Path(temp_dir, "upspace_datatables.html")
+                index_file = Path(temp_dir, "index.html")
                 
                 if datatables_file.exists():
                     print("  ✓ DataTables HTML file created")

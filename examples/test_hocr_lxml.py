@@ -7,11 +7,7 @@ VERSION: 1.0.0
 PURPOSE: Verify hOCR builder uses lxml instead of lexical XML construction
 """
 
-import sys
 from pathlib import Path
-
-# Add the pygetpapers directory to the path
-sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pygetpapers.core.hocr_builder import HOCRBuilder
 
@@ -81,10 +77,10 @@ def test_lxml_hocr_generation():
         return False
     
     # Save hOCR file
-    output_dir = Path("examples/hocr_test_output")
+    output_dir = Path("examples", "hocr_test_output")
     output_dir.mkdir(exist_ok=True)
     
-    hocr_file = builder.save_hocr(output_dir / "lxml_test.hocr")
+    hocr_file = builder.save_hocr(Path(output_dir, "lxml_test.hocr"))
     print(f"\n💾 Saved hOCR file: {hocr_file}")
     
     # Get document summary

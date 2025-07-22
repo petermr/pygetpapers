@@ -39,7 +39,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
             self.upspace._create_upspace_datatables_html(articles)
             
             # Check that DataTables file was created
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
             self.assertTrue(datatables_file.exists())
             
             # Check file content
@@ -70,7 +70,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
             self.upspace._create_upspace_datatables_html(articles)
             
             # Check that index file was created
-            index_file = Path(self.test_dir) / "index.html"
+            index_file = Path(self.test_dir, "index.html")
             self.assertTrue(index_file.exists())
             
             # Check file content
@@ -102,7 +102,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
         try:
             self.upspace._create_upspace_datatables_html(sdg_articles)
             
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
             with open(datatables_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
             
@@ -131,7 +131,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
         try:
             self.upspace._create_upspace_datatables_html(articles)
             
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
             with open(datatables_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
             
@@ -155,7 +155,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
         try:
             self.upspace._create_upspace_datatables_html(articles)
             
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
             with open(datatables_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
             
@@ -178,7 +178,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
 
     def test_template_loading(self):
         """Test that templates are loaded correctly."""
-        template_path = Path(__file__).parent.parent / "templates" / "upspace_datatables.html"
+        template_path = Path(Path(__file__).parent.parent, "templates", "upspace_datatables.html")
         self.assertTrue(template_path.exists(), f"Template not found: {template_path}")
         
         with open(template_path, "r", encoding="utf-8") as f:
@@ -213,7 +213,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
         try:
             self.upspace._create_upspace_datatables_html([test_article])
             
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
             with open(datatables_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
             
@@ -236,8 +236,8 @@ class TestUPSpaceDataTables(unittest.TestCase):
             self.upspace._create_upspace_datatables_html([])
             
             # Should still create files
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
-            index_file = Path(self.test_dir) / "index.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
+            index_file = Path(self.test_dir, "index.html")
             
             self.assertTrue(datatables_file.exists())
             self.assertTrue(index_file.exists())
@@ -265,7 +265,7 @@ class TestUPSpaceDataTables(unittest.TestCase):
         try:
             self.upspace._create_upspace_datatables_html(articles)
             
-            datatables_file = Path(self.test_dir) / "upspace_datatables.html"
+            datatables_file = Path(self.test_dir, "upspace_datatables.html")
             with open(datatables_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
             

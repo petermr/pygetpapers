@@ -38,7 +38,7 @@ class TestUPSpaceDownload(unittest.TestCase):
             if success:
                 downloaded_count += 1
                 article_id = self.upspace._generate_article_id(article)
-                pdf_file = Path(self.test_dir) / article_id / "fulltext.pdf"
+                pdf_file = Path(self.test_dir, article_id, "fulltext.pdf")
                 
                 # Check if PDF was downloaded
                 if pdf_file.exists():
@@ -61,7 +61,7 @@ class TestUPSpaceDownload(unittest.TestCase):
             self.assertTrue(success)
             
             article_id = self.upspace._generate_article_id(article)
-            metadata_file = Path(self.test_dir) / article_id / "metadata.json"
+            metadata_file = Path(self.test_dir, article_id, "metadata.json")
             
             # Check metadata file exists and is valid JSON
             self.assertTrue(metadata_file.exists())
@@ -83,18 +83,18 @@ class TestUPSpaceDownload(unittest.TestCase):
         self.assertTrue(success)
         
         article_id = self.upspace._generate_article_id(article)
-        article_dir = Path(self.test_dir) / article_id
+        article_dir = Path(self.test_dir, article_id)
         
         # Check directory exists
         self.assertTrue(article_dir.exists())
         self.assertTrue(article_dir.is_dir())
         
         # Check for expected files
-        metadata_file = article_dir / "metadata.json"
+        metadata_file = Path(article_dir, "metadata.json")
         self.assertTrue(metadata_file.exists())
         
         # PDF might or might not exist depending on availability
-        pdf_file = article_dir / "fulltext.pdf"
+        pdf_file = Path(article_dir, "fulltext.pdf")
         if pdf_file.exists():
             self.assertTrue(pdf_file.is_file())
 
@@ -153,7 +153,7 @@ class TestUPSpaceDownload(unittest.TestCase):
             if success:
                 article = articles[index]
                 article_id = self.upspace._generate_article_id(article)
-                metadata_file = Path(self.test_dir) / article_id / "metadata.json"
+                metadata_file = Path(self.test_dir, article_id, "metadata.json")
                 self.assertTrue(metadata_file.exists())
 
     def test_file_permissions(self):
@@ -167,8 +167,8 @@ class TestUPSpaceDownload(unittest.TestCase):
         self.assertTrue(success)
         
         article_id = self.upspace._generate_article_id(article)
-        article_dir = Path(self.test_dir) / article_id
-        metadata_file = article_dir / "metadata.json"
+        article_dir = Path(self.test_dir, article_id)
+        metadata_file = Path(article_dir, "metadata.json")
         
         # Check file permissions
         self.assertTrue(metadata_file.exists())

@@ -198,7 +198,7 @@ class Redalyc(RepositoryInterface):
 
         # Use FileUtils for file operations
         article_id = FileUtils.generate_article_id(metadata, article_url)
-        article_dir = Path(output_dir) / article_id
+        article_dir = Path(output_dir, article_id)
         FileUtils.create_directory(article_dir)
 
         # Save files using FileUtils
@@ -210,7 +210,7 @@ class Redalyc(RepositoryInterface):
         if metadata.get("pdf_url"):
             pdf_response = self._make_request(metadata["pdf_url"])
             if pdf_response:
-                pdf_file = article_dir / "fulltext.pdf"
+                pdf_file = Path(article_dir, "fulltext.pdf")
                 with open(pdf_file, "wb") as f:
                     f.write(pdf_response.content)
                 logging.info(f"Downloaded PDF: {pdf_file}")
@@ -219,7 +219,7 @@ class Redalyc(RepositoryInterface):
         if metadata.get("xml_url"):
             xml_response = self._make_request(metadata["xml_url"])
             if xml_response:
-                xml_file = article_dir / "fulltext.xml"
+                xml_file = Path(article_dir, "fulltext.xml")
                 with open(xml_file, "w", encoding="utf-8") as f:
                     f.write(xml_response.text)
                 logging.info(f"Downloaded XML: {xml_file}")

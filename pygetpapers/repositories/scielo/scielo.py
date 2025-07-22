@@ -365,16 +365,16 @@ class SciELO(RepositoryInterface):
 
         # Use custom SciELO article ID generation following style guide
         article_id = self._generate_scielo_article_id(metadata, article_url)
-        article_dir = Path(output_dir) / article_id
+        article_dir = Path(output_dir, article_id)
         article_dir.mkdir(parents=True, exist_ok=True)
 
         # Save HTML content
-        html_file = article_dir / f"{article_id}.html"
+        html_file = Path(article_dir, f"{article_id}.html")
         with open(html_file, "w", encoding="utf-8") as f:
             f.write(response.text)
 
         # Save metadata
-        metadata_file = article_dir / f"{article_id}_metadata.json"
+        metadata_file = Path(article_dir, f"{article_id}_metadata.json")
         with open(metadata_file, "w", encoding="utf-8") as f:
             import json
             json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -384,7 +384,7 @@ class SciELO(RepositoryInterface):
             try:
                 pdf_response = self._make_request(pdf_url)
                 if pdf_response and pdf_response.headers.get("content-type", "").startswith("application/pdf"):
-                    pdf_file = article_dir / f"{article_id}_pdf_{i+1}.pdf"
+                    pdf_file = Path(article_dir, f"{article_id}_pdf_{i+1}.pdf")
                     with open(pdf_file, "wb") as f:
                         f.write(pdf_response.content)
                     logging.info(f"Downloaded PDF: {pdf_file}")
@@ -436,7 +436,7 @@ class SciELO(RepositoryInterface):
         }
 
         # Create output directory in temp/ as per style guide
-        output_dir = Path("temp") / "scielo_results"
+        output_dir = Path("temp", "scielo_results")
         output_dir.mkdir(parents=True, exist_ok=True)
 
         # Download articles for file links to work
@@ -451,13 +451,13 @@ class SciELO(RepositoryInterface):
 
         # Generate outputs if requested
         if makecsv:
-            self._generate_csv_output(results, output_dir / "scielo_results")
+            self._generate_csv_output(results, Path(output_dir, "scielo_results"))
         
         if makexml:
-            self._generate_xml_output(results, output_dir / "scielo_results")
+            self._generate_xml_output(results, Path(output_dir, "scielo_results"))
         
         if makehtml:
-            self._generate_html_output(results, output_dir / "scielo_results")
+            self._generate_html_output(results, Path(output_dir, "scielo_results"))
         
         if makedatatables:
             self._generate_datatables_output(results, "results")
@@ -567,14 +567,14 @@ class SciELO(RepositoryInterface):
     def _generate_datatables_output(self, results: Dict[str, Any], base_filename: str) -> None:
         """Generate DataTables HTML output from search results with proper file links."""
         # Create output directory in temp/ as per style guide
-        output_dir = Path("temp") / f"scielo_{base_filename}"
+        output_dir = Path("temp", f"scielo_{base_filename}")
         output_dir.mkdir(parents=True, exist_ok=True)
         
         # Generate DataTables HTML with proper file links
         datatables_html = self._create_scielo_datatables_html(results)
         
         # Save DataTables HTML
-        datatables_file = output_dir / "datatables.html"
+        datatables_file = Path(output_dir, "datatables.html")
         with open(datatables_file, "w", encoding="utf-8") as f:
             f.write(datatables_html)
         
@@ -626,7 +626,7 @@ class SciELO(RepositoryInterface):
 </html>
 """
         
-        index_file = output_dir / "index.html"
+        index_file = Path(output_dir, "index.html")
         with open(index_file, "w", encoding="utf-8") as f:
             f.write(index_html)
         
