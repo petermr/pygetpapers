@@ -1,4 +1,4 @@
 pytest
-black
+black==24.8.0
 mypy
 flake8

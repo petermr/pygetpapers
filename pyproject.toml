@@ -56,7 +56,7 @@ dev = [
     "pytest-cov>=4.0.0",
     "pytest-mock>=3.10.0",
     "flake8>=5.0.0",
-    "black>=22.0.0",
+            "black==24.8.0",
     "isort>=5.10.0",
     "bandit>=1.7.0",
     "safety>=2.0.0",
