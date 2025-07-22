@@ -58,13 +58,6 @@ jobs:
       run: |
         black --check .
         
-    - name: Format code with black (if check failed)
-      if: failure()
-      run: |
-        black .
-        echo "Code has been formatted. Please commit the changes."
-        exit 1
-        
     - name: Check import sorting with isort
       run: |
         isort --check-only --diff .
