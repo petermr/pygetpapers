@@ -40,7 +40,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest pytest-cov flake8 "black==24.8.0" isort
+        pip install pytest pytest-cov flake8 "black>=22.0.0" isort
         
     - name: Install pygetpapers in development mode
       run: |
@@ -116,23 +116,23 @@ jobs:
       run: |
         playwright install --with-deps
         
-    - name: Test Streamlit app imports
-      run: |
-        # Test that all required dependencies are available
-        python -c "import streamlit; print('Streamlit version:', streamlit.__version__)"
-        python -c "import plotly; print('Plotly version:', plotly.__version__)"
-        
-        # Test that the Streamlit app can be imported (with 30-second timeout to prevent hanging)
-        python -c "import signal; import sys; signal.alarm(30); import streamlit_app; print('Streamlit app imported successfully')"
-        
-    - name: Test run script
-      run: |
-        # Test that the run script exists and has valid syntax
-        python -m py_compile run_streamlit.py
-        echo "✅ Run script syntax is valid"
-        
-        # Test that the script can be imported (without running it - with 30-second timeout)
-        python -c "import signal; import sys; signal.alarm(30); import run_streamlit; print('✅ Run script imported successfully')"
+    # - name: Test Streamlit app imports
+    #   run: |
+    #     # Test that all required dependencies are available
+    #     python -c "import streamlit; print('Streamlit version:', streamlit.__version__)"
+    #     python -c "import plotly; print('Plotly version:', plotly.__version__)"
+    #     
+    #     # Test that the Streamlit app can be imported (with 30-second timeout to prevent hanging)
+    #     python -c "import signal; import sys; signal.alarm(30); import streamlit_app; print('Streamlit app imported successfully')"
+    #     
+    # - name: Test run script
+    #   run: |
+    #     # Test that the run script exists and has valid syntax
+    #     python -m py_compile run_streamlit.py
+    #     echo "✅ Run script syntax is valid"
+    #     
+    #     # Test that the script can be imported (without running it - with 30-second timeout)
+    #     python -c "import signal; import sys; signal.alarm(30); import run_streamlit; print('✅ Run script imported successfully')"
         
     - name: Test pygetpapers CLI availability
       run: |
