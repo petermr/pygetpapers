@@ -7,6 +7,7 @@ HTML parsing, data extraction, and transformation.
 """
 
 import logging
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 from urllib.parse import quote_plus, urljoin, urlparse
 
@@ -14,9 +15,9 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from .config_parser import ScrapingConfigParser
-from .data_transformer import DataTransformer
-from .html_parser import ConfigurableHTMLParser
+from pygetpapers.tools.web_scraping.config_parser import ScrapingConfigParser
+from pygetpapers.tools.web_scraping.data_transformer import DataTransformer
+from pygetpapers.tools.web_scraping.html_parser import ConfigurableHTMLParser
 
 logger = logging.getLogger(__name__)
 

@@ -79,16 +79,16 @@ class JATS4RConverter:
                 zip_ref.extractall(self.jats4r_path)
 
             # Move contents from extracted directory
-            extracted_dir = Path(self.jats4r_path) / "jats2html-master"
+            extracted_dir = Path(self.jats4r_path, "jats2html-master")
             if extracted_dir.exists():
                 # Move all contents to parent directory, handling conflicts
                 for item in extracted_dir.iterdir():
-                    dest_path = Path(self.jats4r_path) / item.name
+                    dest_path = Path(self.jats4r_path, item.name)
                     if dest_path.exists():
                         if dest_path.is_dir():
                             # Merge directories
                             for subitem in item.iterdir():
-                                subdest = dest_path / subitem.name
+                                subdest = Path(dest_path, subitem.name)
                                 if subdest.exists():
                                     if subdest.is_file():
                                         subdest.unlink()  # Remove existing file
@@ -108,10 +108,10 @@ class JATS4RConverter:
             # Set paths - adapt to jats2html structure
             # Look for XSLT files in common locations
             possible_xslt_paths = [
-                Path(self.jats4r_path) / "xslt" / "jats2html.xsl",
-                Path(self.jats4r_path) / "jats2html.xsl",
-                Path(self.jats4r_path) / "xsl" / "jats2html.xsl",
-                Path(self.jats4r_path) / "transform" / "jats2html.xsl",
+                Path(self.jats4r_path, "xslt", "jats2html.xsl"),
+                Path(self.jats4r_path, "jats2html.xsl"),
+                Path(self.jats4r_path, "xsl", "jats2html.xsl"),
+                Path(self.jats4r_path, "transform", "jats2html.xsl"),
             ]
 
             self.xslt_path = None
@@ -131,10 +131,10 @@ class JATS4RConverter:
 
             # Look for CSS files
             possible_css_paths = [
-                Path(self.jats4r_path) / "css" / "jats4r.css",
-                Path(self.jats4r_path) / "css" / "jats2html.css",
-                Path(self.jats4r_path) / "jats4r.css",
-                Path(self.jats4r_path) / "jats2html.css",
+                Path(self.jats4r_path, "css", "jats4r.css"),
+                Path(self.jats4r_path, "css", "jats2html.css"),
+                Path(self.jats4r_path, "jats4r.css"),
+                Path(self.jats4r_path, "jats2html.css"),
             ]
 
             self.css_path = None
