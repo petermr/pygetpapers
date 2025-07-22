@@ -426,37 +426,47 @@ class PygetpapersDatatables:
             xml_link = ""
             html_link = ""
             supp_link = ""
-            
+
             # Calculate relative path from datatables location to paper directory
             # Datatables are typically in output_dir/examples/output_dir/, so we need to go up two levels
             relative_paper_path = f"../../{paper['directory']}"
-            
+
             # PDF link
             if has_pdf:
-                pdf_file = next((f for f in paper["files"] if "fulltext.pdf" in f), None)
+                pdf_file = next(
+                    (f for f in paper["files"] if "fulltext.pdf" in f), None
+                )
                 if pdf_file:
                     pdf_link = f'<a href="{relative_paper_path}/{pdf_file}" target="_blank" title="Open PDF file">📄 PDF</a>'
-            
+
             # XML link
             if has_xml:
-                xml_file = next((f for f in paper["files"] if "fulltext.xml" in f), None)
+                xml_file = next(
+                    (f for f in paper["files"] if "fulltext.xml" in f), None
+                )
                 if xml_file:
                     xml_link = f'<a href="{relative_paper_path}/{xml_file}" target="_blank" title="Open XML file">📋 XML</a>'
-            
+
             # HTML link (prioritize enhanced HTML, then XML HTML, then raw HTML)
             if has_enhanced_html:
-                html_file = next((f for f in paper["files"] if "html_with_ids.html" in f), None)
+                html_file = next(
+                    (f for f in paper["files"] if "html_with_ids.html" in f), None
+                )
                 if html_file:
                     html_link = f'<a href="{relative_paper_path}/{html_file}" target="_blank" title="Open enhanced HTML file">🌐 Enhanced</a>'
             elif has_xml_html:
-                html_file = next((f for f in paper["files"] if "fulltext.xml.html" in f), None)
+                html_file = next(
+                    (f for f in paper["files"] if "fulltext.xml.html" in f), None
+                )
                 if html_file:
                     html_link = f'<a href="{relative_paper_path}/{html_file}" target="_blank" title="Open HTML file">🌐 HTML</a>'
             elif has_raw_html:
-                html_file = next((f for f in paper["files"] if "fulltext.raw.html" in f), None)
+                html_file = next(
+                    (f for f in paper["files"] if "fulltext.raw.html" in f), None
+                )
                 if html_file:
                     html_link = f'<a href="{relative_paper_path}/{html_file}" target="_blank" title="Open HTML file">🌐 HTML</a>'
-            
+
             # Supplementary files link
             if has_supp:
                 supp_files = [f for f in paper["files"] if "supplementary" in f]
@@ -467,7 +477,7 @@ class PygetpapersDatatables:
             abstract = self._extract_abstract_string(metadata)
             if not abstract:
                 abstract = "No abstract available"
-            
+
             # Create row data with hyperlinks and tooltips
             row = {
                 "Select": (
@@ -500,16 +510,20 @@ class PygetpapersDatatables:
                 "XML": xml_link if xml_link else ("✅" if has_xml else "❌"),
                 "PDF": pdf_link if pdf_link else ("✅" if has_pdf else "❌"),
                 "Suppl": supp_link if supp_link else ("✅" if has_supp else "❌"),
-                "HTML": html_link if html_link else (
-                    "✅"
-                    if (
-                        has_raw_html
-                        or has_xml_html
-                        or has_pdf_html
-                        or has_doc_html
-                        or has_enhanced_html
+                "HTML": (
+                    html_link
+                    if html_link
+                    else (
+                        "✅"
+                        if (
+                            has_raw_html
+                            or has_xml_html
+                            or has_pdf_html
+                            or has_doc_html
+                            or has_enhanced_html
+                        )
+                        else "❌"
                     )
-                    else "❌"
                 ),
                 "Enhanced": "✅" if has_enhanced_html else "❌",
                 "Files": len(paper["files"]),
@@ -535,15 +549,15 @@ class PygetpapersDatatables:
                 "Suppl": "Supplementary files - click to browse",
                 "HTML": "HTML version of fulltext - click to view",
                 "Enhanced": "Enhanced HTML with semantic markup",
-                "Files": "Total number of files in paper directory"
+                "Files": "Total number of files in paper directory",
             }
-            
+
             htmlx = self._create_datatable_with_tooltips(
                 dict_by_id=OrderedDict({row["ID"]: row for row in table_data}),
                 table_id=table_id,
-                column_tooltips=column_tooltips
+                column_tooltips=column_tooltips,
             )
-            
+
             return htmlx
 
         except Exception as e:
@@ -692,10 +706,7 @@ class PygetpapersDatatables:
             return self._create_simple_table(summary_data)
 
     def _create_datatable_with_tooltips(
-        self, 
-        dict_by_id: OrderedDict, 
-        table_id: str, 
-        column_tooltips: Dict[str, str]
+        self, dict_by_id: OrderedDict, table_id: str, column_tooltips: Dict[str, str]
     ) -> str:
         """
         Create a datatable with tooltips for column headers.
@@ -963,7 +974,7 @@ class PygetpapersDatatables:
     ) -> Dict[str, Any]:
         """
         DRAFT: Merge multiple corpora into a single dataset.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -974,7 +985,9 @@ class PygetpapersDatatables:
         Returns:
             Merged corpus data
         """
-        logger.warning("Corpus merging is currently in draft status and not available for public use.")
+        logger.warning(
+            "Corpus merging is currently in draft status and not available for public use."
+        )
         return {
             "output_dir": merged_name,
             "metadata_files": {},
@@ -985,7 +998,7 @@ class PygetpapersDatatables:
     def compare_corpora(self, corpora_data: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
         DRAFT: Compare multiple corpora and generate comparison statistics.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -995,7 +1008,9 @@ class PygetpapersDatatables:
         Returns:
             Comparison data with statistics
         """
-        logger.warning("Corpus comparison is currently in draft status and not available for public use.")
+        logger.warning(
+            "Corpus comparison is currently in draft status and not available for public use."
+        )
         return {
             "corpora": [],
             "overlap_analysis": {},
@@ -1372,7 +1387,7 @@ class PygetpapersDatatables:
     def extract_figures(self, output_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         DRAFT: Extract figures, captions, and thumbnails from papers.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -1382,7 +1397,9 @@ class PygetpapersDatatables:
         Returns:
             Dictionary containing figure information for each paper
         """
-        logger.warning("Figure extraction is currently in draft status and not available for public use.")
+        logger.warning(
+            "Figure extraction is currently in draft status and not available for public use."
+        )
         return {
             "papers": {},
             "summary": {
@@ -1791,7 +1808,7 @@ class PygetpapersDatatables:
     ) -> str:
         """
         DRAFT: Create a table showing figures with thumbnails.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -1802,7 +1819,9 @@ class PygetpapersDatatables:
         Returns:
             HTML string with figures table
         """
-        logger.warning("Figure table creation is currently in draft status and not available for public use.")
+        logger.warning(
+            "Figure table creation is currently in draft status and not available for public use."
+        )
         return "<p>Figure table creation is currently in draft status and not available for public use.</p>"
 
     # DRAFT: Figure summary table creation - REMOVED FROM PUBLIC VIEW
@@ -1814,7 +1833,7 @@ class PygetpapersDatatables:
     ) -> str:
         """
         DRAFT: Create a summary table of figures by paper.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -1825,7 +1844,9 @@ class PygetpapersDatatables:
         Returns:
             HTML string with figures summary table
         """
-        logger.warning("Figure summary table creation is currently in draft status and not available for public use.")
+        logger.warning(
+            "Figure summary table creation is currently in draft status and not available for public use."
+        )
         return "<p>Figure summary table creation is currently in draft status and not available for public use.</p>"
 
     # DRAFT: Corpus comparison table creation - REMOVED FROM PUBLIC VIEW
@@ -1837,7 +1858,7 @@ class PygetpapersDatatables:
     ) -> str:
         """
         DRAFT: Create a comparison table for multiple corpora.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -1848,7 +1869,9 @@ class PygetpapersDatatables:
         Returns:
             HTML string with comparison table
         """
-        logger.warning("Corpus comparison table creation is currently in draft status and not available for public use.")
+        logger.warning(
+            "Corpus comparison table creation is currently in draft status and not available for public use."
+        )
         return "<p>Corpus comparison table creation is currently in draft status and not available for public use.</p>"
 
     # DRAFT: Corpus overlap table creation - REMOVED FROM PUBLIC VIEW
@@ -1860,7 +1883,7 @@ class PygetpapersDatatables:
     ) -> str:
         """
         DRAFT: Create an overlap analysis table.
-        
+
         This feature is under development and not ready for public use.
         It has been removed from the public API.
 
@@ -1871,7 +1894,9 @@ class PygetpapersDatatables:
         Returns:
             HTML string with overlap table
         """
-        logger.warning("Corpus overlap table creation is currently in draft status and not available for public use.")
+        logger.warning(
+            "Corpus overlap table creation is currently in draft status and not available for public use."
+        )
         return "<p>Corpus overlap table creation is currently in draft status and not available for public use.</p>"
 
     def search_datatables_fields(
@@ -1896,7 +1921,16 @@ class PygetpapersDatatables:
             Search results with field hit counts and flagged papers
         """
         if search_fields is None:
-            search_fields = ["Title", "Authors", "Abstract", "Journal", "Keywords", "DOI", "PMID", "PMCID"]
+            search_fields = [
+                "Title",
+                "Authors",
+                "Abstract",
+                "Journal",
+                "Keywords",
+                "DOI",
+                "PMID",
+                "PMCID",
+            ]
 
         search_results = {
             "wordlist": wordlist,
@@ -1914,7 +1948,7 @@ class PygetpapersDatatables:
             search_results["field_hit_counts"][field] = {
                 "total_hits": 0,
                 "papers_with_hits": 0,
-                "word_hits": {word: 0 for word in wordlist}
+                "word_hits": {word: 0 for word in wordlist},
             }
 
         # Initialize paper hits
@@ -1923,7 +1957,7 @@ class PygetpapersDatatables:
                 "total_hits": 0,
                 "field_hits": {field: 0 for field in search_fields},
                 "word_hits": {word: 0 for word in wordlist},
-                "matches": []
+                "matches": [],
             }
 
         # Process each paper
@@ -1947,11 +1981,14 @@ class PygetpapersDatatables:
             for field in search_fields:
                 if field in field_values:
                     field_text = str(field_values[field])
-                    
+
                     if not case_sensitive:
                         field_text = field_text.lower()
                         # Keep original words for dictionary keys, use lowercase for searching
-                        search_words = [(original_word, original_word.lower()) for original_word in wordlist]
+                        search_words = [
+                            (original_word, original_word.lower())
+                            for original_word in wordlist
+                        ]
                     else:
                         search_words = [(word, word) for word in wordlist]
 
@@ -1960,21 +1997,37 @@ class PygetpapersDatatables:
                         hit_count = field_text.count(search_word)
                         if hit_count > 0:
                             # Update field hit counts using original word case
-                            search_results["field_hit_counts"][field]["word_hits"][original_word] += hit_count
-                            search_results["field_hit_counts"][field]["total_hits"] += hit_count
-                            
+                            search_results["field_hit_counts"][field]["word_hits"][
+                                original_word
+                            ] += hit_count
+                            search_results["field_hit_counts"][field][
+                                "total_hits"
+                            ] += hit_count
+
                             # Update paper hit counts
-                            search_results["paper_hits"][paper_id]["word_hits"][original_word] += hit_count
-                            search_results["paper_hits"][paper_id]["field_hits"][field] += hit_count
-                            search_results["paper_hits"][paper_id]["total_hits"] += hit_count
-                            
+                            search_results["paper_hits"][paper_id]["word_hits"][
+                                original_word
+                            ] += hit_count
+                            search_results["paper_hits"][paper_id]["field_hits"][
+                                field
+                            ] += hit_count
+                            search_results["paper_hits"][paper_id][
+                                "total_hits"
+                            ] += hit_count
+
                             # Add match details
-                            search_results["paper_hits"][paper_id]["matches"].append({
-                                "field": field,
-                                "word": original_word,
-                                "count": hit_count,
-                                "value": field_values[field][:100] + "..." if len(field_values[field]) > 100 else field_values[field]
-                            })
+                            search_results["paper_hits"][paper_id]["matches"].append(
+                                {
+                                    "field": field,
+                                    "word": original_word,
+                                    "count": hit_count,
+                                    "value": (
+                                        field_values[field][:100] + "..."
+                                        if len(field_values[field]) > 100
+                                        else field_values[field]
+                                    ),
+                                }
+                            )
 
             # Check if paper meets minimum hit threshold
             if search_results["paper_hits"][paper_id]["total_hits"] >= min_hits:
@@ -1983,27 +2036,30 @@ class PygetpapersDatatables:
         # Update field summary
         for field in search_fields:
             papers_with_hits = sum(
-                1 for paper_hits in search_results["paper_hits"].values()
+                1
+                for paper_hits in search_results["paper_hits"].values()
                 if paper_hits["field_hits"][field] > 0
             )
-            search_results["field_hit_counts"][field]["papers_with_hits"] = papers_with_hits
+            search_results["field_hit_counts"][field][
+                "papers_with_hits"
+            ] = papers_with_hits
 
         # Calculate overall summary
         total_papers = len(output_data["paper_directories"])
         flagged_count = len(search_results["flagged_papers"])
-        
+
         search_results["summary"] = {
             "total_papers": total_papers,
             "flagged_papers": flagged_count,
             "flag_rate": flagged_count / total_papers if total_papers > 0 else 0,
             "total_hits": sum(
-                paper_hits["total_hits"] 
+                paper_hits["total_hits"]
                 for paper_hits in search_results["paper_hits"].values()
             ),
             "most_hit_fields": sorted(
                 search_fields,
                 key=lambda f: search_results["field_hit_counts"][f]["total_hits"],
-                reverse=True
+                reverse=True,
             ),
             "most_hit_words": sorted(
                 wordlist,
@@ -2011,8 +2067,8 @@ class PygetpapersDatatables:
                     search_results["field_hit_counts"][f]["word_hits"][w]
                     for f in search_fields
                 ),
-                reverse=True
-            )
+                reverse=True,
+            ),
         }
 
         return search_results
@@ -2054,31 +2110,31 @@ class PygetpapersDatatables:
     def _extract_abstract_string(self, metadata: Dict[str, Any]) -> str:
         """
         Extract abstract as a string from metadata.
-        
+
         Handles multiple abstract field names and formats:
         - abstract
-        - abstractText  
+        - abstractText
         - description
         - summary
         - Europe PMC format: abstractText
         - Crossref format: abstract
         - ArXiv format: summary
-        
+
         Args:
             metadata: Paper metadata dictionary
-            
+
         Returns:
             Abstract text string or empty string if not found
         """
         # Try different abstract field names
         abstract_fields = [
             "abstract",
-            "abstractText", 
+            "abstractText",
             "description",
             "summary",
-            "content"
+            "content",
         ]
-        
+
         for field in abstract_fields:
             if field in metadata:
                 abstract = metadata[field]
@@ -2086,14 +2142,16 @@ class PygetpapersDatatables:
                     return abstract.strip()
                 elif isinstance(abstract, list):
                     # Handle list format (e.g., multiple paragraphs)
-                    return " ".join(str(item).strip() for item in abstract if str(item).strip())
-        
+                    return " ".join(
+                        str(item).strip() for item in abstract if str(item).strip()
+                    )
+
         # Try nested structures (Europe PMC format)
         if "abstractText" in metadata:
             abstract_text = metadata["abstractText"]
             if isinstance(abstract_text, str) and abstract_text.strip():
                 return abstract_text.strip()
-        
+
         # Try journal info structure
         if "journalInfo" in metadata and "journal" in metadata["journalInfo"]:
             journal_info = metadata["journalInfo"]["journal"]
@@ -2101,16 +2159,16 @@ class PygetpapersDatatables:
                 abstract = journal_info["abstract"]
                 if isinstance(abstract, str) and abstract.strip():
                     return abstract.strip()
-        
+
         return ""
 
     def extract_abstracts(self, output_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Extract abstracts from all papers in the output data.
-        
+
         Args:
             output_data: Output from read_pygetpapers_output
-            
+
         Returns:
             Dictionary with abstract extraction results
         """
@@ -2120,16 +2178,16 @@ class PygetpapersDatatables:
             "papers_without_abstracts": 0,
             "abstract_lengths": {},
             "abstract_sources": {},
-            "papers": {}
+            "papers": {},
         }
-        
+
         for paper in output_data["paper_directories"]:
             paper_id = paper["directory"]
             metadata = paper.get("metadata", {})
-            
+
             # Extract abstract
             abstract = self._extract_abstract_string(metadata)
-            
+
             # Determine abstract source
             abstract_source = "none"
             if "abstract" in metadata and metadata["abstract"]:
@@ -2142,7 +2200,7 @@ class PygetpapersDatatables:
                 abstract_source = "summary"
             elif "content" in metadata and metadata["content"]:
                 abstract_source = "content"
-            
+
             # Store paper abstract data
             abstracts_data["papers"][paper_id] = {
                 "has_abstract": bool(abstract),
@@ -2151,9 +2209,9 @@ class PygetpapersDatatables:
                 "abstract_source": abstract_source,
                 "title": metadata.get("title", ""),
                 "authors": self._extract_authors_string(metadata),
-                "journal": self._extract_journal_string(metadata)
+                "journal": self._extract_journal_string(metadata),
             }
-            
+
             # Update counts
             if abstract:
                 abstracts_data["papers_with_abstracts"] += 1
@@ -2161,65 +2219,80 @@ class PygetpapersDatatables:
                 abstracts_data["abstract_sources"][paper_id] = abstract_source
             else:
                 abstracts_data["papers_without_abstracts"] += 1
-        
+
         # Calculate statistics
         abstracts_data["abstract_coverage"] = (
             abstracts_data["papers_with_abstracts"] / abstracts_data["total_papers"]
-            if abstracts_data["total_papers"] > 0 else 0
+            if abstracts_data["total_papers"] > 0
+            else 0
         )
-        
+
         # Calculate average abstract length
         if abstracts_data["abstract_lengths"]:
-            avg_length = sum(abstracts_data["abstract_lengths"].values()) / len(abstracts_data["abstract_lengths"])
+            avg_length = sum(abstracts_data["abstract_lengths"].values()) / len(
+                abstracts_data["abstract_lengths"]
+            )
             abstracts_data["average_abstract_length"] = round(avg_length, 2)
         else:
             abstracts_data["average_abstract_length"] = 0
-        
+
         return abstracts_data
 
     def create_abstracts_table(
-        self, 
-        abstracts_data: Dict[str, Any], 
-        table_id: str = "abstracts_table"
+        self, abstracts_data: Dict[str, Any], table_id: str = "abstracts_table"
     ) -> str:
         """
         Create an interactive HTML table showing abstract information.
-        
+
         Args:
             abstracts_data: Output from extract_abstracts
             table_id: Unique ID for the table
-            
+
         Returns:
             HTML string with interactive table
         """
         if not abstracts_data["papers"]:
             return "<p>No papers found for abstract analysis.</p>"
-        
+
         # Prepare table data
         table_data = []
         for paper_id, paper_data in abstracts_data["papers"].items():
             abstract = paper_data["abstract"]
             if not abstract:
                 abstract = "No abstract available"
-            
+
             # Truncate abstract for display
-            display_abstract = abstract[:200] + "..." if len(abstract) > 200 else abstract
-            
+            display_abstract = (
+                abstract[:200] + "..." if len(abstract) > 200 else abstract
+            )
+
             row = {
                 "Paper ID": paper_id,
-                "Title": paper_data["title"][:80] + "..." if len(paper_data["title"]) > 80 else paper_data["title"],
-                "Authors": paper_data["authors"][:50] + "..." if len(paper_data["authors"]) > 50 else paper_data["authors"],
-                "Journal": paper_data["journal"][:40] + "..." if len(paper_data["journal"]) > 40 else paper_data["journal"],
+                "Title": (
+                    paper_data["title"][:80] + "..."
+                    if len(paper_data["title"]) > 80
+                    else paper_data["title"]
+                ),
+                "Authors": (
+                    paper_data["authors"][:50] + "..."
+                    if len(paper_data["authors"]) > 50
+                    else paper_data["authors"]
+                ),
+                "Journal": (
+                    paper_data["journal"][:40] + "..."
+                    if len(paper_data["journal"]) > 40
+                    else paper_data["journal"]
+                ),
                 "Abstract": display_abstract,
                 "Length": paper_data["abstract_length"],
                 "Source": paper_data["abstract_source"],
-                "Has Abstract": "✅" if paper_data["has_abstract"] else "❌"
+                "Has Abstract": "✅" if paper_data["has_abstract"] else "❌",
             }
             table_data.append(row)
-        
+
         # Sort by abstract length (descending)
         table_data.sort(key=lambda x: x["Length"], reverse=True)
-        
+
         # Create HTML table with tooltips
         column_tooltips = {
             "Paper ID": "Unique paper identifier",
@@ -2229,34 +2302,32 @@ class PygetpapersDatatables:
             "Abstract": "Paper abstract (truncated if >200 characters)",
             "Length": "Number of characters in abstract",
             "Source": "Source field used for abstract extraction",
-            "Has Abstract": "Whether paper has an abstract"
+            "Has Abstract": "Whether paper has an abstract",
         }
-        
+
         try:
             html_table = self._create_datatable_with_tooltips(
                 dict_by_id=OrderedDict({row["Paper ID"]: row for row in table_data}),
                 table_id=table_id,
-                column_tooltips=column_tooltips
+                column_tooltips=column_tooltips,
             )
-            
+
             return html_table
-            
+
         except Exception as e:
             logger.error(f"Error creating abstracts table: {e}")
             return self._create_simple_table(table_data)
 
     def create_abstracts_summary_table(
-        self, 
-        abstracts_data: Dict[str, Any], 
-        table_id: str = "abstracts_summary_table"
+        self, abstracts_data: Dict[str, Any], table_id: str = "abstracts_summary_table"
     ) -> str:
         """
         Create a summary table showing abstract statistics.
-        
+
         Args:
             abstracts_data: Output from extract_abstracts
             table_id: Unique ID for the table
-            
+
         Returns:
             HTML string with summary table
         """
@@ -2265,30 +2336,30 @@ class PygetpapersDatatables:
             {
                 "Metric": "Total Papers",
                 "Value": abstracts_data["total_papers"],
-                "Description": "Total number of papers analyzed"
+                "Description": "Total number of papers analyzed",
             },
             {
                 "Metric": "Papers with Abstracts",
                 "Value": abstracts_data["papers_with_abstracts"],
-                "Description": "Number of papers that have abstracts"
+                "Description": "Number of papers that have abstracts",
             },
             {
-                "Metric": "Papers without Abstracts", 
+                "Metric": "Papers without Abstracts",
                 "Value": abstracts_data["papers_without_abstracts"],
-                "Description": "Number of papers missing abstracts"
+                "Description": "Number of papers missing abstracts",
             },
             {
                 "Metric": "Abstract Coverage",
                 "Value": f"{abstracts_data['abstract_coverage']:.1%}",
-                "Description": "Percentage of papers with abstracts"
+                "Description": "Percentage of papers with abstracts",
             },
             {
                 "Metric": "Average Abstract Length",
                 "Value": f"{abstracts_data['average_abstract_length']} characters",
-                "Description": "Average number of characters per abstract"
-            }
+                "Description": "Average number of characters per abstract",
+            },
         ]
-        
+
         # Create HTML table
         try:
             html_table = self._create_datatable_with_tooltips(
@@ -2297,20 +2368,18 @@ class PygetpapersDatatables:
                 column_tooltips={
                     "Metric": "Statistical measure",
                     "Value": "Calculated value",
-                    "Description": "Explanation of the metric"
-                }
+                    "Description": "Explanation of the metric",
+                },
             )
-            
+
             return html_table
-            
+
         except Exception as e:
             logger.error(f"Error creating abstracts summary table: {e}")
             return self._create_simple_table(summary_data)
 
     def create_wordlist_search_table(
-        self, 
-        search_results: Dict[str, Any], 
-        table_id: str = "wordlist_search_table"
+        self, search_results: Dict[str, Any], table_id: str = "wordlist_search_table"
     ) -> str:
         """
         Create an interactive HTML table showing wordlist search results.
@@ -2329,21 +2398,21 @@ class PygetpapersDatatables:
         table_data = []
         for paper_id in search_results["flagged_papers"]:
             paper_hits = search_results["paper_hits"][paper_id]
-            
+
             # Create field hit summary
             field_summary = []
             for field in search_results["search_fields"]:
                 hits = paper_hits["field_hits"][field]
                 if hits > 0:
                     field_summary.append(f"{field}: {hits}")
-            
+
             # Create word hit summary
             word_summary = []
             for word in search_results["wordlist"]:
                 hits = paper_hits["word_hits"][word]
                 if hits > 0:
                     word_summary.append(f"{word}: {hits}")
-            
+
             # Create match details
             match_details = []
             for match in paper_hits["matches"][:5]:  # Show first 5 matches
@@ -2351,7 +2420,9 @@ class PygetpapersDatatables:
                     f"{match['field']} ({match['word']}): {match['count']} - {match['value']}"
                 )
             if len(paper_hits["matches"]) > 5:
-                match_details.append(f"... and {len(paper_hits['matches']) - 5} more matches")
+                match_details.append(
+                    f"... and {len(paper_hits['matches']) - 5} more matches"
+                )
 
             row = {
                 "Paper ID": paper_id,
@@ -2371,16 +2442,16 @@ class PygetpapersDatatables:
             "Total Hits": "Total number of word matches across all fields",
             "Field Hits": "Breakdown of hits by field",
             "Word Hits": "Breakdown of hits by word",
-            "Top Matches": "Detailed match information with context"
+            "Top Matches": "Detailed match information with context",
         }
-        
+
         try:
             html_table = self._create_datatable_with_tooltips(
                 dict_by_id=OrderedDict({row["Paper ID"]: row for row in table_data}),
                 table_id=table_id,
-                column_tooltips=column_tooltips
+                column_tooltips=column_tooltips,
             )
-            
+
             return html_table
 
         except Exception as e:
@@ -2388,9 +2459,7 @@ class PygetpapersDatatables:
             return self._create_simple_table(table_data)
 
     def create_field_hit_summary_table(
-        self, 
-        search_results: Dict[str, Any], 
-        table_id: str = "field_hit_summary_table"
+        self, search_results: Dict[str, Any], table_id: str = "field_hit_summary_table"
     ) -> str:
         """
         Create a summary table showing hit counts by field.
@@ -2406,19 +2475,21 @@ class PygetpapersDatatables:
         table_data = []
         for field in search_results["search_fields"]:
             field_stats = search_results["field_hit_counts"][field]
-            
+
             # Create word breakdown
             word_breakdown = []
             for word in search_results["wordlist"]:
                 hits = field_stats["word_hits"][word]
                 if hits > 0:
                     word_breakdown.append(f"{word}: {hits}")
-            
+
             row = {
                 "Field": field,
                 "Total Hits": field_stats["total_hits"],
                 "Papers with Hits": field_stats["papers_with_hits"],
-                "Word Breakdown": "<br>".join(word_breakdown) if word_breakdown else "No hits",
+                "Word Breakdown": (
+                    "<br>".join(word_breakdown) if word_breakdown else "No hits"
+                ),
             }
             table_data.append(row)
 
@@ -2430,16 +2501,16 @@ class PygetpapersDatatables:
             "Field": "Datatables field name",
             "Total Hits": "Total number of word matches in this field",
             "Papers with Hits": "Number of papers with matches in this field",
-            "Word Breakdown": "Breakdown of hits by individual words"
+            "Word Breakdown": "Breakdown of hits by individual words",
         }
-        
+
         try:
             html_table = self._create_datatable_with_tooltips(
                 dict_by_id=OrderedDict({row["Field"]: row for row in table_data}),
                 table_id=table_id,
-                column_tooltips=column_tooltips
+                column_tooltips=column_tooltips,
             )
-            
+
             return html_table
 
         except Exception as e:

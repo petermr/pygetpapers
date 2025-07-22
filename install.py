@@ -49,8 +49,9 @@ def check_python_version():
 def check_pip():
     """Check if pip is available."""
     try:
-        subprocess.run([sys.executable, "-m", "pip", "--version"], 
-                      capture_output=True, check=True)
+        subprocess.run(
+            [sys.executable, "-m", "pip", "--version"], capture_output=True, check=True
+        )
         print("✅ pip is available")
         return True
     except (subprocess.CalledProcessError, FileNotFoundError):
@@ -72,37 +73,37 @@ def check_git():
 def install_dependencies_windows():
     """Install dependencies on Windows."""
     print("\n📦 Installing dependencies on Windows...")
-    
+
     # Check if we're in the pygetpapers directory
     if not os.path.exists("pygetpapers.py"):
         print("❌ Please run this script from the pygetpapers directory")
         return False
-    
+
     try:
         # Create virtual environment
         print("Creating virtual environment...")
         subprocess.run([sys.executable, "-m", "venv", "venv"], check=True)
-        
+
         # Activate virtual environment
         venv_python = os.path.join("venv", "Scripts", "python.exe")
         venv_pip = os.path.join("venv", "Scripts", "pip.exe")
-        
+
         # Install requirements
         print("Installing requirements...")
         subprocess.run([venv_pip, "install", "-r", "requirements.txt"], check=True)
-        
+
         # Install pygetpapers
         print("Installing pygetpapers...")
         subprocess.run([venv_pip, "install", "-e", "."], check=True)
-        
+
         print("✅ Installation completed successfully!")
         print("\nTo activate the virtual environment:")
         print("   venv\\Scripts\\activate")
         print("\nTo run pygetpapers:")
         print("   pygetpapers --help")
-        
+
         return True
-        
+
     except subprocess.CalledProcessError as e:
         print(f"❌ Installation failed: {e}")
         return False
@@ -111,37 +112,37 @@ def install_dependencies_windows():
 def install_dependencies_macos():
     """Install dependencies on macOS."""
     print("\n📦 Installing dependencies on macOS...")
-    
+
     # Check if we're in the pygetpapers directory
     if not os.path.exists("pygetpapers.py"):
         print("❌ Please run this script from the pygetpapers directory")
         return False
-    
+
     try:
         # Create virtual environment
         print("Creating virtual environment...")
         subprocess.run([sys.executable, "-m", "venv", "venv"], check=True)
-        
+
         # Activate virtual environment
         venv_python = os.path.join("venv", "bin", "python")
         venv_pip = os.path.join("venv", "bin", "pip")
-        
+
         # Install requirements
         print("Installing requirements...")
         subprocess.run([venv_pip, "install", "-r", "requirements.txt"], check=True)
-        
+
         # Install pygetpapers
         print("Installing pygetpapers...")
         subprocess.run([venv_pip, "install", "-e", "."], check=True)
-        
+
         print("✅ Installation completed successfully!")
         print("\nTo activate the virtual environment:")
         print("   source venv/bin/activate")
         print("\nTo run pygetpapers:")
         print("   pygetpapers --help")
-        
+
         return True
-        
+
     except subprocess.CalledProcessError as e:
         print(f"❌ Installation failed: {e}")
         return False
@@ -150,37 +151,37 @@ def install_dependencies_macos():
 def install_dependencies_linux():
     """Install dependencies on Linux."""
     print("\n📦 Installing dependencies on Linux...")
-    
+
     # Check if we're in the pygetpapers directory
     if not os.path.exists("pygetpapers.py"):
         print("❌ Please run this script from the pygetpapers directory")
         return False
-    
+
     try:
         # Create virtual environment
         print("Creating virtual environment...")
         subprocess.run([sys.executable, "-m", "venv", "venv"], check=True)
-        
+
         # Activate virtual environment
         venv_python = os.path.join("venv", "bin", "python")
         venv_pip = os.path.join("venv", "bin", "pip")
-        
+
         # Install requirements
         print("Installing requirements...")
         subprocess.run([venv_pip, "install", "-r", "requirements.txt"], check=True)
-        
+
         # Install pygetpapers
         print("Installing pygetpapers...")
         subprocess.run([venv_pip, "install", "-e", "."], check=True)
-        
+
         print("✅ Installation completed successfully!")
         print("\nTo activate the virtual environment:")
         print("   source venv/bin/activate")
         print("\nTo run pygetpapers:")
         print("   pygetpapers --help")
-        
+
         return True
-        
+
     except subprocess.CalledProcessError as e:
         print(f"❌ Installation failed: {e}")
         return False
@@ -189,33 +190,35 @@ def install_dependencies_linux():
 def install_optional_dependencies():
     """Install optional dependencies."""
     print("\n🔧 Installing optional dependencies...")
-    
+
     optional_packages = [
         "datatables-module",
         "selenium",
         "webdriver-manager",
         "beautifulsoup4",
-        "lxml"
+        "lxml",
     ]
-    
+
     venv_pip = None
     if os.path.exists(os.path.join("venv", "Scripts", "pip.exe")):
         venv_pip = os.path.join("venv", "Scripts", "pip.exe")
     elif os.path.exists(os.path.join("venv", "bin", "pip")):
         venv_pip = os.path.join("venv", "bin", "pip")
-    
+
     if not venv_pip:
-        print("❌ Virtual environment not found. Please run the main installation first.")
+        print(
+            "❌ Virtual environment not found. Please run the main installation first."
+        )
         return False
-    
+
     try:
         for package in optional_packages:
             print(f"Installing {package}...")
             subprocess.run([venv_pip, "install", package], check=True)
-        
+
         print("✅ Optional dependencies installed successfully!")
         return True
-        
+
     except subprocess.CalledProcessError as e:
         print(f"❌ Failed to install optional dependencies: {e}")
         return False
@@ -225,7 +228,7 @@ def create_output_directory():
     """Create the default output directory."""
     home_dir = os.path.expanduser("~")
     pygetpapers_dir = os.path.join(home_dir, "pygetpapers")
-    
+
     try:
         os.makedirs(pygetpapers_dir, exist_ok=True)
         print(f"✅ Created output directory: {pygetpapers_dir}")
@@ -238,40 +241,50 @@ def create_output_directory():
 def run_test():
     """Run a simple test to verify installation."""
     print("\n🧪 Running installation test...")
-    
+
     venv_python = None
     if os.path.exists(os.path.join("venv", "Scripts", "python.exe")):
         venv_python = os.path.join("venv", "Scripts", "python.exe")
     elif os.path.exists(os.path.join("venv", "bin", "python")):
         venv_python = os.path.join("venv", "bin", "python")
-    
+
     if not venv_python:
         print("❌ Virtual environment not found.")
         return False
-    
+
     try:
         # Test pygetpapers import
-        result = subprocess.run([venv_python, "-c", "import pygetpapers; print('✅ pygetpapers imported successfully')"], 
-                              capture_output=True, text=True)
+        result = subprocess.run(
+            [
+                venv_python,
+                "-c",
+                "import pygetpapers; print('✅ pygetpapers imported successfully')",
+            ],
+            capture_output=True,
+            text=True,
+        )
         if result.returncode == 0:
             print(result.stdout.strip())
         else:
             print("❌ Failed to import pygetpapers")
             print(result.stderr)
             return False
-        
+
         # Test pygetpapers command
-        result = subprocess.run([venv_python, "-m", "pygetpapers", "--version"], 
-                              capture_output=True, text=True)
+        result = subprocess.run(
+            [venv_python, "-m", "pygetpapers", "--version"],
+            capture_output=True,
+            text=True,
+        )
         if result.returncode == 0:
             print(f"✅ pygetpapers command works: {result.stdout.strip()}")
         else:
             print("❌ pygetpapers command failed")
             print(result.stderr)
             return False
-        
+
         return True
-        
+
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
@@ -280,16 +293,16 @@ def run_test():
 def main():
     """Main installation function."""
     print_header()
-    
+
     # Detect OS
     os_type = detect_os()
     print(f"🖥️  Detected OS: {os_type}")
-    
+
     # Check prerequisites
     print("\n🔍 Checking prerequisites...")
     if not check_python_version():
         return False
-    
+
     if not check_pip():
         print("\n📋 To install pip:")
         if os_type == "windows":
@@ -301,7 +314,7 @@ def main():
             print("   Run: sudo apt install python3-pip (Ubuntu/Debian)")
             print("   Or: sudo yum install python3-pip (CentOS/RHEL)")
         return False
-    
+
     if not check_git():
         print("\n📋 To install git:")
         if os_type == "windows":
@@ -312,7 +325,7 @@ def main():
             print("   Run: sudo apt install git (Ubuntu/Debian)")
             print("   Or: sudo yum install git (CentOS/RHEL)")
         return False
-    
+
     # Install dependencies based on OS
     success = False
     if os_type == "windows":
@@ -324,19 +337,19 @@ def main():
     else:
         print("❌ Unsupported operating system")
         return False
-    
+
     if not success:
         return False
-    
+
     # Create output directory
     create_output_directory()
-    
+
     # Ask about optional dependencies
     print("\n" + "=" * 60)
     response = input("Install optional dependencies? (y/n): ").lower().strip()
-    if response in ['y', 'yes']:
+    if response in ["y", "yes"]:
         install_optional_dependencies()
-    
+
     # Run test
     if run_test():
         print("\n🎉 Installation completed successfully!")
@@ -354,7 +367,7 @@ def main():
     else:
         print("\n❌ Installation test failed. Please check the error messages above.")
         return False
-    
+
     return True
 
 
@@ -367,4 +380,4 @@ if __name__ == "__main__":
         sys.exit(1)
     except Exception as e:
         print(f"\n❌ Unexpected error: {e}")
-        sys.exit(1) 
+        sys.exit(1)

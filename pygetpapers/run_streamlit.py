@@ -87,7 +87,9 @@ def main():
 
     parser = argparse.ArgumentParser(description="Run Pygetpapers Streamlit app")
     parser.add_argument(
-        "--app", default="pygetpapers/streamlit_app.py", help="Streamlit app file to run"
+        "--app",
+        default="pygetpapers/streamlit_app.py",
+        help="Streamlit app file to run",
     )
     parser.add_argument(
         "--port",

@@ -24,7 +24,9 @@ def main():
 
     # Example 1: Basic wordlist search in title only (default)
     print("📋 Example 1: Basic wordlist search in title only")
-    print("Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --words 'climate' 'adaptation'")
+    print(
+        "Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --words 'climate' 'adaptation'"
+    )
     print()
     print("This will:")
     print("  - Search for 'climate change AND adaptation' papers")
@@ -36,31 +38,41 @@ def main():
 
     # Example 2: Search in multiple fields
     print("📋 Example 2: Search in multiple fields")
-    print("Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --fields title abstract --words 'climate' 'adaptation' 'mitigation'")
+    print(
+        "Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --fields title abstract --words 'climate' 'adaptation' 'mitigation'"
+    )
     print()
     print("This will:")
     print("  - Search for 'climate change AND adaptation' papers")
     print("  - Download XML, PDF, and HTML files")
     print("  - Create datatables")
-    print("  - Search for 'climate', 'adaptation', and 'mitigation' in title and abstract fields")
+    print(
+        "  - Search for 'climate', 'adaptation', and 'mitigation' in title and abstract fields"
+    )
     print("  - Flag papers with the highest hits across both fields")
     print()
 
     # Example 3: Search in all available fields
     print("📋 Example 3: Search in all available fields")
-    print("Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --fields title abstract authors journal keywords --words 'climate' 'adaptation' 'sustainability' 'carbon'")
+    print(
+        "Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --fields title abstract authors journal keywords --words 'climate' 'adaptation' 'sustainability' 'carbon'"
+    )
     print()
     print("This will:")
     print("  - Search for 'climate change AND adaptation' papers")
     print("  - Download XML, PDF, and HTML files")
     print("  - Create datatables")
-    print("  - Search for multiple climate terms in title, abstract, authors, journal, and keywords")
+    print(
+        "  - Search for multiple climate terms in title, abstract, authors, journal, and keywords"
+    )
     print("  - Flag papers with the highest hits across all fields")
     print()
 
     # Example 4: Search with specific field combinations
     print("📋 Example 4: Search with specific field combinations")
-    print("Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --fields abstract keywords --words 'daisy' 'bellis perennis'")
+    print(
+        "Command: pygetpapers -q 'climate change AND adaptation' --api europe_pmc --limit 10 -x -p --fulltext_html --datatables --fields abstract keywords --words 'daisy' 'bellis perennis'"
+    )
     print()
     print("This will:")
     print("  - Search for 'climate change AND adaptation' papers")
@@ -88,8 +100,12 @@ def main():
     print("  - datatables_papers.html: Papers table with abstracts")
     print("  - datatables_metadata.html: Metadata information")
     print("  - datatables_summary.html: Summary statistics")
-    print("  - wordlist_search_results.html: Wordlist search results (if --words provided)")
-    print("  - wordlist_search_results.json: Search results in JSON format (if --words provided)")
+    print(
+        "  - wordlist_search_results.html: Wordlist search results (if --words provided)"
+    )
+    print(
+        "  - wordlist_search_results.json: Search results in JSON format (if --words provided)"
+    )
     print()
 
     # Usage tips
@@ -120,4 +136,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

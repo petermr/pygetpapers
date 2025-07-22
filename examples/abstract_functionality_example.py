@@ -22,36 +22,36 @@ def main():
     print("           Abstract Functionality Demo")
     print("=" * 60)
     print()
-    
+
     # Initialize datatables
     datatables = PygetpapersDatatables()
-    
+
     # Example output directory (you can change this to your actual output)
     output_dir = "examples/redalyc_datatables_output"
-    
+
     if not os.path.exists(output_dir):
         print(f"❌ Output directory not found: {output_dir}")
         print("Please run a pygetpapers search first to generate output data.")
         print("Example: pygetpapers --query 'climate change' --limit 10 --api redalyc")
         return
-    
+
     print(f"📁 Reading output from: {output_dir}")
-    
+
     try:
         # Read pygetpapers output
         output_data = datatables.read_pygetpapers_output(output_dir)
-        
+
         if not output_data["paper_directories"]:
             print("❌ No papers found in output directory")
             return
-        
+
         print(f"✅ Found {len(output_data['paper_directories'])} papers")
         print()
-        
+
         # Extract abstracts
         print("🔍 Extracting abstracts...")
         abstracts_data = datatables.extract_abstracts(output_data)
-        
+
         # Display summary
         print("\n📊 Abstract Analysis Summary:")
         print("-" * 40)
@@ -59,9 +59,11 @@ def main():
         print(f"Papers with Abstracts: {abstracts_data['papers_with_abstracts']}")
         print(f"Papers without Abstracts: {abstracts_data['papers_without_abstracts']}")
         print(f"Abstract Coverage: {abstracts_data['abstract_coverage']:.1%}")
-        print(f"Average Abstract Length: {abstracts_data['average_abstract_length']} characters")
+        print(
+            f"Average Abstract Length: {abstracts_data['average_abstract_length']} characters"
+        )
         print()
-        
+
         # Show abstract sources
         print("📋 Abstract Sources:")
         print("-" * 40)
@@ -69,38 +71,42 @@ def main():
         for paper_data in abstracts_data["papers"].values():
             source = paper_data["abstract_source"]
             source_counts[source] = source_counts.get(source, 0) + 1
-        
+
         for source, count in sorted(source_counts.items()):
             print(f"{source}: {count} papers")
         print()
-        
+
         # Show sample abstracts
         print("📄 Sample Abstracts:")
         print("-" * 40)
         papers_with_abstracts = [
-            (paper_id, paper_data) 
+            (paper_id, paper_data)
             for paper_id, paper_data in abstracts_data["papers"].items()
             if paper_data["has_abstract"]
         ]
-        
+
         for i, (paper_id, paper_data) in enumerate(papers_with_abstracts[:3]):
             print(f"\nPaper {i+1}: {paper_data['title']}")
             print(f"Source: {paper_data['abstract_source']}")
             print(f"Length: {paper_data['abstract_length']} characters")
-            abstract_preview = paper_data['abstract'][:150] + "..." if len(paper_data['abstract']) > 150 else paper_data['abstract']
+            abstract_preview = (
+                paper_data["abstract"][:150] + "..."
+                if len(paper_data["abstract"]) > 150
+                else paper_data["abstract"]
+            )
             print(f"Abstract: {abstract_preview}")
-        
+
         # Create abstracts table
         print("\n🔄 Creating abstracts table...")
         abstracts_table = datatables.create_abstracts_table(abstracts_data)
-        
+
         # Create summary table
         print("🔄 Creating summary table...")
         summary_table = datatables.create_abstracts_summary_table(abstracts_data)
-        
+
         # Save tables to output
         output_file = os.path.join(output_dir, "abstracts_analysis.html")
-        
+
         html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -215,9 +221,9 @@ def main():
                 <th>Percentage</th>
             </tr>
 """
-        
+
         for source, count in sorted(source_counts.items()):
-            percentage = (count / abstracts_data['total_papers']) * 100
+            percentage = (count / abstracts_data["total_papers"]) * 100
             html_content += f"""
             <tr>
                 <td>{source}</td>
@@ -225,57 +231,68 @@ def main():
                 <td>{percentage:.1f}%</td>
             </tr>
 """
-        
+
         html_content += """
         </table>
         
         <h2>📄 Abstracts Summary Table</h2>
 """
         html_content += summary_table
-        
+
         html_content += """
         <h2>📊 Detailed Abstracts Table</h2>
 """
         html_content += abstracts_table
-        
+
         html_content += """
     </div>
 </body>
 </html>
 """
-        
-        with open(output_file, 'w', encoding='utf-8') as f:
+
+        with open(output_file, "w", encoding="utf-8") as f:
             f.write(html_content)
-        
+
         print(f"✅ Abstract analysis saved to: {output_file}")
-        print(f"📊 Analysis complete! Open {output_file} in your browser to view the results.")
-        
+        print(
+            f"📊 Analysis complete! Open {output_file} in your browser to view the results."
+        )
+
         # Demonstrate wordlist search with abstracts
         print("\n🔍 Demonstrating wordlist search with abstracts...")
-        climate_words = ["climate", "carbon", "adaptation", "mitigation", "sustainability"]
-        
+        climate_words = [
+            "climate",
+            "carbon",
+            "adaptation",
+            "mitigation",
+            "sustainability",
+        ]
+
         search_results = datatables.search_datatables_fields(
             output_data=output_data,
             wordlist=climate_words,
             search_fields=["Title", "Abstract", "Keywords"],
             case_sensitive=False,
-            min_hits=1
+            min_hits=1,
         )
-        
-        print(f"Found {search_results['summary']['flagged_papers']} papers with climate-related terms")
+
+        print(
+            f"Found {search_results['summary']['flagged_papers']} papers with climate-related terms"
+        )
         print(f"Total hits: {search_results['summary']['total_hits']}")
-        
+
         # Show abstract hits specifically
         abstract_hits = search_results["field_hit_counts"]["Abstract"]["total_hits"]
         print(f"Abstract field hits: {abstract_hits}")
-        
+
         print("\n🎉 Abstract functionality demonstration complete!")
-        
+
     except Exception as e:
         print(f"❌ Error: {e}")
         import traceback
+
         traceback.print_exc()
 
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -98,7 +98,6 @@ class PygetpapersUI:
             "openalex": "OpenAlex",
             "biorxiv": "bioRxiv",
             "medrxiv": "medRxiv",
-
         }
 
         self.api_features = {
@@ -162,7 +161,6 @@ class PygetpapersUI:
                 "supplementary": False,
                 "xml2html": True,
             },
-
         }
 
         # Initialize datatables integration
@@ -675,7 +673,11 @@ class PygetpapersUI:
             make_csv = st.checkbox("Generate CSV Metadata", value=True)
             make_html = st.checkbox("Generate HTML Metadata", value=False)
             save_query = st.checkbox("Save Query Configuration", value=False)
-            make_datatables = st.checkbox("Generate Datatables", value=False, help="Create interactive HTML tables for data exploration")
+            make_datatables = st.checkbox(
+                "Generate Datatables",
+                value=False,
+                help="Create interactive HTML tables for data exploration",
+            )
 
         # XML2HTML conversion option
         if features["xml2html"]:
@@ -731,13 +733,13 @@ class PygetpapersUI:
         # Directory browser for output directory using streamlit-tree-select
         if st.session_state.get("show_dir_browser", False):
             st.markdown("### 📁 Directory Browser")
-            
+
             try:
                 from streamlit_tree_select import tree_select
-                
+
                 # Generate directory tree data
                 tree_data = self._generate_directory_tree_data(Path.home())
-                
+
                 # Use tree_select for directory selection
                 selected_paths = tree_select(
                     tree_data,
@@ -745,22 +747,24 @@ class PygetpapersUI:
                     show_expand_all=True,
                     show_select_all=False,
                     check_on_select=True,
-                    key="output_dir_tree"
+                    key="output_dir_tree",
                 )
-                
+
                 if selected_paths:
                     selected_path = selected_paths[0]
                     st.session_state.output_dir = selected_path
                     st.session_state.show_dir_browser = False
                     st.rerun()
-                
+
                 # Close button
                 if st.button("❌ Close", use_container_width=True):
                     st.session_state.show_dir_browser = False
                     st.rerun()
-                    
+
             except ImportError:
-                st.error("streamlit-tree-select not available. Please install with: pip install streamlit-tree-select")
+                st.error(
+                    "streamlit-tree-select not available. Please install with: pip install streamlit-tree-select"
+                )
                 if st.button("❌ Close", use_container_width=True):
                     st.session_state.show_dir_browser = False
                     st.rerun()
@@ -769,37 +773,39 @@ class PygetpapersUI:
         if make_datatables:
             st.markdown("---")
             st.markdown("### 📊 Datatables Configuration")
-            
+
             col_datatables1, col_datatables2 = st.columns([3, 1])
-            
+
             with col_datatables1:
                 # Default datatables directory to output directory
                 if "datatables_dir" not in st.session_state:
                     st.session_state.datatables_dir = output_dir
-                
+
                 datatables_dir = st.text_input(
                     "Datatables Directory:",
                     value=st.session_state.datatables_dir,
                     key="datatables_dir_input",
                     help="Directory where datatables HTML files will be saved (defaults to output directory)",
                 )
-            
+
             with col_datatables2:
                 st.markdown("###")  # Add some spacing to align with text input
-                if st.button("📁 Browse Datatables", help="Browse for datatables directory"):
+                if st.button(
+                    "📁 Browse Datatables", help="Browse for datatables directory"
+                ):
                     # Show datatables directory browser
                     st.session_state.show_datatables_dir_browser = True
-            
+
             # Datatables directory browser using streamlit-tree-select
             if st.session_state.get("show_datatables_dir_browser", False):
                 st.markdown("### 📁 Datatables Directory Browser")
-                
+
                 try:
                     from streamlit_tree_select import tree_select
-                    
+
                     # Generate directory tree data
                     tree_data = self._generate_directory_tree_data(Path.home())
-                    
+
                     # Use tree_select for directory selection
                     selected_paths = tree_select(
                         tree_data,
@@ -807,26 +813,28 @@ class PygetpapersUI:
                         show_expand_all=True,
                         show_select_all=False,
                         check_on_select=True,
-                        key="datatables_dir_tree"
+                        key="datatables_dir_tree",
                     )
-                    
+
                     if selected_paths:
                         selected_path = selected_paths[0]
                         st.session_state.datatables_dir = selected_path
                         st.session_state.show_datatables_dir_browser = False
                         st.rerun()
-                    
+
                     # Close button
                     if st.button("❌ Close", use_container_width=True):
                         st.session_state.show_datatables_dir_browser = False
                         st.rerun()
-                        
+
                 except ImportError:
-                    st.error("streamlit-tree-select not available. Please install with: pip install streamlit-tree-select")
+                    st.error(
+                        "streamlit-tree-select not available. Please install with: pip install streamlit-tree-select"
+                    )
                     if st.button("❌ Close", use_container_width=True):
                         st.session_state.show_datatables_dir_browser = False
                         st.rerun()
-            
+
             # Update session state when user changes the value
             if datatables_dir != st.session_state.datatables_dir:
                 st.session_state.datatables_dir = datatables_dir
@@ -905,7 +913,10 @@ class PygetpapersUI:
             if convert_xml2html:
                 args.append("--fulltext_html")
             if make_datatables:
-                if st.session_state.get("datatables_dir") and st.session_state.datatables_dir != output_dir:
+                if (
+                    st.session_state.get("datatables_dir")
+                    and st.session_state.datatables_dir != output_dir
+                ):
                     args.extend(["--datatables", st.session_state.datatables_dir])
                 else:
                     args.append("--datatables")
@@ -2690,7 +2701,6 @@ class PygetpapersUI:
                     ["OpenAlex", "Academic papers", "PDF available", "✅"],
                     ["bioRxiv", "Biology preprints", "Date-based", "❌"],
                     ["medRxiv", "Medical preprints", "Date-based", "❌"],
-
                 ],
                 columns=["Repository", "Content", "Features", "Query Support"],
             )
@@ -3558,34 +3568,37 @@ class PygetpapersUI:
             st.warning(f"Error extracting info from {corpus_dir.name}: {e}")
             return None
 
-    def _generate_directory_tree_data(self, root_path: Path, max_depth: int = 3) -> List[Dict]:
+    def _generate_directory_tree_data(
+        self, root_path: Path, max_depth: int = 3
+    ) -> List[Dict]:
         """Generate directory tree data for streamlit-tree-select
-        
+
         Args:
             root_path: Root directory to start from
             max_depth: Maximum depth to traverse
-            
+
         Returns:
             List of dictionaries representing the directory tree
         """
+
         def _build_tree(path: Path, depth: int = 0) -> List[Dict]:
             if depth > max_depth:
                 return []
-                
+
             try:
                 items = []
                 for item in sorted(path.iterdir()):
-                    if item.is_dir() and not item.name.startswith('.'):
+                    if item.is_dir() and not item.name.startswith("."):
                         node = {
                             "label": item.name,
                             "value": str(item),
-                            "children": _build_tree(item, depth + 1)
+                            "children": _build_tree(item, depth + 1),
                         }
                         items.append(node)
                 return items
             except (PermissionError, OSError):
                 return []
-                
+
         return _build_tree(root_path)
 
     def _search_html_files(

@@ -23,109 +23,125 @@ def main():
     print("           ABSTRACT FUNCTIONALITY TEST WITH EXISTING DATA")
     print("=" * 70)
     print()
-    
+
     # Test configuration
     test_config = {
         "output_dir": "examples/europe_pmc_climate_example",
-        "wordlist": ["climate", "adaptation", "change", "sustainability", "imaginaries"],
+        "wordlist": [
+            "climate",
+            "adaptation",
+            "change",
+            "sustainability",
+            "imaginaries",
+        ],
         "fields": ["Title", "Abstract", "Keywords"],
         "expected_min_papers": 1,
-        "expected_min_hits": 1
+        "expected_min_hits": 1,
     }
-    
+
     print("🧪 Test Configuration:")
     print(f"   Output Directory: {test_config['output_dir']}")
     print(f"   Wordlist: {test_config['wordlist']}")
     print(f"   Search Fields: {test_config['fields']}")
     print()
-    
+
     # Check if output directory exists
     if not os.path.exists(test_config["output_dir"]):
         print(f"❌ Output directory not found: {test_config['output_dir']}")
         print("Please ensure you have existing pygetpapers output data.")
         return False
-    
+
     # Step 1: Read existing output data
     print("STEP 1: Reading existing pygetpapers output")
     print("-" * 50)
-    
+
     try:
         datatables = PygetpapersDatatables()
         output_data = datatables.read_pygetpapers_output(test_config["output_dir"])
-        
+
         if not output_data["paper_directories"]:
             print("❌ No papers found in output directory")
             return False
-        
+
         print(f"✅ Found {len(output_data['paper_directories'])} papers")
-        
+
         # Show sample paper info
         for i, paper in enumerate(output_data["paper_directories"][:3]):
             metadata = paper.get("metadata", {})
             title = metadata.get("title", "No title")
-            abstract = metadata.get("abstractText", metadata.get("abstract", "No abstract"))
+            abstract = metadata.get(
+                "abstractText", metadata.get("abstract", "No abstract")
+            )
             print(f"   Paper {i+1}: {title[:60]}...")
-            print(f"   Abstract: {abstract[:80]}..." if abstract != "No abstract" else "   Abstract: No abstract")
+            print(
+                f"   Abstract: {abstract[:80]}..."
+                if abstract != "No abstract"
+                else "   Abstract: No abstract"
+            )
             print()
-        
+
     except Exception as e:
         print(f"❌ Error reading output data: {e}")
         return False
-    
+
     # Step 2: Extract abstracts
     print("STEP 2: Extracting abstracts")
     print("-" * 50)
-    
+
     try:
         abstracts_data = datatables.extract_abstracts(output_data)
-        
+
         print(f"📊 Abstract Analysis Results:")
         print(f"   Total Papers: {abstracts_data['total_papers']}")
         print(f"   Papers with Abstracts: {abstracts_data['papers_with_abstracts']}")
-        print(f"   Papers without Abstracts: {abstracts_data['papers_without_abstracts']}")
+        print(
+            f"   Papers without Abstracts: {abstracts_data['papers_without_abstracts']}"
+        )
         print(f"   Abstract Coverage: {abstracts_data['abstract_coverage']:.1%}")
-        print(f"   Average Abstract Length: {abstracts_data['average_abstract_length']} characters")
+        print(
+            f"   Average Abstract Length: {abstracts_data['average_abstract_length']} characters"
+        )
         print()
-        
+
         # Show abstract sources
         source_counts = {}
         for paper_data in abstracts_data["papers"].values():
             source = paper_data["abstract_source"]
             source_counts[source] = source_counts.get(source, 0) + 1
-        
+
         print(f"📋 Abstract Sources:")
         for source, count in sorted(source_counts.items()):
             print(f"   {source}: {count} papers")
         print()
-        
+
     except Exception as e:
         print(f"❌ Error extracting abstracts: {e}")
         return False
-    
+
     # Step 3: Run wordlist search
     print("STEP 3: Running wordlist search")
     print("-" * 50)
-    
+
     try:
         search_results = datatables.search_datatables_fields(
             output_data=output_data,
             wordlist=test_config["wordlist"],
             search_fields=test_config["fields"],
             case_sensitive=False,
-            min_hits=1
+            min_hits=1,
         )
-        
+
         print(f"✅ Wordlist search completed successfully!")
         print(f"   Papers with matches: {search_results['summary']['flagged_papers']}")
         print(f"   Total hits: {search_results['summary']['total_hits']}")
-        
+
         # Show hits by field
         print(f"\n📋 Hits by field:")
         for field in ["Title", "Abstract"]:
             if field in search_results["field_hit_counts"]:
                 hits = search_results["field_hit_counts"][field]["total_hits"]
                 print(f"   {field}: {hits} hits")
-        
+
         # Show hits by word
         print(f"\n📋 Hits by word:")
         for word in test_config["wordlist"]:
@@ -135,66 +151,70 @@ def main():
                 if field in search_results["field_hit_counts"]
             )
             print(f"   '{word}': {total_hits} hits")
-        
+
     except Exception as e:
         print(f"❌ Error in wordlist search: {e}")
         return False
-    
+
     # Step 4: Validate expected output
     print("\nSTEP 4: Validating expected output")
     print("-" * 50)
-    
+
     try:
         summary = search_results["summary"]
         total_papers = summary.get("total_papers", 0)
         flagged_papers = summary.get("flagged_papers", 0)
         total_hits = summary.get("total_hits", 0)
-        
+
         print(f"📊 Search Results Summary:")
         print(f"   Total Papers: {total_papers}")
         print(f"   Flagged Papers: {flagged_papers}")
         print(f"   Total Hits: {total_hits}")
-        
+
         # Validate minimum requirements
         if total_papers < test_config["expected_min_papers"]:
-            print(f"❌ Too few papers: {total_papers} < {test_config['expected_min_papers']}")
+            print(
+                f"❌ Too few papers: {total_papers} < {test_config['expected_min_papers']}"
+            )
             return False
-        
+
         if total_hits < test_config["expected_min_hits"]:
             print(f"❌ Too few hits: {total_hits} < {test_config['expected_min_hits']}")
             return False
-        
+
         # Check abstract field specifically
         if "Abstract" in search_results["field_hit_counts"]:
             abstract_hits = search_results["field_hit_counts"]["Abstract"]["total_hits"]
             print(f"   Abstract Field Hits: {abstract_hits}")
-            
+
             if abstract_hits == 0:
                 print("⚠️  Warning: No hits in Abstract field")
-        
+
         print("✅ Validation completed successfully!")
-        
+
     except Exception as e:
         print(f"❌ Error in validation: {e}")
         return False
-    
+
     # Step 5: Create analysis report
     print("\nSTEP 5: Creating analysis report")
     print("-" * 50)
-    
+
     try:
         # Create tables
         abstracts_table = datatables.create_abstracts_table(abstracts_data)
         summary_table = datatables.create_abstracts_summary_table(abstracts_data)
-        
+
         # Create wordlist search table if we have results
         wordlist_table = ""
         if search_results and search_results["flagged_papers"]:
             wordlist_table = datatables.create_wordlist_search_table(search_results)
-        
+
         # Generate HTML report
-        report_file = os.path.join(test_config["output_dir"], "abstract_test_report.html")
-        
+        report_file = os.path.join(
+            test_config["output_dir"], "abstract_test_report.html"
+        )
+
         html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -280,33 +300,33 @@ def main():
         <h2>📄 Detailed Abstracts</h2>
         {abstracts_table}
 """
-        
+
         if wordlist_table:
             html_content += f"""
         <h2>🔍 Wordlist Search Results</h2>
         {wordlist_table}
 """
-        
+
         html_content += """
     </div>
 </body>
 </html>
 """
-        
-        with open(report_file, 'w', encoding='utf-8') as f:
+
+        with open(report_file, "w", encoding="utf-8") as f:
             f.write(html_content)
-        
+
         print(f"✅ Report saved to: {report_file}")
-        
+
     except Exception as e:
         print(f"❌ Error creating report: {e}")
         return False
-    
+
     # Final results
     print("\n" + "=" * 70)
     print("           TEST RESULTS SUMMARY")
     print("=" * 70)
-    
+
     print("✅ ABSTRACT FUNCTIONALITY TEST PASSED!")
     print()
     print("🎯 All features working correctly:")
@@ -325,7 +345,7 @@ def main():
     print("   - Examine the abstract extraction and search results")
     print()
     print("🎉 Test completed successfully!")
-    
+
     return True
 
 
@@ -339,5 +359,6 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n❌ Unexpected error: {e}")
         import traceback
+
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)

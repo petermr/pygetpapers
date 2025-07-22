@@ -76,7 +76,9 @@ class ApiPlugger:
         elif self.library_name == "redalyc_selenium":
             module_path = f"{PYGETPAPERS}.repositories.redalyc.redalyc_selenium"
         else:
-            module_path = f"{PYGETPAPERS}.repositories.{self.library_name}.{self.library_name}"
+            module_path = (
+                f"{PYGETPAPERS}.repositories.{self.library_name}.{self.library_name}"
+            )
 
         api_class = getattr(
             importlib.import_module(module_path),
@@ -562,29 +564,29 @@ class Pygetpapers:
         try:
             import os
             from pygetpapers.tools.datatables_integration import PygetpapersDatatables
-            
+
             # Debug logging (can be removed in production)
             # logging.info(f"Query namespace output: {query_namespace.get('output')}")
             # logging.info(f"Query namespace datatables: {query_namespace.get('datatables')}")
             # logging.info(f"Self default path: {self.default_path}")
-            
+
             # Initialize datatables
             dt = PygetpapersDatatables()
-            
+
             # Read the pygetpapers output
             output_dir = query_namespace.get("output", self.default_path)
-            
+
             # Since the working directory has been changed to the output directory,
             # we need to use "." to refer to the current directory
             logging.info(f"Reading pygetpapers output from: . (current directory)")
-            
+
             # Check if the directory exists
             if not os.path.exists("."):
                 logging.error(f"Current directory does not exist")
                 return
-                
+
             output_data = dt.read_pygetpapers_output(".")
-            
+
             # Determine datatables output directory
             if query_namespace["datatables"] is True:
                 # No directory specified, use output directory
@@ -594,31 +596,46 @@ class Pygetpapers:
                 datatables_dir = query_namespace["datatables"]
                 if not os.path.isabs(datatables_dir):
                     datatables_dir = os.path.abspath(datatables_dir)
-            
+
             logging.info(f"Creating datatables in: {datatables_dir}")
-            
-            if not output_data or not output_data.get("summary", {}).get("total_papers", 0):
+
+            if not output_data or not output_data.get("summary", {}).get(
+                "total_papers", 0
+            ):
                 logging.warning("No papers found for datatables creation")
                 return
-            
+
             # Create datatables HTML files
             papers_html = dt.create_papers_table(output_data, "papers_table")
             metadata_html = dt.create_metadata_table(output_data, "metadata_table")
             summary_html = dt.create_summary_table(output_data, "summary_table")
-            
+
             # Save HTML files
             import os
+
             os.makedirs(datatables_dir, exist_ok=True)
-            
-            with open(os.path.join(datatables_dir, "datatables_papers.html"), "w", encoding="utf-8") as f:
+
+            with open(
+                os.path.join(datatables_dir, "datatables_papers.html"),
+                "w",
+                encoding="utf-8",
+            ) as f:
                 f.write(papers_html)
-            
-            with open(os.path.join(datatables_dir, "datatables_metadata.html"), "w", encoding="utf-8") as f:
+
+            with open(
+                os.path.join(datatables_dir, "datatables_metadata.html"),
+                "w",
+                encoding="utf-8",
+            ) as f:
                 f.write(metadata_html)
-            
-            with open(os.path.join(datatables_dir, "datatables_summary.html"), "w", encoding="utf-8") as f:
+
+            with open(
+                os.path.join(datatables_dir, "datatables_summary.html"),
+                "w",
+                encoding="utf-8",
+            ) as f:
                 f.write(summary_html)
-            
+
             # Also create a combined datatables.html file
             combined_html = f"""
 <!DOCTYPE html>
@@ -654,22 +671,27 @@ class Pygetpapers:
 </body>
 </html>
 """
-            
-            with open(os.path.join(datatables_dir, "datatables.html"), "w", encoding="utf-8") as f:
+
+            with open(
+                os.path.join(datatables_dir, "datatables.html"), "w", encoding="utf-8"
+            ) as f:
                 f.write(combined_html)
-            
+
             logging.info(f"Created datatables files in: {datatables_dir}")
             logging.info("Files created:")
             logging.info("  - datatables.html (combined view)")
             logging.info("  - datatables_papers.html")
             logging.info("  - datatables_metadata.html")
             logging.info("  - datatables_summary.html")
-            
+
         except ImportError:
-            logging.error("Datatables integration not available. Please install required dependencies.")
+            logging.error(
+                "Datatables integration not available. Please install required dependencies."
+            )
         except Exception as e:
             logging.error(f"Error creating datatables: {e}")
             import traceback
+
             logging.debug(traceback.format_exc())
 
     def runs_pygetpapers_for_given_args(self, query_namespace):
@@ -710,7 +732,7 @@ class Pygetpapers:
             return
         api_handler = ApiPlugger(query_namespace)
         api_handler.check_query_logic_and_run()
-        
+
         # Handle datatables creation
         if query_namespace.get("datatables"):
             self._create_datatables(query_namespace)
@@ -1018,17 +1040,17 @@ class Pygetpapers:
 def run_pygetpapers(command_string):
     """
     Run pygetpapers from Python code using a command string.
-    
+
     This function parses a command string (similar to command line arguments)
     and runs pygetpapers with those parameters.
-    
+
     Args:
         command_string (str): Command string in the format "pygetpapers [options]"
                              Example: "pygetpapers -q 'artificial intelligence' -k 10 -x"
-    
+
     Returns:
         dict: Dictionary containing execution results and metadata
-        
+
     Example:
         >>> from pygetpapers import run_pygetpapers
         >>> cmd = "pygetpapers -q wombat -n"
@@ -1039,14 +1061,14 @@ def run_pygetpapers(command_string):
     import sys
     from io import StringIO
     import contextlib
-    
+
     # Parse the command string
     if command_string.startswith("pygetpapers"):
         # Remove "pygetpapers" from the beginning
-        args_string = command_string[len("pygetpapers"):].strip()
+        args_string = command_string[len("pygetpapers") :].strip()
     else:
         args_string = command_string.strip()
-    
+
     # Split the arguments
     try:
         args = shlex.split(args_string)
@@ -1054,44 +1076,44 @@ def run_pygetpapers(command_string):
         return {
             "success": False,
             "error": f"Failed to parse command string: {e}",
-            "command": command_string
+            "command": command_string,
         }
-    
+
     # Create a Pygetpapers instance
     pygetpapers_instance = Pygetpapers()
-    
+
     # Capture stdout and stderr
     stdout_capture = StringIO()
     stderr_capture = StringIO()
-    
+
     # Store original stdout/stderr
     original_stdout = sys.stdout
     original_stderr = sys.stderr
-    
+
     try:
         # Redirect stdout and stderr to capture output
         sys.stdout = stdout_capture
         sys.stderr = stderr_capture
-        
+
         # Create argument parser and parse arguments
         parser = pygetpapers_instance.create_argparser()
-        
+
         # Temporarily replace sys.argv to simulate command line
         original_argv = sys.argv
         sys.argv = ["pygetpapers"] + args
-        
+
         try:
             # Parse arguments
             parsed_args = parser.parse_args()
-            
+
             # Convert to namespace dictionary
             query_namespace = vars(parsed_args)
-            
+
             # Convert string "False" to boolean False
             for arg in query_namespace:
                 if query_namespace[arg] == "False":
                     query_namespace[arg] = False
-            
+
             # Enable fulltext_html by default for Europe PMC
             if (
                 query_namespace["api"] == "europe_pmc"
@@ -1099,57 +1121,59 @@ def run_pygetpapers(command_string):
                 and query_namespace["xml"]
             ):
                 query_namespace["fulltext_html"] = True
-            
+
             # Run pygetpapers
             pygetpapers_instance.runs_pygetpapers_for_given_args(query_namespace)
-            
+
             # Get captured output
             stdout_output = stdout_capture.getvalue()
             stderr_output = stderr_capture.getvalue()
-            
+
             return {
                 "success": True,
                 "command": command_string,
                 "parsed_args": query_namespace,
                 "stdout": stdout_output,
                 "stderr": stderr_output,
-                "output_directory": query_namespace.get("output", pygetpapers_instance.default_path)
+                "output_directory": query_namespace.get(
+                    "output", pygetpapers_instance.default_path
+                ),
             }
-            
+
         except SystemExit as e:
             # Handle version or help commands that exit
             stdout_output = stdout_capture.getvalue()
             stderr_output = stderr_capture.getvalue()
-            
+
             return {
                 "success": True,
                 "command": command_string,
                 "stdout": stdout_output,
                 "stderr": stderr_output,
-                "exit_code": e.code
+                "exit_code": e.code,
             }
-            
+
         except Exception as e:
             stderr_output = stderr_capture.getvalue()
-            
+
             return {
                 "success": False,
                 "error": str(e),
                 "command": command_string,
-                "stderr": stderr_output
+                "stderr": stderr_output,
             }
-            
+
         finally:
             # Restore original argv
             sys.argv = original_argv
-            
+
     except Exception as e:
         return {
             "success": False,
             "error": f"Failed to execute command: {e}",
-            "command": command_string
+            "command": command_string,
         }
-        
+
     finally:
         # Restore original stdout/stderr
         sys.stdout = original_stdout

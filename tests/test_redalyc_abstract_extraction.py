@@ -294,26 +294,26 @@ def main():
     """Run the Redalyc abstract extraction test."""
     print("🧪 Testing Redalyc Abstract Extraction and Datatables")
     print("=" * 60)
-    
+
     # Test connectivity first
     print("🔍 Testing Redalyc connectivity...")
     is_connected, error_msg = test_redalyc_connectivity()
-    
+
     if not is_connected:
         print(f"⚠️  Redalyc appears to be down: {error_msg}")
         print("   Skipping abstract extraction test...")
         return True  # Return True to indicate "skipped" rather than "failed"
-    
+
     print("✅ Redalyc is accessible, running abstract extraction test...")
-    
+
     try:
         # Test abstract extraction
         query = "Lantana"
         articles = test_redalyc_abstract_extraction(query)
-        
+
         if articles:
             print(f"✅ Found {len(articles)} articles")
-            
+
             # Test datatables creation
             output_path = create_datatables_display(articles, query)
             if output_path:
@@ -324,10 +324,10 @@ def main():
         else:
             print("⚠️  No articles found")
             return True  # Not a failure, just no results
-        
+
         print("🎉 Redalyc abstract extraction test completed successfully!")
         return True
-        
+
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False

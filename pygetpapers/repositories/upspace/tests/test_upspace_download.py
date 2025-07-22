@@ -24,14 +24,17 @@ class TestUPSpaceDownload(unittest.TestCase):
 
     def tearDown(self):
         import shutil
+
         if os.path.exists(self.test_dir):
             shutil.rmtree(self.test_dir)
 
     def test_pdf_download(self):
         """Test downloading PDF files from real articles."""
-        articles = self.upspace.search_articles("sustainable development", max_results=3)
+        articles = self.upspace.search_articles(
+            "sustainable development", max_results=3
+        )
         self.assertGreater(len(articles), 0)
-        
+
         downloaded_count = 0
         for article in articles:
             success = self.upspace.download_article(article, self.test_dir)
@@ -39,7 +42,7 @@ class TestUPSpaceDownload(unittest.TestCase):
                 downloaded_count += 1
                 article_id = self.upspace._generate_article_id(article)
                 pdf_file = Path(self.test_dir, article_id, "fulltext.pdf")
-                
+
                 # Check if PDF was downloaded
                 if pdf_file.exists():
                     self.assertGreater(pdf_file.stat().st_size, 0)
@@ -55,19 +58,19 @@ class TestUPSpaceDownload(unittest.TestCase):
         """Test that metadata files are created correctly."""
         articles = self.upspace.search_articles("sustainable", max_results=2)
         self.assertGreater(len(articles), 0)
-        
+
         for article in articles:
             success = self.upspace.download_article(article, self.test_dir)
             self.assertTrue(success)
-            
+
             article_id = self.upspace._generate_article_id(article)
             metadata_file = Path(self.test_dir, article_id, "metadata.json")
-            
+
             # Check metadata file exists and is valid JSON
             self.assertTrue(metadata_file.exists())
             with open(metadata_file, "r", encoding="utf-8") as f:
                 saved_metadata = json.load(f)
-            
+
             # Check that metadata contains expected fields
             self.assertIn("title", saved_metadata)
             self.assertIn("uuid", saved_metadata)
@@ -77,22 +80,22 @@ class TestUPSpaceDownload(unittest.TestCase):
         """Test that the correct directory structure is created."""
         articles = self.upspace.search_articles("sustainable", max_results=1)
         self.assertGreater(len(articles), 0)
-        
+
         article = articles[0]
         success = self.upspace.download_article(article, self.test_dir)
         self.assertTrue(success)
-        
+
         article_id = self.upspace._generate_article_id(article)
         article_dir = Path(self.test_dir, article_id)
-        
+
         # Check directory exists
         self.assertTrue(article_dir.exists())
         self.assertTrue(article_dir.is_dir())
-        
+
         # Check for expected files
         metadata_file = Path(article_dir, "metadata.json")
         self.assertTrue(metadata_file.exists())
-        
+
         # PDF might or might not exist depending on availability
         pdf_file = Path(article_dir, "fulltext.pdf")
         if pdf_file.exists():
@@ -104,7 +107,7 @@ class TestUPSpaceDownload(unittest.TestCase):
         invalid_article = {"title": "Test Article", "authors": ["Test Author"]}
         success = self.upspace.download_article(invalid_article, self.test_dir)
         self.assertFalse(success)
-        
+
         # Test with invalid output directory
         articles = self.upspace.search_articles("sustainable", max_results=1)
         if articles:
@@ -119,35 +122,35 @@ class TestUPSpaceDownload(unittest.TestCase):
         """Test downloading multiple articles concurrently."""
         articles = self.upspace.search_articles("sustainable", max_results=3)
         self.assertGreater(len(articles), 0)
-        
+
         import threading
         import time
-        
+
         results = []
         errors = []
-        
+
         def download_article_thread(article, index):
             try:
                 success = self.upspace.download_article(article, self.test_dir)
                 results.append((index, success))
             except Exception as e:
                 errors.append((index, str(e)))
-        
+
         # Start download threads
         threads = []
         for i, article in enumerate(articles):
             thread = threading.Thread(target=download_article_thread, args=(article, i))
             threads.append(thread)
             thread.start()
-        
+
         # Wait for all threads to complete
         for thread in threads:
             thread.join()
-        
+
         # Check results
         self.assertEqual(len(errors), 0, f"Download errors: {errors}")
         self.assertEqual(len(results), len(articles))
-        
+
         # Check that files were created
         for i, (index, success) in enumerate(results):
             if success:
@@ -161,19 +164,19 @@ class TestUPSpaceDownload(unittest.TestCase):
         articles = self.upspace.search_articles("sustainable", max_results=1)
         if not articles:
             self.skipTest("No articles found for testing")
-        
+
         article = articles[0]
         success = self.upspace.download_article(article, self.test_dir)
         self.assertTrue(success)
-        
+
         article_id = self.upspace._generate_article_id(article)
         article_dir = Path(self.test_dir, article_id)
         metadata_file = Path(article_dir, "metadata.json")
-        
+
         # Check file permissions
         self.assertTrue(metadata_file.exists())
         self.assertTrue(os.access(metadata_file, os.R_OK))
-        
+
         # Check directory permissions
         self.assertTrue(os.access(article_dir, os.R_OK))
         self.assertTrue(os.access(article_dir, os.W_OK))
@@ -183,35 +186,40 @@ class TestUPSpaceDownload(unittest.TestCase):
         articles = self.upspace.search_articles("sustainable", max_results=1)
         if not articles:
             self.skipTest("No articles found for testing")
-        
+
         article = articles[0]
         uuid = article["uuid"]
-        
+
         # Test bundle retrieval
         bundles_data = self.upspace._get_item_bundles(uuid)
         self.assertIsNotNone(bundles_data)
         self.assertIsInstance(bundles_data, dict)
-        
+
         # Check bundles structure
         if "_embedded" in bundles_data and "bundles" in bundles_data["_embedded"]:
             bundles = bundles_data["_embedded"]["bundles"]
             self.assertIsInstance(bundles, list)
-            
+
             # Test bitstream retrieval for ORIGINAL bundle
             for bundle in bundles:
                 if isinstance(bundle, dict) and bundle.get("name") == "ORIGINAL":
                     bundle_uuid = bundle.get("uuid")
                     if bundle_uuid:
-                        bitstreams_data = self.upspace._get_bundle_bitstreams(bundle_uuid)
+                        bitstreams_data = self.upspace._get_bundle_bitstreams(
+                            bundle_uuid
+                        )
                         self.assertIsNotNone(bitstreams_data)
                         self.assertIsInstance(bitstreams_data, dict)
-                        
+
                         # Check bitstreams structure
-                        if "_embedded" in bitstreams_data and "bitstreams" in bitstreams_data["_embedded"]:
+                        if (
+                            "_embedded" in bitstreams_data
+                            and "bitstreams" in bitstreams_data["_embedded"]
+                        ):
                             bitstreams = bitstreams_data["_embedded"]["bitstreams"]
                             self.assertIsInstance(bitstreams, list)
                             break
 
 
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()

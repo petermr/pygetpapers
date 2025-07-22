@@ -185,8 +185,14 @@ class CrossRef(RepositoryInterface):
             )
         except Exception as e:
             logging.error(f"Crossref API request failed: {e}")
-            print(f"❌ Crossref API request failed: {e}\nTry again later or check your network connection.")
-            return {NEW_RESULTS: {TOTAL_HITS: 0, TOTAL_JSON_OUTPUT: []}, UPDATED_DICT: {}, CURSOR_MARK: None}
+            print(
+                f"❌ Crossref API request failed: {e}\nTry again later or check your network connection."
+            )
+            return {
+                NEW_RESULTS: {TOTAL_HITS: 0, TOTAL_JSON_OUTPUT: []},
+                UPDATED_DICT: {},
+                CURSOR_MARK: None,
+            }
         metadata_count = raw_crossref_metadata[MESSAGE][TOTAL_RESULTS]
         cursor_mark = raw_crossref_metadata[MESSAGE][NEXT_CURSOR]
         cutoff_metadata_list = self._make_metadata_subset(

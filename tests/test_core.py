@@ -116,7 +116,9 @@ def test_does_crossref_work():
     assert does_crossref_json_file_exist is True
 
 
-@pytest.mark.skip(reason="arXiv support is DISABLED due to arXiv's anti-scraping policy")
+@pytest.mark.skip(
+    reason="arXiv support is DISABLED due to arXiv's anti-scraping policy"
+)
 def test_does_arxiv_work():
     logger.info(f"testing {test_does_arxiv_work}")
     command = (

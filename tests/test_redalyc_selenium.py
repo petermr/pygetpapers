@@ -36,16 +36,16 @@ def test_redalyc_selenium_search():
     print("\nTesting RedalycSelenium search...")
     try:
         redalyc = RedalycSelenium(headless=True)
-        
+
         # Test with a simple query
         query = "climate change"
         max_results = 3
-        
+
         print(f"Searching for: '{query}' (max {max_results} results)")
         articles = redalyc.search_articles(query, max_results)
-        
+
         print(f"Found {len(articles)} articles")
-        
+
         if articles:
             print("Sample article metadata:")
             article = articles[0]
@@ -54,14 +54,14 @@ def test_redalyc_selenium_search():
                     print(f"  {key}: {len(value)} items")
                 else:
                     print(f"  {key}: {str(value)[:100]}...")
-        
+
         redalyc.close()
         print("✓ RedalycSelenium search test completed")
         return True
-        
+
     except Exception as e:
         print(f"✗ RedalycSelenium search test failed: {e}")
-        if 'redalyc' in locals():
+        if "redalyc" in locals():
             redalyc.close()
         return False
 
@@ -72,25 +72,27 @@ def test_redalyc_selenium_main_method():
     print("\nTesting RedalycSelenium main method...")
     try:
         redalyc = RedalycSelenium(headless=True)
-        
+
         # Test the main method
         result = redalyc.redalyc(
             query="global warming",
             cutoff_size=2,
             makecsv=False,
             makexml=False,
-            makehtml=False
+            makehtml=False,
         )
-        
-        print(f"Main method result: {len(result['new_results']['total_json_output'])} articles")
-        
+
+        print(
+            f"Main method result: {len(result['new_results']['total_json_output'])} articles"
+        )
+
         redalyc.close()
         print("✓ RedalycSelenium main method test completed")
         return True
-        
+
     except Exception as e:
         print(f"✗ RedalycSelenium main method test failed: {e}")
-        if 'redalyc' in locals():
+        if "redalyc" in locals():
             redalyc.close()
         return False
 
@@ -101,22 +103,19 @@ def test_redalyc_selenium_noexecute():
     print("\nTesting RedalycSelenium noexecute method...")
     try:
         redalyc = RedalycSelenium(headless=True)
-        
+
         # Test noexecute
-        query_namespace = {
-            "query": "carbon dioxide",
-            "filter": None
-        }
-        
+        query_namespace = {"query": "carbon dioxide", "filter": None}
+
         redalyc.noexecute(query_namespace)
-        
+
         redalyc.close()
         print("✓ RedalycSelenium noexecute test completed")
         return True
-        
+
     except Exception as e:
         print(f"✗ RedalycSelenium noexecute test failed: {e}")
-        if 'redalyc' in locals():
+        if "redalyc" in locals():
             redalyc.close()
         return False
 
@@ -125,14 +124,14 @@ def main():
     """Run all tests."""
     print("🧪 Testing Redalyc Selenium Implementation")
     print("=" * 60)
-    
+
     # Configure logging
     logging.basicConfig(level=logging.INFO)
-    
+
     # Test connectivity first
     print("🔍 Testing Redalyc connectivity...")
     is_connected, error_msg = test_redalyc_connectivity()
-    
+
     if not is_connected:
         print(f"⚠️  Redalyc appears to be down: {error_msg}")
         print("   Only running initialization test...")
@@ -145,11 +144,11 @@ def main():
             test_redalyc_selenium_main_method,
             test_redalyc_selenium_noexecute,
         ]
-    
+
     passed = 0
     total = len(tests)
     skipped = 0
-    
+
     for test in tests:
         result = test()
         if result is True:
@@ -159,22 +158,26 @@ def main():
         else:
             # Special case for skipped tests
             skipped += 1
-    
+
     print("\n" + "=" * 60)
     print(f"Test Results: {passed}/{total} tests passed")
     if skipped > 0:
         print(f"              {skipped} tests skipped due to connectivity issues")
-    
+
     if passed == total:
-        print("🎉 All tests passed! Redalyc Selenium implementation is working correctly.")
+        print(
+            "🎉 All tests passed! Redalyc Selenium implementation is working correctly."
+        )
     elif passed + skipped == total:
-        print("✅ All accessible tests passed! Some tests were skipped due to connectivity.")
+        print(
+            "✅ All accessible tests passed! Some tests were skipped due to connectivity."
+        )
     else:
         print("⚠️  Some tests failed. Check the implementation.")
-    
+
     return passed == total
 
 
 if __name__ == "__main__":
     success = main()
-    sys.exit(0 if success else 1) 
+    sys.exit(0 if success else 1)

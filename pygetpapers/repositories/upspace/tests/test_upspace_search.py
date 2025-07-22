@@ -38,7 +38,7 @@ class TestUPSpaceSearch(unittest.TestCase):
                 articles = self.upspace.search_articles(query, max_results=5)
                 self.assertIsInstance(articles, list)
                 self.assertGreater(len(articles), 0)
-                
+
                 # Check that articles have required fields
                 for article in articles:
                     self.assertIn("title", article)
@@ -50,18 +50,18 @@ class TestUPSpaceSearch(unittest.TestCase):
         """Test that metadata is properly extracted from search results."""
         articles = self.upspace.search_articles("sustainable", max_results=3)
         self.assertGreater(len(articles), 0)
-        
+
         for article in articles:
             # Check required fields
             self.assertIn("title", article)
             self.assertIn("authors", article)
             self.assertIn("uuid", article)
-            
+
             # Check field types
             self.assertIsInstance(article["title"], str)
             self.assertIsInstance(article["authors"], list)
             self.assertIsInstance(article["uuid"], str)
-            
+
             # Check that title is not empty
             self.assertGreater(len(article["title"]), 0)
 
@@ -69,32 +69,32 @@ class TestUPSpaceSearch(unittest.TestCase):
         """Test that SDG classifications are properly extracted."""
         articles = self.upspace.search_articles("SDG", max_results=10)
         sdg_articles = [a for a in articles if a.get("sdg_classifications")]
-        
+
         # At least some articles should have SDG classifications
         self.assertGreater(len(sdg_articles), 0)
-        
+
         for article in sdg_articles:
             sdgs = article["sdg_classifications"]
             self.assertIsInstance(sdgs, list)
             for sdg in sdgs:
                 self.assertIsInstance(sdg, str)
                 # Check SDG format: "SDG-XX: Description"
-                self.assertRegex(sdg, r'^SDG-\d+:')
+                self.assertRegex(sdg, r"^SDG-\d+:")
 
     def test_article_id_generation(self):
         """Test that article IDs are generated correctly."""
         articles = self.upspace.search_articles("sustainable", max_results=3)
         self.assertGreater(len(articles), 0)
-        
+
         for article in articles:
             article_id = self.upspace._generate_article_id(article)
             self.assertIsInstance(article_id, str)
             self.assertGreater(len(article_id), 0)
-            
+
             # Check ID format
             self.assertTrue(
-                article_id.startswith(('UPSPACE_', 'DOI_', 'UUID_', 'TITLE_')),
-                f"Invalid article ID format: {article_id}"
+                article_id.startswith(("UPSPACE_", "DOI_", "UUID_", "TITLE_")),
+                f"Invalid article ID format: {article_id}",
             )
 
     def test_search_pagination(self):
@@ -102,11 +102,11 @@ class TestUPSpaceSearch(unittest.TestCase):
         # Get first page
         articles_page1 = self.upspace.search_articles("sustainable", max_results=3)
         self.assertEqual(len(articles_page1), 3)
-        
+
         # Get second page (different results)
         articles_page2 = self.upspace.search_articles("sustainable", max_results=6)
         self.assertEqual(len(articles_page2), 6)
-        
+
         # Check that we got more results
         self.assertGreater(len(articles_page2), len(articles_page1))
 
@@ -115,7 +115,7 @@ class TestUPSpaceSearch(unittest.TestCase):
         # Test with empty query
         articles = self.upspace.search_articles("", max_results=5)
         self.assertIsInstance(articles, list)
-        
+
         # Test with very long query
         long_query = "a" * 1000
         articles = self.upspace.search_articles(long_query, max_results=5)
@@ -124,19 +124,19 @@ class TestUPSpaceSearch(unittest.TestCase):
     def test_rate_limiting(self):
         """Test that rate limiting works correctly."""
         import time
-        
+
         start_time = time.time()
-        
+
         # Make multiple requests quickly
         for i in range(3):
             articles = self.upspace.search_articles("sustainable", max_results=1)
             self.assertIsInstance(articles, list)
-        
+
         end_time = time.time()
-        
+
         # Should take at least 2 seconds due to rate limiting (1 second delay between requests)
         self.assertGreater(end_time - start_time, 2.0)
 
 
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()

@@ -1,1 +1,1 @@
-"""UPSpace tests module.""" 
+"""UPSpace tests module."""

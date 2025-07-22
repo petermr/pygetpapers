@@ -704,7 +704,7 @@ class DownloadTools:
         :rtype: string
         """
         from pathlib import Path
-        
+
         # Find pyproject.toml in the project root
         current_dir = Path(__file__).parent
         while current_dir.parent != current_dir:  # Stop at root
@@ -713,6 +713,7 @@ class DownloadTools:
                 try:
                     # Try tomllib first (Python 3.11+)
                     import tomllib
+
                     with open(pyproject_path, "rb") as f:
                         data = tomllib.load(f)
                         return data["project"]["version"]
@@ -720,6 +721,7 @@ class DownloadTools:
                     # Fallback to toml (needs to be installed)
                     try:
                         import toml
+
                         with open(pyproject_path, "r") as f:
                             data = toml.load(f)
                             return data["project"]["version"]
@@ -730,7 +732,7 @@ class DownloadTools:
                                 if line.strip().startswith("version = "):
                                     return line.split("=", 1)[1].strip().strip('"')
             current_dir = current_dir.parent
-        
+
         # Fallback to config.ini if pyproject.toml not found
         with open(
             os.path.join(os.path.dirname(__file__), "config.ini")

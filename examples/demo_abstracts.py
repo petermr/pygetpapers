@@ -27,18 +27,18 @@ def create_sample_data():
                 "authors": "Smith, J., Johnson, A.",
                 "abstract": "This study examines climate change adaptation strategies in agricultural systems. We found that sustainable farming practices can mitigate the effects of global warming and improve crop resilience.",
                 "journal": "Environmental Science",
-                "doi": "10.1000/climate.001"
-            }
+                "doi": "10.1000/climate.001",
+            },
         },
         {
-            "directory": "carbon_paper_002", 
+            "directory": "carbon_paper_002",
             "metadata": {
                 "title": "Carbon Sequestration in Forest Ecosystems",
                 "authors": "Brown, M., Davis, R.",
                 "abstractText": "Forest ecosystems play a crucial role in carbon sequestration and reducing greenhouse gas emissions. Our research shows significant potential for climate mitigation through sustainable forest management.",
                 "journal": "Forest Ecology",
-                "doi": "10.1000/carbon.002"
-            }
+                "doi": "10.1000/carbon.002",
+            },
         },
         {
             "directory": "energy_paper_003",
@@ -47,8 +47,8 @@ def create_sample_data():
                 "authors": "Wilson, K.",
                 "description": "This paper reviews renewable energy technologies and their potential to reduce carbon emissions. Solar and wind power show great promise for achieving sustainability goals.",
                 "journal": "Energy Research",
-                "doi": "10.1000/energy.003"
-            }
+                "doi": "10.1000/energy.003",
+            },
         },
         {
             "directory": "no_abstract_paper_004",
@@ -56,9 +56,9 @@ def create_sample_data():
                 "title": "Paper Without Abstract",
                 "authors": "Unknown, A.",
                 "journal": "Unknown Journal",
-                "doi": "10.1000/unknown.004"
-            }
-        }
+                "doi": "10.1000/unknown.004",
+            },
+        },
     ]
     return papers
 
@@ -69,46 +69,46 @@ def main():
     print("           ABSTRACT FUNCTIONALITY DEMO")
     print("=" * 60)
     print()
-    
+
     # Initialize datatables
     datatables = PygetpapersDatatables()
-    
+
     # Create temporary directory with sample data
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
         output_dir = temp_path / "demo_output"
         output_dir.mkdir()
-        
+
         # Create sample papers
         papers = create_sample_data()
         print(f"📁 Creating {len(papers)} sample papers...")
-        
+
         for paper in papers:
             paper_dir = output_dir / paper["directory"]
             paper_dir.mkdir()
-            
+
             # Create metadata file
             metadata_file = paper_dir / "eupmc_result.json"
             with open(metadata_file, "w", encoding="utf-8") as f:
                 json.dump(paper["metadata"], f, indent=2)
-            
+
             # Create dummy files
             (paper_dir / "fulltext.xml").touch()
             (paper_dir / "fulltext.pdf").touch()
-        
+
         print("✅ Sample data created successfully!")
         print()
-        
+
         # Read the output data
         print("🔍 Reading output data...")
         output_data = datatables.read_pygetpapers_output(str(output_dir))
         print(f"✅ Found {len(output_data['paper_directories'])} papers")
         print()
-        
+
         # Extract abstracts
         print("📄 Extracting abstracts...")
         abstracts_data = datatables.extract_abstracts(output_data)
-        
+
         # Display results
         print("\n📊 ABSTRACT ANALYSIS RESULTS:")
         print("-" * 50)
@@ -116,9 +116,11 @@ def main():
         print(f"Papers with Abstracts: {abstracts_data['papers_with_abstracts']}")
         print(f"Papers without Abstracts: {abstracts_data['papers_without_abstracts']}")
         print(f"Abstract Coverage: {abstracts_data['abstract_coverage']:.1%}")
-        print(f"Average Abstract Length: {abstracts_data['average_abstract_length']} characters")
+        print(
+            f"Average Abstract Length: {abstracts_data['average_abstract_length']} characters"
+        )
         print()
-        
+
         # Show abstract sources
         print("📋 ABSTRACT SOURCES:")
         print("-" * 50)
@@ -126,11 +128,11 @@ def main():
         for paper_data in abstracts_data["papers"].values():
             source = paper_data["abstract_source"]
             source_counts[source] = source_counts.get(source, 0) + 1
-        
+
         for source, count in sorted(source_counts.items()):
             print(f"{source}: {count} papers")
         print()
-        
+
         # Show individual abstracts
         print("📄 INDIVIDUAL ABSTRACTS:")
         print("-" * 50)
@@ -140,34 +142,34 @@ def main():
             print(f"   Journal: {paper_data['journal']}")
             print(f"   Source: {paper_data['abstract_source']}")
             print(f"   Length: {paper_data['abstract_length']} characters")
-            if paper_data['has_abstract']:
+            if paper_data["has_abstract"]:
                 print(f"   Abstract: {paper_data['abstract'][:100]}...")
             else:
                 print(f"   Abstract: No abstract available")
-        
+
         # Test wordlist search
         print("\n🔍 WORDLIST SEARCH TEST:")
         print("-" * 50)
         climate_words = ["climate", "carbon", "energy", "sustainability"]
-        
+
         search_results = datatables.search_datatables_fields(
             output_data=output_data,
             wordlist=climate_words,
             search_fields=["Title", "Abstract", "Keywords"],
             case_sensitive=False,
-            min_hits=1
+            min_hits=1,
         )
-        
+
         print(f"Search words: {climate_words}")
         print(f"Papers with matches: {search_results['summary']['flagged_papers']}")
         print(f"Total hits: {search_results['summary']['total_hits']}")
-        
+
         # Show hits by field
         print("\nHits by field:")
         for field in ["Title", "Abstract"]:
             hits = search_results["field_hit_counts"][field]["total_hits"]
             print(f"  {field}: {hits} hits")
-        
+
         # Show hits by word
         print("\nHits by word:")
         for word in climate_words:
@@ -176,18 +178,18 @@ def main():
                 for field in ["Title", "Abstract"]
             )
             print(f"  '{word}': {total_hits} hits")
-        
+
         # Create tables
         print("\n🔄 CREATING TABLES:")
         print("-" * 50)
-        
+
         abstracts_table = datatables.create_abstracts_table(abstracts_data)
         summary_table = datatables.create_abstracts_summary_table(abstracts_data)
-        
+
         print("✅ Abstracts table created")
         print("✅ Summary table created")
         print(f"📊 Tables contain {len(abstracts_data['papers'])} paper entries")
-        
+
         # Save demo output
         demo_file = output_dir / "abstract_demo.html"
         html_content = f"""
@@ -278,12 +280,12 @@ def main():
 </body>
 </html>
 """
-        
-        with open(demo_file, 'w', encoding='utf-8') as f:
+
+        with open(demo_file, "w", encoding="utf-8") as f:
             f.write(html_content)
-        
+
         print(f"✅ Demo HTML saved to: {demo_file}")
-        
+
         print("\n🎉 DEMO COMPLETE!")
         print("=" * 60)
         print("The abstract functionality is working correctly!")
@@ -296,4 +298,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

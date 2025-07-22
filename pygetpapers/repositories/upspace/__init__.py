@@ -1,1 +1,1 @@
-"""UPSpace repository module for pygetpapers.""" 
+"""UPSpace repository module for pygetpapers."""

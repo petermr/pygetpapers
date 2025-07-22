@@ -13,7 +13,9 @@ import json
 import logging
 from pathlib import Path
 
-from pygetpapers.repositories.biorxiv.biorxiv_advanced_scraper import BioRxivAdvancedScraper
+from pygetpapers.repositories.biorxiv.biorxiv_advanced_scraper import (
+    BioRxivAdvancedScraper,
+)
 
 # Set up logging
 logging.basicConfig(

@@ -223,7 +223,7 @@ def test_different_queries():
     test_queries = [
         "urban heat island",
         "climate change",
-                    "climate change",
+        "climate change",
         "covid-19",
     ]
 

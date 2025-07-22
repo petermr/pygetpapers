@@ -40,3 +40,20 @@ Thumbs.db
 
 # Test outputs
 test_output/
+
+# Large demonstration outputs (prevent large files)
+# Allow small demo files but exclude large ones
+*_research_output/
+*_demo_output/
+demo_*/
+temp/
+output/
+
+# Large archive files that should not be in repository
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+
+# Large PDFs in demonstration directories (but allow small ones)
+# The pre-commit hook will catch large files, so we don't need to exclude all PDFs
