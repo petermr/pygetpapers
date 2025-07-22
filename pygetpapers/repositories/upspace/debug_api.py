@@ -4,8 +4,9 @@ Debug script to test UPSpace API directly.
 """
 
 import json
-import requests
 from pathlib import Path
+
+import requests
 
 from pygetpapers.repositories.upspace.upspace import UPSpace
 

@@ -10,13 +10,14 @@ VERSION: 1.0.0
 PURPOSE: Create unified hOCR output format for PDF and image processing
 """
 
-import logging
 import html
+import logging
 import re
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any, Union
 from dataclasses import dataclass, field
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
+
 import lxml.etree as ET
 
 logger = logging.getLogger(__name__)

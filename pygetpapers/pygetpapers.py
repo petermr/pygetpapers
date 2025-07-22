@@ -563,13 +563,13 @@ class Pygetpapers:
         """Create datatables HTML files for the corpus."""
         try:
             import os
+
             from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 
             # Debug logging (can be removed in production)
             # logging.info(f"Query namespace output: {query_namespace.get('output')}")
             # logging.info(f"Query namespace datatables: {query_namespace.get('datatables')}")
             # logging.info(f"Self default path: {self.default_path}")
-
             # Initialize datatables
             dt = PygetpapersDatatables()
 
@@ -1057,10 +1057,10 @@ def run_pygetpapers(command_string):
         >>> result = run_pygetpapers(cmd)
         >>> print(result)
     """
+    import contextlib
     import shlex
     import sys
     from io import StringIO
-    import contextlib
 
     # Parse the command string
     if command_string.startswith("pygetpapers"):

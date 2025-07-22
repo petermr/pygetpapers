@@ -9,11 +9,11 @@ from pygetpapers.core.config_loader import get_repository_config
 from pygetpapers.core.download_tools import DownloadTools
 from pygetpapers.core.pgexceptions import PygetpapersError
 from pygetpapers.core.repositoryinterface import (
+    BIORXIV,
     COLLECTION,
     DOI,
     RXIV_RESULT,
     RepositoryInterface,
-    BIORXIV,
 )
 
 TOTAL_HITS = "total_hits"
@@ -319,12 +319,14 @@ class Rxiv(RepositoryInterface):
         if self._is_text_query(query):
             logging.info(f"Using {source} web scraper for text query (noexecute mode)")
             try:
+                from urllib.parse import quote_plus
+
+                import requests
+                from bs4 import BeautifulSoup
+
                 from pygetpapers.repositories.biorxiv.biorxiv_advanced_scraper import (
                     BioRxivAdvancedScraper,
                 )
-                import requests
-                from bs4 import BeautifulSoup
-                from urllib.parse import quote_plus
 
                 # Use the correct base URL based on the source
                 if source == "medrxiv":
