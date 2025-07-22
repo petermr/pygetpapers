@@ -422,7 +422,7 @@ class UPSpace(RepositoryInterface):
                     <td>{html.escape(article.get('title', 'No title'))}</td>
                     <td class="authors-cell">{html.escape(authors_str)}</td>
                     <td>{html.escape(str(article.get('year', 'Unknown')))}</td>
-                    <td class="abstract-cell">{html.escape(article.get('abstract', 'No abstract'))}</td>
+                    <td class="abstract-cell">{html.escape(article.get('abstract') or 'No abstract')}</td>
                     <td class="sdg-cell">{sdg_html}</td>
                     <td class="keywords">{html.escape(keywords_str)}</td>
                     <td>{identifiers_html}</td>

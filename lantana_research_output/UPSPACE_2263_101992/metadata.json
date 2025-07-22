@@ -1,0 +1,38 @@
+{
+  "title": "Piper betle extract inhibits ferroptosis by scavenging oxyradicals, hydroperoxides and inducing NRF2 regulated antioxidants",
+  "authors": [
+    "Ranganathan, Veena",
+    "Deepashree, Vidyaranyapura S.",
+    "Gowda, Jadeppa",
+    "Dey, Sumit K.",
+    "Manjunath, Souparnika H.",
+    "Anantharaju, Preethi G.",
+    "Bidye, Durgesh Paresh",
+    "Pujar, Gurubasavaraj V.",
+    "Maharaj, Vinesh J.",
+    "Thimmulappa, Rajesh K."
+  ],
+  "abstract": "Ferroptosis, an iron catalysed programmed cell death initiated by membrane lipid peroxidation (LPO), is implicated in various degenerative diseases. We screened medicinal/food plants and discovered leaf extract of Piper betle (PB), a popular mouth freshener, as a ferroptosis inhibitor. Compared to vehicle, PB suppressed LPO and inhibited ferroptosis triggered by rotenone or RSL3. Mechanistic studies revealed that PB extract is a powerful lipophilic radical trapping antioxidant and an inducer of Nuclear factor-erythroid 2-Related Factor 2 (NRF2) regulated antioxidant defenses (glutathione/glutathione peroxidase-4 axis). Utilizing diverse free radical systems (hydroxyl, peroxyl, hydroperoxides) and LPO models (serum, LDL), we found that PB extract effectively inhibits LPO by scavenging lipid oxyradicals. LC-HRMS analysis identified hydroxychavicol and polyphenols as the key bioactive constituents in PB extract. In a Drosophila model of rotenone-induced neurotoxicity, PB extract supplementation prevented locomotor deficits and mortality compared to the control diet. In conclusion, PB extract could be developed as a nutraceutical for mitigating ferroptosis-linked disorders.",
+  "year": "2025-04",
+  "publisher": "Elsevier",
+  "type": "Postprint Article",
+  "handle_url": "http://hdl.handle.net/2263/101992",
+  "handle_id": "2263/101992",
+  "doi": "10.1016/j.fbio.2025.106325",
+  "keywords": [
+    "Piper betle",
+    "Ferroptosis",
+    "Oxyradicals",
+    "Lipid hydroperoxides",
+    "Neurotoxicity",
+    "Lipid peroxidation (LPO)",
+    "Nuclear factor-erythroid 2-related factor 2 (NRF2)",
+    "SDG-03: Good health and well-being"
+  ],
+  "sdg_classifications": [
+    "SDG-03: Good heatlh and well-being"
+  ],
+  "language": "en",
+  "uuid": "1383b1f2-b178-4c5d-a286-43a912069b68",
+  "id": "1383b1f2-b178-4c5d-a286-43a912069b68"
+}

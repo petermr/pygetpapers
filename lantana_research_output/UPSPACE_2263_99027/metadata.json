@@ -1,0 +1,32 @@
+{
+  "title": "Self-financing model for cabbage crops with pest management",
+  "authors": [
+    "Kambeu Youmbi, Aurelien",
+    "Touzeau, Suzanne",
+    "Grognard, Frédéric",
+    "Tsanou, Berge"
+  ],
+  "abstract": "Smallholder farmers rely on their farm earnings to cover operating costs and generate income. That is not an easy task because of the pests, which reduce yields and generate plant protection costs. The farm yield and plant protection depend on the budget capacity of the farmer. In this work, we want to explore conditions for a sustainable and self-financing cabbage farm. We propose then a non-linear mathematical model for cabbage crops by considering the current account of the plantation as a dynamic variable. We assume that this variable increases due to the sale of cabbages, and provides for the seedling purchase, the plant protection costs, and the grower’s income. In the first part, we analyze the model without pest management. We determine how the budget must be spent and we show the existence of a double transcritical bifurcation. We quantify the seasonal yield and income, and estimate the damage due to pest herbivory. In the second part, we analyze a slightly simplified version of our model and obtain the existence of a backward bifurcation. Furthermore, we show that botanical pesticides can be used to prevent pest spread with relatively low plant protection costs.",
+  "year": "2024-12",
+  "publisher": "Elsevier",
+  "type": "Postprint Article",
+  "handle_url": "http://hdl.handle.net/2263/99027",
+  "handle_id": "2263/99027",
+  "doi": "10.1016/j.mbs.2024.109332",
+  "keywords": [
+    "Dynamic system",
+    "Reproductive number",
+    "Self-financing smallholder",
+    "Vegetable crop",
+    "Botanical pesticide",
+    "Plutella xylostella",
+    "Cabbage (Brassica oleracea varieta capitata)",
+    "SDG-02: Zero hunger"
+  ],
+  "sdg_classifications": [
+    "SDG-02: Zero Hunger"
+  ],
+  "language": "en",
+  "uuid": "e31279c7-081b-4ebd-ae24-15f9d6f412b3",
+  "id": "e31279c7-081b-4ebd-ae24-15f9d6f412b3"
+}

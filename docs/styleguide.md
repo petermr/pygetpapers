@@ -141,6 +141,16 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Validation tools prevent regression and ensure consistent output quality across all repositories and updates.
 
+### STYLE: Always commit before making changes and test after
+
+**Before Any Code Changes:**
+1. **Make a commit** - Save current state so we can revert if necessary
+2. **Make the changes** - Implement the approved modifications
+3. **Run relevant tests** - Execute tests that cover the changed functionality
+4. **Report results** - Inform user of test outcomes before proceeding
+
+**Rationale**: This protocol ensures we can always revert to a working state and validates that changes don't break existing functionality.
+
 ---
 
 *This style guide will be updated as new conventions are established.*
