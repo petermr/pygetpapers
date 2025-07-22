@@ -1,0 +1,145 @@
+{
+  "_embedded": {
+    "items": [
+      {
+        "uuid": "sample-uuid-12345",
+        "id": 12345,
+        "metadata": {
+          "dc.title": [
+            {
+              "value": "Sample Article on Climate Change and Sustainable Development",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.contributor.author": [
+            {
+              "value": "Smith, John",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            },
+            {
+              "value": "Doe, Jane",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 1
+            }
+          ],
+          "dc.description.abstract": [
+            {
+              "value": "This is a sample abstract about climate change and its impact on sustainable development goals. The research focuses on SDG-13 (Climate Action) and SDG-11 (Sustainable Cities and Communities).",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.date.issued": [
+            {
+              "value": "2023-06-15",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.language.iso": [
+            {
+              "value": "en_ZA",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.subject": [
+            {
+              "value": "climate change",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            },
+            {
+              "value": "sustainable development",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 1
+            },
+            {
+              "value": "urban planning",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 2
+            }
+          ],
+          "dc.description.sdg": [
+            {
+              "value": "SDG-13: Climate action",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            },
+            {
+              "value": "SDG-11: Sustainable cities and communities",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 1
+            }
+          ],
+          "dc.identifier.uri": [
+            {
+              "value": "http://hdl.handle.net/2263/12345",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.identifier.other": [
+            {
+              "value": "10.1016/j.cliser.2023.100123",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.publisher": [
+            {
+              "value": "University of Pretoria",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ],
+          "dc.type": [
+            {
+              "value": "Article",
+              "language": "en_ZA",
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "page": {
+    "size": 1,
+    "totalElements": 1,
+    "totalPages": 1,
+    "number": 0
+  }
+} 
