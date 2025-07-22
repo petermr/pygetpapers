@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 from pygetpapers.core.config_loader import get_repository_config
 from pygetpapers.core.download_tools import DownloadTools
-from pygetpapers.core.errors import PygetpapersError
+from pygetpapers.core.pgexceptions import PygetpapersError
 from pygetpapers.core.repositoryinterface import (
     COLLECTION,
     DOI,

@@ -25,7 +25,7 @@ class RepositoryConfig:
 
     def _load_config(self):
         """Load configuration from the repository's config.ini file."""
-        config_path = Path(__file__).parent / self.repository_name / "config.ini"
+        config_path = Path(Path(__file__).parent, self.repository_name, "config.ini")
 
         if config_path.exists():
             self.config.read(config_path)

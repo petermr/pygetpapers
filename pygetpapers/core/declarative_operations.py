@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 import yaml
 
-from .security_framework import (
+from pygetpapers.core.security_framework import (
     ResourceLimitError,
     SecurityError,
     create_security_framework,
@@ -550,7 +550,7 @@ class DeclarativeOperationsManager:
         """Execute repository operation using internal APIs."""
         try:
             # Import pygetpapers main class
-            from .pygetpapers import Pygetpapers
+            from pygetpapers.pygetpapers import Pygetpapers
 
             # Create pygetpapers instance
             pygetpapers = Pygetpapers()
@@ -734,7 +734,7 @@ def example_usage():
     manager = DeclarativeOperationsManager("config/declarative_operations.yaml")
 
     # Define target files
-    working_dir = Path("./corpus")
+    working_dir = Path(".", "corpus")
     target_files = ["paper1.xml.html", "metadata.csv"]
 
     # Get required operations

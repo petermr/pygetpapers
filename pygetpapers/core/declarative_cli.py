@@ -13,7 +13,7 @@ from typing import List, Optional
 
 # SECURITY: This module is a design/prototype only
 # Actual implementation would require explicit permission for command execution
-from .declarative_operations import (
+from pygetpapers.core.declarative_operations import (
     DeclarativeOperationsManager,
     create_declarative_config_for_repository,
 )
