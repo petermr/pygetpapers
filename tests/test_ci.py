@@ -48,14 +48,14 @@ def test_imports():
 # def test_streamlit_app():
 #     """Test that the Streamlit app can be imported"""
 #     print("\n🧪 Testing Streamlit app...")
-# 
+#
 #     try:
 #         # Test if the module can be imported
 #         import pygetpapers.streamlit_app
-# 
+#
 #         # Access a simple attribute to ensure it's actually imported
 #         _ = pygetpapers.streamlit_app.__name__
-# 
+#
 #         print("✅ Streamlit app imported successfully")
 #         return True
 #     except ImportError as e:
@@ -66,14 +66,14 @@ def test_imports():
 # def test_datatables():
 #     """Test that datatables integration can be imported"""
 #     print("\n🧪 Testing datatables integration...")
-# 
+#
 #     try:
 #         # Test if the module can be imported
 #         import pygetpapers.tools.datatables_integration
-# 
+#
 #         # Access a simple attribute to ensure it's actually imported
 #         _ = pygetpapers.tools.datatables_integration.__name__
-# 
+#
 #         print("✅ Datatables integration imported successfully")
 #         return True
 #     except ImportError as e:
