@@ -31,10 +31,10 @@ try:
 except ImportError:
     BEAUTIFULSOUP_AVAILABLE = False
 
-from pygetpapers.core.repositoryinterface import RepositoryInterface
 from pygetpapers.core.download_tools import DownloadTools
 from pygetpapers.core.file_utils import FileUtils
 from pygetpapers.core.metadata_extractor import MetadataExtractor
+from pygetpapers.core.repositoryinterface import RepositoryInterface
 
 
 class RedalycSelenium(RepositoryInterface):
@@ -327,9 +327,7 @@ class RedalycSelenium(RepositoryInterface):
                     )
                     logging.info(f"    Abstract: {abstract_preview}")
                 except Exception as e:
-                    logging.warning(
-                        f"Error extracting article card {idx + 1}: {e}"
-                    )
+                    logging.warning(f"Error extracting article card {idx + 1}: {e}")
                     continue
             return articles
         except Exception as e:
