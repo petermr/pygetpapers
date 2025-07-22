@@ -7,10 +7,10 @@ It detects the OS and provides appropriate installation instructions.
 """
 
 import os
-import sys
 import platform
-import subprocess
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 

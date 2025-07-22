@@ -4,8 +4,8 @@ Demonstration: Search for Lantana papers from UPSpace
 Shows the complete process from search to download.
 """
 
-import sys
 import json
+import sys
 from pathlib import Path
 
 # Add the project root to the path

@@ -6,9 +6,9 @@ ORIGINAL AUTHOR: Assistant on December 19, 2024
 PURPOSE: Demonstrate abstract extraction and analysis
 """
 
+import json
 import sys
 import tempfile
-import json
 from pathlib import Path
 
 # Add the pygetpapers directory to the path

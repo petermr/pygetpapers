@@ -13,8 +13,9 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+from test_utils import skip_if_redalyc_down, test_redalyc_connectivity
+
 from pygetpapers.repositories.redalyc.redalyc_selenium import RedalycSelenium
-from test_utils import test_redalyc_connectivity, skip_if_redalyc_down
 
 
 def test_redalyc_selenium_initialization():

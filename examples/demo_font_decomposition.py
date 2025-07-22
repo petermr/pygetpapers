@@ -15,8 +15,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pygetpapers.core.hocr_builder import (
     HOCRBuilder,
-    decompose_font_name,
     create_hocr_from_pdfplumber_data,
+    decompose_font_name,
 )
 
 

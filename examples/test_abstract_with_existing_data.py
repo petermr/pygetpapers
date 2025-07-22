@@ -6,9 +6,9 @@ ORIGINAL AUTHOR: Assistant on December 19, 2024
 PURPOSE: Test abstract functionality with existing pygetpapers output
 """
 
-import sys
-import os
 import json
+import os
+import sys
 from pathlib import Path
 
 # Add the pygetpapers directory to the path

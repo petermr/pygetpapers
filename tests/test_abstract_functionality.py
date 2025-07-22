@@ -6,11 +6,11 @@ ORIGINAL AUTHOR: Assistant on December 19, 2024
 PURPOSE: Test abstract extraction, processing, and table creation functionality
 """
 
-import unittest
-from pathlib import Path
-import tempfile
 import json
 import shutil
+import tempfile
+import unittest
+from pathlib import Path
 
 from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 

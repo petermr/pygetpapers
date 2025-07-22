@@ -6,8 +6,8 @@ This script demonstrates how to use pygetpapers from Python code
 using the new run_pygetpapers function.
 """
 
-import sys
 import os
+import sys
 
 
 def test_installation():

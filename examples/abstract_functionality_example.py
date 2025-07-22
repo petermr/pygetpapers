@@ -6,8 +6,8 @@ ORIGINAL AUTHOR: Assistant on December 19, 2024
 PURPOSE: Demonstrate abstract extraction, analysis, and table creation
 """
 
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Add the pygetpapers directory to the path

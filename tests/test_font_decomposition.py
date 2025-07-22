@@ -7,21 +7,21 @@ VERSION: 1.0.0
 PURPOSE: Test font name decomposition and line coordinate preservation
 """
 
-import unittest
-import tempfile
 import os
-from pathlib import Path
-from typing import Dict, List, Any
 
 # Add the pygetpapers directory to the path
 import sys
+import tempfile
+import unittest
+from pathlib import Path
+from typing import Any, Dict, List
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pygetpapers.core.hocr_builder import (
     HOCRBuilder,
-    decompose_font_name,
     create_hocr_from_pdfplumber_data,
+    decompose_font_name,
 )
 
 

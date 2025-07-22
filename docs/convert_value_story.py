@@ -5,10 +5,11 @@ Convert UPSpace Value Story presentation to PowerPoint format.
 
 import re
 from pathlib import Path
+
 from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.enum.text import PP_ALIGN
 from pptx.dml.color import RGBColor
+from pptx.enum.text import PP_ALIGN
+from pptx.util import Inches, Pt
 
 
 def parse_markdown_slides(markdown_file):

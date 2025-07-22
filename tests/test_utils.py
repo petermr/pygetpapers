@@ -5,11 +5,12 @@ Test utilities for pygetpapers tests.
 This module provides common testing utilities including connectivity testing.
 """
 
-import requests
 import socket
 import time
 from typing import Optional, Tuple
 from urllib.parse import urlparse
+
+import requests
 
 
 def test_redalyc_connectivity(timeout: int = 10) -> Tuple[bool, str]:

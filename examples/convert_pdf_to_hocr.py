@@ -8,9 +8,10 @@ PURPOSE: Convert PDF files to hOCR format using PDFPlumber extraction
 """
 
 import sys
-import pdfplumber
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
+import pdfplumber
 
 # Add the pygetpapers directory to the path
 sys.path.insert(0, str(Path(__file__).parent.parent))

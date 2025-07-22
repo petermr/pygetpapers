@@ -6,11 +6,12 @@ This script tests one of the discovered article URLs to understand
 the structure of individual article pages.
 """
 
-import requests
-import time
-from bs4 import BeautifulSoup
-from pathlib import Path
 import json
+import time
+from pathlib import Path
+
+import requests
+from bs4 import BeautifulSoup
 
 
 def test_article_page():

@@ -6,10 +6,10 @@ ORIGINAL AUTHOR: Assistant on December 19, 2024
 PURPOSE: Test abstract functionality by calling pygetpapers and searching abstracts
 """
 
-import sys
+import json
 import os
 import subprocess
-import json
+import sys
 import time
 from pathlib import Path
 

@@ -7,25 +7,25 @@ VERSION: 1.0.0
 PURPOSE: Test hOCR builder with Tesseract and PDF output formats
 """
 
-import unittest
-import tempfile
 import os
-from pathlib import Path
-from typing import Dict, List, Any
 
 # Add the pygetpapers directory to the path
 import sys
+import tempfile
+import unittest
+from pathlib import Path
+from typing import Any, Dict, List
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pygetpapers.core.hocr_builder import (
     HOCRBuilder,
     HOCRCharacter,
-    HOCRWord,
-    HOCRLine,
-    HOCRParagraph,
-    HOCRPage,
     HOCRDocument,
+    HOCRLine,
+    HOCRPage,
+    HOCRParagraph,
+    HOCRWord,
     create_hocr_from_pdfplumber_data,
     create_hocr_from_tesseract_data,
 )

@@ -7,6 +7,7 @@ to download PDFs and convert them to well-formatted HTML.
 """
 
 from pathlib import Path
+
 from pdf_to_html_converter import PDFToHTMLConverter
 
 

@@ -13,13 +13,14 @@ Usage:
     python temp/scielo_exploration.py
 """
 
-import requests
-import time
 import json
-from pathlib import Path
-from urllib.parse import urljoin, urlparse, parse_qs
-from bs4 import BeautifulSoup
 import logging
+import time
+from pathlib import Path
+from urllib.parse import parse_qs, urljoin, urlparse
+
+import requests
+from bs4 import BeautifulSoup
 
 # Set up logging
 logging.basicConfig(

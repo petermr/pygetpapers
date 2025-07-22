@@ -3,18 +3,19 @@
 Test script to check for XML links in Redalyc articles.
 """
 
-import requests
+import logging
 import re
 import sys
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-import logging
 from pathlib import Path
+from urllib.parse import urljoin
+
+import requests
+from bs4 import BeautifulSoup
 
 # Add src to path for test_utils import
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from test_utils import test_redalyc_connectivity, skip_if_redalyc_down
+from test_utils import skip_if_redalyc_down, test_redalyc_connectivity
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

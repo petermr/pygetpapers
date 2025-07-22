@@ -5,8 +5,10 @@ Test script for the PDF to HTML Converter
 This script downloads a simple PDF and tests the converter functionality.
 """
 
-import requests
 from pathlib import Path
+
+import requests
+
 from pdf_to_html_converter import PDFToHTMLConverter
 
 

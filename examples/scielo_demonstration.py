@@ -24,8 +24,9 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from pygetpapers.repositories.scielo.scielo import SciELO
 import logging
+
+from pygetpapers.repositories.scielo.scielo import SciELO
 
 # Set up logging
 logging.basicConfig(
