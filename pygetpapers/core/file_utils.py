@@ -445,3 +445,64 @@ class FileUtils:
             return file_path.stat().st_size if file_path.exists() else 0
         except Exception:
             return 0
+
+    @staticmethod
+    def check_file_size_alert(file_size_bytes: int, file_name: str = "file", threshold_mb: int = None) -> bool:
+        """
+        Check if file size exceeds threshold and log appropriate alert.
+        
+        Args:
+            file_size_bytes: File size in bytes
+            file_name: Name of the file for logging
+            threshold_mb: Size threshold in MB (uses config default if None)
+            
+        Returns:
+            True if file size exceeds threshold, False otherwise
+        """
+        from pygetpapers.core.file_size_config import file_size_config
+        
+        # Use configuration if threshold not specified
+        if threshold_mb is None:
+            threshold_mb = file_size_config.get("file_size_alert_threshold_mb", 100)
+        
+        # Check if alerts are enabled
+        if not file_size_config.is_alerts_enabled():
+            return False
+            
+        threshold_bytes = threshold_mb * 1024 * 1024
+        
+        if file_size_bytes > threshold_bytes:
+            size_mb = file_size_bytes / (1024 * 1024)
+            
+            # Use configured message template
+            alert_template = file_size_config.get("alert_message_template")
+            warning_template = file_size_config.get("warning_message_template")
+            
+            if file_size_config.should_log_large_files():
+                logger.warning(alert_template.format(
+                    file_name=file_name, 
+                    size_mb=size_mb, 
+                    threshold_mb=threshold_mb
+                ))
+                logger.warning(warning_template)
+            
+            return True
+        return False
+
+    @staticmethod
+    def format_file_size(size_bytes: int) -> str:
+        """
+        Format file size in human-readable format.
+        
+        Args:
+            size_bytes: File size in bytes
+            
+        Returns:
+            Formatted size string (e.g., "1.5 MB", "750 KB")
+        """
+        if size_bytes < 1024:
+            return f"{size_bytes} B"
+        elif size_bytes < 1024 * 1024:
+            return f"{size_bytes / 1024:.1f} KB"
+        else:
+            return f"{size_bytes / (1024 * 1024):.1f} MB"

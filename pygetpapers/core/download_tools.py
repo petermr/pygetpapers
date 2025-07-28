@@ -241,6 +241,13 @@ class DownloadTools:
             try:
                 response = requests.get(url)
                 file.write(response.content)
+                
+                # Check file size and alert if it exceeds 100 MB
+                file_size = len(response.content)
+                file_name = os.path.basename(destination)
+                from pygetpapers.core.file_utils import FileUtils
+                FileUtils.check_file_size_alert(file_size, file_name)
+                
             except requests.exceptions.RequestException as exception:
                 logging.warning("Error in getting the pdf")
                 logging.debug(exception)
@@ -464,6 +471,12 @@ class DownloadTools:
             os.makedirs(directory_url)
         file_exits = self.check_if_content_is_zip(request_handler)
         if file_exits:
+            # Check file size and alert if it exceeds 100 MB
+            file_size = len(request_handler.content)
+            file_name = f"{log_key}_files_{identifier}"
+            from pygetpapers.core.file_utils import FileUtils
+            FileUtils.check_file_size_alert(file_size, file_name)
+            
             self.extract_zip_files(request_handler.content, path_to_save)
         else:
             logging.warning("%s files not found for %s", log_key, identifier)

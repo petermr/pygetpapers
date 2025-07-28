@@ -74,6 +74,18 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Using incorrect dates in documentation creates confusion and reduces credibility. Always verify the current date from the system.
 
+### STYLE: Document date sources explicitly
+
+- ✅ **Good**: "July 27, 2025 (system date of generation)" or "2023-12-01 (extracted from source document)"
+- ❌ **Bad**: Using dates without indicating their source
+- **Requirement**: Always report the source of any date used in documentation or code
+
+**Date Source Categories:**
+1. **System date of generation**: Date when code/document was created (obtained via `date` command)
+2. **Date extracted from other document**: Date taken from source materials, APIs, or external references
+
+**Rationale**: Explicit date sourcing prevents confusion, enables verification, and maintains documentation credibility. Users need to know whether dates represent creation time or extracted content.
+
 ## Interface Design
 
 ### STYLE: Remove unused UI elements

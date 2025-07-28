@@ -371,6 +371,10 @@ class PygetpapersUI:
             "wrote" in line.lower() or "downloaded" in line.lower()
         ):
             progress_data["supplementary_downloaded"] += 1
+            
+        # Check for large file alerts in the output
+        if "🚨 LARGE FILE ALERT:" in line:
+            progress_data["large_files_detected"] = progress_data.get("large_files_detected", 0) + 1
 
         # Only store meaningful output lines (skip tqdm bars and progress updates)
         if not re.match(r"^\d+%\|.*\| \d+/\d+ \[.*\]$", line) and not re.match(
@@ -452,6 +456,15 @@ class PygetpapersUI:
                     unsafe_allow_html=True,
                 )
 
+                            # Show large file alerts
+                if progress_data.get("large_files_detected", 0) > 0:
+                    from pygetpapers.core.file_size_config import file_size_config
+                    threshold_mb = file_size_config.get("file_size_alert_threshold_mb", 100)
+                    st.warning(
+                        f"🚨 **Large File Alert:** {progress_data['large_files_detected']} "
+                        f"file(s) exceeding {threshold_mb} MB detected during download!"
+                    )
+            
             # Recent output with better formatting
             if progress_data["output_lines"]:
                 st.markdown("**📝 Recent Activity:**")
@@ -3101,7 +3114,16 @@ class PygetpapersUI:
                                         size_str = f"{size/1024:.1f}KB"
                                     else:
                                         size_str = f"{size/(1024**2):.1f}MB"
-                                    st.caption(size_str)
+                                    
+                                    # Add warning for large files
+                                    from pygetpapers.core.file_size_config import file_size_config
+                                    threshold_bytes = file_size_config.get_alert_threshold_bytes()
+                                    
+                                    if size > threshold_bytes and file_size_config.should_show_ui_warnings():
+                                        st.caption(f"🚨 {size_str}")
+                                        st.caption("⚠️ Large file!")
+                                    else:
+                                        st.caption(size_str)
                                 except:
                                     st.caption("...")
                             with col_file3:
@@ -3176,7 +3198,17 @@ class PygetpapersUI:
 
                     col2a, col2b, col2c = st.columns(3)
                     with col2a:
-                        st.metric("Size", f"{file_size:,} bytes")
+                        # Format file size and show alert if large
+                        from pygetpapers.core.file_size_config import file_size_config
+                        threshold_bytes = file_size_config.get_alert_threshold_bytes()
+                        
+                        if file_size > threshold_bytes and file_size_config.should_show_ui_warnings():
+                            size_str = f"{file_size/(1024*1024):.1f} MB"
+                            st.metric("Size", f"{size_str} 🚨")
+                            threshold_mb = file_size_config.get("file_size_alert_threshold_mb", 100)
+                            st.warning(f"⚠️ **Large File Alert:** This file exceeds {threshold_mb} MB and may take significant time to download!")
+                        else:
+                            st.metric("Size", f"{file_size:,} bytes")
                     with col2b:
                         st.metric("Modified", file_modified.strftime("%Y-%m-%d"))
                     with col2c:
