@@ -220,6 +220,40 @@ for paper in results["papers"]:
 
 ## Implementation Notes
 
+### Repository Structure and Naming Conventions
+
+#### Directory Structure
+```
+{user_repo_directory}/
+├── datatables.html                    # Main DataTables interface
+├── lantana_papers_data.json           # Paper metadata
+└── pdfs/
+    ├── {paper_id_1}/
+    │   ├── fulltext.pdf               # Original PDF (manually downloaded)
+    │   ├── fulltext.html              # Downloaded HTML content
+    │   └── fulltext.pdf.html          # PDF converted to HTML (derived)
+    ├── {paper_id_2}/
+    │   ├── fulltext.pdf
+    │   ├── fulltext.html
+    │   └── fulltext.pdf.html
+    └── ...
+```
+
+#### Naming Conventions
+- **Repository Directory**: User-defined (e.g., `./examples/lantana_biorxiv/`)
+- **Article Subdirectories**: Named by paper ID (e.g., `/292722/`, `/126490/`)
+- **Content Files**: Reserved names indicating type and format:
+  - `fulltext.pdf` - Original PDF content
+  - `fulltext.html` - Downloaded HTML content
+  - `fulltext.pdf.html` - PDF converted to HTML (derived content)
+- **DataTables Location**: `{repo_directory}/datatables.html`
+
+#### PDF Download Workflow
+1. **DataTables Interface**: Located at `{repo_directory}/datatables.html`
+2. **PDF Links**: Point to BioRxiv repository URLs
+3. **Manual Download**: User clicks PDF cells and saves to `/{paper_id}/fulltext.pdf`
+4. **Local Detection**: DataTables shows green "Local PDF" when file exists
+
 ### Web Scraping Selectors
 - **Title:** `span.highwire-cite-title a.highwire-cite-linked-title`
 - **Authors:** `div.highwire-cite-authors span.highwire-citation-author`
