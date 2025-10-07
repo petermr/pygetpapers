@@ -96,10 +96,12 @@ class PDFHyperlinkAdder:
             page = doc[page_num]
             
             # Add hyperlink annotation
-            link_annot = page.add_link_annot(bbox, uri=link)
+            link_annot = page.insert_link({"kind": fitz.LINK_URI, "uri": link, "from": bbox})
             
             # Add tooltip (using annotation title)
-            link_annot.set_info(title=f"Click to visit: {word}")
+            # Note: PyMuPDF doesn't support tooltips directly, but we can add a text annotation
+            tooltip_rect = fitz.Rect(bbox.x0, bbox.y0 - 20, bbox.x1, bbox.y0)
+            page.add_text_annot(tooltip_rect.tl, f"Click to visit: {word}")
             
             # Add visual styling - blue underline
             # Note: PyMuPDF doesn't directly modify text color, but we can add visual indicators
@@ -170,7 +172,7 @@ def create_sample_word_list(filename: str = "word_list.csv") -> None:
     print(f"📝 Created sample word list: {filename}")
 
 def main():
-    if len(sys.argv) != 4:
+    if len(sys.argv) < 2:
         print("Usage: python pdf_hyperlink_adder.py input.pdf word_list.csv output.pdf")
         print("\nExample:")
         print("  python pdf_hyperlink_adder.py document.pdf word_list.csv document_with_links.pdf")
@@ -180,6 +182,14 @@ def main():
     
     if sys.argv[1] == "--create-sample":
         create_sample_word_list()
+        return
+    
+    if len(sys.argv) != 4:
+        print("Usage: python pdf_hyperlink_adder.py input.pdf word_list.csv output.pdf")
+        print("\nExample:")
+        print("  python pdf_hyperlink_adder.py document.pdf word_list.csv document_with_links.pdf")
+        print("\nTo create a sample word list:")
+        print("  python pdf_hyperlink_adder.py --create-sample")
         return
     
     input_pdf = sys.argv[1]
