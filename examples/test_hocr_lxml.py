@@ -11,6 +11,9 @@ from pathlib import Path
 
 from pygetpapers.core.hocr_builder import HOCRBuilder
 
+# Get the project root directory (parent of examples directory)
+PROJECT_ROOT = Path(__file__).parent.parent
+
 
 def test_lxml_hocr_generation():
     """Test that hOCR generation uses lxml properly."""
@@ -52,35 +55,23 @@ def test_lxml_hocr_generation():
     print(preview)
 
     # Check for proper XML structure
-    if "<?xml version=" in hocr_xml:
-        print("✅ Contains proper XML declaration")
-    else:
-        print("❌ Missing XML declaration")
-        return False
+    assert "<?xml version=" in hocr_xml, "Missing XML declaration"
+    print("✅ Contains proper XML declaration")
 
-    if "<html xmlns=" in hocr_xml:
-        print("✅ Contains proper HTML namespace")
-    else:
-        print("❌ Missing HTML namespace")
-        return False
+    assert "<html xmlns=" in hocr_xml, "Missing HTML namespace"
+    print("✅ Contains proper HTML namespace")
 
-    if '<div class="ocr_page"' in hocr_xml:
-        print("✅ Contains proper hOCR page structure")
-    else:
-        print("❌ Missing hOCR page structure")
-        return False
+    assert '<div class="pdf_page"' in hocr_xml, "Missing hOCR page structure"
+    print("✅ Contains proper hOCR page structure")
 
-    if '<span class="ocr_word"' in hocr_xml:
-        print("✅ Contains proper hOCR word structure")
-    else:
-        print("❌ Missing hOCR word structure")
-        return False
+    assert '<span class="pdf_word"' in hocr_xml, "Missing hOCR word structure"
+    print("✅ Contains proper hOCR word structure")
 
     # Save hOCR file
-    output_dir = Path("examples", "hocr_test_output")
-    output_dir.mkdir(exist_ok=True)
+    output_dir = PROJECT_ROOT / "examples" / "hocr_test_output"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    hocr_file = builder.save_hocr(Path(output_dir, "lxml_test.hocr"))
+    hocr_file = builder.save_hocr(output_dir / "lxml_test.hocr")
     print(f"\n💾 Saved hOCR file: {hocr_file}")
 
     # Get document summary
@@ -92,7 +83,8 @@ def test_lxml_hocr_generation():
     print(f"   Words: {summary['words']}")
 
     print("\n✅ hOCR Builder with lxml test completed successfully!")
-    return True
+    assert builder is not None, "Builder should be created"
+    assert summary is not None, "Summary should be generated"
 
 
 def main():

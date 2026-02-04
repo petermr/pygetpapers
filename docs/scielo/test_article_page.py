@@ -68,10 +68,11 @@ def test_article_page():
             json.dump(metadata, f, indent=2)
         print(f"Saved metadata to: {output_dir / 'test_article_metadata.json'}")
 
-        return metadata, download_links
+        assert metadata is not None, "Metadata should be extracted"
+        assert isinstance(download_links, list), "Download links should be a list"
+        assert response.status_code == 200, f"Expected status 200, got {response.status_code}"
     else:
-        print(f"Failed to access article page: {response.status_code}")
-        return None, []
+        assert False, f"Failed to access article page: {response.status_code}"
 
 
 def extract_article_metadata(soup, url):

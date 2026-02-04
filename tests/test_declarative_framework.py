@@ -10,13 +10,16 @@ import os
 import sys
 from pathlib import Path
 
+# Get the project root directory (parent of tests directory)
+PROJECT_ROOT = Path(__file__).parent.parent
+
 
 def test_security_framework():
     """Test the security framework components."""
     print("🔒 Testing Security Framework...")
 
     try:
-        from pygetpapers.security_framework import (
+        from pygetpapers.core.security_framework import (
             ResourceManager,
             SafeContentProcessor,
             SecurityValidator,
@@ -51,9 +54,11 @@ def test_security_framework():
 
         # Test complete framework
         framework = create_security_framework("./test_corpus")
+        assert framework is not None, "Security framework should be created"
+        assert "validator" in framework, "Framework should have validator"
+        assert "resource_manager" in framework, "Framework should have resource_manager"
+        assert "content_processor" in framework, "Framework should have content_processor"
         print("✅ Complete security framework created")
-
-        return True
 
     except Exception as e:
         assert False, f"Security framework test failed: {e}"
@@ -64,7 +69,7 @@ def test_declarative_operations():
     print("\n🔧 Testing Declarative Operations...")
 
     try:
-        from pygetpapers.declarative_operations import (
+        from pygetpapers.core.declarative_operations import (
             DeclarativeOperationsManager,
             create_declarative_config_for_repository,
         )
@@ -74,7 +79,8 @@ def test_declarative_operations():
         print("✅ Configuration creation working")
 
         # Test manager initialization
-        manager = DeclarativeOperationsManager("config/crossref_declarative.yaml")
+        config_file = PROJECT_ROOT / "config" / "crossref_declarative.yaml"
+        manager = DeclarativeOperationsManager(str(config_file))
         print("✅ DeclarativeOperationsManager created successfully")
 
         # Test operations loading
@@ -92,10 +98,11 @@ def test_declarative_operations():
         for op_name, operation in manager.operations.items():
             satisfied, missing = manager.check_dependencies(operation, working_dir)
             print(f"   {op_name}: {'✅' if satisfied else '❌'} dependencies")
+            # Verify check_dependencies returns a tuple
+            assert isinstance(satisfied, bool), "Dependency check should return boolean"
+            assert isinstance(missing, list), "Missing dependencies should be a list"
 
         print("✅ Dependency checking working")
-
-        return True
 
     except Exception as e:
         assert False, f"Declarative operations test failed: {e}"
@@ -108,19 +115,18 @@ def test_cli_interface():
     try:
         from argparse import Namespace
 
-        from pygetpapers.declarative_cli import (
+        from pygetpapers.core.declarative_cli import (
             create_config_command,
             list_operations_command,
             validate_config_command,
         )
 
         # Test configuration validation
-        args = Namespace(config="config/crossref_declarative.yaml")
+        config_file = PROJECT_ROOT / "config" / "crossref_declarative.yaml"
+        args = Namespace(config=str(config_file))
         result = validate_config_command(args)
         assert result == 0, "Configuration validation should succeed"
         print("✅ CLI validation working")
-
-        return True
 
     except Exception as e:
         assert False, f"CLI interface test failed: {e}"
@@ -131,16 +137,17 @@ def test_integration():
     print("\n🔗 Testing Integration...")
 
     try:
-        from pygetpapers.declarative_operations import DeclarativeOperationsManager
-        from pygetpapers.security_framework import create_security_framework
+        from pygetpapers.core.declarative_operations import DeclarativeOperationsManager
+        from pygetpapers.core.security_framework import create_security_framework
 
         # Create working directory
         working_dir = Path("./test_corpus")
         working_dir.mkdir(exist_ok=True)
 
         # Initialize manager with security framework
+        config_file = PROJECT_ROOT / "config" / "crossref_declarative.yaml"
         manager = DeclarativeOperationsManager(
-            "config/crossref_declarative.yaml", working_dir
+            str(config_file), working_dir
         )
 
         # Test that security framework is available
@@ -156,11 +163,10 @@ def test_integration():
         ]:  # Test first 2 operations
             print(f"   Testing operation: {op_name}")
             success = manager.execute_operation(operation, working_dir, query="test")
+            assert isinstance(success, bool), "Operation execution should return boolean"
             print(f"   {op_name}: {'✅' if success else '❌'}")
 
         print("✅ Integration working")
-
-        return True
 
     except Exception as e:
         assert False, f"Integration test failed: {e}"

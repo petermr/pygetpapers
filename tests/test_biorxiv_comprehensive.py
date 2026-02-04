@@ -48,7 +48,9 @@ def test_basic_search():
                 f"      Authors: {', '.join(paper['authors'][:3])}{'...' if len(paper['authors']) > 3 else ''}"
             )
 
-        return results
+        assert "papers" in results, "Results should contain papers"
+        assert isinstance(results["papers"], list), "Papers should be a list"
+        assert len(results["papers"]) > 0, "Should find at least one paper"
     else:
         assert False, f"Search failed: {results['error']}"
 
@@ -95,7 +97,8 @@ def test_pagination():
         else:
             print("   No next page available")
 
-        return results
+        assert "pagination" in results, "Results should contain pagination"
+        assert isinstance(results["pagination"], dict), "Pagination should be a dictionary"
     else:
         assert False, f"Pagination test failed: {results['error']}"
 
@@ -132,7 +135,8 @@ def test_paper_download():
             file_size = Path(html_path).stat().st_size
             print(f"   File size: {file_size:,} bytes")
 
-            return html_path
+            assert html_path is not None, "HTML path should be returned"
+            assert Path(html_path).exists(), f"Downloaded file should exist: {html_path}"
         else:
             assert False, "HTML download failed"
     else:
@@ -161,7 +165,9 @@ def test_paper_details():
         print(f"   Abstract: {details.get('abstract', 'No abstract')[:100]}...")
         print(f"   PDF URL: {details.get('pdf_url', 'No PDF')}")
 
-        return details
+        assert details is not None, "Paper details should be extracted"
+        assert isinstance(details, dict), "Details should be a dictionary"
+        assert "title" in details, "Details should contain title"
     else:
         assert False, "Failed to get paper details"
 
@@ -195,7 +201,8 @@ def test_save_and_load():
                 print(f"   Papers in saved file: {len(loaded_results['papers'])}")
                 print(f"   Search query: {loaded_results['search_query']}")
 
-                return saved_path
+                assert saved_path is not None, "Saved path should be returned"
+                assert Path(saved_path).exists(), f"Saved file should exist: {saved_path}"
             except Exception as e:
                 assert False, f"Failed to load saved results: {e}"
         else:
@@ -243,7 +250,8 @@ def test_different_queries():
         else:
             assert False, f"'{query}': ERROR - {summary['error']}"
 
-    return results_summary
+    assert len(results_summary) > 0, "Should have results for at least one query"
+    assert all("papers_found" in v for v in results_summary.values()), "All summaries should have papers_found"
 
 
 def main():

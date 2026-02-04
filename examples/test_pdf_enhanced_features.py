@@ -10,6 +10,9 @@ PURPOSE: Demonstrate PDF-enhanced features like FP coordinates and CSS styles
 import sys
 from pathlib import Path
 
+# Get the project root directory (parent of examples directory)
+PROJECT_ROOT = Path(__file__).parent.parent
+
 from pygetpapers.core.hocr_builder import HOCRBuilder, create_hocr_from_pdfplumber_data
 
 
@@ -84,10 +87,14 @@ def test_pdf_enhanced_features():
     )
 
     # Generate and save hOCR
-    output_file = Path("examples/pdf_enhanced_output.hocr")
+    output_file = PROJECT_ROOT / "examples" / "pdf_enhanced_output.hocr"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     saved_file = builder.save_hocr(output_file)
 
     print(f"✅ PDF-enhanced hOCR saved to: {saved_file}")
+    
+    assert builder is not None, "Builder should be created"
+    assert saved_file is not None, "hOCR file should be saved"
 
     # Get document summary
     summary = builder.get_document_summary()
@@ -110,7 +117,7 @@ def test_pdf_enhanced_features():
         if "ocr_word" in line and ("x_font" in line or "x_color" in line):
             print(f"   {line.strip()}")
 
-    return builder
+    assert builder is not None, "Builder should exist"
 
 
 def test_pdfplumber_integration():
@@ -186,10 +193,14 @@ def test_pdfplumber_integration():
     builder = create_hocr_from_pdfplumber_data(pdfplumber_data)
 
     # Save to file
-    output_file = Path("examples/pdfplumber_integration_output.hocr")
+    output_file = PROJECT_ROOT / "examples" / "pdfplumber_integration_output.hocr"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     saved_file = builder.save_hocr(output_file)
 
     print(f"\n✅ PDFPlumber integration hOCR saved to: {saved_file}")
+    
+    assert builder is not None, "Builder should be created"
+    assert saved_file is not None, "hOCR file should be saved"
 
     # Show summary
     summary = builder.get_document_summary()
@@ -198,7 +209,7 @@ def test_pdfplumber_integration():
     print(f"   Images: {summary['images']}")
     print(f"   Graphics: {summary['graphics']}")
 
-    return builder
+    assert builder is not None, "Builder should exist"
 
 
 if __name__ == "__main__":

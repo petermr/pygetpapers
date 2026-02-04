@@ -319,10 +319,9 @@ def main():
                 assert False, "Failed to create datatables"
         else:
             print("⚠️  No articles found")
-            return True  # Not a failure, just no results
+            assert True  # Not a failure, just no results
 
         print("🎉 Redalyc abstract extraction test completed successfully!")
-        return True
 
     except Exception as e:
         assert False, f"Test failed: {e}"

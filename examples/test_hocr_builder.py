@@ -11,6 +11,9 @@ import os
 import sys
 from pathlib import Path
 
+# Get the project root directory (parent of examples directory)
+PROJECT_ROOT = Path(__file__).parent.parent
+
 from pygetpapers.core.hocr_builder import (
     HOCRBuilder,
     HOCRCharacter,
@@ -97,18 +100,22 @@ def test_basic_hocr_creation():
     print(f"   Graphics: {summary['graphics']}")
 
     # Save hOCR file
-    output_dir = Path("examples/hocr_test_output")
-    output_dir.mkdir(exist_ok=True)
+    output_dir = PROJECT_ROOT / "examples" / "hocr_test_output"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     hocr_file = builder.save_hocr(output_dir / "test_document.hocr")
     print(f"\n💾 Saved hOCR file: {hocr_file}")
+    
+    assert builder is not None, "Builder should be created"
+    assert hocr_file is not None, "hOCR file should be saved"
 
     # Show preview of hOCR XML
     print(f"\n📖 hOCR XML Preview (first 500 characters):")
     preview = hocr_xml[:500] + "..." if len(hocr_xml) > 500 else hocr_xml
     print(preview)
-
-    return builder
+    
+    assert builder is not None, "Builder should be created"
+    assert hocr_file is not None, "hOCR file should be saved"
 
 
 def test_pdfplumber_integration():
@@ -150,11 +157,13 @@ def test_pdfplumber_integration():
     print(f"   Words: {summary['words']}")
 
     # Save hOCR file
-    output_dir = Path("examples/hocr_test_output")
+    output_dir = PROJECT_ROOT / "examples" / "hocr_test_output"
+    output_dir.mkdir(parents=True, exist_ok=True)
     hocr_file = builder.save_hocr(output_dir / "pdfplumber_integration.hocr")
     print(f"💾 Saved PDFPlumber hOCR: {hocr_file}")
-
-    return builder
+    
+    assert builder is not None, "Builder should be created"
+    assert hocr_file is not None, "hOCR file should be saved"
 
 
 def test_advanced_features():
@@ -261,11 +270,13 @@ def test_advanced_features():
     print(f"   Images: {summary['images']}")
     print(f"   Graphics: {summary['graphics']}")
 
-    output_dir = Path("examples/hocr_test_output")
+    output_dir = PROJECT_ROOT / "examples" / "hocr_test_output"
+    output_dir.mkdir(parents=True, exist_ok=True)
     hocr_file = builder.save_hocr(output_dir / "advanced_features.hocr")
     print(f"💾 Saved advanced hOCR: {hocr_file}")
-
-    return builder
+    
+    assert builder is not None, "Builder should be created"
+    assert hocr_file is not None, "hOCR file should be saved"
 
 
 def main():
@@ -314,15 +325,15 @@ def main():
         print("   - Test with real PDF documents")
         print()
         print("🎉 hOCR builder is ready for integration!")
-
-        return True
+        
+        assert builder is not None, "Builder should be created"
 
     except Exception as e:
         print(f"\n❌ Test failed: {e}")
         import traceback
 
         traceback.print_exc()
-        return False
+        assert False, f"Test failed: {e}"
 
 
 if __name__ == "__main__":

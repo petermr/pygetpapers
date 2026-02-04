@@ -48,59 +48,46 @@ def test_scielo_basic():
             logger.warning("❌ No articles found")
 
     except Exception as e:
-        logger.error(f"❌ Test 1 failed: {e}")
-        return False
+        assert False, f"Test 1 failed: {e}"
 
     # Test 2: Main scielo method
     logger.info("Test 2: Main scielo method with CSV output")
-    try:
-        results = scielo.scielo(
-            query="climate change", cutoff_size=2, makecsv=True, makehtml=True
-        )
-        logger.info(
-            f"✅ Main method completed. Found {results['total_results']} articles"
-        )
-        logger.info(f"✅ Generated CSV and HTML outputs")
-
-    except Exception as e:
-        logger.error(f"❌ Test 2 failed: {e}")
-        return False
+    results = scielo.scielo(
+        query="climate change", cutoff_size=2, makecsv=True, makehtml=True
+    )
+    assert isinstance(results, dict), "Results should be a dictionary"
+    assert "total_results" in results, "Results should contain total_results"
+    logger.info(
+        f"✅ Main method completed. Found {results['total_results']} articles"
+    )
+    logger.info(f"✅ Generated CSV and HTML outputs")
 
     # Test 3: Noexecute method
     logger.info("Test 3: Noexecute method")
-    try:
-        query_namespace = {"query": "climate change", "limit": 2}
-        scielo.noexecute(query_namespace)
-        logger.info("✅ Noexecute method completed")
-
-    except Exception as e:
-        logger.error(f"❌ Test 3 failed: {e}")
-        return False
+    query_namespace = {"query": "climate change", "limit": 2}
+    assert hasattr(scielo, "noexecute"), "SciELO should have noexecute method"
+    scielo.noexecute(query_namespace)
+    logger.info("✅ Noexecute method completed")
 
     # Test 4: Article download
     logger.info("Test 4: Article download")
-    try:
-        if articles:
-            # Download first article
-            first_article_url = articles[0].get("url")
-            if first_article_url:
-                output_dir = "temp/scielo_test_downloads"
-                success = scielo.download_article(first_article_url, output_dir)
-                if success:
-                    logger.info(f"✅ Article downloaded to {output_dir}")
-                else:
-                    logger.warning("⚠️ Article download failed")
+    if articles:
+        # Download first article
+        first_article_url = articles[0].get("url")
+        if first_article_url:
+            output_dir = "temp/scielo_test_downloads"
+            assert hasattr(scielo, "download_article"), "SciELO should have download_article method"
+            success = scielo.download_article(first_article_url, output_dir)
+            if success:
+                logger.info(f"✅ Article downloaded to {output_dir}")
             else:
-                logger.warning("⚠️ No article URL available for download test")
+                logger.warning("⚠️ Article download failed")
         else:
-            logger.warning("⚠️ No articles available for download test")
-
-    except Exception as e:
-        logger.error(f"❌ Test 4 failed: {e}")
-        return False
+            logger.warning("⚠️ No article URL available for download test")
+    else:
+        logger.warning("⚠️ No articles available for download test")
 
     logger.info("=== All Basic Tests Completed ===")
-    return True
 
 
 def test_scielo_metadata_extraction():
@@ -127,15 +114,14 @@ def test_scielo_metadata_extraction():
             logger.info(f"  DOI: {metadata.get('doi', 'No DOI')}")
             logger.info(f"  PDF URLs: {len(metadata.get('pdf_urls', []))}")
             logger.info(f"  Collection: {metadata.get('collection', 'Unknown')}")
-
-            return True
+            
+            assert metadata is not None, "Metadata should be extracted"
+            assert isinstance(metadata, dict), "Metadata should be a dictionary"
         else:
-            logger.error("❌ Failed to get article page")
-            return False
+            assert False, "Failed to get article page"
 
     except Exception as e:
-        logger.error(f"❌ Metadata extraction test failed: {e}")
-        return False
+        assert False, f"Metadata extraction test failed: {e}"
 
 
 def main():

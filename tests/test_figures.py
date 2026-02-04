@@ -21,7 +21,10 @@ def test_figures_extraction():
     test_corpus = "lantana"  # Use the existing lantana corpus
 
     if not os.path.exists(test_corpus):
-        assert False, f"Test corpus '{test_corpus}' not found. Please download a corpus first using pygetpapers"
+        print(f"⚠️  Test corpus '{test_corpus}' not found. Skipping test.")
+        print("💡 To run this test, download a corpus first using: pygetpapers -q 'lantana' -x -k 10")
+        import pytest
+        pytest.skip(f"Test corpus '{test_corpus}' not found")
 
     try:
         print(f"📁 Loading corpus: {test_corpus}")
@@ -74,7 +77,7 @@ def test_figures_extraction():
                 assert False, "Failed to create summary table"
 
             print("\n🎉 All tests passed!")
-            return True
+            assert True  # Test passed
 
         else:
             print("ℹ️  No figures found in the test corpus")
@@ -82,7 +85,7 @@ def test_figures_extraction():
                 "This is normal if the papers don't contain figures or if XML "
                 "parsing didn't find them"
             )
-            return True
+            assert True  # Not a failure, just no figures found
 
     except Exception as e:
         import traceback
@@ -106,7 +109,8 @@ def test_thumbnail_creation():
 
     if not found_images:
         print("ℹ️  No image files found for thumbnail testing")
-        return True
+        assert True  # Not a failure, just no images available
+        return
 
     print(f"📷 Found {len(found_images)} image files")
 
@@ -123,8 +127,6 @@ def test_thumbnail_creation():
                 print("    ⚠️  No thumbnail created (PIL may not be available)")
         except Exception as e:
             assert False, f"Error creating thumbnail: {str(e)}"
-
-    return True
 
 
 if __name__ == "__main__":

@@ -1,0 +1,103 @@
+
+# Declarative Operations Configuration for test_repo
+
+repositories:
+  test_repo:
+    name: test_repo
+    description: Test_Repo repository with declarative operations
+    base_url: https://example.com/test_repo
+    
+    # File patterns for dependency checking
+    file_patterns:
+      xml_files: "*.xml"
+      html_files: "*.html"
+      pdf_files: "*.pdf"
+      metadata_files: "*_metadata.json"
+    
+    # Available transformers
+    transformers:
+      xml_to_html: "simple_html"
+      xml_to_pdf: "pandoc"
+      metadata_to_csv: "pandas"
+    
+    # Available validators
+    validators:
+      xml_validator: "lxml"
+      json_validator: "jsonschema"
+    
+    # Available exporters
+    exporters:
+      csv_export: "pandas"
+      json_export: "json"
+      xml_export: "lxml"
+
+operations:
+  # Download operation
+  test_repo_download:
+    type: download
+    description: Download papers from test_repo
+    command: "pygetpapers -q {query} -o {working_dir} -x"
+    inputs: []
+    outputs: ["*.xml", "*_metadata.json"]
+    dependencies: []
+    conditions: []
+    enabled: true
+    timeout: 300
+    retries: 3
+  
+  # Convert XML to HTML
+  test_repo_xml_to_html:
+    type: convert
+    description: Convert XML files to HTML
+    command: "pygetpapers convert-xml-to-html {input_file} {output_file}"
+    inputs: ["*.xml"]
+    outputs: ["*.xml.html"]
+    dependencies:
+      - type: file_exists
+        target: "*.xml"
+        description: "XML files must exist"
+    conditions:
+      - "file_absent:*.xml.html"
+    enabled: true
+    timeout: 60
+    retries: 2
+  
+  # Validate metadata
+  test_repo_validate_metadata:
+    type: validate
+    description: Validate metadata files
+    command: "pygetpapers validate-metadata {metadata_file}"
+    inputs: ["*_metadata.json"]
+    outputs: ["*_validation.json"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+    conditions: []
+    enabled: true
+    timeout: 30
+    retries: 1
+  
+  # Export to CSV
+  test_repo_export_csv:
+    type: export
+    description: Export metadata to CSV
+    command: "pygetpapers export-csv {metadata_file} {csv_file}"
+    inputs: ["*_metadata.json"]
+    outputs: ["metadata.csv"]
+    dependencies:
+      - type: file_exists
+        target: "*_metadata.json"
+      - type: file_absent
+        target: "metadata.csv"
+    conditions: []
+    enabled: true
+    timeout: 30
+    retries: 1
+
+# Global file patterns
+file_patterns:
+  xml_files: ".*\.xml$"
+  html_files: ".*\.html$"
+  pdf_files: ".*\.pdf$"
+  metadata_files: ".*_metadata\.json$"
+  validation_files: ".*_validation\.json$"

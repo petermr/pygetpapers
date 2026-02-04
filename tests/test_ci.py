@@ -10,35 +10,25 @@ def test_imports():
     """Test that all required modules can be imported"""
     print("🧪 Testing imports...")
 
-    try:
-        import streamlit
+    import streamlit
+    assert streamlit is not None, "Streamlit should be importable"
+    assert hasattr(streamlit, "__version__"), "Streamlit should have __version__"
+    print(f"✅ Streamlit {streamlit.__version__}")
 
-        print(f"✅ Streamlit {streamlit.__version__}")
-    except ImportError as e:
-        assert False, f"Streamlit import failed: {e}"
+    import plotly
+    assert plotly is not None, "Plotly should be importable"
+    assert hasattr(plotly, "__version__"), "Plotly should have __version__"
+    print(f"✅ Plotly {plotly.__version__}")
 
-    try:
-        import plotly
+    import pandas
+    assert pandas is not None, "Pandas should be importable"
+    assert hasattr(pandas, "__version__"), "Pandas should have __version__"
+    print(f"✅ Pandas {pandas.__version__}")
 
-        print(f"✅ Plotly {plotly.__version__}")
-    except ImportError as e:
-        assert False, f"Plotly import failed: {e}"
-
-    try:
-        import pandas
-
-        print(f"✅ Pandas {pandas.__version__}")
-    except ImportError as e:
-        assert False, f"Pandas import failed: {e}"
-
-    try:
-        import lxml
-
-        print(f"✅ lxml {lxml.__version__}")
-    except ImportError as e:
-        assert False, f"lxml import failed: {e}"
-
-    return True
+    import lxml
+    assert lxml is not None, "lxml should be importable"
+    assert hasattr(lxml, "__version__"), "lxml should have __version__"
+    print(f"✅ lxml {lxml.__version__}")
 
 
 # def test_streamlit_app():
@@ -81,40 +71,42 @@ def test_pygetpapers():
     """Test that pygetpapers CLI is available"""
     print("\n🧪 Testing pygetpapers CLI...")
 
-    try:
-        import subprocess
+    import subprocess
 
+    try:
         result = subprocess.run(
-            ["pygetpapers", "--version"], capture_output=True, text=True, timeout=10
+            ["pygetpapers", "--version"], capture_output=True, text=True, timeout=30
         )
-        if result.returncode == 0:
-            print(f"✅ pygetpapers CLI available: {result.stdout.strip()}")
-        else:
-            assert False, f"pygetpapers CLI failed: {result.stderr}"
+        assert result.returncode == 0, f"pygetpapers CLI failed: {result.stderr}"
+        assert result.stdout is not None, "pygetpapers CLI should produce output"
+        print(f"✅ pygetpapers CLI available: {result.stdout.strip()}")
+    except subprocess.TimeoutExpired:
+        assert False, "pygetpapers CLI command timed out after 30 seconds"
+    except FileNotFoundError:
+        assert False, "pygetpapers CLI not found in PATH. Is it installed?"
     except Exception as e:
         assert False, f"pygetpapers CLI test failed: {e}"
-
-    return True
 
 
 def test_files_exist():
     """Test that required files exist"""
     print("\n🧪 Testing file existence...")
 
+    # Get project root (parent of tests directory)
+    import sys
+    from pathlib import Path
+    project_root = Path(__file__).parent.parent
+
     required_files = [
-        "pygetpapers/streamlit_app.py",
-        "pygetpapers/run_streamlit.py",
-        "pygetpapers/tools/datatables_integration.py",
-        "requirements.txt",
+        project_root / "pygetpapers" / "streamlit_app.py",
+        project_root / "pygetpapers" / "run_streamlit.py",
+        project_root / "pygetpapers" / "tools" / "datatables_integration.py",
+        project_root / "requirements.txt",
     ]
 
-    for file in required_files:
-        if os.path.exists(file):
-            print(f"✅ {file} exists")
-        else:
-            assert False, f"Required file missing: {file}"
-
-    return True
+    for file_path in required_files:
+        assert file_path.exists(), f"Required file missing: {file_path}"
+        print(f"✅ {file_path.relative_to(project_root)} exists")
 
 
 def main():

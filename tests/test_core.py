@@ -23,13 +23,14 @@ path_for_supp = os.path.join(current_path, paper_for_supp, "supplementaryfiles")
 logfile_name = "abc.txt"
 path_for_logfile = os.path.join(current_path, logfile_name)
 
+# download papers from EuropePMC
 os.system(f'python -m pygetpapers.pygetpapers -q "lantana" -k 5 -o "{current_path}"')
 
 
 def test_directory_creation():
     print("Checking if directory exists")
     does_directory_exist = os.path.exists(current_path)
-    assert does_directory_exist is True
+    assert does_directory_exist, f"directory {current_path} should exist"
 
 
 def test_does_europepmc_json_file_exists():

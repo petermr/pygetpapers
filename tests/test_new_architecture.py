@@ -15,7 +15,7 @@ def test_configuration_loading():
     print("=== Testing Configuration Loading ===")
 
     try:
-        from pygetpapers.repository_config import get_repository_config
+        from pygetpapers.core.repository_config import get_repository_config
 
         config = get_repository_config()
 
@@ -35,12 +35,11 @@ def test_configuration_loading():
 
         # Validate configuration
         issues = config.validate_repository_config("crossref")
+        assert isinstance(issues, list), "Validation issues should be a list"
         if issues:
             print(f"Crossref validation issues: {issues}")
         else:
             print("Crossref configuration is valid!")
-
-        return True
 
     except Exception as e:
         assert False, f"Configuration loading failed: {e}"
@@ -51,20 +50,24 @@ def test_abstract_repository():
     print("\n=== Testing Abstract Repository ===")
 
     try:
-        from pygetpapers.repository_config import create_repository
+        from pygetpapers.core.repository_config import create_repository
 
         # Create Crossref repository
         crossref = create_repository("crossref")
+        assert crossref is not None, "Repository should be created"
+        assert crossref.repository_name == "crossref", "Repository name should be 'crossref'"
+        assert isinstance(crossref.supports_xml2html(), bool), "supports_xml2html should return boolean"
+        assert isinstance(crossref.get_xml2html_converters(), list), "get_xml2html_converters should return list"
         print(f"Created Crossref repository: {crossref.repository_name}")
         print(f"Supports XML2HTML: {crossref.supports_xml2html()}")
         print(f"XML2HTML converters: {crossref.get_xml2html_converters()}")
 
         # Test content type dependencies
         config = crossref.config
+        assert config is not None, "Repository should have config"
         content_types = config.get("content_types", [])
+        assert isinstance(content_types, list), "Content types should be a list"
         print(f"Supported content types: {content_types}")
-
-        return True
 
     except Exception as e:
         assert False, f"Abstract repository test failed: {e}"
@@ -75,19 +78,21 @@ def test_new_crossref_implementation():
     print("\n=== Testing New Crossref Implementation ===")
 
     try:
-        from pygetpapers.crossref.crossref_new import CrossRef
+        from pygetpapers.repositories.crossref.crossref_new import CrossRef
 
         # Create new Crossref instance
         crossref = CrossRef()
+        assert crossref is not None, "CrossRef instance should be created"
+        assert isinstance(crossref.supports_xml2html(), bool), "supports_xml2html should return boolean"
+        assert isinstance(crossref.get_xml2html_converters(), list), "get_xml2html_converters should return list"
         print(f"New Crossref supports XML2HTML: {crossref.supports_xml2html()}")
         print(f"New Crossref converters: {crossref.get_xml2html_converters()}")
 
         # Test noexecute (safe to run)
         print("Testing noexecute (simulated)...")
         query_namespace = {"query": "climate change", "limit": 5, "filter": None}
+        assert hasattr(crossref, "noexecute"), "CrossRef should have noexecute method"
         crossref.noexecute(query_namespace)
-
-        return True
 
     except Exception as e:
         assert False, f"New Crossref implementation test failed: {e}"
@@ -126,13 +131,14 @@ def test_content_type_dependencies():
     print("\n=== Testing Content Type Dependencies ===")
 
     try:
-        from pygetpapers.repository_config import get_repository_config
+        from pygetpapers.core.repository_config import get_repository_config
 
         config = get_repository_config()
 
         # Test dependency resolution
         test_types = ["fulltext", "figures", "supplementary"]
         all_deps = config.get_all_dependencies(test_types)
+        assert isinstance(all_deps, list), "get_all_dependencies should return a list"
 
         print(f"Requested content types: {test_types}")
         print(f"All required types (including dependencies): {all_deps}")
@@ -140,9 +146,8 @@ def test_content_type_dependencies():
         # Test individual dependencies
         for content_type in test_types:
             deps = config.get_dependencies_for_content_type(content_type)
+            assert isinstance(deps, list), f"Dependencies for {content_type} should be a list"
             print(f"{content_type} dependencies: {deps}")
-
-        return True
 
     except Exception as e:
         assert False, f"Content type dependency test failed: {e}"

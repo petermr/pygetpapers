@@ -10,6 +10,9 @@ PURPOSE: Demonstrate hOCR builder with real Tesseract output
 import sys
 from pathlib import Path
 
+# Get the project root directory (parent of examples directory)
+PROJECT_ROOT = Path(__file__).parent.parent
+
 from pygetpapers.core.hocr_builder import HOCRBuilder
 
 
@@ -70,12 +73,14 @@ def test_real_tesseract_output():
     builder.add_image(0, 486, 664, 1778, alt_text="Main content area")
 
     # Generate and save hOCR
-    output_file = Path(
-        "examples/redalyc_abstract_analysis/redalyc_search_hocr_output.hocr"
-    )
+    output_file = PROJECT_ROOT / "examples" / "redalyc_abstract_analysis" / "redalyc_search_hocr_output.hocr"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     saved_file = builder.save_hocr(output_file)
 
     print(f"✅ hOCR generated and saved to: {saved_file}")
+    
+    assert builder is not None, "Builder should be created"
+    assert saved_file is not None, "hOCR file should be saved"
 
     # Get document summary
     summary = builder.get_document_summary()
@@ -92,7 +97,7 @@ def test_real_tesseract_output():
     print(f"\n📄 Sample hOCR XML (first 500 characters):")
     print(hocr_xml[:500] + "..." if len(hocr_xml) > 500 else hocr_xml)
 
-    return builder
+    assert builder is not None, "Builder should exist"
 
 
 if __name__ == "__main__":
