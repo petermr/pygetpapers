@@ -1,0 +1,102 @@
+{
+  "query": "Lantana",
+  "timestamp": "2025-07-28T16:07:28.834276",
+  "papers_analyzed": 1,
+  "papers": [
+    {
+      "doi": "10.1101/2023.11.10.566554",
+      "title": "Environmental fungi from cool and warm neighborhoods in the urban heat island of Baltimore City show differences in thermal susceptibility and pigmentation",
+      "authors": [
+        "Daniel F. Q. Smith",
+        "Madhura Kulkarni",
+        "Alexa Bencomo",
+        "Tasnim Syakirah Faiez",
+        "J. Marie Hardwick",
+        "Arturo Casadevall"
+      ],
+      "publication_date": "2025-07-11T17:31:06.563668",
+      "biorxiv_id": "2023.11.10.566554",
+      "url": "https://doi.org/10.1101/2023.11.10.566554",
+      "pdf_status": "absent",
+      "pdf_reason": "Download error: 403 Client Error: Forbidden for url: https://www.biorxiv.org/content/10.1101/2023.11.10.566554v2.full.pdf",
+      "pdf_size_mb": 0.0,
+      "pdf_filepath": "",
+      "features": {
+        "single_column": null,
+        "headers_footers": null,
+        "in_page_footnotes": null,
+        "lists": {
+          "indented": null,
+          "bulleted": null,
+          "count": 0
+        },
+        "tables": {
+          "present": null,
+          "count": 0
+        },
+        "reference_list": null,
+        "bibliographic_info": null,
+        "table_of_contents": null,
+        "sections": {
+          "decimal_numbering": null,
+          "headers": null,
+          "font_changes": null,
+          "indents": null
+        },
+        "hyperlinks": {
+          "inline_urls": null,
+          "external_links": null,
+          "count": 0
+        },
+        "figures": {
+          "present": null,
+          "with_captions": null,
+          "count": 0
+        },
+        "numbered_lines": null,
+        "inline_symbols": {
+          "present": null,
+          "count": 0,
+          "bounding_boxes": []
+        },
+        "math_equations": {
+          "inline": {
+            "present": null,
+            "count": 0,
+            "bounding_boxes": []
+          },
+          "chunks": {
+            "present": null,
+            "count": 0,
+            "bounding_boxes": []
+          }
+        },
+        "chemical_formulae": {
+          "inline": {
+            "present": null,
+            "count": 0,
+            "bounding_boxes": []
+          },
+          "chunks": {
+            "present": null,
+            "count": 0,
+            "bounding_boxes": []
+          }
+        },
+        "subscripts_superscripts": {
+          "present": null,
+          "count": 0,
+          "types": []
+        }
+      }
+    }
+  ],
+  "summary": {
+    "feature_frequency": {},
+    "pdf_statistics": {
+      "downloaded": 0,
+      "absent": 1,
+      "too_large": 0
+    }
+  }
+}

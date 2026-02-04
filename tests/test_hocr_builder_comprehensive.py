@@ -16,8 +16,6 @@ import unittest
 from pathlib import Path
 from typing import Any, Dict, List
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from pygetpapers.core.hocr_builder import (
     HOCRBuilder,
     HOCRCharacter,

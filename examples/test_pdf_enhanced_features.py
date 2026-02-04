@@ -10,9 +10,6 @@ PURPOSE: Demonstrate PDF-enhanced features like FP coordinates and CSS styles
 import sys
 from pathlib import Path
 
-# Add the pygetpapers directory to the path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from pygetpapers.core.hocr_builder import HOCRBuilder, create_hocr_from_pdfplumber_data
 
 

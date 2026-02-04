@@ -13,9 +13,6 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-# Add src to path for test_utils import
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 from test_utils import skip_if_redalyc_down, test_redalyc_connectivity
 
 from pygetpapers.repositories.redalyc.redalyc_selenium import RedalycSelenium
@@ -301,9 +298,8 @@ def main():
     is_connected, error_msg = test_redalyc_connectivity()
 
     if not is_connected:
-        print(f"⚠️  Redalyc appears to be down: {error_msg}")
-        print("   Skipping abstract extraction test...")
-        return True  # Return True to indicate "skipped" rather than "failed"
+        import pytest
+        pytest.skip(f"Redalyc appears to be down: {error_msg}")
 
     print("✅ Redalyc is accessible, running abstract extraction test...")
 
@@ -320,8 +316,7 @@ def main():
             if output_path:
                 print(f"✅ Datatables created successfully in: {output_path}")
             else:
-                print("❌ Failed to create datatables")
-                return False
+                assert False, "Failed to create datatables"
         else:
             print("⚠️  No articles found")
             return True  # Not a failure, just no results
@@ -330,8 +325,7 @@ def main():
         return True
 
     except Exception as e:
-        print(f"❌ Test failed: {e}")
-        return False
+        assert False, f"Test failed: {e}"
 
 
 if __name__ == "__main__":

@@ -120,6 +120,16 @@ This document records coding and naming conventions for the pygetpapers project.
 
 **Rationale**: Keeping temporary output in a dedicated `temp/` directory prevents cluttering the project root and makes it clear which files are temporary and can be safely deleted.
 
+## Tests
+
+### STYLE: All tests should use assert to trap errors, not return False
+
+- ✅ **Good**: Use `assert condition, "message"` so test runners see a real failure
+- ❌ **Bad**: `print("Error: ..."); return False` or returning False on failure
+- **Date added:** 2026-02-04 (system date)
+
+**Rationale**: Assertions integrate with pytest/CI and produce clear failure messages. Returning False or printing errors does not register as a test failure.
+
 ## Development Protocol
 
 ### STYLE: Follow strict development protocol for all code changes

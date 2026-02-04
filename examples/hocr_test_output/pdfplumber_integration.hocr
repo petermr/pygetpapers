@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>PDF Document</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="pdf-system" content="pygetpapers hOCR Builder"/>
+    <meta name="pdf-langs" content="en"/>
+    <meta name="pdf-number-of-pages" content="1"/>
+    <meta name="pdf-datetime" content="2026-02-04T10:34:09.921151"/>
+  </head>
+  <body>
+    <div class="pdf_page" id="p1" title="image ''; bbox 0 0 612 792; ppageno 1">
+      <div class="pdf_par" id="p2">
+        <span class="pdf_line" id="p3" title="bbox 50 50 220 70">
+          <span class="pdf_word" id="p4" title="bbox 50 50 100 70" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">Climate</span>
+          <span class="pdf_word" id="p5" title="bbox 105 50 150 70" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">Change</span>
+          <span class="pdf_word" id="p6" title="bbox 155 50 220 70" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">Adaptation</span>
+        </span>
+        <span class="pdf_line" id="p7" title="bbox 50 80 190 100">
+          <span class="pdf_word" id="p8" title="bbox 50 80 80 100" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">This</span>
+          <span class="pdf_word" id="p9" title="bbox 85 80 95 100" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">is</span>
+          <span class="pdf_word" id="p10" title="bbox 100 80 110 100" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">a</span>
+          <span class="pdf_word" id="p11" title="bbox 115 80 140 100" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">test</span>
+          <span class="pdf_word" id="p12" title="bbox 145 80 190 100" style="font-family: &quot;Arial&quot;; font-size: 12pt; font-weight: normal; font-style: normal; fill: #000000">document</span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

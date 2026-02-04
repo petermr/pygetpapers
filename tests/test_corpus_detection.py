@@ -4,7 +4,6 @@ Test script to verify corpus detection is working
 """
 
 import json
-import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -12,11 +11,8 @@ from pathlib import Path
 def test_corpus_detection():
     """Test the corpus detection logic"""
 
-    # Add current directory to path
-    sys.path.insert(0, str(Path.cwd()))
-
     try:
-        from streamlit_app import PygetpapersUI
+        from pygetpapers.streamlit_app import PygetpapersUI
 
         # Create UI instance
         ui = PygetpapersUI()
@@ -49,14 +45,11 @@ def test_corpus_detection():
                     f"  📁 {corpus['name']}: {corpus['downloaded_papers']} papers ({corpus['api']})"
                 )
 
-        return True
-
     except Exception as e:
-        print(f"❌ Error: {e}")
         import traceback
 
         traceback.print_exc()
-        return False
+        assert False, f"Error: {e}"
 
 
 if __name__ == "__main__":

@@ -8,9 +8,6 @@ This script shows how the framework uses internal pygetpapers APIs instead of su
 import sys
 from pathlib import Path
 
-# Add the pygetpapers directory to the path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 
 def test_pure_python_execution():
     """Test that operations use pure Python calls."""
@@ -53,16 +50,14 @@ def test_pure_python_execution():
         if success:
             print(f"✅ Operation executed successfully using pure Python")
         else:
-            print(f"❌ Operation failed")
+            assert False, "Operation failed"
 
         return True
 
     except Exception as e:
-        print(f"❌ Test failed: {e}")
         import traceback
-
         traceback.print_exc()
-        return False
+        assert False, f"Test failed: {e}"
 
 
 def test_no_subprocess_imports():
@@ -79,10 +74,8 @@ def test_no_subprocess_imports():
         source = inspect.getsource(decl_ops)
 
         if "subprocess" in source:
-            print("❌ Found subprocess import in declarative_operations.py")
-            return False
-        else:
-            print("✅ No subprocess imports found in declarative_operations.py")
+            assert False, "Found subprocess import in declarative_operations.py"
+        print("✅ No subprocess imports found in declarative_operations.py")
 
         # Check CLI module
         import pygetpapers.declarative_cli as decl_cli
@@ -90,16 +83,14 @@ def test_no_subprocess_imports():
         source = inspect.getsource(decl_cli)
 
         if "subprocess" in source:
-            print("❌ Found subprocess import in declarative_cli.py")
-            return False
+            assert False, "Found subprocess import in declarative_cli.py"
         else:
             print("✅ No subprocess imports found in declarative_cli.py")
 
         return True
 
     except Exception as e:
-        print(f"❌ Import check failed: {e}")
-        return False
+        assert False, f"Import check failed: {e}"
 
 
 def test_internal_api_calls():
@@ -130,8 +121,7 @@ def test_internal_api_calls():
         return True
 
     except Exception as e:
-        print(f"❌ Internal API test failed: {e}")
-        return False
+        assert False, f"Internal API test failed: {e}"
 
 
 def main():

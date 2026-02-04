@@ -108,11 +108,10 @@ def skip_if_redalyc_down():
 
     def decorator(test_func):
         def wrapper(*args, **kwargs):
+            import pytest
             is_connected, error_msg = test_redalyc_connectivity()
             if not is_connected:
-                print(f"⏭️  Skipping {test_func.__name__}: Redalyc is down")
-                print(f"   Reason: {error_msg}")
-                return True  # Return True to indicate "skipped" rather than "failed"
+                pytest.skip(f"Redalyc is down: {error_msg}")
             return test_func(*args, **kwargs)
 
         return wrapper
@@ -134,9 +133,7 @@ def require_redalyc_connectivity():
         def wrapper(*args, **kwargs):
             is_connected, error_msg = test_redalyc_connectivity()
             if not is_connected:
-                print(f"❌ {test_func.__name__} requires Redalyc connectivity")
-                print(f"   Reason: {error_msg}")
-                return False
+                assert False, f"{test_func.__name__} requires Redalyc connectivity: {error_msg}"
             return test_func(*args, **kwargs)
 
         return wrapper

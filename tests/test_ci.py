@@ -15,32 +15,28 @@ def test_imports():
 
         print(f"✅ Streamlit {streamlit.__version__}")
     except ImportError as e:
-        print(f"❌ Streamlit import failed: {e}")
-        return False
+        assert False, f"Streamlit import failed: {e}"
 
     try:
         import plotly
 
         print(f"✅ Plotly {plotly.__version__}")
     except ImportError as e:
-        print(f"❌ Plotly import failed: {e}")
-        return False
+        assert False, f"Plotly import failed: {e}"
 
     try:
         import pandas
 
         print(f"✅ Pandas {pandas.__version__}")
     except ImportError as e:
-        print(f"❌ Pandas import failed: {e}")
-        return False
+        assert False, f"Pandas import failed: {e}"
 
     try:
         import lxml
 
         print(f"✅ lxml {lxml.__version__}")
     except ImportError as e:
-        print(f"❌ lxml import failed: {e}")
-        return False
+        assert False, f"lxml import failed: {e}"
 
     return True
 
@@ -93,13 +89,12 @@ def test_pygetpapers():
         )
         if result.returncode == 0:
             print(f"✅ pygetpapers CLI available: {result.stdout.strip()}")
-            return True
         else:
-            print(f"❌ pygetpapers CLI failed: {result.stderr}")
-            return False
+            assert False, f"pygetpapers CLI failed: {result.stderr}"
     except Exception as e:
-        print(f"❌ pygetpapers CLI test failed: {e}")
-        return False
+        assert False, f"pygetpapers CLI test failed: {e}"
+
+    return True
 
 
 def test_files_exist():
@@ -113,15 +108,13 @@ def test_files_exist():
         "requirements.txt",
     ]
 
-    all_exist = True
     for file in required_files:
         if os.path.exists(file):
             print(f"✅ {file} exists")
         else:
-            print(f"❌ {file} missing")
-            all_exist = False
+            assert False, f"Required file missing: {file}"
 
-    return all_exist
+    return True
 
 
 def main():

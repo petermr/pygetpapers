@@ -10,14 +10,9 @@ import logging
 import sys
 from pathlib import Path
 
-# Add the pygetpapers directory to the path
-sys.path.insert(0, str(Path(__file__).parent))
-
-from src.pygetpapers.web_scraping import (
-    GenericWebScraper,
-    ScrapingConfigParser,
-    WebScrapingRepositoryManager,
-)
+from pygetpapers.tools.web_scraping.generic_scraper import GenericWebScraper
+from pygetpapers.tools.web_scraping.config_parser import ScrapingConfigParser
+from pygetpapers.tools.web_scraping.repository import WebScrapingRepositoryManager
 
 # Configure logging
 logging.basicConfig(

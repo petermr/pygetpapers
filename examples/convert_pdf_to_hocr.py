@@ -13,9 +13,6 @@ from typing import Any, Dict, List
 
 import pdfplumber
 
-# Add the pygetpapers directory to the path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from pygetpapers.core.hocr_builder import create_hocr_from_pdfplumber_data
 
 

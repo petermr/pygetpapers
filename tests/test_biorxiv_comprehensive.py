@@ -50,8 +50,7 @@ def test_basic_search():
 
         return results
     else:
-        print(f"❌ Search failed: {results['error']}")
-        return None
+        assert False, f"Search failed: {results['error']}"
 
 
 def test_pagination():
@@ -92,14 +91,13 @@ def test_pagination():
                     first_paper = next_results["papers"][0]
                     print(f"   First paper: {first_paper['title'][:80]}...")
             else:
-                print(f"❌ Failed to load next page: {next_results['error']}")
+                assert False, f"Failed to load next page: {next_results['error']}"
         else:
             print("   No next page available")
 
         return results
     else:
-        print(f"❌ Pagination test failed: {results['error']}")
-        return None
+        assert False, f"Pagination test failed: {results['error']}"
 
 
 def test_paper_download():
@@ -136,11 +134,9 @@ def test_paper_download():
 
             return html_path
         else:
-            print("❌ HTML download failed")
-            return None
+            assert False, "HTML download failed"
     else:
-        print("❌ No papers found for download test")
-        return None
+        assert False, "No papers found for download test"
 
 
 def test_paper_details():
@@ -167,8 +163,7 @@ def test_paper_details():
 
         return details
     else:
-        print("❌ Failed to get paper details")
-        return None
+        assert False, "Failed to get paper details"
 
 
 def test_save_and_load():
@@ -202,14 +197,11 @@ def test_save_and_load():
 
                 return saved_path
             except Exception as e:
-                print(f"❌ Failed to load saved results: {e}")
-                return None
+                assert False, f"Failed to load saved results: {e}"
         else:
-            print("❌ Failed to save results")
-            return None
+            assert False, "Failed to save results"
     else:
-        print(f"❌ Search failed: {results['error']}")
-        return None
+        assert False, f"Search failed: {results['error']}"
 
 
 def test_different_queries():
@@ -240,8 +232,7 @@ def test_different_queries():
             print(f"   ✅ Found {count} papers, {total_pages} total pages")
             results_summary[query] = {"papers_found": count, "total_pages": total_pages}
         else:
-            print(f"   ❌ Failed: {results['error']}")
-            results_summary[query] = {"error": results["error"]}
+            assert False, f"Query '{query}' failed: {results['error']}"
 
     print("\n📊 Summary:")
     for query, summary in results_summary.items():
@@ -250,7 +241,7 @@ def test_different_queries():
                 f"   '{query}': {summary['papers_found']} papers, {summary['total_pages']} pages"
             )
         else:
-            print(f"   '{query}': ERROR - {summary['error']}")
+            assert False, f"'{query}': ERROR - {summary['error']}"
 
     return results_summary
 
@@ -293,8 +284,8 @@ def main():
             print("⚠️  Some tests failed. Check the output above for details.")
 
     except Exception as e:
-        print(f"❌ Test suite failed with error: {e}")
         logger.exception("Test suite error")
+        assert False, f"Test suite failed with error: {e}"
 
 
 if __name__ == "__main__":

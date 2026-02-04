@@ -10,9 +10,6 @@ import logging
 import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 from test_utils import skip_if_redalyc_down, test_redalyc_connectivity
 
 from pygetpapers.repositories.redalyc.redalyc_selenium import RedalycSelenium
@@ -25,10 +22,8 @@ def test_redalyc_selenium_initialization():
         redalyc = RedalycSelenium(headless=True)
         print("✓ RedalycSelenium initialization successful")
         redalyc.close()
-        return True
     except Exception as e:
-        print(f"✗ RedalycSelenium initialization failed: {e}")
-        return False
+        assert False, f"RedalycSelenium initialization failed: {e}"
 
 
 @skip_if_redalyc_down()
@@ -58,13 +53,11 @@ def test_redalyc_selenium_search():
 
         redalyc.close()
         print("✓ RedalycSelenium search test completed")
-        return True
 
     except Exception as e:
-        print(f"✗ RedalycSelenium search test failed: {e}")
         if "redalyc" in locals():
             redalyc.close()
-        return False
+        assert False, f"RedalycSelenium search test failed: {e}"
 
 
 @skip_if_redalyc_down()
@@ -89,13 +82,11 @@ def test_redalyc_selenium_main_method():
 
         redalyc.close()
         print("✓ RedalycSelenium main method test completed")
-        return True
 
     except Exception as e:
-        print(f"✗ RedalycSelenium main method test failed: {e}")
         if "redalyc" in locals():
             redalyc.close()
-        return False
+        assert False, f"RedalycSelenium main method test failed: {e}"
 
 
 @skip_if_redalyc_down()
@@ -112,13 +103,11 @@ def test_redalyc_selenium_noexecute():
 
         redalyc.close()
         print("✓ RedalycSelenium noexecute test completed")
-        return True
 
     except Exception as e:
-        print(f"✗ RedalycSelenium noexecute test failed: {e}")
         if "redalyc" in locals():
             redalyc.close()
-        return False
+        assert False, f"RedalycSelenium noexecute test failed: {e}"
 
 
 def main():

@@ -79,7 +79,7 @@ def analyze_biorxiv_structure():
                 )
 
         except Exception as e:
-            print(f"Error: {e}")
+            assert False, f"Error: {e}"
 
     # Try a specific search query
     print("\n" + "=" * 50)
@@ -145,7 +145,7 @@ def analyze_biorxiv_structure():
                         print(f"  Text preview: {elem.get_text()[:200]}...")
 
         except Exception as e:
-            print(f"Error: {e}")
+            assert False, f"Error: {e}"
 
 
 if __name__ == "__main__":

@@ -9,9 +9,6 @@ import logging
 import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 from test_utils import skip_if_redalyc_down, test_redalyc_connectivity
 
 from pygetpapers.repositories.redalyc.redalyc import Redalyc
@@ -23,10 +20,8 @@ def test_redalyc_initialization():
     try:
         redalyc = Redalyc()
         print("✓ Redalyc initialization successful")
-        return True
     except Exception as e:
-        print(f"✗ Redalyc initialization failed: {e}")
-        return False
+        assert False, f"Redalyc initialization failed: {e}"
 
 
 @skip_if_redalyc_down()
@@ -55,11 +50,9 @@ def test_redalyc_search():
                     print(f"  {key}: {str(value)[:100]}...")
 
         print("✓ Redalyc search test completed")
-        return True
 
     except Exception as e:
-        print(f"✗ Redalyc search test failed: {e}")
-        return False
+        assert False, f"Redalyc search test failed: {e}"
 
 
 @skip_if_redalyc_down()
@@ -82,11 +75,9 @@ def test_redalyc_main_method():
             f"Main method result: {len(result['new_results']['total_json_output'])} articles"
         )
         print("✓ Redalyc main method test completed")
-        return True
 
     except Exception as e:
-        print(f"✗ Redalyc main method test failed: {e}")
-        return False
+        assert False, f"Redalyc main method test failed: {e}"
 
 
 @skip_if_redalyc_down()
@@ -101,11 +92,9 @@ def test_redalyc_noexecute():
 
         redalyc.noexecute(query_namespace)
         print("✓ Redalyc noexecute test completed")
-        return True
 
     except Exception as e:
-        print(f"✗ Redalyc noexecute test failed: {e}")
-        return False
+        assert False, f"Redalyc noexecute test failed: {e}"
 
 
 def main():

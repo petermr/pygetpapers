@@ -12,9 +12,6 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-# Add src to path for test_utils import
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 from test_utils import skip_if_redalyc_down, test_redalyc_connectivity
 
 logging.basicConfig(level=logging.INFO)
@@ -167,7 +164,7 @@ def test_redalyc_links():
                         print(f"  - {match}")
 
         except Exception as e:
-            print(f"Error testing {url}: {e}")
+            assert False, f"Error testing {url}: {e}"
 
 
 @skip_if_redalyc_down()
@@ -201,7 +198,7 @@ def test_redalyc_api_endpoints():
                 )
                 print(f"  Content preview: {response.text[:200]}...")
         except Exception as e:
-            print(f"{endpoint}: Error - {e}")
+            assert False, f"{endpoint}: Error - {e}"
 
 
 def main():
@@ -214,9 +211,8 @@ def main():
     is_connected, error_msg = test_redalyc_connectivity()
 
     if not is_connected:
-        print(f"⚠️  Redalyc appears to be down: {error_msg}")
-        print("   Skipping XML links tests...")
-        return True  # Return True to indicate "skipped" rather than "failed"
+        import pytest
+        pytest.skip(f"Redalyc appears to be down: {error_msg}")
 
     print("✅ Redalyc is accessible, running XML links tests...")
 
@@ -224,10 +220,8 @@ def main():
         test_redalyc_links()
         test_redalyc_api_endpoints()
         print("🎉 XML links tests completed!")
-        return True
     except Exception as e:
-        print(f"❌ Test failed: {e}")
-        return False
+        assert False, f"Test failed: {e}"
 
 
 if __name__ == "__main__":

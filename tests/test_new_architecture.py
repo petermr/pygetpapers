@@ -9,9 +9,6 @@ and compares it with the old hard-coded approach.
 import sys
 from pathlib import Path
 
-# Add the src directory to the path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 
 def test_configuration_loading():
     """Test the repository configuration loading system."""
@@ -46,8 +43,7 @@ def test_configuration_loading():
         return True
 
     except Exception as e:
-        print(f"Configuration loading failed: {e}")
-        return False
+        assert False, f"Configuration loading failed: {e}"
 
 
 def test_abstract_repository():
@@ -71,8 +67,7 @@ def test_abstract_repository():
         return True
 
     except Exception as e:
-        print(f"Abstract repository test failed: {e}")
-        return False
+        assert False, f"Abstract repository test failed: {e}"
 
 
 def test_new_crossref_implementation():
@@ -95,8 +90,7 @@ def test_new_crossref_implementation():
         return True
 
     except Exception as e:
-        print(f"New Crossref implementation test failed: {e}")
-        return False
+        assert False, f"New Crossref implementation test failed: {e}"
 
 
 def compare_implementations():
@@ -151,8 +145,7 @@ def test_content_type_dependencies():
         return True
 
     except Exception as e:
-        print(f"Content type dependency test failed: {e}")
-        return False
+        assert False, f"Content type dependency test failed: {e}"
 
 
 def main():

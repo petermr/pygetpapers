@@ -23,11 +23,8 @@ import streamlit as st
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Add the current directory to Python path for imports
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 try:
-    from datatables_integration import PygetpapersDatatables
+    from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 except ImportError:
     # Fallback if modules are not available
     PygetpapersDatatables = None

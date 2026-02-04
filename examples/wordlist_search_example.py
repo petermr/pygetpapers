@@ -13,9 +13,6 @@ PURPOSE: Demonstrate wordlist search functionality for datatables fields
 import sys
 from pathlib import Path
 
-# Add pygetpapers to path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from pygetpapers.tools.datatables_integration import PygetpapersDatatables
 
 

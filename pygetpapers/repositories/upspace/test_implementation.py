@@ -6,6 +6,7 @@ Tests search, metadata extraction, and file download functionality.
 
 import json
 import logging
+import sys
 import tempfile
 from pathlib import Path
 
@@ -70,8 +71,7 @@ def test_upspace_implementation():
                 print(f"  Keywords: {article.get('keywords', [])}")
 
     except Exception as e:
-        print(f"✗ Search test failed: {e}")
-        return False
+        assert False, f"Search test failed: {e}"
 
     # Test 2: Metadata extraction
     print("\n2. Testing metadata extraction...")
@@ -90,8 +90,7 @@ def test_upspace_implementation():
             print(f"  ✓ {len(sdg_articles)} articles have SDG classifications")
 
     except Exception as e:
-        print(f"✗ Metadata extraction test failed: {e}")
-        return False
+        assert False, f"Metadata extraction test failed: {e}"
 
     # Test 3: File download (if articles found)
     print("\n3. Testing file download...")
@@ -139,8 +138,7 @@ def test_upspace_implementation():
                     print("  ✗ Article download failed")
 
         except Exception as e:
-            print(f"✗ File download test failed: {e}")
-            return False
+            assert False, f"File download test failed: {e}"
 
     # Test 4: DataTables generation
     print("\n4. Testing DataTables generation...")
@@ -169,8 +167,7 @@ def test_upspace_implementation():
                 print("  ⚠ Skipping DataTables test (no articles)")
 
     except Exception as e:
-        print(f"✗ DataTables generation test failed: {e}")
-        return False
+        assert False, f"DataTables generation test failed: {e}"
 
     # Test 5: Article ID generation
     print("\n5. Testing article ID generation...")
@@ -187,8 +184,7 @@ def test_upspace_implementation():
                     print(f"    ✗ Invalid ID format")
 
     except Exception as e:
-        print(f"✗ Article ID generation test failed: {e}")
-        return False
+        assert False, f"Article ID generation test failed: {e}"
 
     print("\n" + "=" * 60)
     print("✓ All tests completed successfully!")

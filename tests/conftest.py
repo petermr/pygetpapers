@@ -6,13 +6,7 @@ This file provides pytest fixtures and configuration for running tests
 with connectivity checking for external services like Redalyc.
 """
 
-import sys
-from pathlib import Path
-
 import pytest
-
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from test_utils import test_redalyc_connectivity
 

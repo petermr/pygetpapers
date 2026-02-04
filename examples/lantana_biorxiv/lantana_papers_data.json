@@ -1,0 +1,211 @@
+{
+  "query": "Lantana-related papers",
+  "timestamp": "2025-07-28T18:10:16.132259",
+  "total_papers": 10,
+  "real_papers": 10,
+  "api_used": true,
+  "papers": [
+    {
+      "paper_id": "126490",
+      "doi": "10.1101/126490",
+      "title": "When Group Means Fail: Can One Size Fit All?",
+      "authors": [
+        "Grandy, T. H.",
+        "Lindenberger, U.",
+        "Werkle-Bergner, M."
+      ],
+      "publication_date": "2025-02-12",
+      "paper_url": "https://doi.org/10.1101/126490",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/126490.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/126490/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/126490/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "223685",
+      "doi": "10.1101/223685",
+      "title": "A non-genetic meiotic repair program inferred from spore survival values in fission yeast wild isolates: a clue for an epigenetic ratchet-like model of ageing?",
+      "authors": [
+        "Marsellach, X."
+      ],
+      "publication_date": "2025-05-17",
+      "paper_url": "https://doi.org/10.1101/223685",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/223685.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/223685/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/223685/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "292722",
+      "doi": "10.1101/292722",
+      "title": "Small RNA-mediated genomic silencing promotes telomere stability in the absence of telomerase",
+      "authors": [
+        "Longtine, C.",
+        "Frenk, S.",
+        "Lister-Shimauchi, E. H.",
+        "Ahmed, S."
+      ],
+      "publication_date": "2025-05-15",
+      "paper_url": "https://doi.org/10.1101/292722",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/292722.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/292722/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/292722/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "294553",
+      "doi": "10.1101/294553",
+      "title": "Plants with purple abaxial leaves: A repository of metrics from stomata distribution",
+      "authors": [
+        "Almeida Filho, H. A.",
+        "Martinez Bruno, O."
+      ],
+      "publication_date": "2025-02-11",
+      "paper_url": "https://doi.org/10.1101/294553",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/294553.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/294553/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/294553/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "314708",
+      "doi": "10.1101/314708",
+      "title": "Refining sperm quality assessment by high-throughput nuclear morphometric analysis",
+      "authors": [
+        "Mandawala, A. A.",
+        "Perry, J. C.",
+        "Skinner, B. M.",
+        "Walling, G. A.",
+        "Harvey, S. C.",
+        "Harvey, K. E."
+      ],
+      "publication_date": "2025-04-24",
+      "paper_url": "https://doi.org/10.1101/314708",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/314708.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/314708/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/314708/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "324517",
+      "doi": "10.1101/324517",
+      "title": "Cis-nonPro Peptides: Genuine Occurrences and their Functional Roles",
+      "authors": [
+        "Richardson, J. S.",
+        "Videau, L. L.",
+        "Williams, C. J.",
+        "Hintze, B. J.",
+        "Lewis, S. M.",
+        "Richardson, D. C."
+      ],
+      "publication_date": "2025-01-30",
+      "paper_url": "https://doi.org/10.1101/324517",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/324517.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/324517/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/324517/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "326751",
+      "doi": "10.1101/326751",
+      "title": "DAF-16/Foxo suppresses the transgenerational sterility of prg-1 piRNA mutants via a systemic small RNA pathway",
+      "authors": [
+        "Simon, M.",
+        "Spichal, M.",
+        "Heestand, B.",
+        "Frenk, S.",
+        "Hedges, A.",
+        "Godwin, M.",
+        "Wellman, A.",
+        "Sakaguchi, A.",
+        "Ahmed, S."
+      ],
+      "publication_date": "2025-05-13",
+      "paper_url": "https://doi.org/10.1101/326751",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/326751.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/326751/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/326751/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "421834",
+      "doi": "10.1101/421834",
+      "title": "MOSim: bulk and single-cell multi-layer regulatory network simulator",
+      "authors": [
+        "Monzo, C.",
+        "Aguerralde-Martin, M.",
+        "Martinez-Mira, C.",
+        "Arzalluz, A.",
+        "Conesa, A.",
+        "Tarazona, S."
+      ],
+      "publication_date": "2025-02-17",
+      "paper_url": "https://doi.org/10.1101/421834",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/421834.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/421834/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/421834/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "550368",
+      "doi": "10.1101/550368",
+      "title": "The pharmacodynamic inoculum effect from the perspective of bacterial population modeling",
+      "authors": [
+        "Baeder, D. Y.",
+        "Regoes, R. R."
+      ],
+      "publication_date": "2025-04-30",
+      "paper_url": "https://doi.org/10.1101/550368",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/550368.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/550368/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/550368/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    },
+    {
+      "paper_id": "602052",
+      "doi": "10.1101/602052",
+      "title": "YAP controls cell migration and invasion through a Rho-GTPase switch",
+      "authors": [
+        "Shah, S. R.",
+        "Ren, C.",
+        "Tippens, N. D.",
+        "Park, J.",
+        "Mohyeldin, A.",
+        "Wang, S.",
+        "Vela, G.",
+        "Martinez-Gutierrez, J. C.",
+        "Margolis, S. S.",
+        "Schmidt, S.",
+        "Xia, S.",
+        "Quinones-Hinojosa, A.",
+        "Levchenko, A."
+      ],
+      "publication_date": "2025-02-21",
+      "paper_url": "https://doi.org/10.1101/602052",
+      "pdf_url": "https://www.biorxiv.org/content/10.1101/602052.full.pdf",
+      "status": "not_downloaded",
+      "download_path": "pdfs/602052/",
+      "local_pdf_path": "file:///Users/pm286/workspace/pygetpapers/examples/lantana_biorxiv/pdfs/602052/fulltext.pdf",
+      "is_real": true,
+      "source": "biorxiv"
+    }
+  ]
+}

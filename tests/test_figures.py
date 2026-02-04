@@ -21,9 +21,7 @@ def test_figures_extraction():
     test_corpus = "lantana"  # Use the existing lantana corpus
 
     if not os.path.exists(test_corpus):
-        print(f"❌ Test corpus '{test_corpus}' not found")
-        print("Please download a corpus first using pygetpapers")
-        return False
+        assert False, f"Test corpus '{test_corpus}' not found. Please download a corpus first using pygetpapers"
 
     try:
         print(f"📁 Loading corpus: {test_corpus}")
@@ -64,8 +62,7 @@ def test_figures_extraction():
             if figures_html and "table" in figures_html.lower():
                 print("✅ Figures table created successfully")
             else:
-                print("❌ Failed to create figures table")
-                return False
+                assert False, "Failed to create figures table"
 
             # Test summary table
             summary_html = datatables.create_figures_summary_table(
@@ -74,8 +71,7 @@ def test_figures_extraction():
             if summary_html and "table" in summary_html.lower():
                 print("✅ Summary table created successfully")
             else:
-                print("❌ Failed to create summary table")
-                return False
+                assert False, "Failed to create summary table"
 
             print("\n🎉 All tests passed!")
             return True
@@ -89,11 +85,9 @@ def test_figures_extraction():
             return True
 
     except Exception as e:
-        print(f"❌ Error during testing: {str(e)}")
         import traceback
-
         traceback.print_exc()
-        return False
+        assert False, f"Error during testing: {str(e)}"
 
 
 def test_thumbnail_creation():
@@ -128,7 +122,7 @@ def test_thumbnail_creation():
             else:
                 print("    ⚠️  No thumbnail created (PIL may not be available)")
         except Exception as e:
-            print(f"    ❌ Error creating thumbnail: {str(e)}")
+            assert False, f"Error creating thumbnail: {str(e)}"
 
     return True
 

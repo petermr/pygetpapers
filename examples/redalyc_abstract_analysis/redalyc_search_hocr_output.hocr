@@ -4,59 +4,58 @@
   <head>
     <title>Redalyc Search Results</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <meta name="ocr-system" content="pygetpapers hOCR Builder"/>
-    <meta name="ocr-capabilities" content="ocr_page ocr_carea ocr_par ocr_line ocr_word ocrx_char"/>
-    <meta name="ocr-langs" content="en"/>
-    <meta name="ocr-number-of-pages" content="1"/>
-    <meta name="ocr-datetime" content="2025-07-19T17:15:18.837067"/>
+    <meta name="pdf-system" content="pygetpapers hOCR Builder"/>
+    <meta name="pdf-langs" content="en"/>
+    <meta name="pdf-number-of-pages" content="1"/>
+    <meta name="pdf-datetime" content="2026-02-04T10:34:09.924428"/>
   </head>
   <body>
-    <div class="ocr_page" id="page_1" title="image ''; bbox 0 0 3456 1778; ppageno 1">
-      <div class="ocr_par" id="par_0" title="bbox 0.0 0.0 0.0 0.0">
-        <span class="ocr_line" id="line_0" title="bbox 0.0 0.0 344 565">
-          <span class="ocr_word" id="word_0" title="bbox 82 534 164 559; x_wconf 92">Filtros</span>
-          <span class="ocr_word" id="word_1" title="bbox 173 534 204 559; x_wconf 93">de</span>
-          <span class="ocr_word" id="word_2" title="bbox 214 534 344 565; x_wconf 52">bisqueda</span>
+    <div class="pdf_page" id="p1" title="image ''; bbox 0 0 3456 1778; ppageno 1">
+      <div class="pdf_par" id="p2">
+        <span class="pdf_line" id="p3" title="bbox 82 534 344 565">
+          <span class="pdf_word" id="p4" title="bbox 82 534 164 559">Filtros</span>
+          <span class="pdf_word" id="p5" title="bbox 173 534 204 559">de</span>
+          <span class="pdf_word" id="p6" title="bbox 214 534 344 565">bisqueda</span>
         </span>
       </div>
-      <div class="ocr_par" id="par_1" title="bbox 0.0 0.0 0.0 0.0">
-        <span class="ocr_line" id="line_0" title="bbox 0.0 0.0 352 649">
-          <span class="ocr_word" id="word_0" title="bbox 303 628 352 649; x_wconf 37">Año:</span>
+      <div class="pdf_par" id="p7">
+        <span class="pdf_line" id="p8" title="bbox 303 628 352 649">
+          <span class="pdf_word" id="p9" title="bbox 303 628 352 649">Año:</span>
         </span>
-        <span class="ocr_line" id="line_1" title="bbox 0.0 0.0 244 690">
-          <span class="ocr_word" id="word_0" title="bbox 157 665 179 687; x_wconf 26">@</span>
-          <span class="ocr_word" id="word_1" title="bbox 189 671 244 690; x_wconf 92">2025</span>
+        <span class="pdf_line" id="p10" title="bbox 157 665 244 690">
+          <span class="pdf_word" id="p11" title="bbox 157 665 179 687">@</span>
+          <span class="pdf_word" id="p12" title="bbox 189 671 244 690">2025</span>
         </span>
-        <span class="ocr_line" id="line_2" title="bbox 0.0 0.0 245 729">
-          <span class="ocr_word" id="word_0" title="bbox 157 704 179 726; x_wconf 23">@</span>
-          <span class="ocr_word" id="word_1" title="bbox 189 710 245 729; x_wconf 90">2024</span>
-        </span>
-      </div>
-      <div class="ocr_par" id="par_2" title="bbox 0.0 0.0 0.0 0.0">
-        <span class="ocr_line" id="line_0" title="bbox 0.0 0.0 368 977">
-          <span class="ocr_word" id="word_0" title="bbox 289 956 368 977; x_wconf 96">Idioma:</span>
-        </span>
-        <span class="ocr_line" id="line_1" title="bbox 0.0 0.0 272 1023">
-          <span class="ocr_word" id="word_0" title="bbox 157 993 179 1015; x_wconf 70">@</span>
-          <span class="ocr_word" id="word_1" title="bbox 189 998 272 1023; x_wconf 54">Español</span>
+        <span class="pdf_line" id="p13" title="bbox 157 704 245 729">
+          <span class="pdf_word" id="p14" title="bbox 157 704 179 726">@</span>
+          <span class="pdf_word" id="p15" title="bbox 189 710 245 729">2024</span>
         </span>
       </div>
-      <div class="ocr_par" id="par_3" title="bbox 0.0 0.0 0.0 0.0">
-        <span class="ocr_line" id="line_0" title="bbox 0.0 0.0 787 572">
-          <span class="ocr_word" id="word_0" title="bbox 699 553 787 572; x_wconf 96">Lantana</span>
+      <div class="pdf_par" id="p16">
+        <span class="pdf_line" id="p17" title="bbox 289 956 368 977">
+          <span class="pdf_word" id="p18" title="bbox 289 956 368 977">Idioma:</span>
+        </span>
+        <span class="pdf_line" id="p19" title="bbox 157 993 272 1023">
+          <span class="pdf_word" id="p20" title="bbox 157 993 179 1015">@</span>
+          <span class="pdf_word" id="p21" title="bbox 189 998 272 1023">Español</span>
         </span>
       </div>
-      <div class="ocr_par" id="par_4" title="bbox 0.0 0.0 2643 78">
-        <span class="ocr_line" id="line_0" title="bbox 0.0 0.0 2643 78">
-          <span class="ocr_word" id="word_0" title="bbox 1910 38 2052 69; x_wconf 96">Sistema</span>
-          <span class="ocr_word" id="word_1" title="bbox 2063 37 2104 69; x_wconf 93">de</span>
-          <span class="ocr_word" id="word_2" title="bbox 2117 36 2323 69; x_wconf 61">Información</span>
-          <span class="ocr_word" id="word_3" title="bbox 2337 37 2497 69; x_wconf 91">Científica</span>
-          <span class="ocr_word" id="word_4" title="bbox 2509 37 2643 78; x_wconf 92">Redalyc</span>
+      <div class="pdf_par" id="p22">
+        <span class="pdf_line" id="p23" title="bbox 699 553 787 572">
+          <span class="pdf_word" id="p24" title="bbox 699 553 787 572">Lantana</span>
         </span>
       </div>
-      <div class="ocr_image" id="image_0" title="bbox 0 486 664 1778">
-        <span class="ocr_caption">Main content area</span>
+      <div class="pdf_par" id="p25">
+        <span class="pdf_line" id="p26" title="bbox 1910 36 2643 78">
+          <span class="pdf_word" id="p27" title="bbox 1910 38 2052 69">Sistema</span>
+          <span class="pdf_word" id="p28" title="bbox 2063 37 2104 69">de</span>
+          <span class="pdf_word" id="p29" title="bbox 2117 36 2323 69">Información</span>
+          <span class="pdf_word" id="p30" title="bbox 2337 37 2497 69">Científica</span>
+          <span class="pdf_word" id="p31" title="bbox 2509 37 2643 78">Redalyc</span>
+        </span>
+      </div>
+      <div class="pdf_image" id="p32" title="bbox 0 486 664 1778">
+        <span class="pdf_caption">Main content area</span>
       </div>
     </div>
   </body>

@@ -93,7 +93,7 @@ def demonstrate_full_workflow():
             if "biorxiv_id" in metadata:
                 print(f"   🆔 bioRxiv ID: {metadata['biorxiv_id']}")
         else:
-            print(f"   ❌ Error: {download_result['error']}")
+            assert False, f"Download error: {download_result['error']}"
 
     print(f"\n✅ Successfully processed {len(processed_papers)} papers")
 
@@ -180,7 +180,7 @@ def demonstrate_full_workflow():
     print(
         f"   Batch completed: {batch_results['summary']['total_papers_downloaded']} papers"
     )
-    print(f"   Errors: {batch_results['summary']['total_errors']}")
+    assert batch_results['summary']['total_errors'] == 0, f"Batch had errors: {batch_results['summary']['total_errors']}"
     print(f"   Success rate: {batch_results['summary']['success_rate']:.1%}")
 
     return summary

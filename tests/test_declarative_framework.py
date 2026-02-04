@@ -10,9 +10,6 @@ import os
 import sys
 from pathlib import Path
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 
 def test_security_framework():
     """Test the security framework components."""
@@ -59,8 +56,7 @@ def test_security_framework():
         return True
 
     except Exception as e:
-        print(f"❌ Security framework test failed: {e}")
-        return False
+        assert False, f"Security framework test failed: {e}"
 
 
 def test_declarative_operations():
@@ -102,8 +98,7 @@ def test_declarative_operations():
         return True
 
     except Exception as e:
-        print(f"❌ Declarative operations test failed: {e}")
-        return False
+        assert False, f"Declarative operations test failed: {e}"
 
 
 def test_cli_interface():
@@ -128,8 +123,7 @@ def test_cli_interface():
         return True
 
     except Exception as e:
-        print(f"❌ CLI interface test failed: {e}")
-        return False
+        assert False, f"CLI interface test failed: {e}"
 
 
 def test_integration():
@@ -169,8 +163,7 @@ def test_integration():
         return True
 
     except Exception as e:
-        print(f"❌ Integration test failed: {e}")
-        return False
+        assert False, f"Integration test failed: {e}"
 
 
 def cleanup():
