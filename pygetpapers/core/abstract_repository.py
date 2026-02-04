@@ -10,8 +10,8 @@ import logging
 import os
 from typing import Any, Dict, List, Optional
 
-from src.pygetpapers.download_tools import DownloadTools
-from src.pygetpapers.repositoryinterface import RepositoryInterface
+from pygetpapers.core.download_tools import DownloadTools
+from pygetpapers.core.repositoryinterface import RepositoryInterface
 
 logger = logging.getLogger(__name__)
 

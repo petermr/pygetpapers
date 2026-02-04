@@ -1016,25 +1016,7 @@ class Pygetpapers:
             help="[All] Create enhanced HTML with IDs and cleaned structure from existing HTML files",
         )
 
-        args = parser.parse_args()
-        if args.version:
-            print(f"pygetpapers version {version}")
-            return
-        self.query_namespace = vars(args)
-        for arg in self.query_namespace:
-            if (self.query_namespace)[arg] == "False":
-                (self.query_namespace)[arg] = False
-
-        # Enable fulltext_html by default for Europe PMC
-        if (
-            self.query_namespace["api"] == "europe_pmc"
-            and not self.query_namespace["fulltext_html"]
-            and self.query_namespace["xml"]
-        ):
-            self.query_namespace["fulltext_html"] = True
-            logging.info("Enabling XML to HTML conversion by default for Europe PMC")
-
-        self.runs_pygetpapers_for_given_args(self.query_namespace)
+        return parser
 
 
 def run_pygetpapers(command_string):
@@ -1103,8 +1085,8 @@ def run_pygetpapers(command_string):
         sys.argv = ["pygetpapers"] + args
 
         try:
-            # Parse arguments
-            parsed_args = parser.parse_args()
+            # Parse arguments - pass args directly to avoid pytest interference
+            parsed_args = parser.parse_args(args)
 
             # Convert to namespace dictionary
             query_namespace = vars(parsed_args)
@@ -1183,7 +1165,27 @@ def run_pygetpapers(command_string):
 def main():
     """Runs the CLI"""
     callpygetpapers = Pygetpapers()
-    callpygetpapers.create_argparser()
+    parser = callpygetpapers.create_argparser()
+    
+    args = parser.parse_args()
+    if args.version:
+        print(f"pygetpapers version {callpygetpapers.version}")
+        return
+    callpygetpapers.query_namespace = vars(args)
+    for arg in callpygetpapers.query_namespace:
+        if callpygetpapers.query_namespace[arg] == "False":
+            callpygetpapers.query_namespace[arg] = False
+
+    # Enable fulltext_html by default for Europe PMC
+    if (
+        callpygetpapers.query_namespace["api"] == "europe_pmc"
+        and not callpygetpapers.query_namespace["fulltext_html"]
+        and callpygetpapers.query_namespace["xml"]
+    ):
+        callpygetpapers.query_namespace["fulltext_html"] = True
+        logging.info("Enabling XML to HTML conversion by default for Europe PMC")
+
+    callpygetpapers.runs_pygetpapers_for_given_args(callpygetpapers.query_namespace)
 
 
 if __name__ == "__main__":

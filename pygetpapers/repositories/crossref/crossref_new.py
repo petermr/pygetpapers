@@ -5,8 +5,8 @@ This module demonstrates how to create a repository using the abstract
 repository system. The entire implementation is just a few lines of code!
 """
 
-from src.pygetpapers.abstract_repository import AbstractRepository
-from src.pygetpapers.repository_config import get_repository_config
+from pygetpapers.core.abstract_repository import AbstractRepository
+from pygetpapers.core.repository_config import get_repository_config
 
 
 class CrossRef(AbstractRepository):

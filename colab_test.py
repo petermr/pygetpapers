@@ -14,16 +14,13 @@ def test_installation():
     """Test if pygetpapers is properly installed."""
     print("🔍 Testing pygetpapers installation...")
 
-    try:
-        import pygetpapers
+    import pygetpapers
 
-        print(
-            f"✅ pygetpapers imported successfully (version: {pygetpapers.__version__})"
-        )
-        return True
-    except ImportError as e:
-        print(f"❌ Failed to import pygetpapers: {e}")
-        return False
+    assert hasattr(pygetpapers, "__version__"), "pygetpapers should have __version__ attribute"
+    assert pygetpapers.__version__ is not None, "pygetpapers version should not be None"
+    print(
+        f"✅ pygetpapers imported successfully (version: {pygetpapers.__version__})"
+    )
 
 
 def test_run_pygetpapers():
@@ -52,10 +49,7 @@ def test_run_pygetpapers():
                     else result["stdout"]
                 )
         else:
-            print(f"❌ Command failed: {result.get('error', 'Unknown error')}")
-            if result.get("stderr"):
-                print("STDERR:")
-                print(result["stderr"])
+            assert False, f"❌ Command failed: {result.get('error', 'Unknown error')}"
 
         # Test 2: Query with XML download and limit
         print("\n📝 Test 2: Query with XML download and limit")
@@ -63,6 +57,10 @@ def test_run_pygetpapers():
         print(f"Running: {cmd}")
         result = run_pygetpapers(cmd)
 
+        assert isinstance(result, dict), "run_pygetpapers should return a dictionary"
+        assert "success" in result, "Result should have 'success' key"
+        # Note: We don't assert success=True here as it may fail due to network/API issues
+        # The important part is that the function was called correctly
         if result["success"]:
             print("✅ Command executed successfully")
             print(f"Output directory: {result.get('output_directory', 'N/A')}")
@@ -74,16 +72,13 @@ def test_run_pygetpapers():
                     else result["stdout"]
                 )
         else:
-            print(f"❌ Command failed: {result.get('error', 'Unknown error')}")
+            print(f"⚠️  Command failed (may be due to network/API): {result.get('error', 'Unknown error')}")
             if result.get("stderr"):
                 print("STDERR:")
                 print(result["stderr"])
 
-        return True
-
     except Exception as e:
-        print(f"❌ Failed to test run_pygetpapers: {e}")
-        return False
+        assert False, f"Failed to test run_pygetpapers: {e}"
 
 
 def demonstrate_usage():

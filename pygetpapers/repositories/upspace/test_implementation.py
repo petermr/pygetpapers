@@ -189,8 +189,8 @@ def test_upspace_implementation():
     print("\n" + "=" * 60)
     print("✓ All tests completed successfully!")
     print("=" * 60)
-
-    return True
+    
+    assert True  # All tests passed
 
 
 if __name__ == "__main__":

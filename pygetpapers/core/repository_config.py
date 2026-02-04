@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml
-from src.pygetpapers.abstract_repository import AbstractRepository
+from pygetpapers.core.abstract_repository import AbstractRepository
 
 logger = logging.getLogger(__name__)
 
