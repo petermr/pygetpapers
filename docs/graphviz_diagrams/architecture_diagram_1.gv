@@ -1,0 +1,64 @@
+digraph G {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+
+    subgraph cluster_Output {
+        label="Output";
+        style=rounded;
+        FILES [label="Downloaded Files\n- XML\n- PDF\n- HTML\n- Metadata"];
+        METADATA [label="Metadata Files\n- JSON\n- CSV"];
+    }
+
+    subgraph cluster_Frontend_Layer {
+        label="Frontend Layer";
+        style=rounded;
+        ST [label="Streamlit App\nstreamlit_app.py\n3700+ lines"];
+        UI [label="UI Components\n- Search Interface\n- Corpus Manager\n- Data Tables\n- File Browser"];
+    }
+
+    subgraph cluster_Integration_Layer {
+        label="Integration Layer";
+        style=rounded;
+        BI [label="BioRxiv Integration\nbiorxiv_integration.py"];
+        BS [label="BioRxiv Scraper\nbiorxiv_advanced_scraper.py"];
+        DT [label="DataTables Integration\ndatatables_integration.py"];
+        JATS [label="JATS4R Integration\njats4r_integration.py"];
+    }
+
+    subgraph cluster_Core_pygetpapers {
+        label="Core pygetpapers";
+        style=rounded;
+        PP [label="pygetpapers Core\npygetpapers/pygetpapers.py"];
+        REPO [label="Repository Modules\n- europe_pmc.py\n- arxiv.py\n- crossref.py\n- openalex.py"];
+        WEB [label="Web Scraping\npygetpapers/web_scraping/"];
+    }
+
+    subgraph cluster_Data_Sources {
+        label="Data Sources";
+        style=rounded;
+        EUPMC [label="Europe PMC API"];
+        ARXIV [label="arXiv API"];
+        CROSSREF [label="Crossref API"];
+        OPENALEX [label="OpenAlex API"];
+        BIORXIV [label="BioRxiv Web"];
+        MEDRXIV [label="MedRxiv Web"];
+    }
+
+    // Edges
+    ST -> BI;
+    ST -> DT;
+    ST -> JATS;
+    ST -> PP;
+    BI -> BS;
+    BS -> BIORXIV;
+    BS -> MEDRXIV;
+    PP -> REPO;
+    REPO -> EUPMC;
+    REPO -> ARXIV;
+    REPO -> CROSSREF;
+    REPO -> OPENALEX;
+    PP -> FILES;
+    PP -> METADATA;
+    BI -> FILES;
+    BI -> METADATA;
+}

@@ -1,0 +1,118 @@
+digraph G {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+
+    subgraph cluster_External_APIs {
+        label="External APIs";
+        style=rounded;
+        EUPMC_API [label="Europe PMC API"];
+        ARXIV_API [label="arXiv API"];
+        CROSSREF_API [label="Crossref API"];
+        OPENALEX_API [label="OpenAlex API"];
+        BIORXIV_WEB [label="BioRxiv Web"];
+        MEDRXIV_WEB [label="MedRxiv Web"];
+        REDALYC_WEB [label="Redalyc Web"];
+    }
+
+    subgraph cluster_Presentation_Layer {
+        label="Presentation Layer";
+        style=rounded;
+        ST [label="Streamlit UI\nstreamlit_app.py\n~500 lines"];
+        CLI [label="CLI Interface\npygetpapers_cli.py"];
+        API [label="REST API\npygetpapers_api.py"];
+    }
+
+    subgraph cluster_Service_Layer {
+        label="Service Layer";
+        style=rounded;
+        SS [label="Search Service\nservices/search_service.py"];
+        CS [label="Corpus Service\nservices/corpus_service.py"];
+        FS [label="File Service\nservices/file_service.py"];
+        MS [label="Metadata Service\nservices/metadata_service.py"];
+    }
+
+    subgraph cluster_Repository_Layer {
+        label="Repository Layer";
+        style=rounded;
+        RI [label="Repository Interface\nrepositories/base.py"];
+    }
+
+    subgraph cluster_Repository_Implementations {
+        label="Repository Implementations";
+        style=rounded;
+        EUPMC [label="Europe PMC\nrepositories/europe_pmc.py"];
+        ARXIV [label="arXiv\nrepositories/arxiv.py"];
+        CROSSREF [label="Crossref\nrepositories/crossref.py"];
+        OPENALEX [label="OpenAlex\nrepositories/openalex.py"];
+        BIORXIV [label="BioRxiv\nrepositories/biorxiv.py"];
+        MEDRXIV [label="MedRxiv\nrepositories/medrxiv.py"];
+        REDALYC [label="Redalyc\nrepositories/redalyc.py"];
+    }
+
+    subgraph cluster_Web_Scraping_Layer {
+        label="Web Scraping Layer";
+        style=rounded;
+        WS [label="Web Scraper Base\nscrapers/base_scraper.py"];
+    }
+
+    subgraph cluster_Scraper_Implementations {
+        label="Scraper Implementations";
+        style=rounded;
+        BS [label="BioRxiv Scraper\nscrapers/biorxiv_scraper.py"];
+        MS [label="MedRxiv Scraper\nscrapers/medrxiv_scraper.py"];
+        RS [label="Redalyc Scraper\nscrapers/redalyc_scraper.py"];
+    }
+
+    subgraph cluster_Data_Processing_Layer {
+        label="Data Processing Layer";
+        style=rounded;
+        PARSER [label="Content Parser\nprocessors/content_parser.py"];
+        CONVERTER [label="Format Converter\nprocessors/format_converter.py"];
+        VALIDATOR [label="Data Validator\nprocessors/data_validator.py"];
+    }
+
+    subgraph cluster_Storage_Layer {
+        label="Storage Layer";
+        style=rounded;
+        FS_STORAGE [label="File Storage\nstorage/file_storage.py"];
+        DB [label="Database\nstorage/database.py"];
+        CACHE [label="Cache\nstorage/cache.py"];
+    }
+
+    // Edges
+    ST -> SS;
+    ST -> CS;
+    ST -> FS;
+    ST -> MS;
+    CLI -> SS;
+    CLI -> CS;
+    API -> SS;
+    API -> CS;
+    SS -> RI;
+    CS -> RI;
+    FS -> FS_STORAGE;
+    MS -> DB;
+    RI -> EUPMC;
+    RI -> ARXIV;
+    RI -> CROSSREF;
+    RI -> OPENALEX;
+    RI -> BIORXIV;
+    RI -> MEDRXIV;
+    RI -> REDALYC;
+    BIORXIV -> WS;
+    MEDRXIV -> WS;
+    REDALYC -> WS;
+    WS -> BS;
+    WS -> MS;
+    WS -> RS;
+    BS -> BIORXIV_WEB;
+    MS -> MEDRXIV_WEB;
+    RS -> REDALYC_WEB;
+    EUPMC -> EUPMC_API;
+    ARXIV -> ARXIV_API;
+    CROSSREF -> CROSSREF_API;
+    OPENALEX -> OPENALEX_API;
+    PARSER -> FS_STORAGE;
+    CONVERTER -> FS_STORAGE;
+    VALIDATOR -> DB;
+}

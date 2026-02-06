@@ -1,0 +1,51 @@
+digraph G {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+
+    subgraph cluster_Integration {
+        label="Integration";
+        style=rounded;
+        CLI [label="CLI Interface"];
+        API [label="Python API"];
+        EXISTING [label="Existing pygetpapers"];
+    }
+
+    subgraph cluster_Configuration_Layer {
+        label="Configuration Layer";
+        style=rounded;
+        YAML [label="YAML Config"];
+        JSON [label="JSON Config"];
+        INI [label="INI Config"];
+    }
+
+    subgraph cluster_Framework_Core {
+        label="Framework Core";
+        style=rounded;
+        DOM [label="DeclarativeOperationsManager"];
+        OP [label="Operation"];
+        DEP [label="Dependency"];
+        PAT [label="File Patterns"];
+    }
+
+    subgraph cluster_Dependency_Engine {
+        label="Dependency Engine";
+        style=rounded;
+        CHECK [label="Dependency Checker"];
+        SORT [label="Topological Sort"];
+        EXEC [label="Operation Executor"];
+    }
+
+    // Edges
+    YAML -> DOM;
+    JSON -> DOM;
+    INI -> DOM;
+    DOM -> OP;
+    DOM -> DEP;
+    DOM -> PAT;
+    DOM -> CHECK;
+    DOM -> SORT;
+    DOM -> EXEC;
+    CLI -> DOM;
+    API -> DOM;
+    EXEC -> EXISTING;
+}

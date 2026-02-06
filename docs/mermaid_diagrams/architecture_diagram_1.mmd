@@ -1,0 +1,49 @@
+graph TB
+    subgraph "Frontend Layer"
+        ST[Streamlit App<br/>streamlit_app.py<br/>3700+ lines]
+        UI[UI Components<br/>- Search Interface<br/>- Corpus Manager<br/>- Data Tables<br/>- File Browser]
+    end
+
+    subgraph "Integration Layer"
+        BI[BioRxiv Integration<br/>biorxiv_integration.py]
+        BS[BioRxiv Scraper<br/>biorxiv_advanced_scraper.py]
+        DT[DataTables Integration<br/>datatables_integration.py]
+        JATS[JATS4R Integration<br/>jats4r_integration.py]
+    end
+
+    subgraph "Core pygetpapers"
+        PP[pygetpapers Core<br/>pygetpapers/pygetpapers.py]
+        REPO[Repository Modules<br/>- europe_pmc.py<br/>- arxiv.py<br/>- crossref.py<br/>- openalex.py]
+        WEB[Web Scraping<br/>pygetpapers/web_scraping/]
+    end
+
+    subgraph "Data Sources"
+        EUPMC[Europe PMC API]
+        ARXIV[arXiv API]
+        CROSSREF[Crossref API]
+        OPENALEX[OpenAlex API]
+        BIORXIV[BioRxiv Web]
+        MEDRXIV[MedRxiv Web]
+    end
+
+    subgraph "Output"
+        FILES[Downloaded Files<br/>- XML<br/>- PDF<br/>- HTML<br/>- Metadata]
+        METADATA[Metadata Files<br/>- JSON<br/>- CSV]
+    end
+
+    ST --> BI
+    ST --> DT
+    ST --> JATS
+    ST --> PP
+    BI --> BS
+    BS --> BIORXIV
+    BS --> MEDRXIV
+    PP --> REPO
+    REPO --> EUPMC
+    REPO --> ARXIV
+    REPO --> CROSSREF
+    REPO --> OPENALEX
+    PP --> FILES
+    PP --> METADATA
+    BI --> FILES
+    BI --> METADATA

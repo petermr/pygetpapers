@@ -1,0 +1,38 @@
+graph TB
+    subgraph "Configuration Layer"
+        YAML[YAML Config]
+        JSON[JSON Config]
+        INI[INI Config]
+    end
+    
+    subgraph "Framework Core"
+        DOM[DeclarativeOperationsManager]
+        OP[Operation]
+        DEP[Dependency]
+        PAT[File Patterns]
+    end
+    
+    subgraph "Dependency Engine"
+        CHECK[Dependency Checker]
+        SORT[Topological Sort]
+        EXEC[Operation Executor]
+    end
+    
+    subgraph "Integration"
+        CLI[CLI Interface]
+        API[Python API]
+        EXISTING[Existing pygetpapers]
+    end
+    
+    YAML --> DOM
+    JSON --> DOM
+    INI --> DOM
+    DOM --> OP
+    DOM --> DEP
+    DOM --> PAT
+    DOM --> CHECK
+    DOM --> SORT
+    DOM --> EXEC
+    CLI --> DOM
+    API --> DOM
+    EXEC --> EXISTING

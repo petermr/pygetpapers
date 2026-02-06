@@ -1,0 +1,100 @@
+graph TB
+    subgraph "Presentation Layer"
+        ST[Streamlit UI<br/>streamlit_app.py<br/>~500 lines]
+        CLI[CLI Interface<br/>pygetpapers_cli.py]
+        API[REST API<br/>pygetpapers_api.py]
+    end
+
+    subgraph "Service Layer"
+        SS[Search Service<br/>services/search_service.py]
+        CS[Corpus Service<br/>services/corpus_service.py]
+        FS[File Service<br/>services/file_service.py]
+        MS[Metadata Service<br/>services/metadata_service.py]
+    end
+
+    subgraph "Repository Layer"
+        RI[Repository Interface<br/>repositories/base.py]
+        subgraph "Repository Implementations"
+            EUPMC[Europe PMC<br/>repositories/europe_pmc.py]
+            ARXIV[arXiv<br/>repositories/arxiv.py]
+            CROSSREF[Crossref<br/>repositories/crossref.py]
+            OPENALEX[OpenAlex<br/>repositories/openalex.py]
+            BIORXIV[BioRxiv<br/>repositories/biorxiv.py]
+            MEDRXIV[MedRxiv<br/>repositories/medrxiv.py]
+            REDALYC[Redalyc<br/>repositories/redalyc.py]
+        end
+    end
+
+    subgraph "Web Scraping Layer"
+        WS[Web Scraper Base<br/>scrapers/base_scraper.py]
+        subgraph "Scraper Implementations"
+            BS[BioRxiv Scraper<br/>scrapers/biorxiv_scraper.py]
+            MS[MedRxiv Scraper<br/>scrapers/medrxiv_scraper.py]
+            RS[Redalyc Scraper<br/>scrapers/redalyc_scraper.py]
+        end
+    end
+
+    subgraph "Data Processing Layer"
+        PARSER[Content Parser<br/>processors/content_parser.py]
+        CONVERTER[Format Converter<br/>processors/format_converter.py]
+        VALIDATOR[Data Validator<br/>processors/data_validator.py]
+    end
+
+    subgraph "Storage Layer"
+        FS_STORAGE[File Storage<br/>storage/file_storage.py]
+        DB[Database<br/>storage/database.py]
+        CACHE[Cache<br/>storage/cache.py]
+    end
+
+    subgraph "External APIs"
+        EUPMC_API[Europe PMC API]
+        ARXIV_API[arXiv API]
+        CROSSREF_API[Crossref API]
+        OPENALEX_API[OpenAlex API]
+        BIORXIV_WEB[BioRxiv Web]
+        MEDRXIV_WEB[MedRxiv Web]
+        REDALYC_WEB[Redalyc Web]
+    end
+
+    ST --> SS
+    ST --> CS
+    ST --> FS
+    ST --> MS
+    CLI --> SS
+    CLI --> CS
+    API --> SS
+    API --> CS
+
+    SS --> RI
+    CS --> RI
+    FS --> FS_STORAGE
+    MS --> DB
+
+    RI --> EUPMC
+    RI --> ARXIV
+    RI --> CROSSREF
+    RI --> OPENALEX
+    RI --> BIORXIV
+    RI --> MEDRXIV
+    RI --> REDALYC
+
+    BIORXIV --> WS
+    MEDRXIV --> WS
+    REDALYC --> WS
+
+    WS --> BS
+    WS --> MS
+    WS --> RS
+
+    BS --> BIORXIV_WEB
+    MS --> MEDRXIV_WEB
+    RS --> REDALYC_WEB
+
+    EUPMC --> EUPMC_API
+    ARXIV --> ARXIV_API
+    CROSSREF --> CROSSREF_API
+    OPENALEX --> OPENALEX_API
+
+    PARSER --> FS_STORAGE
+    CONVERTER --> FS_STORAGE
+    VALIDATOR --> DB
